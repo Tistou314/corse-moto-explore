@@ -4,27 +4,29 @@ import { Facebook, Instagram, Twitter, Mail, MapPin, Phone, Bike } from 'lucide-
 
 const Footer = () => {
   return (
-    <footer className="bg-corsica-slate text-white pt-12 pb-8">
+    <footer className="bg-corsica-dark text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* About */}
           <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <Bike className="w-6 h-6" />
+            <div className="flex items-center space-x-3 mb-5">
+              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                <Bike className="w-6 h-6 text-corsica-red" />
+              </div>
               <h3 className="text-xl font-heading font-bold">La Corse à Moto</h3>
             </div>
-            <p className="text-gray-300 mb-4">
+            <p className="text-gray-300 mb-6">
               Votre guide complet pour explorer la Corse à moto, avec des itinéraires détaillés, 
               des conseils pratiques et des recommandations d'hébergement.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-white hover:text-corsica-sand transition-colors">
+              <a href="#" className="text-white/80 hover:text-corsica-orange transition-colors w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="text-white hover:text-corsica-sand transition-colors">
+              <a href="#" className="text-white/80 hover:text-corsica-orange transition-colors w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="text-white hover:text-corsica-sand transition-colors">
+              <a href="#" className="text-white/80 hover:text-corsica-orange transition-colors w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20">
                 <Twitter className="w-5 h-5" />
               </a>
             </div>
@@ -32,30 +34,35 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-heading font-bold mb-4">Liens Rapides</h3>
-            <ul className="space-y-2">
+            <h3 className="text-lg font-heading font-bold mb-5 border-b border-white/10 pb-2">Liens Rapides</h3>
+            <ul className="space-y-3">
               <li>
-                <Link to="/" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/" className="text-gray-300 hover:text-white transition-colors flex items-center">
+                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
                   Accueil
                 </Link>
               </li>
               <li>
-                <Link to="/itineraires" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/itineraires" className="text-gray-300 hover:text-white transition-colors flex items-center">
+                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
                   Itinéraires
                 </Link>
               </li>
               <li>
-                <Link to="/carte" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/carte" className="text-gray-300 hover:text-white transition-colors flex items-center">
+                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
                   Carte Interactive
                 </Link>
               </li>
               <li>
-                <Link to="/guide" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/guide" className="text-gray-300 hover:text-white transition-colors flex items-center">
+                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
                   Guide Pratique
                 </Link>
               </li>
               <li>
-                <Link to="/blog" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/blog" className="text-gray-300 hover:text-white transition-colors flex items-center">
+                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
                   Blog
                 </Link>
               </li>
@@ -64,20 +71,23 @@ const Footer = () => {
 
           {/* Informations */}
           <div>
-            <h3 className="text-lg font-heading font-bold mb-4">Informations</h3>
-            <ul className="space-y-2">
+            <h3 className="text-lg font-heading font-bold mb-5 border-b border-white/10 pb-2">Informations</h3>
+            <ul className="space-y-3">
               <li>
-                <Link to="/mentions-legales" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/mentions-legales" className="text-gray-300 hover:text-white transition-colors flex items-center">
+                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
                   Mentions Légales
                 </Link>
               </li>
               <li>
-                <Link to="/politique-confidentialite" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/politique-confidentialite" className="text-gray-300 hover:text-white transition-colors flex items-center">
+                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
                   Politique de Confidentialité
                 </Link>
               </li>
               <li>
-                <Link to="/faq" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/faq" className="text-gray-300 hover:text-white transition-colors flex items-center">
+                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
                   FAQ
                 </Link>
               </li>
@@ -86,25 +96,31 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h3 className="text-lg font-heading font-bold mb-4">Contact</h3>
-            <ul className="space-y-3">
+            <h3 className="text-lg font-heading font-bold mb-5 border-b border-white/10 pb-2">Contact</h3>
+            <ul className="space-y-4">
               <li className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
+                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <MapPin className="w-4 h-4" />
+                </div>
                 <span className="text-gray-300">Corse, France</span>
               </li>
               <li className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 flex-shrink-0" />
+                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-4 h-4" />
+                </div>
                 <span className="text-gray-300">+33 6 XX XX XX XX</span>
               </li>
               <li className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 flex-shrink-0" />
+                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-4 h-4" />
+                </div>
                 <span className="text-gray-300">contact@lacorseamoto.fr</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-gray-700 mt-10 pt-6 text-center text-gray-400">
+        <div className="border-t border-white/10 mt-12 pt-8 text-center text-gray-400">
           <p>&copy; {new Date().getFullYear()} La Corse à Moto. Tous droits réservés.</p>
         </div>
       </div>

@@ -13,28 +13,28 @@ type BlogPostContentProps = {
 
 const BlogPostContent = ({ post, liked, onLike, onShare }: BlogPostContentProps) => {
   return (
-    <div className="bg-white rounded-lg shadow-sm p-6 md:p-8 mb-8">
-      <div className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-corsica-blue" 
+    <div className="bg-white rounded-xl shadow-card p-6 md:p-8 mb-8">
+      <div className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-corsica-blue prose-p:text-gray-700 prose-a:text-corsica-blue prose-a:no-underline hover:prose-a:underline" 
            dangerouslySetInnerHTML={{ __html: formatContent(post.content) }} />
       
       <div className="mt-8 pt-6 border-t flex items-center justify-between">
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-3">
           <Button 
             variant="ghost" 
             size="sm" 
-            className={`flex items-center ${liked ? 'text-corsica-red' : ''}`}
+            className={`flex items-center rounded-full px-4 ${liked ? 'text-corsica-red bg-corsica-red/10' : ''}`}
             onClick={onLike}
           >
-            <Heart className={`w-5 h-5 mr-1 ${liked ? 'fill-corsica-red' : ''}`} />
+            <Heart className={`w-5 h-5 mr-2 ${liked ? 'fill-corsica-red' : ''}`} />
             <span>{liked ? 'Aimé' : 'J\'aime'}</span>
           </Button>
           <Button 
             variant="ghost" 
             size="sm" 
-            className="flex items-center"
+            className="flex items-center rounded-full px-4"
             onClick={onShare}
           >
-            <Share2 className="w-5 h-5 mr-1" />
+            <Share2 className="w-5 h-5 mr-2" />
             <span>Partager</span>
           </Button>
         </div>

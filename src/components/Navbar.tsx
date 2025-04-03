@@ -12,30 +12,30 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-3">
+    <nav className="bg-white shadow-md sticky top-0 z-50">
+      <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-3">
             <Bike className="w-8 h-8 text-corsica-red" />
             <span className="text-xl font-heading font-bold">La Corse à Moto</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-8">
             <Link to="/" className="text-foreground hover:text-corsica-blue font-medium transition-colors">
               Accueil
             </Link>
             <div className="relative group">
               <button className="flex items-center text-foreground hover:text-corsica-blue font-medium transition-colors">
-                Itinéraires <ChevronDown className="ml-1 w-4 h-4" />
+                Itinéraires <ChevronDown className="ml-1 w-4 h-4 transition-transform group-hover:rotate-180" />
               </button>
-              <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <div className="py-1">
-                  <Link to="/itineraires" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              <div className="absolute left-0 mt-2 w-48 rounded-xl shadow-lg bg-white ring-1 ring-black/5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="py-2">
+                  <Link to="/itineraires" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-corsica-blue">
                     Tous les itinéraires
                   </Link>
-                  <Link to="/carte" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <Link to="/carte" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-corsica-blue">
                     Carte interactive
                   </Link>
                 </div>
@@ -74,49 +74,49 @@ const Navbar = () => {
           <div className="md:hidden pt-4 pb-3 space-y-1">
             <Link 
               to="/" 
-              className="block py-2 px-3 text-foreground hover:bg-muted rounded-md"
+              className="block py-2 px-3 text-foreground hover:text-corsica-blue hover:bg-muted rounded-lg"
               onClick={() => setIsOpen(false)}
             >
               Accueil
             </Link>
             <Link 
               to="/itineraires" 
-              className="block py-2 px-3 text-foreground hover:bg-muted rounded-md"
+              className="block py-2 px-3 text-foreground hover:text-corsica-blue hover:bg-muted rounded-lg"
               onClick={() => setIsOpen(false)}
             >
               Itinéraires
             </Link>
             <Link 
               to="/carte" 
-              className="block py-2 px-3 text-foreground hover:bg-muted rounded-md"
+              className="block py-2 px-3 text-foreground hover:text-corsica-blue hover:bg-muted rounded-lg"
               onClick={() => setIsOpen(false)}
             >
               Carte
             </Link>
             <Link 
               to="/guide" 
-              className="block py-2 px-3 text-foreground hover:bg-muted rounded-md"
+              className="block py-2 px-3 text-foreground hover:text-corsica-blue hover:bg-muted rounded-lg"
               onClick={() => setIsOpen(false)}
             >
               Guide pratique
             </Link>
             <Link 
               to="/hebergements" 
-              className="block py-2 px-3 text-foreground hover:bg-muted rounded-md"
+              className="block py-2 px-3 text-foreground hover:text-corsica-blue hover:bg-muted rounded-lg"
               onClick={() => setIsOpen(false)}
             >
               Hébergements
             </Link>
             <Link 
               to="/blog" 
-              className="block py-2 px-3 text-foreground hover:bg-muted rounded-md"
+              className="block py-2 px-3 text-foreground hover:text-corsica-blue hover:bg-muted rounded-lg"
               onClick={() => setIsOpen(false)}
             >
               Blog
             </Link>
             <Link 
               to="/contact" 
-              className="block py-2 px-3 text-foreground hover:bg-muted rounded-md"
+              className="block py-2 px-3 text-foreground hover:text-corsica-blue hover:bg-muted rounded-lg"
               onClick={() => setIsOpen(false)}
             >
               Contact
