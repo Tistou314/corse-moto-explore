@@ -84,7 +84,7 @@ export const accommodations: Accommodation[] = [
     description: "Cet hôtel moderne offre une vue imprenable sur la baie d'Ajaccio et dispose d'un garage sécurisé pour les motos. Le personnel de l'hôtel est familier avec les besoins des motards et propose des cartes détaillées des itinéraires les plus pittoresques de la région.",
     priceRange: "120€ - 200€",
     rating: 4.5,
-    image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e",
+    image: "https://cdn.pixabay.com/photo/2016/11/17/09/28/hotel-1831072_1280.jpg",
     amenities: ["Piscine", "Restaurant", "Bar", "Wifi gratuit", "Climatisation"],
     bikerAmenities: ["Parking sécurisé", "Itinéraires moto", "Atelier de réparation"]
   },
@@ -97,7 +97,7 @@ export const accommodations: Accommodation[] = [
     description: "Niché au cœur du Parc Naturel Régional de Corse, ce gîte authentique est tenu par un couple passionné de moto. Ils partagent volontiers leur connaissance des routes montagneuses les moins fréquentées et proposent des petits-déjeuners copieux parfaits avant une journée de route.",
     priceRange: "70€ - 90€",
     rating: 4.7,
-    image: "https://images.unsplash.com/photo-1472396961693-142e6e269027",
+    image: "https://cdn.pixabay.com/photo/2017/04/29/03/08/countryside-2270566_1280.jpg",
     amenities: ["Petit-déjeuner inclus", "Terrasse", "Jardin", "Wifi"],
     bikerAmenities: ["Parking sécurisé", "Proche routes panoramiques", "Itinéraires moto"]
   },
@@ -110,7 +110,7 @@ export const accommodations: Accommodation[] = [
     description: "Situé à proximité des plus belles plages du sud de la Corse, ce camping offre des emplacements ombragés et spacieux. Un espace spécial est réservé aux motards avec des installations pour l'entretien des motos et un abri couvert en cas de pluie.",
     priceRange: "25€ - 40€",
     rating: 4.2,
-    image: "https://images.unsplash.com/photo-1721322800607-8c38375eef04",
+    image: "https://cdn.pixabay.com/photo/2020/06/08/20/58/camping-5276010_1280.jpg",
     amenities: ["Piscine", "Épicerie", "Sanitaires modernes", "Espace barbecue"],
     bikerAmenities: ["Espace motards dédié", "Atelier de réparation", "Location de motos"]
   },
@@ -123,7 +123,7 @@ export const accommodations: Accommodation[] = [
     description: "Cet hôtel conçu spécialement pour les motards offre tout ce dont vous avez besoin. Des chambres spacieuses pour ranger votre équipement, un garage sécurisé avec station de lavage et une équipe qui connaît les meilleurs itinéraires de la Balagne.",
     priceRange: "100€ - 150€",
     rating: 4.8,
-    image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e",
+    image: "https://cdn.pixabay.com/photo/2017/01/14/12/48/hotel-1979406_1280.jpg",
     amenities: ["Restaurant", "Bar", "Piscine", "Terrasse panoramique"],
     bikerAmenities: ["Parking sécurisé", "Station de lavage", "Atelier de réparation", "Itinéraires moto"]
   },
@@ -136,7 +136,7 @@ export const accommodations: Accommodation[] = [
     description: "Cette ancienne bergerie rénovée offre un cadre authentique au pied du Cap Corse. Les propriétaires, eux-mêmes motards, vous guideront pour découvrir les plus beaux parcours du nord de l'île et les villages perchés.",
     priceRange: "80€ - 120€",
     rating: 4.6,
-    image: "https://images.unsplash.com/photo-1472396961693-142e6e269027",
+    image: "https://cdn.pixabay.com/photo/2018/02/24/17/17/window-3178666_1280.jpg",
     amenities: ["Jardin", "Terrasse", "Cuisine équipée", "Barbecue"],
     bikerAmenities: ["Parking sécurisé", "Proche routes panoramiques", "Itinéraires moto"]
   },
@@ -149,7 +149,7 @@ export const accommodations: Accommodation[] = [
     description: "Idéalement situé au centre de la Corse, ce camping est parfait comme base pour explorer l'île. Des emplacements réservés aux motards sont disponibles à l'ombre des pins, avec un local fermé pour le matériel.",
     priceRange: "20€ - 35€",
     rating: 4.3,
-    image: "https://images.unsplash.com/photo-1721322800607-8c38375eef04",
+    image: "https://cdn.pixabay.com/photo/2016/11/21/16/05/campsite-1846134_1280.jpg",
     amenities: ["Piscine naturelle", "Restaurant", "Épicerie", "Animations"],
     bikerAmenities: ["Espace motards dédié", "Local sécurisé", "Proche routes panoramiques"]
   }

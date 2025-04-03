@@ -16,7 +16,7 @@ const Hero = ({ title, subtitle, cta, imagePath }: HeroProps) => {
   const bgStyle = {
     backgroundImage: imagePath 
       ? `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url(${imagePath})`
-      : 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80")',
+      : 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("https://cdn.pixabay.com/photo/2020/04/23/10/54/corsica-5081729_1280.jpg")',
   };
 
   return (

@@ -56,7 +56,7 @@ Ces objets, souvent de petite taille, peuvent constituer de parfaits souvenirs �
 * Téléchargez une application de traduction français-corse pour quelques mots de base
 
 En respectant le rythme de vie local et en montrant un intérêt sincère pour les traditions, vous vivrez une expérience authentique de la Corse, bien loin des circuits touristiques conventionnels.`,
-    image: 'https://images.unsplash.com/photo-1533163175257-5fe04a874479?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    image: 'https://cdn.pixabay.com/photo/2023/02/21/18/02/village-7804456_1280.jpg',
     date: '5 juin 2025',
     author: 'Marie Antonetti',
     category: 'Culture et découverte',
@@ -124,7 +124,7 @@ Pendant la saison estivale, de nombreux festivals et concerts sont organisés da
 N'hésitez pas à adapter votre itinéraire pour assister à l'un de ces événements, ils constituent une immersion totale dans la culture musicale corse.
 
 Téléchargez cette playlist avant votre départ, et laissez les mélodies corses accompagner votre découverte de l'île. La musique, comme la moto, est un vecteur d'émotions qui amplifiera votre connexion avec ce territoire d'exception.`,
-    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    image: 'https://cdn.pixabay.com/photo/2016/11/23/15/32/guitarist-1853661_1280.jpg',
     date: '12 juin 2025',
     author: 'Pascal Olmeta',
     category: 'Culture et découverte',
