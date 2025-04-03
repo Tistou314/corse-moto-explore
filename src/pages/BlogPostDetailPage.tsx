@@ -62,41 +62,115 @@ const BlogPostDetailPage = () => {
 
   // Format the content (convert markdown to proper HTML with styling)
   const formatContent = (content: string) => {
-    // Replace markdown headers with styled HTML
-    const formattedContent = content
-      .replace(/^# (.*$)/gm, '<h1 class="text-3xl font-bold my-6">$1</h1>')
-      .replace(/^## (.*$)/gm, '<h2 class="text-2xl font-bold my-5">$1</h2>')
-      .replace(/^### (.*$)/gm, '<h3 class="text-xl font-bold my-4">$1</h3>')
-      .replace(/^#### (.*$)/gm, '<h4 class="text-lg font-bold my-3">$1</h4>')
+    // First, split the content into lines for processing
+    let lines = content.split('\n');
+    let formattedContent = '';
+    let inList = false;
+    let inParagraph = false;
+    
+    // Process each line
+    for (let i = 0; i < lines.length; i++) {
+      let line = lines[i].trim();
       
-      // Replace markdown lists with styled HTML
-      .replace(/^\* (.*$)/gm, '<li class="ml-6 list-disc my-1">$1</li>')
-      .replace(/^- (.*$)/gm, '<li class="ml-6 list-disc my-1">$1</li>')
+      // Skip empty lines but close current paragraph
+      if (line === '') {
+        if (inParagraph) {
+          formattedContent += '</p>\n';
+          inParagraph = false;
+        }
+        continue;
+      }
       
-      // Handle bulleted lists (group consecutive list items)
-      .replace(/(<li class="ml-6 list-disc my-1">.*<\/li>\n)+/g, match => {
-        return '<ul class="my-4">' + match + '</ul>';
-      })
-      
-      // Replace bold text
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/__(.*?)__/g, '<strong>$1</strong>')
-      
-      // Replace italic text
-      .replace(/\*(.*?)\*/g, '<em>$1</em>')
-      .replace(/_(.*?)_/g, '<em>$1</em>')
-      
-      // Handle paragraphs (any line that doesn't start with an HTML tag)
-      .replace(/^(?!<h|<li|<ul|<\/ul|<p|<strong|<em)(.+)$/gm, function(match) {
-        return match.trim() === '' ? '' : '<p class="my-4 text-base leading-relaxed">$1</p>';
-      })
-      
-      // Add margin between paragraphs
-      .replace(/<\/p>\s*<p/g, '</p>\n<p')
-      
-      // Handle empty lines (convert to space)
-      .replace(/^\s*$/gm, '');
-
+      // Process headers
+      if (line.startsWith('# ')) {
+        if (inParagraph) {
+          formattedContent += '</p>\n';
+          inParagraph = false;
+        }
+        if (inList) {
+          formattedContent += '</ul>\n';
+          inList = false;
+        }
+        formattedContent += `<h1 class="text-3xl font-bold my-6">${line.substring(2)}</h1>\n`;
+      } 
+      else if (line.startsWith('## ')) {
+        if (inParagraph) {
+          formattedContent += '</p>\n';
+          inParagraph = false;
+        }
+        if (inList) {
+          formattedContent += '</ul>\n';
+          inList = false;
+        }
+        formattedContent += `<h2 class="text-2xl font-bold my-5">${line.substring(3)}</h2>\n`;
+      } 
+      else if (line.startsWith('### ')) {
+        if (inParagraph) {
+          formattedContent += '</p>\n';
+          inParagraph = false;
+        }
+        if (inList) {
+          formattedContent += '</ul>\n';
+          inList = false;
+        }
+        formattedContent += `<h3 class="text-xl font-bold my-4">${line.substring(4)}</h3>\n`;
+      } 
+      else if (line.startsWith('#### ')) {
+        if (inParagraph) {
+          formattedContent += '</p>\n';
+          inParagraph = false;
+        }
+        if (inList) {
+          formattedContent += '</ul>\n';
+          inList = false;
+        }
+        formattedContent += `<h4 class="text-lg font-bold my-3">${line.substring(5)}</h4>\n`;
+      } 
+      // Process list items
+      else if (line.startsWith('* ') || line.startsWith('- ')) {
+        if (inParagraph) {
+          formattedContent += '</p>\n';
+          inParagraph = false;
+        }
+        if (!inList) {
+          formattedContent += '<ul class="my-4">\n';
+          inList = true;
+        }
+        formattedContent += `<li class="ml-6 list-disc my-1">${line.substring(2)}</li>\n`;
+      } 
+      // Regular paragraph text
+      else {
+        if (inList) {
+          formattedContent += '</ul>\n';
+          inList = false;
+        }
+        
+        // Format bold and italic text
+        let formattedLine = line
+          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+          .replace(/__(.*?)__/g, '<strong>$1</strong>')
+          .replace(/\*(.*?)\*/g, '<em>$1</em>')
+          .replace(/_(.*?)_/g, '<em>$1</em>');
+          
+        if (!inParagraph) {
+          formattedContent += `<p class="my-4 text-base leading-relaxed">`;
+          inParagraph = true;
+        } else {
+          formattedContent += ' '; // Add space between lines in the same paragraph
+        }
+        
+        formattedContent += formattedLine;
+      }
+    }
+    
+    // Close any open tags
+    if (inParagraph) {
+      formattedContent += '</p>\n';
+    }
+    if (inList) {
+      formattedContent += '</ul>\n';
+    }
+    
     return formattedContent;
   };
 
