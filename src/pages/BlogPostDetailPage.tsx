@@ -1,12 +1,12 @@
 
-import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import { useParams } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { blogPosts, BlogPost } from '@/data/blogPosts';
 import { useToast } from "@/hooks/use-toast";
 
-// Import the components we created
+// Imports existants
 import BlogPostHeader from '@/components/blog/BlogPostHeader';
 import BlogPostContent from '@/components/blog/BlogPostContent';
 import AuthorCard from '@/components/blog/AuthorCard';
@@ -56,16 +56,26 @@ const BlogPostDetailPage = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen flex flex-col bg-gray-50"
+    >
       <Navbar />
       
       {/* Hero Image & Post Header */}
       <BlogPostHeader post={post} />
 
       {/* Main Content */}
-      <div className="bg-white py-12">
+      <motion.div 
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="bg-white py-12 rounded-t-3xl shadow-2xl -mt-8"
+      >
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto space-y-8">
             {/* Article Content */}
             <BlogPostContent 
               post={post} 
@@ -84,10 +94,10 @@ const BlogPostDetailPage = () => {
             <RelatedPosts currentPostId={post.id} category={post.category} posts={blogPosts} />
           </div>
         </div>
-      </div>
+      </motion.div>
 
       <Footer />
-    </div>
+    </motion.div>
   );
 };
 
