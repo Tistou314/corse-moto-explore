@@ -1,6 +1,7 @@
 
 import { Link } from 'react-router-dom';
 import { Calendar, User } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 interface BlogPostCardProps {
   id: string;
@@ -21,8 +22,32 @@ const BlogPostCard = ({
   author,
   category,
 }: BlogPostCardProps) => {
+  // Function to get category color
+  const getCategoryColor = (category: string) => {
+    switch(category) {
+      case 'Itinéraires et circuits':
+        return 'bg-amber-500';
+      case 'Aspects pratiques':
+        return 'bg-sky-500';
+      case 'Culture et découverte':
+        return 'bg-emerald-500';
+      case 'Équipement et préparation':
+        return 'bg-rose-500';
+      case 'Expériences et récits':
+        return 'bg-violet-500';
+      case 'Conseils saisonniers':
+        return 'bg-orange-500';
+      case 'Aspects techniques':
+        return 'bg-blue-500';
+      case 'Ressources locales':
+        return 'bg-green-500';
+      default:
+        return 'bg-corsica-blue';
+    }
+  };
+
   return (
-    <div className="feature-card flex flex-col h-full">
+    <div className="feature-card flex flex-col h-full overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
       <div className="relative h-48 overflow-hidden">
         <img 
           src={image} 
@@ -30,13 +55,13 @@ const BlogPostCard = ({
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
         />
         <div className="absolute top-3 left-3">
-          <span className="bg-corsica-blue text-white text-xs font-medium px-2.5 py-1 rounded">
+          <Badge className={`${getCategoryColor(category)} text-white border-none font-medium px-2.5 py-1`}>
             {category}
-          </span>
+          </Badge>
         </div>
       </div>
-      <div className="p-5 flex flex-col flex-grow">
-        <h3 className="text-xl font-bold mb-2">{title}</h3>
+      <div className="p-5 flex flex-col flex-grow bg-white">
+        <h3 className="text-xl font-bold mb-2 line-clamp-2">{title}</h3>
         <div className="flex items-center text-sm text-muted-foreground mb-3">
           <div className="flex items-center mr-4">
             <Calendar className="h-4 w-4 mr-1" />
@@ -50,9 +75,12 @@ const BlogPostCard = ({
         <p className="text-muted-foreground mb-4 line-clamp-3">{excerpt}</p>
         <Link 
           to={`/blog/${id}`} 
-          className="text-corsica-blue hover:text-corsica-blue/80 font-medium mt-auto"
+          className="text-corsica-blue hover:text-corsica-blue/80 font-medium mt-auto inline-flex items-center"
         >
           Lire plus
+          <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+          </svg>
         </Link>
       </div>
     </div>

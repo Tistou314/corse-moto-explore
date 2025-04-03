@@ -1,4 +1,3 @@
-
 export interface BlogPost {
   id: string;
   title: string;
@@ -64,7 +63,7 @@ export const blogPosts: BlogPost[] = [
     image: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&q=80',
     date: '15 mars 2023',
     author: 'Jean Mattei',
-    category: 'Préparation'
+    category: 'Équipement et préparation'
   },
   {
     id: 'meilleures-saisons-moto-corse',
@@ -132,7 +131,7 @@ export const blogPosts: BlogPost[] = [
     image: 'https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?auto=format&fit=crop&q=80',
     date: '20 février 2023',
     author: 'Marie Santoni',
-    category: 'Conseils'
+    category: 'Conseils saisonniers'
   },
   {
     id: 'traversee-ferry-moto',
@@ -204,6 +203,184 @@ export const blogPosts: BlogPost[] = [
     image: 'https://images.unsplash.com/photo-1635100677600-8f7a76c5e4d8?auto=format&fit=crop&q=80',
     date: '5 avril 2023',
     author: 'Paul Rossi',
-    category: 'Transport'
+    category: 'Aspects pratiques'
+  },
+  
+  {
+    id: 'tour-cap-corse-moto',
+    title: 'Le tour du Cap Corse à moto : étapes et points de vue incontournables',
+    excerpt: 'Découvrez comment parcourir la pointe nord de l\'île avec des arrêts panoramiques exceptionnels sur ce circuit côtier emblématique.',
+    content: 'Contenu détaillé sur le tour du Cap Corse à moto...',
+    image: 'https://images.unsplash.com/photo-1531219572328-a0171b4448a3?auto=format&fit=crop&q=80',
+    date: '10 avril 2023',
+    author: 'Sophie Antonietti',
+    category: 'Itinéraires et circuits'
+  },
+  {
+    id: 'route-des-vins-corses',
+    title: 'La route des vins corses : un itinéraire œnologique pour motards',
+    excerpt: 'Un parcours alliant plaisir de conduite et découvertes gustatives à travers les domaines viticoles de Patrimonio à Figari.',
+    content: 'Contenu détaillé sur la route des vins corses...',
+    image: 'https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?auto=format&fit=crop&q=80',
+    date: '22 avril 2023',
+    author: 'Marc Orsini',
+    category: 'Itinéraires et circuits'
+  },
+  {
+    id: 'calanques-porto-piana',
+    title: 'Le parcours des calanques : de Porto à Piana',
+    excerpt: 'Guide complet pour découvrir les spectaculaires calanques de Piana, entre falaises rouges et mer turquoise, à moto.',
+    content: 'Contenu détaillé sur le parcours des calanques de Porto à Piana...',
+    image: 'https://images.unsplash.com/photo-1580412230979-f0bd92d63c99?auto=format&fit=crop&q=80',
+    date: '2 mai 2023',
+    author: 'Jean Mattei',
+    category: 'Itinéraires et circuits'
+  },
+  
+  {
+    id: 'stations-service-corse',
+    title: 'Les stations-service en Corse : carte et densité par région',
+    excerpt: 'Où faire le plein en Corse ? Cartographie complète des stations-service avec conseils pour planifier vos trajets sans stress.',
+    content: 'Contenu détaillé sur les stations-service en Corse...',
+    image: 'https://images.unsplash.com/photo-1602436294480-4e3f8e3d2fbb?auto=format&fit=crop&q=80',
+    date: '15 mai 2023',
+    author: 'Thomas Albertini',
+    category: 'Aspects pratiques'
+  },
+  {
+    id: 'hebergements-securises-motos',
+    title: 'Où dormir en Corse avec sa moto ? Hébergements sécurisés',
+    excerpt: 'Sélection d\'hébergements proposant des parkings sécurisés ou garages pour votre moto, classés par région et budget.',
+    content: 'Contenu détaillé sur les hébergements sécurisés pour motos en Corse...',
+    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80',
+    date: '28 mai 2023',
+    author: 'Marie Santoni',
+    category: 'Aspects pratiques'
+  },
+  
+  {
+    id: 'gastronomie-corse-motards',
+    title: 'Gastronomie corse : où s\'arrêter pour bien manger',
+    excerpt: 'Les meilleures adresses pour découvrir la cuisine corse authentique lors de vos pauses moto, des auberges rurales aux restaurants côtiers.',
+    content: 'Contenu détaillé sur la gastronomie corse et les arrêts recommandés...',
+    image: 'https://images.unsplash.com/photo-1534080564583-6be75777b70a?auto=format&fit=crop&q=80',
+    date: '5 juin 2023',
+    author: 'Antoine Paoli',
+    category: 'Culture et découverte'
+  },
+  {
+    id: 'lexique-corse-motards',
+    title: 'Le lexique corse utile pour les motards',
+    excerpt: 'Apprenez les expressions et mots corses essentiels pour enrichir votre voyage et communiquer avec les locaux.',
+    content: 'Contenu détaillé du lexique corse pour les motards...',
+    image: 'https://images.unsplash.com/photo-1544214251-fa8d9eb9d558?auto=format&fit=crop&q=80',
+    date: '12 juin 2023',
+    author: 'Lucie Santelli',
+    category: 'Culture et découverte'
+  },
+  
+  {
+    id: 'quelle-moto-choisir',
+    title: 'Quelle moto choisir pour un voyage en Corse ?',
+    excerpt: 'Analyse comparative des types de motos les plus adaptés aux routes corses, entre sportives, trails, et routières.',
+    content: 'Contenu détaillé sur le choix de la moto pour la Corse...',
+    image: 'https://images.unsplash.com/photo-1508881598441-324f3974994b?auto=format&fit=crop&q=80',
+    date: '20 juin 2023',
+    author: 'Michel Costa',
+    category: 'Équipement et préparation'
+  },
+  {
+    id: 'equipement-saisonnier',
+    title: 'L\'équipement essentiel pour rouler en Corse selon la saison',
+    excerpt: 'Guide détaillé sur l\'équipement du motard à prévoir selon la période de votre voyage, de la tenue estivale à la protection contre les intempéries.',
+    content: 'Contenu détaillé sur l\'équipement saisonnier pour la Corse...',
+    image: 'https://images.unsplash.com/photo-1591637333472-2381b3d45a95?auto=format&fit=crop&q=80',
+    date: '28 juin 2023',
+    author: 'Jean Mattei',
+    category: 'Équipement et préparation'
+  },
+  
+  {
+    id: 'premiere-fois-corse-moto',
+    title: 'Ma première fois en Corse à moto : retour d\'expérience',
+    excerpt: 'Témoignage d\'un motard découvrant l\'île de beauté pour la première fois, avec ses impressions, surprises et conseils.',
+    content: 'Contenu détaillé du récit de première expérience en Corse...',
+    image: 'https://images.unsplash.com/photo-1532994458623-02bb5a213492?auto=format&fit=crop&q=80',
+    date: '5 juillet 2023',
+    author: 'François Marcelli',
+    category: 'Expériences et récits'
+  },
+  {
+    id: 'road-trip-amis-corse',
+    title: 'Road trip entre amis : organisation et moments mémorables',
+    excerpt: 'Comment organiser un voyage moto réussi en groupe en Corse, des conseils pratiques aux meilleurs souvenirs à créer ensemble.',
+    content: 'Contenu détaillé sur l\'organisation d\'un road trip entre amis en Corse...',
+    image: 'https://images.unsplash.com/photo-1520472744769-44d6e55df3bb?auto=format&fit=crop&q=80',
+    date: '12 juillet 2023',
+    author: 'Groupe Moto Marseille',
+    category: 'Expériences et récits'
+  },
+  
+  {
+    id: 'automne-corse-moto',
+    title: 'L\'automne en Corse : la saison idéale pour les motards ?',
+    excerpt: 'Pourquoi l\'automne pourrait être le meilleur moment pour découvrir la Corse à moto : avantages, météo et ambiance.',
+    content: 'Contenu détaillé sur l\'automne en Corse à moto...',
+    image: 'https://images.unsplash.com/photo-1475113548554-5a36f1f523d6?auto=format&fit=crop&q=80',
+    date: '20 juillet 2023',
+    author: 'Paul Rossi',
+    category: 'Conseils saisonniers'
+  },
+  {
+    id: 'gerer-chaleur-ete-moto',
+    title: 'Rouler en Corse en été : comment gérer la chaleur et l\'affluence',
+    excerpt: 'Conseils pratiques pour supporter les températures estivales à moto et éviter les embouteillages touristiques.',
+    content: 'Contenu détaillé sur la gestion de la chaleur et de l\'affluence estivale...',
+    image: 'https://images.unsplash.com/photo-1534254698194-d1e9d209a9e2?auto=format&fit=crop&q=80',
+    date: '28 juillet 2023',
+    author: 'Marie Santoni',
+    category: 'Conseils saisonniers'
+  },
+  
+  {
+    id: 'etat-routes-corses',
+    title: 'État des routes corses : rapport actualisé par région',
+    excerpt: 'Analyse détaillée de l\'état du réseau routier corse, avec identification des zones à risque et des routes récemment rénovées.',
+    content: 'Contenu détaillé sur l\'état des routes corses...',
+    image: 'https://images.unsplash.com/photo-1507608345041-9fe8d7fd93d4?auto=format&fit=crop&q=80',
+    date: '5 août 2023',
+    author: 'Thomas Albertini',
+    category: 'Aspects techniques'
+  },
+  {
+    id: 'conduite-montagne-securite',
+    title: 'Conduite en montagne : techniques pour les routes sinueuses',
+    excerpt: 'Maîtrisez l\'art de la conduite en montagne avec ces conseils de pilotage adaptés aux virages serrés et aux dénivelés importants.',
+    content: 'Contenu détaillé sur les techniques de conduite en montagne...',
+    image: 'https://images.unsplash.com/photo-1531200269782-8ac2d7bcee92?auto=format&fit=crop&q=80',
+    date: '12 août 2023',
+    author: 'Michel Costa',
+    category: 'Aspects techniques'
+  },
+  
+  {
+    id: 'communautes-motards-corses',
+    title: 'Les communautés de motards corses : où les rencontrer',
+    excerpt: 'Guide des associations, groupes et rassemblements locaux de motards pour partager votre passion et obtenir des conseils d\'initiés.',
+    content: 'Contenu détaillé sur les communautés de motards corses...',
+    image: 'https://images.unsplash.com/photo-1558979159-7a2602c5ea95?auto=format&fit=crop&q=80',
+    date: '20 août 2023',
+    author: 'Antoine Paoli',
+    category: 'Ressources locales'
+  },
+  {
+    id: 'spots-panoramiques-secrets',
+    title: 'Spots panoramiques secrets connus des locaux',
+    excerpt: 'Découvrez ces points de vue exceptionnels, hors des sentiers battus, que seuls les habitants connaissent pour des photos inoubliables.',
+    content: 'Contenu détaillé sur les spots panoramiques secrets en Corse...',
+    image: 'https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&q=80',
+    date: '28 août 2023',
+    author: 'Sophie Antonietti',
+    category: 'Ressources locales'
   }
 ];

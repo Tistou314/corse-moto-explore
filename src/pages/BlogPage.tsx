@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
@@ -7,14 +7,16 @@ import BlogPostCard from '@/components/BlogPostCard';
 import { blogPosts } from '@/data/blogPosts';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Search } from 'lucide-react';
+import { Search, Filter, X } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 const BlogPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [showCategoryMenu, setShowCategoryMenu] = useState(false);
 
-  // Get unique categories
-  const categories = Array.from(new Set(blogPosts.map(post => post.category)));
+  // Get unique categories and sort them alphabetically
+  const categories = Array.from(new Set(blogPosts.map(post => post.category))).sort();
 
   // Filter posts based on search term and category
   const filteredPosts = blogPosts.filter(post => {
@@ -25,6 +27,47 @@ const BlogPage = () => {
     
     return matchesSearch && matchesCategory;
   });
+
+  // Sort posts by date (newest first)
+  const sortedPosts = [...filteredPosts].sort((a, b) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
+
+  // Get category color
+  const getCategoryColor = (category: string) => {
+    switch(category) {
+      case 'Itinéraires et circuits':
+        return 'bg-amber-500 hover:bg-amber-600';
+      case 'Aspects pratiques':
+        return 'bg-sky-500 hover:bg-sky-600';
+      case 'Culture et découverte':
+        return 'bg-emerald-500 hover:bg-emerald-600';
+      case 'Équipement et préparation':
+        return 'bg-rose-500 hover:bg-rose-600';
+      case 'Expériences et récits':
+        return 'bg-violet-500 hover:bg-violet-600';
+      case 'Conseils saisonniers':
+        return 'bg-orange-500 hover:bg-orange-600';
+      case 'Aspects techniques':
+        return 'bg-blue-500 hover:bg-blue-600';
+      case 'Ressources locales':
+        return 'bg-green-500 hover:bg-green-600';
+      default:
+        return 'bg-corsica-blue hover:bg-corsica-blue/90';
+    }
+  };
+
+  // Close category menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = () => {
+      setShowCategoryMenu(false);
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -38,7 +81,7 @@ const BlogPage = () => {
       />
 
       {/* Search and Filters */}
-      <section className="py-8 bg-white">
+      <section className="py-8 bg-white sticky top-16 z-10 border-b">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-4 items-center">
             <div className="relative flex-grow">
@@ -52,28 +95,87 @@ const BlogPage = () => {
               />
             </div>
             
-            <div className="w-full md:w-auto">
-              <select
-                className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
+            <div className="w-full md:w-auto relative">
+              <Button
+                variant="outline"
+                className="w-full flex justify-between items-center"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowCategoryMenu(!showCategoryMenu);
+                }}
               >
-                <option value="">Toutes les catégories</option>
-                {categories.map(category => (
-                  <option key={category} value={category}>{category}</option>
-                ))}
-              </select>
+                {selectedCategory || 'Toutes les catégories'}
+                <Filter className="ml-2 h-4 w-4" />
+              </Button>
+              
+              {showCategoryMenu && (
+                <div className="absolute z-50 mt-2 w-full md:w-64 bg-white rounded-md shadow-lg overflow-y-auto max-h-80">
+                  <div className="py-1">
+                    <button
+                      className="w-full text-left px-4 py-2 text-sm hover:bg-muted"
+                      onClick={() => {
+                        setSelectedCategory('');
+                        setShowCategoryMenu(false);
+                      }}
+                    >
+                      Toutes les catégories
+                    </button>
+                    {categories.map(category => (
+                      <button
+                        key={category}
+                        className="w-full text-left px-4 py-2 text-sm hover:bg-muted flex items-center justify-between"
+                        onClick={() => {
+                          setSelectedCategory(category);
+                          setShowCategoryMenu(false);
+                        }}
+                      >
+                        {category}
+                        {category === selectedCategory && (
+                          <span className="text-primary">✓</span>
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
             
-            <Button
-              variant="outline"
-              onClick={() => {
-                setSearchTerm('');
-                setSelectedCategory('');
-              }}
-            >
-              Réinitialiser
-            </Button>
+            {(searchTerm || selectedCategory) && (
+              <Button
+                variant="ghost"
+                onClick={() => {
+                  setSearchTerm('');
+                  setSelectedCategory('');
+                }}
+                className="w-full md:w-auto"
+              >
+                <X className="mr-2 h-4 w-4" />
+                Réinitialiser les filtres
+              </Button>
+            )}
+          </div>
+          
+          {/* Category badges for quick filtering */}
+          <div className="mt-4 flex flex-wrap gap-2">
+            {categories.map(category => (
+              <Badge
+                key={category}
+                className={`cursor-pointer ${
+                  selectedCategory === category 
+                    ? getCategoryColor(category)
+                    : 'bg-gray-200 hover:bg-gray-300 text-gray-800'
+                } text-white`}
+                onClick={() => setSelectedCategory(category === selectedCategory ? '' : category)}
+              >
+                {category}
+                {selectedCategory === category && (
+                  <X className="ml-1 h-3 w-3" onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedCategory('');
+                  }} />
+                )}
+              </Badge>
+            ))}
           </div>
         </div>
       </section>
@@ -83,14 +185,15 @@ const BlogPage = () => {
         <div className="container mx-auto px-4">
           <div className="mb-8">
             <h2 className="text-2xl font-bold">
-              {filteredPosts.length} 
-              {filteredPosts.length === 1 ? ' article trouvé' : ' articles trouvés'}
+              {sortedPosts.length} 
+              {sortedPosts.length === 1 ? ' article trouvé' : ' articles trouvés'}
+              {selectedCategory && ` dans "${selectedCategory}"`}
             </h2>
           </div>
           
-          {filteredPosts.length > 0 ? (
+          {sortedPosts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredPosts.map((post) => (
+              {sortedPosts.map((post) => (
                 <BlogPostCard 
                   key={post.id}
                   id={post.id}
@@ -104,7 +207,7 @@ const BlogPage = () => {
               ))}
             </div>
           ) : (
-            <div className="text-center py-12">
+            <div className="text-center py-12 bg-white rounded-lg shadow-sm">
               <h3 className="text-xl font-medium mb-2">Aucun article trouvé</h3>
               <p className="text-muted-foreground mb-4">
                 Essayez d'ajuster vos critères de recherche ou de sélectionner une autre catégorie.
