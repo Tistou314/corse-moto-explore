@@ -28,13 +28,20 @@ const ItineraryCard = ({
   distance,
   difficulty,
 }: ItineraryCardProps) => {
+  // Fallback image if none is provided
+  const cardImage = image || "https://cdn.pixabay.com/photo/2020/04/23/10/54/corsica-5081729_1280.jpg";
+  
   return (
     <div className="itinerary-card flex flex-col h-full">
       <div className="relative h-48 overflow-hidden">
         <img 
-          src={image} 
+          src={cardImage} 
           alt={title} 
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = "https://cdn.pixabay.com/photo/2020/04/23/10/54/corsica-5081729_1280.jpg";
+          }}
         />
         <div className="absolute top-3 right-3">
           <Badge className={difficultyColors[difficulty]}>

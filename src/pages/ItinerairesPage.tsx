@@ -42,7 +42,7 @@ const ItinerairesPage = () => {
       <Hero 
         title="Itinéraires Moto en Corse"
         subtitle="Découvrez les plus beaux parcours et routes de l'île de beauté, minutieusement sélectionnés pour les motards."
-        imagePath="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&q=80"
+        imagePath="https://cdn.pixabay.com/photo/2023/07/19/09/54/motorcycle-8135585_1280.jpg"
       />
 
       {/* Search and Filters */}

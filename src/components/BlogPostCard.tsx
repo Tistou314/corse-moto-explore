@@ -46,13 +46,20 @@ const BlogPostCard = ({
     }
   };
 
+  // Fallback image if none is provided
+  const cardImage = image || "https://cdn.pixabay.com/photo/2020/04/23/10/54/corsica-5081729_1280.jpg";
+
   return (
     <div className="feature-card flex flex-col h-full overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
       <div className="relative h-48 overflow-hidden">
         <img 
-          src={image} 
+          src={cardImage} 
           alt={title} 
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = "https://cdn.pixabay.com/photo/2020/04/23/10/54/corsica-5081729_1280.jpg";
+          }}
         />
         <div className="absolute top-3 left-3">
           <Badge className={`${getCategoryColor(category)} text-white border-none font-medium px-2.5 py-1`}>

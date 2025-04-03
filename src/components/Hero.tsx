@@ -13,10 +13,15 @@ interface HeroProps {
 }
 
 const Hero = ({ title, subtitle, cta, imagePath }: HeroProps) => {
+  // Ensure we have a fallback image if none is provided
+  const heroImage = imagePath 
+    ? imagePath
+    : "https://cdn.pixabay.com/photo/2020/04/23/10/54/corsica-5081729_1280.jpg";
+
   const bgStyle = {
-    backgroundImage: imagePath 
-      ? `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url(${imagePath})`
-      : 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("https://cdn.pixabay.com/photo/2020/04/23/10/54/corsica-5081729_1280.jpg")',
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("${heroImage}")`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
   };
 
   return (

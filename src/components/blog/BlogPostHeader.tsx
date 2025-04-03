@@ -9,6 +9,9 @@ type BlogPostHeaderProps = {
 };
 
 const BlogPostHeader = ({ post }: BlogPostHeaderProps) => {
+  // Ensure we have a fallback image if none is provided
+  const headerImage = post.image || "https://cdn.pixabay.com/photo/2020/04/23/10/54/corsica-5081729_1280.jpg";
+
   return (
     <motion.div 
       initial={{ scale: 0.95, opacity: 0.8 }}
@@ -16,7 +19,7 @@ const BlogPostHeader = ({ post }: BlogPostHeaderProps) => {
       transition={{ duration: 0.5 }}
       className="h-[45vh] md:h-[60vh] relative bg-cover bg-center overflow-hidden rounded-b-3xl" 
       style={{ 
-        backgroundImage: `url(${post.image})`,
+        backgroundImage: `url(${headerImage})`,
         backgroundPosition: 'center',
         backgroundSize: 'cover'
       }}
