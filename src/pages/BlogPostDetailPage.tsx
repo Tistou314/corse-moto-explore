@@ -60,25 +60,42 @@ const BlogPostDetailPage = () => {
     );
   }
 
-  // Format the content (replace markdown headers with HTML)
+  // Format the content (convert markdown to proper HTML with styling)
   const formatContent = (content: string) => {
-    // Replace markdown headers with HTML
+    // Replace markdown headers with styled HTML
     const formattedContent = content
-      .replace(/^# (.*$)/gm, '<h1 class="text-3xl font-bold my-4">$1</h1>')
-      .replace(/^## (.*$)/gm, '<h2 class="text-2xl font-bold my-3">$1</h2>')
-      .replace(/^### (.*$)/gm, '<h3 class="text-xl font-bold my-2">$1</h3>')
-      .replace(/^#### (.*$)/gm, '<h4 class="text-lg font-bold my-2">$1</h4>')
-      // Replace markdown lists with HTML
-      .replace(/^\* (.*$)/gm, '<li class="ml-4 list-disc">$1</li>')
-      .replace(/^- (.*$)/gm, '<li class="ml-4 list-disc">$1</li>')
-      // Replace paragraphs with HTML
-      .replace(/^(?!<h|<li|<\/ul)(.*$)/gm, function(match) {
-        return match.trim() === '' ? '<br>' : '<p class="my-2">' + match + '</p>';
-      })
-      // Group list items
-      .replace(/<li class="ml-4 list-disc">(.*?)<\/li>(?:\n<li class="ml-4 list-disc">(.*?)<\/li>)+/gs, function(match) {
+      .replace(/^# (.*$)/gm, '<h1 class="text-3xl font-bold my-6">$1</h1>')
+      .replace(/^## (.*$)/gm, '<h2 class="text-2xl font-bold my-5">$1</h2>')
+      .replace(/^### (.*$)/gm, '<h3 class="text-xl font-bold my-4">$1</h3>')
+      .replace(/^#### (.*$)/gm, '<h4 class="text-lg font-bold my-3">$1</h4>')
+      
+      // Replace markdown lists with styled HTML
+      .replace(/^\* (.*$)/gm, '<li class="ml-6 list-disc my-1">$1</li>')
+      .replace(/^- (.*$)/gm, '<li class="ml-6 list-disc my-1">$1</li>')
+      
+      // Handle bulleted lists (group consecutive list items)
+      .replace(/(<li class="ml-6 list-disc my-1">.*<\/li>\n)+/g, match => {
         return '<ul class="my-4">' + match + '</ul>';
-      });
+      })
+      
+      // Replace bold text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/__(.*?)__/g, '<strong>$1</strong>')
+      
+      // Replace italic text
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/_(.*?)_/g, '<em>$1</em>')
+      
+      // Handle paragraphs (any line that doesn't start with an HTML tag)
+      .replace(/^(?!<h|<li|<ul|<\/ul|<p|<strong|<em)(.+)$/gm, function(match) {
+        return match.trim() === '' ? '' : '<p class="my-4 text-base leading-relaxed">$1</p>';
+      })
+      
+      // Add margin between paragraphs
+      .replace(/<\/p>\s*<p/g, '</p>\n<p')
+      
+      // Handle empty lines (convert to space)
+      .replace(/^\s*$/gm, '');
 
     return formattedContent;
   };
@@ -125,7 +142,8 @@ const BlogPostDetailPage = () => {
           <div className="max-w-4xl mx-auto">
             {/* Article Content */}
             <div className="bg-white rounded-lg shadow-sm p-6 md:p-8 mb-8">
-              <div className="prose max-w-none prose-blue" dangerouslySetInnerHTML={{ __html: formatContent(post.content) }} />
+              <div className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-corsica-blue" 
+                   dangerouslySetInnerHTML={{ __html: formatContent(post.content) }} />
               
               <div className="mt-8 pt-6 border-t flex items-center justify-between">
                 <div className="flex items-center space-x-2">
