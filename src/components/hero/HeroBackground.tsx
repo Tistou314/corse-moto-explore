@@ -7,10 +7,10 @@ interface HeroBackgroundProps {
 }
 
 const HeroBackground = ({ imagePath, children }: HeroBackgroundProps) => {
-  // Use the uploaded image as the default
+  // Use a Corsican landscape image as the default
   const heroImage = imagePath 
     ? imagePath
-    : "/lovable-uploads/e6af0d1c-dcb3-4d02-941d-0ab737ffad83.png";
+    : "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?auto=format&fit=crop&w=1920&q=80";
 
   const bgStyle = {
     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("${heroImage}")`,
