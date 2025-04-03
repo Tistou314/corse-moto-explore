@@ -4,7 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
-import { MapPlaceholder } from '@/components/MapPlaceholder';
+import MapPlaceholder from '@/components/MapPlaceholder';
 import { itineraries, Itinerary } from '@/data/itineraires';
 import { ChevronLeft, Clock, Route, Mountain, Flag, Download, Star, Share2 } from 'lucide-react';
 
