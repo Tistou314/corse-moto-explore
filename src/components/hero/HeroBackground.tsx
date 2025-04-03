@@ -13,14 +13,14 @@ const HeroBackground = ({ imagePath, children }: HeroBackgroundProps) => {
     : "/lovable-uploads/e6af0d1c-dcb3-4d02-941d-0ab737ffad83.png";
 
   const bgStyle = {
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("${heroImage}")`,
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("${heroImage}")`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   };
 
   return (
     <div className="hero-section" style={bgStyle}>
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
       {children}
     </div>
   );

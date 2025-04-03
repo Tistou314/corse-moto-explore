@@ -14,7 +14,7 @@ interface HeroContentProps {
 
 const HeroContent = ({ title, subtitle, cta }: HeroContentProps) => {
   return (
-    <div className="relative container mx-auto px-4 text-center md:text-left">
+    <div className="relative container mx-auto px-4 py-12 text-center md:text-left">
       <div className="max-w-2xl fade-in">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight tracking-tight">
           {title}
