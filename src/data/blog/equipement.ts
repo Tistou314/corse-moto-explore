@@ -1,4 +1,3 @@
-
 import { BlogPost } from '@/types/blog';
 
 export const equipementArticles: BlogPost[] = [
@@ -53,7 +52,7 @@ Avant de partir à l'aventure sur l'Île de Beauté, une révision complète de 
 Avec une moto bien préparée, vous pourrez pleinement profiter des magnifiques routes corses sans vous soucier de problèmes mécaniques. Bon voyage et prudence sur les routes !
     `,
     image: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&q=80',
-    date: '15 mars 2023',
+    date: '15 mars 2025',
     author: 'Jean Mattei',
     category: 'Équipement et préparation'
   },
@@ -177,7 +176,7 @@ N'oubliez pas que la meilleure moto reste celle que vous maîtrisez parfaitement
 Quelle que soit votre monture, les routes corses vous offriront des sensations et des paysages inoubliables. Bonne route !
     `,
     image: 'https://images.unsplash.com/photo-1508881598441-324f3974994b?auto=format&fit=crop&q=80',
-    date: '20 juin 2023',
+    date: '20 juin 2025',
     author: 'Michel Costa',
     category: 'Équipement et préparation'
   },
@@ -289,7 +288,7 @@ La gestion des différentes couches d'équipement nécessite une organisation ri
 En adaptant votre équipement à la saison et en restant flexible face aux variations météorologiques, vous maximiserez votre confort et votre sécurité sur les routes corses. N'oubliez pas que la météo peut changer rapidement en montagne, quelle que soit la saison : être préparé est la clé d'une expérience réussie.
     `,
     image: 'https://images.unsplash.com/photo-1591637333472-2381b3d45a95?auto=format&fit=crop&q=80',
-    date: '28 juin 2023',
+    date: '28 juin 2025',
     author: 'Jean Mattei',
     category: 'Équipement et préparation'
   }

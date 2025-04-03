@@ -1,4 +1,3 @@
-
 import { BlogPost } from '@/types/blog';
 
 export const aspectsPratiquesArticles: BlogPost[] = [
@@ -70,7 +69,7 @@ Plusieurs compagnies assurent la liaison entre le continent et la Corse :
 Avec une bonne préparation, la traversée en ferry devient une partie agréable de votre voyage vers la Corse. C'est déjà le début de l'aventure !
     `,
     image: 'https://images.unsplash.com/photo-1635100677600-8f7a76c5e4d8?auto=format&fit=crop&q=80',
-    date: '5 avril 2023',
+    date: '5 avril 2025',
     author: 'Paul Rossi',
     category: 'Aspects pratiques'
   },
@@ -207,7 +206,7 @@ Recommandations finales :
 Bon voyage et bonnes routes à travers l'Île de Beauté !
     `,
     image: 'https://images.unsplash.com/photo-1602436294480-4e3f8e3d2fbb?auto=format&fit=crop&q=80',
-    date: '15 mai 2023',
+    date: '15 mai 2025',
     author: 'Thomas Albertini',
     category: 'Aspects pratiques'
   },
@@ -505,7 +504,7 @@ La Corse offre un large éventail d'hébergements adaptés aux besoins spécifiq
 N'hésitez pas à mentionner que vous venez à moto lors de votre réservation : de nombreux établissements, même sans garage dédié, peuvent proposer des solutions personnalisées pour sécuriser votre deux-roues.
     `,
     image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80',
-    date: '28 mai 2023',
+    date: '28 mai 2025',
     author: 'Marie Santoni',
     category: 'Aspects pratiques'
   }
