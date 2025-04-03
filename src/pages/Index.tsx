@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { Bike, Map, Info, Compass, Clock, Shield } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -28,7 +27,6 @@ const Index = () => {
         title="Découvrez la Corse à Moto"
         subtitle="Explorez les plus belles routes, parcours et paysages de l'Île de Beauté. Guides, itinéraires et conseils pour une aventure inoubliable."
         cta={{ text: "Découvrir les itinéraires", link: "/itineraires" }}
-        imagePath="https://cdn.pixabay.com/photo/2019/09/03/08/28/corsica-4448629_1280.jpg"
       />
 
       {/* Features Section */}

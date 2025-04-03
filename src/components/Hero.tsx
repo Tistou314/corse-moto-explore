@@ -13,10 +13,10 @@ interface HeroProps {
 }
 
 const Hero = ({ title, subtitle, cta, imagePath }: HeroProps) => {
-  // Ensure we have a fallback image if none is provided
+  // Use the uploaded image as the default
   const heroImage = imagePath 
     ? imagePath
-    : "https://cdn.pixabay.com/photo/2020/04/23/10/54/corsica-5081729_1280.jpg";
+    : "/lovable-uploads/e6af0d1c-dcb3-4d02-941d-0ab737ffad83.png";
 
   const bgStyle = {
     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("${heroImage}")`,
