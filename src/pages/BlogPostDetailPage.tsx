@@ -136,7 +136,10 @@ const BlogPostDetailPage = () => {
           formattedContent += '<ul class="my-4">\n';
           inList = true;
         }
-        formattedContent += `<li class="ml-6 list-disc my-1">${line.substring(2)}</li>\n`;
+        // Apply formatting to list item content
+        let itemContent = line.substring(2);
+        itemContent = formatInlineStyles(itemContent);
+        formattedContent += `<li class="ml-6 list-disc my-1">${itemContent}</li>\n`;
       } 
       // Regular paragraph text
       else {
@@ -145,12 +148,8 @@ const BlogPostDetailPage = () => {
           inList = false;
         }
         
-        // Format bold and italic text
-        let formattedLine = line
-          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-          .replace(/__(.*?)__/g, '<strong>$1</strong>')
-          .replace(/\*(.*?)\*/g, '<em>$1</em>')
-          .replace(/_(.*?)_/g, '<em>$1</em>');
+        // Apply inline formatting to paragraph text
+        let formattedLine = formatInlineStyles(line);
           
         if (!inParagraph) {
           formattedContent += `<p class="my-4 text-base leading-relaxed">`;
@@ -172,6 +171,19 @@ const BlogPostDetailPage = () => {
     }
     
     return formattedContent;
+  };
+
+  // Helper function for inline styles (bold, italic)
+  const formatInlineStyles = (text: string) => {
+    // First handle double asterisks for bold (before single asterisks to avoid conflicts)
+    text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    // Handle double underscores for bold
+    text = text.replace(/__(.*?)__/g, '<strong>$1</strong>');
+    // Handle single asterisks for italic
+    text = text.replace(/\*(.*?)\*/g, '<em>$1</em>');
+    // Handle single underscores for italic
+    text = text.replace(/_(.*?)_/g, '<em>$1</em>');
+    return text;
   };
 
   return (
