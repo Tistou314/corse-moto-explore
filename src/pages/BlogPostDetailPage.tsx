@@ -1,4 +1,5 @@
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useParams } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -72,10 +73,10 @@ const BlogPostDetailPage = () => {
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="bg-white py-12 rounded-t-3xl shadow-2xl -mt-8"
+        className="bg-white py-12 rounded-t-3xl shadow-xl -mt-10 relative z-10"
       >
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto space-y-8">
+          <div className="max-w-4xl mx-auto space-y-10">
             {/* Article Content */}
             <BlogPostContent 
               post={post} 
