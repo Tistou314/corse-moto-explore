@@ -1,5 +1,5 @@
 
-import { MapPin, ShieldCheck, Wifi, Car, Utensils, Bike, Tool } from 'lucide-react';
+import { MapPin, ShieldCheck, Wifi, Car, Utensils, Bike, Wrench } from 'lucide-react';
 
 export interface Accommodation {
   id: string;
@@ -50,7 +50,7 @@ export const bikerFeatures = [
   },
   {
     name: 'Atelier de réparation',
-    icon: Tool,
+    icon: Wrench, // Changed from Tool to Wrench
   },
   {
     name: 'Location de motos',
