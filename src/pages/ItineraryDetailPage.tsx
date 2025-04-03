@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -6,7 +5,7 @@ import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
 import MapPlaceholder from '@/components/MapPlaceholder';
 import { itineraries, Itinerary } from '@/data/itineraires';
-import { ChevronLeft, Clock, Route, Mountain, Flag, Download, Star, Share2 } from 'lucide-react';
+import { ChevronLeft, Clock, Route, Mountain, Flag, Download, Star, Share2, MapPin } from 'lucide-react';
 
 const ItineraryDetailPage = () => {
   const { id } = useParams<{ id: string }>();
