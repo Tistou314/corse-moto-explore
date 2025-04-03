@@ -19,7 +19,7 @@ const HeroBackground = ({ imagePath, children }: HeroBackgroundProps) => {
   };
 
   return (
-    <div className="hero-section" style={bgStyle}>
+    <div className="hero-section min-h-[60vh] relative flex items-center" style={bgStyle}>
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
       {children}
     </div>
