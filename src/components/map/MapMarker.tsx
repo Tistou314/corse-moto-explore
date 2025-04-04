@@ -24,7 +24,8 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   el.style.color = 'white';
   el.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
   el.style.cursor = 'pointer';
-  el.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
+  el.style.transition = 'box-shadow 0.2s ease'; // Remove transform transition
+  el.style.position = 'relative'; // Important for positioning
   
   // Add icon based on type
   let iconElement;
@@ -38,35 +39,26 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     iconElement = document.createElement('span');
     iconElement.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>';
     
-    // Make POIs a bit more prominent
-    el.style.transform = 'scale(1.1)';
-    el.style.boxShadow = '0 2px 6px rgba(0,0,0,0.3)';
-    
-    // Make primary POIs even more prominent
+    // Styles without transform
     if (location.isPrimary) {
-      el.style.transform = 'scale(1.2)';
-      el.style.boxShadow = '0 3px 8px rgba(0,0,0,0.4)';
       el.style.border = '2px solid white';
+      el.style.boxShadow = '0 3px 8px rgba(0,0,0,0.4)';
     }
   }
   
   el.appendChild(iconElement);
 
-  // Add hover effects
+  // Add hover effects without translation
   el.addEventListener('mouseenter', () => {
-    el.style.transform = location.type === 'pointOfInterest' 
-      ? (location.isPrimary ? 'scale(1.3)' : 'scale(1.2)')
-      : 'scale(1.1)';
-    el.style.boxShadow = '0 4px 8px rgba(0,0,0,0.4)';
+    el.style.boxShadow = '0 4px 8px rgba(0,0,0,0.4)'; // Enhance shadow only
+    // No scale transform
   });
   
   el.addEventListener('mouseleave', () => {
-    el.style.transform = location.type === 'pointOfInterest'
-      ? (location.isPrimary ? 'scale(1.2)' : 'scale(1.1)')
-      : 'scale(1)';
-    el.style.boxShadow = location.type === 'pointOfInterest'
-      ? (location.isPrimary ? '0 3px 8px rgba(0,0,0,0.4)' : '0 2px 6px rgba(0,0,0,0.3)')
+    el.style.boxShadow = location.type === 'pointOfInterest' && location.isPrimary
+      ? '0 3px 8px rgba(0,0,0,0.4)'
       : '0 2px 4px rgba(0,0,0,0.2)';
+    // No scale transform
   });
 
   // Add a subtle pulse animation for POIs to make them more noticeable
@@ -80,7 +72,7 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     pulseEffect.style.opacity = '0.6';
     pulseEffect.style.animation = 'pulse 2s infinite';
     
-    // Add the keyframe animation
+    // Add the keyframe animation - make sure not to move the marker position
     const style = document.createElement('style');
     style.innerHTML = `
       @keyframes pulse {
@@ -109,7 +101,11 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     el.title += ` - ${location.description.substring(0, 50)}${location.description.length > 50 ? '...' : ''}`;
   }
 
-  const marker = new mapboxgl.Marker(el)
+  // Create the marker with anchor 'center'
+  const marker = new mapboxgl.Marker({
+    element: el,
+    anchor: 'center' // Important: This ensures the marker stays centered at the exact coordinates
+  })
     .setLngLat([location.longitude, location.latitude])
     .addTo(map);
 
