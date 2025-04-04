@@ -9,7 +9,7 @@ interface ItineraryCardProps {
   description: string;
   image: string;
   duration: string;
-  distance: string;
+  distance: string | number;
   difficulty: 'facile' | 'moyen' | 'difficile';
 }
 
