@@ -113,21 +113,6 @@ export const itineraries: Itinerary[] = [
     endPoint: 'Bonifacio',
     elevation: '0-200m',
     roadType: 'Route côtière sinueuse'
-  },
-  {
-    id: 'rt-n24-immersion',
-    title: 'RT n°24 Corse - L\'immersion secrète',
-    description: 'Un parcours à travers le cœur sauvage et préservé de la Corse, loin des sentiers touristiques, offrant une véritable immersion dans l\'âme de l\'île.',
-    fullDescription: 'La Route Territoriale 24 (RT24) traverse le centre de la Corse et offre une immersion totale dans les paysages les plus authentiques et préservés de l\'île. Loin des zones touristiques côtières, cet itinéraire vous emmène à travers des villages de montagne séculaires où le temps semble s\'être arrêté, des forêts de châtaigniers centenaires et des vallées profondes où coulent des rivières aux eaux cristallines. Vous traverserez la région du Niolu, berceau de la résistance corse, et pourrez admirer les plus hauts sommets de l\'île comme le Monte Cinto. La route est relativement étroite mais offre une expérience de conduite unique avec ses nombreux virages et panoramas à couper le souffle. Prenez le temps de vous arrêter dans les petites auberges de montagne pour déguster la cuisine traditionnelle corse et échanger avec les habitants, gardiens d\'un patrimoine culturel riche.',
-    image: 'https://cdn.pixabay.com/photo/2014/11/01/18/46/corsica-513495_1280.jpg',
-    duration: '8h24',
-    distance: '317 km',
-    difficulty: 'moyen',
-    region: 'Centre',
-    pointsOfInterest: ['Forêt de Vizzavona', 'Gorges de la Restonica', 'Lac de Nino', 'Village de Corte'],
-    startPoint: 'Ajaccio',
-    endPoint: 'Bastia',
-    elevation: '200-1500m',
-    roadType: 'Route de montagne sinueuse'
   }
 ];
+
