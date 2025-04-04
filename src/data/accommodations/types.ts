@@ -73,15 +73,15 @@ export const accommodationTypes = [
   },
   {
     value: 'gite',
-    label: 'Gîtes et chambres d\'hôtes',
-  },
-  {
-    value: 'camping',
-    label: 'Campings',
+    label: 'Gîtes',
   },
   {
     value: 'chambre',
     label: 'Chambres d\'hôtes',
+  },
+  {
+    value: 'camping',
+    label: 'Campings',
   },
 ];
 

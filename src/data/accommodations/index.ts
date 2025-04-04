@@ -9,6 +9,7 @@ import { portoAccommodations } from './porto';
 import { portovecchioAccommodations } from './portovecchio';
 import { proprianoAccommodations } from './propriano';
 import { campingAccommodations } from './camping';
+import { gitesAccommodations } from './gites';
 
 // Combine all accommodations into a single array
 export const accommodations: Accommodation[] = [
@@ -20,9 +21,10 @@ export const accommodations: Accommodation[] = [
   ...portoAccommodations,
   ...portovecchioAccommodations,
   ...proprianoAccommodations,
-  ...campingAccommodations
+  ...campingAccommodations,
+  ...gitesAccommodations
 ];
 
 export { regions, accommodationTypes, bikerFeatures };
 export type { Accommodation };
-export { campingAccommodations };
+export { campingAccommodations, gitesAccommodations };

@@ -14,6 +14,8 @@ import { itineraries } from '@/data/itineraires';
 import { blogPosts } from '@/data/blogPosts';
 import { accommodations } from '@/data/accommodations';
 import { campingAccommodations } from '@/data/accommodations/camping';
+import { gitesAccommodations } from '@/data/accommodations';
+import GitesSection from '@/components/home/GitesSection';
 
 const Index = () => {
   // Get featured itineraries (first 3)
@@ -22,13 +24,18 @@ const Index = () => {
   // Get recent blog posts (first 3)
   const recentPosts = blogPosts.slice(0, 3);
   
-  // Get featured accommodations (hotels and gites, first 3)
+  // Get featured accommodations (hotels, first 3)
   const featuredAccommodations = accommodations
-    .filter(acc => acc.type !== 'camping')
+    .filter(acc => acc.type === 'hotel')
     .slice(0, 3);
     
   // Get featured campings (first 3)
   const featuredCampings = campingAccommodations.slice(0, 3);
+  
+  // Get featured gites (first 3)
+  const featuredGites = gitesAccommodations
+    .filter(acc => acc.type === 'gite' || acc.type === 'chambre')
+    .slice(0, 3);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -55,6 +62,9 @@ const Index = () => {
 
       {/* Accommodations Section */}
       <AccommodationsSection accommodations={featuredAccommodations} />
+      
+      {/* Gites and Chambres d'hotes Section */}
+      <GitesSection gites={featuredGites} />
       
       {/* Camping Section */}
       <CampingSection campings={featuredCampings} />

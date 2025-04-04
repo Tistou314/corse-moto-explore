@@ -19,6 +19,15 @@ const HebergementPage = () => {
   const [filteredAccommodations, setFilteredAccommodations] = useState(accommodations);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
+  // Use URL params to set initial filters
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const typeParam = urlParams.get('type');
+    if (typeParam) {
+      setSelectedType(typeParam);
+    }
+  }, []);
+
   // Filter accommodations based on search and filters
   useEffect(() => {
     let filtered = accommodations;
