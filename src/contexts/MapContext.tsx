@@ -1,8 +1,7 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
-// Remplacez cette valeur par votre clé API Mapbox
-const DEFAULT_MAPBOX_TOKEN = 'pk.eyJ1IjoiZXhhbXBsZSIsImEpIjoiY2xAMUJDZGVmZ2gxaWprbG1ub3BxcnN0dXZ3eHl6In0.89KloJ4E5J9NSt_HznQs9A';
+const DEFAULT_MAPBOX_TOKEN = 'pk.eyJ1IjoidGlzdG91ODAiLCJhIjoiY205MnQwc2N5MGJ5NTJscXRjZWl5OTI2OCJ9.gOC3-fgs2N_XvKDag37waA';
 
 type MapContextType = {
   mapboxToken: string;
@@ -14,21 +13,19 @@ const MapContext = createContext<MapContextType | undefined>(undefined);
 
 export const MapProvider = ({ children }: { children: ReactNode }) => {
   const [mapboxToken, setMapboxToken] = useState<string>(() => {
-    // Try to load from localStorage on initial render or use default token
     if (typeof window !== 'undefined') {
       return localStorage.getItem('mapbox_token') || DEFAULT_MAPBOX_TOKEN;
     }
     return DEFAULT_MAPBOX_TOKEN;
   });
 
-  const [isMapConfigured, setIsMapConfigured] = useState<boolean>(true); // Always configured now
+  const [isMapConfigured, setIsMapConfigured] = useState<boolean>(true);
 
   useEffect(() => {
-    // Persist token to localStorage when it changes
     if (mapboxToken && mapboxToken !== DEFAULT_MAPBOX_TOKEN) {
       localStorage.setItem('mapbox_token', mapboxToken);
     }
-    setIsMapConfigured(true); // Always set to true
+    setIsMapConfigured(true);
   }, [mapboxToken]);
 
   return (
