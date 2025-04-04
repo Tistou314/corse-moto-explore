@@ -17,6 +17,7 @@ import { useForm } from "react-hook-form";
 import { blogPosts } from "@/data/blogPosts";
 import { toast } from "sonner";
 import { ArrowLeft, Save } from "lucide-react";
+import ImageUpload from "@/components/admin/ImageUpload";
 
 type FormData = {
   title: string;
@@ -111,12 +112,15 @@ const PostCreate = () => {
                 name="image"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>URL de l'image</FormLabel>
+                    <FormLabel>Image de l'article</FormLabel>
                     <FormControl>
-                      <Input placeholder="URL de l'image principale" {...field} />
+                      <ImageUpload
+                        value={field.value}
+                        onChange={field.onChange}
+                      />
                     </FormControl>
                     <FormDescription>
-                      Entrez l'URL d'une image pour illustrer l'article
+                      Téléchargez une image ou saisissez l'URL d'une image existante
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
