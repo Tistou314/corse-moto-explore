@@ -1,8 +1,9 @@
-
 export interface PointOfInterest {
   name: string;
   description?: string;
   image?: string;
+  latitude?: number;
+  longitude?: number;
 }
 
 export interface Itinerary {
@@ -24,6 +25,8 @@ export interface Itinerary {
   roadCondition?: string;
   highlights?: string[];
   tips?: string[];
+  latitude?: number;
+  longitude?: number;
 }
 
 export const itineraries: Itinerary[] = [

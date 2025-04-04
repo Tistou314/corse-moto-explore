@@ -1,25 +1,23 @@
-
 import { MapPin, ShieldCheck, Wifi, Car, Utensils, Bike, Wrench, Phone, Mail, Star, Home, Hotel } from 'lucide-react';
 
 export interface Accommodation {
   id: string;
   name: string;
-  type: 'hotel' | 'gite' | 'camping' | 'chambre';
-  location: string;
-  region: string;
+  type: 'hotel' | 'gite' | 'camping';
   description: string;
+  location: string;
+  image: string;
   priceRange: string;
   rating: number;
-  image: string;
   amenities: string[];
   bikerAmenities: string[];
   contact?: {
-    phone: string;
+    phone?: string;
     email?: string;
     website?: string;
   };
-  bookingLink?: string;
-  address?: string;
+  latitude?: number;
+  longitude?: number;
 }
 
 export const regions = [
@@ -50,10 +48,6 @@ export const accommodationTypes = [
   {
     value: 'camping',
     label: 'Campings',
-  },
-  {
-    value: 'chambre',
-    label: 'Chambres d\'hôtes',
   },
 ];
 
@@ -413,7 +407,6 @@ export const accommodations: Accommodation[] = [
     bookingLink: "https://www.autourduhamac.fr",
     address: "Route d'Asco, 20218 Moltifao"
   },
-  // J'ai conservé les 6 hébergements originaux ici...
   {
     id: "acc17",
     name: "Hôtel Marina Corsica",
