@@ -70,7 +70,8 @@ export const useMapInitialization = (
           // Add terrain layer
           map.current.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
           
-          // Add Corsica boundary layer
+          // Add Corsica boundary layer - uniquement pour le debug visuel
+          // Utilise un contour plus précis et plus discret
           map.current.addSource('corsica-boundary', {
             'type': 'geojson',
             'data': {
@@ -78,15 +79,49 @@ export const useMapInitialization = (
               'geometry': {
                 'type': 'Polygon',
                 'coordinates': [[
-                  // Corsica outline coordinates - clockwise from northwest
-                  [8.5598, 43.0308], // Cap Corse north
-                  [9.4045, 42.9937], // Northeastern coast
-                  [9.5598, 42.3747], // Eastern coast
-                  [9.4068, 41.5959], // Southeastern coast
-                  [9.2211, 41.3732], // Southern coast (Bonifacio)
-                  [8.6598, 41.3615], // Southwestern coast
-                  [8.5598, 41.8615], // Western coast
-                  [8.5598, 42.5615], // Northwestern coast
+                  // Corsica outline coordinates avec plus de précision
+                  [8.5598, 43.0308],
+                  [8.7021, 43.0284],
+                  [8.8598, 43.0129],
+                  [9.0598, 43.0054],
+                  [9.2598, 42.9867],
+                  [9.3598, 42.9542],
+                  [9.4045, 42.9120],
+                  [9.4598, 42.8731],
+                  [9.4898, 42.7762],
+                  [9.5113, 42.6598],
+                  [9.5398, 42.5326],
+                  [9.5598, 42.4128],
+                  [9.5423, 42.3214],
+                  [9.5048, 42.2137],
+                  [9.4762, 42.1024],
+                  [9.4412, 41.9876],
+                  [9.4068, 41.8754],
+                  [9.3752, 41.7624],
+                  [9.3387, 41.6532],
+                  [9.2986, 41.5428],
+                  [9.2211, 41.4312],
+                  [9.1423, 41.3732],
+                  [9.0598, 41.3604],
+                  [8.9598, 41.3584],
+                  [8.8598, 41.3599],
+                  [8.7598, 41.3628],
+                  [8.6598, 41.3732],
+                  [8.6098, 41.4218],
+                  [8.5798, 41.5124],
+                  [8.5598, 41.6124],
+                  [8.5498, 41.7234],
+                  [8.5398, 41.8341],
+                  [8.5398, 41.9456],
+                  [8.5448, 42.0562],
+                  [8.5498, 42.1632],
+                  [8.5548, 42.2752],
+                  [8.5598, 42.3845],
+                  [8.5598, 42.4963],
+                  [8.5598, 42.6078],
+                  [8.5598, 42.7183],
+                  [8.5598, 42.8309],
+                  [8.5598, 42.9428],
                   [8.5598, 43.0308]  // Close the polygon
                 ]]
               },
@@ -94,16 +129,17 @@ export const useMapInitialization = (
             }
           });
 
-          // Add boundary line layer
+          // Add boundary line layer with more subtle styling
           map.current.addLayer({
             'id': 'corsica-outline',
             'type': 'line',
             'source': 'corsica-boundary',
             'layout': {},
             'paint': {
-              'line-color': '#e02b20',
-              'line-width': 2,
-              'line-opacity': 0.8
+              'line-color': '#e0756b',
+              'line-width': 1.5,
+              'line-opacity': 0.4,
+              'line-dasharray': [2, 1]
             }
           });
           
@@ -139,29 +175,49 @@ export const useMapInitialization = (
             map.current.setTerrain(null);
           }
           
-          // Safely remove sources in correct order
-          ['hills', 'corsica-outline'].forEach(layerId => {
-            if (map.current && map.current.getLayer(layerId)) {
-              map.current.removeLayer(layerId);
+          // Safely remove sources in correct order with proper delays
+          setTimeout(() => {
+            if (!map.current) return;
+            
+            try {
+              ['hills', 'corsica-outline'].forEach(layerId => {
+                if (map.current && map.current.getLayer(layerId)) {
+                  map.current.removeLayer(layerId);
+                }
+              });
+              
+              setTimeout(() => {
+                if (!map.current) return;
+                
+                try {
+                  ['mapbox-dem', 'corsica-boundary'].forEach(sourceId => {
+                    if (map.current && map.current.getSource(sourceId)) {
+                      map.current.removeSource(sourceId);
+                    }
+                  });
+                } catch (error) {
+                  console.error("Error removing sources:", error);
+                }
+              }, 100);
+            } catch (error) {
+              console.error("Error removing layers:", error);
             }
-          });
+          }, 100);
           
-          ['mapbox-dem', 'corsica-boundary'].forEach(sourceId => {
-            if (map.current && map.current.getSource(sourceId)) {
-              map.current.removeSource(sourceId);
+          // Finally remove the map with delay
+          setTimeout(() => {
+            if (map.current) {
+              map.current.remove();
+              map.current = null;
             }
-          });
-          
-          // Finally remove the map
-          map.current.remove();
-          map.current = null;
+            
+            if (setIsLoaded) {
+              setIsLoaded(false);
+            }
+          }, 300);
         } catch (error) {
           console.error("Error cleaning up map:", error);
         }
-      }
-      
-      if (setIsLoaded) {
-        setIsLoaded(false);
       }
     };
   }, [mapboxToken, center, zoom, interactive, mapContainer, setIsLoaded]);

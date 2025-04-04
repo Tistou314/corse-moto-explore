@@ -11,7 +11,7 @@ export const useMapClustering = (
 ) => {
   // Setup cluster layers when map and locations change
   useEffect(() => {
-    if (!map.current || !enabled || !locations.length) return;
+    if (!map.current || !enabled) return;
 
     console.log('Setting up clustering with locations:', locations.length);
 
@@ -32,19 +32,25 @@ export const useMapClustering = (
         if (map.current.getLayer('unclustered-point')) {
           map.current.removeLayer('unclustered-point');
         }
-        
-        // Check if map has the source before removing it
-        if (map.current.getSource('markers-source')) {
-          map.current.removeSource('markers-source');
-        }
+
+        // Delay source removal to ensure layers are removed first
+        setTimeout(() => {
+          if (!map.current) return;
+          
+          try {
+            // Check if map has the source before removing it
+            if (map.current.getSource('markers-source')) {
+              map.current.removeSource('markers-source');
+            }
+          } catch (error) {
+            console.error("Error removing map source:", error);
+          }
+        }, 100);
       } catch (error) {
         console.error("Error cleaning up map resources:", error);
         // Continue execution even if there's an error
       }
     };
-
-    // Remove existing layers and source if they exist
-    safelyRemoveLayersAndSource();
 
     // Filter valid locations
     const validLocations = locations.filter(loc => 
@@ -53,30 +59,41 @@ export const useMapClustering = (
       isWithinCorsica(loc.latitude, loc.longitude)
     );
 
-    if (validLocations.length === 0) return;
-
-    // Only add clustering if the map style is loaded
-    if (map.current.isStyleLoaded()) {
-      setupClusterLayers(map.current, validLocations, onMarkerClick);
-    } else {
-      // Wait for style to load before adding layers
-      const handleStyleLoad = () => {
-        if (map.current) {
-          setupClusterLayers(map.current, validLocations, onMarkerClick);
-        }
-      };
-      
-      map.current.once('styledata', handleStyleLoad);
+    // Debug log for validating locations
+    console.log('Valid locations for clustering:', validLocations.length);
+    
+    if (validLocations.length === 0) {
+      safelyRemoveLayersAndSource();
+      return;
     }
 
-    // Cleanup function - handle with care to avoid terrain errors
+    // Only add clustering if the map style is loaded
+    const setupClusteringWithRetry = (retryCount = 0) => {
+      if (!map.current) return;
+      
+      if (map.current.isStyleLoaded()) {
+        safelyRemoveLayersAndSource();
+        setTimeout(() => {
+          if (map.current) {
+            setupClusterLayers(map.current, validLocations, onMarkerClick);
+          }
+        }, 100);
+      } else if (retryCount < 5) {
+        // Retry a few times if style isn't loaded yet
+        console.log('Map style not loaded, retrying...');
+        setTimeout(() => setupClusteringWithRetry(retryCount + 1), 300);
+      } else {
+        console.error('Map style failed to load after retries');
+      }
+    };
+    
+    setupClusteringWithRetry();
+
+    // Cleanup function with safety delay
     return () => {
-      // Use a slight delay to ensure map is in a stable state before cleanup
       setTimeout(() => {
-        if (map.current) {
-          safelyRemoveLayersAndSource();
-        }
-      }, 0);
+        safelyRemoveLayersAndSource();
+      }, 200);
     };
   }, [map, locations, onMarkerClick, enabled]);
 };
@@ -104,6 +121,9 @@ const setupClusterLayers = (
         isPrimary: location.isPrimary || false
       }
     }));
+
+    // Debug log to check features
+    console.log('Creating features for map:', features.length);
 
     // Add data source for clustering
     map.addSource('markers-source', {
@@ -161,7 +181,7 @@ const setupClusterLayers = (
       }
     });
 
-    // Individual points
+    // Individual points with more visible style
     map.addLayer({
       id: 'unclustered-point',
       type: 'circle',
@@ -212,7 +232,9 @@ const setupClusterEventHandlers = (
           const coordinates = (features[0].geometry as any).coordinates;
           map.flyTo({
             center: coordinates,
-            zoom: zoom
+            zoom: zoom,
+            essential: true,
+            duration: 1000
           });
         }
       );
