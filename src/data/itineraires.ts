@@ -14,105 +14,348 @@ export interface Itinerary {
   endPoint: string;
   elevation: string;
   roadType: string;
+  bestSeason?: string;
+  roadCondition?: string;
+  highlights?: string[];
+  tips?: string[];
 }
 
 export const itineraries: Itinerary[] = [
   {
-    id: 'capcorse',
-    title: 'Le Cap Corse',
-    description: 'Une boucle magnifique au nord de l\'île, avec des vues imprenables sur la mer et de charmants villages côtiers.',
-    fullDescription: 'Le Cap Corse est une péninsule montagneuse qui s\'étend sur près de 40 km au nord de l\'île. Cette route offre l\'un des plus beaux parcours à moto de Corse avec des paysages maritimes à couper le souffle. Le circuit fait le tour du Cap en suivant la route D80, une route sinueuse qui longe la côte. Sur la côte ouest, vous découvrirez des plages de sable fin et des petits ports de pêche comme Centuri, réputé pour ses langoustes. La côte est, plus sauvage, est rythmée par les tours génoises qui surplombent la mer. Ne manquez pas les villages pittoresques de Nonza, Erbalunga et Macinaggio.',
+    id: 'cap-corse',
+    title: 'Le Tour du Cap Corse (D80)',
+    description: 'Route côtière spectaculaire qui fait le tour de la péninsule du Cap Corse avec plus de 100 virages.',
+    fullDescription: 'Route côtière spectaculaire qui fait le tour de la péninsule du Cap Corse avec plus de 100 virages. Le côté ouest offre des falaises plongeant dans la mer tandis que le versant est présente des plages et criques sauvages. Particulièrement impressionnant entre Nonza et Pino où la route est taillée à flanc de falaise.',
     image: 'https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&q=80',
-    duration: '4-5 heures',
+    duration: '3-4 heures (sans les arrêts)',
     distance: '110 km',
     difficulty: 'moyen',
     region: 'Nord',
-    pointsOfInterest: ['Tour génoise de Santa Maria', 'Village de Nonza', 'Port de Centuri', 'Plage de Tamarone'],
+    pointsOfInterest: ['Erbalunga', 'Nonza', 'Barcaggio', 'Macinaggio', 'Centuri'],
     startPoint: 'Bastia',
     endPoint: 'Bastia',
     elevation: '0-360m',
-    roadType: 'Route côtière sinueuse'
+    roadType: 'Route côtière sinueuse',
+    bestSeason: 'Mai à octobre',
+    roadCondition: 'Revêtement généralement bon mais sections étroites à double sens',
+    highlights: [
+      'Le village de Nonza avec sa plage de galets noirs visible depuis la falaise',
+      'La tour Génoise de Santa Maria et sa vue imprenable',
+      'Le port de pêcheurs de Centuri réputé pour ses langoustes',
+      'La marine de Giottani avec sa plage isolée'
+    ],
+    tips: [
+      'Point de ravitaillement à Macinaggio et Luri (stations-service)',
+      'Départ recommandé de Bastia tôt le matin pour éviter le trafic',
+      'Prudence dans les traversées de villages souvent étroites',
+      'Arrêt photo incontournable au col de Sainte-Lucie (360m)'
+    ]
   },
   {
-    id: 'calanche-piana',
-    title: 'Les Calanches de Piana',
-    description: 'Un parcours spectaculaire traversant les célèbres formations rocheuses rougeâtres de Piana, site classé au patrimoine mondial de l\'UNESCO.',
-    fullDescription: 'Les Calanches de Piana sont parmi les sites les plus impressionnants de Corse. Cette route mythique traverse un paysage minéral unique, où les formations rocheuses de granite rouge plongent directement dans la mer Méditerranée. La route D81 entre Porto et Piana est étroite et sinueuse, offrant des panoramas spectaculaires à chaque virage. Prenez le temps de vous arrêter aux nombreux belvédères pour admirer ce paysage façonné par l\'érosion. Au coucher du soleil, les roches prennent une teinte flamboyante, créant un spectacle naturel inoubliable. Pour compléter l\'expérience, continuez jusqu\'au golfe de Porto pour admirer la réserve naturelle de Scandola, également classée à l\'UNESCO.',
+    id: 'route-cretes',
+    title: 'La Route des Crêtes (D81)',
+    description: 'Une des routes les plus spectaculaires d\'Europe, surnommée "la Sublime". Cette route de corniche offre des panoramas à couper le souffle entre mer et montagne.',
+    fullDescription: 'Une des routes les plus spectaculaires d\'Europe, surnommée "la Sublime". Cette route de corniche offre des panoramas à couper le souffle entre mer et montagne. Passage à 400m d\'altitude avec vue sur les golfes de Girolata et de Porto. Dénivelés importants et virages parfois très serrés.',
     image: 'https://images.unsplash.com/photo-1572913017567-02f0649bc4fd?auto=format&fit=crop&q=80',
-    duration: '3-4 heures',
-    distance: '75 km',
+    duration: '2h30 (sans les arrêts)',
+    distance: '70 km (section Calvi-Porto)',
     difficulty: 'difficile',
-    region: 'Ouest',
-    pointsOfInterest: ['Calanques de Piana', 'Golfe de Porto', 'Réserve de Scandola', 'Village de Piana'],
-    startPoint: 'Ajaccio',
-    endPoint: 'Porto',
-    elevation: '0-1200m',
-    roadType: 'Route de montagne à flanc de falaise'
-  },
-  {
-    id: 'balagne',
-    title: 'La Route des Artisans de Balagne',
-    description: 'Découvrez les villages perchés de Balagne, surplombant la mer et réputés pour leur artisanat traditionnel.',
-    fullDescription: 'La Balagne, surnommée le "Jardin de la Corse", est une région au nord-ouest de l\'île, parsemée de villages médiévaux perchés sur des collines. Cet itinéraire vous emmène sur la route des artisans, traversant une succession de villages authentiques où les traditions artisanales sont encore très vivantes. Partez de L\'Île-Rousse et montez vers les villages de Sant\'Antonino, Pigna, Corbara et Lumio. Ces villages offrent des panoramas exceptionnels sur la baie de Calvi et la côte. À Pigna, village des musiciens, vous pourrez découvrir les instruments traditionnels corses. Profitez des nombreuses boutiques d\'artisanat local qui proposent poteries, bijoux et produits du terroir.',
-    image: 'https://images.unsplash.com/photo-1525874684015-58379d421a52?auto=format&fit=crop&q=80',
-    duration: '4-6 heures',
-    distance: '90 km',
-    difficulty: 'facile',
     region: 'Nord-Ouest',
-    pointsOfInterest: ['Sant\'Antonino', 'Village de Pigna', 'Calvi', 'L\'Île-Rousse'],
-    startPoint: 'L\'Île-Rousse',
-    endPoint: 'Calvi',
-    elevation: '0-450m',
-    roadType: 'Routes de montagne et côtières'
+    pointsOfInterest: ['Calvi', 'Réserve de Scandola', 'Calanques de Piana', 'Porto'],
+    startPoint: 'Calvi',
+    endPoint: 'Porto',
+    elevation: '0-408m',
+    roadType: 'Route de corniche montagneuse',
+    bestSeason: 'Mai à septembre',
+    roadCondition: 'Bon revêtement mais nombreux virages techniques, quelques passages sans glissière',
+    highlights: [
+      'Le col de Palmarella (408m) et sa vue panoramique sur la côte',
+      'Le village de Girolata, accessible uniquement par bateau ou sentier (visible depuis la route)',
+      'Les calanques de Piana (classées UNESCO) traversées par une route taillée dans la roche rouge',
+      'La forêt d\'Aïtone avec ses pins laricio centenaires (sur la portion vers Évisa)'
+    ],
+    tips: [
+      'Prévoyez au moins une demi-journée avec les arrêts photos',
+      'Circulation difficile en haute saison (camping-cars et bus)',
+      'Stations-service à Calvi, Galeria et Porto (aucune sur la portion montagneuse)',
+      'Extension possible par la route forestière vers Évisa pour plus de sensations',
+      'En été, départ tôt le matin pour profiter de la lumière et éviter la chaleur'
+    ]
   },
   {
-    id: 'bavella',
-    title: 'Les Aiguilles de Bavella',
-    description: 'Un itinéraire montagneux traversant l\'un des plus impressionnants massifs de Corse, entre forêts de pins et pics rocheux.',
-    fullDescription: 'Le massif de Bavella est l\'un des joyaux naturels de la Corse. Cet itinéraire vous emmène au cœur de l\'Alta Rocca, traversant des paysages grandioses dominés par les majestueuses Aiguilles de Bavella, impressionnantes formations rocheuses qui culminent à plus de 1800 mètres d\'altitude. La route monte depuis Solenzara sur la côte est, à travers des forêts de pins laricio centenaires, jusqu\'au col de Bavella qui offre un panorama à 360° sur les montagnes environnantes. Plusieurs sentiers de randonnée partent du col pour explorer les environs. En redescendant vers Zonza, vous traverserez des villages traditionnels préservés. La route est sinueuse et parfois étroite mais offre une expérience de conduite exceptionnelle.',
+    id: 'calanques-piana',
+    title: 'Les Calanques de Piana (D81)',
+    description: 'Ce tronçon de la D81 entre Porto et Piana traverse un paysage lunaire de granit rouge érodé par le vent et la mer depuis des millénaires.',
+    fullDescription: 'Ce tronçon de la D81 entre Porto et Piana traverse un paysage lunaire de granit rouge érodé par le vent et la mer depuis des millénaires. La route serpente à travers des formations rocheuses aux formes fantomatiques surnommées "les calanche" (classées au patrimoine mondial de l\'UNESCO). Des tunnels naturels et des arches rocheuses encadrent la route par endroits.',
+    image: 'https://images.unsplash.com/photo-1572913017567-02f0649bc4fd?auto=format&fit=crop&q=80',
+    duration: '1h (sans les arrêts)',
+    distance: '20 km',
+    difficulty: 'moyen',
+    region: 'Ouest',
+    pointsOfInterest: ['Porto', 'Piana', 'Formations rocheuses rouges', 'Capo Rosso'],
+    startPoint: 'Porto',
+    endPoint: 'Piana',
+    elevation: '0-450m',
+    roadType: 'Route côtière rocheuse',
+    bestSeason: 'Mai à octobre, idéal au coucher du soleil (roches flamboyantes)',
+    roadCondition: 'Bon revêtement mais route étroite, quelques passages sans visibilité',
+    highlights: [
+      'Le Capo Rosso et ses falaises de 300m de hauteur',
+      'La "Tête de Chien", formation rocheuse emblématique visible depuis un virage',
+      'Les nombreuses aires d\'arrêt aménagées offrant des points de vue exceptionnels',
+      'Le village de Piana avec ses maisons de granit rose et son panorama sur le golfe'
+    ],
+    tips: [
+      'Plusieurs parkings permettent de s\'arrêter pour explorer les sentiers pédestres',
+      'Évitez absolument les heures de midi en été (bus touristiques nombreux)',
+      'Le trafic est plus fluide tôt le matin ou en soirée',
+      'Restaurant panoramique "Les Roches Bleues" à mi-parcours (vue spectaculaire)',
+      'Prudence face aux chutes de pierres après les pluies'
+    ]
+  },
+  {
+    id: 'traversee-centre',
+    title: 'La Traversée du Centre (D84)',
+    description: 'Cet itinéraire mythique traverse l\'île de part en part en suivant l\'ancienne voie de chemin de fer, franchissant la chaîne montagneuse centrale.',
+    fullDescription: 'Cet itinéraire mythique traverse l\'île de part en part en suivant l\'ancienne voie de chemin de fer. Il franchit la chaîne montagneuse centrale de la Corse en passant par plusieurs cols et offre une immersion totale dans les paysages sauvages de l\'intérieur. Dénivelé important et température qui peut chuter de 10 à 15°C entre la côte et les cols.',
+    image: 'https://cdn.pixabay.com/photo/2014/11/01/18/46/corsica-513495_1280.jpg',
+    duration: '4-5h (sans les arrêts)',
+    distance: '150 km (Ajaccio-Corte-Bastia)',
+    difficulty: 'difficile',
+    region: 'Centre',
+    pointsOfInterest: ['Col de Vizzavona', 'Forêt d\'Aïtone', 'Corte', 'Pont du Vecchio', 'Gorges du Tavignano'],
+    startPoint: 'Ajaccio',
+    endPoint: 'Bastia',
+    elevation: '0-1163m',
+    roadType: 'Route de montagne traversière',
+    bestSeason: 'Juin à septembre (route parfois fermée en hiver)',
+    roadCondition: 'Bonnes portions alternant avec zones plus dégradées, virages serrés',
+    highlights: [
+      'Le col de Vizzavona (1163m) et sa forêt de pins laricio et de hêtres',
+      'Le viaduc ferroviaire de Vecchio, chef-d\'œuvre d\'architecture de Gustave Eiffel',
+      'La ville historique de Corte, ancienne capitale de la Corse indépendante',
+      'Les gorges de la Scala di Santa Regina, canyon impressionnant entre Corte et Ponte Leccia',
+      'Les lacs de montagne accessibles par des chemins de randonnée depuis la route'
+    ],
+    tips: [
+      'Stations-service à Bocognano, Vivario, Corte et Ponte Leccia',
+      'Prévoir vêtements chauds même en été (fraîcheur en altitude)',
+      'Nombreux tunnels sur la partie nord, certains non éclairés',
+      'Hébergements recommandés à Corte ou Vivario pour faire l\'itinéraire en deux jours',
+      'Prudence en cas de pluie (chaussée glissante dans les zones boisées)',
+      'Possibilité de croiser le mythique train corse qui suit partiellement le même trajet'
+    ]
+  },
+  {
+    id: 'route-cols',
+    title: 'Route des Cols (D69, D10)',
+    description: 'Véritable paradis pour les motards expérimentés, cet itinéraire montagneux offre des sensations fortes et des paysages alpins spectaculaires.',
+    fullDescription: 'Véritable paradis pour les motards expérimentés, cet itinéraire montagneux offre des sensations fortes et des paysages alpins spectaculaires. La route traverse le massif de l\'Alta Rocca avec des passages à plus de 1200m d\'altitude, offrant des vues imprenables sur les aiguilles rocheuses et les forêts de pins centenaires. Plus de 30 virages en épingle à négocier sur certaines portions.',
     image: 'https://images.unsplash.com/photo-1615729947596-a598e5de0ab3?auto=format&fit=crop&q=80',
-    duration: '5-6 heures',
-    distance: '120 km',
+    duration: '3-4h (sans les arrêts)',
+    distance: '100 km',
     difficulty: 'difficile',
     region: 'Sud-Est',
-    pointsOfInterest: ['Col de Bavella', 'Aiguilles de Bavella', 'Forêt de l\'Ospedale', 'Village de Zonza'],
+    pointsOfInterest: ['Col de Bavella (1218m)', 'Aiguilles de Bavella', 'Col de Larone', 'Forêts de pins laricio', 'Solenzara'],
     startPoint: 'Porto-Vecchio',
     endPoint: 'Solenzara',
     elevation: '0-1218m',
-    roadType: 'Route de montagne sinueuse'
+    roadType: 'Route de montagne technique',
+    bestSeason: 'Juin à septembre (route souvent fermée de décembre à avril)',
+    roadCondition: 'Revêtement variable, portions étroites et techniques, virages en épingle nombreux',
+    highlights: [
+      'Le col de Bavella et ses célèbres aiguilles de granite rouge (site exceptionnel)',
+      'Les piscines naturelles de Purcaraccia et Pulischellu (accessibles à pied depuis la route)',
+      'Les vues panoramiques sur le littoral oriental depuis le col de Larone',
+      'La descente spectaculaire vers Solenzara avec ses virages en lacets',
+      'Les villages authentiques de montagne comme Zonza et Quenza'
+    ],
+    tips: [
+      'Partir avec le réservoir plein (stations à Solenzara, Zonza et Porto-Vecchio)',
+      'Vérifier l\'état des freins avant de s\'engager sur cet itinéraire',
+      'Nombreux motards sur cette route emblématique, prudence dans les virages',
+      'Passages techniques avec gravier en bord de route, surtout après la pluie',
+      'Prévoir des vêtements chauds (même en été, il peut faire frais au col)',
+      'Restaurant recommandé "L\'Auberge du Col" au col de Bavella',
+      'Éviter les heures les plus chaudes en été (ascension fatigante)'
+    ]
   },
-  // Nouveaux itinéraires basés sur l'image partagée
   {
-    id: 'tour-corse-rt78',
-    title: 'RT78 - Tour de la Corse',
-    description: 'Un voyage complet autour de l\'île de beauté, mêlant paysages côtiers et montagneux, idéal pour découvrir toute la diversité corse.',
-    fullDescription: 'Le tour complet de la Corse est une aventure inoubliable pour tout motard. Cette boucle de près de 1000 km vous fait découvrir tous les visages de l\'île : côtes sauvages, montagnes majestueuses, forêts denses et villages typiques. Au départ d\'Ajaccio, vous longerez la côte ouest avec ses falaises spectaculaires et ses criques isolées, avant de traverser le désert des Agriates au nord. Le Cap Corse vous offre ensuite une route en corniche à couper le souffle, avant de redescendre par la côte est, plus douce, avec ses longues plages. L\'intérieur des terres vous réserve le spectacle grandiose des montagnes corses, avec des cols mythiques comme celui de Vizzavona ou de Vergio. Prévoyez plusieurs jours pour profiter pleinement de ce périple et vous imprégner de l\'atmosphère unique de chaque région traversée.',
-    image: 'https://cdn.pixabay.com/photo/2016/11/14/03/35/corsica-1822628_1280.jpg',
-    duration: '22h11 (plusieurs jours)',
-    distance: '933 km',
-    difficulty: 'difficile',
-    region: 'Tour de Corse',
-    pointsOfInterest: ['Calanche de Piana', 'Désert des Agriates', 'Cap Corse', 'Col de Bavella', 'Bonifacio'],
-    startPoint: 'Ajaccio',
-    endPoint: 'Ajaccio',
-    elevation: '0-1500m',
-    roadType: 'Routes variées (côtières, montagneuses)'
-  },
-  {
-    id: 'littoral-sud',
-    title: 'Le littoral sud de la Corse',
-    description: 'Un itinéraire côtier qui vous mènera à travers les plus belles plages du sud de l\'île et les falaises spectaculaires de Bonifacio.',
-    fullDescription: 'Le littoral sud de la Corse offre un contraste saisissant entre plages paradisiaques aux eaux cristallines et falaises calcaires spectaculaires. Cet itinéraire longe la côte sud en partant d\'Ajaccio, en passant par les golfs de Propriano et de Porto-Vecchio, pour atteindre la cité médiévale de Bonifacio perchée sur ses impressionnantes falaises blanches. Vous découvrirez des joyaux comme la plage de Palombaggia, régulièrement classée parmi les plus belles plages d\'Europe, ou les criques isolées de Roccapina avec son célèbre rocher en forme de lion. La route offre constamment des vues imprenables sur la mer et plusieurs détours permettent d\'accéder à des plages et criques secrètes. À Bonifacio, prenez le temps de visiter la vieille ville et d\'admirer la vue sur les bouches de Bonifacio qui séparent la Corse de la Sardaigne.',
+    id: 'corniche-sud',
+    title: 'La Corniche du Sud (N196, D121)',
+    description: 'Route côtière parcourant le littoral sud de l\'île au milieu des plages de sable blanc et des eaux turquoise.',
+    fullDescription: 'Route côtière parcourant le littoral sud de l\'île au milieu des plages de sable blanc et des eaux turquoise. Cet itinéraire moins technique que les routes de montagne offre des paysages méditerranéens de carte postale. Alternance entre sections côtières ouvertes sur la mer et portions traversant le maquis odorant et les chênes-lièges.',
     image: 'https://cdn.pixabay.com/photo/2020/02/01/22/10/beach-4811726_1280.jpg',
-    duration: '8h08',
-    distance: '435 km',
-    difficulty: 'moyen',
+    duration: '3h30 (sans les arrêts)',
+    distance: '130 km',
+    difficulty: 'facile',
     region: 'Sud',
-    pointsOfInterest: ['Plage de Palombaggia', 'Bonifacio', 'Rocher du Lion de Roccapina', 'Golfe de Porto-Vecchio'],
+    pointsOfInterest: ['Bonifacio', 'Porto-Vecchio', 'Plages de Palombaggia et Santa Giulia', 'Rondinara', 'Baie de Sant\'Amanza'],
     startPoint: 'Ajaccio',
     endPoint: 'Bonifacio',
     elevation: '0-200m',
-    roadType: 'Route côtière sinueuse'
+    roadType: 'Route côtière et littorale',
+    bestSeason: 'Avril à octobre (idéal en mai-juin ou septembre)',
+    roadCondition: 'Excellent revêtement, bonnes largeurs, quelques zones urbaines congestionnées',
+    highlights: [
+      'La cité médiévale de Bonifacio perchée sur ses falaises de calcaire blanc',
+      'Les criques secrètes accessibles par de petites routes secondaires (Cala Longa, Rondinara)',
+      'Le port de plaisance de Porto-Vecchio et sa vieille ville',
+      'La plage de Palombaggia, régulièrement classée parmi les plus belles d\'Europe',
+      'Les salines de Porto-Vecchio et leur écosystème unique'
+    ],
+    tips: [
+      'Trafic très dense en juillet-août (prévoir des départs matinaux)',
+      'Nombreuses possibilités de restauration et d\'hébergement le long du parcours',
+      'Stations-service fréquentes (Bonifacio, Porto-Vecchio, Sainte-Lucie)',
+      'Possibilité d\'extensions vers les villages de l\'Alta Rocca (Levie, Carbini)',
+      'Parking moto gratuit au pied de la citadelle de Bonifacio',
+      'Suggestion : faire une excursion en bateau à Bonifacio pour voir les falaises et les grottes',
+      'Radar fixe avant l\'entrée de Porto-Vecchio (venant du nord)'
+    ]
+  },
+  {
+    id: 'castagniccia',
+    title: 'La Castagniccia (D71, D15)',
+    description: 'Découverte d\'une Corse authentique et préservée du tourisme de masse dans cette région vallonnée couverte de forêts de châtaigniers centenaires.',
+    fullDescription: 'Découverte d\'une Corse authentique et préservée du tourisme de masse dans cette région vallonnée couverte de forêts de châtaigniers centenaires. Les routes étroites serpentent entre plus de 50 villages perchés aux clochers imposants. Succession ininterrompue de virages techniques et de montées/descentes sur des routes parfois en mauvais état, offrant une expérience de pilotage très engagée.',
+    image: 'https://cdn.pixabay.com/photo/2017/08/22/10/47/corsica-2668760_1280.jpg',
+    duration: '3h (sans les arrêts)',
+    distance: '90 km',
+    difficulty: 'difficile',
+    region: 'Nord-Est',
+    pointsOfInterest: ['La Porta', 'Piedicroce', 'Campana', 'Morosaglia', 'Cervione', 'Châtaigneraies centenaires', 'Églises baroques'],
+    startPoint: 'Folelli',
+    endPoint: 'Ponte-Leccia',
+    elevation: '0-800m',
+    roadType: 'Routes sinueuses et étroites',
+    bestSeason: 'Mai à octobre (splendide en automne pour les couleurs)',
+    roadCondition: 'Revêtement moyen à médiocre par endroits, nombreux virages serrés, chaussée parfois humide',
+    highlights: [
+      'L\'église baroque de La Porta, considérée comme la plus belle de Corse',
+      'Le couvent d\'Orezza à Piedicroce, témoin de l\'histoire insulaire',
+      'La source d\'eau gazeuse naturelle d\'Orezza (dégustation possible)',
+      'Les maisons de pierre aux toits de lauze typiques de l\'architecture corse',
+      'Le village de Morosaglia, lieu de naissance de Pascal Paoli, père de la nation corse'
+    ],
+    tips: [
+      'Routes très peu fréquentées même en haute saison',
+      'Attention au revêtement parfois glissant sous les châtaigniers (humidité, feuilles)',
+      'Rares stations-service (faire le plein à Folelli ou Ponte-Leccia avant de s\'engager)',
+      'Peu de commerces ouverts hors saison (prévoir ravitaillement)',
+      'Restaurants recommandés : "U Castagnu" à La Porta, "Chez Lucie" à Piedicroce',
+      'Prudence avec la faune sauvage sur la route (porcs en liberté, vaches)',
+      'Possibilité de découvrir les artisans locaux (couteliers, fabricants de farine de châtaigne)',
+      'Itinéraire praticable même par temps chaud (ombre des châtaigniers)'
+    ]
+  },
+  {
+    id: 'tour-balagne',
+    title: 'Le Tour de la Balagne (D151, D71)',
+    description: 'Surnommée "le Jardin de la Corse", la Balagne offre un circuit varié entre mer et montagne.',
+    fullDescription: 'Surnommée "le Jardin de la Corse", la Balagne offre un circuit varié entre mer et montagne. L\'itinéraire alterne entre la côte avec ses plages de sable fin et l\'arrière-pays vallonné où s\'étagent des villages médiévaux perchés sur des promontoires. Les oliveraies et les vergers parsèment le paysage, offrant une ambiance méditerranéenne typique. La route des Artisans relie plusieurs villages où les traditions artisanales sont encore très vivantes.',
+    image: 'https://images.unsplash.com/photo-1525874684015-58379d421a52?auto=format&fit=crop&q=80',
+    duration: '2h30 (sans les arrêts)',
+    distance: '85 km',
+    difficulty: 'moyen',
+    region: 'Nord-Ouest',
+    pointsOfInterest: ['Calvi', 'L\'Île-Rousse', 'Sant\'Antonino', 'Pigna', 'Corbara', 'Monticello'],
+    startPoint: 'Calvi',
+    endPoint: 'L\'Île-Rousse',
+    elevation: '0-500m',
+    roadType: 'Routes côtières et de montagne',
+    bestSeason: 'Avril à octobre (idéal en mai-juin)',
+    roadCondition: 'Bon revêtement général, routes de montagne étroites par endroits',
+    highlights: [
+      'La citadelle génoise de Calvi et sa vue panoramique sur la baie',
+      'Sant\'Antonino, classé parmi les plus beaux villages de France, perché à 500m d\'altitude',
+      'Le village d\'artisans de Pigna avec ses ateliers de céramique et instruments de musique',
+      'Les plages sauvages de l\'Ostriconi entre Calvi et L\'Île-Rousse',
+      'Le coucher de soleil sur L\'Île-Rousse vu depuis la route de Monticello'
+    ],
+    tips: [
+      'Circuit réalisable en une journée avec pauses dans les villages',
+      'Attention aux routes étroites dans les villages (pierres sur les côtés)',
+      'Nombreuses possibilités de restauration (essayez la cuisine locale dans les villages)',
+      'Stations-service à Calvi, L\'Île-Rousse et Belgodère',
+      'Parking moto dans tous les villages principaux',
+      'À combiner avec une baignade sur les plages de Bodri ou Ghjunchitu',
+      'Dégustation d\'huile d\'olive possible chez les producteurs (suivre les panneaux)',
+      'Point photo incontournable : la vue sur la baie de Calvi depuis Notre-Dame de la Serra'
+    ]
+  },
+  {
+    id: 'route-niolu',
+    title: 'Route du Niolu (D84, D218)',
+    description: 'Cet itinéraire traverse l\'une des régions les plus sauvages et authentiques de Corse, le Niolu, vaste cirque glaciaire dominé par le Monte Cinto.',
+    fullDescription: 'Cet itinéraire traverse l\'une des régions les plus sauvages et authentiques de Corse, le Niolu, vaste cirque glaciaire dominé par le Monte Cinto (2706m). La route emprunte des gorges spectaculaires taillées par la rivière Golo avant de déboucher sur un plateau montagnard à 800m d\'altitude. Ambiance de haute montagne garantie avec des villages traditionnels préservés et une nature d\'une beauté sauvage. En septembre, la région accueille la célèbre foire "A Santa di u Niolu", l\'une des plus importantes fêtes traditionnelles de l\'île.',
+    image: 'https://cdn.pixabay.com/photo/2013/07/18/20/24/lake-164854_1280.jpg',
+    duration: '2h (sans les arrêts)',
+    distance: '60 km',
+    difficulty: 'difficile',
+    region: 'Centre',
+    pointsOfInterest: ['Lac de Calacuccia', 'Monte Cinto', 'Gorges de la Scala di Santa Regina', 'Casamaccioli', 'Albertacce'],
+    startPoint: 'Corte',
+    endPoint: 'Calacuccia',
+    elevation: '400-1200m',
+    roadType: 'Route de montagne sauvage',
+    bestSeason: 'Juin à septembre (route parfois fermée en hiver)',
+    roadCondition: 'Revêtement moyen, sections étroites, quelques passages exposés sans barrière',
+    highlights: [
+      'Les gorges de la Scala di Santa Regina, canyon vertigineux aux parois abruptes',
+      'Le lac artificiel de Calacuccia avec ses eaux turquoise entouré de montagnes',
+      'Le panorama sur le Monte Cinto et ses sommets environnants',
+      'Les bergeries traditionnelles en pierre où l\'on fabrique encore le brocciu (fromage corse)',
+      'Les forêts de pins laricio et les torrents de montagne bordant la route'
+    ],
+    tips: [
+      'Une seule station-service dans la vallée (Calacuccia) - faire le plein avant',
+      'Route peu fréquentée mais attention aux troupeaux en liberté',
+      'Température fraîche même en été (prévoir une couche supplémentaire)',
+      'Hébergement limité : gîtes à Calacuccia et Albertacce (réserver à l\'avance)',
+      'Restaurant recommandé : "Chez Felix" à Albertacce (spécialités corses)',
+      'Point de départ idéal pour les randonnées vers le Monte Cinto',
+      'Prudence dans les gorges (chutes de pierres possibles)',
+      'Éviter les jours suivant de fortes pluies (risques d\'éboulements)',
+      'Extension possible vers les vallées voisines du Golo et de l\'Asco'
+    ]
+  },
+  {
+    id: 'boucle-grand-sud',
+    title: 'La Boucle du Grand Sud (D859, D268, D59)',
+    description: 'Ce grand circuit offre un condensé des plus beaux paysages du sud de la Corse, combinant littoral préservé et haute montagne.',
+    fullDescription: 'Ce grand circuit offre un condensé des plus beaux paysages du sud de la Corse, combinant littoral préservé et haute montagne. En une seule journée, vous passez des plages aux sommets en découvrant la richesse culturelle et naturelle de la région. L\'itinéraire traverse la région la plus sauvage et la moins peuplée de l\'île, offrant des paysages extrêmement variés: falaises maritimes, plaines agricoles, maquis odorant, villages médiévaux et forêts montagnardes.',
+    image: 'https://cdn.pixabay.com/photo/2016/10/30/20/14/sea-1784117_1280.jpg',
+    duration: '5-6h (sans les arrêts, prévoir une journée complète)',
+    distance: '200 km',
+    difficulty: 'moyen',
+    region: 'Sud',
+    pointsOfInterest: ['Sartène', 'Propriano', 'Tizzano', 'Roccapina', 'Aiguilles de Bavella', 'Alta Rocca', 'Zonza'],
+    startPoint: 'Ajaccio',
+    endPoint: 'Ajaccio',
+    elevation: '0-1200m',
+    roadType: 'Routes variées (côtières et montagneuses)',
+    bestSeason: 'Mai à septembre (éviter août si possible)',
+    roadCondition: 'Variable - excellentes portions côtières, sections montagneuses plus exigeantes',
+    highlights: [
+      'Sartène, "la plus corse des villes corses" avec ses ruelles médiévales en granite',
+      'Le lion de Roccapina, formation rocheuse naturelle surplombant une plage paradisiaque',
+      'Les tours génoises jalonnant la côte (Torre d\'Olmeto, Campomoro)',
+      'L\'Alta Rocca et ses villages typiques de montagne (Levie, Zonza, Quenza)',
+      'Les vestiges préhistoriques de Cucuruzzu et Capula (détour recommandé)',
+      'Les plages sauvages de la côte ouest (Tizzano, Campomoro)'
+    ],
+    tips: [
+      'Itinéraire à faire sur deux jours idéalement avec nuit à Zonza ou Levie',
+      'Stations-service à Sartène, Propriano, Porto-Vecchio (rares dans l\'intérieur)',
+      'Trafic dense sur la portion côtière en été, plus fluide dans l\'Alta Rocca',
+      'Pause baignade recommandée à la plage de Tizzano ou Campomoro',
+      'Visites culturelles possibles : site archéologique de Filitosa, musée de l\'Alta Rocca',
+      'Prudence dans les descentes après le col de Bavella (virages serrés)',
+      'Spots photos : le golfe de Valinco vu de la route, les aiguilles de Bavella',
+      'Supermarché à Propriano et Sartène pour ravitaillement',
+      'Restaurant typique recommandé : "U Furnellu" à Zonza',
+      'Variante possible par la côte est et Solenzara (itinéraire plus long)'
+    ]
   }
 ];
-
