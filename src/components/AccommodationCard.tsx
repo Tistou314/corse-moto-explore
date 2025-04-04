@@ -2,7 +2,7 @@
 import { StarIcon } from "lucide-react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Accommodation } from "@/data/accommodations";
+import { Accommodation } from "@/data/accommodations/types";
 import { useNavigate } from "react-router-dom";
 
 interface AccommodationCardProps {

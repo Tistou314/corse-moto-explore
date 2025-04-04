@@ -1,8 +1,7 @@
-
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import AccommodationCard from '@/components/AccommodationCard';
-import { Accommodation } from '@/data/accommodations';
+import { Accommodation } from '@/data/accommodations/types';
 import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 import { cn } from '@/lib/utils';
 
