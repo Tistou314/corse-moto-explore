@@ -43,11 +43,12 @@ const AccommodationFilters = ({
 }: AccommodationFiltersProps) => {
   
   const handleAmenityChange = (amenity: string) => {
-    setSelectedAmenities(prev => 
-      prev.includes(amenity) 
-        ? prev.filter(a => a !== amenity) 
-        : [...prev, amenity]
-    );
+    // Fix: Explicitly create a new array instead of using a function that returns any
+    if (selectedAmenities.includes(amenity)) {
+      setSelectedAmenities(selectedAmenities.filter(a => a !== amenity));
+    } else {
+      setSelectedAmenities([...selectedAmenities, amenity]);
+    }
   };
 
   return (
