@@ -121,11 +121,9 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
       <main className="flex-1 p-6">
         <div className="md:hidden flex justify-between items-center mb-6">
           <h1 className="text-xl font-bold text-corsica-blue">Administration</h1>
-          <SheetTrigger asChild>
-            <Button variant="outline" size="icon">
-              <Menu className="h-5 w-5" />
-            </Button>
-          </SheetTrigger>
+          <Button variant="outline" size="icon" onClick={() => setOpen(true)}>
+            <Menu className="h-5 w-5" />
+          </Button>
         </div>
         {children}
       </main>
@@ -134,3 +132,4 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
 };
 
 export default AdminLayout;
+
