@@ -13,6 +13,15 @@ import CategoryCreate from "@/components/admin/categories/CategoryCreate";
 import PagesList from "@/components/admin/pages/PagesList";
 import PageEdit from "@/components/admin/pages/PageEdit";
 import PageCreate from "@/components/admin/pages/PageCreate";
+import AccommodationsList from "@/components/admin/accommodations/AccommodationsList";
+import AccommodationEdit from "@/components/admin/accommodations/AccommodationEdit";
+import AccommodationCreate from "@/components/admin/accommodations/AccommodationCreate";
+import PointsOfInterestList from "@/components/admin/points-of-interest/PointsOfInterestList";
+import PointOfInterestEdit from "@/components/admin/points-of-interest/PointOfInterestEdit";
+import PointOfInterestCreate from "@/components/admin/points-of-interest/PointOfInterestCreate";
+import ItinerariesList from "@/components/admin/itineraries/ItinerariesList";
+import ItineraryEdit from "@/components/admin/itineraries/ItineraryEdit";
+import ItineraryCreate from "@/components/admin/itineraries/ItineraryCreate";
 
 const AdminPage = () => {
   const navigate = useNavigate();
@@ -39,6 +48,15 @@ const AdminPage = () => {
           <Route path="/pages" element={<PagesList />} />
           <Route path="/pages/new" element={<PageCreate />} />
           <Route path="/pages/edit/:id" element={<PageEdit />} />
+          <Route path="/accommodations" element={<AccommodationsList />} />
+          <Route path="/accommodations/new" element={<AccommodationCreate />} />
+          <Route path="/accommodations/edit/:id" element={<AccommodationEdit />} />
+          <Route path="/points-of-interest" element={<PointsOfInterestList />} />
+          <Route path="/points-of-interest/new" element={<PointOfInterestCreate />} />
+          <Route path="/points-of-interest/edit/:id" element={<PointOfInterestEdit />} />
+          <Route path="/itineraries" element={<ItinerariesList />} />
+          <Route path="/itineraries/new" element={<ItineraryCreate />} />
+          <Route path="/itineraries/edit/:id" element={<ItineraryEdit />} />
         </Routes>
       </AdminLayout>
     </>

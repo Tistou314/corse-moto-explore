@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { LayoutDashboard, FileText, Layers, Menu, X, LogOut } from "lucide-react";
+import { LayoutDashboard, FileText, Layers, Menu, X, LogOut, Hotel, MapPin, Map } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 
@@ -34,6 +34,21 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
       name: "Pages", 
       icon: <FileText className="w-5 h-5 mr-2" />, 
       path: "/admin/pages" 
+    },
+    { 
+      name: "Hébergements", 
+      icon: <Hotel className="w-5 h-5 mr-2" />, 
+      path: "/admin/accommodations" 
+    },
+    { 
+      name: "Points d'intérêt", 
+      icon: <MapPin className="w-5 h-5 mr-2" />, 
+      path: "/admin/points-of-interest" 
+    },
+    { 
+      name: "Itinéraires", 
+      icon: <Map className="w-5 h-5 mr-2" />, 
+      path: "/admin/itineraries" 
     },
   ];
 
@@ -132,4 +147,3 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
 };
 
 export default AdminLayout;
-
