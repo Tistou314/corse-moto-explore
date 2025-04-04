@@ -1,10 +1,9 @@
-
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
 import ItineraryCard from '@/components/ItineraryCard';
-import { itineraries } from '@/data/itineraires';
+import { itineraries } from '@/data/itineraries';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search, Filter } from 'lucide-react';

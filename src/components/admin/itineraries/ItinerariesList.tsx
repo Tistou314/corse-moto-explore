@@ -20,7 +20,7 @@ import {
   DialogHeader, 
   DialogTitle 
 } from "@/components/ui/dialog";
-import { itineraries } from "@/data/itineraires";
+import { itineraries } from "@/data/itineraries";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 

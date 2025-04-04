@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import ItineraryCard from '@/components/ItineraryCard';
-import { Itinerary } from '@/data/itineraires';
+import { Itinerary } from '@/data/itineraries';
 import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 import { cn } from '@/lib/utils';
 

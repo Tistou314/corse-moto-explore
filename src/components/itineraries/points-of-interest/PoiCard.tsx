@@ -1,6 +1,6 @@
 
 import { MapPin } from 'lucide-react';
-import { PointOfInterest } from '@/data/itineraires';
+import { PointOfInterest } from '@/data/itineraries';
 
 interface PoiCardProps {
   poi: string | PointOfInterest;

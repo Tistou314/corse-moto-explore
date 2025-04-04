@@ -1,5 +1,5 @@
 
-import { Itinerary } from '@/data/itineraires';
+import { Itinerary } from '@/data/itineraries';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Download, Share2, MapPin } from 'lucide-react';

@@ -1,5 +1,5 @@
 
-import { Itinerary } from '@/data/itineraires';
+import { Itinerary } from '@/data/itineraries';
 import { Clock, Route, Mountain, Flag, MapPin, Bike } from 'lucide-react';
 import { formatContent } from '@/utils/markdownFormatter';
 

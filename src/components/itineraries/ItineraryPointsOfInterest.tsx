@@ -1,5 +1,4 @@
-
-import { Itinerary } from '@/data/itineraires';
+import { Itinerary } from '@/data/itineraries';
 import PoiCard from './points-of-interest/PoiCard';
 import PoiDialog from './points-of-interest/PoiDialog';
 import { usePoiDetails } from './points-of-interest/usePoiDetails';

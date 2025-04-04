@@ -4,7 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
-import { itineraries, Itinerary } from '@/data/itineraires';
+import { itineraries, Itinerary } from '@/data/itineraries';
 import ItineraryHero from '@/components/itineraries/ItineraryHero';
 import ItineraryDescription from '@/components/itineraries/ItineraryDescription';
 import ItineraryMap from '@/components/itineraries/ItineraryMap';

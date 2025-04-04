@@ -1,7 +1,7 @@
 
 import { Link } from 'react-router-dom';
 import { ChevronLeft, Clock, Route, Mountain } from 'lucide-react';
-import { Itinerary } from '@/data/itineraires';
+import { Itinerary } from '@/data/itineraries';
 
 interface ItineraryHeroProps {
   itinerary: Itinerary;

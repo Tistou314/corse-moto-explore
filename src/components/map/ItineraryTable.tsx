@@ -1,5 +1,5 @@
 
-import { itineraries } from '@/data/itineraires';
+import { itineraries } from '@/data/itineraries';
 
 const ItineraryTable = () => {
   return (
