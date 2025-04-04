@@ -41,6 +41,13 @@ export const useMapMarkers = (
         return;
       }
       
+      // Additional validation to make sure coordinates are within Corsica's bounds
+      if (location.longitude < 8.4 || location.longitude > 9.6 || 
+          location.latitude < 41.3 || location.latitude > 43.1) {
+        console.warn(`Invalid coordinates for ${location.title}: [${location.longitude}, ${location.latitude}]`);
+        return;
+      }
+      
       const marker = createMapMarker({
         location,
         map: map.current!,
@@ -52,7 +59,10 @@ export const useMapMarkers = (
 
     // Fit bounds to markers if there are multiple with valid coordinates
     const validLocations = locations.filter(
-      loc => typeof loc.latitude === 'number' && typeof loc.longitude === 'number'
+      loc => typeof loc.latitude === 'number' && 
+             typeof loc.longitude === 'number' &&
+             loc.longitude >= 8.4 && loc.longitude <= 9.6 &&
+             loc.latitude >= 41.3 && loc.latitude <= 43.1
     );
     
     if (validLocations.length > 1) {
@@ -71,6 +81,13 @@ export const useMapMarkers = (
       map.current.flyTo({
         center: [validLocations[0].longitude, validLocations[0].latitude],
         zoom: 11,
+        duration: 1000
+      });
+    } else {
+      // Default view of Corsica if no valid locations
+      map.current.flyTo({
+        center: [9.2, 42.2],
+        zoom: 8,
         duration: 1000
       });
     }

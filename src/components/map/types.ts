@@ -30,3 +30,4 @@ export const markerTypes = {
 };
 
 export const CorsicaCenter: [number, number] = [9.2, 42.2]; // Center of Corsica
+

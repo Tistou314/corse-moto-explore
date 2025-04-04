@@ -1,10 +1,11 @@
+
 import { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Layers, Filter, Download, Search } from 'lucide-react';
+import { Map, Hotel, Route, Info } from 'lucide-react';
 import { itineraries } from '@/data/itineraires';
 import { accommodations } from '@/data/accommodations';
 import { useMap } from '@/contexts/MapContext';
@@ -27,33 +28,51 @@ const MapPage = () => {
 
   const prepareMapLocations = () => {
     const locations: MapLocation[] = [];
-
+    
+    // Add itineraries
     for (const itinerary of itineraries) {
-      const lat = itinerary.latitude || 41.8 + Math.random() * 0.8;
-      const lng = itinerary.longitude || 8.7 + Math.random() * 1.0;
+      if (itinerary.latitude && itinerary.longitude) {
+        locations.push({
+          id: itinerary.id,
+          title: itinerary.title,
+          latitude: itinerary.latitude,
+          longitude: itinerary.longitude,
+          type: 'itinerary',
+          description: `${itinerary.distance} - ${itinerary.duration} - ${itinerary.difficulty}`
+        });
+      }
       
-      locations.push({
-        id: itinerary.id,
-        title: itinerary.title,
-        latitude: lat,
-        longitude: lng,
-        type: 'itinerary' as const,
-        description: `${itinerary.distance} km - ${itinerary.duration} - ${itinerary.difficulty}`
-      });
+      // Add points of interest from each itinerary
+      if (Array.isArray(itinerary.pointsOfInterest)) {
+        itinerary.pointsOfInterest.forEach((poi, index) => {
+          // Check if POI is already an object with coordinates
+          if (typeof poi === 'object' && poi.latitude && poi.longitude) {
+            locations.push({
+              id: `${itinerary.id}-poi-${index}`,
+              title: poi.name,
+              latitude: poi.latitude,
+              longitude: poi.longitude,
+              type: 'pointOfInterest',
+              description: poi.description || '',
+              isPrimary: true
+            });
+          }
+        });
+      }
     }
 
+    // Add accommodations with valid coordinates
     for (const accommodation of accommodations) {
-      const lat = accommodation.latitude || 41.9 + Math.random() * 0.6;
-      const lng = accommodation.longitude || 9.0 + Math.random() * 0.7;
-      
-      locations.push({
-        id: accommodation.id,
-        title: accommodation.name,
-        latitude: lat,
-        longitude: lng,
-        type: 'accommodation' as const,
-        description: accommodation.location
-      });
+      if (accommodation.latitude && accommodation.longitude) {
+        locations.push({
+          id: accommodation.id,
+          title: accommodation.name,
+          latitude: accommodation.latitude,
+          longitude: accommodation.longitude,
+          type: 'accommodation',
+          description: `${accommodation.type} - ${accommodation.location}`
+        });
+      }
     }
 
     return locations;
@@ -103,6 +122,7 @@ const MapPage = () => {
                       onClick={() => setActiveFilter(null)}
                       className={!activeFilter ? "bg-corsica-blue hover:bg-corsica-blue/90" : ""}
                     >
+                      <Map className="w-4 h-4 mr-2" />
                       Tout
                     </Button>
                     <Button 
@@ -111,6 +131,7 @@ const MapPage = () => {
                       onClick={() => setActiveFilter('itinerary')}
                       className={activeFilter === 'itinerary' ? "bg-blue-600 hover:bg-blue-700" : ""}
                     >
+                      <Route className="w-4 h-4 mr-2" />
                       Itinéraires
                     </Button>
                     <Button 
@@ -119,6 +140,7 @@ const MapPage = () => {
                       onClick={() => setActiveFilter('accommodation')}
                       className={activeFilter === 'accommodation' ? "bg-green-600 hover:bg-green-700" : ""}
                     >
+                      <Hotel className="w-4 h-4 mr-2" />
                       Hébergements
                     </Button>
                     <Button 
@@ -127,6 +149,7 @@ const MapPage = () => {
                       onClick={() => setActiveFilter('pointOfInterest')}
                       className={activeFilter === 'pointOfInterest' ? "bg-red-600 hover:bg-red-700" : ""}
                     >
+                      <Info className="w-4 h-4 mr-2" />
                       Points d'intérêt
                     </Button>
                   </div>

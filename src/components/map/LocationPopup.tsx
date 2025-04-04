@@ -1,8 +1,5 @@
 
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { ExternalLink, Info, MapPin, Navigation } from "lucide-react";
-import { MapLocation } from "./types";
+import { MapLocation } from './types';
 
 interface LocationPopupProps {
   location: MapLocation;
@@ -10,91 +7,88 @@ interface LocationPopupProps {
 }
 
 const LocationPopup = ({ location, onClose }: LocationPopupProps) => {
-  // Format coordinates for display if not already formatted
-  const displayCoordinates = location.coordinates || 
-    (location.latitude && location.longitude ? 
-      `${location.latitude.toFixed(4)}, ${location.longitude.toFixed(4)}` : undefined);
-      
   return (
-    <Card className="absolute bottom-4 left-4 p-4 max-w-sm bg-white shadow-lg">
-      <div className="flex justify-between items-start">
-        <h3 className="font-bold text-lg">{location.title}</h3>
-        <Button variant="ghost" className="h-6 w-6 p-0" onClick={onClose}>×</Button>
-      </div>
+    <div className="absolute bottom-4 left-4 bg-white p-4 rounded-lg shadow-lg max-w-xs w-full border border-gray-200 z-10">
+      <button 
+        onClick={onClose} 
+        className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
+        aria-label="Fermer"
+      >
+        ×
+      </button>
       
-      {location.description && (
-        <p className="text-sm text-muted-foreground mt-1">{location.description}</p>
-      )}
-      
-      <div className="mt-2">
-        {location.type === 'itinerary' && (
-          <Button size="sm" variant="outline" asChild className="mt-2">
-            <a href={`/itineraires/${location.id}`}>
-              Voir l'itinéraire
-            </a>
-          </Button>
-        )}
+      <div className="pt-1">
+        <h3 className="font-bold text-lg mb-1">{location.title}</h3>
         {location.type === 'accommodation' && (
-          <Button size="sm" variant="outline" asChild className="mt-2">
-            <a href={`/hebergements/${location.id}`}>
-              Voir l'hébergement
-            </a>
-          </Button>
+          <span className="inline-block bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full mb-2">
+            Hébergement
+          </span>
+        )}
+        {location.type === 'itinerary' && (
+          <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-full mb-2">
+            Itinéraire
+          </span>
         )}
         {location.type === 'pointOfInterest' && (
-          <div className="space-y-2">
-            <div className="flex items-center text-sm text-muted-foreground mt-1">
-              <MapPin className="w-3 h-3 mr-1" />
-              <span>Point d'intérêt</span>
-            </div>
-            
-            {location.image && (
-              <div className="mt-2 rounded-md overflow-hidden">
-                <img 
-                  src={location.image} 
-                  alt={location.title} 
-                  className="w-full h-32 object-cover" 
-                />
-              </div>
-            )}
-            
-            {displayCoordinates && (
-              <div className="text-xs text-muted-foreground mt-1">
-                <span>Coordonnées: {displayCoordinates}</span>
-              </div>
-            )}
-            
-            {location.address && (
-              <div className="text-xs text-muted-foreground mt-1">
-                <span>Adresse: {location.address}</span>
-              </div>
-            )}
-            
-            {location.externalUrl && (
-              <Button size="sm" variant="outline" asChild className="mt-2 w-full">
-                <a href={location.externalUrl} target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="w-3 h-3 mr-1" />
-                  Plus d'informations
-                </a>
-              </Button>
-            )}
-            
-            {location.latitude && location.longitude && (
-              <Button size="sm" variant="outline" asChild className="mt-2 w-full">
-                <a 
-                  href={`https://www.google.com/maps/dir/?api=1&destination=${location.latitude},${location.longitude}`} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
-                  <Navigation className="w-3 h-3 mr-1" />
-                  Itinéraire
-                </a>
-              </Button>
-            )}
-          </div>
+          <span className="inline-block bg-red-100 text-red-800 text-xs px-2 py-0.5 rounded-full mb-2">
+            Point d'intérêt
+          </span>
+        )}
+        
+        {location.description && (
+          <p className="text-sm text-gray-600 mb-2">{location.description}</p>
+        )}
+        
+        {location.image && (
+          <img 
+            src={location.image} 
+            alt={location.title} 
+            className="w-full h-32 object-cover rounded-md mb-2" 
+          />
+        )}
+        
+        {location.address && (
+          <p className="text-xs text-gray-500 mb-1">
+            <strong>Adresse:</strong> {location.address}
+          </p>
+        )}
+        
+        {location.coordinates && (
+          <p className="text-xs text-gray-500 mb-1">
+            <strong>Coordonnées:</strong> {location.coordinates}
+          </p>
+        )}
+        
+        {location.externalUrl && (
+          <a 
+            href={location.externalUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="inline-block text-blue-500 text-sm hover:text-blue-700 mt-2"
+          >
+            En savoir plus
+          </a>
+        )}
+        
+        {location.type === 'accommodation' && (
+          <button 
+            className="w-full mt-2 bg-corsica-blue text-white py-2 px-4 rounded hover:bg-corsica-blue/90 text-sm"
+            onClick={() => {/* Navigation logic can be added here */}}
+          >
+            Voir l'hébergement
+          </button>
+        )}
+        
+        {location.type === 'itinerary' && (
+          <button 
+            className="w-full mt-2 bg-corsica-blue text-white py-2 px-4 rounded hover:bg-corsica-blue/90 text-sm"
+            onClick={() => {/* Navigation logic can be added here */}}
+          >
+            Voir l'itinéraire
+          </button>
         )}
       </div>
-    </Card>
+    </div>
   );
 };
 

@@ -167,7 +167,32 @@ export const itineraries: Itinerary[] = [
     distance: '20 km',
     difficulty: 'moyen',
     region: 'Ouest',
-    pointsOfInterest: ['Porto', 'Piana', 'Formations rocheuses rouges', 'Capo Rosso'],
+    pointsOfInterest: [
+      { 
+        name: 'Porto', 
+        description: 'Point de départ pour les Calanques',
+        latitude: 42.2510, 
+        longitude: 8.6920 
+      },
+      { 
+        name: 'Piana', 
+        description: 'Village surplombant le golfe de Porto',
+        latitude: 42.2651, 
+        longitude: 8.6436 
+      },
+      { 
+        name: 'Capo Rosso', 
+        description: 'Cap rocheux offrant une vue spectaculaire',
+        latitude: 42.2534, 
+        longitude: 8.6240 
+      },
+      { 
+        name: 'Tête de Chien', 
+        description: 'Formation rocheuse emblématique',
+        latitude: 42.2595, 
+        longitude: 8.6583 
+      }
+    ],
     startPoint: 'Porto',
     endPoint: 'Piana',
     elevation: '0-450m',
@@ -186,7 +211,9 @@ export const itineraries: Itinerary[] = [
       'Le trafic est plus fluide tôt le matin ou en soirée',
       'Restaurant panoramique "Les Roches Bleues" à mi-parcours (vue spectaculaire)',
       'Prudence face aux chutes de pierres après les pluies'
-    ]
+    ],
+    latitude: 42.2595,
+    longitude: 8.6583
   },
   {
     id: 'traversee-centre',
@@ -198,7 +225,38 @@ export const itineraries: Itinerary[] = [
     distance: '150 km (Ajaccio-Corte-Bastia)',
     difficulty: 'difficile',
     region: 'Centre',
-    pointsOfInterest: ['Col de Vizzavona', 'Forêt d\'Aïtone', 'Corte', 'Pont du Vecchio', 'Gorges du Tavignano'],
+    pointsOfInterest: [
+      { 
+        name: 'Col de Vizzavona', 
+        description: 'Col à 1163m d\'altitude',
+        latitude: 42.1287, 
+        longitude: 9.1126 
+      },
+      { 
+        name: 'Forêt d\'Aïtone', 
+        description: 'Magnifique forêt de pins laricio',
+        latitude: 42.2774, 
+        longitude: 8.8612 
+      },
+      { 
+        name: 'Corte', 
+        description: 'Ancienne capitale de la Corse indépendante',
+        latitude: 42.3065, 
+        longitude: 9.1486 
+      },
+      { 
+        name: 'Pont du Vecchio', 
+        description: 'Viaduc ferroviaire conçu par Gustave Eiffel',
+        latitude: 42.2428, 
+        longitude: 9.2066 
+      },
+      { 
+        name: 'Gorges du Tavignano', 
+        description: 'Canyon impressionnant près de Corte',
+        latitude: 42.3186, 
+        longitude: 9.1877 
+      }
+    ],
     startPoint: 'Ajaccio',
     endPoint: 'Bastia',
     elevation: '0-1163m',
@@ -219,7 +277,9 @@ export const itineraries: Itinerary[] = [
       'Hébergements recommandés à Corte ou Vivario pour faire l\'itinéraire en deux jours',
       'Prudence en cas de pluie (chaussée glissante dans les zones boisées)',
       'Possibilité de croiser le mythique train corse qui suit partiellement le même trajet'
-    ]
+    ],
+    latitude: 42.1287,
+    longitude: 9.1126
   },
   {
     id: 'route-cols',
@@ -231,7 +291,32 @@ export const itineraries: Itinerary[] = [
     distance: '100 km',
     difficulty: 'difficile',
     region: 'Sud-Est',
-    pointsOfInterest: ['Col de Bavella (1218m)', 'Aiguilles de Bavella', 'Col de Larone', 'Forêts de pins laricio', 'Solenzara'],
+    pointsOfInterest: [
+      { 
+        name: 'Col de Bavella', 
+        description: 'Col à 1218m d\'altitude',
+        latitude: 41.7926, 
+        longitude: 9.2222 
+      },
+      { 
+        name: 'Aiguilles de Bavella', 
+        description: 'Impressionnantes formations rocheuses',
+        latitude: 41.7943, 
+        longitude: 9.2239 
+      },
+      { 
+        name: 'Col de Larone', 
+        description: 'Offre une vue panoramique sur le littoral',
+        latitude: 41.7572, 
+        longitude: 9.2705 
+      },
+      { 
+        name: 'Solenzara', 
+        description: 'Station balnéaire à l\'arrivée de la route des cols',
+        latitude: 41.8564, 
+        longitude: 9.4003 
+      }
+    ],
     startPoint: 'Porto-Vecchio',
     endPoint: 'Solenzara',
     elevation: '0-1218m',
@@ -253,7 +338,9 @@ export const itineraries: Itinerary[] = [
       'Prévoir des vêtements chauds (même en été, il peut faire frais au col)',
       'Restaurant recommandé "L\'Auberge du Col" au col de Bavella',
       'Éviter les heures les plus chaudes en été (ascension fatigante)'
-    ]
+    ],
+    latitude: 41.7926,
+    longitude: 9.2222
   },
   {
     id: 'corniche-sud',
@@ -265,7 +352,38 @@ export const itineraries: Itinerary[] = [
     distance: '130 km',
     difficulty: 'facile',
     region: 'Sud',
-    pointsOfInterest: ['Bonifacio', 'Porto-Vecchio', 'Plages de Palombaggia et Santa Giulia', 'Rondinara', 'Baie de Sant\'Amanza'],
+    pointsOfInterest: [
+      { 
+        name: 'Bonifacio', 
+        description: 'Cité médiévale perchée sur ses falaises',
+        latitude: 41.3872, 
+        longitude: 9.1594 
+      },
+      { 
+        name: 'Porto-Vecchio', 
+        description: 'Station balnéaire avec son port de plaisance',
+        latitude: 41.5908, 
+        longitude: 9.2797 
+      },
+      { 
+        name: 'Plage de Palombaggia', 
+        description: 'Une des plus belles plages d\'Europe',
+        latitude: 41.5601, 
+        longitude: 9.3390 
+      },
+      { 
+        name: 'Plage de Santa Giulia', 
+        description: 'Magnifique plage de sable blanc',
+        latitude: 41.5224, 
+        longitude: 9.3452 
+      },
+      { 
+        name: 'Rondinara', 
+        description: 'Plage en forme de coquillage',
+        latitude: 41.4684, 
+        longitude: 9.2439 
+      }
+    ],
     startPoint: 'Ajaccio',
     endPoint: 'Bonifacio',
     elevation: '0-200m',
@@ -287,7 +405,9 @@ export const itineraries: Itinerary[] = [
       'Parking moto gratuit au pied de la citadelle de Bonifacio',
       'Suggestion : faire une excursion en bateau à Bonifacio pour voir les falaises et les grottes',
       'Radar fixe avant l\'entrée de Porto-Vecchio (venant du nord)'
-    ]
+    ],
+    latitude: 41.5908,
+    longitude: 9.2797
   },
   {
     id: 'castagniccia',
@@ -299,7 +419,32 @@ export const itineraries: Itinerary[] = [
     distance: '90 km',
     difficulty: 'difficile',
     region: 'Nord-Est',
-    pointsOfInterest: ['La Porta', 'Piedicroce', 'Campana', 'Morosaglia', 'Cervione', 'Châtaigneraies centenaires', 'Églises baroques'],
+    pointsOfInterest: [
+      { 
+        name: 'La Porta', 
+        description: 'Village avec une église baroque magnifique',
+        latitude: 42.4357, 
+        longitude: 9.3133 
+      },
+      { 
+        name: 'Piedicroce', 
+        description: 'Village avec le couvent d\'Orezza',
+        latitude: 42.3707, 
+        longitude: 9.3317 
+      },
+      { 
+        name: 'Morosaglia', 
+        description: 'Lieu de naissance de Pascal Paoli',
+        latitude: 42.4699, 
+        longitude: 9.2823 
+      },
+      { 
+        name: 'Cervione', 
+        description: 'Village médiéval surplombant la mer',
+        latitude: 42.3383, 
+        longitude: 9.5093 
+      }
+    ],
     startPoint: 'Folelli',
     endPoint: 'Ponte-Leccia',
     elevation: '0-800m',
@@ -322,7 +467,9 @@ export const itineraries: Itinerary[] = [
       'Prudence avec la faune sauvage sur la route (porcs en liberté, vaches)',
       'Possibilité de découvrir les artisans locaux (couteliers, fabricants de farine de châtaigne)',
       'Itinéraire praticable même par temps chaud (ombre des châtaigniers)'
-    ]
+    ],
+    latitude: 42.4357,
+    longitude: 9.3133
   },
   {
     id: 'tour-balagne',
@@ -334,7 +481,38 @@ export const itineraries: Itinerary[] = [
     distance: '85 km',
     difficulty: 'moyen',
     region: 'Nord-Ouest',
-    pointsOfInterest: ['Calvi', 'L\'Île-Rousse', 'Sant\'Antonino', 'Pigna', 'Corbara', 'Monticello'],
+    pointsOfInterest: [
+      { 
+        name: 'Calvi', 
+        description: 'Ville avec sa citadelle génoise',
+        latitude: 42.5676, 
+        longitude: 8.7577 
+      },
+      { 
+        name: 'L\'Île-Rousse', 
+        description: 'Charmante station balnéaire',
+        latitude: 42.6343, 
+        longitude: 8.9382 
+      },
+      { 
+        name: 'Sant\'Antonino', 
+        description: 'Un des plus beaux villages de France',
+        latitude: 42.6068, 
+        longitude: 8.9164 
+      },
+      { 
+        name: 'Pigna', 
+        description: 'Village d\'artisans à la vue imprenable',
+        latitude: 42.6009, 
+        longitude: 8.9011 
+      },
+      { 
+        name: 'Corbara', 
+        description: 'Village typique de Balagne',
+        latitude: 42.6168, 
+        longitude: 8.9031 
+      }
+    ],
     startPoint: 'Calvi',
     endPoint: 'L\'Île-Rousse',
     elevation: '0-500m',
@@ -357,7 +535,9 @@ export const itineraries: Itinerary[] = [
       'À combiner avec une baignade sur les plages de Bodri ou Ghjunchitu',
       'Dégustation d\'huile d\'olive possible chez les producteurs (suivre les panneaux)',
       'Point photo incontournable : la vue sur la baie de Calvi depuis Notre-Dame de la Serra'
-    ]
+    ],
+    latitude: 42.6068,
+    longitude: 8.9164
   },
   {
     id: 'route-niolu',
@@ -369,7 +549,32 @@ export const itineraries: Itinerary[] = [
     distance: '60 km',
     difficulty: 'difficile',
     region: 'Centre',
-    pointsOfInterest: ['Lac de Calacuccia', 'Monte Cinto', 'Gorges de la Scala di Santa Regina', 'Casamaccioli', 'Albertacce'],
+    pointsOfInterest: [
+      { 
+        name: 'Lac de Calacuccia', 
+        description: 'Lac artificiel aux eaux turquoise',
+        latitude: 42.3273, 
+        longitude: 9.0241 
+      },
+      { 
+        name: 'Monte Cinto', 
+        description: 'Point culminant de la Corse (2706m)',
+        latitude: 42.3876, 
+        longitude: 8.9919 
+      },
+      { 
+        name: 'Gorges de la Scala di Santa Regina', 
+        description: 'Canyon vertigineux aux parois abruptes',
+        latitude: 42.3368, 
+        longitude: 9.0724 
+      },
+      { 
+        name: 'Casamaccioli', 
+        description: 'Village traditionnel du Niolu',
+        latitude: 42.3332, 
+        longitude: 9.0131 
+      }
+    ],
     startPoint: 'Corte',
     endPoint: 'Calacuccia',
     elevation: '400-1200m',
@@ -393,7 +598,9 @@ export const itineraries: Itinerary[] = [
       'Prudence dans les gorges (chutes de pierres possibles)',
       'Éviter les jours suivant de fortes pluies (risques d\'éboulements)',
       'Extension possible vers les vallées voisines du Golo et de l\'Asco'
-    ]
+    ],
+    latitude: 42.3273,
+    longitude: 9.0241
   },
   {
     id: 'boucle-grand-sud',
@@ -405,7 +612,44 @@ export const itineraries: Itinerary[] = [
     distance: '200 km',
     difficulty: 'moyen',
     region: 'Sud',
-    pointsOfInterest: ['Sartène', 'Propriano', 'Tizzano', 'Roccapina', 'Aiguilles de Bavella', 'Alta Rocca', 'Zonza'],
+    pointsOfInterest: [
+      { 
+        name: 'Sartène', 
+        description: '"La plus corse des villes corses"',
+        latitude: 41.6212, 
+        longitude: 8.9753 
+      },
+      { 
+        name: 'Propriano', 
+        description: 'Station balnéaire sur le golfe de Valinco',
+        latitude: 41.6752, 
+        longitude: 8.9044 
+      },
+      { 
+        name: 'Tizzano', 
+        description: 'Petit port de pêche pittoresque',
+        latitude: 41.5607, 
+        longitude: 8.8343 
+      },
+      { 
+        name: 'Roccapina', 
+        description: 'Plage avec le célèbre "Lion de Roccapina"',
+        latitude: 41.4792, 
+        longitude: 8.9535 
+      },
+      { 
+        name: 'Aiguilles de Bavella', 
+        description: 'Formations rocheuses spectaculaires',
+        latitude: 41.7943, 
+        longitude: 9.2239 
+      },
+      { 
+        name: 'Zonza', 
+        description: 'Village typique de l\'Alta Rocca',
+        latitude: 41.7386, 
+        longitude: 9.1763 
+      }
+    ],
     startPoint: 'Ajaccio',
     endPoint: 'Ajaccio',
     elevation: '0-1200m',
@@ -431,6 +675,8 @@ export const itineraries: Itinerary[] = [
       'Supermarché à Propriano et Sartène pour ravitaillement',
       'Restaurant typique recommandé : "U Furnellu" à Zonza',
       'Variante possible par la côte est et Solenzara (itinéraire plus long)'
-    ]
+    ],
+    latitude: 41.6212,
+    longitude: 8.9753
   }
 ];
