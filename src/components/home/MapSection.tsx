@@ -1,12 +1,34 @@
 
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
+import { useMap } from '@/contexts/MapContext';
+import MapBox from '@/components/map/MapBox';
 import MapPlaceholder from '@/components/MapPlaceholder';
 import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 import { cn } from '@/lib/utils';
+import { itineraries } from '@/data/itineraires';
 
 const MapSection = () => {
   const { ref, isVisible } = useScrollAnimation<HTMLElement>();
+  const { isMapConfigured } = useMap();
+  
+  // Prepare sample locations for the map preview
+  const preparePreviewLocations = () => {
+    return itineraries.slice(0, 5).map(itinerary => {
+      // For demo, generate random coordinates near Corsica if not available
+      const lat = itinerary.latitude || 41.8 + Math.random() * 0.8;
+      const lng = itinerary.longitude || 8.7 + Math.random() * 1.0;
+      
+      return {
+        id: itinerary.id,
+        title: itinerary.title,
+        latitude: lat,
+        longitude: lng,
+        type: 'itinerary' as const,
+        description: `${itinerary.distance} km - ${itinerary.duration}`
+      };
+    });
+  };
   
   return (
     <section 
@@ -24,8 +46,16 @@ const MapSection = () => {
           </p>
         </div>
 
-        <div className="mb-8">
-          <MapPlaceholder />
+        <div className="mb-8 h-[400px]">
+          {isMapConfigured ? (
+            <MapBox 
+              locations={preparePreviewLocations()}
+              height="400px"
+              interactive={false}
+            />
+          ) : (
+            <MapPlaceholder />
+          )}
         </div>
 
         <div className="text-center">

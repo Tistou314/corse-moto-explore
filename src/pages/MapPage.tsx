@@ -1,11 +1,16 @@
+
 import { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { MapPin, Layers, Filter, Download } from 'lucide-react';
+import { Layers, Filter, Download, Search } from 'lucide-react';
 import { itineraries } from '@/data/itineraires';
+import { accommodations } from '@/data/accommodations';
+import { useMap } from '@/contexts/MapContext';
+import MapBox from '@/components/map/MapBox';
+import MapTokenInput from '@/components/map/MapTokenInput';
 
 const getPageMetadata = () => {
   return {
@@ -15,9 +20,64 @@ const getPageMetadata = () => {
 };
 
 const MapPage = () => {
-  const [mapApiKey, setMapApiKey] = useState('');
-  const [showApiInput, setShowApiInput] = useState(true);
+  const { isMapConfigured } = useMap();
   const metadata = getPageMetadata();
+  const [activeFilter, setActiveFilter] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  // Prepare map data from itineraries and accommodations
+  const prepareMapLocations = () => {
+    const locations = [];
+
+    // Add itineraries with coordinates (assuming they have lat/long in the data)
+    // In a real app, you would ensure these coordinates exist in your data
+    for (const itinerary of itineraries) {
+      // For demo, generate random coordinates near Corsica if not available
+      const lat = itinerary.latitude || 41.8 + Math.random() * 0.8;
+      const lng = itinerary.longitude || 8.7 + Math.random() * 1.0;
+      
+      locations.push({
+        id: itinerary.id,
+        title: itinerary.title,
+        latitude: lat,
+        longitude: lng,
+        type: 'itinerary' as const,
+        description: `${itinerary.distance} km - ${itinerary.duration} - ${itinerary.difficulty}`
+      });
+    }
+
+    // Add accommodations
+    for (const accommodation of accommodations) {
+      // For demo, generate random coordinates near Corsica if not available
+      const lat = accommodation.latitude || 41.9 + Math.random() * 0.6;
+      const lng = accommodation.longitude || 9.0 + Math.random() * 0.7;
+      
+      locations.push({
+        id: accommodation.id,
+        title: accommodation.name,
+        latitude: lat,
+        longitude: lng,
+        type: 'accommodation' as const,
+        description: accommodation.location
+      });
+    }
+
+    return locations;
+  };
+
+  // Filter locations based on active filter and search term
+  const filteredLocations = () => {
+    const locations = prepareMapLocations();
+    
+    return locations.filter(location => {
+      const matchesFilter = !activeFilter || location.type === activeFilter;
+      const matchesSearch = !searchTerm || 
+        location.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (location.description && location.description.toLowerCase().includes(searchTerm.toLowerCase()));
+      
+      return matchesFilter && matchesSearch;
+    });
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -38,102 +98,68 @@ const MapPage = () => {
             </p>
           </div>
 
-          {showApiInput ? (
-            <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-sm mb-8">
-              <h2 className="text-xl font-bold mb-4">Configuration de la carte</h2>
-              <p className="text-muted-foreground mb-4">
-                Pour utiliser la carte interactive, vous avez besoin d'une clé API Mapbox. 
-                Vous pouvez en obtenir une gratuitement sur <a href="https://mapbox.com" target="_blank" rel="noopener noreferrer" className="text-corsica-blue hover:underline">mapbox.com</a>.
-              </p>
-              <div className="space-y-4">
-                <div>
-                  <label htmlFor="mapApiKey" className="block text-sm font-medium mb-1">
-                    Clé API Mapbox
-                  </label>
-                  <Input
-                    id="mapApiKey"
-                    type="text"
-                    value={mapApiKey}
-                    onChange={(e) => setMapApiKey(e.target.value)}
-                    placeholder="pk.eyJ1Ijoi..."
+          {!isMapConfigured ? (
+            <MapTokenInput />
+          ) : (
+            <>
+              <div className="mb-6 bg-white p-4 rounded-lg shadow-sm">
+                <div className="flex flex-col md:flex-row justify-between gap-4">
+                  <div className="flex gap-2 flex-wrap">
+                    <Button 
+                      variant={!activeFilter ? "default" : "outline"} 
+                      size="sm" 
+                      onClick={() => setActiveFilter(null)}
+                      className={!activeFilter ? "bg-corsica-blue hover:bg-corsica-blue/90" : ""}
+                    >
+                      Tout
+                    </Button>
+                    <Button 
+                      variant={activeFilter === 'itinerary' ? "default" : "outline"} 
+                      size="sm" 
+                      onClick={() => setActiveFilter('itinerary')}
+                      className={activeFilter === 'itinerary' ? "bg-blue-600 hover:bg-blue-700" : ""}
+                    >
+                      Itinéraires
+                    </Button>
+                    <Button 
+                      variant={activeFilter === 'accommodation' ? "default" : "outline"} 
+                      size="sm" 
+                      onClick={() => setActiveFilter('accommodation')}
+                      className={activeFilter === 'accommodation' ? "bg-green-600 hover:bg-green-700" : ""}
+                    >
+                      Hébergements
+                    </Button>
+                    <Button 
+                      variant={activeFilter === 'pointOfInterest' ? "default" : "outline"} 
+                      size="sm" 
+                      onClick={() => setActiveFilter('pointOfInterest')}
+                      className={activeFilter === 'pointOfInterest' ? "bg-red-600 hover:bg-red-700" : ""}
+                    >
+                      Points d'intérêt
+                    </Button>
+                  </div>
+                  <div className="relative flex items-center w-full md:w-auto">
+                    <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                    <Input
+                      placeholder="Rechercher..."
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="pl-8 w-full md:w-[200px]"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Map Container */}
+              <div className="bg-white rounded-lg shadow-sm p-4 mb-8">
+                <div className="map-container">
+                  <MapBox 
+                    locations={filteredLocations()} 
+                    height="600px"
                   />
                 </div>
-                <Button 
-                  className="w-full bg-corsica-blue hover:bg-corsica-blue/90"
-                  onClick={() => setShowApiInput(false)}
-                  disabled={!mapApiKey}
-                >
-                  Configurer la carte
-                </Button>
-                <p className="text-xs text-muted-foreground">
-                  Votre clé API est stockée uniquement dans votre navigateur et n'est jamais partagée.
-                </p>
               </div>
-            </div>
-          ) : (
-            <div className="mb-6 bg-white p-4 rounded-lg shadow-sm">
-              <div className="flex flex-col md:flex-row justify-between gap-4">
-                <div className="flex gap-2">
-                  <Button variant="outline" size="sm" className="flex items-center gap-1">
-                    <Layers className="w-4 h-4" />
-                    <span>Layers</span>
-                  </Button>
-                  <Button variant="outline" size="sm" className="flex items-center gap-1">
-                    <Filter className="w-4 h-4" />
-                    <span>Filtres</span>
-                  </Button>
-                  <Button variant="outline" size="sm" className="flex items-center gap-1">
-                    <Download className="w-4 h-4" />
-                    <span>Export</span>
-                  </Button>
-                </div>
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
-                  className="text-corsica-red"
-                  onClick={() => setShowApiInput(true)}
-                >
-                  Modifier la clé API
-                </Button>
-              </div>
-            </div>
-          )}
-
-          {/* Map Container */}
-          {!showApiInput ? (
-            <div className="bg-white rounded-lg shadow-sm p-4 mb-8">
-              <div className="map-container bg-corsica-light flex items-center justify-center border border-dashed border-gray-300">
-                <div className="text-center p-6">
-                  <MapPin className="w-12 h-12 text-corsica-slate mx-auto mb-4" />
-                  <h3 className="text-xl font-medium mb-2">Carte en cours de chargement</h3>
-                  <p className="text-muted-foreground max-w-md mx-auto mb-4">
-                    La carte interactive s'afficherait ici avec votre clé API. 
-                    Dans cette version de démonstration, nous utilisons un placeholder.
-                  </p>
-                  <Button 
-                    variant="outline" 
-                    className="bg-white"
-                    onClick={() => alert("Cette fonctionnalité sera implémentée ultérieurement.")}
-                  >
-                    Charger la carte
-                  </Button>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-              <h2 className="text-xl font-bold mb-4">À propos de la carte interactive</h2>
-              <p className="text-muted-foreground mb-4">
-                Une fois configurée, la carte interactive vous permettra de :
-              </p>
-              <ul className="list-disc pl-5 space-y-2 text-muted-foreground mb-4">
-                <li>Visualiser tous les itinéraires moto en Corse</li>
-                <li>Filtrer par type de route, difficulté, et durée</li>
-                <li>Explorer les points d'intérêt (panoramas, plages, sites culturels)</li>
-                <li>Localiser les stations-service et ateliers moto</li>
-                <li>Exporter les tracés pour votre GPS</li>
-              </ul>
-            </div>
+            </>
           )}
 
           {/* Itineraries Table */}
