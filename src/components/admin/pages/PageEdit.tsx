@@ -15,7 +15,8 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { ArrowLeft, Save } from "lucide-react";
+import { ArrowLeft, Save, AlertCircle } from "lucide-react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 interface Page {
   id: string;
@@ -25,6 +26,7 @@ interface Page {
   metaTitle: string;
   metaDescription: string;
   lastModified: string;
+  component?: string;
 }
 
 // Simuler des données de pages
@@ -45,7 +47,28 @@ const pagesData: Page[] = [
     content: "Contenu de la page itinéraires...",
     metaTitle: "Itinéraires moto en Corse | Moto en Corse",
     metaDescription: "Les meilleurs itinéraires à moto en Corse : routes côtières, cols de montagne et circuits emblématiques.",
-    lastModified: "02/04/2024"
+    lastModified: "02/04/2024",
+    component: "ItinerairesPage"
+  },
+  { 
+    id: "3", 
+    title: "Guide Pratique", 
+    slug: "/guide", 
+    content: "Contenu du guide pratique...",
+    metaTitle: "Guide Pratique | Moto en Corse",
+    metaDescription: "Conseils, astuces et informations essentielles pour préparer et profiter pleinement de votre voyage à moto en Corse.",
+    lastModified: "03/04/2024",
+    component: "GuidePratiquePage"
+  },
+  { 
+    id: "4", 
+    title: "Carte", 
+    slug: "/carte", 
+    content: "Contenu de la page carte...",
+    metaTitle: "Carte Interactive | Moto en Corse",
+    metaDescription: "Explorez les itinéraires et points d'intérêt pour votre aventure moto en Corse.",
+    lastModified: "01/04/2024",
+    component: "MapPage"
   },
   // Autres pages...
 ];
@@ -63,6 +86,7 @@ const PageEdit = () => {
   const navigate = useNavigate();
   const [page, setPage] = useState<Page | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [hasComponent, setHasComponent] = useState(false);
   
   // Initialiser le formulaire
   const form = useForm<FormData>({
@@ -81,6 +105,7 @@ const PageEdit = () => {
       const foundPage = pagesData.find(page => page.id === id);
       if (foundPage) {
         setPage(foundPage);
+        setHasComponent(!!foundPage.component);
         form.reset({
           title: foundPage.title,
           slug: foundPage.slug,
@@ -127,6 +152,16 @@ const PageEdit = () => {
         </Button>
         <h1 className="text-2xl font-bold tracking-tight">Modifier la page</h1>
       </div>
+      
+      {hasComponent && (
+        <Alert>
+          <AlertCircle className="h-4 w-4" />
+          <AlertDescription>
+            Cette page utilise un composant React dédié ({page?.component}). 
+            Certaines modifications pourraient nécessiter des ajustements dans le code source.
+          </AlertDescription>
+        </Alert>
+      )}
       
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -209,9 +244,15 @@ const PageEdit = () => {
                       {...field} 
                     />
                   </FormControl>
-                  <FormDescription>
-                    Utilisez un format compatible avec votre système de rendu
-                  </FormDescription>
+                  {hasComponent ? (
+                    <FormDescription>
+                      Note: Cette page utilise un composant React dédié. Le contenu textuel peut être partiellement appliqué.
+                    </FormDescription>
+                  ) : (
+                    <FormDescription>
+                      Utilisez un format compatible avec votre système de rendu
+                    </FormDescription>
+                  )}
                   <FormMessage />
                 </FormItem>
               )}

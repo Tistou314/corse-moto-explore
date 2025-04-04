@@ -1,12 +1,29 @@
 
+import { Helmet } from "react-helmet";
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
 import GuideTabs from '@/components/guide/GuideTabs';
 
+// Cette fonction simule la récupération des métadonnées depuis l'administration
+// Dans une app réelle, ces données viendraient d'une API
+const getPageMetadata = () => {
+  return {
+    title: "Guide Pratique | Moto en Corse",
+    description: "Conseils, astuces et informations essentielles pour préparer et profiter pleinement de votre voyage à moto en Corse."
+  };
+};
+
 const GuidePratiquePage = () => {
+  const metadata = getPageMetadata();
+
   return (
     <div className="min-h-screen flex flex-col">
+      <Helmet>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+      </Helmet>
+      
       <Navbar />
       
       {/* Hero Section */}

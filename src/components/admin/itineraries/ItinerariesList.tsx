@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/dialog";
 import { itineraries } from "@/data/itineraires";
 import { Badge } from "@/components/ui/badge";
+import { toast } from "sonner";
 
 const ItinerariesList = () => {
   const [itinerariesList, setItinerariesList] = useState(itineraries);
@@ -52,6 +53,7 @@ const ItinerariesList = () => {
       setItinerariesList(itinerariesList.filter(itin => itin.id !== itineraryToDelete.id));
       setDeleteDialog(false);
       setItineraryToDelete(null);
+      toast.success(`L'itinéraire "${itineraryToDelete.title}" a été supprimé.`);
     }
   };
 

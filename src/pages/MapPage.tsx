@@ -1,18 +1,31 @@
-
+import { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { useState } from 'react';
 import { MapPin, Layers, Filter, Download } from 'lucide-react';
 import { itineraries } from '@/data/itineraires';
+
+const getPageMetadata = () => {
+  return {
+    title: "Carte Interactive | Moto en Corse",
+    description: "Explorez les itinéraires et points d'intérêt pour votre aventure moto en Corse."
+  };
+};
 
 const MapPage = () => {
   const [mapApiKey, setMapApiKey] = useState('');
   const [showApiInput, setShowApiInput] = useState(true);
+  const metadata = getPageMetadata();
 
   return (
     <div className="min-h-screen flex flex-col">
+      <Helmet>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+      </Helmet>
+      
       <Navbar />
       
       {/* Main Content */}
