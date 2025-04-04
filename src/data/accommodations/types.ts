@@ -1,4 +1,6 @@
 
+import { Car, Home, Wrench, Bike, MapPin, Utensils, Wifi, ShieldCheck } from 'lucide-react';
+
 export interface MapLocation {
   id: string;
   title: string;
@@ -121,3 +123,4 @@ export const bikerFeatures = [
     icon: Bike,
   },
 ];
+
