@@ -88,7 +88,7 @@ export const formatContent = (content: string): string => {
       if (match) {
         const [_, buttonText, buttonUrl] = match;
         console.log("Found CTA button:", buttonText, buttonUrl);
-        formattedContent += `<div class="my-6 flex justify-center">
+        formattedContent += `<div class="my-8 flex justify-center">
           <a href="${buttonUrl}" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-corsica-blue rounded-md shadow-sm hover:bg-corsica-blue/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-corsica-blue transition-colors">
             ${buttonText}
             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -105,13 +105,13 @@ export const formatContent = (content: string): string => {
         inParagraph = false;
       }
       if (!inList) {
-        formattedContent += '<ul class="my-4">\n';
+        formattedContent += '<ul class="my-6 space-y-2">\n';
         inList = true;
       }
       // Apply formatting to list item content
       let itemContent = line.substring(2);
       itemContent = formatInlineStyles(itemContent);
-      formattedContent += `<li class="ml-6 list-disc my-1">${itemContent}</li>\n`;
+      formattedContent += `<li class="ml-6 list-disc">${itemContent}</li>\n`;
     } 
     // Regular paragraph text
     else {
