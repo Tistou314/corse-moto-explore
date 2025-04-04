@@ -8,8 +8,10 @@ import FeatureCard from '@/components/FeatureCard';
 import ItineraryCard from '@/components/ItineraryCard';
 import BlogPostCard from '@/components/BlogPostCard';
 import MapPlaceholder from '@/components/MapPlaceholder';
+import AccommodationCard from '@/components/AccommodationCard';
 import { itineraries } from '@/data/itineraires';
 import { blogPosts } from '@/data/blogPosts';
+import { accommodations } from '@/data/accommodations';
 
 const Index = () => {
   // Get featured itineraries (first 3)
@@ -17,6 +19,9 @@ const Index = () => {
   
   // Get recent blog posts (first 3)
   const recentPosts = blogPosts.slice(0, 3);
+  
+  // Get featured accommodations (first 3)
+  const featuredAccommodations = accommodations.slice(0, 3);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -161,6 +166,34 @@ const Index = () => {
                 date={post.date}
                 author={post.author}
                 category={post.category}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Accommodations Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center mb-12">
+            <div>
+              <h2 className="text-3xl font-bold mb-2">Hébergements Motards-Friendly</h2>
+              <p className="text-muted-foreground">
+                Des établissements sélectionnés avec soin pour accueillir les motards
+              </p>
+            </div>
+            <Link to="/hebergements">
+              <Button variant="outline" className="mt-4 md:mt-0">
+                Voir tous les hébergements
+              </Button>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredAccommodations.map((accommodation) => (
+              <AccommodationCard 
+                key={accommodation.id}
+                accommodation={accommodation}
               />
             ))}
           </div>
