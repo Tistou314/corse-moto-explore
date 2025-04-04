@@ -8,6 +8,7 @@ import { ghisonacciaAccommodations } from './ghisonaccia';
 import { portoAccommodations } from './porto';
 import { portovecchioAccommodations } from './portovecchio';
 import { proprianoAccommodations } from './propriano';
+import { campingAccommodations } from './camping';
 
 // Combine all accommodations into a single array
 export const accommodations: Accommodation[] = [
@@ -18,7 +19,8 @@ export const accommodations: Accommodation[] = [
   ...ghisonacciaAccommodations,
   ...portoAccommodations,
   ...portovecchioAccommodations,
-  ...proprianoAccommodations
+  ...proprianoAccommodations,
+  ...campingAccommodations
 ];
 
 export { regions, accommodationTypes, bikerFeatures };
