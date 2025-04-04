@@ -628,8 +628,8 @@ export const itineraries: Itinerary[] = [
       { 
         name: 'Tizzano', 
         description: 'Petit port de pêche pittoresque',
-        latitude: 41.5607, 
-        longitude: 8.8343 
+        latitude: 41.5419, 
+        longitude: 8.8748 
       },
       { 
         name: 'Roccapina', 
