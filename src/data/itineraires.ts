@@ -80,5 +80,54 @@ export const itineraries: Itinerary[] = [
     endPoint: 'Solenzara',
     elevation: '0-1218m',
     roadType: 'Route de montagne sinueuse'
+  },
+  // Nouveaux itinéraires basés sur l'image partagée
+  {
+    id: 'tour-corse-rt78',
+    title: 'RT78 - Tour de la Corse',
+    description: 'Un voyage complet autour de l\'île de beauté, mêlant paysages côtiers et montagneux, idéal pour découvrir toute la diversité corse.',
+    fullDescription: 'Le tour complet de la Corse est une aventure inoubliable pour tout motard. Cette boucle de près de 1000 km vous fait découvrir tous les visages de l\'île : côtes sauvages, montagnes majestueuses, forêts denses et villages typiques. Au départ d\'Ajaccio, vous longerez la côte ouest avec ses falaises spectaculaires et ses criques isolées, avant de traverser le désert des Agriates au nord. Le Cap Corse vous offre ensuite une route en corniche à couper le souffle, avant de redescendre par la côte est, plus douce, avec ses longues plages. L\'intérieur des terres vous réserve le spectacle grandiose des montagnes corses, avec des cols mythiques comme celui de Vizzavona ou de Vergio. Prévoyez plusieurs jours pour profiter pleinement de ce périple et vous imprégner de l\'atmosphère unique de chaque région traversée.',
+    image: 'https://cdn.pixabay.com/photo/2016/11/14/03/35/corsica-1822628_1280.jpg',
+    duration: '22h11 (plusieurs jours)',
+    distance: '933 km',
+    difficulty: 'difficile',
+    region: 'Tour de Corse',
+    pointsOfInterest: ['Calanche de Piana', 'Désert des Agriates', 'Cap Corse', 'Col de Bavella', 'Bonifacio'],
+    startPoint: 'Ajaccio',
+    endPoint: 'Ajaccio',
+    elevation: '0-1500m',
+    roadType: 'Routes variées (côtières, montagneuses)'
+  },
+  {
+    id: 'littoral-sud',
+    title: 'Le littoral sud de la Corse',
+    description: 'Un itinéraire côtier qui vous mènera à travers les plus belles plages du sud de l\'île et les falaises spectaculaires de Bonifacio.',
+    fullDescription: 'Le littoral sud de la Corse offre un contraste saisissant entre plages paradisiaques aux eaux cristallines et falaises calcaires spectaculaires. Cet itinéraire longe la côte sud en partant d\'Ajaccio, en passant par les golfs de Propriano et de Porto-Vecchio, pour atteindre la cité médiévale de Bonifacio perchée sur ses impressionnantes falaises blanches. Vous découvrirez des joyaux comme la plage de Palombaggia, régulièrement classée parmi les plus belles plages d\'Europe, ou les criques isolées de Roccapina avec son célèbre rocher en forme de lion. La route offre constamment des vues imprenables sur la mer et plusieurs détours permettent d\'accéder à des plages et criques secrètes. À Bonifacio, prenez le temps de visiter la vieille ville et d\'admirer la vue sur les bouches de Bonifacio qui séparent la Corse de la Sardaigne.',
+    image: 'https://cdn.pixabay.com/photo/2020/02/01/22/10/beach-4811726_1280.jpg',
+    duration: '8h08',
+    distance: '435 km',
+    difficulty: 'moyen',
+    region: 'Sud',
+    pointsOfInterest: ['Plage de Palombaggia', 'Bonifacio', 'Rocher du Lion de Roccapina', 'Golfe de Porto-Vecchio'],
+    startPoint: 'Ajaccio',
+    endPoint: 'Bonifacio',
+    elevation: '0-200m',
+    roadType: 'Route côtière sinueuse'
+  },
+  {
+    id: 'rt-n24-immersion',
+    title: 'RT n°24 Corse - L\'immersion secrète',
+    description: 'Un parcours à travers le cœur sauvage et préservé de la Corse, loin des sentiers touristiques, offrant une véritable immersion dans l\'âme de l\'île.',
+    fullDescription: 'La Route Territoriale 24 (RT24) traverse le centre de la Corse et offre une immersion totale dans les paysages les plus authentiques et préservés de l\'île. Loin des zones touristiques côtières, cet itinéraire vous emmène à travers des villages de montagne séculaires où le temps semble s\'être arrêté, des forêts de châtaigniers centenaires et des vallées profondes où coulent des rivières aux eaux cristallines. Vous traverserez la région du Niolu, berceau de la résistance corse, et pourrez admirer les plus hauts sommets de l\'île comme le Monte Cinto. La route est relativement étroite mais offre une expérience de conduite unique avec ses nombreux virages et panoramas à couper le souffle. Prenez le temps de vous arrêter dans les petites auberges de montagne pour déguster la cuisine traditionnelle corse et échanger avec les habitants, gardiens d\'un patrimoine culturel riche.',
+    image: 'https://cdn.pixabay.com/photo/2014/11/01/18/46/corsica-513495_1280.jpg',
+    duration: '8h24',
+    distance: '317 km',
+    difficulty: 'moyen',
+    region: 'Centre',
+    pointsOfInterest: ['Forêt de Vizzavona', 'Gorges de la Restonica', 'Lac de Nino', 'Village de Corte'],
+    startPoint: 'Ajaccio',
+    endPoint: 'Bastia',
+    elevation: '200-1500m',
+    roadType: 'Route de montagne sinueuse'
   }
 ];
