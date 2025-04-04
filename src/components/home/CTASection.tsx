@@ -1,10 +1,20 @@
 
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
+import { cn } from '@/lib/utils';
 
 const CTASection = () => {
+  const { ref, isVisible } = useScrollAnimation<HTMLElement>();
+  
   return (
-    <section className="py-20 bg-corsica-blue text-white">
+    <section 
+      ref={ref}
+      className={cn(
+        "py-20 bg-corsica-blue text-white transition-all duration-700 ease-in-out",
+        isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+      )}
+    >
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-3xl font-bold mb-4">Prêt pour l'aventure ?</h2>
         <p className="text-xl mb-8 max-w-2xl mx-auto">
@@ -13,12 +23,27 @@ const CTASection = () => {
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Link to="/itineraires">
-            <Button size="lg" className="bg-white text-corsica-blue hover:bg-corsica-light">
+            <Button 
+              size="lg" 
+              className={cn(
+                "bg-white text-corsica-blue hover:bg-corsica-light transition-all duration-300",
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              )}
+              style={{ transitionDelay: "100ms" }}
+            >
               Explorer les itinéraires
             </Button>
           </Link>
           <Link to="/contact">
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className={cn(
+                "border-white text-white hover:bg-white/10 transition-all duration-300",
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              )}
+              style={{ transitionDelay: "200ms" }}
+            >
               Nous contacter
             </Button>
           </Link>

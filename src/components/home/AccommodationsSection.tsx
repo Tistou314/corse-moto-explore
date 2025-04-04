@@ -3,14 +3,24 @@ import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import AccommodationCard from '@/components/AccommodationCard';
 import { Accommodation } from '@/data/accommodations';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
+import { cn } from '@/lib/utils';
 
 interface AccommodationsSectionProps {
   accommodations: Accommodation[];
 }
 
 const AccommodationsSection = ({ accommodations }: AccommodationsSectionProps) => {
+  const { ref, isVisible } = useScrollAnimation<HTMLElement>();
+  
   return (
-    <section className="py-16 bg-white">
+    <section 
+      ref={ref}
+      className={cn(
+        "py-16 bg-white transition-all duration-700 ease-in-out",
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      )}
+    >
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center mb-12">
           <div>
@@ -27,11 +37,23 @@ const AccommodationsSection = ({ accommodations }: AccommodationsSectionProps) =
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {accommodations.map((accommodation) => (
-            <AccommodationCard 
+          {accommodations.map((accommodation, index) => (
+            <div
               key={accommodation.id}
-              accommodation={accommodation}
-            />
+              className={cn(
+                "transition-all duration-500 ease-in-out",
+                isVisible 
+                  ? "opacity-100 translate-y-0" 
+                  : "opacity-0 translate-y-10"
+              )}
+              style={{ 
+                transitionDelay: `${index * 100}ms` 
+              }}
+            >
+              <AccommodationCard 
+                accommodation={accommodation}
+              />
+            </div>
           ))}
         </div>
       </div>

@@ -1,10 +1,20 @@
 
 import { Bike, Map, Info, Compass, Clock, Shield } from 'lucide-react';
 import FeatureCard from '@/components/FeatureCard';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
+import { cn } from '@/lib/utils';
 
 const FeaturesSection = () => {
+  const { ref, isVisible } = useScrollAnimation<HTMLElement>();
+  
   return (
-    <section className="py-16 bg-white">
+    <section 
+      ref={ref}
+      className={cn(
+        "py-16 bg-white transition-opacity duration-700 ease-in-out",
+        isVisible ? "opacity-100" : "opacity-0"
+      )}
+    >
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">Tout ce dont vous avez besoin pour votre aventure</h2>

@@ -2,10 +2,20 @@
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import MapPlaceholder from '@/components/MapPlaceholder';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
+import { cn } from '@/lib/utils';
 
 const MapSection = () => {
+  const { ref, isVisible } = useScrollAnimation<HTMLElement>();
+  
   return (
-    <section className="py-16 bg-white">
+    <section 
+      ref={ref}
+      className={cn(
+        "py-16 bg-white transition-all duration-700 ease-in-out",
+        isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+      )}
+    >
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-2">Carte des itinéraires</h2>
