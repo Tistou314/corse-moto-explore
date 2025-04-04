@@ -15,13 +15,31 @@ export const useMapClustering = (
 
     console.log('Setting up clustering with locations:', locations.length);
 
+    // Check if the map has the source before trying to remove
+    const safelyRemoveLayersAndSource = () => {
+      if (!map.current) return;
+      
+      // Check if map has the layers before removing them
+      if (map.current.getLayer('markers-clusters')) {
+        map.current.removeLayer('markers-clusters');
+      }
+      
+      if (map.current.getLayer('markers-cluster-count')) {
+        map.current.removeLayer('markers-cluster-count');
+      }
+      
+      if (map.current.getLayer('unclustered-point')) {
+        map.current.removeLayer('unclustered-point');
+      }
+      
+      // Check if map has the source before removing it
+      if (map.current.getSource('markers-source')) {
+        map.current.removeSource('markers-source');
+      }
+    };
+
     // Remove existing layers and source if they exist
-    if (map.current.getSource('markers-source')) {
-      map.current.removeLayer('markers-clusters');
-      map.current.removeLayer('markers-cluster-count');
-      map.current.removeLayer('unclustered-point');
-      map.current.removeSource('markers-source');
-    }
+    safelyRemoveLayersAndSource();
 
     // Filter valid locations
     const validLocations = locations.filter(loc => 
@@ -49,12 +67,7 @@ export const useMapClustering = (
     // Cleanup function
     return () => {
       if (map.current) {
-        if (map.current.getSource('markers-source')) {
-          map.current.removeLayer('markers-clusters');
-          map.current.removeLayer('markers-cluster-count');
-          map.current.removeLayer('unclustered-point');
-          map.current.removeSource('markers-source');
-        }
+        safelyRemoveLayersAndSource();
       }
     };
   }, [map, locations, onMarkerClick, enabled]);
