@@ -46,17 +46,17 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   
   el.appendChild(iconElement);
 
-  // Add hover effects
+  // Add hover effects - but only for the shadow, not position
   el.addEventListener('mouseenter', () => {
     el.style.boxShadow = '0 4px 8px rgba(0,0,0,0.5)';
-    el.style.transform = 'scale(1.1)';
+    // Remove the transform effect
   });
   
   el.addEventListener('mouseleave', () => {
     el.style.boxShadow = location.type === 'pointOfInterest' && location.isPrimary
       ? '0 3px 8px rgba(0,0,0,0.4)'
       : '0 2px 6px rgba(0,0,0,0.3)';
-    el.style.transform = 'scale(1)';
+    // Remove the transform effect
   });
 
   // Add pulse effect for primary POIs
