@@ -24,8 +24,15 @@ export const useMapMarkers = (
     const poiPoints = locations.filter(loc => loc.type === 'pointOfInterest');
     const accommodationPoints = locations.filter(loc => loc.type === 'accommodation');
 
-    // Add markers
-    [...itineraryPoints, ...poiPoints, ...accommodationPoints].forEach(location => {
+    // Sort POIs so that primary ones come last (will be drawn on top)
+    const sortedPois = [...poiPoints].sort((a, b) => {
+      if (a.isPrimary && !b.isPrimary) return 1;
+      if (!a.isPrimary && b.isPrimary) return -1;
+      return 0;
+    });
+
+    // Add markers in order: itinerary points, accommodations, and POIs last so they're on top
+    [...itineraryPoints, ...accommodationPoints, ...sortedPois].forEach(location => {
       const marker = createMapMarker({
         location,
         map: map.current!,

@@ -16,6 +16,7 @@ interface PointOfInterest {
   image?: string;
   externalUrl?: string;
   coordinates?: string;
+  address?: string;
 }
 
 interface ItineraryMapProps {
@@ -42,7 +43,7 @@ const ItineraryMap = ({ itinerary }: ItineraryMapProps) => {
   const prepareMapLocations = (itineraryData: any): MapLocation[] => {
     if (!itineraryData) return [];
 
-    const locations = [];
+    const locations: MapLocation[] = [];
 
     // Add the main itinerary point if coordinates are available
     if (itineraryData.latitude && itineraryData.longitude) {
@@ -52,7 +53,8 @@ const ItineraryMap = ({ itinerary }: ItineraryMapProps) => {
         latitude: itineraryData.latitude,
         longitude: itineraryData.longitude,
         type: 'itinerary' as const,
-        description: 'Point de départ'
+        description: 'Point de départ',
+        isPrimary: true
       });
     }
 
@@ -70,19 +72,22 @@ const ItineraryMap = ({ itinerary }: ItineraryMapProps) => {
         latitude: firstPoi.latitude,
         longitude: firstPoi.longitude,
         type: 'itinerary' as const,
-        description: 'Point de départ'
+        description: 'Point de départ',
+        isPrimary: true
       });
     }
 
     // Add points of interest if available
     if (itineraryData.pointsOfInterest && Array.isArray(itineraryData.pointsOfInterest)) {
       itineraryData.pointsOfInterest.forEach((poi: any, index: number) => {
-        // Check if it's a string or an object
+        // Handle string POIs (lookup in predefined POI data if available)
         if (typeof poi === 'string') {
-          // For now, skip points that are just strings without coordinates
+          // For this example, we'll skip string POIs if no data is available
+          // In a real app, you might have a lookup system to get coordinates
           return;
         }
         
+        // Handle object POIs with coordinates
         if (poi.latitude && poi.longitude) {
           locations.push({
             id: `poi-${itineraryData.id}-${index}`,
@@ -93,7 +98,9 @@ const ItineraryMap = ({ itinerary }: ItineraryMapProps) => {
             description: poi.description || `Point d'intérêt sur l'itinéraire "${itineraryData.title}"`,
             image: poi.image || undefined,
             externalUrl: poi.externalUrl || undefined,
-            coordinates: poi.coordinates || `${poi.latitude.toFixed(4)}, ${poi.longitude.toFixed(4)}`
+            coordinates: poi.coordinates || `${poi.latitude.toFixed(4)}, ${poi.longitude.toFixed(4)}`,
+            address: poi.address || undefined,
+            isPrimary: index < 3 // Make the first few POIs primary for visual emphasis
           });
         }
       });

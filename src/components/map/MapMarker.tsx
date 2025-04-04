@@ -40,6 +40,13 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     // Make POIs a bit more prominent
     el.style.transform = 'scale(1.1)';
     el.style.boxShadow = '0 2px 6px rgba(0,0,0,0.3)';
+    
+    // Make primary POIs even more prominent
+    if (location.isPrimary) {
+      el.style.transform = 'scale(1.2)';
+      el.style.boxShadow = '0 3px 8px rgba(0,0,0,0.4)';
+      el.style.border = '2px solid white';
+    }
   }
   
   el.appendChild(iconElement);
@@ -76,6 +83,12 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     document.head.appendChild(style);
     
     el.insertBefore(pulseEffect, el.firstChild);
+  }
+
+  // Add title attribute for hover effect
+  el.title = location.title;
+  if (location.description) {
+    el.title += ` - ${location.description.substring(0, 50)}${location.description.length > 50 ? '...' : ''}`;
   }
 
   const marker = new mapboxgl.Marker(el)

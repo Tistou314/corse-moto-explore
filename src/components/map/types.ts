@@ -9,6 +9,8 @@ export interface MapLocation {
   image?: string;
   externalUrl?: string;
   coordinates?: string;
+  address?: string;
+  isPrimary?: boolean;
 }
 
 export interface MapBoxProps {

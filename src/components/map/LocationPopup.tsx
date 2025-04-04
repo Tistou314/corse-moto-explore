@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Info, MapPin, Navigation } from "lucide-react";
+import { ExternalLink, Info, MapPin, Navigation } from "lucide-react";
 import { MapLocation } from "./types";
 
 interface LocationPopupProps {
@@ -10,6 +10,11 @@ interface LocationPopupProps {
 }
 
 const LocationPopup = ({ location, onClose }: LocationPopupProps) => {
+  // Format coordinates for display if not already formatted
+  const displayCoordinates = location.coordinates || 
+    (location.latitude && location.longitude ? 
+      `${location.latitude.toFixed(4)}, ${location.longitude.toFixed(4)}` : undefined);
+      
   return (
     <Card className="absolute bottom-4 left-4 p-4 max-w-sm bg-white shadow-lg">
       <div className="flex justify-between items-start">
@@ -53,16 +58,22 @@ const LocationPopup = ({ location, onClose }: LocationPopupProps) => {
               </div>
             )}
             
-            {location.coordinates && (
+            {displayCoordinates && (
               <div className="text-xs text-muted-foreground mt-1">
-                <span>Coordonnées: {location.coordinates}</span>
+                <span>Coordonnées: {displayCoordinates}</span>
+              </div>
+            )}
+            
+            {location.address && (
+              <div className="text-xs text-muted-foreground mt-1">
+                <span>Adresse: {location.address}</span>
               </div>
             )}
             
             {location.externalUrl && (
               <Button size="sm" variant="outline" asChild className="mt-2 w-full">
                 <a href={location.externalUrl} target="_blank" rel="noopener noreferrer">
-                  <Info className="w-3 h-3 mr-1" />
+                  <ExternalLink className="w-3 h-3 mr-1" />
                   Plus d'informations
                 </a>
               </Button>
