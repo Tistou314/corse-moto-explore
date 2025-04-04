@@ -13,16 +13,16 @@ const ItineraryDescription = ({ itinerary }: ItineraryDescriptionProps) => {
   
   return (
     <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-      <h2 className="text-2xl font-bold mb-4 text-corsica-blue">Description de l'itinéraire</h2>
+      <h2 className="text-2xl font-bold mb-6 text-corsica-blue">Description de l'itinéraire</h2>
       
-      {/* Description with rich text formatting */}
+      {/* Description with rich text formatting and increased line height */}
       <div 
-        className="prose prose-lg max-w-none mb-8 prose-headings:text-corsica-blue prose-p:text-gray-700 prose-a:text-corsica-blue"
+        className="prose prose-lg max-w-none mb-10 prose-headings:text-corsica-blue prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-corsica-blue"
         dangerouslySetInnerHTML={{ __html: formattedDescription }}
       />
       
-      {/* Info badges */}
-      <div className="flex flex-wrap gap-3 mb-8">
+      {/* Info badges with more spacing */}
+      <div className="flex flex-wrap gap-4 mb-10">
         <span className="inline-flex items-center px-4 py-2 rounded-full bg-corsica-blue/10 text-corsica-blue text-sm font-medium">
           <MapPin className="w-4 h-4 mr-2" />
           Région: {itinerary.region}
@@ -45,29 +45,29 @@ const ItineraryDescription = ({ itinerary }: ItineraryDescriptionProps) => {
         </span>
       </div>
       
-      {/* Start/End points */}
-      <div className="border-t pt-6">
-        <h3 className="text-xl font-bold mb-5 text-corsica-blue">Points de départ et d'arrivée</h3>
+      {/* Start/End points with more spacing */}
+      <div className="border-t pt-8">
+        <h3 className="text-xl font-bold mb-6 text-corsica-blue">Points de départ et d'arrivée</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-5 border border-green-200">
+          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 border border-green-200">
             <div className="flex items-start">
-              <div className="bg-green-500 rounded-full p-2 mr-3">
+              <div className="bg-green-500 rounded-full p-2 mr-4">
                 <Flag className="w-5 h-5 text-white" />
               </div>
               <div>
-                <h4 className="font-medium text-green-800">Point de départ</h4>
-                <p className="text-green-700 mt-1">{itinerary.startPoint}</p>
+                <h4 className="font-medium text-green-800 mb-2">Point de départ</h4>
+                <p className="text-green-700">{itinerary.startPoint}</p>
               </div>
             </div>
           </div>
-          <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-5 border border-red-200">
+          <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-6 border border-red-200">
             <div className="flex items-start">
-              <div className="bg-red-500 rounded-full p-2 mr-3">
+              <div className="bg-red-500 rounded-full p-2 mr-4">
                 <Flag className="w-5 h-5 text-white" />
               </div>
               <div>
-                <h4 className="font-medium text-red-800">Point d'arrivée</h4>
-                <p className="text-red-700 mt-1">{itinerary.endPoint}</p>
+                <h4 className="font-medium text-red-800 mb-2">Point d'arrivée</h4>
+                <p className="text-red-700">{itinerary.endPoint}</p>
               </div>
             </div>
           </div>
