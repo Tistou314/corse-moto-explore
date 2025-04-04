@@ -7,7 +7,7 @@ import MapPlaceholder from '@/components/MapPlaceholder';
 import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 import { cn } from '@/lib/utils';
 import { itineraries } from '@/data/itineraires';
-import { MapLocation } from '@/components/map/types';
+import { MapLocation, isWithinCorsica } from '@/components/map/types';
 
 const MapSection = () => {
   const { ref, isVisible } = useScrollAnimation<HTMLElement>();
@@ -15,20 +15,23 @@ const MapSection = () => {
   
   // Prepare sample locations for the map preview
   const preparePreviewLocations = () => {
-    return itineraries.slice(0, 5).map(itinerary => {
-      // For demo, generate random coordinates near Corsica if not available
-      const lat = itinerary.latitude || 41.8 + Math.random() * 0.8;
-      const lng = itinerary.longitude || 8.7 + Math.random() * 1.0;
-      
-      return {
-        id: itinerary.id,
-        title: itinerary.title,
-        latitude: lat,
-        longitude: lng,
-        type: 'itinerary' as const,
-        description: `${itinerary.distance} km - ${itinerary.duration}`
-      };
+    const previewLocations: MapLocation[] = [];
+    
+    // Only use itineraries with valid coordinates
+    itineraries.slice(0, 8).forEach(itinerary => {
+      if (itinerary.latitude && itinerary.longitude && isWithinCorsica(itinerary.latitude, itinerary.longitude)) {
+        previewLocations.push({
+          id: itinerary.id,
+          title: itinerary.title,
+          latitude: itinerary.latitude,
+          longitude: itinerary.longitude,
+          type: 'itinerary' as const,
+          description: `${itinerary.distance} km - ${itinerary.duration}`
+        });
+      }
     });
+    
+    return previewLocations;
   };
   
   return (

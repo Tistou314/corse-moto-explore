@@ -30,7 +30,7 @@ const LocationPopup = ({ location, onClose }: LocationPopupProps) => {
 
   const getActionUrl = () => {
     if (location.type === 'accommodation') {
-      return `/hebergement/${location.id}`;
+      return `/hebergements/${location.id}`;
     } else if (location.type === 'itinerary') {
       return `/itineraires/${location.id}`;
     }

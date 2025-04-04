@@ -1,4 +1,3 @@
-
 import { useState, useMemo, useCallback } from 'react';
 import { Helmet } from 'react-helmet';
 import Navbar from '@/components/Navbar';
@@ -11,7 +10,7 @@ import { accommodations } from '@/data/accommodations';
 import { useMap } from '@/contexts/MapContext';
 import MapBox from '@/components/map/MapBox';
 import MapTokenInput from '@/components/map/MapTokenInput';
-import { MapLocation } from '@/components/map/types';
+import { MapLocation, isWithinCorsica } from '@/components/map/types';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
@@ -20,24 +19,6 @@ const getPageMetadata = () => {
     title: "Carte Interactive | Moto en Corse",
     description: "Explorez les itinéraires et points d'intérêt pour votre aventure moto en Corse."
   };
-};
-
-// Corsica bounding box for validating coordinates
-const CORSICA_BOUNDS = {
-  north: 43.03, // Northern limit
-  south: 41.32, // Southern limit
-  east: 9.63,   // Eastern limit
-  west: 8.48    // Western limit
-};
-
-// Function to check if coordinates are within Corsica bounds
-const isWithinCorsica = (lat: number, lng: number): boolean => {
-  return (
-    lat >= CORSICA_BOUNDS.south &&
-    lat <= CORSICA_BOUNDS.north &&
-    lng >= CORSICA_BOUNDS.west &&
-    lng <= CORSICA_BOUNDS.east
-  );
 };
 
 const MapPage = () => {
@@ -73,7 +54,7 @@ const MapPage = () => {
           if (typeof poi === 'object' && poi.latitude && poi.longitude) {
             if (isWithinCorsica(poi.latitude, poi.longitude)) {
               locations.push({
-                id: `${itinerary.id}-poi-${index}`,
+                id: `poi-${itinerary.id}-${index}`,
                 title: poi.name,
                 latitude: poi.latitude,
                 longitude: poi.longitude,
