@@ -1,6 +1,7 @@
 
 import mapboxgl from 'mapbox-gl';
 import { MapLocation } from '../../types';
+import { setupClusterEventHandlers } from './clusterEventHandlers';
 
 // Helper function to setup cluster layers
 export const setupClusterLayers = (
