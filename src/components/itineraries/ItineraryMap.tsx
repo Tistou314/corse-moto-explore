@@ -1,7 +1,6 @@
 
 import { useMap } from '@/contexts/MapContext';
 import MapBox from '@/components/map/MapBox';
-import MapTokenInput from '@/components/map/MapTokenInput';
 import { Button } from "@/components/ui/button";
 import { Download } from 'lucide-react';
 
@@ -64,17 +63,13 @@ const ItineraryMap = ({ itinerary }: ItineraryMapProps) => {
     <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
       <h2 className="text-2xl font-bold mb-4">Carte de l'itinéraire</h2>
       
-      {isMapConfigured ? (
-        <div className="h-[400px] mb-4">
-          <MapBox 
-            locations={prepareMapLocations()}
-            height="400px"
-            zoom={10}
-          />
-        </div>
-      ) : (
-        <MapTokenInput />
-      )}
+      <div className="h-[400px] mb-4">
+        <MapBox 
+          locations={prepareMapLocations()}
+          height="400px"
+          zoom={10}
+        />
+      </div>
       
       <div className="mt-4 flex justify-end">
         <Button variant="outline" className="flex items-center">
