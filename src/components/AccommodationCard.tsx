@@ -3,12 +3,15 @@ import { StarIcon } from "lucide-react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Accommodation } from "@/data/accommodations";
+import { useNavigate } from "react-router-dom";
 
 interface AccommodationCardProps {
   accommodation: Accommodation;
 }
 
 const AccommodationCard = ({ accommodation }: AccommodationCardProps) => {
+  const navigate = useNavigate();
+
   // Map type to color
   const typeColors = {
     hotel: "bg-blue-100 text-blue-800",
@@ -23,8 +26,15 @@ const AccommodationCard = ({ accommodation }: AccommodationCardProps) => {
     camping: "Camping",
   };
 
+  const handleCardClick = () => {
+    navigate(`/hebergements/${accommodation.id}`);
+  };
+
   return (
-    <Card className="overflow-hidden h-full flex flex-col hover:shadow-lg transition-all duration-300">
+    <Card 
+      className="overflow-hidden h-full flex flex-col hover:shadow-lg transition-all duration-300 cursor-pointer" 
+      onClick={handleCardClick}
+    >
       <div className="aspect-video w-full overflow-hidden">
         <img
           src={accommodation.image}

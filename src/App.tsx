@@ -14,6 +14,7 @@ import BlogPostDetailPage from "./pages/BlogPostDetailPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
 import HebergementPage from "./pages/HebergementPage";
+import AccommodationDetailPage from "./pages/AccommodationDetailPage";
 import FAQPage from "./pages/FAQPage";
 import AdminPage from "./pages/AdminPage";
 
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/blog/:id" element={<BlogPostDetailPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/hebergements" element={<HebergementPage />} />
+          <Route path="/hebergements/:id" element={<AccommodationDetailPage />} />
           <Route path="/faq" element={<FAQPage />} />
           <Route path="/admin/*" element={<AdminPage />} />
           <Route path="*" element={<NotFound />} />
