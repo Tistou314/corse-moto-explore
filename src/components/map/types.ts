@@ -20,6 +20,7 @@ export interface MapBoxProps {
   interactive?: boolean;
   height?: string;
   drawRoute?: boolean;
+  enableClustering?: boolean;
 }
 
 // Define marker types and their colors
@@ -29,5 +30,22 @@ export const markerTypes = {
   pointOfInterest: '#ef4444', // red
 };
 
-export const CorsicaCenter: [number, number] = [9.2, 42.2]; // Center of Corsica
+export const CorsicaCenter: [number, number] = [9.03, 42.16]; // Better center of Corsica
 
+// Corsica bounding box for validating coordinates
+export const CORSICA_BOUNDS = {
+  north: 43.03, // Northern limit
+  south: 41.32, // Southern limit
+  east: 9.63,   // Eastern limit
+  west: 8.48    // Western limit
+};
+
+// Function to check if coordinates are within Corsica bounds
+export const isWithinCorsica = (lat: number, lng: number): boolean => {
+  return (
+    lat >= CORSICA_BOUNDS.south &&
+    lat <= CORSICA_BOUNDS.north &&
+    lng >= CORSICA_BOUNDS.west &&
+    lng <= CORSICA_BOUNDS.east
+  );
+};

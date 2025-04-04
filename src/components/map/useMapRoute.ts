@@ -1,7 +1,7 @@
 
 import { useRef, useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
-import { MapLocation } from './types';
+import { MapLocation, isWithinCorsica } from './types';
 
 export const useMapRoute = (
   map: React.MutableRefObject<mapboxgl.Map | null>,
@@ -14,9 +14,11 @@ export const useMapRoute = (
   useEffect(() => {
     if (!map.current || !drawRoute) return;
 
-    // Only use locations with valid coordinates
+    // Only use locations with valid coordinates within Corsica
     const validLocations = locations.filter(
-      loc => typeof loc.latitude === 'number' && typeof loc.longitude === 'number'
+      loc => typeof loc.latitude === 'number' && 
+             typeof loc.longitude === 'number' &&
+             isWithinCorsica(loc.latitude, loc.longitude)
     );
 
     // Only draw route if we have at least 2 valid points
@@ -64,6 +66,23 @@ export const useMapRoute = (
         }
       });
       
+      // Add outline for better visibility
+      map.current.addLayer({
+        'id': `${routeId}-outline`,
+        'type': 'line',
+        'source': routeId,
+        'layout': {
+          'line-join': 'round',
+          'line-cap': 'round'
+        },
+        'paint': {
+          'line-color': '#ffffff',
+          'line-width': 6,
+          'line-opacity': 0.8
+        }
+      });
+      
+      // Add main route line
       map.current.addLayer({
         'id': routeId,
         'type': 'line',
@@ -92,7 +111,9 @@ export const useMapRoute = (
       
       // Only use locations with valid coordinates
       const validLocations = locations.filter(
-        loc => typeof loc.latitude === 'number' && typeof loc.longitude === 'number'
+        loc => typeof loc.latitude === 'number' && 
+               typeof loc.longitude === 'number' &&
+               isWithinCorsica(loc.latitude, loc.longitude)
       );
       
       if (validLocations.length < 2) return;
@@ -107,6 +128,9 @@ export const useMapRoute = (
         // Check if source already exists
         if (map.current?.getSource(routeId)) {
           map.current.removeLayer(routeId);
+          if (map.current.getLayer(`${routeId}-outline`)) {
+            map.current.removeLayer(`${routeId}-outline`);
+          }
           map.current.removeSource(routeId);
         }
         
@@ -129,6 +153,23 @@ export const useMapRoute = (
           }
         });
         
+        // Add outline
+        map.current?.addLayer({
+          'id': `${routeId}-outline`,
+          'type': 'line',
+          'source': routeId,
+          'layout': {
+            'line-join': 'round',
+            'line-cap': 'round'
+          },
+          'paint': {
+            'line-color': '#ffffff',
+            'line-width': 6,
+            'line-opacity': 0.8
+          }
+        });
+        
+        // Add main route line
         map.current?.addLayer({
           'id': routeId,
           'type': 'line',

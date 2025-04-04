@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { Helmet } from 'react-helmet';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -12,6 +12,8 @@ import { useMap } from '@/contexts/MapContext';
 import MapBox from '@/components/map/MapBox';
 import MapTokenInput from '@/components/map/MapTokenInput';
 import { MapLocation } from '@/components/map/types';
+import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const getPageMetadata = () => {
   return {
@@ -20,26 +22,48 @@ const getPageMetadata = () => {
   };
 };
 
+// Corsica bounding box for validating coordinates
+const CORSICA_BOUNDS = {
+  north: 43.03, // Northern limit
+  south: 41.32, // Southern limit
+  east: 9.63,   // Eastern limit
+  west: 8.48    // Western limit
+};
+
+// Function to check if coordinates are within Corsica bounds
+const isWithinCorsica = (lat: number, lng: number): boolean => {
+  return (
+    lat >= CORSICA_BOUNDS.south &&
+    lat <= CORSICA_BOUNDS.north &&
+    lng >= CORSICA_BOUNDS.west &&
+    lng <= CORSICA_BOUNDS.east
+  );
+};
+
 const MapPage = () => {
   const { isMapConfigured } = useMap();
   const metadata = getPageMetadata();
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [activeTab, setActiveTab] = useState('all');
 
-  const prepareMapLocations = () => {
+  const prepareMapLocations = useCallback(() => {
     const locations: MapLocation[] = [];
     
     // Add itineraries
-    for (const itinerary of itineraries) {
+    itineraries.forEach(itinerary => {
       if (itinerary.latitude && itinerary.longitude) {
-        locations.push({
-          id: itinerary.id,
-          title: itinerary.title,
-          latitude: itinerary.latitude,
-          longitude: itinerary.longitude,
-          type: 'itinerary',
-          description: `${itinerary.distance} - ${itinerary.duration} - ${itinerary.difficulty}`
-        });
+        if (isWithinCorsica(itinerary.latitude, itinerary.longitude)) {
+          locations.push({
+            id: itinerary.id,
+            title: itinerary.title,
+            latitude: itinerary.latitude,
+            longitude: itinerary.longitude,
+            type: 'itinerary',
+            description: `${itinerary.distance} - ${itinerary.duration} - ${itinerary.difficulty}`,
+            image: itinerary.image
+          });
+        }
       }
       
       // Add points of interest from each itinerary
@@ -47,49 +71,84 @@ const MapPage = () => {
         itinerary.pointsOfInterest.forEach((poi, index) => {
           // Check if POI is already an object with coordinates
           if (typeof poi === 'object' && poi.latitude && poi.longitude) {
-            locations.push({
-              id: `${itinerary.id}-poi-${index}`,
-              title: poi.name,
-              latitude: poi.latitude,
-              longitude: poi.longitude,
-              type: 'pointOfInterest',
-              description: poi.description || '',
-              isPrimary: true
-            });
+            if (isWithinCorsica(poi.latitude, poi.longitude)) {
+              locations.push({
+                id: `${itinerary.id}-poi-${index}`,
+                title: poi.name,
+                latitude: poi.latitude,
+                longitude: poi.longitude,
+                type: 'pointOfInterest',
+                description: poi.description || '',
+                isPrimary: true,
+                image: poi.image
+              });
+            }
           }
         });
       }
-    }
+    });
 
     // Add accommodations with valid coordinates
-    for (const accommodation of accommodations) {
+    accommodations.forEach(accommodation => {
       if (accommodation.latitude && accommodation.longitude) {
-        locations.push({
-          id: accommodation.id,
-          title: accommodation.name,
-          latitude: accommodation.latitude,
-          longitude: accommodation.longitude,
-          type: 'accommodation',
-          description: `${accommodation.type} - ${accommodation.location}`
-        });
+        if (isWithinCorsica(accommodation.latitude, accommodation.longitude)) {
+          locations.push({
+            id: accommodation.id,
+            title: accommodation.name,
+            latitude: accommodation.latitude,
+            longitude: accommodation.longitude,
+            type: 'accommodation',
+            description: `${accommodation.type} - ${accommodation.location}`,
+            image: accommodation.image,
+            address: accommodation.address
+          });
+        }
       }
-    }
+    });
 
     return locations;
-  };
+  }, []);
 
-  const filteredLocations = () => {
-    const locations = prepareMapLocations();
+  const allLocations = useMemo(() => prepareMapLocations(), [prepareMapLocations]);
+
+  const filteredLocations = useMemo(() => {
+    let filtered = allLocations;
     
-    return locations.filter(location => {
-      const matchesFilter = !activeFilter || location.type === activeFilter;
-      const matchesSearch = !searchTerm || 
-        location.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (location.description && location.description.toLowerCase().includes(searchTerm.toLowerCase()));
-      
-      return matchesFilter && matchesSearch;
-    });
-  };
+    // Filter by tab first
+    if (activeTab !== 'all') {
+      filtered = filtered.filter(location => {
+        if (activeTab === 'itineraries') return location.type === 'itinerary';
+        if (activeTab === 'accommodations') return location.type === 'accommodation';
+        if (activeTab === 'poi') return location.type === 'pointOfInterest';
+        return true;
+      });
+    }
+    
+    // Then apply any additional filters
+    if (activeFilter) {
+      filtered = filtered.filter(location => location.type === activeFilter);
+    }
+    
+    // Finally, apply search term
+    if (searchTerm) {
+      const lowercaseSearch = searchTerm.toLowerCase();
+      filtered = filtered.filter(location => {
+        return location.title.toLowerCase().includes(lowercaseSearch) ||
+          (location.description && location.description.toLowerCase().includes(lowercaseSearch));
+      });
+    }
+    
+    return filtered;
+  }, [allLocations, activeTab, activeFilter, searchTerm]);
+
+  const locationStats = useMemo(() => {
+    return {
+      total: allLocations.length,
+      itineraries: allLocations.filter(loc => loc.type === 'itinerary').length,
+      accommodations: allLocations.filter(loc => loc.type === 'accommodation').length,
+      poi: allLocations.filter(loc => loc.type === 'pointOfInterest').length
+    };
+  }, [allLocations]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -114,64 +173,97 @@ const MapPage = () => {
           ) : (
             <>
               <div className="mb-6 bg-white p-4 rounded-lg shadow-sm">
-                <div className="flex flex-col md:flex-row justify-between gap-4">
-                  <div className="flex gap-2 flex-wrap">
-                    <Button 
-                      variant={!activeFilter ? "default" : "outline"} 
-                      size="sm" 
-                      onClick={() => setActiveFilter(null)}
-                      className={!activeFilter ? "bg-corsica-blue hover:bg-corsica-blue/90" : ""}
-                    >
-                      <Map className="w-4 h-4 mr-2" />
-                      Tout
-                    </Button>
-                    <Button 
-                      variant={activeFilter === 'itinerary' ? "default" : "outline"} 
-                      size="sm" 
-                      onClick={() => setActiveFilter('itinerary')}
-                      className={activeFilter === 'itinerary' ? "bg-blue-600 hover:bg-blue-700" : ""}
-                    >
-                      <Route className="w-4 h-4 mr-2" />
-                      Itinéraires
-                    </Button>
-                    <Button 
-                      variant={activeFilter === 'accommodation' ? "default" : "outline"} 
-                      size="sm" 
-                      onClick={() => setActiveFilter('accommodation')}
-                      className={activeFilter === 'accommodation' ? "bg-green-600 hover:bg-green-700" : ""}
-                    >
-                      <Hotel className="w-4 h-4 mr-2" />
-                      Hébergements
-                    </Button>
-                    <Button 
-                      variant={activeFilter === 'pointOfInterest' ? "default" : "outline"} 
-                      size="sm" 
-                      onClick={() => setActiveFilter('pointOfInterest')}
-                      className={activeFilter === 'pointOfInterest' ? "bg-red-600 hover:bg-red-700" : ""}
-                    >
-                      <Info className="w-4 h-4 mr-2" />
-                      Points d'intérêt
-                    </Button>
+                <Tabs defaultValue="all" value={activeTab} onValueChange={setActiveTab}>
+                  <div className="flex flex-col md:flex-row justify-between gap-4 mb-4">
+                    <TabsList>
+                      <TabsTrigger value="all">
+                        Tout
+                        <Badge variant="secondary" className="ml-2">{locationStats.total}</Badge>
+                      </TabsTrigger>
+                      <TabsTrigger value="itineraries">
+                        Itinéraires
+                        <Badge variant="secondary" className="ml-2">{locationStats.itineraries}</Badge>
+                      </TabsTrigger>
+                      <TabsTrigger value="accommodations">
+                        Hébergements
+                        <Badge variant="secondary" className="ml-2">{locationStats.accommodations}</Badge>
+                      </TabsTrigger>
+                      <TabsTrigger value="poi">
+                        Points d'intérêt
+                        <Badge variant="secondary" className="ml-2">{locationStats.poi}</Badge>
+                      </TabsTrigger>
+                    </TabsList>
+                    
+                    <div className="relative flex items-center w-full md:w-auto">
+                      <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                      <Input
+                        placeholder="Rechercher..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="pl-8 w-full md:w-[250px]"
+                      />
+                    </div>
                   </div>
-                  <div className="relative flex items-center w-full md:w-auto">
-                    <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                    <Input
-                      placeholder="Rechercher..."
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      className="pl-8 w-full md:w-[200px]"
-                    />
-                  </div>
-                </div>
+                  
+                  <TabsContent value="all">
+                    <div className="flex gap-2 flex-wrap">
+                      <Button 
+                        variant={!activeFilter ? "default" : "outline"} 
+                        size="sm" 
+                        onClick={() => setActiveFilter(null)}
+                        className={!activeFilter ? "bg-corsica-blue hover:bg-corsica-blue/90" : ""}
+                      >
+                        <Map className="w-4 h-4 mr-2" />
+                        Tout
+                      </Button>
+                      <Button 
+                        variant={activeFilter === 'itinerary' ? "default" : "outline"} 
+                        size="sm" 
+                        onClick={() => setActiveFilter('itinerary')}
+                        className={activeFilter === 'itinerary' ? "bg-blue-600 hover:bg-blue-700" : ""}
+                      >
+                        <Route className="w-4 h-4 mr-2" />
+                        Itinéraires
+                      </Button>
+                      <Button 
+                        variant={activeFilter === 'accommodation' ? "default" : "outline"} 
+                        size="sm" 
+                        onClick={() => setActiveFilter('accommodation')}
+                        className={activeFilter === 'accommodation' ? "bg-green-600 hover:bg-green-700" : ""}
+                      >
+                        <Hotel className="w-4 h-4 mr-2" />
+                        Hébergements
+                      </Button>
+                      <Button 
+                        variant={activeFilter === 'pointOfInterest' ? "default" : "outline"} 
+                        size="sm" 
+                        onClick={() => setActiveFilter('pointOfInterest')}
+                        className={activeFilter === 'pointOfInterest' ? "bg-red-600 hover:bg-red-700" : ""}
+                      >
+                        <Info className="w-4 h-4 mr-2" />
+                        Points d'intérêt
+                      </Button>
+                    </div>
+                  </TabsContent>
+                </Tabs>
               </div>
 
               <div className="bg-white rounded-lg shadow-sm p-4 mb-8">
-                <div className="map-container">
-                  <MapBox 
-                    locations={filteredLocations()} 
-                    height="600px"
-                  />
-                </div>
+                {filteredLocations.length > 0 ? (
+                  <div className="map-container">
+                    <MapBox 
+                      locations={filteredLocations} 
+                      height="600px"
+                      enableClustering={true}
+                    />
+                  </div>
+                ) : (
+                  <div className="py-12 text-center">
+                    <p className="text-lg text-muted-foreground">
+                      Aucun lieu ne correspond à votre recherche.
+                    </p>
+                  </div>
+                )}
               </div>
             </>
           )}

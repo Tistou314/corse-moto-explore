@@ -1,5 +1,5 @@
 
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { MapLocation, CorsicaCenter } from './types';
 import { useMap } from '@/contexts/MapContext';
 import { useMapInitialization } from './useMapInitialization';
@@ -11,14 +11,16 @@ export const useMapbox = (
   center: [number, number] = CorsicaCenter,
   zoom: number = 8.5,
   interactive: boolean = true,
-  drawRoute: boolean = false
+  drawRoute: boolean = false,
+  enableClustering: boolean = false
 ) => {
   const { mapboxToken } = useMap();
   const mapContainer = useRef<HTMLDivElement | null>(null);
   const [selectedLocation, setSelectedLocation] = useState<MapLocation | null>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
   
   // Initialize the map
-  const { map } = useMapInitialization(mapContainer, mapboxToken, center, zoom, interactive);
+  const { map } = useMapInitialization(mapContainer, mapboxToken, center, zoom, interactive, setIsLoaded);
   
   // Handle marker click
   const handleMarkerClick = (location: MapLocation) => {
@@ -35,14 +37,20 @@ export const useMapbox = (
   };
 
   // Add markers to the map
-  const { markersRef } = useMapMarkers(map, locations, handleMarkerClick);
+  const { markersRef } = useMapMarkers(map, locations, handleMarkerClick, enableClustering);
   
-  // Draw route on the map
+  // Draw route on the map if enabled
   const { routeRef } = useMapRoute(map, locations, drawRoute);
 
   const closePopup = () => {
     setSelectedLocation(null);
   };
 
-  return { mapContainer, selectedLocation, closePopup, mapboxToken };
+  return { 
+    mapContainer, 
+    selectedLocation, 
+    closePopup, 
+    mapboxToken, 
+    isLoaded 
+  };
 };
