@@ -16,9 +16,11 @@ export const gitesAccommodations: Accommodation[] = [
     bikerAmenities: ["Garage fermé", "Outillage de base", "Compresseur", "Propriétaires motards"],
     contact: {
       phone: "+33 6 03 06 65 52",
-      website: "facebook.com/gitesofildeleau"
+      website: "gitesofildeleaufrancardo.com"
     },
-    address: "Lieu-dit U Ponte, 20236 Omessa"
+    address: "Lieu-dit U Ponte, 20236 Omessa",
+    latitude: 42.3825,
+    longitude: 9.1597
   },
   {
     id: "gite2",
@@ -36,7 +38,9 @@ export const gitesAccommodations: Accommodation[] = [
       phone: "+33 6 20 50 36 47",
       website: "casadomigna.com"
     },
-    address: "Route du bord de mer, lieu-dit Omigna, 20130 Cargèse"
+    address: "Route du bord de mer, lieu-dit Omigna, 20130 Cargèse",
+    latitude: 42.1368,
+    longitude: 8.5951
   },
   {
     id: "gite3",
@@ -51,9 +55,12 @@ export const gitesAccommodations: Accommodation[] = [
     amenities: ["Jacuzzi", "Parking privé", "Calme", "Petit-déjeuner inclus"],
     bikerAmenities: ["Parking sécurisé", "Boisson de bienvenue"],
     contact: {
-      phone: "+33 6 23 14 89 00"
+      phone: "+33 6 23 14 89 00",
+      website: "chalet-zen-chambre-d-hote-corse-moto-aeroport-ajaccio.com"
     },
-    address: "Hameau de Péri, 20167 Peri"
+    address: "Hameau de Péri, 20167 Peri",
+    latitude: 41.9775,
+    longitude: 8.8188
   },
   {
     id: "gite4",
@@ -70,7 +77,9 @@ export const gitesAccommodations: Accommodation[] = [
     contact: {
       phone: "+33 6 87 11 00 00"
     },
-    address: "Hameau de Castirla, 20218 Moltifao"
+    address: "Hameau de Castirla, 20218 Moltifao",
+    latitude: 42.4744,
+    longitude: 9.1317
   },
   {
     id: "gite5",
@@ -88,7 +97,9 @@ export const gitesAccommodations: Accommodation[] = [
       phone: "+33 4 95 56 47 92",
       website: "auberge-isolaccio.com"
     },
-    address: "Village, 20243 Isolaccio-di-Fiumorbo"
+    address: "Village, 20243 Isolaccio-di-Fiumorbo",
+    latitude: 42.0034,
+    longitude: 9.2686
   },
   {
     id: "gite6",
@@ -105,7 +116,9 @@ export const gitesAccommodations: Accommodation[] = [
     contact: {
       website: "gites-de-france-corse.com"
     },
-    address: "Lieu-dit Prunete, 20230 Santa-Lucia-di-Moriani"
+    address: "Lieu-dit Prunete, 20230 Santa-Lucia-di-Moriani",
+    latitude: 42.3726,
+    longitude: 9.5276
   },
   {
     id: "gite7",
@@ -123,7 +136,9 @@ export const gitesAccommodations: Accommodation[] = [
       phone: "+33 6 14 58 00 00",
       website: "refuge-orezza.fr"
     },
-    address: "Couvent Saint-François, 20229 Piedicroce"
+    address: "Couvent Saint-François, 20229 Piedicroce",
+    latitude: 42.3923,
+    longitude: 9.3147
   },
   {
     id: "gite8",
@@ -141,7 +156,9 @@ export const gitesAccommodations: Accommodation[] = [
       phone: "+33 4 95 45 23 03",
       website: "centrotel-corte.com"
     },
-    address: "12 Avenue du 9 Septembre, 20250 Corte"
+    address: "12 Avenue du 9 Septembre, 20250 Corte",
+    latitude: 42.3068,
+    longitude: 9.1506
   },
   {
     id: "gite9",
@@ -159,7 +176,9 @@ export const gitesAccommodations: Accommodation[] = [
       phone: "+33 4 95 74 63 45",
       website: "villa-lesorangers.com"
     },
-    address: "4 Rue des Orangers, 20113 Olmeto"
+    address: "4 Rue des Orangers, 20113 Olmeto",
+    latitude: 41.7184,
+    longitude: 8.9290
   },
   {
     id: "gite10",
@@ -173,7 +192,9 @@ export const gitesAccommodations: Accommodation[] = [
     image: "https://cdn.pixabay.com/photo/2016/04/15/11/46/wilderness-1330743_1280.jpg",
     amenities: ["Cuisine commune", "Dortoirs", "Repas du soir", "Au pied de Bavella"],
     bikerAmenities: ["Garage fermé partagé", "Atelier équipé", "Sèche-équipement"],
-    address: "Hameau de Zonza, 20124 Zonza"
+    address: "Hameau de Zonza, 20124 Zonza",
+    latitude: 41.7386,
+    longitude: 9.1763
   },
   {
     id: "gite11",
@@ -191,7 +212,9 @@ export const gitesAccommodations: Accommodation[] = [
       phone: "+33 4 95 35 61 32",
       website: "centuchiavi.com"
     },
-    address: "Marine de Giottani, 20228 Barrettali"
+    address: "Marine de Giottani, 20228 Barrettali",
+    latitude: 42.8285,
+    longitude: 9.4061
   },
   {
     id: "gite12",
@@ -209,7 +232,9 @@ export const gitesAccommodations: Accommodation[] = [
       phone: "+33 6 10 56 00 00",
       website: "casadilalivu.com"
     },
-    address: "Quartier Poggio, 20218 Lama"
+    address: "Quartier Poggio, 20218 Lama",
+    latitude: 42.5736,
+    longitude: 9.1561
   },
   {
     id: "gite13",
@@ -227,7 +252,9 @@ export const gitesAccommodations: Accommodation[] = [
       phone: "+33 4 95 25 43 34",
       website: "chambres-castellu.com"
     },
-    address: "Village de Santa-Maria-Siché, 20190"
+    address: "Village de Santa-Maria-Siché, 20190",
+    latitude: 41.8726,
+    longitude: 8.9538
   },
   {
     id: "gite14",
@@ -244,7 +271,9 @@ export const gitesAccommodations: Accommodation[] = [
     contact: {
       phone: "+33 4 95 48 00 37"
     },
-    address: "Col de Vergio (RN 193), 20224 Albertacce"
+    address: "Col de Vergio (RN 193), 20224 Albertacce",
+    latitude: 42.2931,
+    longitude: 8.8886
   },
   {
     id: "gite15",
@@ -262,6 +291,8 @@ export const gitesAccommodations: Accommodation[] = [
       phone: "+33 4 95 78 62 62",
       website: "solemonti.com"
     },
-    address: "Village de Quenza, 20122"
+    address: "Village de Quenza, 20122",
+    latitude: 41.7682,
+    longitude: 9.1349
   }
 ];

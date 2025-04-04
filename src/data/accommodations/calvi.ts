@@ -20,7 +20,9 @@ export const calviAccommodations: Accommodation[] = [
       website: "hotel-st-erasme.com"
     },
     bookingLink: "https://www.booking.com/hotel/fr/le-saint-erasme-calvi.fr.html",
-    address: "Route d'Ajaccio (par la corniche), 20260 Calvi"
+    address: "Route d'Ajaccio (par la corniche), 20260 Calvi",
+    latitude: 42.5673,
+    longitude: 8.7529
   },
   {
     id: "acc13",
@@ -40,7 +42,9 @@ export const calviAccommodations: Accommodation[] = [
       website: "hoteliltramonto.com"
     },
     bookingLink: "https://www.booking.com/hotel/fr/il-tramonto.fr.html",
-    address: "Route de Porto (par la côte), 20260 Calvi"
+    address: "Route de Porto (par la côte), 20260 Calvi",
+    latitude: 42.5655,
+    longitude: 8.7596
   },
   {
     id: "acc14",
@@ -60,7 +64,9 @@ export const calviAccommodations: Accommodation[] = [
       website: "hotel-liberata.fr"
     },
     bookingLink: "https://www.booking.com/hotel/fr/liberata.fr.html",
-    address: "Boulevard Charles-Marie Savelli, 20220 L'Île-Rousse"
+    address: "Boulevard Charles-Marie Savelli, 20220 L'Île-Rousse",
+    latitude: 42.6343,
+    longitude: 8.9382
   },
   {
     id: "acc20",
@@ -73,6 +79,8 @@ export const calviAccommodations: Accommodation[] = [
     rating: 4.8,
     image: "https://cdn.pixabay.com/photo/2019/08/19/13/58/bed-4416515_1280.jpg",
     amenities: ["Restaurant", "Bar", "Piscine", "Terrasse panoramique"],
-    bikerAmenities: ["Parking sécurisé", "Station de lavage", "Atelier de réparation", "Itinéraires moto"]
+    bikerAmenities: ["Parking sécurisé", "Station de lavage", "Atelier de réparation", "Itinéraires moto"],
+    latitude: 42.5667,
+    longitude: 8.7574
   }
 ];

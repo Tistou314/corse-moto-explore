@@ -20,6 +20,8 @@ export const portoAccommodations: Accommodation[] = [
       website: "hotel-les-roches-rouges.com"
     },
     bookingLink: "https://www.booking.com/hotel/fr/les-roches-rouges-piana.fr.html",
-    address: "Route des Calanques, 20115 Piana"
+    address: "Route des Calanques, 20115 Piana",
+    latitude: 42.2505,
+    longitude: 8.6732
   }
 ];

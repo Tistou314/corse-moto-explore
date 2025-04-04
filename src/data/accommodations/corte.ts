@@ -20,7 +20,9 @@ export const corteAccommodations: Accommodation[] = [
       website: "ducdepadoue.com"
     },
     bookingLink: "https://www.booking.com/hotel/fr/duc-de-padoue.fr.html",
-    address: "2 Place Padoue, 20250 Corte"
+    address: "2 Place Padoue, 20250 Corte",
+    latitude: 42.3063,
+    longitude: 9.1485
   },
   {
     id: "acc16",
@@ -40,7 +42,9 @@ export const corteAccommodations: Accommodation[] = [
       website: "autourduhamac.fr"
     },
     bookingLink: "https://www.autourduhamac.fr",
-    address: "Route d'Asco, 20218 Moltifao"
+    address: "Route d'Asco, 20218 Moltifao",
+    latitude: 42.4744,
+    longitude: 9.1317
   },
   {
     id: "acc18",
@@ -53,7 +57,9 @@ export const corteAccommodations: Accommodation[] = [
     rating: 4.7,
     image: "https://cdn.pixabay.com/photo/2016/10/29/20/15/cottage-1781760_1280.jpg",
     amenities: ["Petit-déjeuner inclus", "Terrasse", "Jardin", "Wifi"],
-    bikerAmenities: ["Parking sécurisé", "Proche routes panoramiques", "Itinéraires moto"]
+    bikerAmenities: ["Parking sécurisé", "Proche routes panoramiques", "Itinéraires moto"],
+    latitude: 42.3071,
+    longitude: 9.1527
   },
   {
     id: "acc22",
@@ -66,6 +72,8 @@ export const corteAccommodations: Accommodation[] = [
     rating: 4.3,
     image: "https://cdn.pixabay.com/photo/2016/02/18/22/16/tent-1208201_1280.jpg",
     amenities: ["Piscine naturelle", "Restaurant", "Épicerie", "Animations"],
-    bikerAmenities: ["Espace motards dédié", "Local sécurisé", "Proche routes panoramiques"]
+    bikerAmenities: ["Espace motards dédié", "Local sécurisé", "Proche routes panoramiques"],
+    latitude: 42.3057,
+    longitude: 9.1532
   }
 ];

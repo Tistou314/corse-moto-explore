@@ -21,7 +21,7 @@ export const useMapMarkers = (
     markersRef.current.forEach(marker => marker.remove());
     markersRef.current = [];
 
-    // Filter locations by type to separate itinerary points, POIs and start/end points
+    // Filter locations by type to separate itinerary points, POIs and accommodations
     const itineraryPoints = locations.filter(loc => loc.type === 'itinerary');
     const poiPoints = locations.filter(loc => loc.type === 'pointOfInterest');
     const accommodationPoints = locations.filter(loc => loc.type === 'accommodation');

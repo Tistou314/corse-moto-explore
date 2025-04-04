@@ -20,7 +20,9 @@ export const bastiaAccommodations: Accommodation[] = [
       website: "hotel-lesvoyageurs-bastia.com"
     },
     bookingLink: "https://www.booking.com/hotel/fr/les-voyageurs-bastia.fr.html",
-    address: "9 avenue Maréchal Sebastiani, 20200 Bastia"
+    address: "9 avenue Maréchal Sebastiani, 20200 Bastia",
+    latitude: 42.6996,
+    longitude: 9.4518
   },
   {
     id: "acc21",
@@ -33,6 +35,8 @@ export const bastiaAccommodations: Accommodation[] = [
     rating: 4.6,
     image: "https://cdn.pixabay.com/photo/2014/11/21/17/17/house-540796_1280.jpg",
     amenities: ["Jardin", "Terrasse", "Cuisine équipée", "Barbecue"],
-    bikerAmenities: ["Parking sécurisé", "Proche routes panoramiques", "Itinéraires moto"]
+    bikerAmenities: ["Parking sécurisé", "Proche routes panoramiques", "Itinéraires moto"],
+    latitude: 42.7056,
+    longitude: 9.4498
   }
 ];

@@ -20,7 +20,9 @@ export const ghisonacciaAccommodations: Accommodation[] = [
       website: "casamariacicilia.com"
     },
     bookingLink: "https://www.casamariacicilia.com",
-    address: "60 Route de Ghisoni, 20240 Ghisonaccia"
+    address: "60 Route de Ghisoni, 20240 Ghisonaccia",
+    latitude: 42.0165,
+    longitude: 9.3992
   },
   {
     id: "acc3",
@@ -37,6 +39,8 @@ export const ghisonacciaAccommodations: Accommodation[] = [
     contact: {
       phone: "+33 4 95 32 19 48",
     },
-    address: "Village, 20243 Isolaccio-di-Fiumorbo"
+    address: "Village, 20243 Isolaccio-di-Fiumorbo",
+    latitude: 42.0034,
+    longitude: 9.2686
   }
 ];

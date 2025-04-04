@@ -19,7 +19,9 @@ export const portovecchioAccommodations: Accommodation[] = [
       website: "olmuccio.com"
     },
     bookingLink: "https://www.booking.com/hotel/fr/olmuccio.fr.html",
-    address: "Lieu-dit La Testa, 20144 Sainte-Lucie-de-Porto-Vecchio"
+    address: "Lieu-dit La Testa, 20144 Sainte-Lucie-de-Porto-Vecchio",
+    latitude: 41.7033,
+    longitude: 9.3656
   },
   {
     id: "acc5",
@@ -39,7 +41,9 @@ export const portovecchioAccommodations: Accommodation[] = [
       website: "amadonetta.com"
     },
     bookingLink: "https://www.booking.com/hotel/fr/a-madonetta-bonifacio.fr.html",
-    address: "5 rue Paul Nicolai, 20169 Bonifacio"
+    address: "5 rue Paul Nicolai, 20169 Bonifacio",
+    latitude: 41.3866,
+    longitude: 9.1583
   },
   {
     id: "acc6",
@@ -59,7 +63,9 @@ export const portovecchioAccommodations: Accommodation[] = [
       website: "acheda-hotel.com"
     },
     bookingLink: "https://www.acheda-hotel.com",
-    address: "Cavallo Morto, 20169 Bonifacio"
+    address: "Cavallo Morto, 20169 Bonifacio",
+    latitude: 41.3958,
+    longitude: 9.1306
   },
   {
     id: "acc19",
@@ -72,6 +78,8 @@ export const portovecchioAccommodations: Accommodation[] = [
     rating: 4.2,
     image: "https://cdn.pixabay.com/photo/2018/01/17/07/06/travel-3087953_1280.jpg",
     amenities: ["Piscine", "Épicerie", "Sanitaires modernes", "Espace barbecue"],
-    bikerAmenities: ["Espace motards dédié", "Atelier de réparation", "Location de motos"]
+    bikerAmenities: ["Espace motards dédié", "Atelier de réparation", "Location de motos"],
+    latitude: 41.6095,
+    longitude: 9.2941
   }
 ];

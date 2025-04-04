@@ -20,7 +20,9 @@ export const ajaccioAccommodations: Accommodation[] = [
       website: "ajaccio.corsica-hotels.fr"
     },
     bookingLink: "https://www.bestwestern.fr/fr/hotel-Ajaccio-Best-Western-Plus-Ajaccio-Amiraute-93798",
-    address: "20 Boulevard Georges Pompidou, 20090 Ajaccio"
+    address: "20 Boulevard Georges Pompidou, 20090 Ajaccio",
+    latitude: 41.9196,
+    longitude: 8.7359
   },
   {
     id: "acc9",
@@ -40,7 +42,9 @@ export const ajaccioAccommodations: Accommodation[] = [
       website: "locations-cargese.com"
     },
     bookingLink: "https://www.booking.com/hotel/fr/punta-e-mare.fr.html",
-    address: "Route de Paomia, 20130 Cargèse"
+    address: "Route de Paomia, 20130 Cargèse",
+    latitude: 42.1375,
+    longitude: 8.5989
   },
   {
     id: "acc17",
@@ -53,6 +57,8 @@ export const ajaccioAccommodations: Accommodation[] = [
     rating: 4.5,
     image: "https://cdn.pixabay.com/photo/2017/03/22/17/39/reception-2165756_1280.jpg",
     amenities: ["Piscine", "Restaurant", "Bar", "Wifi gratuit", "Climatisation"],
-    bikerAmenities: ["Parking sécurisé", "Itinéraires moto", "Atelier de réparation"]
+    bikerAmenities: ["Parking sécurisé", "Itinéraires moto", "Atelier de réparation"],
+    latitude: 41.9211,
+    longitude: 8.7457
   }
 ];
