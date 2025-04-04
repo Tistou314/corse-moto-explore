@@ -24,6 +24,7 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   el.style.color = 'white';
   el.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
   el.style.cursor = 'pointer';
+  el.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
   
   // Add icon based on type
   let iconElement;
@@ -50,6 +51,23 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   }
   
   el.appendChild(iconElement);
+
+  // Add hover effects
+  el.addEventListener('mouseenter', () => {
+    el.style.transform = location.type === 'pointOfInterest' 
+      ? (location.isPrimary ? 'scale(1.3)' : 'scale(1.2)')
+      : 'scale(1.1)';
+    el.style.boxShadow = '0 4px 8px rgba(0,0,0,0.4)';
+  });
+  
+  el.addEventListener('mouseleave', () => {
+    el.style.transform = location.type === 'pointOfInterest'
+      ? (location.isPrimary ? 'scale(1.2)' : 'scale(1.1)')
+      : 'scale(1)';
+    el.style.boxShadow = location.type === 'pointOfInterest'
+      ? (location.isPrimary ? '0 3px 8px rgba(0,0,0,0.4)' : '0 2px 6px rgba(0,0,0,0.3)')
+      : '0 2px 4px rgba(0,0,0,0.2)';
+  });
 
   // Add a subtle pulse animation for POIs to make them more noticeable
   if (location.type === 'pointOfInterest') {
@@ -85,8 +103,8 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     el.insertBefore(pulseEffect, el.firstChild);
   }
 
-  // Add title attribute for hover effect
-  el.title = location.title;
+  // Add title attribute for hover effect with available information
+  el.title = location.title || 'Point d\'intérêt';
   if (location.description) {
     el.title += ` - ${location.description.substring(0, 50)}${location.description.length > 50 ? '...' : ''}`;
   }

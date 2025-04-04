@@ -15,6 +15,8 @@ export const useMapMarkers = (
   useEffect(() => {
     if (!map.current || !locations.length) return;
 
+    console.log('Adding markers for locations:', locations);
+
     // Remove existing markers
     markersRef.current.forEach(marker => marker.remove());
     markersRef.current = [];
@@ -33,6 +35,12 @@ export const useMapMarkers = (
 
     // Add markers in order: itinerary points, accommodations, and POIs last so they're on top
     [...itineraryPoints, ...accommodationPoints, ...sortedPois].forEach(location => {
+      // Skip if we don't have valid coordinates
+      if (typeof location.latitude !== 'number' || typeof location.longitude !== 'number') {
+        console.warn('Skipping location without valid coordinates:', location.title);
+        return;
+      }
+      
       const marker = createMapMarker({
         location,
         map: map.current!,
@@ -42,16 +50,27 @@ export const useMapMarkers = (
       markersRef.current.push(marker);
     });
 
-    // Fit bounds to markers if there are multiple
-    if (locations.length > 1) {
+    // Fit bounds to markers if there are multiple with valid coordinates
+    const validLocations = locations.filter(
+      loc => typeof loc.latitude === 'number' && typeof loc.longitude === 'number'
+    );
+    
+    if (validLocations.length > 1) {
       const bounds = new mapboxgl.LngLatBounds();
-      locations.forEach(location => {
+      validLocations.forEach(location => {
         bounds.extend([location.longitude, location.latitude]);
       });
       
       map.current.fitBounds(bounds, {
         padding: 80,
         maxZoom: 12,
+        duration: 1000
+      });
+    } else if (validLocations.length === 1) {
+      // If only one valid location, center on it
+      map.current.flyTo({
+        center: [validLocations[0].longitude, validLocations[0].latitude],
+        zoom: 11,
         duration: 1000
       });
     }
