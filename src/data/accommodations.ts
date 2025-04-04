@@ -1,11 +1,13 @@
+
 import { MapPin, ShieldCheck, Wifi, Car, Utensils, Bike, Wrench, Phone, Mail, Star, Home, Hotel } from 'lucide-react';
 
 export interface Accommodation {
   id: string;
   name: string;
-  type: 'hotel' | 'gite' | 'camping';
+  type: 'hotel' | 'gite' | 'camping' | 'chambre';
   description: string;
   location: string;
+  region?: string;
   image: string;
   priceRange: string;
   rating: number;
@@ -16,6 +18,8 @@ export interface Accommodation {
     email?: string;
     website?: string;
   };
+  bookingLink?: string;
+  address?: string;
   latitude?: number;
   longitude?: number;
 }
@@ -48,6 +52,10 @@ export const accommodationTypes = [
   {
     value: 'camping',
     label: 'Campings',
+  },
+  {
+    value: 'chambre',
+    label: 'Chambres d\'hôtes',
   },
 ];
 
