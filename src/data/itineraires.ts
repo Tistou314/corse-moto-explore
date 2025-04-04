@@ -109,7 +109,32 @@ export const itineraries: Itinerary[] = [
     distance: '70 km (section Calvi-Porto)',
     difficulty: 'difficile',
     region: 'Nord-Ouest',
-    pointsOfInterest: ['Calvi', 'Réserve de Scandola', 'Calanques de Piana', 'Porto'],
+    pointsOfInterest: [
+      { 
+        name: 'Calvi', 
+        description: 'Point de départ de la route des Crêtes',
+        latitude: 42.5676, 
+        longitude: 8.7577 
+      },
+      { 
+        name: 'Col de Palmarella', 
+        description: 'Vue panoramique sur la côte à 408m d\'altitude',
+        latitude: 42.3976, 
+        longitude: 8.6889 
+      },
+      { 
+        name: 'Calanques de Piana', 
+        description: 'Formations rocheuses rouges classées à l\'UNESCO',
+        latitude: 42.2505, 
+        longitude: 8.6543 
+      },
+      { 
+        name: 'Porto', 
+        description: 'Arrivée de la route des Crêtes',
+        latitude: 42.2510, 
+        longitude: 8.6920 
+      }
+    ],
     startPoint: 'Calvi',
     endPoint: 'Porto',
     elevation: '0-408m',
@@ -128,7 +153,9 @@ export const itineraries: Itinerary[] = [
       'Stations-service à Calvi, Galeria et Porto (aucune sur la portion montagneuse)',
       'Extension possible par la route forestière vers Évisa pour plus de sensations',
       'En été, départ tôt le matin pour profiter de la lumière et éviter la chaleur'
-    ]
+    ],
+    latitude: 42.3976,
+    longitude: 8.6889
   },
   {
     id: 'calanques-piana',
