@@ -1,13 +1,13 @@
 
 import { Accommodation } from '../types';
-import { ajaccioGites } from './ajaccio';
-import { bastiaGites } from './bastia';
-import { calviGites } from './calvi';
-import { corteGites } from './corte';
-import { ghisonacciaGites } from './ghisonaccia';
-import { portoGites } from './porto';
-import { portovecchioGites } from './portovecchio';
-import { proprianoGites } from './propriano';
+import { ajaccioGites } from './regional/ajaccio';
+import { bastiaGites } from './regional/bastia';
+import { calviGites } from './regional/calvi';
+import { corteGites } from './regional/corte';
+import { ghisonacciaGites } from './regional/ghisonaccia';
+import { portoGites } from './regional/porto';
+import { portovecchioGites } from './regional/portovecchio';
+import { proprianoGites } from './regional/propriano';
 
 export const gitesAccommodations: Accommodation[] = [
   ...ajaccioGites,
