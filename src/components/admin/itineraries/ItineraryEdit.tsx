@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { 
@@ -17,7 +16,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { ArrowLeft, Save, Plus, X } from "lucide-react";
 import ImageUpload from "@/components/admin/ImageUpload";
-import { itineraries } from "@/data/itineraires";
+import { itineraries } from "@/data/itineraries";
 
 interface PointOfInterest {
   name: string;
@@ -52,7 +51,6 @@ const ItineraryEdit = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   
-  // Initialiser le formulaire
   const form = useForm<ItineraryFormData>({
     defaultValues: {
       title: "",
@@ -67,7 +65,6 @@ const ItineraryEdit = () => {
     },
   });
   
-  // Récupérer les données de l'itinéraire à éditer
   useEffect(() => {
     if (id) {
       const itinerary = itineraries.find(itin => itin.id === id);
@@ -84,14 +81,12 @@ const ItineraryEdit = () => {
           points: Array.isArray(itinerary.pointsOfInterest) 
             ? itinerary.pointsOfInterest.map(poi => {
                 if (typeof poi === 'string') {
-                  // Handle case where pointsOfInterest is array of strings
                   return {
                     name: poi,
                     description: '',
                     image: ''
                   };
                 } else if (typeof poi === 'object' && poi !== null) {
-                  // Handle case where pointsOfInterest might be objects
                   return {
                     name: poi.name || '',
                     description: poi.description || '',
@@ -115,32 +110,26 @@ const ItineraryEdit = () => {
   
   const points = form.watch("points");
   
-  // Ajouter un point d'intérêt
   const addPoint = () => {
     const currentPoints = form.getValues("points") || [];
     form.setValue("points", [...currentPoints, { name: "", description: "", image: "" }]);
   };
   
-  // Supprimer un point d'intérêt
   const removePoint = (index: number) => {
     const currentPoints = form.getValues("points");
     form.setValue("points", currentPoints.filter((_, i) => i !== index));
   };
   
-  // Mettre à jour un point d'intérêt
   const updatePoint = (index: number, field: keyof PointOfInterest, value: string) => {
     const currentPoints = [...form.getValues("points")];
     currentPoints[index][field] = value;
     form.setValue("points", currentPoints);
   };
   
-  // Gérer la soumission du formulaire
   const onSubmit = (data: ItineraryFormData) => {
     setIsLoading(true);
     
-    // Simuler un délai d'envoi
     setTimeout(() => {
-      // Dans une application réelle, vous feriez un appel API ici
       console.log("Itinéraire mis à jour:", data);
       
       setIsLoading(false);

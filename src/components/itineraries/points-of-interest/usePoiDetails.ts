@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { useToast } from "@/hooks/use-toast";
-import { Itinerary, PointOfInterest } from '@/data/itineraires';
+import { Itinerary, PointOfInterest } from '@/data/itineraries';
 import poiData, { defaultImage } from './poiData';
 
 export interface PoiDetails {

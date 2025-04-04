@@ -10,7 +10,7 @@ import BlogSection from '@/components/home/BlogSection';
 import AccommodationsSection from '@/components/home/AccommodationsSection';
 import CampingSection from '@/components/home/CampingSection';
 import CTASection from '@/components/home/CTASection';
-import { itineraries } from '@/data/itineraires';
+import { itineraries } from '@/data/itineraries';
 import { blogPosts } from '@/data/blogPosts';
 import { accommodations } from '@/data/accommodations';
 import { campingAccommodations } from '@/data/accommodations/camping';

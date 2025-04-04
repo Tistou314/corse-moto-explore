@@ -4,7 +4,7 @@ import { useMap } from '@/contexts/MapContext';
 import { MapLocation, isWithinCorsica } from '@/components/map/types';
 import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 import { cn } from '@/lib/utils';
-import { itineraries } from '@/data/itineraires';
+import { itineraries } from '@/data/itineraries';
 
 const MapSection = () => {
   const { ref, isVisible } = useScrollAnimation<HTMLElement>();

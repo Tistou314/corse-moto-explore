@@ -1,6 +1,6 @@
 
 import { useMemo, useState, useCallback } from 'react';
-import { itineraries } from '@/data/itineraires';
+import { itineraries } from '@/data/itineraries';
 import { accommodations } from '@/data/accommodations';
 import { MapLocation, isWithinCorsica } from '@/components/map/types';
 
