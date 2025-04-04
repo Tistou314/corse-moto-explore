@@ -9,7 +9,6 @@ import Index from "./pages/Index";
 import ItinerairesPage from "./pages/ItinerairesPage";
 import ItineraryDetailPage from "./pages/ItineraryDetailPage";
 import GuidePratiquePage from "./pages/GuidePratiquePage";
-import MapPage from "./pages/MapPage";
 import BlogPage from "./pages/BlogPage";
 import BlogPostDetailPage from "./pages/BlogPostDetailPage";
 import ContactPage from "./pages/ContactPage";
@@ -33,7 +32,6 @@ const App = () => (
             <Route path="/itineraires" element={<ItinerairesPage />} />
             <Route path="/itineraires/:id" element={<ItineraryDetailPage />} />
             <Route path="/guide" element={<GuidePratiquePage />} />
-            <Route path="/carte" element={<MapPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog/:id" element={<BlogPostDetailPage />} />
             <Route path="/contact" element={<ContactPage />} />

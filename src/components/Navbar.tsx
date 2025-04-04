@@ -35,9 +35,6 @@ const Navbar = () => {
                   <Link to="/itineraires" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-corsica-blue">
                     Tous les itinéraires
                   </Link>
-                  <Link to="/carte" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-corsica-blue">
-                    Carte interactive
-                  </Link>
                 </div>
               </div>
             </div>
@@ -85,13 +82,6 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
             >
               Itinéraires
-            </Link>
-            <Link 
-              to="/carte" 
-              className="block py-2 px-3 text-foreground hover:text-corsica-blue hover:bg-muted rounded-lg"
-              onClick={() => setIsOpen(false)}
-            >
-              Carte
             </Link>
             <Link 
               to="/guide" 
