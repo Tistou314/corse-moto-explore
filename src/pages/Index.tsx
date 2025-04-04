@@ -8,10 +8,12 @@ import ItinerariesSection from '@/components/home/ItinerariesSection';
 import MapSection from '@/components/home/MapSection';
 import BlogSection from '@/components/home/BlogSection';
 import AccommodationsSection from '@/components/home/AccommodationsSection';
+import CampingSection from '@/components/home/CampingSection';
 import CTASection from '@/components/home/CTASection';
 import { itineraries } from '@/data/itineraires';
 import { blogPosts } from '@/data/blogPosts';
 import { accommodations } from '@/data/accommodations';
+import { campingAccommodations } from '@/data/accommodations/camping';
 
 const Index = () => {
   // Get featured itineraries (first 3)
@@ -20,8 +22,13 @@ const Index = () => {
   // Get recent blog posts (first 3)
   const recentPosts = blogPosts.slice(0, 3);
   
-  // Get featured accommodations (first 3)
-  const featuredAccommodations = accommodations.slice(0, 3);
+  // Get featured accommodations (hotels and gites, first 3)
+  const featuredAccommodations = accommodations
+    .filter(acc => acc.type !== 'camping')
+    .slice(0, 3);
+    
+  // Get featured campings (first 3)
+  const featuredCampings = campingAccommodations.slice(0, 3);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -48,6 +55,9 @@ const Index = () => {
 
       {/* Accommodations Section */}
       <AccommodationsSection accommodations={featuredAccommodations} />
+      
+      {/* Camping Section */}
+      <CampingSection campings={featuredCampings} />
 
       {/* CTA Section */}
       <CTASection />

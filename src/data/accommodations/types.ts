@@ -123,4 +123,3 @@ export const bikerFeatures = [
     icon: Bike,
   },
 ];
-

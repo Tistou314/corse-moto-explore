@@ -25,3 +25,4 @@ export const accommodations: Accommodation[] = [
 
 export { regions, accommodationTypes, bikerFeatures };
 export type { Accommodation };
+export { campingAccommodations };

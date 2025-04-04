@@ -17,6 +17,7 @@ const AccommodationCard = ({ accommodation }: AccommodationCardProps) => {
     hotel: "bg-blue-100 text-blue-800",
     gite: "bg-green-100 text-green-800",
     camping: "bg-amber-100 text-amber-800",
+    chambre: "bg-purple-100 text-purple-800"
   };
 
   // Map type to label
@@ -24,6 +25,7 @@ const AccommodationCard = ({ accommodation }: AccommodationCardProps) => {
     hotel: "Hôtel",
     gite: "Gîte",
     camping: "Camping",
+    chambre: "Chambre d'hôtes"
   };
 
   const handleCardClick = () => {
