@@ -66,6 +66,18 @@ const ItinerariesList = () => {
     }
   };
   
+  // Helper function to format the difficulty display text
+  const formatDifficultyText = (difficulty: string) => {
+    const lowerDifficulty = difficulty.toLowerCase();
+    if (lowerDifficulty === "facile") {
+      return "Facile";
+    } else if (lowerDifficulty === "moyen") {
+      return "Modéré";
+    } else {
+      return "Difficile";
+    }
+  };
+  
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -129,8 +141,7 @@ const ItinerariesList = () => {
                       variant="outline" 
                       className={getDifficultyBadgeClass(itinerary.difficulty)}
                     >
-                      {itinerary.difficulty === "facile" ? "Facile" : 
-                       itinerary.difficulty === "moyen" ? "Modéré" : "Difficile"}
+                      {formatDifficultyText(itinerary.difficulty)}
                     </Badge>
                   </TableCell>
                   <TableCell className="text-right space-x-2">
