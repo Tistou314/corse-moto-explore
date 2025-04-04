@@ -50,6 +50,9 @@ const MapBox = ({
   useEffect(() => {
     if (!mapboxToken || !mapContainer.current || map.current) return;
 
+    // Vérification explicite du token
+    console.log('Token Mapbox utilisé :', mapboxToken);
+    
     mapboxgl.accessToken = mapboxToken;
     
     map.current = new mapboxgl.Map({
@@ -164,7 +167,11 @@ const MapBox = ({
 
   // Handle token not being available
   if (!mapboxToken) {
-    return null;
+    return (
+      <div className="text-red-500 p-4 bg-red-50 rounded">
+        Aucun token Mapbox configuré. Veuillez vérifier votre configuration.
+      </div>
+    );
   }
 
   return (

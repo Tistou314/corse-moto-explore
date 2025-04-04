@@ -15,12 +15,23 @@ const MapTokenInput = () => {
   
   const handleSaveToken = () => {
     if (tokenInput.trim().startsWith('pk.')) {
-      setMapboxToken(tokenInput.trim());
-      toast({
-        title: "Configuration mise à jour",
-        description: "La carte est maintenant configurée avec votre clé API.",
-      });
-      setTokenInput('');
+      // Validation supplémentaire de la structure du token
+      const tokenRegex = /^pk\.[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/;
+      if (tokenRegex.test(tokenInput.trim())) {
+        setMapboxToken(tokenInput.trim());
+        toast({
+          title: "Configuration Mapbox",
+          description: "La clé API Mapbox a été enregistrée avec succès.",
+          variant: "default"
+        });
+        setTokenInput('');
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Format de clé API incorrect",
+          description: "Le token Mapbox ne semble pas avoir un format valide.",
+        });
+      }
     } else {
       toast({
         variant: "destructive",
