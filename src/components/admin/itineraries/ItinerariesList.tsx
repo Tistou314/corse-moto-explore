@@ -54,6 +54,17 @@ const ItinerariesList = () => {
       setItineraryToDelete(null);
     }
   };
+
+  // Helper function to get badge color based on difficulty
+  const getDifficultyBadgeClass = (difficulty: string) => {
+    if (difficulty.toLowerCase() === "facile") {
+      return "border-green-500 text-green-600";
+    } else if (difficulty.toLowerCase() === "moyen") {
+      return "border-yellow-500 text-yellow-600";
+    } else {
+      return "border-red-500 text-red-600";
+    }
+  };
   
   return (
     <div className="space-y-6">
@@ -116,15 +127,10 @@ const ItinerariesList = () => {
                   <TableCell>
                     <Badge 
                       variant="outline" 
-                      className={
-                        itinerary.difficulty === "Facile" 
-                          ? "border-green-500 text-green-600" 
-                          : itinerary.difficulty === "Modéré" 
-                          ? "border-yellow-500 text-yellow-600" 
-                          : "border-red-500 text-red-600"
-                      }
+                      className={getDifficultyBadgeClass(itinerary.difficulty)}
                     >
-                      {itinerary.difficulty}
+                      {itinerary.difficulty === "facile" ? "Facile" : 
+                       itinerary.difficulty === "moyen" ? "Modéré" : "Difficile"}
                     </Badge>
                   </TableCell>
                   <TableCell className="text-right space-x-2">

@@ -19,6 +19,12 @@ import { ArrowLeft, Save, Plus, X } from "lucide-react";
 import ImageUpload from "@/components/admin/ImageUpload";
 import { itineraries } from "@/data/itineraires";
 
+interface PointOfInterest {
+  name: string;
+  description: string;
+  image: string;
+}
+
 interface ItineraryFormData {
   title: string;
   description: string;
@@ -28,17 +34,13 @@ interface ItineraryFormData {
   duration: string;
   difficulty: string;
   mapUrl: string;
-  points: {
-    name: string;
-    description: string;
-    image: string;
-  }[];
+  points: PointOfInterest[];
 }
 
 const difficultyLevels = [
-  { value: "Facile", label: "Facile" },
-  { value: "Modéré", label: "Modéré" },
-  { value: "Difficile", label: "Difficile" },
+  { value: "facile", label: "Facile" },
+  { value: "moyen", label: "Modéré" },
+  { value: "difficile", label: "Difficile" },
 ];
 
 const regions = [
@@ -75,15 +77,34 @@ const ItineraryEdit = () => {
           description: itinerary.description,
           image: itinerary.image,
           region: itinerary.region,
-          distance: itinerary.distance,
+          distance: parseInt(itinerary.distance.toString()), // Convert to number
           duration: itinerary.duration,
           difficulty: itinerary.difficulty,
           mapUrl: "",
-          points: itinerary.pointsOfInterest ? itinerary.pointsOfInterest.map(poi => ({
-            name: poi.name,
-            description: poi.description || "",
-            image: poi.image || "",
-          })) : [],
+          points: Array.isArray(itinerary.pointsOfInterest) 
+            ? itinerary.pointsOfInterest.map(poi => {
+                if (typeof poi === 'string') {
+                  // Handle case where pointsOfInterest is array of strings
+                  return {
+                    name: poi,
+                    description: '',
+                    image: ''
+                  };
+                } else if (typeof poi === 'object' && poi !== null) {
+                  // Handle case where pointsOfInterest might be objects
+                  return {
+                    name: poi.name || '',
+                    description: poi.description || '',
+                    image: poi.image || ''
+                  };
+                }
+                return {
+                  name: '',
+                  description: '',
+                  image: ''
+                };
+              })
+            : [],
         });
       } else {
         toast.error("Itinéraire non trouvé");
@@ -107,7 +128,7 @@ const ItineraryEdit = () => {
   };
   
   // Mettre à jour un point d'intérêt
-  const updatePoint = (index: number, field: keyof (typeof points)[0], value: string) => {
+  const updatePoint = (index: number, field: keyof PointOfInterest, value: string) => {
     const currentPoints = [...form.getValues("points")];
     currentPoints[index][field] = value;
     form.setValue("points", currentPoints);

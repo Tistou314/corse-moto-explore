@@ -1,4 +1,10 @@
 
+export interface PointOfInterest {
+  name: string;
+  description?: string;
+  image?: string;
+}
+
 export interface Itinerary {
   id: string;
   title: string;
@@ -6,10 +12,10 @@ export interface Itinerary {
   fullDescription: string;
   image: string;
   duration: string;
-  distance: string;
+  distance: string | number;
   difficulty: 'facile' | 'moyen' | 'difficile';
   region: string;
-  pointsOfInterest: string[];
+  pointsOfInterest: string[] | PointOfInterest[];
   startPoint: string;
   endPoint: string;
   elevation: string;

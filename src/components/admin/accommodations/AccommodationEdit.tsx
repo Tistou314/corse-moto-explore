@@ -76,9 +76,9 @@ const AccommodationEdit = () => {
           rating: accommodation.rating,
           amenities: accommodation.amenities,
           bikerAmenities: accommodation.bikerAmenities,
-          contactPhone: accommodation.contactInfo?.phone || "",
-          contactEmail: accommodation.contactInfo?.email || "",
-          website: accommodation.contactInfo?.website || "",
+          contactPhone: accommodation.contact?.phone || "",
+          contactEmail: accommodation.contact?.email || "",
+          website: accommodation.contact?.website || "",
         });
       } else {
         toast.error("Hébergement non trouvé");
