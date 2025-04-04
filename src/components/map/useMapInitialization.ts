@@ -1,3 +1,4 @@
+
 import { useRef, useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { CorsicaCenter } from './types';
@@ -52,9 +53,50 @@ export const useMapInitialization = (
       map.current.touchZoomRotate.disable();
     }
 
-    // Add Corsica terrain
+    // Add Corsica terrain and boundaries
     map.current.on('load', () => {
       console.log('Map loaded');
+      
+      // Add Corsica boundary layer
+      if (map.current) {
+        // Add source for Corsica boundary
+        map.current.addSource('corsica-boundary', {
+          'type': 'geojson',
+          'data': {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Polygon',
+              'coordinates': [[
+                // Corsica outline coordinates - clockwise from northwest
+                [8.5598, 43.0308], // Cap Corse north
+                [9.4045, 42.9937], // Northeastern coast
+                [9.5598, 42.3747], // Eastern coast
+                [9.4068, 41.5959], // Southeastern coast
+                [9.2211, 41.3732], // Southern coast (Bonifacio)
+                [8.6598, 41.3615], // Southwestern coast
+                [8.5598, 41.8615], // Western coast
+                [8.5598, 42.5615], // Northwestern coast
+                [8.5598, 43.0308]  // Close the polygon
+              ]]
+            },
+            'properties': {}
+          }
+        });
+
+        // Add boundary line layer
+        map.current.addLayer({
+          'id': 'corsica-outline',
+          'type': 'line',
+          'source': 'corsica-boundary',
+          'layout': {},
+          'paint': {
+            'line-color': '#e02b20',
+            'line-width': 2,
+            'line-opacity': 0.8
+          }
+        });
+      }
+      
       if (setIsLoaded) {
         setIsLoaded(true);
       }

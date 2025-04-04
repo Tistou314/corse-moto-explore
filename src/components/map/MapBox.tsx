@@ -5,7 +5,7 @@ import { MapBoxProps, CorsicaCenter } from './types';
 import { useMapbox } from './useMapbox';
 import LocationPopup from './LocationPopup';
 import { Badge } from '@/components/ui/badge';
-import { Info } from 'lucide-react';
+import { Info, Map as MapIcon } from 'lucide-react';
 import { toast } from 'sonner';
 
 const MapBox = ({ 
@@ -35,8 +35,14 @@ const MapBox = ({
 
   // Show toast when locations are loaded
   useEffect(() => {
-    if (isLoaded && locations.length > 0) {
-      toast.success(`${locations.length} emplacements affichés sur la carte`);
+    if (isLoaded) {
+      if (locations.length > 0) {
+        toast.success(`${locations.length} emplacements affichés sur la carte`);
+      }
+      toast.info('Contours de la Corse ajoutés à la carte', {
+        icon: <MapIcon className="h-4 w-4" />,
+        duration: 3000,
+      });
     }
   }, [isLoaded, locations.length]);
 
