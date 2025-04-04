@@ -71,6 +71,30 @@ export const formatContent = (content: string): string => {
       }
       formattedContent += `<h4 class="text-lg font-bold my-3">${line.substring(5)}</h4>\n`;
     } 
+    // Process CTA buttons - format: [CTA:text](url)
+    else if (line.match(/^\[CTA:(.+?)\]\((.+?)\)$/)) {
+      if (inParagraph) {
+        formattedContent += '</p>\n';
+        inParagraph = false;
+      }
+      if (inList) {
+        formattedContent += '</ul>\n';
+        inList = false;
+      }
+      
+      const match = line.match(/^\[CTA:(.+?)\]\((.+?)\)$/);
+      if (match) {
+        const [_, buttonText, buttonUrl] = match;
+        formattedContent += `<div class="my-6 flex justify-center">
+          <a href="${buttonUrl}" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-corsica-blue rounded-md shadow-sm hover:bg-corsica-blue/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-corsica-blue transition-colors">
+            ${buttonText}
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </a>
+        </div>\n`;
+      }
+    }
     // Process list items
     else if (line.startsWith('* ') || line.startsWith('- ')) {
       if (inParagraph) {
@@ -122,6 +146,12 @@ export const formatContent = (content: string): string => {
  * Helper function for inline styles (bold, italic)
  */
 export const formatInlineStyles = (text: string): string => {
+  // Process inline CTAs format: [CTA:text](url)
+  text = text.replace(/\[CTA:(.+?)\]\((.+?)\)/g, '<a href="$2" class="inline-flex items-center font-medium text-corsica-blue hover:underline">$1 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></a>');
+  
+  // Process regular links format: [text](url)
+  text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-corsica-blue hover:underline">$1</a>');
+  
   // First handle double asterisks for bold (before single asterisks to avoid conflicts)
   text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
   // Handle double underscores for bold

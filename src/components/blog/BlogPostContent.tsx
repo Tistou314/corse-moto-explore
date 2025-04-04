@@ -1,6 +1,6 @@
 
 import { BlogPost } from '@/types/blog';
-import { Heart, Share2, Tag, MessageCircle } from 'lucide-react';
+import { Heart, Share2, Tag } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { formatContent } from '@/utils/markdownFormatter';
 
