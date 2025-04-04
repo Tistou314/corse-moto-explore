@@ -1,6 +1,9 @@
-
-import { useMap } from '@/contexts/MapContext';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import MapBox from '@/components/map/MapBox';
+import { itineraries } from '@/data/itineraires';
+import { MapLocation } from '@/components/map/types';
+import { useMap } from '@/contexts/MapContext';
 import { Button } from "@/components/ui/button";
 import { Download } from 'lucide-react';
 
@@ -16,6 +19,7 @@ interface ItineraryMapProps {
 
 const ItineraryMap = ({ itinerary }: ItineraryMapProps) => {
   const { isMapConfigured } = useMap();
+  const { id } = useParams();
 
   const prepareMapLocations = () => {
     if (!itinerary) return [];

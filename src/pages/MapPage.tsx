@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import Navbar from '@/components/Navbar';
@@ -11,6 +10,7 @@ import { accommodations } from '@/data/accommodations';
 import { useMap } from '@/contexts/MapContext';
 import MapBox from '@/components/map/MapBox';
 import MapTokenInput from '@/components/map/MapTokenInput';
+import { MapLocation } from '@/components/map/types';
 
 const getPageMetadata = () => {
   return {
@@ -25,14 +25,10 @@ const MapPage = () => {
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Prepare map data from itineraries and accommodations
   const prepareMapLocations = () => {
-    const locations = [];
+    const locations: MapLocation[] = [];
 
-    // Add itineraries with coordinates (assuming they have lat/long in the data)
-    // In a real app, you would ensure these coordinates exist in your data
     for (const itinerary of itineraries) {
-      // For demo, generate random coordinates near Corsica if not available
       const lat = itinerary.latitude || 41.8 + Math.random() * 0.8;
       const lng = itinerary.longitude || 8.7 + Math.random() * 1.0;
       
@@ -46,9 +42,7 @@ const MapPage = () => {
       });
     }
 
-    // Add accommodations
     for (const accommodation of accommodations) {
-      // For demo, generate random coordinates near Corsica if not available
       const lat = accommodation.latitude || 41.9 + Math.random() * 0.6;
       const lng = accommodation.longitude || 9.0 + Math.random() * 0.7;
       
@@ -65,7 +59,6 @@ const MapPage = () => {
     return locations;
   };
 
-  // Filter locations based on active filter and search term
   const filteredLocations = () => {
     const locations = prepareMapLocations();
     
@@ -88,7 +81,6 @@ const MapPage = () => {
       
       <Navbar />
       
-      {/* Main Content */}
       <div className="flex-grow bg-muted py-8">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8">
@@ -150,7 +142,6 @@ const MapPage = () => {
                 </div>
               </div>
 
-              {/* Map Container */}
               <div className="bg-white rounded-lg shadow-sm p-4 mb-8">
                 <div className="map-container">
                   <MapBox 
@@ -162,7 +153,6 @@ const MapPage = () => {
             </>
           )}
 
-          {/* Itineraries Table */}
           <div className="bg-white rounded-lg shadow-sm p-6">
             <h2 className="text-xl font-bold mb-4">Itinéraires disponibles</h2>
             <div className="overflow-x-auto">

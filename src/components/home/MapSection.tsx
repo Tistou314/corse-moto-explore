@@ -7,6 +7,7 @@ import MapPlaceholder from '@/components/MapPlaceholder';
 import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 import { cn } from '@/lib/utils';
 import { itineraries } from '@/data/itineraires';
+import { MapLocation } from '@/components/map/types';
 
 const MapSection = () => {
   const { ref, isVisible } = useScrollAnimation<HTMLElement>();
