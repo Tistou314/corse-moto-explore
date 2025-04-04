@@ -7,6 +7,8 @@
  * Format markdown text to HTML
  */
 export const formatContent = (content: string): string => {
+  console.log("Content to format:", content);
+  
   // First, split the content into lines for processing
   let lines = content.split('\n');
   let formattedContent = '';
@@ -85,6 +87,7 @@ export const formatContent = (content: string): string => {
       const match = line.match(/^\[CTA:(.+?)\]\((.+?)\)$/);
       if (match) {
         const [_, buttonText, buttonUrl] = match;
+        console.log("Found CTA button:", buttonText, buttonUrl);
         formattedContent += `<div class="my-6 flex justify-center">
           <a href="${buttonUrl}" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-corsica-blue rounded-md shadow-sm hover:bg-corsica-blue/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-corsica-blue transition-colors">
             ${buttonText}
@@ -139,6 +142,7 @@ export const formatContent = (content: string): string => {
     formattedContent += '</ul>\n';
   }
   
+  console.log("Formatted content contains CTA:", formattedContent.includes("CTA"));
   return formattedContent;
 };
 
@@ -147,7 +151,16 @@ export const formatContent = (content: string): string => {
  */
 export const formatInlineStyles = (text: string): string => {
   // Process inline CTAs format: [CTA:text](url)
-  text = text.replace(/\[CTA:(.+?)\]\((.+?)\)/g, '<a href="$2" class="inline-flex items-center font-medium text-corsica-blue hover:underline">$1 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></a>');
+  const ctaPattern = /\[CTA:([^\]]+)\]\(([^)]+)\)/g;
+  const hasCTA = ctaPattern.test(text);
+  if (hasCTA) {
+    console.log("Found inline CTA in:", text);
+  }
+  
+  text = text.replace(ctaPattern, (match, buttonText, buttonUrl) => {
+    console.log("Replacing inline CTA:", buttonText, buttonUrl);
+    return `<a href="${buttonUrl}" class="inline-flex items-center font-medium text-corsica-blue hover:underline">${buttonText} <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></a>`;
+  });
   
   // Process regular links format: [text](url)
   text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-corsica-blue hover:underline">$1</a>');

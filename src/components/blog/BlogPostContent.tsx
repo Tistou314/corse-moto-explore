@@ -3,6 +3,7 @@ import { BlogPost } from '@/types/blog';
 import { Heart, Share2, Tag } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { formatContent } from '@/utils/markdownFormatter';
+import { useEffect } from 'react';
 
 type BlogPostContentProps = {
   post: BlogPost;
@@ -12,10 +13,18 @@ type BlogPostContentProps = {
 };
 
 const BlogPostContent = ({ post, liked, onLike, onShare }: BlogPostContentProps) => {
+  useEffect(() => {
+    // Vérifier que le contenu contient des CTA au chargement
+    console.log("Post content contains [CTA::", post.content.includes("[CTA:"));
+  }, [post.content]);
+
+  // Formater le contenu markdown en HTML
+  const formattedContent = formatContent(post.content);
+
   return (
     <div className="bg-white rounded-xl shadow-card p-6 md:p-8 mb-8">
       <div className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-corsica-blue prose-p:text-gray-700 prose-a:text-corsica-blue prose-a:no-underline hover:prose-a:underline" 
-           dangerouslySetInnerHTML={{ __html: formatContent(post.content) }} />
+           dangerouslySetInnerHTML={{ __html: formattedContent }} />
       
       <div className="mt-8 pt-6 border-t flex items-center justify-between">
         <div className="flex items-center space-x-3">
