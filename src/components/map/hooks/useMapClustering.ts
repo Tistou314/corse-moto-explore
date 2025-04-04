@@ -19,22 +19,27 @@ export const useMapClustering = (
     const safelyRemoveLayersAndSource = () => {
       if (!map.current) return;
       
-      // Check if map has the layers before removing them
-      if (map.current.getLayer('markers-clusters')) {
-        map.current.removeLayer('markers-clusters');
-      }
-      
-      if (map.current.getLayer('markers-cluster-count')) {
-        map.current.removeLayer('markers-cluster-count');
-      }
-      
-      if (map.current.getLayer('unclustered-point')) {
-        map.current.removeLayer('unclustered-point');
-      }
-      
-      // Check if map has the source before removing it
-      if (map.current.getSource('markers-source')) {
-        map.current.removeSource('markers-source');
+      try {
+        // Check if map has the layers before removing them
+        if (map.current.getLayer('markers-clusters')) {
+          map.current.removeLayer('markers-clusters');
+        }
+        
+        if (map.current.getLayer('markers-cluster-count')) {
+          map.current.removeLayer('markers-cluster-count');
+        }
+        
+        if (map.current.getLayer('unclustered-point')) {
+          map.current.removeLayer('unclustered-point');
+        }
+        
+        // Check if map has the source before removing it
+        if (map.current.getSource('markers-source')) {
+          map.current.removeSource('markers-source');
+        }
+      } catch (error) {
+        console.error("Error cleaning up map resources:", error);
+        // Continue execution even if there's an error
       }
     };
 
@@ -64,11 +69,14 @@ export const useMapClustering = (
       map.current.once('styledata', handleStyleLoad);
     }
 
-    // Cleanup function
+    // Cleanup function - handle with care to avoid terrain errors
     return () => {
-      if (map.current) {
-        safelyRemoveLayersAndSource();
-      }
+      // Use a slight delay to ensure map is in a stable state before cleanup
+      setTimeout(() => {
+        if (map.current) {
+          safelyRemoveLayersAndSource();
+        }
+      }, 0);
     };
   }, [map, locations, onMarkerClick, enabled]);
 };
@@ -79,102 +87,106 @@ const setupClusterLayers = (
   locations: MapLocation[], 
   onMarkerClick: (location: MapLocation) => void
 ) => {
-  // Prepare GeoJSON data
-  const features = locations.map(location => ({
-    type: 'Feature' as const,
-    geometry: {
-      type: 'Point' as const,
-      coordinates: [location.longitude, location.latitude]
-    },
-    properties: {
-      id: location.id,
-      title: location.title,
-      type: location.type,
-      description: location.description || '',
-      image: location.image || '',
-      isPrimary: location.isPrimary || false
-    }
-  }));
+  try {
+    // Prepare GeoJSON data
+    const features = locations.map(location => ({
+      type: 'Feature' as const,
+      geometry: {
+        type: 'Point' as const,
+        coordinates: [location.longitude, location.latitude]
+      },
+      properties: {
+        id: location.id,
+        title: location.title,
+        type: location.type,
+        description: location.description || '',
+        image: location.image || '',
+        isPrimary: location.isPrimary || false
+      }
+    }));
 
-  // Add data source for clustering
-  map.addSource('markers-source', {
-    type: 'geojson',
-    data: {
-      type: 'FeatureCollection',
-      features
-    },
-    cluster: true,
-    clusterMaxZoom: 12,
-    clusterRadius: 50
-  });
+    // Add data source for clustering
+    map.addSource('markers-source', {
+      type: 'geojson',
+      data: {
+        type: 'FeatureCollection',
+        features
+      },
+      cluster: true,
+      clusterMaxZoom: 12,
+      clusterRadius: 50
+    });
 
-  // Add cluster layers
-  map.addLayer({
-    id: 'markers-clusters',
-    type: 'circle',
-    source: 'markers-source',
-    filter: ['has', 'point_count'],
-    paint: {
-      'circle-color': [
-        'step',
-        ['get', 'point_count'],
-        '#51bbd6',
-        10,
-        '#f1f075',
-        30,
-        '#f28cb1'
-      ],
-      'circle-radius': [
-        'step',
-        ['get', 'point_count'],
-        20,
-        10,
-        25,
-        30,
-        30
-      ]
-    }
-  });
+    // Add cluster layers
+    map.addLayer({
+      id: 'markers-clusters',
+      type: 'circle',
+      source: 'markers-source',
+      filter: ['has', 'point_count'],
+      paint: {
+        'circle-color': [
+          'step',
+          ['get', 'point_count'],
+          '#51bbd6',
+          10,
+          '#f1f075',
+          30,
+          '#f28cb1'
+        ],
+        'circle-radius': [
+          'step',
+          ['get', 'point_count'],
+          20,
+          10,
+          25,
+          30,
+          30
+        ]
+      }
+    });
 
-  // Add count labels
-  map.addLayer({
-    id: 'markers-cluster-count',
-    type: 'symbol',
-    source: 'markers-source',
-    filter: ['has', 'point_count'],
-    layout: {
-      'text-field': '{point_count_abbreviated}',
-      'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
-      'text-size': 12
-    },
-    paint: {
-      'text-color': '#ffffff'
-    }
-  });
+    // Add count labels
+    map.addLayer({
+      id: 'markers-cluster-count',
+      type: 'symbol',
+      source: 'markers-source',
+      filter: ['has', 'point_count'],
+      layout: {
+        'text-field': '{point_count_abbreviated}',
+        'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+        'text-size': 12
+      },
+      paint: {
+        'text-color': '#ffffff'
+      }
+    });
 
-  // Individual points
-  map.addLayer({
-    id: 'unclustered-point',
-    type: 'circle',
-    source: 'markers-source',
-    filter: ['!', ['has', 'point_count']],
-    paint: {
-      'circle-color': [
-        'match',
-        ['get', 'type'],
-        'itinerary', '#3b82f6',
-        'accommodation', '#10b981',
-        'pointOfInterest', '#ef4444',
-        '#000000'
-      ],
-      'circle-radius': 12,
-      'circle-stroke-width': 2,
-      'circle-stroke-color': '#ffffff'
-    }
-  });
+    // Individual points
+    map.addLayer({
+      id: 'unclustered-point',
+      type: 'circle',
+      source: 'markers-source',
+      filter: ['!', ['has', 'point_count']],
+      paint: {
+        'circle-color': [
+          'match',
+          ['get', 'type'],
+          'itinerary', '#3b82f6',
+          'accommodation', '#10b981',
+          'pointOfInterest', '#ef4444',
+          '#000000'
+        ],
+        'circle-radius': 12,
+        'circle-stroke-width': 2,
+        'circle-stroke-color': '#ffffff'
+      }
+    });
 
-  // Setup event handlers
-  setupClusterEventHandlers(map, onMarkerClick);
+    // Setup event handlers
+    setupClusterEventHandlers(map, onMarkerClick);
+  } catch (error) {
+    console.error("Error setting up cluster layers:", error);
+  }
 };
 
 // Helper function to setup event handlers for clusters
