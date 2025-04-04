@@ -1,4 +1,3 @@
-
 import { useRef, useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { CorsicaCenter } from './types';
@@ -31,7 +30,6 @@ export const useMapInitialization = (
       attributionControl: true,
       fadeDuration: 300,
       pitch: 20, // Angle plus prononcé pour une meilleure visibilité du relief
-      terrain: { source: 'mapbox-dem', exaggeration: 1.5 }, // Ajout du terrain avec exagération
     });
 
     // Add navigation controls if interactive
