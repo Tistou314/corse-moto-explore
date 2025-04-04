@@ -10,7 +10,7 @@ export const useMapbox = (
   locations: MapLocation[] = [],
   center: [number, number] = CorsicaCenter,
   zoom: number = 8.5,
-  interactive: boolean = true,
+  interactive: boolean = false, // Par défaut statique
   drawRoute: boolean = false,
   enableClustering: boolean = false
 ) => {
@@ -25,15 +25,6 @@ export const useMapbox = (
   // Handle marker click
   const handleMarkerClick = (location: MapLocation) => {
     setSelectedLocation(location);
-    
-    if (map.current) {
-      map.current.flyTo({
-        center: [location.longitude, location.latitude],
-        zoom: Math.max(map.current.getZoom(), 10.5),
-        essential: true,
-        duration: 1000
-      });
-    }
   };
 
   // Add markers to the map

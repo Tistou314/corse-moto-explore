@@ -12,7 +12,7 @@ const MapBox = ({
   center = CorsicaCenter, 
   zoom = 8.5,
   locations = [],
-  interactive = true,
+  interactive = false, // Par défaut non interactif (statique)
   height = '400px',
   drawRoute = false,
   enableClustering = false
@@ -39,9 +39,9 @@ const MapBox = ({
       if (locations.length > 0) {
         toast.success(`${locations.length} emplacements affichés sur la carte`);
       }
-      toast.info('Carte de la Corse chargée avec le relief et les contours', {
+      toast.info('Carte de la Corse chargée', {
         icon: <MapIcon className="h-4 w-4" />,
-        duration: 3000,
+        duration: 2000,
       });
     }
   }, [isLoaded, locations.length]);
@@ -66,7 +66,7 @@ const MapBox = ({
       <div className="absolute top-3 right-12 bg-white p-2 rounded shadow-md z-10">
         <Badge variant="outline" className="flex items-center gap-1">
           <Info className="h-3 w-3" />
-          <span>{locationCount} lieux affichés</span>
+          <span>{locationCount} lieux</span>
         </Badge>
       </div>
     </div>

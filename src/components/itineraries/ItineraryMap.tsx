@@ -1,6 +1,4 @@
 
-import { useEffect } from 'react';
-import { useMap } from '@/contexts/MapContext';
 import MapBox from '@/components/map/MapBox';
 import { MapLocation } from '@/components/map/types';
 
@@ -8,43 +6,39 @@ interface ItineraryMapProps {
   itinerary: {
     id: string;
     title: string;
-    latitude?: number;
-    longitude?: number;
+    latitude: number;
+    longitude: number;
     pointsOfInterest?: any[];
   };
 }
 
 const ItineraryMap = ({ itinerary }: ItineraryMapProps) => {
-  const { isMapConfigured } = useMap();
-  
-  // Prepare map locations for this itinerary
-  const prepareLocations = (): MapLocation[] => {
+  // Préparer les emplacements pour la carte
+  const prepareMapLocations = (): MapLocation[] => {
     const locations: MapLocation[] = [];
     
-    // Add main itinerary point if coordinates exist
-    if (itinerary.latitude && itinerary.longitude) {
-      locations.push({
-        id: itinerary.id,
-        title: itinerary.title,
-        latitude: itinerary.latitude,
-        longitude: itinerary.longitude,
-        type: 'itinerary'
-      });
-    }
+    // Point principal de l'itinéraire
+    locations.push({
+      id: itinerary.id,
+      title: itinerary.title,
+      latitude: itinerary.latitude,
+      longitude: itinerary.longitude,
+      type: 'itinerary'
+    });
     
-    // Add points of interest
+    // Points d'intérêt
     if (Array.isArray(itinerary.pointsOfInterest)) {
       itinerary.pointsOfInterest.forEach((poi, index) => {
-        if (typeof poi === 'object' && poi.latitude && poi.longitude) {
+        if (poi.latitude && poi.longitude) {
           locations.push({
             id: `poi-${itinerary.id}-${index}`,
             title: poi.name,
             latitude: poi.latitude,
             longitude: poi.longitude,
             type: 'pointOfInterest',
-            description: poi.description || '',
-            isPrimary: true,
-            image: poi.image
+            description: poi.description,
+            image: poi.image,
+            isPrimary: true
           });
         }
       });
@@ -52,42 +46,19 @@ const ItineraryMap = ({ itinerary }: ItineraryMapProps) => {
     
     return locations;
   };
-
-  if (!isMapConfigured) {
-    return (
-      <div className="my-8">
-        <div className="bg-muted h-64 flex items-center justify-center rounded-lg">
-          <p className="text-muted-foreground">
-            Configurez votre clé Mapbox pour afficher la carte
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  const locations = prepareLocations();
   
-  if (locations.length === 0) {
-    return (
-      <div className="my-8">
-        <div className="bg-muted h-64 flex items-center justify-center rounded-lg">
-          <p className="text-muted-foreground">
-            Aucune coordonnée disponible pour cet itinéraire
-          </p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="my-8">
-      <h2 className="text-2xl font-bold mb-4">Carte de l'itinéraire</h2>
-      <div className="h-[400px] rounded-lg overflow-hidden">
+      <h3 className="text-xl font-semibold mb-4">Carte de l'itinéraire</h3>
+      
+      <div className="rounded-lg overflow-hidden">
         <MapBox 
-          locations={locations} 
-          height="400px" 
-          drawRoute={locations.length > 1} 
-          enableClustering={false}
+          locations={prepareMapLocations()}
+          center={[itinerary.longitude, itinerary.latitude]}
+          zoom={10}
+          height="400px"
+          interactive={false}
+          drawRoute={false}
         />
       </div>
     </div>

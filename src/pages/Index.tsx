@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
 import FeaturesSection from '@/components/home/FeaturesSection';
 import ItinerariesSection from '@/components/home/ItinerariesSection';
+import MapSection from '@/components/home/MapSection';
 import BlogSection from '@/components/home/BlogSection';
 import AccommodationsSection from '@/components/home/AccommodationsSection';
 import CampingSection from '@/components/home/CampingSection';
@@ -52,6 +53,9 @@ const Index = () => {
 
       {/* Featured Itineraries */}
       <ItinerariesSection itineraries={featuredItineraries} />
+
+      {/* Carte Statique */}
+      <MapSection />
 
       {/* Blog Posts */}
       <BlogSection posts={recentPosts} />
