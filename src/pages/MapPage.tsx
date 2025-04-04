@@ -5,7 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Map, Hotel, Route, Info } from 'lucide-react';
+import { Map, Hotel, Route, Info, Search } from 'lucide-react';
 import { itineraries } from '@/data/itineraires';
 import { accommodations } from '@/data/accommodations';
 import { useMap } from '@/contexts/MapContext';
