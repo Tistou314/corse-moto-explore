@@ -8,18 +8,20 @@ import { useMap } from '@/contexts/MapContext';
 import { Button } from "@/components/ui/button";
 import { Download, Map, MapPin } from 'lucide-react';
 
+interface PointOfInterest {
+  name: string;
+  latitude?: number;
+  longitude?: number;
+  description?: string;
+}
+
 interface ItineraryMapProps {
   itinerary?: {
     id: string;
     title: string;
     latitude?: number;
     longitude?: number;
-    pointsOfInterest?: Array<{ 
-      name: string; 
-      latitude?: number; 
-      longitude?: number; 
-      description?: string;
-    }>;
+    pointsOfInterest?: Array<PointOfInterest | string>;
   };
 }
 

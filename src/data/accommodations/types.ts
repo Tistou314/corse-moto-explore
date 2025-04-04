@@ -1,4 +1,3 @@
-
 import { LucideIcon } from 'lucide-react';
 import { Car, Home, Wrench, Bike, MapPin, Utensils, Wifi, ShieldCheck } from 'lucide-react';
 

@@ -63,7 +63,13 @@ const ItineraryDetailPage = () => {
             {/* Left Column - Main Description */}
             <div className="lg:col-span-2">
               <ItineraryDescription itinerary={itinerary} />
-              <ItineraryMap itinerary={itinerary} />
+              <ItineraryMap itinerary={{
+                id: itinerary.id,
+                title: itinerary.title,
+                latitude: itinerary.latitude,
+                longitude: itinerary.longitude,
+                pointsOfInterest: itinerary.pointsOfInterest
+              }} />
               <ItineraryPointsOfInterest itinerary={itinerary} />
               <ItineraryRating />
             </div>

@@ -14,6 +14,7 @@ export interface MapBoxProps {
   locations?: MapLocation[];
   interactive?: boolean;
   height?: string;
+  drawRoute?: boolean;
 }
 
 // Define marker types and their colors
