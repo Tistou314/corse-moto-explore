@@ -39,7 +39,7 @@ const MapBox = ({
       if (locations.length > 0) {
         toast.success(`${locations.length} emplacements affichés sur la carte`);
       }
-      toast.info('Contours de la Corse ajoutés à la carte', {
+      toast.info('Carte de la Corse chargée avec le relief et les contours', {
         icon: <MapIcon className="h-4 w-4" />,
         duration: 3000,
       });
@@ -57,7 +57,7 @@ const MapBox = ({
 
   return (
     <div className="relative w-full" style={{ height }}>
-      <div ref={mapContainer} className="w-full h-full rounded-lg overflow-hidden border border-gray-200" />
+      <div ref={mapContainer} className="w-full h-full rounded-lg overflow-hidden border border-gray-200 shadow-lg" />
       
       {selectedLocation && (
         <LocationPopup location={selectedLocation} onClose={closePopup} />

@@ -23,14 +23,15 @@ export const useMapInitialization = (
     
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/outdoors-v12',
+      style: 'mapbox://styles/mapbox/outdoors-v12', // Style plus détaillé avec relief
       center: center,
       zoom: zoom,
       maxZoom: 16,
       minZoom: 7,
       attributionControl: true,
       fadeDuration: 300,
-      pitch: 10, // Slight angle for better visibility
+      pitch: 20, // Angle plus prononcé pour une meilleure visibilité du relief
+      terrain: { source: 'mapbox-dem', exaggeration: 1.5 }, // Ajout du terrain avec exagération
     });
 
     // Add navigation controls if interactive
@@ -57,9 +58,19 @@ export const useMapInitialization = (
     map.current.on('load', () => {
       console.log('Map loaded');
       
-      // Add Corsica boundary layer
       if (map.current) {
-        // Add source for Corsica boundary
+        // Add DEM source for terrain
+        map.current.addSource('mapbox-dem', {
+          'type': 'raster-dem',
+          'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+          'tileSize': 512,
+          'maxzoom': 14
+        });
+        
+        // Add terrain layer
+        map.current.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+        
+        // Add Corsica boundary layer
         map.current.addSource('corsica-boundary', {
           'type': 'geojson',
           'data': {
@@ -95,6 +106,20 @@ export const useMapInitialization = (
             'line-opacity': 0.8
           }
         });
+        
+        // Add hillshading layer for better relief visualization
+        map.current.addLayer({
+          'id': 'hills',
+          'type': 'hillshade',
+          'source': 'mapbox-dem',
+          'layout': {'visibility': 'visible'},
+          'paint': {
+            'hillshade-highlight-color': 'white',
+            'hillshade-illumination-direction': 270,
+            'hillshade-shadow-color': 'rgba(0, 0, 0, 0.15)',
+            'hillshade-exaggeration': 0.8
+          }
+        }, 'corsica-outline');
       }
       
       if (setIsLoaded) {
