@@ -9,13 +9,15 @@ const MapBox = ({
   zoom = 8.5,
   locations = [],
   interactive = true,
-  height = '400px'
+  height = '400px',
+  drawRoute = false
 }: MapBoxProps) => {
   const { mapContainer, selectedLocation, closePopup, mapboxToken } = useMapbox(
     locations,
     center,
     zoom,
-    interactive
+    interactive,
+    drawRoute
   );
 
   // Handle token not being available

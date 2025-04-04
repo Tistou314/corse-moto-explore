@@ -63,7 +63,7 @@ const ItineraryDetailPage = () => {
             {/* Left Column - Main Description */}
             <div className="lg:col-span-2">
               <ItineraryDescription itinerary={itinerary} />
-              <ItineraryMap />
+              <ItineraryMap itinerary={itinerary} />
               <ItineraryPointsOfInterest itinerary={itinerary} />
               <ItineraryRating />
             </div>

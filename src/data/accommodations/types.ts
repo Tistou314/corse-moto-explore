@@ -1,4 +1,5 @@
 
+import { LucideIcon } from 'lucide-react';
 import { Car, Home, Wrench, Bike, MapPin, Utensils, Wifi, ShieldCheck } from 'lucide-react';
 
 export interface MapLocation {
@@ -16,6 +17,7 @@ export interface MapBoxProps {
   locations?: MapLocation[];
   interactive?: boolean;
   height?: string;
+  drawRoute?: boolean;
 }
 
 // Define marker types and their colors

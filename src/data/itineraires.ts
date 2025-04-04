@@ -40,7 +40,44 @@ export const itineraries: Itinerary[] = [
     distance: '110 km',
     difficulty: 'moyen',
     region: 'Nord',
-    pointsOfInterest: ['Erbalunga', 'Nonza', 'Barcaggio', 'Macinaggio', 'Centuri'],
+    pointsOfInterest: [
+      { 
+        name: 'Bastia', 
+        description: 'Point de départ du tour du Cap Corse',
+        latitude: 42.7026, 
+        longitude: 9.4509 
+      },
+      { 
+        name: 'Erbalunga', 
+        description: 'Charmant village de pêcheurs avec sa tour génoise', 
+        latitude: 42.7425, 
+        longitude: 9.4586 
+      },
+      { 
+        name: 'Macinaggio', 
+        description: 'Port pittoresque à l\'extrémité nord-est du Cap',
+        latitude: 42.9458, 
+        longitude: 9.4557 
+      },
+      { 
+        name: 'Barcaggio', 
+        description: 'Le point le plus au nord de la Corse',
+        latitude: 43.0039, 
+        longitude: 9.3992 
+      },
+      { 
+        name: 'Centuri', 
+        description: 'Port de pêche réputé pour ses langoustes',
+        latitude: 42.9658, 
+        longitude: 9.3486 
+      },
+      { 
+        name: 'Nonza', 
+        description: 'Village perché sur une falaise avec sa plage de galets noirs',
+        latitude: 42.7931, 
+        longitude: 9.3429 
+      }
+    ],
     startPoint: 'Bastia',
     endPoint: 'Bastia',
     elevation: '0-360m',
@@ -58,7 +95,9 @@ export const itineraries: Itinerary[] = [
       'Départ recommandé de Bastia tôt le matin pour éviter le trafic',
       'Prudence dans les traversées de villages souvent étroites',
       'Arrêt photo incontournable au col de Sainte-Lucie (360m)'
-    ]
+    ],
+    latitude: 42.7026,
+    longitude: 9.4509
   },
   {
     id: 'route-cretes',
