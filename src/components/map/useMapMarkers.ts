@@ -22,9 +22,10 @@ export const useMapMarkers = (
     // Filter locations by type to separate itinerary points, POIs and start/end points
     const itineraryPoints = locations.filter(loc => loc.type === 'itinerary');
     const poiPoints = locations.filter(loc => loc.type === 'pointOfInterest');
+    const accommodationPoints = locations.filter(loc => loc.type === 'accommodation');
 
     // Add markers
-    [...itineraryPoints, ...poiPoints].forEach(location => {
+    [...itineraryPoints, ...poiPoints, ...accommodationPoints].forEach(location => {
       const marker = createMapMarker({
         location,
         map: map.current!,

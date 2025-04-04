@@ -13,6 +13,9 @@ interface PointOfInterest {
   latitude?: number;
   longitude?: number;
   description?: string;
+  image?: string;
+  externalUrl?: string;
+  coordinates?: string;
 }
 
 interface ItineraryMapProps {
@@ -82,12 +85,15 @@ const ItineraryMap = ({ itinerary }: ItineraryMapProps) => {
         
         if (poi.latitude && poi.longitude) {
           locations.push({
-            id: `poi-${index}`,
+            id: `poi-${itineraryData.id}-${index}`,
             title: poi.name || `Point d'intérêt ${index + 1}`,
             latitude: poi.latitude,
             longitude: poi.longitude,
             type: 'pointOfInterest' as const,
-            description: poi.description || ''
+            description: poi.description || `Point d'intérêt sur l'itinéraire "${itineraryData.title}"`,
+            image: poi.image || undefined,
+            externalUrl: poi.externalUrl || undefined,
+            coordinates: poi.coordinates || `${poi.latitude.toFixed(4)}, ${poi.longitude.toFixed(4)}`
           });
         }
       });

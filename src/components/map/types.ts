@@ -6,6 +6,9 @@ export interface MapLocation {
   longitude: number;
   type: 'itinerary' | 'accommodation' | 'pointOfInterest';
   description?: string;
+  image?: string;
+  externalUrl?: string;
+  coordinates?: string;
 }
 
 export interface MapBoxProps {
