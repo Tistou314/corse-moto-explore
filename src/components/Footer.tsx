@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Twitter, Mail, MapPin, Phone, Bike } from 'lucide-react';
 
@@ -49,7 +48,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/carte" className="text-gray-300 hover:text-white transition-colors flex items-center">
+                <Link to="/map" className="text-gray-300 hover:text-white transition-colors flex items-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
                   Carte Interactive
                 </Link>
