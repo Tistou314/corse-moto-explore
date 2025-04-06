@@ -1,8 +1,7 @@
-
 import { Itinerary } from '@/data/itineraries';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { Download, Share2, MapPin, Calendar, AlertTriangle, Award, MapIcon, Route as RouteIcon } from 'lucide-react';
+import { Download, Share2, MapPin, Calendar, AlertTriangle, Award, MapIcon, RouteIcon } from 'lucide-react';
 
 interface ItinerarySidebarProps {
   itinerary: Itinerary;
