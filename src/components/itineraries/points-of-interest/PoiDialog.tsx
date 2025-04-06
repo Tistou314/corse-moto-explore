@@ -5,7 +5,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose, DialogDe
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 
-interface PoiDialogProps {
+export interface PoiDialogProps {
   isOpen: boolean;
   onClose: () => void;
   poi: {
@@ -28,15 +28,17 @@ const PoiDialog = ({ isOpen, onClose, poi }: PoiDialogProps) => {
             <span className="sr-only">Fermer</span>
           </DialogClose>
         </DialogHeader>
-        <div className="relative">
-          {!imageLoaded && <Skeleton className="w-full h-[250px] rounded-md" />}
-          <img 
-            src={poi.image} 
-            alt={poi.name}
-            className={`w-full h-[250px] object-cover rounded-md mb-4 ${!imageLoaded ? 'invisible absolute' : ''}`}
-            onLoad={() => setImageLoaded(true)}
-          />
-        </div>
+        {poi.image && (
+          <div className="relative">
+            {!imageLoaded && <Skeleton className="w-full h-[250px] rounded-md" />}
+            <img 
+              src={poi.image} 
+              alt={poi.name}
+              className={`w-full h-[250px] object-cover rounded-md mb-4 ${!imageLoaded ? 'invisible absolute' : ''}`}
+              onLoad={() => setImageLoaded(true)}
+            />
+          </div>
+        )}
         <DialogDescription className="text-foreground">
           {poi.description || "Plus d'informations à venir prochainement sur ce point d'intérêt."}
         </DialogDescription>

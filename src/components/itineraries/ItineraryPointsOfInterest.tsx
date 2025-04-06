@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Itinerary } from '@/data/itineraries';
+import { Itinerary, PointOfInterest } from '@/data/itineraries';
 import { MapPin } from 'lucide-react';
 import PoiCard from './points-of-interest/PoiCard';
 import PoiDialog from './points-of-interest/PoiDialog';
@@ -10,7 +10,7 @@ interface ItineraryPointsOfInterestProps {
 }
 
 const ItineraryPointsOfInterest = ({ itinerary }: ItineraryPointsOfInterestProps) => {
-  const [selectedPoi, setSelectedPoi] = useState<any | null>(null);
+  const [selectedPoi, setSelectedPoi] = useState<string | PointOfInterest | null>(null);
   
   // Check if we have actual POI objects or just strings
   const isPoisObjects = Array.isArray(itinerary.pointsOfInterest) && 
@@ -22,7 +22,7 @@ const ItineraryPointsOfInterest = ({ itinerary }: ItineraryPointsOfInterestProps
     return null;
   }
   
-  const handlePoiClick = (poi: any) => {
+  const handlePoiClick = (poi: string | PointOfInterest) => {
     setSelectedPoi(poi);
   };
   
@@ -40,38 +40,48 @@ const ItineraryPointsOfInterest = ({ itinerary }: ItineraryPointsOfInterestProps
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {isPoisObjects ? (
           // Render POI objects with details
-          itinerary.pointsOfInterest.map((poi: any, index) => (
-            <div 
-              key={index} 
-              onClick={() => handlePoiClick(poi)}
-              className="cursor-pointer transition-transform hover:scale-105"
-            >
-              <PoiCard
-                name={poi.name}
-                description={poi.description || ''}
-                image={poi.image}
-              />
-            </div>
-          ))
+          itinerary.pointsOfInterest.map((poi, index) => {
+            const poiObj = poi as PointOfInterest;
+            return (
+              <div 
+                key={index} 
+                onClick={() => handlePoiClick(poiObj)}
+                className="cursor-pointer transition-transform hover:scale-105"
+              >
+                <PoiCard
+                  name={poiObj.name}
+                  description={poiObj.description || ''}
+                  image={poiObj.image}
+                />
+              </div>
+            );
+          })
         ) : (
           // Render POI strings (legacy format)
-          itinerary.pointsOfInterest.map((poi: string, index) => (
-            <div key={index} className="bg-gray-100 rounded-lg p-4">
-              <h3 className="font-medium">{poi}</h3>
-            </div>
-          ))
+          itinerary.pointsOfInterest.map((poi, index) => {
+            const poiString = poi as string;
+            return (
+              <div 
+                key={index} 
+                onClick={() => handlePoiClick(poiString)}
+                className="cursor-pointer transition-transform hover:scale-105 bg-gray-100 rounded-lg p-4"
+              >
+                <h3 className="font-medium">{poiString}</h3>
+              </div>
+            );
+          })
         )}
       </div>
       
       {selectedPoi && (
         <PoiDialog
+          isOpen={!!selectedPoi}
+          onClose={closePoiDialog}
           poi={{
             name: typeof selectedPoi === 'string' ? selectedPoi : selectedPoi.name,
             description: typeof selectedPoi === 'string' ? undefined : selectedPoi.description,
             image: typeof selectedPoi === 'string' ? undefined : selectedPoi.image
           }}
-          isOpen={!!selectedPoi}
-          onClose={closePoiDialog}
         />
       )}
     </div>

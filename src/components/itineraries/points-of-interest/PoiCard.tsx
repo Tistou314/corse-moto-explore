@@ -1,7 +1,7 @@
 
 import { MapPin } from 'lucide-react';
 
-interface PoiCardProps {
+export interface PoiCardProps {
   name: string;
   description?: string;
   image?: string;
