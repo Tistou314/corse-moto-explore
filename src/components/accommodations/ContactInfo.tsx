@@ -13,17 +13,22 @@ const ContactInfo = ({ accommodation }: ContactInfoProps) => {
         <MapPinIcon className="h-5 w-5 text-primary" />
         <span>{accommodation.location}</span>
       </div>
-      <div className="flex items-center gap-4">
-        <PhoneIcon className="h-5 w-5 text-primary" />
-        <span>{accommodation.contact.phone}</span>
-      </div>
-      {accommodation.contact.email && (
+      
+      {accommodation.contact?.phone && (
+        <div className="flex items-center gap-4">
+          <PhoneIcon className="h-5 w-5 text-primary" />
+          <span>{accommodation.contact.phone}</span>
+        </div>
+      )}
+      
+      {accommodation.contact?.email && (
         <div className="flex items-center gap-4">
           <MailIcon className="h-5 w-5 text-primary" />
           <span>{accommodation.contact.email}</span>
         </div>
       )}
-      {accommodation.contact.website && (
+      
+      {accommodation.contact?.website && (
         <div className="flex items-center gap-4">
           <GlobeIcon className="h-5 w-5 text-primary" />
           <a 
