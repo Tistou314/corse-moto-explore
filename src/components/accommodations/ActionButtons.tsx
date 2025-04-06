@@ -20,7 +20,7 @@ const ActionButtons = ({ websiteUrl, bookingLink }: ActionButtonsProps) => {
   const formattedWebsiteUrl = formatUrl(websiteUrl);
   const formattedBookingLink = formatUrl(bookingLink);
   
-  // Only show booking link if it exists and is different from the website URL
+  // Only show booking link if it exists, is different from the website URL, and website exists
   const showBookingLink = formattedBookingLink && formattedBookingLink !== formattedWebsiteUrl && websiteUrl;
   
   return (
