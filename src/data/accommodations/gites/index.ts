@@ -8,6 +8,7 @@ import { ghisonacciaGites } from './regional/ghisonaccia';
 import { portoGites } from './regional/porto';
 import { portovecchioGites } from './regional/portovecchio';
 import { proprianoGites } from './regional/propriano';
+import { autresGites } from './regional/autres';
 
 export const gitesAccommodations: Accommodation[] = [
   ...ajaccioGites,
@@ -17,5 +18,6 @@ export const gitesAccommodations: Accommodation[] = [
   ...ghisonacciaGites,
   ...portoGites,
   ...portovecchioGites,
-  ...proprianoGites
+  ...proprianoGites,
+  ...autresGites
 ];
