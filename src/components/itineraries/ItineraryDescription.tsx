@@ -47,7 +47,7 @@ const ItineraryDescription = ({ itinerary }: ItineraryDescriptionProps) => {
           Durée: {itinerary.duration}
         </span>
         <span className="inline-flex items-center px-6 py-3 rounded-full bg-corsica-blue/10 text-corsica-blue text-sm font-medium">
-          <Route className="w-5 h-5 mr-3" />
+          <RouteIcon className="w-5 h-5 mr-3" />
           Distance: {itinerary.distance}
         </span>
         <span className="inline-flex items-center px-6 py-3 rounded-full bg-corsica-blue/10 text-corsica-blue text-sm font-medium">
