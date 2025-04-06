@@ -65,7 +65,11 @@ const ItineraryPointsOfInterest = ({ itinerary }: ItineraryPointsOfInterestProps
       
       {selectedPoi && (
         <PoiDialog
-          poi={selectedPoi}
+          poi={{
+            name: typeof selectedPoi === 'string' ? selectedPoi : selectedPoi.name,
+            description: typeof selectedPoi === 'string' ? undefined : selectedPoi.description,
+            image: typeof selectedPoi === 'string' ? undefined : selectedPoi.image
+          }}
           isOpen={!!selectedPoi}
           onClose={closePoiDialog}
         />

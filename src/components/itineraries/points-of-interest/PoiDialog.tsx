@@ -8,24 +8,21 @@ import { Skeleton } from "@/components/ui/skeleton";
 interface PoiDialogProps {
   isOpen: boolean;
   onClose: () => void;
-  poiName: string | null;
-  poiDetails: {
+  poi: {
     name: string;
-    description: string;
-    image: string;
-  } | null;
+    description?: string;
+    image?: string;
+  };
 }
 
-const PoiDialog = ({ isOpen, onClose, poiName, poiDetails }: PoiDialogProps) => {
+const PoiDialog = ({ isOpen, onClose, poi }: PoiDialogProps) => {
   const [imageLoaded, setImageLoaded] = useState(false);
-
-  if (!poiName || !poiDetails) return null;
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="sm:max-w-[600px]">
         <DialogHeader>
-          <DialogTitle className="text-xl">{poiName}</DialogTitle>
+          <DialogTitle className="text-xl">{poi.name}</DialogTitle>
           <DialogClose className="absolute right-4 top-4">
             <X className="h-4 w-4" />
             <span className="sr-only">Fermer</span>
@@ -34,14 +31,14 @@ const PoiDialog = ({ isOpen, onClose, poiName, poiDetails }: PoiDialogProps) => 
         <div className="relative">
           {!imageLoaded && <Skeleton className="w-full h-[250px] rounded-md" />}
           <img 
-            src={poiDetails.image} 
-            alt={poiName}
+            src={poi.image} 
+            alt={poi.name}
             className={`w-full h-[250px] object-cover rounded-md mb-4 ${!imageLoaded ? 'invisible absolute' : ''}`}
             onLoad={() => setImageLoaded(true)}
           />
         </div>
         <DialogDescription className="text-foreground">
-          {poiDetails.description || "Plus d'informations à venir prochainement sur ce point d'intérêt."}
+          {poi.description || "Plus d'informations à venir prochainement sur ce point d'intérêt."}
         </DialogDescription>
         <div className="flex justify-end mt-4">
           <Button variant="outline" onClick={onClose}>

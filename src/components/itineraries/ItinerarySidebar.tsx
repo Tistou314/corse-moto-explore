@@ -1,8 +1,7 @@
-
 import { Itinerary } from '@/data/itineraries';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { Download, Share2, MapPin, Calendar, AlertTriangle, Award, Road } from 'lucide-react';
+import { Download, Share2, MapPin, Calendar, AlertTriangle, Award, MapIcon } from 'lucide-react';
 
 interface ItinerarySidebarProps {
   itinerary: Itinerary;
@@ -142,7 +141,7 @@ const ItinerarySidebar = ({ itinerary, nearbyItineraries }: ItinerarySidebarProp
       {nearbyItineraries && nearbyItineraries.length > 0 && (
         <div className="bg-white rounded-lg shadow-sm p-6">
           <h2 className="text-xl font-bold mb-4 flex items-center">
-            <Road className="w-4 h-4 mr-2 text-gray-700" />
+            <MapIcon className="w-4 h-4 mr-2 text-gray-700" />
             Itinéraires à proximité
           </h2>
           <div className="space-y-4">

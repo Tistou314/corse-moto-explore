@@ -1,6 +1,5 @@
-
 import { Itinerary } from '@/data/itineraries';
-import { Clock, Route, Mountain, Flag, MapPin, Bike, Calendar, Road, AlertTriangle, Award } from 'lucide-react';
+import { Clock, Route, Mountain, Flag, MapPin, Bike, Calendar, MapIcon, AlertTriangle, Award } from 'lucide-react';
 import { formatContent } from '@/utils/markdownFormatter';
 
 interface ItineraryDescriptionProps {
@@ -64,7 +63,7 @@ const ItineraryDescription = ({ itinerary }: ItineraryDescriptionProps) => {
         
         {itinerary.roadCondition && (
           <span className="inline-flex items-center px-6 py-3 rounded-full bg-corsica-blue/10 text-corsica-blue text-sm font-medium">
-            <Road className="w-5 h-5 mr-3" />
+            <MapIcon className="w-5 h-5 mr-3" />
             État: {itinerary.roadCondition}
           </span>
         )}
