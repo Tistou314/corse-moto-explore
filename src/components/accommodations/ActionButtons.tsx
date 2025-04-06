@@ -20,6 +20,9 @@ const ActionButtons = ({ websiteUrl, bookingLink }: ActionButtonsProps) => {
   const formattedWebsiteUrl = formatUrl(websiteUrl);
   const formattedBookingLink = formatUrl(bookingLink);
   
+  // Only show booking link if it exists and is different from the website URL
+  const showBookingLink = formattedBookingLink && formattedBookingLink !== formattedWebsiteUrl && websiteUrl;
+  
   return (
     <div className="mt-6 flex gap-4 flex-wrap">
       {formattedWebsiteUrl ? (
@@ -33,7 +36,7 @@ const ActionButtons = ({ websiteUrl, bookingLink }: ActionButtonsProps) => {
         </Button>
       )}
       
-      {formattedBookingLink && formattedBookingLink !== formattedWebsiteUrl && (
+      {showBookingLink && (
         <Button variant="secondary" onClick={() => window.open(formattedBookingLink, '_blank')}>
           Réservation
         </Button>
