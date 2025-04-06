@@ -48,12 +48,6 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/map" className="text-gray-300 hover:text-white transition-colors flex items-center">
-                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
-                  Carte Interactive
-                </Link>
-              </li>
-              <li>
                 <Link to="/guide" className="text-gray-300 hover:text-white transition-colors flex items-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
                   Guide Pratique
