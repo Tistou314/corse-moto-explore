@@ -3,62 +3,83 @@ import { Accommodation } from './types';
 
 export const ajaccioAccommodations: Accommodation[] = [
   {
-    id: "acc8",
-    name: "Best Western Plus Ajaccio Amirauté",
+    id: "acc1",
+    name: "Le Week End",
     type: "hotel",
     location: "Ajaccio",
     region: "ajaccio",
-    description: "Grand hôtel 4★ moderne en bord de mer à Ajaccio. Parking privé gratuit et garage fermé pour motos sur place, avec accès direct à l'hôtel. Idéal pour garer en sécurité sa moto avant de visiter la ville (centre à 5 min). Piscine extérieure chauffée, jacuzzi à 30 °C toute l'année – parfait pour détendre les muscles après les km. Réception 24/7 et bar ouvert en continu, pratique pour les arrivées tardives en ferry.",
-    priceRange: "100€ - 200€",
-    rating: 8.8,
+    description: "Hôtel élégant situé sur la Route des Sanguinaires avec une vue magnifique sur la baie d'Ajaccio. Parfait pour les motards qui veulent explorer la côte ouest de la Corse.",
+    priceRange: "120€ - 250€",
+    rating: 4.3,
     image: "https://cdn.pixabay.com/photo/2018/02/24/17/17/window-3178666_1280.jpg",
-    amenities: ["Piscine chauffée", "Jacuzzi", "Bar", "Climatisation", "Restaurant", "Réception 24h/24"],
-    bikerAmenities: ["Parking sécurisé", "Garage fermé"],
+    amenities: ["Piscine", "Restaurant", "Bar", "Climatisation", "Vue mer"],
+    bikerAmenities: ["Parking sécurisé", "Itinéraires moto"],
     contact: {
-      phone: "+33 4 95 27 22 57",
-      email: "contactajaccio@corsica-hotels.fr",
-      website: "ajaccio.corsica-hotels.fr"
+      phone: "+33 4 95 52 51 78",
+      website: "https://www.hotel-le-weekend.com/"
     },
-    bookingLink: "https://www.bestwestern.fr/fr/hotel-Ajaccio-Best-Western-Plus-Ajaccio-Amiraute-93798",
-    address: "20 Boulevard Georges Pompidou, 20090 Ajaccio",
-    latitude: 41.9196,
-    longitude: 8.7359
+    address: "Rte des Sanguinaires, 20000 Ajaccio, France",
+    latitude: 41.9097195,
+    longitude: 8.6480548
   },
   {
-    id: "acc9",
-    name: "Hôtel Punta e Mare",
+    id: "acc2",
+    name: "Radisson Blu Resort & Spa, Ajaccio Bay",
     type: "hotel",
-    location: "Cargèse",
+    location: "Porticcio",
     region: "ajaccio",
-    description: "Relais Motards 2★ à l'entrée de Cargèse, à 100 m du centre du village. L'établissement propose un parking privé sécurisé sur place et même un garage fermé pour vélos/motos. Sa situation « entre mer et montagne » est idéale : on rejoint facilement les calanques de Piana au nord ou Ajaccio au sud. Chambres climatisées et quelques studios/appartements pratiques pour les groupes. Gérant motard offrant volontiers des conseils de balades locales.",
-    priceRange: "65€ - 95€",
-    rating: 9.2,
-    image: "https://cdn.pixabay.com/photo/2018/08/08/13/34/housing-development-3591293_1280.jpg",
-    amenities: ["Climatisation", "Wifi gratuit", "Studios disponibles"],
-    bikerAmenities: ["Parking sécurisé", "Garage fermé", "Itinéraires moto", "Propriétaires motards"],
+    description: "Resort luxueux situé dans la baie d'Ajaccio à Porticcio. Offre des équipements haut de gamme et un spa pour se détendre après une longue journée de conduite à moto.",
+    priceRange: "180€ - 400€",
+    rating: 4.6,
+    image: "https://cdn.pixabay.com/photo/2017/03/22/17/39/reception-2165756_1280.jpg",
+    amenities: ["Spa", "Piscine", "Restaurant", "Bar", "Climatisation", "Vue mer"],
+    bikerAmenities: ["Parking sécurisé", "Garage"],
     contact: {
-      phone: "+33 6 89 72 41 81",
-      email: "punta.e.mare@wanadoo.fr",
-      website: "locations-cargese.com"
+      phone: "+33 4 95 77 97 97",
+      website: "https://www.radissonhotels.com/en-us/hotels/radisson-blu-resort-ajaccio-bay-spa"
     },
-    bookingLink: "https://www.booking.com/hotel/fr/punta-e-mare.fr.html",
-    address: "Route de Paomia, 20130 Cargèse",
-    latitude: 42.1375,
-    longitude: 8.5989
+    address: "Agosta Plage FR 20166, Porticcio Corsica, 20166 Grosseto-Prugna, France",
+    latitude: 41.8651628,
+    longitude: 8.7920834
   },
   {
-    id: "acc17",
-    name: "Hôtel Marina Corsica",
+    id: "acc3",
+    name: "Hotel Stella Di Mare",
     type: "hotel",
     location: "Ajaccio",
     region: "ajaccio",
-    description: "Cet hôtel moderne offre une vue imprenable sur la baie d'Ajaccio et dispose d'un garage sécurisé pour les motos. Le personnel de l'hôtel est familier avec les besoins des motards et propose des cartes détaillées des itinéraires les plus pittoresques de la région.",
-    priceRange: "120€ - 200€",
-    rating: 4.5,
-    image: "https://cdn.pixabay.com/photo/2017/03/22/17/39/reception-2165756_1280.jpg",
-    amenities: ["Piscine", "Restaurant", "Bar", "Wifi gratuit", "Climatisation"],
-    bikerAmenities: ["Parking sécurisé", "Itinéraires moto", "Atelier de réparation"],
-    latitude: 41.9211,
-    longitude: 8.7457
+    description: "Élégant hôtel situé le long de la route des Sanguinaires, offrant une vue imprenable sur la mer Méditerranée. L'établissement est idéalement situé pour les motards souhaitant explorer la côte ouest.",
+    priceRange: "100€ - 200€",
+    rating: 4.2,
+    image: "https://cdn.pixabay.com/photo/2020/01/15/18/01/room-4768551_1280.jpg",
+    amenities: ["Climatisation", "Restaurant", "Bar", "Vue mer", "Wifi gratuit"],
+    bikerAmenities: ["Parking sécurisé"],
+    contact: {
+      phone: "+33 4 95 52 01 07",
+      website: "https://www.hotel-stelladimare.com/"
+    },
+    address: "31 Rte des Sanguinaires, 20000 Ajaccio, France",
+    latitude: 41.9079247,
+    longitude: 8.659979
+  },
+  {
+    id: "acc4",
+    name: "Hôtel La Pinède",
+    type: "hotel",
+    location: "Ajaccio",
+    region: "ajaccio",
+    description: "Hôtel de charme entouré de pins, à proximité des plages des Sanguinaires. Un cadre idéal pour les motards à la recherche de tranquillité après une journée d'exploration.",
+    priceRange: "90€ - 180€",
+    rating: 4.0,
+    image: "https://cdn.pixabay.com/photo/2018/08/08/13/34/housing-development-3591293_1280.jpg",
+    amenities: ["Climatisation", "Restaurant", "Bar", "Jardin", "Wifi gratuit"],
+    bikerAmenities: ["Parking sécurisé"],
+    contact: {
+      phone: "+33 4 95 52 00 44",
+      website: "http://www.la-pinede.com/"
+    },
+    address: "ROUTE DES ILES SANGUINAIRES, 20000 Ajaccio, France",
+    latitude: 41.9101983,
+    longitude: 8.6882254
   }
 ];
