@@ -17,7 +17,7 @@ export const portovecchioCampings: Accommodation[] = [
     contact: {
       phone: "+33 4 95 71 60 99",
       email: "contact@campingloso.com",
-      website: "campingloso.com"
+      website: "https://www.campingloso.com"
     },
     bookingLink: "https://www.campingloso.com",
     address: "Route de Cala Rossa, 20137 Porto-Vecchio",
@@ -39,7 +39,7 @@ export const portovecchioCampings: Accommodation[] = [
     contact: {
       phone: "+33 4 95 70 37 17",
       email: "stabiacciu@wanadoo.fr",
-      website: "stabiacciu.com"
+      website: "https://www.stabiacciu.com"
     },
     bookingLink: "https://www.stabiacciu.com",
     address: "Route de Porra, 20137 Porto-Vecchio",
@@ -60,7 +60,8 @@ export const portovecchioCampings: Accommodation[] = [
     bikerAmenities: ["Tentes équipées", "Emplacements ombragés", "Accueil motards"],
     contact: {
       phone: "+33 4 95 71 45 28",
-      email: "informations@campingsantalucia.com"
+      email: "informations@campingsantalucia.com",
+      website: "https://www.campingsantalucia.com"
     },
     bookingLink: "https://www.campingsantalucia.com",
     address: "Lieu-dit Ste-Lucie, 20144 Zonza",
@@ -81,7 +82,7 @@ export const portovecchioCampings: Accommodation[] = [
     bikerAmenities: ["Parking moto", "Propriétaires motards", "Repas du terroir"],
     contact: {
       phone: "+33 6 64 30 95 70",
-      website: "gallinavarja.com"
+      website: "https://www.gallinavarja.com"
     },
     bookingLink: "https://www.gallinavarja.com",
     address: "802 Strada di Gallina Varja, 20146 Sotta",
@@ -104,7 +105,7 @@ export const portovecchioCampings: Accommodation[] = [
       phone: "+33 4 95 70 49 83",
       website: "http://www.camping-fautea.com"
     },
-    bookingLink: "https://www.camping.info/fr/camping-fautea",
+    bookingLink: "http://www.camping-fautea.com",
     address: "Plage de Fautea, 20144 Zonza",
     latitude: 41.705,
     longitude: 9.39

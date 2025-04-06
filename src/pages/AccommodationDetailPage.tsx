@@ -71,7 +71,10 @@ const AccommodationDetailPage = () => {
             
             <ContactInfo accommodation={accommodation} />
             <BikerAmenities amenities={accommodation.bikerAmenities} />
-            <ActionButtons websiteUrl={accommodation.contact?.website} />
+            <ActionButtons 
+              websiteUrl={accommodation.contact?.website} 
+              bookingLink={accommodation.bookingLink}
+            />
           </div>
         </div>
         
