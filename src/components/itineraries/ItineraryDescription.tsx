@@ -1,6 +1,6 @@
 
 import { Itinerary } from '@/data/itineraries';
-import { Clock, Route as RouteIcon, Mountain, Flag, MapPin, Bike, Calendar, MapIcon, AlertTriangle, Award } from 'lucide-react';
+import { Clock, RouteIcon, Mountain, Flag, MapPin, Bike, Calendar, MapIcon, AlertTriangle, Award } from 'lucide-react';
 import { formatContent } from '@/utils/markdownFormatter';
 
 interface ItineraryDescriptionProps {

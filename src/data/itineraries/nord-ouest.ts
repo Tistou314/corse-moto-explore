@@ -5,7 +5,7 @@ export const nordOuestItineraries: Itinerary[] = [
   {
     id: 'route-cretes',
     title: 'La Route des Crêtes (D81)',
-    description: 'Une des routes les plus spectaculaires d\'Europe, surnommée "la Sublime". Cette route de corniche offre des panoramas à couper le souffle entre mer et montagne.',
+    description: 'Surnommée "la Sublime" ou "la Route du Paradis", cet itinéraire de 70 km entre Calvi et Porto est considéré comme l\'un des parcours motards les plus spectaculaires d\'Europe.',
     fullDescription: `# La Route des Crêtes (D81)
 
 ## Présentation générale
@@ -63,313 +63,289 @@ Cette dernière portion vous conduit vers la conclusion spectaculaire de l'itin�
 
 ## Aspects pratiques
 
-### Sécurité
-* État de la moto : Vérifiez particulièrement vos freins et pneus avant d'aborder cet itinéraire. La descente vers Porto sollicite fortement le système de freinage.
-* Équipement : Privilégiez un équipement adapté aux variations de température. L'écart peut atteindre 10°C entre les crêtes et le niveau de la mer.
-* Trafic : En haute saison, la route est fréquentée par de nombreux véhicules de location et camping-cars conduits par des touristes parfois peu habitués aux routes de montagne. Anticipez leurs trajectoires approximatives.
-* Distractions : La beauté du paysage constitue paradoxalement un danger en détournant l'attention. Arrêtez-vous aux aires prévues plutôt que de contempler en roulant.
-* Météo : Consultez impérativement les prévisions avant de partir. Le brouillard peut s'installer rapidement sur les crêtes, réduisant drastiquement la visibilité.
+### Services et commodités
+* Réseau mobile : Couverture très inégale avec de nombreuses zones blanches entre Galeria et Porto. Téléchargez la carte hors-ligne avant de partir.
+* Hébergements : Très limités sur le parcours même. Concentrés à Calvi et Porto, ils affichent souvent complet en haute saison - réservation indispensable.
+* Assistance : Service de dépannage limité sur cet itinéraire isolé. Le temps d'intervention peut dépasser 2 heures en cas de problème. Roulez idéalement à plusieurs.
+* Stationnement : Difficile à Porto en haute saison. Quelques parkings payants à l'entrée du village, certains hôtels proposent des espaces réservés pour les motos.
 
-La Route des Crêtes représente l'essence même de ce que la Corse peut offrir aux motards : une combinaison parfaite entre défi technique, paysages grandioses et expérience de pilotage unique. Son surnom de "Sublime" n'est pas usurpé tant elle condense en 70 kilomètres l'ADN de l'île de Beauté : mer turquoise, montagnes abruptes, villages authentiques et nature préservée.`,
-    image: 'https://images.unsplash.com/photo-1572913017567-02f0649bc4fd?auto=format&fit=crop&q=80',
-    duration: '2h30 (sans les arrêts)',
-    distance: '70 km (section Calvi-Porto)',
+La Route des Crêtes représente l'essence même de ce que la Corse peut offrir aux motards : une combinaison parfaite entre défi technique, paysages grandioses et expérience de pilotage unique. Son surnom de "Sublime" n'est pas usurpé tant elle condense en 70 kilomètres l'ADN de l'île de Beauté : mer turquoise, montagnes abruptes, villages authentiques et nature préservée. Plus qu'un simple trajet, c'est une expérience sensorielle complète qui sollicitera votre technique de pilotage tout en nourrissant votre âme de panoramas inoubliables. Un incontournable absolu pour tout motard visitant la Corse.`,
+    image: 'https://cdn.pixabay.com/photo/2016/05/15/18/32/corsica-1394321_1280.jpg',
+    duration: '2h30 sans arrêts',
+    distance: '70 km',
     difficulty: 'difficile',
     region: 'Nord-Ouest',
     pointsOfInterest: [
-      { 
-        name: 'Calvi', 
-        description: 'Point de départ de la route des Crêtes, ville fortifiée avec sa citadelle génoise',
-        latitude: 42.5676, 
-        longitude: 8.7577 
+      {
+        name: 'Calvi',
+        description: 'Ville fortifiée avec sa citadelle génoise dominant la baie',
+        latitude: 42.5676,
+        longitude: 8.7575
       },
-      { 
-        name: 'Col de Palmarella', 
-        description: 'Vue panoramique sur la côte à 408m d\'altitude',
-        latitude: 42.3976, 
-        longitude: 8.6889 
+      {
+        name: 'Col de Palmarella',
+        description: 'Point culminant (408m) offrant une vue panoramique exceptionnelle',
+        latitude: 42.4773,
+        longitude: 8.6895
       },
-      { 
-        name: 'Galeria', 
+      {
+        name: 'Galeria',
         description: 'Petit port de pêche authentique, dernière station-service avant Porto',
-        latitude: 42.4177, 
-        longitude: 8.6521 
+        latitude: 42.4284,
+        longitude: 8.6553
       },
-      { 
-        name: 'Réserve de Scandola', 
-        description: 'Réserve naturelle classée à l\'UNESCO avec formations rocheuses volcaniques',
-        latitude: 42.3563, 
-        longitude: 8.5604 
+      {
+        name: 'Réserve de Scandola',
+        description: 'Réserve naturelle classée au patrimoine mondial de l\'UNESCO',
+        latitude: 42.3584,
+        longitude: 8.5603
       },
-      { 
-        name: 'Osani', 
-        description: 'Village perché avec vue spectaculaire sur le golfe de Porto',
-        latitude: 42.2853, 
-        longitude: 8.6390 
+      {
+        name: 'Girolata',
+        description: 'Village isolé accessible uniquement par bateau ou sentier pédestre',
+        latitude: 42.3433,
+        longitude: 8.6103
       },
-      { 
-        name: 'Calanques de Piana', 
-        description: 'Formations rocheuses rouges classées à l\'UNESCO',
-        latitude: 42.2505, 
-        longitude: 8.6543 
+      {
+        name: 'Osani',
+        description: 'Village perché offrant une vue spectaculaire sur le golfe de Porto',
+        latitude: 42.3358,
+        longitude: 8.6475
       },
-      { 
-        name: 'Porto', 
-        description: 'Arrivée de la route des Crêtes, marine pittoresque avec tour génoise',
-        latitude: 42.2510, 
-        longitude: 8.6920 
+      {
+        name: 'Les Calanches de Piana',
+        description: 'Formations rocheuses rouges sculptées par l\'érosion',
+        latitude: 42.2569,
+        longitude: 8.6529
+      },
+      {
+        name: 'Porto',
+        description: 'Petite marine pittoresque dominée par sa tour génoise',
+        latitude: 42.2673,
+        longitude: 8.6904
       }
     ],
     startPoint: 'Calvi',
     endPoint: 'Porto',
     elevation: '0-408m',
-    roadType: 'Route de corniche montagneuse',
+    roadType: 'Route de corniche à flanc de falaise',
     bestSeason: 'Mai, juin et septembre',
-    roadCondition: 'Bon revêtement général, sections étroites, possibles gravillons et chutes de pierres',
+    roadCondition: 'Généralement bon, portions irrégulières',
     highlights: [
-      'Le col de Palmarella (408m) et sa vue panoramique à 360°',
-      'Les vues plongeantes sur la réserve naturelle de Scandola (UNESCO)',
-      'Le village de Girolata, accessible uniquement par bateau ou sentier (visible depuis la route)',
-      'Les calanques de Piana (classées UNESCO) traversées par une route taillée dans la roche rouge',
-      'Les couchers de soleil qui enflamment les formations rocheuses rouges'
+      'Les vues panoramiques sur la mer Méditerranée',
+      'Les paysages du golfe de Girolata et de la réserve de Scandola',
+      'Les formations rocheuses rouges des Calanches de Piana',
+      'Le col de Palmarella avec sa vue à 360°',
+      'La traversée de villages authentiques perchés',
+      'Les contrastes entre mer turquoise et montagnes rougeoyantes'
     ],
     tips: [
-      'Prévoyez une journée entière avec les arrêts photos pour profiter pleinement du parcours',
-      'Circulation difficile en haute saison (camping-cars et bus) - privilégiez les horaires matinaux',
-      'Stations-service à Calvi, Galeria et Porto (aucune sur la portion montagneuse)',
-      'Vérifiez vos freins avant le départ - la descente vers Porto les sollicite fortement',
-      'Méfiez-vous des changements de luminosité dans les tunnels, particulièrement avec des lunettes teintées',
-      'Attention aux rafales de vent sur les portions exposées, particulièrement par temps de mistral',
-      'Pour les meilleures photos, prévoyez d\'être aux Calanches de Piana en fin de journée'
+      'Partez avec un réservoir plein - stations-service uniquement à Calvi, Galeria et Porto',
+      'Évitez la haute saison touristique (juillet-août) pour profiter pleinement de l\'itinéraire',
+      'Prévoyez de nombreux arrêts photos - les belvédères sont nombreux et spectaculaires',
+      'Soyez vigilant dans les tunnels non éclairés et lors des changements de luminosité',
+      'Attention aux camping-cars et bus touristiques dans les portions étroites',
+      'Méfiez-vous des vents latéraux sur les sections exposées, particulièrement par mistral',
+      'Partez tôt le matin pour éviter l\'afflux de véhicules et profiter de la lumière'
     ],
-    latitude: 42.3976,
-    longitude: 8.6889
+    latitude: 42.3584,
+    longitude: 8.5603
   },
   {
     id: 'tour-balagne',
     title: 'Le Tour de la Balagne (D151, D71)',
-    description: 'Surnommée "le Jardin de la Corse", la Balagne offre un circuit varié entre mer et montagne.',
-    fullDescription: 'Surnommée "le Jardin de la Corse", la Balagne offre un circuit varié entre mer et montagne. L\'itinéraire alterne entre la côte avec ses plages de sable fin et l\'arrière-pays vallonné où s\'étagent des villages médiévaux perchés sur des promontoires. Les oliveraies et les vergers parsèment le paysage, offrant une ambiance méditerranéenne typique. La route des Artisans relie plusieurs villages où les traditions artisanales sont encore très vivantes.',
-    image: 'https://images.unsplash.com/photo-1525874684015-58379d421a52?auto=format&fit=crop&q=80',
-    duration: '2h30 (sans les arrêts)',
-    distance: '85 km',
-    difficulty: 'moyen',
-    region: 'Nord-Ouest',
-    pointsOfInterest: [
-      { 
-        name: 'Calvi', 
-        description: 'Ville avec sa citadelle génoise',
-        latitude: 42.5676, 
-        longitude: 8.7577 
-      },
-      { 
-        name: 'L\'Île-Rousse', 
-        description: 'Charmante station balnéaire',
-        latitude: 42.6343, 
-        longitude: 8.9382 
-      },
-      { 
-        name: 'Sant\'Antonino', 
-        description: 'Un des plus beaux villages de France',
-        latitude: 42.6068, 
-        longitude: 8.9164 
-      },
-      { 
-        name: 'Pigna', 
-        description: 'Village d\'artisans à la vue imprenable',
-        latitude: 42.6009, 
-        longitude: 8.9011 
-      },
-      { 
-        name: 'Corbara', 
-        description: 'Village typique de Balagne',
-        latitude: 42.6168, 
-        longitude: 8.9031 
-      }
-    ],
-    startPoint: 'Calvi',
-    endPoint: 'L\'Île-Rousse',
-    elevation: '0-500m',
-    roadType: 'Routes côtières et de montagne',
-    bestSeason: 'Avril à octobre (idéal en mai-juin)',
-    roadCondition: 'Bon revêtement général, routes de montagne étroites par endroits',
-    highlights: [
-      'La citadelle génoise de Calvi et sa vue panoramique sur la baie',
-      'Sant\'Antonino, classé parmi les plus beaux villages de France, perché à 500m d\'altitude',
-      'Le village d\'artisans de Pigna avec ses ateliers de céramique et instruments de musique',
-      'Les plages sauvages de l\'Ostriconi entre Calvi et L\'Île-Rousse',
-      'Le coucher de soleil sur L\'Île-Rousse vu depuis la route de Monticello'
-    ],
-    tips: [
-      'Circuit réalisable en une journée avec pauses dans les villages',
-      'Attention aux routes étroites dans les villages (pierres sur les côtés)',
-      'Nombreuses possibilités de restauration (essayez la cuisine locale dans les villages)',
-      'Stations-service à Calvi, L\'Île-Rousse et Belgodère',
-      'Parking moto dans tous les villages principaux',
-      'À combiner avec une baignade sur les plages de Bodri ou Ghjunchitu',
-      'Dégustation d\'huile d\'olive possible chez les producteurs (suivre les panneaux)',
-      'Point photo incontournable : la vue sur la baie de Calvi depuis Notre-Dame de la Serra'
-    ],
-    latitude: 42.6068,
-    longitude: 8.9164
-  },
-  {
-    id: 'castagniccia',
-    title: 'La Castagniccia (D71, D15)',
-    description: 'L\'une des régions les plus sauvages et authentiques de Corse, un véritable trésor caché souvent délaissé par le tourisme de masse.',
-    fullDescription: `# La Castagniccia (D71, D15)
+    description: 'Surnommée "le Jardin de la Corse", la Balagne offre un itinéraire motard de 85 km conjuguant harmonieusement littoral et arrière-pays parsemé d\'authentiques villages médiévaux.',
+    fullDescription: `# Le Tour de la Balagne (D151, D71)
 
 ## Présentation générale
-La Castagniccia représente l'une des régions les plus sauvages et authentiques de Corse, un véritable trésor caché souvent délaissé par le tourisme de masse. Cet itinéraire de 90 km à travers le cœur historique de l'île offre une immersion complète dans la Corse profonde. Surnommée "le pays des châtaigniers", cette région vallonnée est couverte de forêts séculaires et parsemée de villages perchés qui semblent figés dans le temps. Pour les motards en quête d'authenticité et de sensations techniques, la Castagniccia constitue un challenge exceptionnel avec ses routes étroites et sinueuses qui relient plus de 50 villages traditionnels.
+
+Surnommée "le Jardin de la Corse", la Balagne offre un itinéraire motard de 85 km qui conjugue harmonieusement les multiples facettes de l'île en un seul parcours. Cette boucle enchanteresse alterne entre littoral aux plages de sable fin et arrière-pays vallonné où s'étagent d'authentiques villages médiévaux aux façades ocre. L'itinéraire traverse un paysage typiquement méditerranéen, où oliveraies centenaires, vergers d'agrumes et vignobles en terrasses sculptent le relief en une mosaïque de couleurs et de senteurs. Contrairement aux routes plus techniques de l'île, le Tour de la Balagne propose une expérience plus douce et contemplative, accessible à tous les niveaux de pilotage, tout en conservant le charme authentique qui fait la réputation de la Corse. La célèbre "Route des Artisans" constitue l'épine dorsale de ce circuit, reliant des villages où potiers, couteliers, vanniers et autres artisans perpétuent des savoir-faire ancestraux.
 
 ## L'itinéraire en détail
 
-### Départ de Folelli/Moriani
-Le circuit débute traditionnellement depuis la côte orientale, soit à Folelli, soit à Moriani-Plage, où vous quitterez la plaine pour vous enfoncer dans les contreforts montagneux.
+### Départ de L'Île-Rousse
 
-### La porte d'entrée (Folelli → San-Nicolao → Cervione)
-Caractéristiques : Route de largeur correcte s'étrécissant progressivement, début de la montée, premiers virages techniques.
+Le circuit démarre traditionnellement de L'Île-Rousse, charmante cité balnéaire fondée par Pascal Paoli au XVIIIe siècle, reconnaissable à son îlot de granit rouge qui lui a donné son nom.
 
-Cette section initiale vous fait quitter rapidement la plaine côtière pour aborder les premiers reliefs :
+### La côte (L'Île-Rousse → Algajola → Calvi)
 
-* Penta-di-Casinca (km 10) : Premier village perché offrant une vue panoramique sur la plaine et la mer Tyrrhénienne.
-* San-Nicolao (km 15) : Porte d'entrée historique de la Castagniccia, avec son église au clocher élancé typique de la région.
-* Cervione (km 25) : Important bourg médiéval dominé par sa cathédrale, dernière étape avant de s'enfoncer dans le cœur de la Castagniccia. Dernier point de ravitaillement fiable (station-service, commerces).
+**Caractéristiques** : Route littorale bien entretenue, virages doux, nombreuses possibilités d'arrêts panoramiques.
 
-### Le cœur de la Castagniccia (Cervione → Valle-d'Orezza)
-Caractéristiques : Routes très étroites (parfois moins de 3m), revêtement irrégulier, virages en épingle sans visibilité, dénivelés importants.
+Cette première section vous permet de longer la côte balanine :
+* **Sortie de L'Île-Rousse** (km 0-5) : Quittez la ville par la D151 en direction de Calvi, avec de belles vues sur le golfe.
+* **Algajola** (km 10) : Ancien port génois avec sa forteresse en bord de mer et sa longue plage de sable fin. Un arrêt s'impose pour admirer ce village authentique.
+* **Marine de Sant'Ambroggio** (km 15) : Station balnéaire intégrée dans la végétation avec une belle marina.
+* **Approche de Calvi** (km 20-25) : La route offre des vues splendides sur la baie de Calvi et sa citadelle perchée. Plusieurs points d'arrêt permettent de photographier ce panorama emblématique.
 
-Cette portion centrale constitue l'essence même de l'itinéraire :
+### La montée vers les villages perchés (Calvi → Cateri → Pigna)
 
-* Col de Prato (km 35, 850m d'altitude) : Premier col majeur offrant une vue spectaculaire sur les vallées environnantes. Le revêtement peut être dégradé après l'hiver.
-* Piedicroce (km 45) : Village emblématique au cœur de la région, dominé par l'imposante église Santa-Maria-Assunta. Point idéal pour une pause rafraîchissante à la terrasse du café central.
-* Valle-d'Orezza (km 50) : Célèbre pour sa source d'eau gazeuse naturelle. Les locaux vous proposent souvent de remplir votre bouteille à la source – tradition à ne pas manquer.
-* La Porta (km 55) : Carrefour stratégique de plusieurs vallées avec son église baroque richement décorée, témoignage de la prospérité passée liée au commerce de la châtaigne.
+**Caractéristiques** : Route qui s'élève progressivement, virages plus nombreux mais jamais techniques, élargissement du panorama.
 
-### La traversée occidentale (Valle-d'Orezza → Morosaglia)
-Caractéristiques : Alternance de montées raides et descentes techniques, succession ininterrompue de virages, quelques portions de route plus large.
+Cette section vous fait quitter le littoral pour découvrir l'âme de la Balagne :
+* **Calvi** (km 25) : Ville fortifiée dominée par sa citadelle génoise. Possibilité de ravitaillement et pause avant d'entamer la montée.
+* **Montée vers Cateri** (km 30-40) : La D151 s'élève doucement à travers oliveraies et maquis, offrant des vues de plus en plus étendues sur la baie de Calvi.
+* **Cateri** (km 45) : Premier village perché typique avec son clocher emblématique, ses ruelles pavées et ses maisons en pierre. Les terrasses ombragées invitent à une pause rafraîchissante.
+* **Aregno** (km 50) : Village connu pour son église romane polychrome (Sainte-Trinité et Saint-Jean-Baptiste) aux façades ornées de motifs géométriques colorés. 
+* **Pigna** (km 55) : Joyau de la Route des Artisans, ce village entièrement restauré est devenu un centre d'artisanat reconnu. Ses ruelles bleues, ses ateliers d'artistes et sa musique traditionnelle en font un arrêt incontournable.
 
-Cette section traverse la partie occidentale, moins connue mais techniquement exigeante :
+### La Route des Artisans (Pigna → Sant'Antonino → Corbara)
 
-* Col de Prato (km 60) : Second passage du col, sous un angle différent, avec des panoramas spectaculaires sur le Monte San Petrone (1767m).
-* Campana (km 65) : Village authentique connu pour ses maisons en pierre de schiste, perché sur un promontoire rocheux.
-* Morosaglia (km 75) : Village natal de Pascal Paoli, père de la nation corse. Sa maison-musée mérite une visite pour comprendre l'histoire de l'île.
+**Caractéristiques** : Route sinueuse à flanc de colline, succession de villages, panoramas sur la vallée et la mer au loin.
 
-### Le retour vers la côte (Morosaglia → Folelli)
-Caractéristiques : Descente progressive, virages plus fluides, élargissement de la chaussée.
+Le cœur culturel de l'itinéraire :
+* **Sant'Antonino** (km 60) : Classé parmi les plus beaux villages de France, perché à 500m d'altitude sur un piton rocheux, il offre un panorama à 360° sur toute la Balagne. Ses ruelles en escaliers et ses passages voûtés forment un véritable labyrinthe médiéval.
+* **Corbara** (km 65) : Village étagé aux nombreuses églises et chapelles, dominé par le couvent Saint-Dominique. Les points de vue sur la vallée et la mer sont particulièrement photogéniques.
+* **Rencontre avec les artisans** : Tout au long de cette section, les ateliers d'artisans (poterie, coutellerie, verrerie, etc.) invitent à la découverte et proposent des démonstrations de leur savoir-faire.
 
-La dernière portion vous ramène progressivement vers la plaine orientale :
+### Le retour vers le littoral (Corbara → Monticello → L'Île-Rousse)
 
-* Ponte-Leccia (km 80) : Important carrefour routier avec stations-service et restaurants.
-* Gorges de la Casaluna (km 85) : Dernière section technique avec des parois rocheuses impressionnantes.
-* Retour à Folelli (km 90) : Fin de l'itinéraire avec retour dans la plaine côtière.
+**Caractéristiques** : Descente progressive, virages plus fluides, réouverture du panorama sur la côte.
+
+La conclusion de la boucle :
+* **Monticello** (km 75) : Dernier village perché offrant une vue plongeante sur L'Île-Rousse et la mer Méditerranée.
+* **Descente vers L'Île-Rousse** (km 75-85) : La D71 redescend en pente douce à travers vignobles et oliveraies, avec la mer comme toile de fond constante.
+* **Retour à L'Île-Rousse** (km 85) : Fin de l'itinéraire dans la cité paoline, avec possibilité de prolonger l'expérience par une baignade ou une dégustation de produits locaux en terrasse.
 
 ## Conseils spécifiques pour les motards
 
 ### Défis techniques
-* Largeur de route : Par endroits, la chaussée ne dépasse pas 2,5m de large, rendant les croisements délicats même avec des voitures.
-* Revêtement : Qualité très variable avec des portions dégradées, notamment après l'hiver. Présence fréquente de gravillons, feuilles mortes en automne et parfois coulées de boue après les orages.
-* Virages : Plus de 1000 virages sur l'ensemble du parcours, dont de nombreuses épingles à cheveux à forte déclivité et faible visibilité.
-* Villages traversés : Les ruelles des villages sont extrêmement étroites, parfois en forte pente, avec des revêtements en pierre glissants par temps humide.
-* Risques spécifiques : Traversées occasionnelles de troupeaux (vaches, chèvres), éboulements possibles après de fortes pluies.
+
+* **Niveau général** : Itinéraire de difficulté moyenne, accessible aux débutants et agréable pour les pilotes expérimentés en quête d'une journée détendue.
+* **Virages** : Généralement doux et bien négociables, avec quelques passages plus sinueux mais toujours prévisibles entre les villages perchés.
+* **Revêtement** : Globalement bon sur l'ensemble du parcours, avec quelques portions légèrement dégradées à l'entrée des villages.
+* **Points d'attention** : 
+  * Traversées de villages avec rues étroites et revêtement parfois glissant (pavés polis)
+  * Présence possible de gravillons dans certains virages, notamment après les travaux d'entretien printaniers
+  * Trafic dense en haute saison, particulièrement sur la portion côtière entre L'Île-Rousse et Calvi
 
 ### Timing et saisons
-* Durée recommandée : Bien que techniquement faisable en 3h sans arrêt, prévoyez une journée entière (7-8h) pour apprécier l'itinéraire, les villages et gérer la fatigue technique.
-* Meilleure période : Mai-juin et septembre-octobre offrent les meilleures conditions. Les couleurs automnales des châtaigniers en octobre sont spectaculaires.
-* À éviter absolument : Jours de pluie (ruissellement sur la chaussée, visibilité réduite), après de fortes pluies (risques d'éboulements), plein été entre 11h et 16h (chaleur intense dans les vallées encaissées), période hivernale (décembre-mars) où certains cols peuvent être fermés.
-* Moment idéal : Départ matinal (8h-9h) pour profiter de la fraîcheur et de la lumière rasante qui sublime les villages.
+
+* **Durée recommandée** : Si le trajet peut être parcouru en 2h30 sans arrêt, prévoyez une journée complète (8h) pour profiter des villages, rencontrer les artisans et apprécier les panoramas.
+* **Meilleure période** : 
+  * Mai et juin : Floraison des maquis, températures idéales, trafic modéré
+  * Septembre et début octobre : Lumière dorée parfaite pour la photographie, récolte des olives dans certains domaines
+* **À éviter** : 
+  * Juillet-août entre 11h et 17h : Chaleur intense et trafic très dense
+  * Jours de Tramontane forte (vent du nord) qui peut être gênante sur les portions en altitude
+* **Moment idéal** : Départ matinal (8h-9h) pour profiter de la fraîcheur et terminer par un coucher de soleil sur la plage de L'Île-Rousse
 
 ## Aspects pratiques
 
+### Sécurité
+
+* **Circulation estivale** : Soyez particulièrement vigilant en juillet-août sur la portion littorale très fréquentée par les touristes et véhicules de location.
+* **Traversée des villages** : Réduisez significativement votre allure dans les villages où enfants, animaux domestiques et touristes peuvent surgir des ruelles étroites.
+* **Stationnement** : Les places peuvent être rares dans les villages perchés en haute saison. Utilisez les parkings dédiés en entrée de village plutôt que de vous aventurer dans les ruelles étroites.
+* **Météo** : La chaleur peut être intense en été, particulièrement dans les villages perchés moins ventilés que la côte. Hydratez-vous régulièrement.
+
 ### Services et commodités
-* Réseau mobile : Couverture très inégale avec de nombreuses zones blanches dans les vallées encaissées. Téléchargez la carte hors-ligne avant de partir.
-* Hébergements : Quelques gîtes ruraux et chambres d'hôtes à Piedicroce, Valle-d'Orezza et La Porta. Réservation indispensable en saison.
-* Assistance : Aucun service mécanique dans la région. Le dépannage peut prendre plusieurs heures en cas de problème. Roulez idéalement à plusieurs.
-* Eau : Nombreuses fontaines dans les villages, généralement potables (sauf indication contraire).
 
-## Intérêt culturel et historique
-La Castagniccia n'est pas seulement un défi technique pour les motards, c'est aussi un voyage dans le temps et la culture corse authentique :
+* **Réseau mobile** : Couverture généralement bonne sur l'ensemble du parcours, avec quelques zones d'ombre possibles entre les villages.
+* **Hébergements** : 
+  * Options côtières : Nombreux hôtels, résidences et campings à L'Île-Rousse et Calvi
+  * Options authentiques : Chambres d'hôtes et gîtes dans les villages perchés (réservation conseillée)
+* **Assistance** : Services de dépannage basés à L'Île-Rousse et Calvi. Temps d'intervention raisonnable sur cet itinéraire bien desservi.
+* **Accueil motard** : Plusieurs établissements "Accueil Motard" dans la région, notamment à Calvi et Monticello, proposant parking sécurisé et conseils itinéraires.
 
-* Architecture religieuse : Les églises baroques aux clochers élancés témoignent de la prospérité passée de cette région, quand la châtaigne était "l'or de la Corse".
-* Gastronomie : Ne manquez pas de goûter la farine de châtaigne, les charcuteries traditionnelles et le brocciu (fromage frais) produits localement.
-* Artisanat : Quelques artisans perpétuent la tradition du travail du bois de châtaignier (paniers, meubles) et du couteau corse.
-* Histoire : Cette région fut le berceau de la résistance corse contre Gênes au 18ème siècle et a vu naître plusieurs figures de l'indépendantisme insulaire.
+## L'âme de la Balagne
 
-La Castagniccia constitue l'un des itinéraires les plus exigeants techniquement de Corse, mais aussi l'un des plus authentiques. Loin des clichés touristiques des plages et calanques, cette immersion dans la Corse profonde offre une expérience complète mêlant pilotage engagé, découvertes culturelles et paysages préservés.`,
-    image: 'https://images.unsplash.com/photo-1559108318-39ed452bb6c9?auto=format&fit=crop&q=80',
-    duration: '3h (sans les arrêts)',
-    distance: '90 km',
-    difficulty: 'difficile',
-    region: 'Nord-Est',
+Au-delà des aspects purement techniques, le Tour de la Balagne offre une immersion culturelle dans ce que la Corse a de plus authentique :
+
+* **Patrimoine agricole** : Les oliveraies multicentenaires témoignent de l'importance historique de l'huile d'olive dans l'économie balanine. Certains moulins traditionnels peuvent être visités.
+
+* **Renaissance artisanale** : Depuis les années 1970, la Balagne connaît une remarquable renaissance artisanale, transformant des villages autrefois abandonnés en centres culturels dynamiques.
+
+* **Gastronomie locale** : La région est réputée pour ses productions : huile d'olive AOP, vins de Calvi, fromages de brebis, miel de maquis et figatellu (saucisse de foie de porc).
+
+* **Fêtes traditionnelles** : En saison, nombreux sont les villages qui organisent des fêtes patronales ou artisanales. Renseignez-vous auprès des offices de tourisme pour intégrer ces événements à votre itinéraire.
+
+Le Tour de la Balagne représente l'équilibre parfait entre découverte motarde et immersion culturelle. Moins exigeant techniquement que d'autres itinéraires corses, il laisse au pilote le loisir d'apprécier pleinement les paysages et le patrimoine. C'est l'itinéraire idéal pour une première approche de la Corse à moto ou pour une journée de "récupération" entre deux parcours plus sportifs. La douceur du pilotage n'enlève rien à la beauté des panoramas et à l'authenticité des rencontres, faisant de cette boucle l'une des plus équilibrées et accessibles de l'île.`,
+    image: 'https://cdn.pixabay.com/photo/2017/08/22/10/47/corsica-2668760_1280.jpg',
+    duration: '2h30 sans arrêts',
+    distance: '85 km',
+    difficulty: 'moyen',
+    region: 'Nord-Ouest',
     pointsOfInterest: [
-      { 
-        name: 'Folelli', 
-        description: 'Point de départ sur la côte orientale',
-        latitude: 42.4724, 
-        longitude: 9.5301 
+      {
+        name: 'L\'Île-Rousse',
+        description: 'Charmante cité balnéaire fondée par Pascal Paoli au XVIIIe siècle',
+        latitude: 42.6342,
+        longitude: 8.9377
       },
-      { 
-        name: 'Cervione', 
-        description: 'Important bourg médiéval avec cathédrale, dernier point de ravitaillement',
-        latitude: 42.3356, 
-        longitude: 9.4615 
+      {
+        name: 'Algajola',
+        description: 'Ancien port génois avec forteresse en bord de mer et plage de sable fin',
+        latitude: 42.6086,
+        longitude: 8.8729
       },
-      { 
-        name: 'Col de Prato', 
-        description: 'Col à 850m d\'altitude offrant une vue spectaculaire sur les vallées',
-        latitude: 42.3339, 
-        longitude: 9.3279 
+      {
+        name: 'Calvi',
+        description: 'Ville fortifiée dominée par sa citadelle génoise',
+        latitude: 42.5676,
+        longitude: 8.7575
       },
-      { 
-        name: 'Piedicroce', 
-        description: 'Village emblématique avec l\'imposante église Santa-Maria-Assunta',
-        latitude: 42.3597, 
-        longitude: 9.3071 
+      {
+        name: 'Cateri',
+        description: 'Village perché typique avec son clocher emblématique',
+        latitude: 42.5952,
+        longitude: 8.8388
       },
-      { 
-        name: 'Valle-d\'Orezza', 
-        description: 'Village connu pour sa source d\'eau gazeuse naturelle',
-        latitude: 42.3636, 
-        longitude: 9.3796 
+      {
+        name: 'Aregno',
+        description: 'Village connu pour son église romane polychrome',
+        latitude: 42.6065,
+        longitude: 8.8561
       },
-      { 
-        name: 'La Porta', 
-        description: 'Carrefour stratégique avec église baroque richement décorée',
-        latitude: 42.3869, 
-        longitude: 9.3199 
+      {
+        name: 'Pigna',
+        description: 'Village artisanal aux ruelles bleues et ateliers d\'artistes',
+        latitude: 42.5992,
+        longitude: 8.8900
       },
-      { 
-        name: 'Morosaglia', 
-        description: 'Village natal de Pascal Paoli avec maison-musée historique',
-        latitude: 42.4708, 
-        longitude: 9.2242 
+      {
+        name: 'Sant\'Antonino',
+        description: 'Un des plus beaux villages de France, perché à 500m sur un piton rocheux',
+        latitude: 42.5938,
+        longitude: 8.9133
+      },
+      {
+        name: 'Corbara',
+        description: 'Village étagé aux nombreuses églises et chapelles',
+        latitude: 42.6125,
+        longitude: 8.9042
+      },
+      {
+        name: 'Monticello',
+        description: 'Village perché offrant une vue plongeante sur L\'Île-Rousse',
+        latitude: 42.6258,
+        longitude: 8.9219
       }
     ],
-    startPoint: 'Folelli',
-    endPoint: 'Folelli',
-    elevation: '0-850m',
-    roadType: 'Routes de montagne étroites et sinueuses',
+    startPoint: 'L\'Île-Rousse',
+    endPoint: 'L\'Île-Rousse',
+    elevation: '0-500m',
+    roadType: 'Routes côtières et routes de montagne',
     bestSeason: 'Mai-juin et septembre-octobre',
-    roadCondition: 'Variable, portions dégradées, gravillons fréquents',
+    roadCondition: 'Généralement bon, quelques portions dégradées en entrée de villages',
     highlights: [
-      'Les villages perchés authentiques avec leurs églises aux clochers élancés',
-      'Les forêts de châtaigniers séculaires, particulièrement spectaculaires en automne',
-      'La source d\'eau gazeuse naturelle de Valle-d\'Orezza',
-      'Les panoramas depuis le Col de Prato sur le Monte San Petrone',
-      'L\'architecture traditionnelle en pierre de schiste des villages',
-      'La maison natale de Pascal Paoli à Morosaglia'
+      'Les villages perchés de la Route des Artisans',
+      'Les panoramas sur la baie de Calvi et sa citadelle',
+      'Le village de Sant\'Antonino classé parmi les plus beaux de France',
+      'Les ateliers d\'artisans traditionnels',
+      'Les oliveraies centenaires et le patrimoine agricole',
+      'Les églises romanes polychromes typiques de la Balagne'
     ],
     tips: [
-      'Partez avec un réservoir plein - stations-service uniquement à Folelli, Cervione et Ponte-Leccia',
-      'Prévoyez une journée entière avec de fréquentes pauses pour gérer la fatigue technique',
-      'Attention aux croisements sur les routes très étroites, particulièrement dans les virages',
-      'Méfiez-vous des revêtements glissants par temps humide, surtout dans les villages',
-      'Roulez idéalement à plusieurs en cas de problème mécanique - dépannage difficile',
-      'Téléchargez la carte hors-ligne avant de partir - couverture mobile très inégale',
-      'Vérifiez la météo avant de partir - évitez absolument les jours de pluie',
-      'La région est peu touristique - prévoyez eau et en-cas'
+      'Prévoyez une journée entière pour profiter pleinement des villages et rencontres',
+      'Stationnez en périphérie des villages pour éviter les ruelles étroites',
+      'Visitez les ateliers d\'artisans pour découvrir les savoir-faire traditionnels',
+      'Évitez la haute saison entre 11h et 17h pour limiter l\'exposition à la chaleur',
+      'Profitez des terrasses ombragées pour déguster les produits locaux',
+      'Renseignez-vous sur les fêtes traditionnelles qui animent les villages',
+      'Apportez suffisamment d\'eau, particulièrement en été'
     ],
-    latitude: 42.3597,
-    longitude: 9.3071
+    latitude: 42.5992,
+    longitude: 8.8900
   }
 ];
+
