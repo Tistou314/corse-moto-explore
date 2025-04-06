@@ -8,13 +8,13 @@ interface ContactInfoProps {
 
 const ContactInfo = ({ accommodation }: ContactInfoProps) => {
   // Function to ensure website URL has http(s) prefix
-  const formatWebsite = (url: string): string => {
+  const formatWebsite = (url: string | undefined): string => {
     if (!url) return '';
     return url.startsWith('http://') || url.startsWith('https://') ? url : `https://${url}`;
   };
   
   // Function to format display URL (remove protocol and trailing slash)
-  const getDisplayUrl = (url: string): string => {
+  const getDisplayUrl = (url: string | undefined): string => {
     if (!url) return '';
     return url.replace(/(^\w+:|^)\/\//, '').replace(/\/$/, '');
   };
