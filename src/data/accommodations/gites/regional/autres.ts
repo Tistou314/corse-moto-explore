@@ -15,7 +15,8 @@ export const autresGites: Accommodation[] = [
     amenities: ["Vue panoramique", "Terrasse", "Petit-déjeuner"],
     bikerAmenities: ["Parking moto", "Conseils d'itinéraires"],
     contact: {
-      phone: "+33 6 XX XX XX XX"
+      phone: "+33 6 XX XX XX XX",
+      website: "http://www.domainecardu.com"
     },
     address: "Domaine CARDU, Corse",
     latitude: 42.0,
@@ -34,7 +35,8 @@ export const autresGites: Accommodation[] = [
     amenities: ["Fromagerie", "Terrasse", "Produits locaux"],
     bikerAmenities: ["Parking moto", "Dégustation"],
     contact: {
-      phone: "+33 6 XX XX XX XX"
+      phone: "+33 6 XX XX XX XX",
+      website: "http://www.domainedepiscia.com"
     },
     address: "Domaine de Piscia, Corse",
     latitude: 42.2,

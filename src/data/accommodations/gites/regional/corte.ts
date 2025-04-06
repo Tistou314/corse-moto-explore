@@ -16,7 +16,7 @@ export const corteGites: Accommodation[] = [
     bikerAmenities: ["Garage fermé", "Outillage de base", "Compresseur", "Propriétaires motards"],
     contact: {
       phone: "+33 6 06 63 97 41",
-      website: "gitesofildeleaufrancardo.com"
+      website: "https://gitesofildeleaufrancardo.com"
     },
     address: "Lieu-dit U Ponte, 20236 Omessa",
     latitude: 42.3825,

@@ -35,7 +35,7 @@ export const calviGites: Accommodation[] = [
     bikerAmenities: ["Parking sécurisé", "Espace détente"],
     contact: {
       phone: "+33 6 50 23 78 61",
-      website: "https://www.aupieddesoliviers.com/"
+      website: "https://www.aupieddesoliviers.com"
     },
     address: "7 Rte de Moncale, 20214 Calenzana",
     latitude: 42.5070079,
