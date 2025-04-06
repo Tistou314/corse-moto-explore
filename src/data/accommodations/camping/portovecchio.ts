@@ -100,6 +100,10 @@ export const portovecchioCampings: Accommodation[] = [
     image: "https://cdn.pixabay.com/photo/2014/11/27/00/58/beach-547750_1280.jpg",
     amenities: ["Vue mer", "Emplacements ombragés", "Tranquillité"],
     bikerAmenities: ["Calme nocturne", "Proche col de Bavella"],
+    contact: {
+      phone: "+33 4 95 70 49 83",
+      website: "http://www.camping-fautea.com"
+    },
     bookingLink: "https://www.camping.info/fr/camping-fautea",
     address: "Plage de Fautea, 20144 Zonza",
     latitude: 41.705,

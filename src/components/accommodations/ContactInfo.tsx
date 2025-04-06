@@ -17,14 +17,24 @@ const ContactInfo = ({ accommodation }: ContactInfoProps) => {
       {accommodation.contact?.phone && (
         <div className="flex items-center gap-4">
           <PhoneIcon className="h-5 w-5 text-primary" />
-          <span>{accommodation.contact.phone}</span>
+          <a 
+            href={`tel:${accommodation.contact.phone.replace(/\s+/g, '')}`}
+            className="hover:underline"
+          >
+            {accommodation.contact.phone}
+          </a>
         </div>
       )}
       
       {accommodation.contact?.email && (
         <div className="flex items-center gap-4">
           <MailIcon className="h-5 w-5 text-primary" />
-          <span>{accommodation.contact.email}</span>
+          <a
+            href={`mailto:${accommodation.contact.email}`}
+            className="hover:underline"
+          >
+            {accommodation.contact.email}
+          </a>
         </div>
       )}
       
@@ -35,9 +45,9 @@ const ContactInfo = ({ accommodation }: ContactInfoProps) => {
             href={accommodation.contact.website} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-blue-600 hover:underline"
+            className="text-blue-600 hover:underline text-sm truncate max-w-[220px] sm:max-w-[320px]"
           >
-            Site web
+            {accommodation.contact.website.replace(/(^\w+:|^)\/\//, '').replace(/\/$/, '')}
           </a>
         </div>
       )}

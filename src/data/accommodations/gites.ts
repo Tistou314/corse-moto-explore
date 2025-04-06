@@ -1,4 +1,3 @@
-
 import { Accommodation } from './types';
 
 export const gitesAccommodations: Accommodation[] = [
@@ -75,7 +74,8 @@ export const gitesAccommodations: Accommodation[] = [
     amenities: ["Piscine", "Jardin", "Calme", "Petit-déjeuner inclus"],
     bikerAmenities: ["Garage fermé", "Propriétaires motards", "Itinéraires moto"],
     contact: {
-      phone: "+33 6 87 11 00 00"
+      phone: "+33 6 87 11 00 00",
+      website: "http://www.autourduhamac.com"
     },
     address: "Hameau de Castirla, 20218 Moltifao",
     latitude: 42.4744,
@@ -192,6 +192,10 @@ export const gitesAccommodations: Accommodation[] = [
     image: "https://cdn.pixabay.com/photo/2016/04/15/11/46/wilderness-1330743_1280.jpg",
     amenities: ["Cuisine commune", "Dortoirs", "Repas du soir", "Au pied de Bavella"],
     bikerAmenities: ["Garage fermé partagé", "Atelier équipé", "Sèche-équipement"],
+    contact: {
+      phone: "+33 4 95 78 68 32",
+      website: "http://www.gitecommunal-zonza.fr"
+    },
     address: "Hameau de Zonza, 20124 Zonza",
     latitude: 41.7386,
     longitude: 9.1763
@@ -269,7 +273,8 @@ export const gitesAccommodations: Accommodation[] = [
     amenities: ["Col d'altitude", "Restaurant", "Dortoirs", "Cheminée"],
     bikerAmenities: ["Parking éclairé", "Garage en cas de mauvais temps", "Étape mythique"],
     contact: {
-      phone: "+33 4 95 48 00 37"
+      phone: "+33 4 95 48 00 37",
+      website: "http://www.auberge-col-vergio.com"
     },
     address: "Col de Vergio (RN 193), 20224 Albertacce",
     latitude: 42.2931,

@@ -15,7 +15,8 @@ export const ghisonacciaCampings: Accommodation[] = [
     amenities: ["Accès plage", "Bar", "Boulangerie", "Supérette"],
     bikerAmenities: ["Emplacements moto à côté des tentes", "Parking gratuit", "Bungalows"],
     contact: {
-      phone: "+33 7 88 10 77 25"
+      phone: "+33 7 88 10 77 25",
+      website: "http://camping-europabeach.com"
     },
     bookingLink: "https://www.camping.info/fr/europa-beach",
     address: "Route de Pinarello, 20213 Sorbo-Ocagnano",
