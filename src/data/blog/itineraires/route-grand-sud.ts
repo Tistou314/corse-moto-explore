@@ -4,7 +4,7 @@ import { BlogPost } from '@/types/blog';
 export const routeGrandSud: BlogPost = {
   id: 'route-grand-sud-2024',
   title: 'La Boucle du Grand Sud : entre mer et montagne',
-  summary: 'Découvrez le meilleur itinéraire pour explorer toutes les facettes du sud de la Corse en une journée',
+  excerpt: 'Découvrez le meilleur itinéraire pour explorer toutes les facettes du sud de la Corse en une journée',
   date: '10 juillet 2024',
   author: 'Marie Santoni',
   authorTitle: 'Guide moto local et experte des routes corses',
