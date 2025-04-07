@@ -12,10 +12,9 @@ import {
 
 interface ActionButtonsProps {
   websiteUrl?: string;
-  bookingLink?: string;
 }
 
-const ActionButtons = ({ websiteUrl, bookingLink }: ActionButtonsProps) => {
+const ActionButtons = ({ websiteUrl }: ActionButtonsProps) => {
   const navigate = useNavigate();
   const [showWarning, setShowWarning] = useState<boolean>(false);
   
@@ -31,14 +30,6 @@ const ActionButtons = ({ websiteUrl, bookingLink }: ActionButtonsProps) => {
   };
   
   const formattedWebsiteUrl = websiteUrl ? formatUrl(websiteUrl) : '';
-  const formattedBookingLink = bookingLink ? formatUrl(bookingLink) : '';
-  
-  // Only show booking link if it exists, is different from the website URL, and website URL exists
-  const showBookingLink = Boolean(
-    formattedBookingLink && 
-    formattedWebsiteUrl && 
-    formattedBookingLink !== formattedWebsiteUrl
-  );
   
   const handleWebsiteClick = () => {
     if (websiteUrl && !hasProtocol(websiteUrl)) {
@@ -46,11 +37,6 @@ const ActionButtons = ({ websiteUrl, bookingLink }: ActionButtonsProps) => {
     } else {
       window.open(formattedWebsiteUrl, '_blank');
     }
-  };
-  
-  const confirmWebsiteOpen = () => {
-    window.open(formattedWebsiteUrl, '_blank');
-    setShowWarning(false);
   };
   
   return (
@@ -83,12 +69,6 @@ const ActionButtons = ({ websiteUrl, bookingLink }: ActionButtonsProps) => {
       ) : (
         <Button disabled className="opacity-50">
           Pas de site web
-        </Button>
-      )}
-      
-      {showBookingLink && (
-        <Button variant="secondary" onClick={() => window.open(formattedBookingLink, '_blank')}>
-          Réservation
         </Button>
       )}
       
