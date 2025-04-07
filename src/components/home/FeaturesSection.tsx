@@ -1,5 +1,5 @@
 
-import { Bike, Info, Compass, Clock, Shield, Tool } from 'lucide-react';
+import { Bike, Info, Compass, Clock, Shield, Wrench } from 'lucide-react';
 import FeatureCard from '@/components/FeatureCard';
 import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 import { cn } from '@/lib/utils';
@@ -33,7 +33,7 @@ const FeaturesSection = () => {
           <FeatureCard 
             title="Conseils mécaniques"
             description="Informations sur l'entretien de votre moto et les garages disponibles en Corse."
-            icon={Tool}
+            icon={Wrench}
           />
           <FeatureCard 
             title="Guide pratique"
@@ -62,3 +62,4 @@ const FeaturesSection = () => {
 };
 
 export default FeaturesSection;
+
