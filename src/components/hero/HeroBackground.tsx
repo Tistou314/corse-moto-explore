@@ -8,7 +8,7 @@ interface HeroBackgroundProps {
 
 const HeroBackground = ({ imagePath, children }: HeroBackgroundProps) => {
   // Utiliser l'image fournie ou une image par défaut
-  const heroImage = imagePath || "/lovable-uploads/4c22176c-2d3f-4b83-8257-5eee50dd9f03.png";
+  const heroImage = imagePath || "/lovable-uploads/a96b2fab-3ff7-4f98-8400-0dc93f7457d4.png";
 
   const bgStyle = {
     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${heroImage}")`,

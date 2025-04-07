@@ -8,10 +8,13 @@ interface ItineraryHeroProps {
 }
 
 const ItineraryHero = ({ itinerary }: ItineraryHeroProps) => {
+  // Use the image from the itinerary or a default one
+  const heroImage = itinerary.image || "/lovable-uploads/e6af0d1c-dcb3-4d02-941d-0ab737ffad83.png";
+
   return (
     <div 
       className="h-[50vh] relative bg-cover bg-center"
-      style={{ backgroundImage: `url(${itinerary.image})` }}
+      style={{ backgroundImage: `url(${heroImage})` }}
     >
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
       <div className="absolute bottom-0 left-0 w-full p-6 md:p-12">

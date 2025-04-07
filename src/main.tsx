@@ -18,6 +18,7 @@ const preloadImages = [
   '/lovable-uploads/a96b2fab-3ff7-4f98-8400-0dc93f7457d4.png',
   '/lovable-uploads/0e248deb-e0c7-4afb-b4fe-2dfdef43fa71.png',
   '/lovable-uploads/62ada3d0-f81e-4c6c-a666-479d8f4e3f1f.png',
+  '/lovable-uploads/e6af0d1c-dcb3-4d02-941d-0ab737ffad83.png',
 ];
 
 preloadImages.forEach((src) => {

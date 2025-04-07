@@ -28,8 +28,8 @@ const ItineraryCard = ({
   distance,
   difficulty,
 }: ItineraryCardProps) => {
-  // Fallback image if none is provided
-  const cardImage = image || "https://cdn.pixabay.com/photo/2020/04/23/10/54/corsica-5081729_1280.jpg";
+  // Updated fallback image if none is provided
+  const cardImage = image || "/lovable-uploads/e6af0d1c-dcb3-4d02-941d-0ab737ffad83.png";
   
   return (
     <div className="itinerary-card flex flex-col h-full">
@@ -40,7 +40,7 @@ const ItineraryCard = ({
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
-            target.src = "https://cdn.pixabay.com/photo/2020/04/23/10/54/corsica-5081729_1280.jpg";
+            target.src = "/lovable-uploads/e6af0d1c-dcb3-4d02-941d-0ab737ffad83.png";
           }}
         />
         <div className="absolute top-3 right-3">

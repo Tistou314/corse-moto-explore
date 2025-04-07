@@ -1,4 +1,3 @@
-
 import { Itinerary } from './types';
 
 export const nordOuestItineraries: Itinerary[] = [
@@ -70,7 +69,7 @@ Cette dernière portion vous conduit vers la conclusion spectaculaire de l'itin�
 * Stationnement : Difficile à Porto en haute saison. Quelques parkings payants à l'entrée du village, certains hôtels proposent des espaces réservés pour les motos.
 
 La Route des Crêtes représente l'essence même de ce que la Corse peut offrir aux motards : une combinaison parfaite entre défi technique, paysages grandioses et expérience de pilotage unique. Son surnom de "Sublime" n'est pas usurpé tant elle condense en 70 kilomètres l'ADN de l'île de Beauté : mer turquoise, montagnes abruptes, villages authentiques et nature préservée. Plus qu'un simple trajet, c'est une expérience sensorielle complète qui sollicitera votre technique de pilotage tout en nourrissant votre âme de panoramas inoubliables. Un incontournable absolu pour tout motard visitant la Corse.`,
-    image: 'https://cdn.pixabay.com/photo/2016/05/15/18/32/corsica-1394321_1280.jpg',
+    image: '/lovable-uploads/e6af0d1c-dcb3-4d02-941d-0ab737ffad83.png',
     duration: '2h30 sans arrêts',
     distance: '70 km',
     difficulty: 'difficile',
@@ -260,7 +259,7 @@ Au-delà des aspects purement techniques, le Tour de la Balagne offre une immers
 * **Fêtes traditionnelles** : En saison, nombreux sont les villages qui organisent des fêtes patronales ou artisanales. Renseignez-vous auprès des offices de tourisme pour intégrer ces événements à votre itinéraire.
 
 Le Tour de la Balagne représente l'équilibre parfait entre découverte motarde et immersion culturelle. Moins exigeant techniquement que d'autres itinéraires corses, il laisse au pilote le loisir d'apprécier pleinement les paysages et le patrimoine. C'est l'itinéraire idéal pour une première approche de la Corse à moto ou pour une journée de "récupération" entre deux parcours plus sportifs. La douceur du pilotage n'enlève rien à la beauté des panoramas et à l'authenticité des rencontres, faisant de cette boucle l'une des plus équilibrées et accessibles de l'île.`,
-    image: 'https://cdn.pixabay.com/photo/2017/08/22/10/47/corsica-2668760_1280.jpg',
+    image: '/lovable-uploads/62ada3d0-f81e-4c6c-a666-479d8f4e3f1f.png',
     duration: '2h30 sans arrêts',
     distance: '85 km',
     difficulty: 'moyen',
@@ -348,4 +347,3 @@ Le Tour de la Balagne représente l'équilibre parfait entre découverte motarde
     longitude: 8.8900
   }
 ];
-
