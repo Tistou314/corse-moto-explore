@@ -144,7 +144,7 @@ Cette traversée mérite une préparation spécifique :
 - **Équipement photo** : Les contrastes lumineux entre forêts sombres et panoramas éclatants peuvent mettre à l'épreuve votre matériel photographique. Prévoyez filtres et réglages adaptés.
 
 La Traversée du Centre représente l'essence même de la Corse montagneuse et sauvage. Loin des plages bondées et des sites touristiques convenus, elle offre une immersion dans une île plus secrète, plus authentique, où la nature règne encore en maître. Si elle exige technique et attention, cette route mythique récompense généreusement le motard par une succession de paysages grandioses et de sensations uniques. Pour beaucoup, elle constitue non pas un simple trajet utilitaire entre deux villes, mais le cœur même de leur expérience corse, un voyage initiatique au centre de "l'île de Beauté".`,
-    image: 'https://cdn.pixabay.com/photo/2014/11/01/18/46/corsica-513495_1280.jpg',
+    image: '/lovable-uploads/c3d552bd-6818-4848-97dc-17a222a5b25a.png',
     duration: '4-5h (sans les arrêts)',
     distance: '150 km (Ajaccio-Corte-Bastia)',
     difficulty: 'difficile',

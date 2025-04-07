@@ -43,6 +43,8 @@ const ItineraryCard = ({
     fallbackImage = "/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png";
   } else if (id === 'corniche-sud') {
     fallbackImage = "/lovable-uploads/55f44f7d-705e-4056-bef4-668d9934786b.png";
+  } else if (id === 'traversee-centre') {
+    fallbackImage = "/lovable-uploads/c3d552bd-6818-4848-97dc-17a222a5b25a.png";
   } else {
     fallbackImage = "/lovable-uploads/e6af0d1c-dcb3-4d02-941d-0ab737ffad83.png";
   }

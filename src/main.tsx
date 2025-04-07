@@ -42,6 +42,8 @@ const preloadImages = [
   '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png', // Gorges du Niolu avec pont
   // Nouvelle image pour la Corniche du Sud
   '/lovable-uploads/55f44f7d-705e-4056-bef4-668d9934786b.png', // Îles Sanguinaires
+  // Nouvelle image pour la Traversée du Centre (Corte)
+  '/lovable-uploads/c3d552bd-6818-4848-97dc-17a222a5b25a.png', // Vue de Corte et sa citadelle
 ];
 
 preloadImages.forEach((src) => {
