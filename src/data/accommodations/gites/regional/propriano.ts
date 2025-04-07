@@ -1,6 +1,27 @@
+
 import { Accommodation } from '../../types';
 
 export const proprianoGites: Accommodation[] = [
+  {
+    id: "gite9",
+    name: "Villa Les Orangers",
+    type: "chambre",
+    location: "Olmeto",
+    region: "propriano",
+    description: "Maison d'hôtes 3★ avec vue mer, disposant d'un parking privé clos. Patronne habituée à recevoir des motards : elle propose un accueil personnalisé avec boisson de bienvenue, et met à disposition un local pour déposer casques et blousons au sec. Piscine et spa accessibles gratuitement pour détendre les muscles après les lacets de l'Alta Rocca.",
+    priceRange: "85€ - 140€",
+    rating: 4.8,
+    image: "https://cdn.pixabay.com/photo/2019/03/08/20/14/pool-4043293_1280.jpg",
+    amenities: ["Piscine", "Spa", "Vue mer", "Climatisation", "Petit-déjeuner inclus"],
+    bikerAmenities: ["Parking privé clos", "Local pour équipements", "Accueil personnalisé"],
+    contact: {
+      phone: "+33 4 95 74 63 45",
+      website: "villa-lesorangers.com"
+    },
+    address: "4 Rue des Orangers, 20113 Olmeto",
+    latitude: 41.7184,
+    longitude: 8.9290
+  },
   {
     id: "gite9",
     name: "A Funtana",
@@ -20,25 +41,5 @@ export const proprianoGites: Accommodation[] = [
     address: "Rue Principale, 20113 Olmeto",
     latitude: 41.7365,
     longitude: 8.9443
-  },
-  {
-    id: "gite18",
-    name: "Domaine de Piscia - Clos Finidori",
-    type: "gite",
-    location: "Figari",
-    region: "propriano",
-    description: "Domaine agricole proposant des hébergements et une fromagerie. Une expérience authentique au cœur de la Corse-du-Sud, idéale pour les motards à la recherche de produits locaux et de calme.",
-    priceRange: "70€ - 110€",
-    rating: 4.4,
-    image: "https://cdn.pixabay.com/photo//2016/11/18/17/41/house-1836070_1280.jpg",
-    amenities: ["Fromagerie", "Produits locaux", "Vue sur la campagne"],
-    bikerAmenities: ["Parking moto", "Dégustation de produits"],
-    contact: {
-      phone: "+33 6 14 88 56 30",
-      website: "https://domainedepiscia.com/"
-    },
-    address: "DOMAINE DE PISCIA, 20114 Figari",
-    latitude: 41.5464607,
-    longitude: 9.1201698
   }
 ];
