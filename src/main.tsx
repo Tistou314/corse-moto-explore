@@ -44,6 +44,8 @@ const preloadImages = [
   '/lovable-uploads/55f44f7d-705e-4056-bef4-668d9934786b.png', // Îles Sanguinaires
   // Nouvelle image pour la Traversée du Centre (Corte)
   '/lovable-uploads/c3d552bd-6818-4848-97dc-17a222a5b25a.png', // Vue de Corte et sa citadelle
+  // Nouvelle image pour la Boucle du Grand Sud (Bonifacio)
+  '/lovable-uploads/c15d82fe-c722-44c8-979a-5305e6b1f0bd.png', // Vue de Bonifacio et son port
 ];
 
 preloadImages.forEach((src) => {
