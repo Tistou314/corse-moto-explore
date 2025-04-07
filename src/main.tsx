@@ -19,6 +19,7 @@ const preloadImages = [
   '/lovable-uploads/0e248deb-e0c7-4afb-b4fe-2dfdef43fa71.png',
   '/lovable-uploads/62ada3d0-f81e-4c6c-a666-479d8f4e3f1f.png',
   '/lovable-uploads/e6af0d1c-dcb3-4d02-941d-0ab737ffad83.png',
+  '/lovable-uploads/242a6241-e3c9-4628-9bee-4c81262eeb3e.png', // Ajout de la nouvelle image
 ];
 
 preloadImages.forEach((src) => {

@@ -69,7 +69,7 @@ Cette dernière portion vous conduit vers la conclusion spectaculaire de l'itin�
 * Stationnement : Difficile à Porto en haute saison. Quelques parkings payants à l'entrée du village, certains hôtels proposent des espaces réservés pour les motos.
 
 La Route des Crêtes représente l'essence même de ce que la Corse peut offrir aux motards : une combinaison parfaite entre défi technique, paysages grandioses et expérience de pilotage unique. Son surnom de "Sublime" n'est pas usurpé tant elle condense en 70 kilomètres l'ADN de l'île de Beauté : mer turquoise, montagnes abruptes, villages authentiques et nature préservée. Plus qu'un simple trajet, c'est une expérience sensorielle complète qui sollicitera votre technique de pilotage tout en nourrissant votre âme de panoramas inoubliables. Un incontournable absolu pour tout motard visitant la Corse.`,
-    image: '/lovable-uploads/e6af0d1c-dcb3-4d02-941d-0ab737ffad83.png',
+    image: '/lovable-uploads/242a6241-e3c9-4628-9bee-4c81262eeb3e.png',
     duration: '2h30 sans arrêts',
     distance: '70 km',
     difficulty: 'difficile',
@@ -226,7 +226,8 @@ La conclusion de la boucle :
 * **À éviter** : 
   * Juillet-août entre 11h et 17h : Chaleur intense et trafic très dense
   * Jours de Tramontane forte (vent du nord) qui peut être gênante sur les portions en altitude
-* **Moment idéal** : Départ matinal (8h-9h) pour profiter de la fraîcheur et terminer par un coucher de soleil sur la plage de L'Île-Rousse
+* **Moment idéal** : 
+  * Départ matinal (8h-9h) pour profiter de la fraîcheur et terminer par un coucher de soleil sur la plage de L'Île-Rousse
 
 ## Aspects pratiques
 

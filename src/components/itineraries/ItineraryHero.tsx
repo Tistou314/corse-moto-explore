@@ -9,7 +9,7 @@ interface ItineraryHeroProps {
 
 const ItineraryHero = ({ itinerary }: ItineraryHeroProps) => {
   // Use the image from the itinerary or a default one
-  const heroImage = itinerary.image || "/lovable-uploads/e6af0d1c-dcb3-4d02-941d-0ab737ffad83.png";
+  const heroImage = itinerary.image || "/lovable-uploads/242a6241-e3c9-4628-9bee-4c81262eeb3e.png";
 
   return (
     <div 

@@ -28,7 +28,7 @@ const ItineraryCard = ({
   distance,
   difficulty,
 }: ItineraryCardProps) => {
-  // Updated fallback image if none is provided
+  // S'assurer que l'image est correctement chargée
   const cardImage = image || "/lovable-uploads/e6af0d1c-dcb3-4d02-941d-0ab737ffad83.png";
   
   return (
