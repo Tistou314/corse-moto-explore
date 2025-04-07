@@ -5,7 +5,7 @@ export const ajaccioGites: Accommodation[] = [
   {
     id: "gite-ajaccio1",
     name: "Casa d'Omigna",
-    type: "chambre",
+    type: "gite",
     location: "Cargèse",
     region: "ajaccio",
     description: "Gîte et chambres d'hôtes avec vue mer, tenu par un motard passionné. Garage fermé mis à disposition gratuitement pour les motos. Atelier équipé pour petites réparations. Hébergement de charme (3 épis) avec table d'hôtes sur demande le soir. Situé à proximité des splendides plages et calanques de Piana.",
@@ -25,7 +25,7 @@ export const ajaccioGites: Accommodation[] = [
   {
     id: "gite-ajaccio2",
     name: "Chalet Zen",
-    type: "chambre",
+    type: "gite",
     location: "Peri",
     region: "ajaccio",
     description: "Chambres d'hôtes au calme dans l'arrière-pays ajaccien, aménagées dans un chalet en bois. Parking privé sécurisé dans la propriété (portail fermé la nuit). Espace bien-être avec jacuzzi – idéal pour se détendre après une journée de moto. Propriétaires aux petits soins (boissons fraîches offertes à l'arrivée des motards).",
@@ -45,7 +45,7 @@ export const ajaccioGites: Accommodation[] = [
   {
     id: "gite-ajaccio3",
     name: "U Castellu",
-    type: "chambre",
+    type: "gite",
     location: "Santa-Maria-Siché",
     region: "ajaccio",
     description: "Ancienne maison de maître proposant 4 chambres d'hôtes de caractère. Garage fermé en sous-sol pour 3 motos + parking extérieur possible dans la cour. Située sur la D83, itinéraire bis très prisé des motards reliant Ajaccio à Propriano par l'intérieur (Vallée du Taravo). Les propriétaires offrent l'apéritif de bienvenue et partagent volontiers les anecdotes locales.",

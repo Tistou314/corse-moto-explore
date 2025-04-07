@@ -25,7 +25,7 @@ export const bastiaGites: Accommodation[] = [
   {
     id: "gite-bastia2",
     name: "Chambres d'hôtes Le Refuge Orezza",
-    type: "chambre",
+    type: "gite",
     location: "Piedicroce",
     region: "bastia",
     description: "Ancien couvent restauré offrant 5 chambres d'hôtes au cœur de la Castagniccia (célèbre pour ses routes sinueuses). Hangar sécurisé dans l'enceinte pour abriter jusqu'à 6 motos. Possibilité de dîner sur place autour de la cheminée (cuisine traditionnelle corse). Outils et compresseur disponibles en libre-service. Cadre atypique et authentique très apprécié des motards voyageurs.",
@@ -45,7 +45,7 @@ export const bastiaGites: Accommodation[] = [
   {
     id: "gite-bastia3",
     name: "Centu Chiavi",
-    type: "chambre",
+    type: "gite",
     location: "Barrettali",
     region: "bastia",
     description: "Chambre d'hôtes de charme dans un ancien domaine viticole sur la côte sauvage du Cap Corse. Cour intérieure fermée où l'on peut stationner 2-3 motos à l'abri. Atelier d'artiste attenant utilisé comme abri en cas de pluie. Hôtes connaissant parfaitement la région : ils fournissent des roadbooks maison avec itinéraires panoramiques du Cap (patron membre d'un moto-club local).",

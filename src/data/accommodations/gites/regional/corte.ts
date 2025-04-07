@@ -25,7 +25,7 @@ export const corteGites: Accommodation[] = [
   {
     id: "gite-corte2",
     name: "Autour du Hamac",
-    type: "chambre",
+    type: "gite",
     location: "Moltifao",
     region: "corte",
     description: "Chambre d'hôtes située entre mer et montagne, tenue par un couple de motards. Garage fermé pour 4 à 5 motos. Terrain clos avec espace pour remorque éventuelle. Petite piscine disponible l'été. Au croisement des itinéraires du Cap Corse et de la Balagne – point de départ de belles balades (gorges de l'Asco, désert des Agriates).",

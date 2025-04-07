@@ -65,7 +65,7 @@ export const portovecchioGites: Accommodation[] = [
   {
     id: "gite-pv4",
     name: "Domaine de Sonia",
-    type: "chambre",
+    type: "gite",
     location: "Porto-Vecchio",
     region: "portovecchio",
     description: "Hébergement de charme près de Porto-Vecchio, offrant un cadre paisible et élégant. Idéal pour les motards à la recherche de confort et de tranquillité.",

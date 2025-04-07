@@ -5,7 +5,7 @@ export const autresGites: Accommodation[] = [
   {
     id: "gite-autres1",
     name: "Domaine CARDU",
-    type: "chambre",
+    type: "gite",
     location: "Corse",
     region: "autres",
     description: "Un domaine de charme offrant une expérience authentique et paisible en Corse.",
@@ -25,7 +25,7 @@ export const autresGites: Accommodation[] = [
   {
     id: "gite-autres2",
     name: "Domaine de Piscia - Clos Finidori - Fromagerie de Marie",
-    type: "chambre",
+    type: "gite",
     location: "Corse",
     region: "autres",
     description: "Un domaine unique combinant hébergement, fromagerie et authenticité corse.",

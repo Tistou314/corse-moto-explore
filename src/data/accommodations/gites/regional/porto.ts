@@ -5,7 +5,7 @@ export const portoGites: Accommodation[] = [
   {
     id: "gite-porto1",
     name: "Vue sur Calanques",
-    type: "chambre",
+    type: "gite",
     location: "Ota",
     region: "porto",
     description: "Chambres d'hôtes situées à quelques minutes des célèbres calanques de Piana. Terrasse panoramique avec vue imprenable sur le golfe de Porto. Garage fermé pour les motos. Les propriétaires proposent des itinéraires adaptés pour découvrir la région en moto. Petit déjeuner inclus avec des produits maison.",

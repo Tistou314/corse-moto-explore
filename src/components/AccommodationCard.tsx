@@ -16,16 +16,14 @@ const AccommodationCard = ({ accommodation }: AccommodationCardProps) => {
   const typeColors = {
     hotel: "bg-blue-100 text-blue-800",
     gite: "bg-green-100 text-green-800",
-    camping: "bg-amber-100 text-amber-800",
-    chambre: "bg-purple-100 text-purple-800"
+    camping: "bg-amber-100 text-amber-800"
   };
 
   // Map type to label - avec des libellés plus précis
   const typeLabels = {
     hotel: "Hôtel",
     gite: "Gîte rural",
-    camping: "Camping",
-    chambre: "Chambre d'hôtes"
+    camping: "Camping"
   };
 
   const handleCardClick = () => {

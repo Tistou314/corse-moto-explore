@@ -44,7 +44,7 @@ export const ghisonacciaGites: Accommodation[] = [
   {
     id: "gite-ghisonaccia3",
     name: "Corsica Paddock",
-    type: "chambre",
+    type: "gite",
     location: "Prunelli-di-Fiumorbo",
     region: "ghisonaccia",
     description: "Relais Motard et Chambres d'hôtes spécialement conçus pour les passionnés de deux roues. Parking sécurisé, conseils d'itinéraires, et accueil chaleureux pour les motards en Corse.",

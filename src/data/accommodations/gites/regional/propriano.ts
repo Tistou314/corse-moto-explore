@@ -5,7 +5,7 @@ export const proprianoGites: Accommodation[] = [
   {
     id: "gite-prop1",
     name: "Villa Les Orangers",
-    type: "chambre",
+    type: "gite",
     location: "Olmeto",
     region: "propriano",
     description: "Maison d'hôtes 3★ avec vue mer, disposant d'un parking privé clos. Patronne habituée à recevoir des motards : elle propose un accueil personnalisé avec boisson de bienvenue, et met à disposition un local pour déposer casques et blousons au sec. Piscine et spa accessibles gratuitement pour détendre les muscles après les lacets de l'Alta Rocca.",

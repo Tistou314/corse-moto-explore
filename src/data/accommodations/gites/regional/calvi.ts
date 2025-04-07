@@ -5,7 +5,7 @@ export const calviGites: Accommodation[] = [
   {
     id: "gite-calvi1",
     name: "A Casa di l'Alivu",
-    type: "chambre",
+    type: "gite",
     location: "Lama",
     region: "calvi",
     description: "Chambres d'hôtes dans une maison de village en Balagne, avec vue sur la vallée de l'Ostriconi. Garage voûté pour 2 motos (hauteur limitée) + parking public à 50 m pour autres motos. Hôte motard amateur de vieilles Ducati – peut accompagner les visiteurs sur une portion de route pour leur montrer des coins secrets. Petit-déjeuner copieux inclus.",
@@ -25,7 +25,7 @@ export const calviGites: Accommodation[] = [
   {
     id: "gite-calvi2",
     name: "Chez Rose",
-    type: "chambre",
+    type: "gite",
     location: "Belgodère",
     region: "calvi",
     description: "Chambres d'hôtes authentiques dans un cadre paisible de la Balagne. Accueil familial et convivial, idéal pour les motards à la recherche d'un hébergement calme et chaleureux.",
@@ -44,7 +44,7 @@ export const calviGites: Accommodation[] = [
   {
     id: "gite-calvi3",
     name: "Au pied des oliviers",
-    type: "chambre",
+    type: "gite",
     location: "Calenzana",
     region: "calvi",
     description: "Chambre d'hôtes dans un cadre d'oliviers, offrant un hébergement paisible et authentique. Parfait pour les motards souhaitant découvrir la Balagne.",
