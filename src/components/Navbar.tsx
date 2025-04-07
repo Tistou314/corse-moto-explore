@@ -1,8 +1,7 @@
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Bike, ChevronDown } from 'lucide-react';
-import { Button } from "@/components/ui/button";
+import { Menu, X, Bike } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,18 +25,9 @@ const Navbar = () => {
             <Link to="/" className="text-foreground hover:text-corsica-blue font-medium transition-colors">
               Accueil
             </Link>
-            <div className="relative group">
-              <button className="flex items-center text-foreground hover:text-corsica-blue font-medium transition-colors">
-                Itinéraires <ChevronDown className="ml-1 w-4 h-4 transition-transform group-hover:rotate-180" />
-              </button>
-              <div className="absolute left-0 mt-2 w-48 rounded-xl shadow-lg bg-white ring-1 ring-black/5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <div className="py-2">
-                  <Link to="/itineraires" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-corsica-blue">
-                    Tous les itinéraires
-                  </Link>
-                </div>
-              </div>
-            </div>
+            <Link to="/itineraires" className="text-foreground hover:text-corsica-blue font-medium transition-colors">
+              Itinéraires
+            </Link>
             <Link to="/guide" className="text-foreground hover:text-corsica-blue font-medium transition-colors">
               Guide pratique
             </Link>
