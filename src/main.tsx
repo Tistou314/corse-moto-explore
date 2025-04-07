@@ -36,6 +36,8 @@ const preloadImages = [
   '/lovable-uploads/2b677267-ec65-4c83-ae90-9301d10f5a90.png', // Montagnes rocheuses
   // Nouvelle image pour la Castagniccia
   '/lovable-uploads/2653c886-6632-476f-b90a-f498f2b8ca2e.png', // Vue de la Castagniccia avec village perché
+  // Nouvelle image pour les Calanques de Piana
+  '/lovable-uploads/d60eaef4-6e63-4386-860b-c02648902533.png', // Calanques de Piana route côtière
 ];
 
 preloadImages.forEach((src) => {

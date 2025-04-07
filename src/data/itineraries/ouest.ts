@@ -117,7 +117,7 @@ Au-delà de la conduite pure, les Calanques de Piana offrent une expérience sen
 - **Randonnées complémentaires** : Pour ceux qui peuvent laisser leur moto quelques heures, plusieurs sentiers de randonnée partent de la route pour s'enfoncer plus profondément dans les Calanques, offrant des perspectives inaccessibles depuis la route.
 
 Les Calanques de Piana représentent bien plus qu'un simple tronçon routier - c'est une immersion dans un univers minéral façonné par des millions d'années d'érosion, un moment suspendu entre ciel, terre et mer. Si cette portion peut sembler courte en kilomètres, elle s'inscrit durablement dans la mémoire de chaque motard par son caractère véritablement unique. Même les pilotes ayant parcouru les plus grandes routes du monde s'accordent souvent à dire que ces 20 kilomètres comptent parmi les plus impressionnants de leur expérience. Plus qu'un trajet, c'est un voyage géologique et sensoriel qui mérite qu'on lui consacre bien plus que l'heure nécessaire à le parcourir d'un bout à l'autre.`,
-    image: 'https://images.unsplash.com/photo-1572913017567-02f0649bc4fd?auto=format&fit=crop&q=80',
+    image: '/lovable-uploads/d60eaef4-6e63-4386-860b-c02648902533.png',
     duration: '1h (sans les arrêts)',
     distance: '20 km',
     difficulty: 'moyen',

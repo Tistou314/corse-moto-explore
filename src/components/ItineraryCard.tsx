@@ -37,6 +37,8 @@ const ItineraryCard = ({
     fallbackImage = "/lovable-uploads/381bb3e5-8c88-48aa-8685-829520b4e247.png";
   } else if (id === 'castagniccia') {
     fallbackImage = "/lovable-uploads/2653c886-6632-476f-b90a-f498f2b8ca2e.png";
+  } else if (id === 'calanques-piana') {
+    fallbackImage = "/lovable-uploads/d60eaef4-6e63-4386-860b-c02648902533.png";
   } else {
     fallbackImage = "/lovable-uploads/e6af0d1c-dcb3-4d02-941d-0ab737ffad83.png";
   }
