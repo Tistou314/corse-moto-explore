@@ -7,19 +7,19 @@ interface HeroBackgroundProps {
 }
 
 const HeroBackground = ({ imagePath, children }: HeroBackgroundProps) => {
-  // Use a Corsican landscape image as the default
+  // Utiliser l'image de la route côtière pour la page d'accueil par défaut
   const heroImage = imagePath 
     ? imagePath
-    : "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?auto=format&fit=crop&w=1920&q=80";
+    : "/lovable-uploads/4c22176c-2d3f-4b83-8257-5eee50dd9f03.png";
 
   const bgStyle = {
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("${heroImage}")`,
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${heroImage}")`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   };
 
   return (
-    <div className="hero-section min-h-[60vh] relative flex items-center" style={bgStyle}>
+    <div className="hero-section min-h-[70vh] relative flex items-center" style={bgStyle}>
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
       {children}
     </div>

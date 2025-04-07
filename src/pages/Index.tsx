@@ -9,12 +9,12 @@ import BlogSection from '@/components/home/BlogSection';
 import AccommodationsSection from '@/components/home/AccommodationsSection';
 import CampingSection from '@/components/home/CampingSection';
 import CTASection from '@/components/home/CTASection';
+import GitesSection from '@/components/home/GitesSection';
 import { itineraries } from '@/data/itineraries';
 import { blogPosts } from '@/data/blogPosts';
 import { accommodations } from '@/data/accommodations';
 import { campingAccommodations } from '@/data/accommodations/camping';
 import { gitesAccommodations } from '@/data/accommodations';
-import GitesSection from '@/components/home/GitesSection';
 
 const Index = () => {
   // Get featured itineraries (first 3)
@@ -36,15 +36,19 @@ const Index = () => {
     .filter(acc => acc.type === 'gite' || acc.type === 'chambre')
     .slice(0, 3);
 
+  // Utiliser l'image de la route côtière comme Hero pour la page d'accueil
+  const heroImage = "/lovable-uploads/4c22176c-2d3f-4b83-8257-5eee50dd9f03.png";
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       
-      {/* Hero Section */}
+      {/* Hero Section with coastal road image */}
       <Hero 
         title="Découvrez la Corse à Moto"
         subtitle="Explorez les plus belles routes, parcours et paysages de l'Île de Beauté. Guides, itinéraires et conseils pour une aventure inoubliable."
         cta={{ text: "Découvrir les itinéraires", link: "/itineraires" }}
+        imagePath={heroImage}
       />
 
       {/* Features Section */}

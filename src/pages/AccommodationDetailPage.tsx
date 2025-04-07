@@ -12,6 +12,21 @@ import ActionButtons from '@/components/accommodations/ActionButtons';
 import MapBox from '@/components/map/MapBox';
 import { MapLocation } from '@/components/map/types';
 import { Accommodation } from '@/data/accommodations/types';
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext 
+} from '@/components/ui/carousel';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
+
+// Images supplémentaires pour le carousel
+const additionalImages = [
+  '/lovable-uploads/5ea8afd3-56bf-4cc9-9c65-e164671c24f9.png',
+  '/lovable-uploads/2120b253-8c47-4a6f-8c9c-7b6cb386889b.png',
+  '/lovable-uploads/ee310cca-8fe2-4a65-9a95-6549e83f4913.png',
+];
 
 const AccommodationDetailPage = () => {
   const { id } = useParams();
@@ -48,19 +63,34 @@ const AccommodationDetailPage = () => {
   // Get the website URL directly from accommodation
   const websiteUrl = accommodation.contact?.website;
 
+  // Préparer les images pour le carousel
+  const carouselImages = [accommodation.image, ...additionalImages.slice(0, 2)];
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-2 gap-8">
-          {/* Image Section */}
+          {/* Image Section with Carousel */}
           <div>
-            <img 
-              src={accommodation.image} 
-              alt={accommodation.name} 
-              className="w-full rounded-lg shadow-lg object-cover h-[500px]"
-            />
+            <Carousel className="w-full">
+              <CarouselContent>
+                {carouselImages.map((image, index) => (
+                  <CarouselItem key={index}>
+                    <AspectRatio ratio={4/3} className="bg-muted">
+                      <img 
+                        src={image} 
+                        alt={`${accommodation.name} - Vue ${index + 1}`} 
+                        className="rounded-lg shadow-lg object-cover w-full h-full"
+                      />
+                    </AspectRatio>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-2" />
+              <CarouselNext className="right-2" />
+            </Carousel>
           </div>
           
           {/* Details Section */}

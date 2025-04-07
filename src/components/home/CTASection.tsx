@@ -11,9 +11,14 @@ const CTASection = () => {
     <section 
       ref={ref}
       className={cn(
-        "py-20 bg-corsica-blue text-white transition-all duration-700 ease-in-out",
+        "py-20 bg-corsica-blue text-white transition-all duration-700 ease-in-out relative",
         isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
       )}
+      style={{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/lovable-uploads/c219acb8-fe75-4f50-9267-14fc85bcc095.png')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      }}
     >
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-3xl font-bold mb-4">Prêt pour l'aventure ?</h2>
