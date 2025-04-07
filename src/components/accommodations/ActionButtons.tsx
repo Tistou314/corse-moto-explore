@@ -12,7 +12,12 @@ const ActionButtons = ({ websiteUrl }: ActionButtonsProps) => {
   
   const handleWebsiteClick = () => {
     if (websiteUrl) {
-      window.open(websiteUrl, '_blank');
+      // Ensure the URL has a protocol prefix
+      const url = websiteUrl.startsWith('http') 
+        ? websiteUrl 
+        : `https://${websiteUrl}`;
+        
+      window.open(url, '_blank');
     }
   };
   
