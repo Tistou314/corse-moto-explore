@@ -12,7 +12,7 @@ interface AccommodationCardProps {
 const AccommodationCard = ({ accommodation }: AccommodationCardProps) => {
   const navigate = useNavigate();
 
-  // Map type to color
+  // Map type to color - avec des couleurs plus distinctes
   const typeColors = {
     hotel: "bg-blue-100 text-blue-800",
     gite: "bg-green-100 text-green-800",
@@ -20,10 +20,10 @@ const AccommodationCard = ({ accommodation }: AccommodationCardProps) => {
     chambre: "bg-purple-100 text-purple-800"
   };
 
-  // Map type to label
+  // Map type to label - avec des libellés plus précis
   const typeLabels = {
     hotel: "Hôtel",
-    gite: "Gîte",
+    gite: "Gîte rural",
     camping: "Camping",
     chambre: "Chambre d'hôtes"
   };
@@ -42,14 +42,18 @@ const AccommodationCard = ({ accommodation }: AccommodationCardProps) => {
           src={accommodation.image}
           alt={accommodation.name}
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = "https://images.unsplash.com/photo-1558882224-dda166733046?auto=format&fit=crop&w=800&q=60";
+          }}
         />
       </div>
       
       <CardHeader className="pb-2">
         <div className="flex justify-between items-start">
           <CardTitle className="text-xl">{accommodation.name}</CardTitle>
-          <Badge className={typeColors[accommodation.type]}>
-            {typeLabels[accommodation.type]}
+          <Badge className={typeColors[accommodation.type as keyof typeof typeColors] || "bg-gray-100 text-gray-800"}>
+            {typeLabels[accommodation.type as keyof typeof typeLabels] || accommodation.type}
           </Badge>
         </div>
         <div className="flex items-center text-sm text-muted-foreground">
@@ -67,11 +71,16 @@ const AccommodationCard = ({ accommodation }: AccommodationCardProps) => {
         <div className="mt-4">
           <p className="text-sm font-medium mb-2">Équipements motards :</p>
           <div className="flex flex-wrap gap-1">
-            {accommodation.bikerAmenities.map((amenity, index) => (
+            {accommodation.bikerAmenities.slice(0, 3).map((amenity, index) => (
               <Badge key={index} variant="outline" className="text-xs">
                 {amenity}
               </Badge>
             ))}
+            {accommodation.bikerAmenities.length > 3 && (
+              <Badge variant="outline" className="text-xs">
+                +{accommodation.bikerAmenities.length - 3}
+              </Badge>
+            )}
           </div>
         </div>
       </CardContent>
@@ -92,7 +101,7 @@ const AccommodationCard = ({ accommodation }: AccommodationCardProps) => {
             <span className="ml-2 text-sm">{accommodation.rating.toFixed(1)}</span>
           </div>
           <span className="text-sm text-muted-foreground">
-            {accommodation.amenities.slice(0, 2).join(" • ")}
+            {accommodation.region && accommodation.region}
           </span>
         </div>
       </CardFooter>

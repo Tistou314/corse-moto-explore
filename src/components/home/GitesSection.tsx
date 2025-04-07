@@ -14,7 +14,10 @@ interface GitesSectionProps {
 const GitesSection = ({ gites }: GitesSectionProps) => {
   const { ref, isVisible } = useScrollAnimation<HTMLElement>();
   
-  if (!gites || gites.length === 0) return null;
+  // Filtrer pour s'assurer que seuls les gîtes et chambres d'hôtes sont affichés
+  const filteredGites = gites.filter(g => g.type === 'gite' || g.type === 'chambre');
+  
+  if (!filteredGites || filteredGites.length === 0) return null;
   
   return (
     <section 
@@ -43,7 +46,7 @@ const GitesSection = ({ gites }: GitesSectionProps) => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {gites.map((gite, index) => (
+          {filteredGites.map((gite, index) => (
             <div
               key={gite.id}
               className={cn(

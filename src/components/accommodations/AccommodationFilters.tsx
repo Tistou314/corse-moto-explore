@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { SearchIcon, FilterIcon } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -8,7 +8,8 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { accommodationTypes, regions, bikerFeatures, Accommodation } from '@/data/accommodations';
+import { accommodationTypes, regions, bikerFeatures } from '@/data/accommodations';
+import { Badge } from '@/components/ui/badge';
 
 interface AccommodationFiltersProps {
   searchQuery: string;
@@ -43,13 +44,16 @@ const AccommodationFilters = ({
 }: AccommodationFiltersProps) => {
   
   const handleAmenityChange = (amenity: string) => {
-    // Fix: Explicitly create a new array instead of using a function that returns any
     if (selectedAmenities.includes(amenity)) {
       setSelectedAmenities(selectedAmenities.filter(a => a !== amenity));
     } else {
       setSelectedAmenities([...selectedAmenities, amenity]);
     }
   };
+
+  // Déterminer si des filtres sont actifs pour l'affichage
+  const hasActiveFilters = selectedType !== 'all' || selectedRegion !== 'all' || 
+                          selectedAmenities.length > 0 || priceRange[0] > 0 || priceRange[1] < 200;
 
   return (
     <section className="bg-muted py-8">
@@ -67,7 +71,7 @@ const AccommodationFilters = ({
           
           <div className="flex gap-2 flex-wrap md:flex-nowrap">
             <Select value={selectedType} onValueChange={setSelectedType}>
-              <SelectTrigger className="w-[180px]">
+              <SelectTrigger className={`w-[180px] ${selectedType !== 'all' ? 'border-primary' : ''}`}>
                 <SelectValue placeholder="Type d'hébergement" />
               </SelectTrigger>
               <SelectContent>
@@ -80,7 +84,7 @@ const AccommodationFilters = ({
             </Select>
             
             <Select value={selectedRegion} onValueChange={setSelectedRegion}>
-              <SelectTrigger className="w-[180px]">
+              <SelectTrigger className={`w-[180px] ${selectedRegion !== 'all' ? 'border-primary' : ''}`}>
                 <SelectValue placeholder="Région" />
               </SelectTrigger>
               <SelectContent>
@@ -94,9 +98,20 @@ const AccommodationFilters = ({
             
             <Popover open={isFilterOpen} onOpenChange={setIsFilterOpen}>
               <PopoverTrigger asChild>
-                <Button variant="outline" className="gap-2">
+                <Button 
+                  variant={hasActiveFilters ? "default" : "outline"} 
+                  className={`gap-2 ${hasActiveFilters ? 'bg-primary' : ''}`}
+                >
                   <FilterIcon className="h-4 w-4" />
-                  Filtres avancés
+                  {hasActiveFilters ? 
+                    <>
+                      Filtres actifs 
+                      <Badge variant="outline" className="ml-1 bg-white text-primary">
+                        {selectedAmenities.length + (selectedType !== 'all' ? 1 : 0) + (selectedRegion !== 'all' ? 1 : 0)}
+                      </Badge>
+                    </> : 
+                    "Filtres avancés"
+                  }
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-80">
@@ -151,11 +166,24 @@ const AccommodationFilters = ({
         
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-lg font-medium">
-            {filteredCount} hébergements trouvés
+            {filteredCount} {filteredCount > 1 ? 'hébergements trouvés' : 'hébergement trouvé'}
           </h3>
           
           <div className="text-muted-foreground text-sm">
-            Trié par: <span className="font-medium">Recommandés</span>
+            {hasActiveFilters && (
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={() => {
+                  setSelectedType('all');
+                  setSelectedRegion('all');
+                  setPriceRange([0, 200]);
+                  setSelectedAmenities([]);
+                }}
+              >
+                Réinitialiser tous les filtres
+              </Button>
+            )}
           </div>
         </div>
       </div>

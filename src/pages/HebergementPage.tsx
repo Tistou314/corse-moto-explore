@@ -23,14 +23,14 @@ const HebergementPage = () => {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const typeParam = urlParams.get('type');
-    if (typeParam) {
+    if (typeParam && ['hotel', 'gite', 'camping', 'chambre'].includes(typeParam)) {
       setSelectedType(typeParam);
     }
   }, []);
 
   // Filter accommodations based on search and filters
   useEffect(() => {
-    let filtered = accommodations;
+    let filtered = [...accommodations];
 
     // Filter by search query
     if (searchQuery) {
@@ -55,8 +55,8 @@ const HebergementPage = () => {
 
     // Filter by price (simplified since our data has string price ranges)
     filtered = filtered.filter(acc => {
-      const minPrice = parseInt(acc.priceRange.split('€')[0]);
-      return minPrice >= priceRange[0] && minPrice <= priceRange[1];
+      const minPrice = parseInt(acc.priceRange.split('€')[0].trim());
+      return !isNaN(minPrice) && minPrice >= priceRange[0] && minPrice <= priceRange[1];
     });
 
     // Filter by amenities
@@ -68,6 +68,9 @@ const HebergementPage = () => {
       );
     }
 
+    console.log(`Filtered accommodations: ${filtered.length} items`);
+    console.log(`Current type filter: ${selectedType}`);
+    
     setFilteredAccommodations(filtered);
   }, [searchQuery, selectedType, selectedRegion, priceRange, selectedAmenities]);
 

@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Edit, Trash, Plus, Search } from "lucide-react";
+import { Edit, Trash, Plus, Search, Filter } from "lucide-react";
 import { 
   Table, 
   TableBody, 
@@ -20,22 +20,28 @@ import {
   DialogHeader, 
   DialogTitle 
 } from "@/components/ui/dialog";
-import { accommodations } from "@/data/accommodations";
+import { accommodations, accommodationTypes } from "@/data/accommodations";
 import { Badge } from "@/components/ui/badge";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const AccommodationsList = () => {
   const [accommodationList, setAccommodationList] = useState(accommodations);
   const [searchQuery, setSearchQuery] = useState('');
   const [deleteDialog, setDeleteDialog] = useState(false);
   const [accommodationToDelete, setAccommodationToDelete] = useState<typeof accommodations[0] | null>(null);
+  const [typeFilter, setTypeFilter] = useState('all');
   
-  // Fonction de recherche
-  const filteredAccommodations = searchQuery
-    ? accommodationList.filter(acc => 
-        acc.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  // Fonction de recherche et filtrage améliorée
+  const filteredAccommodations = accommodationList.filter(acc => {
+    const matchesSearch = searchQuery
+      ? acc.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         acc.location.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    : accommodationList;
+      : true;
+    
+    const matchesType = typeFilter === 'all' ? true : acc.type === typeFilter;
+    
+    return matchesSearch && matchesType;
+  });
   
   // Fonction pour supprimer un hébergement
   const handleDelete = (accommodation: typeof accommodations[0]) => {
@@ -58,8 +64,15 @@ const AccommodationsList = () => {
   const accommodationTypeLabels: Record<string, string> = {
     hotel: "Hôtel",
     gite: "Gîte",
-    camping: "Camping"
+    camping: "Camping",
+    chambre: "Chambre d'hôtes"
   };
+
+  // Statistiques sur les types d'hébergements
+  const typeStats = accommodationList.reduce((stats: Record<string, number>, acc) => {
+    stats[acc.type] = (stats[acc.type] || 0) + 1;
+    return stats;
+  }, {});
   
   return (
     <div className="space-y-6">
@@ -72,7 +85,7 @@ const AccommodationsList = () => {
         </Button>
       </div>
       
-      <div className="flex flex-col sm:flex-row gap-4">
+      <div className="flex flex-col gap-4 sm:flex-row">
         <div className="relative flex-1">
           <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
@@ -82,6 +95,37 @@ const AccommodationsList = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
+        
+        <Select value={typeFilter} onValueChange={setTypeFilter}>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Type d'hébergement" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">Tous les types</SelectItem>
+            {Object.entries(accommodationTypeLabels).map(([value, label]) => (
+              <SelectItem key={value} value={value}>
+                {label} ({typeStats[value] || 0})
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+      
+      {/* Affichage des statistiques */}
+      <div className="flex flex-wrap gap-2">
+        <Badge variant="outline" className="bg-slate-100">
+          Total: {accommodationList.length}
+        </Badge>
+        {Object.entries(typeStats).map(([type, count]) => (
+          <Badge 
+            key={type} 
+            variant={typeFilter === type ? "default" : "outline"}
+            className={`cursor-pointer ${typeFilter === type ? "bg-primary" : ""}`}
+            onClick={() => setTypeFilter(type === typeFilter ? "all" : type)}
+          >
+            {accommodationTypeLabels[type] || type}: {count}
+          </Badge>
+        ))}
       </div>
       
       <div className="border rounded-md">
@@ -108,7 +152,7 @@ const AccommodationsList = () => {
                           className="w-full h-full object-cover"
                           onError={(e) => {
                             const target = e.target as HTMLImageElement;
-                            target.src = "https://cdn.pixabay.com/photo/2020/04/23/10/54/corsica-5081729_1280.jpg";
+                            target.src = "https://images.unsplash.com/photo-1558882224-dda166733046?auto=format&fit=crop&w=800&q=60";
                           }}
                         />
                       </div>
@@ -117,7 +161,18 @@ const AccommodationsList = () => {
                   </TableCell>
                   <TableCell>{accommodation.location}</TableCell>
                   <TableCell>
-                    <Badge variant="outline">{accommodationTypeLabels[accommodation.type]}</Badge>
+                    <Badge 
+                      variant="outline" 
+                      className={
+                        accommodation.type === 'hotel' ? 'bg-blue-50 text-blue-800 border-blue-200' :
+                        accommodation.type === 'gite' ? 'bg-green-50 text-green-800 border-green-200' :
+                        accommodation.type === 'camping' ? 'bg-amber-50 text-amber-800 border-amber-200' :
+                        accommodation.type === 'chambre' ? 'bg-purple-50 text-purple-800 border-purple-200' :
+                        ''
+                      }
+                    >
+                      {accommodationTypeLabels[accommodation.type] || accommodation.type}
+                    </Badge>
                   </TableCell>
                   <TableCell>{accommodation.priceRange}</TableCell>
                   <TableCell className="text-right space-x-2">

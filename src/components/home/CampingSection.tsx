@@ -14,7 +14,10 @@ interface CampingSectionProps {
 const CampingSection = ({ campings }: CampingSectionProps) => {
   const { ref, isVisible } = useScrollAnimation<HTMLElement>();
   
-  if (!campings || campings.length === 0) return null;
+  // S'assurer qu'on n'affiche que les hébergements de type 'camping'
+  const filteredCampings = campings.filter(c => c.type === 'camping');
+  
+  if (!filteredCampings || filteredCampings.length === 0) return null;
   
   return (
     <section 
@@ -43,7 +46,7 @@ const CampingSection = ({ campings }: CampingSectionProps) => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {campings.slice(0, 3).map((camping, index) => (
+          {filteredCampings.slice(0, 3).map((camping, index) => (
             <div
               key={camping.id}
               className={cn(
