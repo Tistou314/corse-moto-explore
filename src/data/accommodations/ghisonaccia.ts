@@ -3,7 +3,7 @@ import { Accommodation } from './types';
 
 export const ghisonacciaAccommodations: Accommodation[] = [
   {
-    id: "acc14",
+    id: "ghisonaccia1",
     name: "Corsica Paddock (Chambres d'Hôtes & Relais Motard)",
     type: "hotel",
     location: "Prunelli-di-Fiumorbo",

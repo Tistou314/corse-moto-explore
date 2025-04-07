@@ -3,7 +3,7 @@ import { Accommodation } from './types';
 
 export const portoAccommodations: Accommodation[] = [
   {
-    id: "acc8",
+    id: "porto1",
     name: "Hôtel Les Roches Rouges",
     type: "hotel",
     location: "Piana",

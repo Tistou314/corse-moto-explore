@@ -3,7 +3,7 @@ import { Accommodation } from './types';
 
 export const corteAccommodations: Accommodation[] = [
   {
-    id: "acc13",
+    id: "corte1",
     name: "Ferme auberge du col de la vaccia",
     type: "hotel",
     location: "Olivese",

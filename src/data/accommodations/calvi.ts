@@ -3,7 +3,7 @@ import { Accommodation } from './types';
 
 export const calviAccommodations: Accommodation[] = [
   {
-    id: "acc8",
+    id: "calvi1",
     name: "Le Grillon",
     type: "hotel",
     location: "L'Île-Rousse",
