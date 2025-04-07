@@ -10,11 +10,11 @@ export const routeGrandSud: BlogPost = {
   authorTitle: 'Guide moto local et experte des routes corses',
   authorAvatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=256&q=80',
   category: 'Itinéraires et circuits',
-  image: '/lovable-uploads/c15d82fe-c722-44c8-979a-5305e6b1f0bd.png',
+  image: '/lovable-uploads/60e4855d-f792-4984-a882-c9e763c83da6.png',
   content: `
 # La Boucle du Grand Sud : entre mer et montagne
 
-![Bonifacio et son port](/lovable-uploads/c15d82fe-c722-44c8-979a-5305e6b1f0bd.png)
+![Bonifacio et son port](/lovable-uploads/60e4855d-f792-4984-a882-c9e763c83da6.png)
 
 ## Un itinéraire complet pour découvrir le sud de l'île en une journée
 

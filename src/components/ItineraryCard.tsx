@@ -46,7 +46,7 @@ const ItineraryCard = ({
   } else if (id === 'traversee-centre') {
     fallbackImage = "/lovable-uploads/c3d552bd-6818-4848-97dc-17a222a5b25a.png";
   } else if (id === 'boucle-grand-sud') {
-    fallbackImage = "/lovable-uploads/c15d82fe-c722-44c8-979a-5305e6b1f0bd.png";
+    fallbackImage = "/lovable-uploads/60e4855d-f792-4984-a882-c9e763c83da6.png";
   } else {
     fallbackImage = "/lovable-uploads/e6af0d1c-dcb3-4d02-941d-0ab737ffad83.png";
   }

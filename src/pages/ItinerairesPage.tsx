@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -37,11 +38,11 @@ const ItinerairesPage = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       
-      {/* Hero Section */}
+      {/* Hero Section avec la nouvelle image de Bonifacio */}
       <Hero 
         title="Itinéraires Moto en Corse"
         subtitle="Découvrez les plus beaux parcours et routes de l'île de beauté, minutieusement sélectionnés pour les motards."
-        imagePath="https://cdn.pixabay.com/photo/2023/07/19/09/54/motorcycle-8135585_1280.jpg"
+        imagePath="/lovable-uploads/60e4855d-f792-4984-a882-c9e763c83da6.png"
       />
 
       {/* Search and Filters */}

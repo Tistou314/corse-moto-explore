@@ -46,6 +46,8 @@ const preloadImages = [
   '/lovable-uploads/c3d552bd-6818-4848-97dc-17a222a5b25a.png', // Vue de Corte et sa citadelle
   // Nouvelle image pour la Boucle du Grand Sud (Bonifacio)
   '/lovable-uploads/c15d82fe-c722-44c8-979a-5305e6b1f0bd.png', // Vue de Bonifacio et son port
+  // Nouvelle image de Bonifacio pour la Boucle du Grand Sud et le Hero
+  '/lovable-uploads/60e4855d-f792-4984-a882-c9e763c83da6.png', // Vue panoramique de Bonifacio et son port
 ];
 
 preloadImages.forEach((src) => {
