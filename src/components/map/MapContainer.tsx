@@ -30,6 +30,7 @@ const MapContainer = ({ locations }: MapContainerProps) => {
           height="600px"
           enableClustering={true}
           zoom={8} // Meilleur zoom par défaut
+          drawRoute={false}
         />
       </div>
       <div className="mt-2 text-xs text-muted-foreground text-right">

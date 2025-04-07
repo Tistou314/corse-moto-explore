@@ -58,7 +58,7 @@ const ItineraryMap = ({ itinerary }: ItineraryMapProps) => {
           zoom={10}
           height="400px"
           interactive={true}
-          drawRoute={true}
+          drawRoute={false}
           enableClustering={false}
         />
       </div>

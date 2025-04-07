@@ -54,6 +54,7 @@ const MapSection = () => {
             height="400px"
             interactive={false}
             enableClustering={false}
+            drawRoute={false}
           />
         </div>
       </div>
