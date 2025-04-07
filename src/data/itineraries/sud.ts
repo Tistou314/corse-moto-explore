@@ -106,7 +106,7 @@ export const sudItineraries: Itinerary[] = [
     id: 'boucle-grand-sud',
     title: 'La Boucle du Grand Sud (D859, D268, D59)',
     description: 'Ce grand circuit offre un condensé des plus beaux paysages du sud de la Corse, combinant littoral préservé et haute montagne.',
-    fullDescription: 'Ce grand circuit offre un condensé des plus beaux paysages du sud de la Corse, combinant littoral préservé et haute montagne. En une seule journée, vous passez des plages aux sommets en découvrant la richesse culturelle et naturelle de la région. L\'itinéraire traverse la région la plus sauvage et la moins peuplée de l\'île, offrant des paysages extrêmement variés: falaises maritimes, plaines agricoles, maquis odorant, villages médiévaux et forêts montagnardes.',
+    fullDescription: 'La Boucle du Grand Sud constitue l\'itinéraire parfait pour les motards souhaitant découvrir l\'essentiel de la Corse méridionale en une seule journée. Ce grand circuit de 200 km forme une boucle complète au départ et à l\'arrivée d\'Ajaccio, traversant les paysages les plus spectaculaires et variés du sud de l\'île. Véritable condensé des richesses corses, cet itinéraire offre une expérience complète alternant routes côtières aux vues imprenables sur la Méditerranée et passages de cols montagneux aux panoramas alpins. La diversité est le maître-mot de ce parcours qui vous fera passer, en quelques heures, des plages de sable fin aux villages médiévaux perchés, des plaines agricoles aux forêts profondes, des falaises maritimes aux sommets culminant à plus de 1200 mètres. D\'une difficulté technique modérée, accessible aux motards de niveau intermédiaire, cette boucle traverse la région la plus sauvage et la moins peuplée de l\'île, offrant une véritable immersion dans l\'authenticité corse loin des foules touristiques. Un itinéraire complet qui réconcilie plaisir de pilotage, découverte culturelle et expérience nature dans un équilibre parfait.\n\n**Le départ par la côte occidentale (Ajaccio → Propriano)**\n\nCette première section vous fait longer la côte ouest :\n- **Sortie d\'Ajaccio** (km 0-10) : Quittez la cité impériale par la route des Sanguinaires puis la D859. Les premiers kilomètres offrent de belles vues sur le golfe d\'Ajaccio et ses îles emblématiques.\n- **Coti-Chiavari** (km 20) : Premier village perché avec panorama sur le littoral. La route descend ensuite en lacets doux vers la côte.\n- **Plage de Cupabia** (km 30) : L\'une des plus belles plages sauvages de l\'île, en forme de croissant parfait bordé d\'un maquis odorant. Premier arrêt recommandé pour une pause photo.\n- **Serra-di-Ferro** (km 40) : Village offrant une vue panoramique sur le golfe du Valinco avant la descente vers Propriano.\n- **Propriano** (km 55) : Station balnéaire animée avec son port de plaisance et sa plage du Lido. Point idéal pour une première pause café sur le front de mer.\n\n**La traversée de l\'Alta Rocca (Propriano → Zonza)**\n\nLa route s\'élève progressivement vers l\'intérieur des terres :\n- **Montée vers Sartène** (km 55-70) : Quittez le littoral pour rejoindre Sartène par la D859. La route s\'élève doucement à travers oliveraies et maquis, offrant des points de vue de plus en plus étendus.\n- **Sartène** (km 70) : "La plus corse des villes corses" selon Mérimée, avec ses ruelles médiévales et ses maisons de granit sombre. Sa place centrale offre une terrasse idéale pour une pause rafraîchissante.\n- **Vallée du Rizzanese** (km 70-85) : Après Sartène, la route suit la vallée du Rizzanese à travers un paysage bucolique de vignobles et de pâturages.\n- **Sainte-Lucie-de-Tallano** (km 90) : Village authentique connu pour ses moulins à huile traditionnels et son ambiance préservée. Premier contact avec l\'architecture traditionnelle de l\'Alta Rocca.\n- **Levie** (km 105) : Bourg montagnard à l\'entrée du massif de l\'Alta Rocca. Le Musée de l\'Alta Rocca mérite une visite pour comprendre la préhistoire corse.\n- **Montée vers Zonza** (km 105-120) : La route s\'élève plus franchement avec les premiers virages techniques et les premières vues sur les montagnes environnantes.\n\n**Le cœur montagneux (Zonza → Col de Bavella → Solenzara)**\n\nLe point culminant de l\'itinéraire, tant en altitude qu\'en beauté :\n- **Zonza** (km 120) : Village de montagne à 800m d\'altitude, porte d\'entrée vers le massif de Bavella. Possibilité de ravitaillement avant d\'aborder la section montagneuse.\n- **Montée vers le Col de Bavella** (km 120-135) : La D268 s\'élève en lacets à travers une forêt de pins laricio centenaires. Les virages se multiplient avec des vues de plus en plus spectaculaires sur les aiguilles de Bavella.\n- **Col de Bavella** (km 135, 1218m) : Point culminant de l\'itinéraire et site emblématique de la Corse. Les célèbres aiguilles de granit rouge dominent le paysage, créant un décor alpin extraordinaire. Point d\'arrêt incontournable avec plusieurs belvédères et sentiers courts permettant d\'explorer les environs.\n- **Descente vers Solenzara** (km 135-150) : La route redescend en virages serrés avec des vues imprenables sur la mer au loin. La végétation change progressivement, passant du pin laricio aux chênes puis au maquis méditerranéen.\n- **Gorges de Solenzara** (km 140-150) : Passage spectaculaire où la route suit la rivière à travers des gorges encaissées. Plusieurs piscines naturelles bordent la route, idéales pour un rafraîchissement en été.\n\n**Le retour par la côte orientale (Solenzara → Ghisonaccia → Ajaccio)**\n\nLa dernière portion de cette grande boucle :\n- **Solenzara** (km 150) : Petite station balnéaire où la montagne rencontre la mer. Ses plages marquent un contraste saisissant avec les sommets que vous venez de quitter.\n- **Plaine orientale** (km 150-170) : La route longe le littoral est à travers la plaine agricole. Cette section plus rectiligne permet de maintenir une allure régulière, avec des vues alternées entre mer et montagnes à l\'horizon.\n- **Ghisonaccia** (km 170) : Ville-étape pour un éventuel ravitaillement avant la dernière portion de route.\n- **Traversée du centre** (km 170-190) : La D859 remonte à travers l\'intérieur des terres pour rejoindre Ajaccio. Cette section traverse des paysages vallonnés et des forêts de chênes-lièges.\n- **Retour à Ajaccio** (km 190-200) : Les derniers kilomètres offrent des vues sur le golfe d\'Ajaccio, bouclant cette grande traversée du sud corse.',
     image: 'https://cdn.pixabay.com/photo/2016/10/30/20/14/sea-1784117_1280.jpg',
     duration: '5-6h (sans les arrêts, prévoir une journée complète)',
     distance: '200 km',
@@ -115,7 +115,7 @@ export const sudItineraries: Itinerary[] = [
     pointsOfInterest: [
       { 
         name: 'Sartène', 
-        description: '"La plus corse des villes corses"',
+        description: '"La plus corse des villes corses" avec ses ruelles médiévales en granite',
         latitude: 41.6212, 
         longitude: 8.9753 
       },
@@ -126,57 +126,67 @@ export const sudItineraries: Itinerary[] = [
         longitude: 8.9044 
       },
       { 
-        name: 'Tizzano', 
-        description: 'Petit port de pêche pittoresque',
-        latitude: 41.5419, 
-        longitude: 8.8748 
-      },
-      { 
-        name: 'Roccapina', 
-        description: 'Plage avec le célèbre "Lion de Roccapina"',
-        latitude: 41.4792, 
-        longitude: 8.9535 
+        name: 'Col de Bavella', 
+        description: 'Col à 1218m d\'altitude offrant des vues spectaculaires sur les aiguilles rocheuses',
+        latitude: 41.7926, 
+        longitude: 9.2222 
       },
       { 
         name: 'Aiguilles de Bavella', 
-        description: 'Formations rocheuses spectaculaires',
+        description: 'Formations rocheuses spectaculaires en granite rouge',
         latitude: 41.7943, 
         longitude: 9.2239 
       },
       { 
         name: 'Zonza', 
-        description: 'Village typique de l\'Alta Rocca',
+        description: 'Village typique de l\'Alta Rocca à 800m d\'altitude',
         latitude: 41.7386, 
         longitude: 9.1763 
+      },
+      { 
+        name: 'Gorges de Solenzara', 
+        description: 'Passage spectaculaire avec rivière et piscines naturelles',
+        latitude: 41.8504, 
+        longitude: 9.3504 
+      },
+      { 
+        name: 'Plage de Cupabia', 
+        description: 'Magnifique plage sauvage en forme de croissant',
+        latitude: 41.7296, 
+        longitude: 8.8248 
+      },
+      { 
+        name: 'Sainte-Lucie-de-Tallano', 
+        description: 'Village authentique connu pour ses moulins à huile traditionnels',
+        latitude: 41.6614, 
+        longitude: 9.0799 
       }
     ],
     startPoint: 'Ajaccio',
     endPoint: 'Ajaccio',
-    elevation: '0-1200m',
+    elevation: '0-1218m',
     roadType: 'Routes variées (côtières et montagneuses)',
-    bestSeason: 'Mai à septembre (éviter août si possible)',
+    bestSeason: 'Mi-mai à fin juin et septembre à mi-octobre',
     roadCondition: 'Variable - excellentes portions côtières, sections montagneuses plus exigeantes',
     highlights: [
-      'Sartène, "la plus corse des villes corses" avec ses ruelles médiévales en granite',
-      'Le lion de Roccapina, formation rocheuse naturelle surplombant une plage paradisiaque',
-      'Les tours génoises jalonnant la côte (Torre d\'Olmeto, Campomoro)',
-      'L\'Alta Rocca et ses villages typiques de montagne (Levie, Zonza, Quenza)',
-      'Les vestiges préhistoriques de Cucuruzzu et Capula (détour recommandé)',
-      'Les plages sauvages de la côte ouest (Tizzano, Campomoro)'
+      'Le Col de Bavella et ses célèbres aiguilles de granite rouge (site exceptionnel)',
+      'Les panoramas à 360° sur mer et montagne depuis les différents belvédères',
+      'Les villages authentiques de l\'Alta Rocca avec leur architecture traditionnelle',
+      'Les gorges de Solenzara avec leurs piscines naturelles',
+      'Les plages sauvages de la côte ouest (Cupabia, Porto Pollo)',
+      'Le contraste saisissant entre mer et montagne tout au long du parcours'
     ],
     tips: [
-      'Itinéraire à faire sur deux jours idéalement avec nuit à Zonza ou Levie',
-      'Stations-service à Sartène, Propriano, Porto-Vecchio (rares dans l\'intérieur)',
+      'Prévoyez une journée complète (10-12h) pour profiter des nombreux arrêts et points de vue',
+      'Stations-service à Ajaccio, Propriano, Sartène, Zonza (saisonnière), Solenzara et Ghisonaccia',
       'Trafic dense sur la portion côtière en été, plus fluide dans l\'Alta Rocca',
-      'Pause baignade recommandée à la plage de Tizzano ou Campomoro',
-      'Visites culturelles possibles : site archéologique de Filitosa, musée de l\'Alta Rocca',
-      'Prudence dans les descentes après le col de Bavella (virages serrés)',
-      'Spots photos : le golfe de Valinco vu de la route, les aiguilles de Bavella',
-      'Supermarché à Propriano et Sartène pour ravitaillement',
-      'Restaurant typique recommandé : "U Furnellu" à Zonza',
-      'Variante possible par la côte est et Solenzara (itinéraire plus long)'
+      'Équipement adapté aux variations de température (jusqu\'à 15°C d\'écart entre mer et col)',
+      'Départ matinal recommandé (8h maximum) pour avoir suffisamment de temps',
+      'Attention aux traversées de troupeaux en liberté, particulièrement près de Bavella',
+      'Pause photo incontournable au Col de Bavella et aux Gorges de Solenzara',
+      'Couverture réseau inégale, particulièrement dans la zone de Bavella'
     ],
-    latitude: 41.6212,
-    longitude: 8.9753
+    latitude: 41.7926,
+    longitude: 9.2222
   }
 ];
