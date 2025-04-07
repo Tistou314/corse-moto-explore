@@ -1,5 +1,5 @@
 
-import { Bike, Map, Info, Compass, Clock, Shield } from 'lucide-react';
+import { Bike, Info, Compass, Clock, Shield, Tool } from 'lucide-react';
 import FeatureCard from '@/components/FeatureCard';
 import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 import { cn } from '@/lib/utils';
@@ -31,9 +31,9 @@ const FeaturesSection = () => {
             icon={Bike}
           />
           <FeatureCard 
-            title="Carte interactive"
-            description="Visualisez tous les itinéraires et points d'intérêt sur notre carte interactive."
-            icon={Map}
+            title="Conseils mécaniques"
+            description="Informations sur l'entretien de votre moto et les garages disponibles en Corse."
+            icon={Tool}
           />
           <FeatureCard 
             title="Guide pratique"
