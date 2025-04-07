@@ -14,11 +14,12 @@ type BlogPostContentProps = {
 
 const BlogPostContent = ({ post, liked, onLike, onShare }: BlogPostContentProps) => {
   useEffect(() => {
-    // Vérifier que le contenu contient des CTA au chargement
+    // Check for CTAs or special elements in the content
     console.log("Post content contains [CTA::", post.content.includes("[CTA:"));
+    console.log("Post content contains tables:", post.content.includes("|--"));
   }, [post.content]);
 
-  // Formater le contenu markdown en HTML
+  // Format the markdown content to HTML
   const formattedContent = formatContent(post.content);
 
   return (
@@ -26,7 +27,7 @@ const BlogPostContent = ({ post, liked, onLike, onShare }: BlogPostContentProps)
       <div className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-corsica-blue prose-p:text-gray-700 prose-a:text-corsica-blue prose-a:no-underline hover:prose-a:underline" 
            dangerouslySetInnerHTML={{ __html: formattedContent }} />
       
-      <div className="mt-8 pt-6 border-t flex items-center justify-between">
+      <div className="mt-8 pt-6 border-t flex flex-wrap gap-4 items-center justify-between">
         <div className="flex items-center space-x-3">
           <Button 
             variant="ghost" 

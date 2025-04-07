@@ -1,4 +1,3 @@
-
 /**
  * Utility functions for formatting markdown content into HTML
  */
@@ -14,6 +13,8 @@ export const formatContent = (content: string): string => {
   let formattedContent = '';
   let inList = false;
   let inParagraph = false;
+  let inTable = false;
+  let tableHeaders = [];
   
   // Process each line
   for (let i = 0; i < lines.length; i++) {
@@ -38,6 +39,11 @@ export const formatContent = (content: string): string => {
         formattedContent += '</ul>\n';
         inList = false;
       }
+      if (inTable) {
+        formattedContent += '</table>\n';
+        inTable = false;
+        tableHeaders = [];
+      }
       formattedContent += `<h1 class="text-3xl font-bold my-6">${line.substring(2)}</h1>\n`;
     } 
     else if (line.startsWith('## ')) {
@@ -48,6 +54,11 @@ export const formatContent = (content: string): string => {
       if (inList) {
         formattedContent += '</ul>\n';
         inList = false;
+      }
+      if (inTable) {
+        formattedContent += '</table>\n';
+        inTable = false;
+        tableHeaders = [];
       }
       formattedContent += `<h2 class="text-2xl font-bold my-5">${line.substring(3)}</h2>\n`;
     } 
@@ -60,6 +71,11 @@ export const formatContent = (content: string): string => {
         formattedContent += '</ul>\n';
         inList = false;
       }
+      if (inTable) {
+        formattedContent += '</table>\n';
+        inTable = false;
+        tableHeaders = [];
+      }
       formattedContent += `<h3 class="text-xl font-bold my-4">${line.substring(4)}</h3>\n`;
     } 
     else if (line.startsWith('#### ')) {
@@ -71,8 +87,60 @@ export const formatContent = (content: string): string => {
         formattedContent += '</ul>\n';
         inList = false;
       }
+      if (inTable) {
+        formattedContent += '</table>\n';
+        inTable = false;
+        tableHeaders = [];
+      }
       formattedContent += `<h4 class="text-lg font-bold my-3">${line.substring(5)}</h4>\n`;
     } 
+    // Process tables - format: | Header1 | Header2 | or |-------|-------|
+    else if (line.startsWith('|') && line.endsWith('|')) {
+      // Close any open paragraphs or lists
+      if (inParagraph) {
+        formattedContent += '</p>\n';
+        inParagraph = false;
+      }
+      if (inList) {
+        formattedContent += '</ul>\n';
+        inList = false;
+      }
+      
+      // Check if this is a table divider line (---|---|...)
+      const isDivider = line.replace(/\|/g, '').trim().replace(/-/g, '').replace(/:/g, '').length === 0;
+      
+      // If first row and not divider, start table and parse headers
+      if (!inTable && !isDivider) {
+        inTable = true;
+        tableHeaders = line.split('|')
+          .filter(cell => cell.trim() !== '')
+          .map(header => header.trim());
+        
+        formattedContent += `<div class="overflow-x-auto my-6">
+          <table class="w-full border-collapse text-sm">
+            <thead class="bg-gray-100">
+              <tr>
+                ${tableHeaders.map(header => `<th class="border px-4 py-2 text-left">${header}</th>`).join('')}
+              </tr>
+            </thead>
+            <tbody>`;
+      } 
+      // If divider, just skip it
+      else if (isDivider) {
+        // Skip divider line
+        continue;
+      }
+      // Otherwise process as a data row
+      else if (inTable && !isDivider) {
+        const cells = line.split('|')
+          .filter(cell => cell.trim() !== '')
+          .map(cell => cell.trim());
+        
+        formattedContent += `<tr>
+          ${cells.map(cell => `<td class="border px-4 py-2">${formatInlineStyles(cell)}</td>`).join('')}
+        </tr>`;
+      }
+    }
     // Process CTA buttons - format: [CTA:text](url)
     else if (line.match(/^\[CTA:(.+?)\]\((.+?)\)$/)) {
       if (inParagraph) {
@@ -82,6 +150,11 @@ export const formatContent = (content: string): string => {
       if (inList) {
         formattedContent += '</ul>\n';
         inList = false;
+      }
+      if (inTable) {
+        formattedContent += '</table>\n</div>\n';
+        inTable = false;
+        tableHeaders = [];
       }
       
       const match = line.match(/^\[CTA:(.+?)\]\((.+?)\)$/);
@@ -104,6 +177,11 @@ export const formatContent = (content: string): string => {
         formattedContent += '</p>\n';
         inParagraph = false;
       }
+      if (inTable) {
+        formattedContent += '</tbody></table>\n</div>\n';
+        inTable = false;
+        tableHeaders = [];
+      }
       if (!inList) {
         formattedContent += '<ul class="my-6 space-y-2">\n';
         inList = true;
@@ -118,6 +196,11 @@ export const formatContent = (content: string): string => {
       if (inList) {
         formattedContent += '</ul>\n';
         inList = false;
+      }
+      if (inTable) {
+        formattedContent += '</tbody></table>\n</div>\n';
+        inTable = false;
+        tableHeaders = [];
       }
       
       // Apply inline formatting to paragraph text
@@ -140,6 +223,9 @@ export const formatContent = (content: string): string => {
   }
   if (inList) {
     formattedContent += '</ul>\n';
+  }
+  if (inTable) {
+    formattedContent += '</tbody></table>\n</div>\n';
   }
   
   console.log("Formatted content contains CTA:", formattedContent.includes("CTA"));
