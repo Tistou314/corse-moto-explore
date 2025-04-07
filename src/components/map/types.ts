@@ -1,7 +1,39 @@
 
-// Garder le code existant mais ajouter/modifier la fonction isWithinCorsica
+// Type definitions for map components
 
-// Cette partie du code reste inchangée - composition type MapLocation, CorsicaCenter, etc.
+// Map Location types
+export interface MapLocation {
+  id: string;
+  title: string;
+  latitude: number;
+  longitude: number;
+  type: 'itinerary' | 'accommodation' | 'pointOfInterest';
+  description?: string;
+  image?: string;
+  isPrimary?: boolean;
+  address?: string;
+}
+
+// Map props
+export interface MapBoxProps {
+  center?: [number, number];
+  zoom?: number;
+  locations?: MapLocation[];
+  interactive?: boolean;
+  height?: string;
+  drawRoute?: boolean;
+  enableClustering?: boolean;
+}
+
+// Map marker types with colors
+export const markerTypes = {
+  itinerary: '#3b82f6', // blue
+  accommodation: '#10b981', // green
+  pointOfInterest: '#ef4444', // red
+};
+
+// Center coordinates for Corsica
+export const CorsicaCenter: [number, number] = [9.03, 42.16];
 
 // Coordonnées approximatives de la boîte englobant la Corse
 export const CorsicaBounds = {
@@ -40,5 +72,3 @@ export const isWithinCorsica = (latitude: number, longitude: number): boolean =>
     longitude <= CorsicaBounds.maxLongitude
   );
 };
-
-// Le reste du code reste inchangé
