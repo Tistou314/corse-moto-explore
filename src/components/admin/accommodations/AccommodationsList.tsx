@@ -64,8 +64,7 @@ const AccommodationsList = () => {
   const accommodationTypeLabels: Record<string, string> = {
     hotel: "Hôtel",
     gite: "Gîte",
-    camping: "Camping",
-    chambre: "Chambre d'hôtes"
+    camping: "Camping"
   };
 
   // Statistiques sur les types d'hébergements
@@ -167,7 +166,6 @@ const AccommodationsList = () => {
                         accommodation.type === 'hotel' ? 'bg-blue-50 text-blue-800 border-blue-200' :
                         accommodation.type === 'gite' ? 'bg-green-50 text-green-800 border-green-200' :
                         accommodation.type === 'camping' ? 'bg-amber-50 text-amber-800 border-amber-200' :
-                        accommodation.type === 'chambre' ? 'bg-purple-50 text-purple-800 border-purple-200' :
                         ''
                       }
                     >

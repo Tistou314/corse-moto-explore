@@ -14,8 +14,8 @@ interface GitesSectionProps {
 const GitesSection = ({ gites }: GitesSectionProps) => {
   const { ref, isVisible } = useScrollAnimation<HTMLElement>();
   
-  // Filtrer pour s'assurer que seuls les gîtes et chambres d'hôtes sont affichés
-  const filteredGites = gites.filter(g => g.type === 'gite' || g.type === 'chambre');
+  // Filter to ensure only gites are displayed
+  const filteredGites = gites.filter(g => g.type === 'gite');
   
   if (!filteredGites || filteredGites.length === 0) return null;
   
@@ -32,7 +32,7 @@ const GitesSection = ({ gites }: GitesSectionProps) => {
           <div className="flex items-center">
             <Home className="w-8 h-8 text-primary mr-3" />
             <div>
-              <h2 className="text-3xl font-bold mb-2">Gîtes et Chambres d'Hôtes</h2>
+              <h2 className="text-3xl font-bold mb-2">Gîtes</h2>
               <p className="text-muted-foreground">
                 Des hébergements de charme sélectionnés pour leur accueil chaleureux des motards
               </p>

@@ -1,3 +1,4 @@
+
 import { LucideIcon } from 'lucide-react';
 import { Car, Home, Wrench, Bike, MapPin, Utensils, Wifi, ShieldCheck } from 'lucide-react';
 
@@ -31,7 +32,7 @@ export const CorsicaCenter: [number, number] = [9.2, 42.2]; // Center of Corsica
 export interface Accommodation {
   id: string;
   name: string;
-  type: 'hotel' | 'gite' | 'camping' | 'chambre';
+  type: 'hotel' | 'gite' | 'camping';
   description: string;
   location: string;
   region?: string;
@@ -75,10 +76,6 @@ export const accommodationTypes = [
   {
     value: 'gite',
     label: 'Gîtes',
-  },
-  {
-    value: 'chambre',
-    label: 'Chambres d\'hôtes',
   },
   {
     value: 'camping',

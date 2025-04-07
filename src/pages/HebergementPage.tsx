@@ -23,7 +23,7 @@ const HebergementPage = () => {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const typeParam = urlParams.get('type');
-    if (typeParam && ['hotel', 'gite', 'camping', 'chambre'].includes(typeParam)) {
+    if (typeParam && ['hotel', 'gite', 'camping'].includes(typeParam)) {
       setSelectedType(typeParam);
     }
   }, []);

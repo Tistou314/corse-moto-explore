@@ -33,7 +33,7 @@ const Index = () => {
   
   // Get featured gites (first 3)
   const featuredGites = gitesAccommodations
-    .filter(acc => acc.type === 'gite' || acc.type === 'chambre')
+    .filter(acc => acc.type === 'gite')
     .slice(0, 3);
 
   // Utiliser une image de route côtière spectaculaire
@@ -63,7 +63,7 @@ const Index = () => {
       {/* Accommodations Section */}
       <AccommodationsSection accommodations={featuredAccommodations} />
       
-      {/* Gites and Chambres d'hotes Section */}
+      {/* Gites Section */}
       <GitesSection gites={featuredGites} />
       
       {/* Camping Section */}
