@@ -73,7 +73,6 @@ const AccommodationDetailPage = () => {
             <BikerAmenities amenities={accommodation.bikerAmenities} />
             <ActionButtons 
               websiteUrl={accommodation.contact?.website} 
-              bookingLink={accommodation.bookingLink}
             />
           </div>
         </div>
