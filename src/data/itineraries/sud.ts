@@ -1,4 +1,3 @@
-
 import { Itinerary } from './types';
 
 export const sudItineraries: Itinerary[] = [
@@ -7,7 +6,7 @@ export const sudItineraries: Itinerary[] = [
     title: 'La Corniche du Sud (N196, D121)',
     description: 'Route côtière parcourant le littoral sud de l\'île au milieu des plages de sable blanc et des eaux turquoise.',
     fullDescription: 'La Corniche du Sud représente l\'itinéraire idéal pour les motards souhaitant découvrir les splendeurs du littoral corse dans une ambiance détendue et contemplative. Ce parcours de 130 km longe les plus belles plages de l\'île, offrant un spectacle continu de criques de sable blanc et d\'eaux cristallines aux nuances turquoise et émeraude. Contrairement aux routes montagneuses exigeantes de l\'intérieur, cet itinéraire côtier se caractérise par sa fluidité et son accessibilité technique, le rendant parfait pour les pilotes de tous niveaux ou pour une journée de "récupération" entre deux parcours plus techniques. La route alterne harmonieusement entre sections ouvertes avec vue panoramique sur la mer Méditerranée et portions plus intimes traversant le maquis odorant, les chênes-lièges et les pinèdes maritimes. Véritable itinéraire de carte postale, la Corniche du Sud capture l\'essence même de la Corse balnéaire avec ses villages pittoresques, ses tours génoises surplombant la mer et ses plages de renommée mondiale. Un parcours qui privilégie le plaisir des yeux et la détente à la technique pure, permettant au pilote de savourer pleinement la beauté sauvage de la côte sud corse.\n\n**La baie d\'Ajaccio (Ajaccio → Porticcio → Isolella)**\n\nCette première section vous fait découvrir les charmes du golfe d\'Ajaccio :\n- **Sortie d\'Ajaccio** (km 0-10) : La route longe la baie d\'Ajaccio en offrant des vues splendides sur la cité impériale. Le trafic peut être dense à la sortie de la ville.\n- **Porticcio** (km 15) : Station balnéaire animée avec sa longue plage de sable fin. De nombreuses terrasses permettent une première pause face à la mer.\n- **Presqu\'île d\'Isolella** (km 20) : Premier joyau de l\'itinéraire avec sa pointe qui s\'avance dans la mer, offrant une vue à 270° sur le golfe. Les petites criques qui l\'entourent invitent à un premier arrêt baignade.\n- **Route des Sanguinaires** (détour optionnel) : Cette extension de 12 km (aller-retour) vous mène aux célèbres îles Sanguinaires et à leur phare emblématique - particulièrement magique au coucher du soleil.\n\n**La côte des parfums (Isolella → Coti-Chiavari → Propriano)**\n\nUn enchantement pour les sens :\n- **Coti-Chiavari** (km 30) : Village perché offrant une vue plongeante sur la mer et les montagnes lointaines. La descente sinueuse vers la côte est un plaisir de conduite fluide.\n- **Plage de Cupabia** (km 40) : L\'une des plus belles plages sauvages de Corse, avec son sable blanc et sa forme de croissant parfait. Un arrêt incontournable pour tremper ses pieds dans l\'eau turquoise.\n- **Porto Pollo** (km 50) : Charmant village de pêcheurs devenu station balnéaire à taille humaine, avec sa petite marina et ses restaurants de poisson les pieds dans l\'eau.\n- **Golfe de Valinco** (km 50-65) : La route s\'élève légèrement pour offrir des panoramas époustouflants sur ce golfe spectaculaire, ponctué de criques isolées accessibles par de petits sentiers.\n- **Propriano** (km 65) : Port de plaisance animé marquant la mi-parcours, idéal pour une pause déjeuner sur le front de mer. Le marché aux poissons vaut le détour pour les amateurs de produits locaux.\n\n**La côte préservée (Propriano → Sartène → Bonifacio)**\n\nLa section la plus diversifiée :\n- **Montée vers Sartène** (km 65-80) : La route s\'éloigne momentanément de la côte pour rejoindre Sartène, "la plus corse des villes corses" selon Mérimée, perchée sur son éperon rocheux.\n- **Sartène** (km 80) : Cité médiévale de caractère avec ses ruelles escarpées et ses maisons de granit sombre. La place de la Libération offre une terrasse panoramique idéale pour un café.\n- **Retour vers la côte** (km 80-95) : Redescente vers le littoral à travers vignobles et oliveraies, avec des aperçus réguliers sur la mer lointaine.\n- **Plage de Tizzano** (km 95) : Petit port naturel enchâssé dans une côte rocheuse, avec sa plage intimiste et ses eaux transparentes. L\'ambiance y est nettement plus authentique que dans les stations balnéaires plus connues.\n- **Côte sauvage** (km 95-110) : Portion plus isolée où la route serpente entre maquis et mer, avec peu d\'habitations mais des points de vue saisissants sur les falaises et les criques désertes.\n\n**L\'arrivée sur les Bouches de Bonifacio (Roccapina → Bonifacio)**\n\nLe bouquet final de ce périple côtier :\n- **Lion de Roccapina** (km 115) : Formation rocheuse naturelle évoquant un lion couché, veillant sur une plage paradisiaque. Un belvédère aménagé permet d\'admirer ce site emblématique.\n- **Baie de Rondinara** (km 120, court détour) : Considérée comme l\'une des plus belles plages d\'Europe, cette baie presque parfaitement circulaire mérite le détour de quelques kilomètres.\n- **Approche de Bonifacio** (km 125-130) : La route s\'élève pour offrir les premières vues sur les impressionnantes falaises calcaires de Bonifacio. Le paysage change radicalement, annonçant la spécificité géologique de l\'extrême sud.\n- **Bonifacio** (km 130) : Arrivée dans la cité des falaises, point final de l\'itinéraire. Sa vieille ville perchée sur des falaises blanches de 60 mètres et son port naturel profondément encaissé constituent une conclusion spectaculaire à ce voyage côtier.',
-    image: 'https://cdn.pixabay.com/photo/2020/02/01/22/10/beach-4811726_1280.jpg',
+    image: '/lovable-uploads/55f44f7d-705e-4056-bef4-668d9934786b.png',
     duration: '3h30 (sans les arrêts)',
     distance: '130 km',
     difficulty: 'facile',
@@ -72,6 +71,12 @@ export const sudItineraries: Itinerary[] = [
         description: 'Charmant village de pêcheurs devenu station balnéaire à taille humaine',
         latitude: 41.7267, 
         longitude: 8.7841 
+      },
+      { 
+        name: 'Îles Sanguinaires', 
+        description: 'Archipel emblématique avec tour génoise, accessible par la route panoramique depuis Ajaccio',
+        latitude: 41.8722, 
+        longitude: 8.5934 
       }
     ],
     startPoint: 'Ajaccio',
@@ -87,6 +92,7 @@ export const sudItineraries: Itinerary[] = [
       'La plage de Palombaggia, régulièrement classée parmi les plus belles d\'Europe',
       'Le lion de Roccapina et sa plage paradisiaque',
       'La ville de Sartène, "la plus corse des villes corses" selon Mérimée',
+      'Les îles Sanguinaires et leur tour génoise emblématique au coucher du soleil',
       'Le golfe de Valinco avec ses panoramas époustouflants'
     ],
     tips: [
@@ -97,10 +103,11 @@ export const sudItineraries: Itinerary[] = [
       'Prévoir sac étanche pour transporter maillot de bain et serviette pour profiter des plages',
       'Parking moto gratuit au pied de la citadelle de Bonifacio',
       'Éviter la mi-journée (12h-16h) en été pour la chaleur et l\'éblouissement',
-      'Privilégier mai-juin ou septembre pour des conditions idéales'
+      'Privilégier mai-juin ou septembre pour des conditions idéales',
+      'Le détour par la route des Sanguinaires est splendide au coucher du soleil'
     ],
-    latitude: 41.5908,
-    longitude: 9.2797
+    latitude: 41.8722,
+    longitude: 8.5934
   },
   {
     id: 'boucle-grand-sud',
