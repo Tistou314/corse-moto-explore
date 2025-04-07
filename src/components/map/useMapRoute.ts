@@ -7,5 +7,6 @@ export const useMapRoute = (
   locations: MapLocation[] = [],
   drawRoute: boolean = false
 ) => {
+  // Assurez-vous que le tracé utilise tous les points d'intérêt disponibles
   return useRouteDrawing(map, locations, drawRoute);
 };

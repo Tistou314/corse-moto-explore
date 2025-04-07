@@ -1,6 +1,7 @@
 
 import { MapLocation } from './types';
 import OptimizedImage from '@/components/ui/optimized-image';
+import { MapPin, Navigation } from 'lucide-react';
 
 interface LocationPopupProps {
   location: MapLocation;
@@ -19,7 +20,15 @@ const LocationPopup = ({ location, onClose }: LocationPopupProps) => {
       </button>
       
       <div className="pt-1">
-        <h3 className="font-bold text-lg mb-1">{location.title}</h3>
+        <div className="flex items-center gap-2 mb-1">
+          {location.type === 'itinerary' && (
+            <Navigation className="h-4 w-4 text-blue-600" />
+          )}
+          {location.type === 'pointOfInterest' && (
+            <MapPin className="h-4 w-4 text-red-600" />
+          )}
+          <h3 className="font-bold text-lg">{location.title}</h3>
+        </div>
         
         {location.description && (
           <p className="text-sm text-gray-600 mb-2">{location.description}</p>

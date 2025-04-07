@@ -21,6 +21,11 @@ const ItineraryDetailPage = () => {
       const foundItinerary = itineraries.find(item => item.id === id);
       if (foundItinerary) {
         setItinerary(foundItinerary);
+        
+        // Log pour vérifier que les points d'intérêt sont correctement chargés
+        console.log('Points d\'intérêt de l\'itinéraire:', 
+          foundItinerary.pointsOfInterest?.length || 0,
+          'éléments trouvés');
       }
       // If not found, we will show a not found message
     }
