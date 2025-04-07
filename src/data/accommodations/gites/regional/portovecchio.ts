@@ -3,7 +3,7 @@ import { Accommodation } from '../../types';
 
 export const portovecchioGites: Accommodation[] = [
   {
-    id: "gite28",
+    id: "gite-pv1",
     name: "A Pineta",
     type: "gite",
     location: "Lecci",
@@ -23,7 +23,7 @@ export const portovecchioGites: Accommodation[] = [
     longitude: 9.3403
   },
   {
-    id: "gite29",
+    id: "gite-pv2",
     name: "Gîte A Funtana",
     type: "gite",
     location: "Zonza",
@@ -43,7 +43,7 @@ export const portovecchioGites: Accommodation[] = [
     longitude: 9.1763
   },
   {
-    id: "gite30",
+    id: "gite-pv3",
     name: "Sole e Monti",
     type: "gite",
     location: "Quenza",
@@ -63,7 +63,7 @@ export const portovecchioGites: Accommodation[] = [
     longitude: 9.1349
   },
   {
-    id: "gite31",
+    id: "gite-pv4",
     name: "Domaine de Sonia",
     type: "chambre",
     location: "Porto-Vecchio",

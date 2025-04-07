@@ -3,7 +3,7 @@ import { Accommodation } from '../types';
 
 export const proprianoCampings: Accommodation[] = [
   {
-    id: "camp10",
+    id: "camp-prop1",
     name: "Camping Des Îles",
     type: "camping",
     location: "Bonifacio",
@@ -24,7 +24,7 @@ export const proprianoCampings: Accommodation[] = [
     longitude: 9.184
   },
   {
-    id: "camp11",
+    id: "camp-prop2",
     name: "Camping Campo Di Liccia",
     type: "camping",
     location: "Bonifacio",
@@ -46,7 +46,7 @@ export const proprianoCampings: Accommodation[] = [
     longitude: 9.185
   },
   {
-    id: "camp15",
+    id: "camp-prop3",
     name: "Camping Le Soleil",
     type: "camping",
     location: "Propriano",

@@ -3,7 +3,7 @@ import { Accommodation } from '../types';
 
 export const bastiaCampings: Accommodation[] = [
   {
-    id: "camp7",
+    id: "camp-bastia1",
     name: "Camping La Pietra",
     type: "camping",
     location: "Pietracorbara",
@@ -24,7 +24,7 @@ export const bastiaCampings: Accommodation[] = [
     longitude: 9.45
   },
   {
-    id: "camp12",
+    id: "camp-bastia2",
     name: "Camping San Damiano",
     type: "camping",
     location: "Biguglia",

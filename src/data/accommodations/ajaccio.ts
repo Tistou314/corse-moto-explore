@@ -3,7 +3,7 @@ import { Accommodation } from './types';
 
 export const ajaccioAccommodations: Accommodation[] = [
   {
-    id: "acc1",
+    id: "ajaccio1",
     name: "Le Week End",
     type: "hotel",
     location: "Ajaccio",
@@ -23,7 +23,7 @@ export const ajaccioAccommodations: Accommodation[] = [
     longitude: 8.6480548
   },
   {
-    id: "acc2",
+    id: "ajaccio2",
     name: "Radisson Blu Resort & Spa, Ajaccio Bay",
     type: "hotel",
     location: "Porticcio",
@@ -43,7 +43,7 @@ export const ajaccioAccommodations: Accommodation[] = [
     longitude: 8.7920834
   },
   {
-    id: "acc3",
+    id: "ajaccio3",
     name: "Hotel Stella Di Mare",
     type: "hotel",
     location: "Ajaccio",
@@ -63,7 +63,7 @@ export const ajaccioAccommodations: Accommodation[] = [
     longitude: 8.659979
   },
   {
-    id: "acc4",
+    id: "ajaccio4",
     name: "Hôtel La Pinède",
     type: "hotel",
     location: "Ajaccio",

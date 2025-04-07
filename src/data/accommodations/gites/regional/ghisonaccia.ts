@@ -3,7 +3,7 @@ import { Accommodation } from '../../types';
 
 export const ghisonacciaGites: Accommodation[] = [
   {
-    id: "gite5",
+    id: "gite-ghisonaccia1",
     name: "L'Auberge d'Isolaccio",
     type: "gite",
     location: "Isolaccio-di-Fiumorbo",
@@ -23,7 +23,7 @@ export const ghisonacciaGites: Accommodation[] = [
     longitude: 9.2686
   },
   {
-    id: "gite19",
+    id: "gite-ghisonaccia2",
     name: "Gîtes A Bella Scusa",
     type: "gite",
     location: "Santa-Lucia-di-Moriani",
@@ -42,7 +42,7 @@ export const ghisonacciaGites: Accommodation[] = [
     longitude: 9.5276
   },
   {
-    id: "gite20",
+    id: "gite-ghisonaccia3",
     name: "Corsica Paddock",
     type: "chambre",
     location: "Prunelli-di-Fiumorbo",

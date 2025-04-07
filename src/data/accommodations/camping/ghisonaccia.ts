@@ -3,7 +3,7 @@ import { Accommodation } from '../types';
 
 export const ghisonacciaCampings: Accommodation[] = [
   {
-    id: "camp6",
+    id: "camp-ghisonaccia1",
     name: "Camping Europa Beach",
     type: "camping",
     location: "Sorbo-Ocagnano",
@@ -25,4 +25,3 @@ export const ghisonacciaCampings: Accommodation[] = [
     longitude: 9.52434
   }
 ];
-

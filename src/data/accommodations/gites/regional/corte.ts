@@ -3,7 +3,7 @@ import { Accommodation } from '../../types';
 
 export const corteGites: Accommodation[] = [
   {
-    id: "gite35",
+    id: "gite-corte1",
     name: "Gîtes O Fil de l'Eau",
     type: "gite",
     location: "Omessa",
@@ -23,7 +23,7 @@ export const corteGites: Accommodation[] = [
     longitude: 9.1597
   },
   {
-    id: "gite36",
+    id: "gite-corte2",
     name: "Autour du Hamac",
     type: "chambre",
     location: "Moltifao",
@@ -43,7 +43,7 @@ export const corteGites: Accommodation[] = [
     longitude: 9.1317
   },
   {
-    id: "gite37",
+    id: "gite-corte3",
     name: "Centrotel et Motel",
     type: "hotel",
     location: "Corte",

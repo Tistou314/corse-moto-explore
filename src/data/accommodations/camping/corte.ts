@@ -3,7 +3,7 @@ import { Accommodation } from '../types';
 
 export const corteCampings: Accommodation[] = [
   {
-    id: "camping4",
+    id: "camp-corte1",
     name: "Camping u Casone",
     type: "camping",
     location: "Venaco",

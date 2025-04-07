@@ -3,7 +3,7 @@ import { Accommodation } from './types';
 
 export const bastiaAccommodations: Accommodation[] = [
   {
-    id: "acc5",
+    id: "bastia1",
     name: "LE RELAIS DE SISCO",
     type: "hotel",
     location: "Sisco",
@@ -23,7 +23,7 @@ export const bastiaAccommodations: Accommodation[] = [
     longitude: 9.4681131
   },
   {
-    id: "acc6",
+    id: "bastia2",
     name: "Corse Hôtel",
     type: "hotel",
     location: "Biguglia",
@@ -43,7 +43,7 @@ export const bastiaAccommodations: Accommodation[] = [
     longitude: 9.4392168
   },
   {
-    id: "acc7",
+    id: "bastia3",
     name: "Hôtel Restaurant Spa La Madrague",
     type: "hotel",
     location: "Lucciana",

@@ -3,7 +3,7 @@ import { Accommodation } from './types';
 
 export const portovecchioAccommodations: Accommodation[] = [
   {
-    id: "acc-pv1",
+    id: "portovecchio1",
     name: "Hôtel Olmuccio",
     type: "hotel",
     location: "Sainte Lucie de Porto Vecchio",
@@ -23,7 +23,7 @@ export const portovecchioAccommodations: Accommodation[] = [
     longitude: 9.3946549
   },
   {
-    id: "acc-pv2",
+    id: "portovecchio2",
     name: "Casanghjulina",
     type: "hotel",
     location: "Porto-Vecchio",

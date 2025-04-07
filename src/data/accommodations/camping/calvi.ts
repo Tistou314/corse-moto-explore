@@ -3,7 +3,7 @@ import { Accommodation } from '../types';
 
 export const calviCampings: Accommodation[] = [
   {
-    id: "camp13",
+    id: "camp-calvi1",
     name: "Camping La Pinède",
     type: "camping",
     location: "Calvi",
@@ -24,7 +24,7 @@ export const calviCampings: Accommodation[] = [
     longitude: 8.757
   },
   {
-    id: "camp14",
+    id: "camp-calvi2",
     name: "Camping Kalliste",
     type: "camping",
     location: "Saint-Florent",

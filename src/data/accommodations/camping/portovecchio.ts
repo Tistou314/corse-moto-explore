@@ -3,7 +3,7 @@ import { Accommodation } from '../types';
 
 export const portovecchioCampings: Accommodation[] = [
   {
-    id: "camp1",
+    id: "camp-pv1",
     name: "Camping L'Oso",
     type: "camping",
     location: "Porto-Vecchio",
@@ -25,7 +25,7 @@ export const portovecchioCampings: Accommodation[] = [
     longitude: 9.32533
   },
   {
-    id: "camp2",
+    id: "camp-pv2",
     name: "Camping U Stabiacciu",
     type: "camping",
     location: "Porto-Vecchio",
@@ -47,7 +47,7 @@ export const portovecchioCampings: Accommodation[] = [
     longitude: 9.279
   },
   {
-    id: "camp3",
+    id: "camp-pv3",
     name: "Camping Santa Lucia",
     type: "camping",
     location: "Sainte-Lucie-de-Porto-Vecchio",
@@ -69,7 +69,7 @@ export const portovecchioCampings: Accommodation[] = [
     longitude: 9.38
   },
   {
-    id: "camp4",
+    id: "camp-pv4",
     name: "Camping Gallina Varja",
     type: "camping",
     location: "Sotta",
@@ -90,7 +90,7 @@ export const portovecchioCampings: Accommodation[] = [
     longitude: 9.19818
   },
   {
-    id: "camp8",
+    id: "camp-pv5",
     name: "Camping Fautea",
     type: "camping",
     location: "Sainte-Lucie-de-Porto-Vecchio",
