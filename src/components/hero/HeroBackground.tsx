@@ -7,10 +7,8 @@ interface HeroBackgroundProps {
 }
 
 const HeroBackground = ({ imagePath, children }: HeroBackgroundProps) => {
-  // Utiliser l'image de la route côtière pour la page d'accueil par défaut
-  const heroImage = imagePath 
-    ? imagePath
-    : "/lovable-uploads/4c22176c-2d3f-4b83-8257-5eee50dd9f03.png";
+  // Utiliser l'image fournie ou une image par défaut
+  const heroImage = imagePath || "/lovable-uploads/4c22176c-2d3f-4b83-8257-5eee50dd9f03.png";
 
   const bgStyle = {
     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${heroImage}")`,
@@ -20,7 +18,7 @@ const HeroBackground = ({ imagePath, children }: HeroBackgroundProps) => {
 
   return (
     <div className="hero-section min-h-[70vh] relative flex items-center" style={bgStyle}>
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
       {children}
     </div>
   );

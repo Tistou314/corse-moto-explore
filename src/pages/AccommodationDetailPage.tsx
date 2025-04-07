@@ -23,9 +23,9 @@ import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 // Images supplémentaires pour le carousel
 const additionalImages = [
-  '/lovable-uploads/5ea8afd3-56bf-4cc9-9c65-e164671c24f9.png',
-  '/lovable-uploads/2120b253-8c47-4a6f-8c9c-7b6cb386889b.png',
-  '/lovable-uploads/ee310cca-8fe2-4a65-9a95-6549e83f4913.png',
+  '/lovable-uploads/7c63f699-ad4b-4ddb-88fd-4d2dbb506352.png',
+  '/lovable-uploads/0e248deb-e0c7-4afb-b4fe-2dfdef43fa71.png',
+  '/lovable-uploads/62ada3d0-f81e-4c6c-a666-479d8f4e3f1f.png',
 ];
 
 const AccommodationDetailPage = () => {
@@ -64,7 +64,7 @@ const AccommodationDetailPage = () => {
   const websiteUrl = accommodation.contact?.website;
 
   // Préparer les images pour le carousel
-  const carouselImages = [accommodation.image, ...additionalImages.slice(0, 2)];
+  const carouselImages = [accommodation.image, ...additionalImages];
 
   return (
     <div className="min-h-screen flex flex-col">

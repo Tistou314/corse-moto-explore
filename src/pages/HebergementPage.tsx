@@ -86,7 +86,7 @@ const HebergementPage = () => {
       <Hero 
         title="Hébergements pour Motards en Corse"
         subtitle="Trouvez le logement parfait pour votre voyage à moto sur l'Île de Beauté"
-        imagePath="https://images.unsplash.com/photo-1721322800607-8c38375eef04"
+        imagePath="/lovable-uploads/0e248deb-e0c7-4afb-b4fe-2dfdef43fa71.png"
       />
 
       {/* Overview Section */}

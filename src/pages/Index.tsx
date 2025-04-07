@@ -36,14 +36,14 @@ const Index = () => {
     .filter(acc => acc.type === 'gite' || acc.type === 'chambre')
     .slice(0, 3);
 
-  // Utiliser l'image de la route côtière comme Hero pour la page d'accueil
-  const heroImage = "/lovable-uploads/4c22176c-2d3f-4b83-8257-5eee50dd9f03.png";
+  // Utiliser une nouvelle image pour le Hero
+  const heroImage = "/lovable-uploads/a96b2fab-3ff7-4f98-8400-0dc93f7457d4.png";
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       
-      {/* Hero Section with coastal road image */}
+      {/* Hero Section with new coastal road image */}
       <Hero 
         title="Découvrez la Corse à Moto"
         subtitle="Explorez les plus belles routes, parcours et paysages de l'Île de Beauté. Guides, itinéraires et conseils pour une aventure inoubliable."

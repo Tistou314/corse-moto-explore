@@ -12,6 +12,12 @@ const preloadImages = [
   '/lovable-uploads/7510c501-c422-488c-8e85-d2b2ce36ff2c.png',
   '/lovable-uploads/d3f6ed84-01e0-4d12-92f6-4c2dca6128fe.png',
   '/lovable-uploads/c219acb8-fe75-4f50-9267-14fc85bcc095.png',
+  // Ajout des nouvelles images
+  '/lovable-uploads/7c63f699-ad4b-4ddb-88fd-4d2dbb506352.png',
+  '/lovable-uploads/86524e16-e146-4eea-bc02-8cbb668a7205.png',
+  '/lovable-uploads/a96b2fab-3ff7-4f98-8400-0dc93f7457d4.png',
+  '/lovable-uploads/0e248deb-e0c7-4afb-b4fe-2dfdef43fa71.png',
+  '/lovable-uploads/62ada3d0-f81e-4c6c-a666-479d8f4e3f1f.png',
 ];
 
 preloadImages.forEach((src) => {

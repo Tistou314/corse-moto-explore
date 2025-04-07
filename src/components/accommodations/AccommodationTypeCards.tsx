@@ -28,7 +28,7 @@ const accommodationTypesInfo: AccommodationTypeInfo[] = [
     title: 'Gîtes et chambres d\'hôtes',
     description: 'Hébergements authentiques offrant un accueil chaleureux et des conseils locaux pour les motards.',
     icon: MapPin,
-    image: '/lovable-uploads/d3f6ed84-01e0-4d12-92f6-4c2dca6128fe.png'
+    image: '/lovable-uploads/0e248deb-e0c7-4afb-b4fe-2dfdef43fa71.png'
   },
   {
     title: 'Campings pour motards',
@@ -40,13 +40,13 @@ const accommodationTypesInfo: AccommodationTypeInfo[] = [
     title: 'Critères de sélection',
     description: 'Découvrez nos recommandations basées sur la sécurité, la proximité des routes, et l\'accueil des motards.',
     icon: ShieldCheck,
-    image: '/lovable-uploads/ee310cca-8fe2-4a65-9a95-6549e83f4913.png'
+    image: '/lovable-uploads/62ada3d0-f81e-4c6c-a666-479d8f4e3f1f.png'
   },
   {
     title: 'Réservation et disponibilités',
     description: 'Conseils pour réserver votre hébergement en Corse, notamment pendant la haute saison.',
     icon: Clock,
-    image: '/lovable-uploads/5ea8afd3-56bf-4cc9-9c65-e164671c24f9.png'
+    image: '/lovable-uploads/7c63f699-ad4b-4ddb-88fd-4d2dbb506352.png'
   }
 ];
 

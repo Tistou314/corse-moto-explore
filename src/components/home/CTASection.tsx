@@ -15,7 +15,7 @@ const CTASection = () => {
         isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
       )}
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/lovable-uploads/c219acb8-fe75-4f50-9267-14fc85bcc095.png')`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/lovable-uploads/86524e16-e146-4eea-bc02-8cbb668a7205.png')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       }}
