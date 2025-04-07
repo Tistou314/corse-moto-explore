@@ -22,31 +22,31 @@ const accommodationTypesInfo: AccommodationTypeInfo[] = [
     title: 'Hôtels moto-friendly',
     description: 'Hébergements proposant des services adaptés aux motards : parking sécurisé, atelier de réparation, lavage de moto.',
     icon: Hotel,
-    image: '/lovable-uploads/2120b253-8c47-4a6f-8c9c-7b6cb386889b.png'
+    image: '/lovable-uploads/d9155718-b957-403e-8ede-ff4f0383aee0.png'
   },
   {
     title: 'Gîtes et chambres d\'hôtes',
     description: 'Hébergements authentiques offrant un accueil chaleureux et des conseils locaux pour les motards.',
     icon: MapPin,
-    image: '/lovable-uploads/0e248deb-e0c7-4afb-b4fe-2dfdef43fa71.png'
+    image: '/lovable-uploads/381bb3e5-8c88-48aa-8685-829520b4e247.png'
   },
   {
     title: 'Campings pour motards',
     description: 'Emplacements spacieux, équipements adaptés et ambiance conviviale pour les voyageurs à moto.',
     icon: Bike,
-    image: '/lovable-uploads/7510c501-c422-488c-8e85-d2b2ce36ff2c.png'
+    image: '/lovable-uploads/5a4881ff-0af8-4998-81d1-f13d1fc1b7d1.png'
   },
   {
     title: 'Critères de sélection',
     description: 'Découvrez nos recommandations basées sur la sécurité, la proximité des routes, et l\'accueil des motards.',
     icon: ShieldCheck,
-    image: '/lovable-uploads/62ada3d0-f81e-4c6c-a666-479d8f4e3f1f.png'
+    image: '/lovable-uploads/6f930ced-66d6-4bfe-adb7-246828fa75a7.png'
   },
   {
     title: 'Réservation et disponibilités',
     description: 'Conseils pour réserver votre hébergement en Corse, notamment pendant la haute saison.',
     icon: Clock,
-    image: '/lovable-uploads/7c63f699-ad4b-4ddb-88fd-4d2dbb506352.png'
+    image: '/lovable-uploads/8feaf7ab-0f70-42d5-9b80-fbbcf2f96595.png'
   }
 ];
 

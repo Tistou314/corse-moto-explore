@@ -28,8 +28,18 @@ const ItineraryCard = ({
   distance,
   difficulty,
 }: ItineraryCardProps) => {
-  // S'assurer que l'image est correctement chargée
-  const cardImage = image || "/lovable-uploads/e6af0d1c-dcb3-4d02-941d-0ab737ffad83.png";
+  // S'assurer que l'image est correctement chargée avec des fallbacks adaptés au type d'itinéraire
+  let fallbackImage;
+  
+  if (id === 'route-cretes') {
+    fallbackImage = "/lovable-uploads/6f930ced-66d6-4bfe-adb7-246828fa75a7.png";
+  } else if (id === 'tour-balagne') {
+    fallbackImage = "/lovable-uploads/381bb3e5-8c88-48aa-8685-829520b4e247.png";
+  } else {
+    fallbackImage = "/lovable-uploads/e6af0d1c-dcb3-4d02-941d-0ab737ffad83.png";
+  }
+  
+  const cardImage = image || fallbackImage;
   
   return (
     <div className="itinerary-card flex flex-col h-full">
@@ -40,7 +50,7 @@ const ItineraryCard = ({
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
-            target.src = "/lovable-uploads/e6af0d1c-dcb3-4d02-941d-0ab737ffad83.png";
+            target.src = fallbackImage;
           }}
         />
         <div className="absolute top-3 right-3">

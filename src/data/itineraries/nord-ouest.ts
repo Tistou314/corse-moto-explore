@@ -1,3 +1,4 @@
+
 import { Itinerary } from './types';
 
 export const nordOuestItineraries: Itinerary[] = [
@@ -69,7 +70,7 @@ Cette dernière portion vous conduit vers la conclusion spectaculaire de l'itin�
 * Stationnement : Difficile à Porto en haute saison. Quelques parkings payants à l'entrée du village, certains hôtels proposent des espaces réservés pour les motos.
 
 La Route des Crêtes représente l'essence même de ce que la Corse peut offrir aux motards : une combinaison parfaite entre défi technique, paysages grandioses et expérience de pilotage unique. Son surnom de "Sublime" n'est pas usurpé tant elle condense en 70 kilomètres l'ADN de l'île de Beauté : mer turquoise, montagnes abruptes, villages authentiques et nature préservée. Plus qu'un simple trajet, c'est une expérience sensorielle complète qui sollicitera votre technique de pilotage tout en nourrissant votre âme de panoramas inoubliables. Un incontournable absolu pour tout motard visitant la Corse.`,
-    image: '/lovable-uploads/242a6241-e3c9-4628-9bee-4c81262eeb3e.png',
+    image: '/lovable-uploads/6f930ced-66d6-4bfe-adb7-246828fa75a7.png',
     duration: '2h30 sans arrêts',
     distance: '70 km',
     difficulty: 'difficile',
@@ -79,7 +80,8 @@ La Route des Crêtes représente l'essence même de ce que la Corse peut offrir 
         name: 'Calvi',
         description: 'Ville fortifiée avec sa citadelle génoise dominant la baie',
         latitude: 42.5676,
-        longitude: 8.7575
+        longitude: 8.7575,
+        image: '/lovable-uploads/d9155718-b957-403e-8ede-ff4f0383aee0.png'
       },
       {
         name: 'Col de Palmarella',
@@ -97,7 +99,8 @@ La Route des Crêtes représente l'essence même de ce que la Corse peut offrir 
         name: 'Réserve de Scandola',
         description: 'Réserve naturelle classée au patrimoine mondial de l\'UNESCO',
         latitude: 42.3584,
-        longitude: 8.5603
+        longitude: 8.5603,
+        image: '/lovable-uploads/e9b8e1a0-fb14-4e33-8e6c-e8f85a71d326.png'
       },
       {
         name: 'Girolata',
@@ -115,7 +118,8 @@ La Route des Crêtes représente l'essence même de ce que la Corse peut offrir 
         name: 'Les Calanches de Piana',
         description: 'Formations rocheuses rouges sculptées par l\'érosion',
         latitude: 42.2569,
-        longitude: 8.6529
+        longitude: 8.6529,
+        image: '/lovable-uploads/1786ff52-abb7-4c35-9599-de33995c0358.png'
       },
       {
         name: 'Porto',
@@ -260,7 +264,7 @@ Au-delà des aspects purement techniques, le Tour de la Balagne offre une immers
 * **Fêtes traditionnelles** : En saison, nombreux sont les villages qui organisent des fêtes patronales ou artisanales. Renseignez-vous auprès des offices de tourisme pour intégrer ces événements à votre itinéraire.
 
 Le Tour de la Balagne représente l'équilibre parfait entre découverte motarde et immersion culturelle. Moins exigeant techniquement que d'autres itinéraires corses, il laisse au pilote le loisir d'apprécier pleinement les paysages et le patrimoine. C'est l'itinéraire idéal pour une première approche de la Corse à moto ou pour une journée de "récupération" entre deux parcours plus sportifs. La douceur du pilotage n'enlève rien à la beauté des panoramas et à l'authenticité des rencontres, faisant de cette boucle l'une des plus équilibrées et accessibles de l'île.`,
-    image: '/lovable-uploads/62ada3d0-f81e-4c6c-a666-479d8f4e3f1f.png',
+    image: '/lovable-uploads/381bb3e5-8c88-48aa-8685-829520b4e247.png',
     duration: '2h30 sans arrêts',
     distance: '85 km',
     difficulty: 'moyen',
@@ -270,7 +274,8 @@ Le Tour de la Balagne représente l'équilibre parfait entre découverte motarde
         name: 'L\'Île-Rousse',
         description: 'Charmante cité balnéaire fondée par Pascal Paoli au XVIIIe siècle',
         latitude: 42.6342,
-        longitude: 8.9377
+        longitude: 8.9377,
+        image: '/lovable-uploads/5a4881ff-0af8-4998-81d1-f13d1fc1b7d1.png'
       },
       {
         name: 'Algajola',
@@ -282,7 +287,8 @@ Le Tour de la Balagne représente l'équilibre parfait entre découverte motarde
         name: 'Calvi',
         description: 'Ville fortifiée dominée par sa citadelle génoise',
         latitude: 42.5676,
-        longitude: 8.7575
+        longitude: 8.7575,
+        image: '/lovable-uploads/d9155718-b957-403e-8ede-ff4f0383aee0.png'
       },
       {
         name: 'Cateri',
@@ -306,7 +312,8 @@ Le Tour de la Balagne représente l'équilibre parfait entre découverte motarde
         name: 'Sant\'Antonino',
         description: 'Un des plus beaux villages de France, perché à 500m sur un piton rocheux',
         latitude: 42.5938,
-        longitude: 8.9133
+        longitude: 8.9133,
+        image: '/lovable-uploads/381bb3e5-8c88-48aa-8685-829520b4e247.png'
       },
       {
         name: 'Corbara',
