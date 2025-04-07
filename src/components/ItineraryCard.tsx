@@ -39,6 +39,8 @@ const ItineraryCard = ({
     fallbackImage = "/lovable-uploads/2653c886-6632-476f-b90a-f498f2b8ca2e.png";
   } else if (id === 'calanques-piana') {
     fallbackImage = "/lovable-uploads/d60eaef4-6e63-4386-860b-c02648902533.png";
+  } else if (id === 'route-niolu') {
+    fallbackImage = "/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png";
   } else {
     fallbackImage = "/lovable-uploads/e6af0d1c-dcb3-4d02-941d-0ab737ffad83.png";
   }
