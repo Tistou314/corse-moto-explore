@@ -44,6 +44,9 @@ const AccommodationDetailPage = () => {
   if (!accommodation) return null;
 
   const hasCoordinates = accommodation.latitude && accommodation.longitude;
+  
+  // Get the website URL directly from accommodation
+  const websiteUrl = accommodation.contact?.website;
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -71,9 +74,7 @@ const AccommodationDetailPage = () => {
             
             <ContactInfo accommodation={accommodation} />
             <BikerAmenities amenities={accommodation.bikerAmenities} />
-            <ActionButtons 
-              websiteUrl={accommodation.contact?.website} 
-            />
+            <ActionButtons websiteUrl={websiteUrl} />
           </div>
         </div>
         
