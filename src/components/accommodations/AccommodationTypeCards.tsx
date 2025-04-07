@@ -9,6 +9,7 @@ import {
   CarouselNext,
 } from "@/components/ui/carousel";
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+import OptimizedImage from '@/components/ui/optimized-image';
 
 interface AccommodationTypeInfo {
   title: string;
@@ -62,10 +63,11 @@ const AccommodationTypeCards = () => {
                   {type.image && (
                     <div className="w-full h-48 overflow-hidden">
                       <AspectRatio ratio={16 / 9} className="bg-muted">
-                        <img 
+                        <OptimizedImage 
                           src={type.image} 
                           alt={type.title} 
                           className="object-cover w-full h-full"
+                          priority={index < 2} // Prioritize loading for first 2 images
                         />
                       </AspectRatio>
                     </div>

@@ -1,9 +1,9 @@
-
 import { StarIcon } from "lucide-react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Accommodation } from "@/data/accommodations/types";
 import { useNavigate } from "react-router-dom";
+import OptimizedImage from "@/components/ui/optimized-image";
 
 interface AccommodationCardProps {
   accommodation: Accommodation;
@@ -12,14 +12,14 @@ interface AccommodationCardProps {
 const AccommodationCard = ({ accommodation }: AccommodationCardProps) => {
   const navigate = useNavigate();
 
-  // Map type to color - avec des couleurs plus distinctes
+  // Map type to color
   const typeColors = {
     hotel: "bg-blue-100 text-blue-800",
     gite: "bg-green-100 text-green-800",
     camping: "bg-amber-100 text-amber-800"
   };
 
-  // Map type to label - avec des libellés plus précis
+  // Map type to label
   const typeLabels = {
     hotel: "Hôtel",
     gite: "Gîte rural",
@@ -36,14 +36,12 @@ const AccommodationCard = ({ accommodation }: AccommodationCardProps) => {
       onClick={handleCardClick}
     >
       <div className="aspect-video w-full overflow-hidden">
-        <img
+        <OptimizedImage
           src={accommodation.image}
           alt={accommodation.name}
+          fallbackSrc="https://images.unsplash.com/photo-1558882224-dda166733046?auto=format&fit=crop&w=800&q=60"
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.src = "https://images.unsplash.com/photo-1558882224-dda166733046?auto=format&fit=crop&w=800&q=60";
-          }}
+          aspectRatio="16/9"
         />
       </div>
       

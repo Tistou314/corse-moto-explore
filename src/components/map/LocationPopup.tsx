@@ -1,5 +1,6 @@
 
 import { MapLocation } from './types';
+import OptimizedImage from '@/components/ui/optimized-image';
 
 interface LocationPopupProps {
   location: MapLocation;
@@ -25,10 +26,11 @@ const LocationPopup = ({ location, onClose }: LocationPopupProps) => {
         )}
         
         {location.image && (
-          <img 
+          <OptimizedImage 
             src={location.image} 
             alt={location.title} 
-            className="w-full h-32 object-cover rounded-md" 
+            className="w-full h-32 object-cover rounded-md"
+            aspectRatio="16/9"
           />
         )}
       </div>

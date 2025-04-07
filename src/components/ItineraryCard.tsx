@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom';
 import { Clock, Route, Bike, ArrowRight } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
+import OptimizedImage from '@/components/ui/optimized-image';
 
 interface ItineraryCardProps {
   id: string;
@@ -56,14 +57,12 @@ const ItineraryCard = ({
   return (
     <div className="itinerary-card flex flex-col h-full">
       <div className="relative h-48 overflow-hidden">
-        <img 
+        <OptimizedImage 
           src={cardImage} 
           alt={title} 
+          fallbackSrc={fallbackImage}
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.src = fallbackImage;
-          }}
+          aspectRatio="16/9"
         />
         <div className="absolute top-3 right-3">
           <Badge className={difficultyColors[difficulty]}>

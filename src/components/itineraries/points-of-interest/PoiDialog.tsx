@@ -1,9 +1,8 @@
 
-import { useState } from 'react';
-import { X } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
+import { X } from 'lucide-react';
+import OptimizedImage from '@/components/ui/optimized-image';
 
 export interface PoiDialogProps {
   isOpen: boolean;
@@ -16,8 +15,6 @@ export interface PoiDialogProps {
 }
 
 const PoiDialog = ({ isOpen, onClose, poi }: PoiDialogProps) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
-
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="sm:max-w-[600px]">
@@ -30,12 +27,11 @@ const PoiDialog = ({ isOpen, onClose, poi }: PoiDialogProps) => {
         </DialogHeader>
         {poi.image && (
           <div className="relative">
-            {!imageLoaded && <Skeleton className="w-full h-[250px] rounded-md" />}
-            <img 
+            <OptimizedImage 
               src={poi.image} 
               alt={poi.name}
-              className={`w-full h-[250px] object-cover rounded-md mb-4 ${!imageLoaded ? 'invisible absolute' : ''}`}
-              onLoad={() => setImageLoaded(true)}
+              className="w-full h-[250px] object-cover rounded-md mb-4"
+              aspectRatio="16/9"
             />
           </div>
         )}

@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom';
 import { Calendar, User } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import OptimizedImage from '@/components/ui/optimized-image';
 
 interface BlogPostCardProps {
   id: string;
@@ -52,14 +53,12 @@ const BlogPostCard = ({
   return (
     <div className="feature-card flex flex-col h-full overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
       <div className="relative h-48 overflow-hidden">
-        <img 
+        <OptimizedImage 
           src={cardImage} 
           alt={title} 
+          fallbackSrc="https://cdn.pixabay.com/photo/2020/04/23/10/54/corsica-5081729_1280.jpg"
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.src = "https://cdn.pixabay.com/photo/2020/04/23/10/54/corsica-5081729_1280.jpg";
-          }}
+          aspectRatio="16/9"
         />
         <div className="absolute top-3 left-3">
           <Badge className={`${getCategoryColor(category)} text-white border-none font-medium px-2.5 py-1`}>

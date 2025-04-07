@@ -3,25 +3,35 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, Calendar, User, Tag } from 'lucide-react';
 import { BlogPost } from '@/types/blog';
+import { useEffect, useState } from 'react';
 
 type BlogPostHeaderProps = {
   post: BlogPost;
 };
 
 const BlogPostHeader = ({ post }: BlogPostHeaderProps) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  
   // Ensure we have a fallback image if none is provided
   const headerImage = post.image || "https://cdn.pixabay.com/photo/2020/04/23/10/54/corsica-5081729_1280.jpg";
+  
+  useEffect(() => {
+    // Précharger l'image d'arrière-plan
+    const img = new Image();
+    img.src = headerImage;
+    img.onload = () => setImageLoaded(true);
+  }, [headerImage]);
 
   return (
     <motion.div 
       initial={{ scale: 0.95, opacity: 0.8 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="h-[45vh] md:h-[60vh] relative bg-cover bg-center overflow-hidden rounded-b-3xl" 
+      className="h-[45vh] md:h-[60vh] relative overflow-hidden rounded-b-3xl" 
       style={{ 
-        backgroundImage: `url(${headerImage})`,
-        backgroundPosition: 'center',
-        backgroundSize: 'cover'
+        background: imageLoaded 
+          ? `url(${headerImage}) center center/cover no-repeat`
+          : 'linear-gradient(to right, #1e293b, #334155)'
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-t from-corsica-dark/90 via-corsica-dark/40 to-transparent"></div>

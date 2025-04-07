@@ -2,19 +2,33 @@
 import { Link } from 'react-router-dom';
 import { ChevronLeft, Clock, Route, Mountain } from 'lucide-react';
 import { Itinerary } from '@/data/itineraries';
+import { useEffect, useState } from 'react';
 
 interface ItineraryHeroProps {
   itinerary: Itinerary;
 }
 
 const ItineraryHero = ({ itinerary }: ItineraryHeroProps) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  
   // Utiliser l'image de l'itinéraire si elle existe
   const heroImage = itinerary.image || "/lovable-uploads/6f930ced-66d6-4bfe-adb7-246828fa75a7.png";
+  
+  useEffect(() => {
+    // Précharger l'image d'arrière-plan
+    const img = new Image();
+    img.src = heroImage;
+    img.onload = () => setImageLoaded(true);
+  }, [heroImage]);
 
   return (
     <div 
-      className="h-[50vh] relative bg-cover bg-center"
-      style={{ backgroundImage: `url(${heroImage})` }}
+      className="h-[50vh] relative bg-cover bg-center transition-all duration-500"
+      style={{ 
+        background: imageLoaded 
+          ? `url(${heroImage}) center center/cover no-repeat`
+          : 'linear-gradient(to right, #1e293b, #334155)'
+      }}
     >
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
       <div className="absolute bottom-0 left-0 w-full p-6 md:p-12">
