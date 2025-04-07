@@ -11,6 +11,7 @@ import ItineraryMap from '@/components/itineraries/ItineraryMap';
 import ItineraryPointsOfInterest from '@/components/itineraries/ItineraryPointsOfInterest';
 import ItineraryRating from '@/components/itineraries/ItineraryRating';
 import ItinerarySidebar from '@/components/itineraries/ItinerarySidebar';
+import { toast } from 'sonner';
 
 const ItineraryDetailPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -26,6 +27,23 @@ const ItineraryDetailPage = () => {
         console.log('Points d\'intérêt de l\'itinéraire:', 
           foundItinerary.pointsOfInterest?.length || 0,
           'éléments trouvés');
+        
+        // Vérifier les coordonnées des points d'intérêt
+        if (foundItinerary.pointsOfInterest && foundItinerary.pointsOfInterest.length > 0) {
+          foundItinerary.pointsOfInterest.forEach((poi, index) => {
+            if (typeof poi === 'object' && 'latitude' in poi && 'longitude' in poi) {
+              console.log(`POI #${index} - ${poi.name}: [${poi.latitude}, ${poi.longitude}]`);
+              
+              // Alerte pour les coordonnées potentiellement inversées
+              if (poi.latitude > poi.longitude) {
+                console.warn(`⚠️ Coordonnées potentiellement inversées pour ${poi.name}`);
+                toast.warning(`Vérifier les coordonnées de ${poi.name} - possible inversion lat/long`);
+              }
+            } else {
+              console.warn(`POI #${index} sans coordonnées ou au format incorrect:`, poi);
+            }
+          });
+        }
       }
       // If not found, we will show a not found message
     }

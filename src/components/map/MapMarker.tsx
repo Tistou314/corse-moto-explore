@@ -1,6 +1,6 @@
 
 import mapboxgl from 'mapbox-gl';
-import { markerTypes, MapLocation } from './types';
+import { markerTypes, MapLocation, isWithinCorsica } from './types';
 
 interface CreateMarkerProps {
   location: MapLocation;
@@ -8,7 +8,25 @@ interface CreateMarkerProps {
   onClick: (location: MapLocation) => void;
 }
 
-export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): mapboxgl.Marker => {
+export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): mapboxgl.Marker | null => {
+  // Validation de coordonnées avant création du marker
+  if (!location || 
+      typeof location.latitude !== 'number' || 
+      typeof location.longitude !== 'number' ||
+      isNaN(location.latitude) || 
+      isNaN(location.longitude)) {
+    console.error(`Coordonnées invalides pour ${location?.title || 'marker inconnu'}:`, location);
+    return null;
+  }
+  
+  // Vérification que les coordonnées sont dans une plage valide pour la Corse
+  if (!isWithinCorsica(location.latitude, location.longitude)) {
+    console.warn(`Coordonnées hors de la Corse pour ${location.title}:`, 
+      `[${location.latitude}, ${location.longitude}]`,
+      "Vérifiez que les coordonnées ne sont pas inversées (latitude/longitude)");
+    // On continue quand même la création, mais avec un avertissement
+  }
+
   const el = document.createElement('div');
   el.className = 'marker';
   
@@ -49,14 +67,12 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   // Add hover effects - but only for the shadow, not position
   el.addEventListener('mouseenter', () => {
     el.style.boxShadow = '0 4px 8px rgba(0,0,0,0.5)';
-    // Remove the transform effect
   });
   
   el.addEventListener('mouseleave', () => {
     el.style.boxShadow = location.type === 'pointOfInterest' && location.isPrimary
       ? '0 3px 8px rgba(0,0,0,0.4)'
       : '0 2px 6px rgba(0,0,0,0.3)';
-    // Remove the transform effect
   });
 
   // Add pulse effect for primary POIs
@@ -97,24 +113,30 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     el.insertBefore(pulseEffect, el.firstChild);
   }
 
-  // Add title for hover tooltip
+  // Add title for hover tooltip with coordinates
   el.title = location.title || 'Point d\'intérêt';
   if (location.description) {
     el.title += ` - ${location.description.substring(0, 50)}${location.description.length > 50 ? '...' : ''}`;
   }
+  el.title += ` [${location.latitude.toFixed(4)}, ${location.longitude.toFixed(4)}]`;
 
-  // Create marker centered at coordinates
-  const marker = new mapboxgl.Marker({
-    element: el,
-    anchor: 'center'
-  })
-    .setLngLat([location.longitude, location.latitude])
-    .addTo(map);
+  try {
+    // Create marker centered at coordinates
+    const marker = new mapboxgl.Marker({
+      element: el,
+      anchor: 'center'
+    })
+      .setLngLat([location.longitude, location.latitude])
+      .addTo(map);
 
-  // Add click handler
-  el.addEventListener('click', () => {
-    onClick(location);
-  });
+    // Add click handler
+    el.addEventListener('click', () => {
+      onClick(location);
+    });
 
-  return marker;
+    return marker;
+  } catch (error) {
+    console.error(`Erreur lors de la création du marker pour ${location.title}:`, error);
+    return null;
+  }
 };

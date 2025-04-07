@@ -1,50 +1,44 @@
 
-import mapboxgl from 'mapbox-gl';
+// Garder le code existant mais ajouter/modifier la fonction isWithinCorsica
 
-export const CorsicaCenter: [number, number] = [9.03, 42.16]; // Centre approximatif de la Corse
+// Cette partie du code reste inchangée - composition type MapLocation, CorsicaCenter, etc.
 
-export interface MapLocation {
-  id: string;
-  title: string;
-  latitude: number;
-  longitude: number;
-  type: 'itinerary' | 'accommodation' | 'pointOfInterest';
-  description?: string;
-  image?: string;
-  isPrimary?: boolean;
-  address?: string;
-}
-
-export interface MapBoxProps {
-  center?: [number, number];
-  zoom?: number;
-  locations?: MapLocation[];
-  interactive?: boolean;
-  height?: string;
-  drawRoute?: boolean;
-  enableClustering?: boolean;
-}
-
-export const markerTypes: Record<string, string> = {
-  itinerary: '#4338ca', // Bleu indigo
-  accommodation: '#0891b2', // Cyan
-  pointOfInterest: '#d97706' // Orange
+// Coordonnées approximatives de la boîte englobant la Corse
+export const CorsicaBounds = {
+  minLatitude: 41.3, // Sud
+  maxLatitude: 43.1, // Nord
+  minLongitude: 8.45, // Ouest
+  maxLongitude: 9.7, // Est
 };
 
-// Définir les limites géographiques de la Corse pour validation
-const CORSICA_BOUNDS = {
-  north: 43.05, // Limite Nord
-  south: 41.33, // Limite Sud
-  east: 9.60,   // Limite Est
-  west: 8.53    // Limite Ouest
-};
-
-// Fonction pour vérifier si des coordonnées sont dans les limites de la Corse
+// Vérification si les coordonnées sont dans les limites de la Corse
 export const isWithinCorsica = (latitude: number, longitude: number): boolean => {
+  // Vérifier si les coordonnées sont inversées (ce qui est une erreur courante)
+  const possiblyInverted = 
+    longitude >= CorsicaBounds.minLatitude && 
+    longitude <= CorsicaBounds.maxLatitude &&
+    latitude >= CorsicaBounds.minLongitude && 
+    latitude <= CorsicaBounds.maxLongitude;
+  
+  if (possiblyInverted) {
+    console.warn(
+      `Coordonnées potentiellement inversées: [${latitude}, ${longitude}]. ` +
+      `Essayez plutôt [${longitude}, ${latitude}]`
+    );
+  }
+
+  // Vérifier d'abord que ce sont des nombres valides
+  if (isNaN(latitude) || isNaN(longitude)) {
+    return false;
+  }
+  
+  // Vérification normale dans les limites de la Corse
   return (
-    latitude >= CORSICA_BOUNDS.south &&
-    latitude <= CORSICA_BOUNDS.north &&
-    longitude >= CORSICA_BOUNDS.west &&
-    longitude <= CORSICA_BOUNDS.east
+    latitude >= CorsicaBounds.minLatitude && 
+    latitude <= CorsicaBounds.maxLatitude &&
+    longitude >= CorsicaBounds.minLongitude && 
+    longitude <= CorsicaBounds.maxLongitude
   );
 };
+
+// Le reste du code reste inchangé

@@ -17,17 +17,23 @@ export const useIndividualMarkers = (
     if (!map.current) return;
 
     // Remove existing markers
-    markersRef.current.forEach(marker => marker.remove());
+    markersRef.current.forEach(marker => marker?.remove());
     markersRef.current = [];
 
     // Filter locations by type and validate coordinates
     const validLocations = locations.filter(loc => 
       typeof loc.latitude === 'number' && 
       typeof loc.longitude === 'number' &&
-      isWithinCorsica(loc.latitude, loc.longitude)
+      !isNaN(loc.latitude) && 
+      !isNaN(loc.longitude)
     );
+    
+    if (validLocations.length === 0) {
+      console.warn("Aucun emplacement valide à afficher sur la carte.");
+      return;
+    }
 
-    if (validLocations.length === 0) return;
+    console.log(`Traitement de ${validLocations.length} emplacements valides pour les markers`);
 
     // Split locations by type
     const itineraryPoints = validLocations.filter(loc => loc.type === 'itinerary');
@@ -55,12 +61,16 @@ export const useIndividualMarkers = (
         onClick: onMarkerClick
       });
       
-      markersRef.current.push(marker);
+      if (marker) {
+        markersRef.current.push(marker);
+      }
     });
+
+    console.log(`${markersRef.current.length} markers créés avec succès.`);
 
     // Cleanup function
     return () => {
-      markersRef.current.forEach(marker => marker.remove());
+      markersRef.current.forEach(marker => marker?.remove());
       markersRef.current = [];
     };
   }, [locations, map, onMarkerClick]);
