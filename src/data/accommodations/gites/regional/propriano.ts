@@ -23,7 +23,7 @@ export const proprianoGites: Accommodation[] = [
     longitude: 8.9290
   },
   {
-    id: "gite9",
+    id: "gite10",
     name: "A Funtana",
     type: "gite",
     location: "Olmeto",
