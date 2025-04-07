@@ -3,7 +3,7 @@ import { Accommodation } from '../../types';
 
 export const proprianoGites: Accommodation[] = [
   {
-    id: "gite9",
+    id: "gite21",
     name: "Villa Les Orangers",
     type: "chambre",
     location: "Olmeto",
@@ -23,7 +23,7 @@ export const proprianoGites: Accommodation[] = [
     longitude: 8.9290
   },
   {
-    id: "gite10",
+    id: "gite22",
     name: "A Funtana",
     type: "gite",
     location: "Olmeto",

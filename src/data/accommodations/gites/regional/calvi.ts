@@ -3,7 +3,7 @@ import { Accommodation } from '../../types';
 
 export const calviGites: Accommodation[] = [
   {
-    id: "gite12",
+    id: "gite32",
     name: "A Casa di l'Alivu",
     type: "chambre",
     location: "Lama",
@@ -23,7 +23,7 @@ export const calviGites: Accommodation[] = [
     longitude: 9.1561
   },
   {
-    id: "gite15",
+    id: "gite33",
     name: "Chez Rose",
     type: "chambre",
     location: "Belgodère",
@@ -42,7 +42,7 @@ export const calviGites: Accommodation[] = [
     longitude: 8.9776048
   },
   {
-    id: "gite16",
+    id: "gite34",
     name: "Au pied des oliviers",
     type: "chambre",
     location: "Calenzana",

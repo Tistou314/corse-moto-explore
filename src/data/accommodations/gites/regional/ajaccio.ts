@@ -3,7 +3,7 @@ import { Accommodation } from '../../types';
 
 export const ajaccioGites: Accommodation[] = [
   {
-    id: "gite2",
+    id: "gite38",
     name: "Casa d'Omigna",
     type: "chambre",
     location: "Cargèse",
@@ -23,7 +23,7 @@ export const ajaccioGites: Accommodation[] = [
     longitude: 8.5951
   },
   {
-    id: "gite3",
+    id: "gite39",
     name: "Chalet Zen",
     type: "chambre",
     location: "Peri",
@@ -43,7 +43,7 @@ export const ajaccioGites: Accommodation[] = [
     longitude: 8.8188
   },
   {
-    id: "gite13",
+    id: "gite40",
     name: "U Castellu",
     type: "chambre",
     location: "Santa-Maria-Siché",

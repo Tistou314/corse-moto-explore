@@ -3,7 +3,7 @@ import { Accommodation } from '../../types';
 
 export const autresGites: Accommodation[] = [
   {
-    id: "gite18",
+    id: "gite41",
     name: "Domaine CARDU",
     type: "chambre",
     location: "Corse",
@@ -23,7 +23,7 @@ export const autresGites: Accommodation[] = [
     longitude: 9.0
   },
   {
-    id: "gite19",
+    id: "gite42",
     name: "Domaine de Piscia - Clos Finidori - Fromagerie de Marie",
     type: "chambre",
     location: "Corse",

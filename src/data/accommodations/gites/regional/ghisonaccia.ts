@@ -23,7 +23,7 @@ export const ghisonacciaGites: Accommodation[] = [
     longitude: 9.2686
   },
   {
-    id: "gite6",
+    id: "gite19",
     name: "Gîtes A Bella Scusa",
     type: "gite",
     location: "Santa-Lucia-di-Moriani",
@@ -42,7 +42,7 @@ export const ghisonacciaGites: Accommodation[] = [
     longitude: 9.5276
   },
   {
-    id: "gite6",
+    id: "gite20",
     name: "Corsica Paddock",
     type: "chambre",
     location: "Prunelli-di-Fiumorbo",

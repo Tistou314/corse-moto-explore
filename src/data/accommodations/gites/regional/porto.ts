@@ -3,7 +3,7 @@ import { Accommodation } from '../../types';
 
 export const portoGites: Accommodation[] = [
   {
-    id: "gite7",
+    id: "gite26",
     name: "Vue sur Calanques",
     type: "chambre",
     location: "Ota",
@@ -23,7 +23,7 @@ export const portoGites: Accommodation[] = [
     longitude: 8.6975
   },
   {
-    id: "gite14",
+    id: "gite27",
     name: "Gîte Auberge du Col de Vergio",
     type: "gite",
     location: "Albertacce",

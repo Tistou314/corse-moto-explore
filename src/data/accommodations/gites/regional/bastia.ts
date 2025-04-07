@@ -3,7 +3,7 @@ import { Accommodation } from '../../types';
 
 export const bastiaGites: Accommodation[] = [
   {
-    id: "gite4",
+    id: "gite23",
     name: "U Castellu",
     type: "gite",
     location: "Luri",
@@ -23,7 +23,7 @@ export const bastiaGites: Accommodation[] = [
     longitude: 9.4444
   },
   {
-    id: "gite7",
+    id: "gite24",
     name: "Chambres d'hôtes Le Refuge Orezza",
     type: "chambre",
     location: "Piedicroce",
@@ -43,7 +43,7 @@ export const bastiaGites: Accommodation[] = [
     longitude: 9.3147
   },
   {
-    id: "gite11",
+    id: "gite25",
     name: "Centu Chiavi",
     type: "chambre",
     location: "Barrettali",
