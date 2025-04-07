@@ -35,6 +35,8 @@ const ItineraryCard = ({
     fallbackImage = "/lovable-uploads/6f930ced-66d6-4bfe-adb7-246828fa75a7.png";
   } else if (id === 'tour-balagne') {
     fallbackImage = "/lovable-uploads/381bb3e5-8c88-48aa-8685-829520b4e247.png";
+  } else if (id === 'castagniccia') {
+    fallbackImage = "/lovable-uploads/2653c886-6632-476f-b90a-f498f2b8ca2e.png";
   } else {
     fallbackImage = "/lovable-uploads/e6af0d1c-dcb3-4d02-941d-0ab737ffad83.png";
   }

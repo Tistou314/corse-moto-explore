@@ -8,7 +8,7 @@ interface ItineraryHeroProps {
 }
 
 const ItineraryHero = ({ itinerary }: ItineraryHeroProps) => {
-  // Utiliser l'image de l'itinéraire ou une image par défaut adaptée aux routes de montagne
+  // Utiliser l'image de l'itinéraire si elle existe
   const heroImage = itinerary.image || "/lovable-uploads/6f930ced-66d6-4bfe-adb7-246828fa75a7.png";
 
   return (

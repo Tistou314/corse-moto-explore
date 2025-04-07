@@ -34,6 +34,8 @@ const preloadImages = [
   '/lovable-uploads/6f675042-fc8c-4549-8373-529418f50f8d.png', // Forêt montagnes
   '/lovable-uploads/1786ff52-abb7-4c35-9599-de33995c0358.png', // Route calanques
   '/lovable-uploads/2b677267-ec65-4c83-ae90-9301d10f5a90.png', // Montagnes rocheuses
+  // Nouvelle image pour la Castagniccia
+  '/lovable-uploads/2653c886-6632-476f-b90a-f498f2b8ca2e.png', // Vue de la Castagniccia avec village perché
 ];
 
 preloadImages.forEach((src) => {

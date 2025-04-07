@@ -1,3 +1,4 @@
+
 import { Itinerary } from './types';
 
 export const nordEstItineraries: Itinerary[] = [
@@ -84,7 +85,7 @@ La Castagniccia n'est pas seulement un défi technique pour les motards, c'est a
 * Histoire : Cette région fut le berceau de la résistance corse contre Gênes au 18ème siècle et a vu naître plusieurs figures de l'indépendantisme insulaire.
 
 La Castagniccia constitue l'un des itinéraires les plus exigeants techniquement de Corse, mais aussi l'un des plus authentiques. Loin des clichés touristiques des plages et calanques, cette immersion dans la Corse profonde offre une expérience complète mêlant pilotage engagé, découvertes culturelles et paysages préservés.`,
-    image: 'https://images.unsplash.com/photo-1559108318-39ed452bb6c9?auto=format&fit=crop&q=80',
+    image: '/lovable-uploads/2653c886-6632-476f-b90a-f498f2b8ca2e.png',
     duration: '3h (sans les arrêts)',
     distance: '90 km',
     difficulty: 'difficile',
