@@ -2,9 +2,9 @@
 import { ReactNode } from 'react';
 
 // Position centrale de la Corse
-export const CorsicaCenter: [number, number] = [9.03, 42.16];
+export const CorsicaCenter: [number, number] = [9.13, 42.16];
 
-// Limites géographiques approximatives de la Corse (pour validation)
+// Limites géographiques précises de la Corse (pour validation)
 export const CorsicaBounds = {
   north: 43.05,  // Limite nord (Cap Corse)
   south: 41.32,  // Limite sud (Bonifacio)
@@ -57,13 +57,17 @@ export const markerTypes: Record<string, string> = {
 
 /**
  * Vérifie si une coordonnée est en Corse en fonction des limites définies
+ * Inclut une marge pour les stations côtières
  */
 export const isWithinCorsica = (lat: number, lng: number): boolean => {
+  // Ajout d'une petite marge de 0.03 degrés (environ 3km) pour les stations côtières
+  const margin = 0.03;
+  
   return (
-    lat >= CorsicaBounds.south &&
-    lat <= CorsicaBounds.north &&
-    lng >= CorsicaBounds.west &&
-    lng <= CorsicaBounds.east
+    lat >= CorsicaBounds.south - margin &&
+    lat <= CorsicaBounds.north + margin &&
+    lng >= CorsicaBounds.west - margin &&
+    lng <= CorsicaBounds.east + margin
   );
 };
 
@@ -72,18 +76,22 @@ export const isWithinCorsica = (lat: number, lng: number): boolean => {
  * Retourne les coordonnées corrigées ou null si trop éloignées
  */
 export const validateAndFixCoordinates = (lat: number, lng: number): [number, number] | null => {
-  // Si les coordonnées sont vraiment trop éloignées de la Corse, on considère qu'elles sont invalides
-  if (lat < CorsicaBounds.south - 1 || 
-      lat > CorsicaBounds.north + 1 || 
-      lng < CorsicaBounds.west - 1 || 
-      lng > CorsicaBounds.east + 1) {
+  // Si les coordonnées sont vraiment trop éloignées de la Corse (plus de 20km), on considère qu'elles sont invalides
+  const bigMargin = 0.2; // environ 20km
+  
+  if (lat < CorsicaBounds.south - bigMargin || 
+      lat > CorsicaBounds.north + bigMargin || 
+      lng < CorsicaBounds.west - bigMargin || 
+      lng > CorsicaBounds.east + bigMargin) {
     console.error(`Coordonnées invalides, trop éloignées de la Corse: [${lat}, ${lng}]`);
     return null;
   }
   
-  // Si les coordonnées sont légèrement en dehors des limites, on les corrige
-  const correctedLat = Math.max(CorsicaBounds.south, Math.min(lat, CorsicaBounds.north));
-  const correctedLng = Math.max(CorsicaBounds.west, Math.min(lng, CorsicaBounds.east));
+  // Si les coordonnées sont légèrement en dehors des limites, on les corrige avec une petite marge
+  const margin = 0.03; // environ 3km
+  
+  const correctedLat = Math.max(CorsicaBounds.south - margin, Math.min(lat, CorsicaBounds.north + margin));
+  const correctedLng = Math.max(CorsicaBounds.west - margin, Math.min(lng, CorsicaBounds.east + margin));
   
   if (correctedLat !== lat || correctedLng !== lng) {
     console.warn(`Coordonnées corrigées: [${lat}, ${lng}] -> [${correctedLat}, ${correctedLng}]`);

@@ -22,21 +22,24 @@ const GasStationsMap = () => {
   // Utiliser useCallback pour la fonction de toggle
   const toggleStationDisplay = useCallback(() => {
     const newShowStrategic = !showStrategicOnly;
+    
+    // Mettre à jour les locations et l'état avant de changer la clé
+    const newLocations = newShowStrategic ? strategicGasStationPOIs : gasStationPOIs;
+    setLocations(newLocations);
     setShowStrategicOnly(newShowStrategic);
     
     // Générer une nouvelle clé uniquement lors du changement de type d'affichage
-    const newKey = newShowStrategic ? `strategic-stations-map-${instanceId}` : `all-stations-map-${instanceId}`;
-    setMapKey(newKey);
-    
-    // Mettre à jour les locations immédiatement
-    const newLocations = newShowStrategic ? strategicGasStationPOIs : gasStationPOIs;
-    setLocations(newLocations);
-    
-    // Notification à l'utilisateur
-    toast.success(`${newLocations.length} stations affichées sur la carte`, {
-      id: 'stations-update',
-      duration: 2000
-    });
+    // Délai court pour permettre la mise à jour d'état avant de recharger la carte
+    setTimeout(() => {
+      const newKey = newShowStrategic ? `strategic-stations-map-${instanceId}` : `all-stations-map-${instanceId}`;
+      setMapKey(newKey);
+      
+      // Notification à l'utilisateur
+      toast.success(`${newLocations.length} stations affichées sur la carte`, {
+        id: 'stations-update',
+        duration: 2000
+      });
+    }, 50);
   }, [showStrategicOnly, instanceId]);
   
   // Initialisation au chargement
@@ -99,15 +102,15 @@ const GasStationsMap = () => {
         </Button>
       </div>
       
-      <div className="h-[500px] rounded-lg overflow-hidden border relative">
+      <div className="h-[500px] rounded-lg overflow-hidden border relative" key={`container-${mapKey}`}>
         <MapBox 
           key={mapKey}
           locations={locations}
           height="500px"
           interactive={true}
           enableClustering={false}
-          center={[9.03, 42.16]} // Center on Corsica
-          zoom={8}
+          center={showStrategicOnly ? [9.13, 42.16] : [9.13, 42.3]} // Ajuster le centre selon le type de stations
+          zoom={showStrategicOnly ? 8 : 7.5}
         />
       </div>
       

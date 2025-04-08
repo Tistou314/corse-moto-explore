@@ -52,9 +52,8 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   el.style.border = '2px solid white';
   el.style.zIndex = '999';
   
-  // Définir correctement le transformOrigin pour éviter le glissement
-  el.style.transform = 'translate(-50%, -50%)';  
-  el.style.transformOrigin = 'center';
+  // Problème de glissement corrigé - ne pas utiliser transform: translate ici
+  // Le marker est correctement positionné par Mapbox
   
   // Style spécifique pour les stations stratégiques
   if (location.isPrimary) {
@@ -119,7 +118,7 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     el.insertBefore(pulseEffect, el.firstChild);
   }
 
-  // Effets de survol sans changer la transformation translate
+  // Effets de survol sans changer la position
   el.addEventListener('mouseenter', () => {
     el.style.boxShadow = '0 4px 10px rgba(0,0,0,0.5)';
     el.style.filter = 'brightness(1.1)';

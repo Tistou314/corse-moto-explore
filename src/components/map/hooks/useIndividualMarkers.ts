@@ -10,6 +10,7 @@ export const useIndividualMarkers = (
   onMarkerClick: (location: MapLocation) => void
 ) => {
   const markersRef = useRef<mapboxgl.Marker[]>([]);
+  const locationIdsRef = useRef<string[]>([]);
   
   // Fonction pour effacer tous les marqueurs
   const clearMarkers = useCallback(() => {
@@ -19,6 +20,7 @@ export const useIndividualMarkers = (
         if (marker) marker.remove();
       });
       markersRef.current = [];
+      locationIdsRef.current = [];
     }
   }, []);
 
@@ -39,6 +41,16 @@ export const useIndividualMarkers = (
     
     const map = mapRef.current;
     
+    // Vérifier si les locations ont réellement changé pour éviter les rechargements inutiles
+    const newLocationIds = locations.map(loc => loc.id).sort().join(',');
+    if (newLocationIds === locationIdsRef.current.join(',')) {
+      console.log("Mêmes locations, pas besoin de recréer les marqueurs");
+      return;
+    }
+    
+    // Mettre à jour les IDs des locations
+    locationIdsRef.current = newLocationIds.split(',');
+    
     // Pour éviter les problèmes de rendu, on nettoie toujours avant d'ajouter
     clearMarkers();
     
@@ -47,13 +59,13 @@ export const useIndividualMarkers = (
       console.log(`Création de ${locations.length} marqueurs individuels`);
       
       // Ajouter les marqueurs par lots pour éviter de surcharger le rendu
-      const addMarkersInBatches = (locationsToAdd: MapLocation[], batchSize = 20) => {
+      const addMarkersInBatches = (locationsToAdd: MapLocation[], batchSize = 10) => {
         const markers: mapboxgl.Marker[] = [];
         
         // Fonction récursive pour ajouter par lots
         const addBatch = (startIndex: number) => {
-          if (startIndex >= locationsToAdd.length) {
-            // Tous les marqueurs ont été ajoutés
+          if (startIndex >= locationsToAdd.length || !mapRef.current) {
+            // Tous les marqueurs ont été ajoutés ou la carte n'est plus disponible
             markersRef.current = markers;
             return;
           }
@@ -71,13 +83,14 @@ export const useIndividualMarkers = (
                 typeof location.longitude !== 'number' ||
                 isNaN(location.latitude) || 
                 isNaN(location.longitude)) {
+              console.error(`Coordonnées invalides pour ${location?.title || 'location inconnue'}`);
               continue;
             }
             
             try {
               const marker = createMapMarker({
                 location,
-                map,
+                map: mapRef.current!,
                 onClick: onMarkerClick
               });
               
@@ -92,7 +105,7 @@ export const useIndividualMarkers = (
           // Programmer le prochain lot avec un délai
           setTimeout(() => {
             addBatch(endIndex);
-          }, 5);
+          }, 10); // Délai légèrement augmenté pour assurer un rendu stable
         };
         
         // Démarrer avec le premier lot
