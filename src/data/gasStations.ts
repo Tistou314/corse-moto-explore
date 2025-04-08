@@ -17,7 +17,8 @@ export interface GasStation {
   seasonalHours?: boolean; // Indique si les horaires changent selon la saison
 }
 
-// Stations stratégiques mentionnées dans l'article - COORDONNÉES CORRIGÉES
+// Stations stratégiques mentionnées dans l'article
+// COORDONNÉES CORRIGÉES: Ne pas intervertir latitude et longitude!
 export const strategicGasStations: GasStation[] = [
   {
     id: uuidv4(),
@@ -89,7 +90,8 @@ export const strategicGasStations: GasStation[] = [
   }
 ];
 
-// Stations principales dans les grandes villes - COORDONNÉES CORRIGÉES
+// Stations principales dans les grandes villes
+// COORDONNÉES CORRIGÉES: Ne pas intervertir latitude et longitude!
 export const mainGasStations: GasStation[] = [
   // Bastia
   {

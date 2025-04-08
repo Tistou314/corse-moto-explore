@@ -54,6 +54,7 @@ const BlogPostDetailPage = () => {
 
   // Log pour le debug
   console.log('BlogPostDetailPage - isGasStationPost:', isGasStationPost);
+  console.log('BlogPostDetailPage - current id:', id);
 
   if (!post) {
     return (
@@ -96,7 +97,8 @@ const BlogPostDetailPage = () => {
             
             {/* Carte des stations service pour l'article spécifique */}
             {isGasStationPost && (
-              <div>
+              <div className="my-8 border-t border-b border-gray-100 py-6">
+                <h2 className="text-2xl font-bold mb-4">Carte des stations-service en Corse</h2>
                 <GasStationsMap />
                 <div className="text-center text-sm text-muted-foreground mt-2">
                   Carte interactive des stations-service de Corse

@@ -16,38 +16,48 @@ const GasStationsMap = ({ title = "Carte des stations-service en Corse" }: GasSt
   const [displayCount, setDisplayCount] = useState(allGasStations.length);
   const [locations, setLocations] = useState<MapLocation[]>([]);
 
-  // Convertir les stations en points sur la carte
+  // Fonction pour convertir les stations en points sur la carte
   const convertToMapLocations = (stations: GasStation[]): MapLocation[] => {
     console.log(`Conversion de ${stations.length} stations en locations`);
-    return stations.map(station => ({
-      id: station.id,
-      title: station.name,
-      latitude: station.latitude,
-      longitude: station.longitude,
-      type: 'gasStation',
-      description: `${station.brand} - ${station.hours}${station.seasonalHours ? ' (horaires saisonniers)' : ''}`,
-      isPrimary: station.isStrategic,
-      address: station.address
-    }));
+    return stations.map(station => {
+      console.log(`Station ${station.name}: [${station.latitude}, ${station.longitude}]`);
+      return {
+        id: station.id,
+        title: station.name,
+        latitude: station.latitude,
+        longitude: station.longitude,
+        type: 'gasStation',
+        description: `${station.brand} - ${station.hours}${station.seasonalHours ? ' (horaires saisonniers)' : ''}`,
+        isPrimary: station.isStrategic,
+        address: station.address
+      };
+    });
   };
 
-  // Mettre à jour les stations affichées quand le filtre change
+  // Charger les stations dès le chargement du composant
   useEffect(() => {
-    const stationsToShow = showStrategicOnly ? strategicGasStations : allGasStations;
-    const mappedLocations = convertToMapLocations(stationsToShow);
-    console.log(`Affichage de ${mappedLocations.length} stations sur la carte`, mappedLocations);
-    setLocations(mappedLocations);
-    setDisplayCount(stationsToShow.length);
+    // Forcer un court délai pour s'assurer que le composant est bien monté
+    const timer = setTimeout(() => {
+      const stationsToShow = showStrategicOnly ? strategicGasStations : allGasStations;
+      
+      console.log(`Affichage de ${stationsToShow.length} stations sur la carte`);
+      console.log("Exemples de stations:", stationsToShow.slice(0, 2));
+      
+      const mappedLocations = convertToMapLocations(stationsToShow);
+      setLocations(mappedLocations);
+      setDisplayCount(stationsToShow.length);
+    }, 100);
+    
+    return () => clearTimeout(timer);
   }, [showStrategicOnly]);
 
-  // Mettre à jour le compteur quand le filtre change
   const handleFilterChange = () => {
     setShowStrategicOnly(!showStrategicOnly);
   };
 
   return (
     <div className="space-y-4 my-8">
-      <div className="flex items-center justify-between mb-2">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-2">
         <h3 className="text-xl font-bold flex items-center gap-2">
           <Fuel className="h-5 w-5 text-amber-500" />
           {title}
@@ -75,7 +85,7 @@ const GasStationsMap = ({ title = "Carte des stations-service en Corse" }: GasSt
           locations={locations}
           height="500px" 
           interactive={true}
-          enableClustering={true}
+          enableClustering={false}
           zoom={8}
         />
         
