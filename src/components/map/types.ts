@@ -7,7 +7,7 @@ export interface MapLocation {
   title: string;
   latitude: number;
   longitude: number;
-  type: 'itinerary' | 'accommodation' | 'pointOfInterest';
+  type: 'itinerary' | 'accommodation' | 'pointOfInterest' | 'gasStation';
   description?: string;
   image?: string;
   isPrimary?: boolean;
@@ -30,6 +30,7 @@ export const markerTypes = {
   itinerary: '#3b82f6', // blue
   accommodation: '#10b981', // green
   pointOfInterest: '#ef4444', // red
+  gasStation: '#f59e0b', // amber/orange for gas stations
 };
 
 // Center coordinates for Corsica

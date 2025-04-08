@@ -1,6 +1,7 @@
 
 import mapboxgl from 'mapbox-gl';
 import { markerTypes, MapLocation, isWithinCorsica } from './types';
+import { Fuel } from 'lucide-react';
 
 interface CreateMarkerProps {
   location: MapLocation;
@@ -60,6 +61,14 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
       el.style.border = '3px solid white';
       el.style.boxShadow = '0 3px 8px rgba(0,0,0,0.4)';
     }
+  } else if (location.type === 'gasStation') {
+    iconElement.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22h12"/><path d="M4 9h10"/><path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18"/><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5"/></svg>';
+    
+    // Style for strategic gas stations
+    if (location.isPrimary) {
+      el.style.border = '3px solid white';
+      el.style.boxShadow = '0 3px 8px rgba(0,0,0,0.4)';
+    }
   }
   
   el.appendChild(iconElement);
@@ -70,13 +79,13 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   });
   
   el.addEventListener('mouseleave', () => {
-    el.style.boxShadow = location.type === 'pointOfInterest' && location.isPrimary
+    el.style.boxShadow = (location.type === 'pointOfInterest' || location.type === 'gasStation') && location.isPrimary
       ? '0 3px 8px rgba(0,0,0,0.4)'
       : '0 2px 6px rgba(0,0,0,0.3)';
   });
 
-  // Add pulse effect for primary POIs
-  if (location.type === 'pointOfInterest' && location.isPrimary) {
+  // Add pulse effect for primary POIs and strategic gas stations
+  if ((location.type === 'pointOfInterest' || location.type === 'gasStation') && location.isPrimary) {
     const pulseEffect = document.createElement('div');
     pulseEffect.style.position = 'absolute';
     pulseEffect.style.borderRadius = '50%';
