@@ -1,3 +1,4 @@
+
 import { v4 as uuidv4 } from 'uuid';
 import { MapLocation, validateAndFixCoordinates } from '@/components/map/types';
 import { 
@@ -6,7 +7,12 @@ import {
   mainGasStations,
   bastiaStations,
   ajaccioStations,
-  otherCityStations,
+  nebbioStations,
+  balagneStations,
+  extremeSudStations,
+  centreStations,
+  castagnacciaStations,
+  valincoStations,
   capCorseStations
 } from '@/data/gas-stations';
 
@@ -64,9 +70,24 @@ export const strategicGasStationPOIs = convertGasStationsToPOI(strategicGasStati
 export const bastiaPOIs = convertGasStationsToPOI(bastiaStations);
 export const ajaccioPOIs = convertGasStationsToPOI(ajaccioStations);
 export const capCorsePOIs = convertGasStationsToPOI(capCorseStations);
-export const otherCityPOIs = convertGasStationsToPOI(otherCityStations);
+export const nebbioPOIs = convertGasStationsToPOI(nebbioStations);
+export const balagnePOIs = convertGasStationsToPOI(balagneStations);
+export const extremeSudPOIs = convertGasStationsToPOI(extremeSudStations);
+export const centrePOIs = convertGasStationsToPOI(centreStations);
+export const castagnacciaPOIs = convertGasStationsToPOI(castagnacciaStations);
+export const valincoPOIs = convertGasStationsToPOI(valincoStations);
+
+// Regroupement pour compatibilité avec le code existant
+export const otherCityPOIs = convertGasStationsToPOI([
+  ...balagneStations,
+  ...extremeSudStations,
+  ...centreStations,
+  ...castagnacciaStations,
+  ...valincoStations,
+  ...nebbioStations
+]);
 export const mainCityPOIs = convertGasStationsToPOI(mainGasStations);
 
 // Debug log
 console.log(`POIs créés: ${gasStationPOIs.length} stations totales, ${strategicGasStationPOIs.length} stations stratégiques`);
-console.log(`POIs par région: Bastia (${bastiaPOIs.length}), Ajaccio (${ajaccioPOIs.length}), Cap Corse (${capCorsePOIs.length}), Autres villes (${otherCityPOIs.length})`);
+console.log(`POIs par région: Bastia (${bastiaPOIs.length}), Ajaccio (${ajaccioPOIs.length}), Cap Corse (${capCorsePOIs.length}), Nebbio (${nebbioPOIs.length}), Balagne (${balagnePOIs.length}), Extrême Sud (${extremeSudPOIs.length}), Centre (${centrePOIs.length}), Castagniccia (${castagnacciaPOIs.length}), Valinco (${valincoPOIs.length}), Autres villes (${otherCityPOIs.length})`);

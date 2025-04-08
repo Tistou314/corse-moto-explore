@@ -4,9 +4,11 @@ import MapBox from '@/components/map/MapBox';
 
 interface MapContainerProps {
   locations: MapLocation[];
+  center?: [number, number];
+  zoom?: number;
 }
 
-const MapContainer = ({ locations }: MapContainerProps) => {
+const MapContainer = ({ locations, center, zoom }: MapContainerProps) => {
   // Log pour debug
   console.log('MapContainer rendering with locations:', locations.length);
   
@@ -29,7 +31,8 @@ const MapContainer = ({ locations }: MapContainerProps) => {
           locations={locations} 
           height="600px"
           enableClustering={true}
-          zoom={8} // Meilleur zoom par défaut
+          zoom={zoom || 8} // Utiliser le zoom fourni ou une valeur par défaut
+          center={center} // Utiliser le centre fourni ou la valeur par défaut de MapBox
           drawRoute={false}
         />
       </div>
