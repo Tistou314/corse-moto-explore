@@ -29,5 +29,32 @@ export const capCorseStations: GasStation[] = [
     fuelTypes: ["SP95", "Gasoil"],
     isStrategic: true,
     seasonalHours: true
+  },
+  {
+    id: uuidv4(),
+    name: "Station Nonza",
+    brand: "Indépendant",
+    latitude: 42.8425,
+    longitude: 9.3307,
+    address: "Route D80, Nonza",
+    region: "Cap Corse",
+    hours: "8h-19h",
+    fuelTypes: ["SP95", "Gasoil"],
+    isStrategic: false,
+    seasonalHours: true
+  },
+  {
+    id: uuidv4(),
+    name: "Station Erbalunga",
+    brand: "Total",
+    latitude: 42.7326,
+    longitude: 9.3837,
+    address: "D80, Erbalunga",
+    region: "Cap Corse",
+    hours: "7h-20h",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique", "Gonflage"],
+    isStrategic: false,
+    seasonalHours: true
   }
 ];

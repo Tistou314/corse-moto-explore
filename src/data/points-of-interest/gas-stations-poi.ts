@@ -1,6 +1,6 @@
 
 import { v4 as uuidv4 } from 'uuid';
-import { MapLocation } from '@/components/map/types';
+import { MapLocation, validateAndFixCoordinates } from '@/components/map/types';
 import { 
   allGasStations, 
   strategicGasStations, 
@@ -30,11 +30,21 @@ const convertGasStationsToPOI = (stations: typeof allGasStations): MapLocation[]
       return null;
     }
     
+    // Validation/correction des coordonnées
+    const validatedCoords = validateAndFixCoordinates(station.latitude, station.longitude);
+    if (!validatedCoords) {
+      console.error(`Station avec coordonnées hors limites: ${station.name}`, station);
+      return null;
+    }
+    
+    // Utiliser les coordonnées validées/corrigées
+    const [validLat, validLng] = validatedCoords;
+    
     const poi: MapLocation = {
       id: station.id || uuidv4(), // Assurer un ID unique
       title: station.name,
-      latitude: station.latitude,
-      longitude: station.longitude,
+      latitude: validLat,
+      longitude: validLng,
       type: 'pointOfInterest',
       description: `${station.brand} - ${station.hours}${station.seasonalHours ? ' (horaires saisonniers)' : ''}`,
       isPrimary: station.isStrategic,
@@ -61,4 +71,3 @@ export const mainCityPOIs = convertGasStationsToPOI(mainGasStations);
 // Debug log
 console.log(`POIs créés: ${gasStationPOIs.length} stations totales, ${strategicGasStationPOIs.length} stations stratégiques`);
 console.log(`POIs par région: Bastia (${bastiaPOIs.length}), Ajaccio (${ajaccioPOIs.length}), Cap Corse (${capCorsePOIs.length}), Autres villes (${otherCityPOIs.length})`);
-

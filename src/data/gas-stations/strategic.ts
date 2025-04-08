@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from 'uuid';
 import { GasStation } from './types';
 
 // Stations stratégiques mentionnées dans l'article
-// COORDONNÉES CORRIGÉES: Ne pas intervertir latitude et longitude!
 export const strategicGasStations: GasStation[] = [
   {
     id: uuidv4(),
@@ -70,6 +69,34 @@ export const strategicGasStations: GasStation[] = [
     hours: "7h-21h",
     fuelTypes: ["SP95", "SP98", "Gasoil", "SP95-E10"],
     services: ["Boutique", "Lavage", "Gonflage"],
+    isStrategic: true,
+    seasonalHours: true
+  },
+  // Ajoutons d'autres stations stratégiques pour une meilleure couverture
+  {
+    id: uuidv4(),
+    name: "Station Sainte-Lucie-de-Tallano",
+    brand: "Indépendant",
+    latitude: 41.6558,
+    longitude: 9.1117,
+    address: "D268, Sainte-Lucie-de-Tallano",
+    region: "Alta Rocca",
+    hours: "8h-19h",
+    fuelTypes: ["SP95", "Gasoil"],
+    isStrategic: true,
+    seasonalHours: true
+  },
+  {
+    id: uuidv4(),
+    name: "Station Zonza",
+    brand: "Total",
+    latitude: 41.7508,
+    longitude: 9.2156,
+    address: "D268, Zonza",
+    region: "Alta Rocca",
+    hours: "7h-19h",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique"],
     isStrategic: true,
     seasonalHours: true
   }

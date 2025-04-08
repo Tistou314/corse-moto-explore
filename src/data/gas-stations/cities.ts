@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { GasStation } from './types';
 
 // Stations principales dans les grandes villes
-// COORDONNÉES CORRIGÉES: Ne pas intervertir latitude et longitude!
+// COORDONNÉES CORRIGÉES
 export const bastiaStations: GasStation[] = [
   {
     id: uuidv4(),
@@ -29,6 +29,19 @@ export const bastiaStations: GasStation[] = [
     hours: "24/7",
     fuelTypes: ["SP95", "SP98", "Gasoil", "SP95-E10"],
     services: ["Boutique", "Lavage"],
+    isStrategic: false
+  },
+  {
+    id: uuidv4(),
+    name: "Esso Express Bastia Sud",
+    brand: "Esso",
+    latitude: 42.6642,
+    longitude: 9.4369,
+    address: "Route Nationale 193, Bastia",
+    region: "Bastia",
+    hours: "24/7",
+    fuelTypes: ["SP95", "SP98", "Gasoil", "SP95-E10"],
+    services: ["Boutique", "Lavage", "Gonflage"],
     isStrategic: false
   }
 ];
@@ -59,6 +72,19 @@ export const ajaccioStations: GasStation[] = [
     fuelTypes: ["SP95", "SP98", "Gasoil", "SP95-E10", "GPL"],
     services: ["Boutique", "Lavage", "Gonflage", "Restauration"],
     isStrategic: false
+  },
+  {
+    id: uuidv4(),
+    name: "Total Energies Baléone",
+    brand: "Total",
+    latitude: 41.9490,
+    longitude: 8.8125,
+    address: "Centre Commercial Baléone, Ajaccio",
+    region: "Ajaccio",
+    hours: "24/7",
+    fuelTypes: ["SP95", "SP98", "Gasoil", "SP95-E10"],
+    services: ["Boutique", "Lavage", "Gonflage"],
+    isStrategic: false
   }
 ];
 
@@ -78,7 +104,21 @@ export const otherCityStations: GasStation[] = [
     isStrategic: false,
     seasonalHours: true
   },
-  
+  // L'Île-Rousse
+  {
+    id: uuidv4(),
+    name: "Station L'Île-Rousse",
+    brand: "Vito",
+    latitude: 42.6338,
+    longitude: 8.9383,
+    address: "Avenue Paul Doumer, L'Île-Rousse",
+    region: "Balagne",
+    hours: "7h-20h",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique", "Gonflage"],
+    isStrategic: false,
+    seasonalHours: true
+  },
   // Porto-Vecchio
   {
     id: uuidv4(),
@@ -93,7 +133,19 @@ export const otherCityStations: GasStation[] = [
     services: ["Boutique", "Gonflage"],
     isStrategic: false
   },
-  
+  {
+    id: uuidv4(),
+    name: "Leclerc Porto-Vecchio",
+    brand: "Leclerc",
+    latitude: 41.6031,
+    longitude: 9.2919,
+    address: "Route de Bastia, Porto-Vecchio",
+    region: "Extrême Sud",
+    hours: "24/7",
+    fuelTypes: ["SP95", "SP98", "Gasoil", "SP95-E10", "GPL"],
+    services: ["Boutique", "Lavage", "Gonflage"],
+    isStrategic: false
+  },
   // Corte
   {
     id: uuidv4(),
@@ -108,7 +160,6 @@ export const otherCityStations: GasStation[] = [
     services: ["Boutique", "Lavage", "Gonflage"],
     isStrategic: true
   },
-  
   // Bonifacio
   {
     id: uuidv4(),
@@ -123,5 +174,34 @@ export const otherCityStations: GasStation[] = [
     services: ["Boutique"],
     isStrategic: false,
     seasonalHours: true
+  },
+  // Propriano
+  {
+    id: uuidv4(),
+    name: "Station Propriano Port",
+    brand: "Total",
+    latitude: 41.6753,
+    longitude: 8.9036,
+    address: "Avenue Napoléon III, Propriano",
+    region: "Valinco",
+    hours: "7h-20h",
+    fuelTypes: ["SP95", "SP98", "Gasoil", "SP95-E10"],
+    services: ["Boutique", "Lavage"],
+    isStrategic: false,
+    seasonalHours: true
+  },
+  // Sartène
+  {
+    id: uuidv4(),
+    name: "Station Sartène",
+    brand: "Esso",
+    latitude: 41.6211,
+    longitude: 8.9736,
+    address: "Route de Bonifacio, Sartène",
+    region: "Valinco",
+    hours: "7h-19h",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique"],
+    isStrategic: false
   }
 ];

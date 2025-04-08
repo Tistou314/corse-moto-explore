@@ -1,5 +1,5 @@
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useId } from 'react';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
@@ -14,9 +14,10 @@ import { toast } from 'sonner';
 const GasStationsMap = () => {
   const [showStrategicOnly, setShowStrategicOnly] = useState(true);
   const [locations, setLocations] = useState(strategicGasStationPOIs);
+  const instanceId = useId(); // ID unique pour cette instance de la carte
   
   // Utiliser un ID stable pour la carte qui ne change que lors des toggles
-  const [mapKey, setMapKey] = useState('strategic-stations-map');
+  const [mapKey, setMapKey] = useState(`strategic-stations-map-${instanceId}`);
   
   // Utiliser useCallback pour la fonction de toggle
   const toggleStationDisplay = useCallback(() => {
@@ -24,7 +25,8 @@ const GasStationsMap = () => {
     setShowStrategicOnly(newShowStrategic);
     
     // Générer une nouvelle clé uniquement lors du changement de type d'affichage
-    setMapKey(newShowStrategic ? 'strategic-stations-map' : 'all-stations-map');
+    const newKey = newShowStrategic ? `strategic-stations-map-${instanceId}` : `all-stations-map-${instanceId}`;
+    setMapKey(newKey);
     
     // Mettre à jour les locations immédiatement
     const newLocations = newShowStrategic ? strategicGasStationPOIs : gasStationPOIs;
@@ -33,12 +35,34 @@ const GasStationsMap = () => {
     // Notification à l'utilisateur
     toast.success(`${newLocations.length} stations affichées sur la carte`, {
       id: 'stations-update',
+      duration: 2000
     });
-  }, [showStrategicOnly]);
+  }, [showStrategicOnly, instanceId]);
   
   // Initialisation au chargement
   useEffect(() => {
     console.log(`GasStationsMap init: ${strategicGasStationPOIs.length} stations stratégiques, ${gasStationPOIs.length} stations totales`);
+    
+    // Vérification de la validité des coordonnées
+    const validateCoordinates = (pois) => {
+      return pois.filter(poi => {
+        if (!poi || typeof poi.latitude !== 'number' || typeof poi.longitude !== 'number') {
+          console.error("POI avec coordonnées manquantes:", poi?.title);
+          return false;
+        }
+        return true;
+      });
+    };
+    
+    const validStrategic = validateCoordinates(strategicGasStationPOIs);
+    const validAll = validateCoordinates(gasStationPOIs);
+    
+    console.log(`Stations valides: ${validStrategic.length}/${strategicGasStationPOIs.length} stratégiques, ${validAll.length}/${gasStationPOIs.length} totales`);
+    
+    // Si les données sont initialisées avec des erreurs, utiliser les données valides
+    if (validStrategic.length !== strategicGasStationPOIs.length) {
+      setLocations(validStrategic);
+    }
   }, []);
 
   return (

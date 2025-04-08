@@ -1,6 +1,6 @@
 
 import mapboxgl from 'mapbox-gl';
-import { markerTypes, MapLocation, isWithinCorsica } from './types';
+import { markerTypes, MapLocation, isWithinCorsica, validateAndFixCoordinates } from './types';
 
 interface CreateMarkerProps {
   location: MapLocation;
@@ -19,11 +19,15 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     return null;
   }
   
-  // Vérification que les coordonnées sont dans une plage valide pour la Corse
-  if (!isWithinCorsica(location.latitude, location.longitude)) {
-    console.warn(`Coordonnées possiblement hors de la Corse pour ${location.title}: [${location.latitude}, ${location.longitude}]`);
-    // On continue quand même la création pour permettre de visualiser et déboguer
+  // Vérification et correction des coordonnées
+  const validatedCoords = validateAndFixCoordinates(location.latitude, location.longitude);
+  if (!validatedCoords) {
+    console.error(`Impossible de créer un marqueur pour ${location.title}: coordonnées trop éloignées de la Corse`);
+    return null;
   }
+  
+  // Utiliser les coordonnées validées/corrigées
+  const [validLat, validLng] = validatedCoords;
 
   const el = document.createElement('div');
   el.className = 'marker';
@@ -48,11 +52,9 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   el.style.border = '2px solid white';
   el.style.zIndex = '999';
   
-  // CORRECTION: Définir explicitly transformOrigin pour corriger le glissement
+  // Définir correctement le transformOrigin pour éviter le glissement
   el.style.transform = 'translate(-50%, -50%)';  
-  el.style.transformOrigin = 'center center';
-  el.style.top = '0';
-  el.style.left = '0';
+  el.style.transformOrigin = 'center';
   
   // Style spécifique pour les stations stratégiques
   if (location.isPrimary) {
@@ -117,7 +119,7 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     el.insertBefore(pulseEffect, el.firstChild);
   }
 
-  // CORRIGER: Effets de survol sans changer la transformation translate
+  // Effets de survol sans changer la transformation translate
   el.addEventListener('mouseenter', () => {
     el.style.boxShadow = '0 4px 10px rgba(0,0,0,0.5)';
     el.style.filter = 'brightness(1.1)';
@@ -139,12 +141,13 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   }
 
   try {
-    // IMPORTANT: Création du marqueur avec ordre longitude, latitude pour Mapbox
+    // Création du marqueur avec ordre longitude, latitude pour Mapbox
+    // et utilisation des coordonnées validées
     const marker = new mapboxgl.Marker({
       element: el,
-      anchor: 'center',
+      anchor: 'center'
     })
-      .setLngLat([location.longitude, location.latitude])
+      .setLngLat([validLng, validLat])
       .addTo(map);
 
     // Gestionnaire d'événement de clic
