@@ -1,3 +1,4 @@
+
 import { BlogPost } from './blog/types';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -18,13 +19,13 @@ const articlesCommunautesMotards: BlogPost[] = [];
 const articlesSpotsPanoramiques: BlogPost[] = [];
 
 // Convert tourCapCorse to BlogPost format - using directly as it now matches the type
-const articleCircuitCapCorse: BlogPost = tourCapCorse;
+const articleCircuitCapCorse: BlogPost = tourCapCorse as BlogPost;
 
 // Convert route des vins to BlogPost format - using directly as it now matches the type
-const articleRouteDesVins: BlogPost = routeDesVins;
+const articleRouteDesVins: BlogPost = routeDesVins as BlogPost;
 
 // Convert route grand sud to BlogPost format - using directly as it now matches the type
-const articleRouteGrandSud: BlogPost = routeGrandSud;
+const articleRouteGrandSud: BlogPost = routeGrandSud as BlogPost;
 
 // Article des stations-service
 export const articleStationsService: BlogPost = {

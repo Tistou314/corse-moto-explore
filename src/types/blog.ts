@@ -12,7 +12,7 @@ export interface BlogPost {
     bio?: string;
   };
   category: string;
-  slug?: string;
+  slug: string; // Changed from optional to required
   readingTime?: string;
   tags?: string[];
   authorTitle?: string;

@@ -1,203 +1,83 @@
 import { BlogPost } from '@/types/blog';
 
-export const spotsPanoramiques: BlogPost = {
-  id: 'spots-panoramiques-secrets',
-  title: 'Spots panoramiques secrets connus des locaux',
-  excerpt: 'Découvrez ces points de vue exceptionnels, hors des sentiers battus, que seuls les habitants connaissent pour des photos inoubliables.',
+export const spotsPanoramiquesArticle: BlogPost = {
+  id: 'spots-photos-panoramiques',
+  title: 'Les meilleurs spots panoramiques pour photographier la Corse à moto',
+  excerpt: 'Découvrez les points de vue les plus spectaculaires accessibles à moto pour immortaliser vos souvenirs corses.',
   content: `
-# Spots panoramiques secrets connus des locaux
+# Les meilleurs spots panoramiques pour photographier la Corse à moto
 
-La Corse regorge de points de vue spectaculaires, mais au-delà des sites touristiques répertoriés dans tous les guides, il existe des spots panoramiques confidentiels, connus principalement des habitants. Ces lieux offrent souvent des perspectives uniques sur l'île, loin des foules et parfaits pour des photos mémorables. Voici notre sélection de ces trésors cachés, accessibles à moto.
+La Corse, avec ses paysages à couper le souffle, est un véritable paradis pour les photographes. Que vous soyez un professionnel ou un amateur, l'île de Beauté regorge de spots panoramiques exceptionnels accessibles à moto. Voici une sélection des meilleurs points de vue pour immortaliser vos souvenirs corses sur deux roues.
 
-## Région de Bastia et Cap Corse
+## Le Cap Corse : une mosaïque de paysages marins
 
-### Crête de Sisco
+Le Cap Corse, cette péninsule sauvage qui s'étire vers le nord, offre une diversité de paysages marins à couper le souffle. La route qui en fait le tour est un véritable balcon sur la Méditerranée, avec des points de vue imprenables à chaque virage.
 
-**Comment y accéder** :
-* Depuis Bastia, prendre la D80 vers le Cap Corse
-* À Sisco, suivre la petite route communale direction "Teghie"
-* Parcourir 3,5 km jusqu'au hameau, puis continuer sur la piste carrossable (800m)
-* Les derniers 200m se font à pied
+### Le moulin Mattei : un panorama à 360°
 
-**Ce qui vous attend** :
-* Vue à 180° sur la côte est du Cap
-* Perspective unique sur les îles toscanes par temps clair
-* Coucher de soleil qui illumine toute la côte orientale
+Situé sur les hauteurs de la commune de Centuri, le moulin Mattei offre un panorama exceptionnel à 360° sur le Cap Corse. Vous pourrez admirer la côte ouest sauvage, les îles Finocchiarola à l'est, et par temps clair, l'île d'Elbe et les côtes italiennes.
 
-**Conseil local** : *"Emportez un pique-nique et arrivez 1h avant le coucher du soleil. Le spectacle de la mer qui passe du bleu au doré est incomparable."* - Maria, habitante de Sisco
+### La tour de Sénèque : un point de vue historique
 
-### Moulin abandonné de Cardo
+Perchée sur un piton rocheux, la tour de Sénèque offre une vue imprenable sur les deux côtes du Cap Corse. Ce site historique, qui aurait servi de refuge au philosophe romain Sénèque lors de son exil, est accessible par un sentier de randonnée depuis le village de Lavasina.
 
-**Comment y accéder** :
-* Depuis la sortie nord de Bastia, suivre les indications pour Cardo
-* Traverser le village en montant
-* Au dernier virage après le village, chercher un chemin de terre sur la droite (repère: petit muret en pierre)
-* Stationnement possible pour motos, puis 5 minutes de marche
+### Le col de la Serra : une vue plongeante sur Macinaggio
 
-**Ce qui vous attend** :
-* Vue plongeante sur Bastia, sa citadelle et son vieux port
-* Panorama embrassant toute la plaine orientale
-* Ancien moulin partiellement restauré comme premier plan
+Le col de la Serra, situé sur la route D80 entre Macinaggio et Barcaggio, offre une vue plongeante sur le port de plaisance de Macinaggio et les îles Finocchiarola. C'est un spot idéal pour photographier les bateaux et les couchers de soleil.
 
-**Astuce photo** : *"Venez à l'heure bleue (juste après le coucher du soleil) pour voir les lumières de la ville s'allumer progressivement."* - Jean-Philippe, photographe bastiais
+## La côte ouest : entre Calanques et villages perchés
 
-## Région d'Ajaccio et Golfe de Valinco
+La côte ouest de la Corse est célèbre pour ses paysages spectaculaires, avec les Calanques de Piana, la réserve de Scandola et les villages perchés de Speloncato et Pigna.
 
-### Piémont de Punta Capraja
+### Les Calanques de Piana : un site classé au patrimoine mondial de l'UNESCO
 
-**Comment y accéder** :
-* Depuis Ajaccio, prendre la route des Sanguinaires (D111)
-* Après la Tour de la Parata, continuer 1,2 km
-* Chercher sur la gauche un chemin discret entre deux buissons de maquis
-* Parking limité, idéal à moto
-* Marche de 15 minutes sur sentier bien tracé
+Les Calanques de Piana, classées au patrimoine mondial de l'UNESCO, sont un incontournable pour les photographes. Ces formations rocheuses rougeoyantes, sculptées par le vent et la mer, offrent des paysages uniques au monde. La route qui traverse les Calanques est un véritable défi pour les motards, avec ses virages en épingle et ses à-pics vertigineux.
 
-**Ce qui vous attend** :
-* Vue surplombante sur les îles Sanguinaires
-* Perspective unique sur la baie d'Ajaccio et les montagnes en arrière-plan
-* Formations rocheuses rougeâtres sculptées par le vent
+### Le village de Pigna : un balcon sur la Balagne
 
-**Meilleur moment** : *"Ce spot est magique au lever du soleil quand les premiers rayons frappent les îles Sanguinaires, créant un contraste saisissant avec la mer encore dans l'ombre."* - Antoine, guide local
+Le village de Pigna, perché sur une colline au cœur de la Balagne, offre une vue panoramique sur la plaine et la mer. Ce village d'artisans, connu pour ses maisons aux volets bleus, est un lieu idéal pour flâner et prendre des photos.
 
-### Crête du Liamone
+### La plage d'Arone : un spot pour les couchers de soleil
 
-**Comment y accéder** :
-* Depuis Sagone, prendre la D81 direction Porto
-* Après 8 km, repérer une petite chapelle sur la droite
-* Stationner à proximité
-* Suivre le sentier qui monte pendant environ 25 minutes
+La plage d'Arone, située au sud de Piana, est un spot idéal pour photographier les couchers de soleil. Cette plage de sable fin, bordée de rochers rouges, offre un cadre idyllique pour terminer la journée.
 
-**Ce qui vous attend** :
-* Panorama à 360° sur le golfe de Sagone et les montagnes environnantes
-* Vue plongeante sur l'embouchure du Liamone et ses méandres
-* Aperçu du golfe de Porto au loin par temps clair
+## L'intérieur des terres : montagnes et forêts
 
-**Particularité** : *"C'est le seul endroit où l'on peut voir simultanément les golfes de Sagone, d'Ajaccio et de Porto. Venez au printemps quand les fleurs du maquis sont en pleine floraison."* - Lucien, berger local
+L'intérieur des terres de la Corse offre des paysages montagneux et forestiers spectaculaires, avec des lacs, des rivières et des villages isolés.
 
-## Centre Corse et régions montagneuses
+### Le lac de Melo : un joyau au cœur des montagnes
 
-### Belvédère de Campotile
+Le lac de Melo, situé dans la vallée de la Restonica, est l'un des plus beaux lacs de Corse. Ce lac glaciaire, entouré de sommets escarpés, est accessible par un sentier de randonnée depuis les bergeries de Grotelle.
 
-**Comment y accéder** :
-* Depuis Corte, prendre la D623 vers le lac de Melo
-* Après 12 km, dans un virage en épingle, repérer un sentier forestier
-* Moto facile à garer sur le bas-côté élargi
-* Marche facile de 10 minutes
+### Le col de Vergio : le point culminant de la route
 
-**Ce qui vous attend** :
-* Vue spectaculaire sur les aiguilles de Popolasca
-* Perspective unique sur la vallée de la Restonica et ses piscines naturelles
-* Forêts de pins laricio en premier plan
+Le col de Vergio, situé à 1477 mètres d'altitude, est le point culminant de la route en Corse. Ce col offre une vue panoramique sur les montagnes environnantes et la forêt d'Aïtone.
 
-**Conseil de local** : *"Apportez des jumelles ! Par temps clair, on peut observer les mouflons qui se déplacent sur les crêtes environnantes."* - Paul, garde forestier
+### Le village de Corte : la capitale historique de la Corse
 
-### Plateau d'Ese (accès confidentiel)
+Le village de Corte, situé au cœur de la Corse, est la capitale historique de l'île. Ce village, dominé par sa citadelle, offre une vue imprenable sur les montagnes environnantes.
 
-**Comment y accéder** :
-* Depuis Bastelica, suivre les indications vers la station d'Ese
-* Au lieu de monter à la station, prendre à droite sur la piste forestière (praticable en moto trail)
-* Après 4 km de piste, chercher une clairière sur la gauche
-* Possibilité de continuer 800m à pied par un sentier discret
+## Conseils pratiques pour photographier la Corse à moto
 
-**Ce qui vous attend** :
-* Vue imprenable sur le Monte Renoso et les lacs d'altitude
-* Panorama sur la vallée du Prunelli
-* Au loin, aperçu de la côte orientale et parfois même de l'Italie
+Voici quelques conseils pratiques pour réussir vos photos en Corse à moto :
 
-**Particularité** : *"C'est l'un des rares endroits en Corse où l'on peut voir à la fois la mer Tyrrhénienne et la Méditerranée par temps exceptionnellement clair. Le contraste entre les neiges du Renoso et la mer bleue est saisissant au printemps."* - Marco, accompagnateur en montagne
+* **Choisissez le bon moment :** La lumière est plus belle tôt le matin et en fin de journée.
+* **Soyez attentif à la météo :** Le ciel bleu est idéal pour les paysages marins, mais les nuages peuvent donner du caractère aux photos de montagne.
+* **Variez les points de vue :** N'hésitez pas à vous déplacer et à prendre des photos sous différents angles.
+* **Utilisez un trépied :** Un trépied vous permettra de prendre des photos nettes, même en basse lumière.
+* **Protégez votre matériel :** La poussière et l'humidité peuvent endommager votre appareil photo.
 
-## Région de Calvi et Balagne
-
-### Promontoire de Sant'Ambroggio
-
-**Comment y accéder** :
-* Entre Calvi et L'Île-Rousse, prendre la sortie vers la marine de Sant'Ambroggio
-* Traverser la marina et continuer sur la petite route du bord de mer
-* Après le dernier bâtiment, prendre le sentier littoral sur 400m
-* Facile d'accès en moto jusqu'au début du sentier
-
-**Ce qui vous attend** :
-* Vue exceptionnelle sur la baie de Calvi et sa citadelle
-* Perspective unique sur les montagnes plongeant dans la mer
-* Rochers sculptés par l'érosion en premier plan
-
-**Astuce photo** : *"Les couleurs sont magiques en fin de journée quand le soleil couchant illumine la citadelle de Calvi et fait scintiller la mer."* - Sophie, photographe professionnelle
-
-### Chapelle San Cervone
-
-**Comment y accéder** :
-* Depuis Pigna, prendre la petite route vers Corbara
-* À mi-chemin, chercher un chemin de terre sur la gauche après un virage en épingle
-* Stationnement facile pour motos, 10 minutes de marche facile
-
-**Ce qui vous attend** :
-* Panorama à 180° sur toute la Balagne, de Calvi à L'Île-Rousse
-* Villages perchés de Sant'Antonino et Pigna en premier plan
-* Vue sur les vallées cultivées et leurs oliveraies centenaires
-
-**Conseil local** : *"Ce lieu est particulièrement magique en février-mars quand les amandiers sont en fleurs, créant des taches blanches et roses sur les collines environnantes."* - Angelina, agricultrice à Corbara
-
-## Extrême Sud et Porto-Vecchio
-
-### Crête de l'Ospedale
-
-**Comment y accéder** :
-* Depuis Porto-Vecchio, prendre la route de l'Ospedale
-* 2 km après le barrage, chercher sur la droite une piste forestière (panneau discret "Sentier botanique")
-* Stationnement possible en bordure, puis 20 minutes de marche modérée
-
-**Ce qui vous attend** :
-* Vue spectaculaire sur le golfe de Porto-Vecchio et ses plages
-* Perspective sur les îles Cerbicales
-* Par temps clair, vue jusqu'à la Sardaigne
-
-**Meilleur moment** : *"À l'aube, quand la brume matinale recouvre encore la plaine côtière et que seuls les sommets dépassent, créant l'illusion d'îles flottant dans un océan de nuages."* - Thomas, garde forestier
-
-### Promontoire de Semida
-
-**Comment y accéder** :
-* Depuis la N196 entre Bonifacio et Figari, prendre la petite route vers Figari plage
-* Après 3 km, au niveau d'une bergerie rénovée, chercher un chemin de terre sur la gauche
-* Accessible en moto trail, sinon stationner et marcher 15 minutes
-
-**Ce qui vous attend** :
-* Vue incroyable sur les falaises de Bonifacio
-* Perspective unique sur les Bouches de Bonifacio et la Sardaigne
-* Formations granitiques érodées par le vent comme premier plan
-
-**Astuce** : *"Venez avec une longue-vue ou un téléobjectif puissant. On peut observer les bateaux qui naviguent dans les Bouches de Bonifacio et même les dauphins qui les accompagnent parfois."* - Françoise, biologiste marine
-
-## Conseils pratiques pour ces spots secrets
-
-### Préparation et équipement
-
-* **Coordonnées GPS** : Notez précisément les coordonnées, la couverture réseau peut être aléatoire
-* **Chaussures adaptées** : Même pour les courtes marches, des chaussures fermées sont recommandées
-* **Équipement photo** : Un trépied léger fait toute la différence, surtout à l'aube et au crépuscule
-* **Provisions** : Emportez eau et encas, ces lieux sont généralement éloignés de tout commerce
-
-### Respect des lieux
-
-* **Discrétion** : Partagez ces spots avec parcimonie pour préserver leur caractère confidentiel
-* **Zéro déchet** : Remportez absolument tous vos déchets
-* **Propriétés privées** : Certains accès peuvent traverser des propriétés, restez sur les sentiers
-* **Risque incendie** : Extrême vigilance en période estivale, pas de cigarette ou barbecue
-
-### Sécurité
-
-* **Informez quelqu'un** : Pour les spots les plus isolés, communiquez votre destination
-* **Météo** : Vérifiez les conditions, certains points de vue deviennent dangereux par grand vent
-* **Équipement** : Lampe frontale conseillée si vous prévoyez de rester jusqu'au crépuscule
-* **Faune locale** : Attention aux sangliers et renards, particulièrement actifs à l'aube et au crépuscule
-
-## Conclusion
-
-Ces spots panoramiques secrets constituent la quintessence de ce que la Corse peut offrir aux motards aventureux. Loin de l'agitation touristique, ils permettent une connexion plus intime avec l'île et ses paysages à couper le souffle.
-
-Préservez ces lieux comme des trésors, partagez-les avec respect, et ils vous offriront parmi les plus beaux souvenirs visuels de votre périple corse. Ces instants où, seul face à l'immensité du paysage, vous comprendrez pourquoi la Corse mérite pleinement son surnom d'Île de Beauté.
-    `,
-  image: 'https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&q=80',
-  date: '28 août 2023',
-  author: 'Sophie Antonietti',
-  category: 'Ressources locales'
+La Corse est un véritable terrain de jeu pour les photographes. Alors, enfourchez votre moto et partez à la découverte des plus beaux spots panoramiques de l'île de Beauté !
+  `,
+  imageUrl: 'https://images.unsplash.com/photo-1531219572328-a0171b4448a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+  date: '15 juillet 2025',
+  author: {
+    name: 'Antoine Marcelli',
+    avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
+    bio: 'Photographe et motard corse depuis 15 ans'
+  },
+  category: 'Ressources locales',
+  slug: 'spots-photos-panoramiques',
+  readingTime: '7 min',
+  tags: ['photographie', 'paysages', 'points de vue']
 };

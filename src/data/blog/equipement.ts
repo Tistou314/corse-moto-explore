@@ -211,10 +211,17 @@ Petit truc de motard photographe : pour les photos de groupe, utilisez le retard
 N'oubliez pas de créer un album partagé avec vos compagnons de route. Ces souvenirs de virages corses vous réchaufferont le cœur pendant les longs mois d'hiver !
 
 La Corse à moto, c'est bien plus qu'un simple road trip, c'est une expérience qui marque à vie. Entre mer et montagne, villages authentiques et routes de rêve, vous reviendrez transformé de cette aventure sur l'île de Beauté. Alors, casque sur la tête et sourire aux lèvres, la Corse vous attend pour une symphonie de virages dont vous vous souviendrez longtemps !`,
-    image: 'https://images.unsplash.com/photo-1508881598441-324f3974994b?auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1508881598441-324f3974994b?auto=format&fit=crop&q=80',
     date: '20 juin 2025',
-    author: 'Michel Costa',
-    category: 'Équipement et préparation'
+    author: {
+      name: 'Michel Costa',
+      avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
+      bio: 'Motard passionné et guide expérimenté en Corse'
+    },
+    category: 'Équipement et préparation',
+    slug: 'preparer-moto-corse',
+    readingTime: '10 min',
+    tags: ['preparation', 'road-trip', 'voyage', 'equipement']
   },
   {
     id: 'quelle-moto-choisir',
@@ -222,7 +229,7 @@ La Corse à moto, c'est bien plus qu'un simple road trip, c'est une expérience 
     excerpt: 'Analyse comparative des types de motos les plus adaptés aux routes corses, entre sportives, trails, et routières.',
     content: `
 # Quelle moto choisir pour un voyage en Corse ?
-La Corse, véritable paradis pour les motards, offre des routes sinueuses et des panoramas spectaculaires à chaque virage. Avant de partir à l'assaut de l'île de beauté, le choix de ta monture est primordial pour profiter pleinement de cette aventure. Entre routes côtières ensoleillées et cols montagneuses exigeants, la moto idéale dépendra de ton style de conduite et des exp��riences que tu recherches.
+La Corse, véritable paradis pour les motards, offre des routes sinueuses et des panoramas spectaculaires à chaque virage. Avant de partir à l'assaut de l'île de beauté, le choix de ta monture est primordial pour profiter pleinement de cette aventure. Entre routes côtières ensoleillées et cols montagneuses exigeants, la moto idéale dépendra de ton style de conduite et des expériences que tu recherches.
 
 ## Les types de motos adaptés à la Corse
 Les routes corses, aussi diverses que ses paysages, appellent à réfléchir au type de moto le plus adapté. Du littoral aux sommets, chaque machine présente ses avantages spécifiques.
@@ -279,7 +286,7 @@ La Corse séduit les motards du monde entier par son caractère unique. Entre me
 L'île de beauté concentre une variété de paysages exceptionnelle sur un territoire relativement compact. En une seule journée, tu peux passer des plages de sable fin aux cols de montagne à plus de 1000 mètres d'altitude. Cette diversité se reflète dans les routes : côtières et panoramiques au bord de la mer, techniques et sinueuses en montagne. Chaque virage révèle un nouveau tableau, chaque col franchi dévoile un horizon différent.
 
 ### Climat favorable et patrimoine culturel
-Le climat méditerranéen de la Corse, avec son ensoleillement généreux, crée des conditions idéales pour la pratique de la moto. Au-delà des paysages, l'île te réserve un riche patrimoine à découvrir lors de tes pauses : citadelles génoises à Bonifacio et Calvi, villages perchés de Balagne, site préhistorique de Filitosa. Sans oublier les spécialités gastronomiques comme le brocciu, la charcuterie corse ou les vins du patrimonio qui récompenseront tes efforts après une journée en selle.
+Le climat méditerranéen de la Corse, avec son ensoleillement généréux, crée des conditions idéales pour la pratique de la moto. Au-delà des paysages, l'île te réserve un riche patrimoine à découvrir lors de tes pauses : citadelles génoises à Bonifacio et Calvi, villages perchés de Balagne, site préhistorique de Filitosa. Sans oublier les spécialités gastronomiques comme le brocciu, la charcuterie corse ou les vins du patrimonio qui récompenseront tes efforts après une journée en selle.
 
 ## Conseils pratiques pour un séjour réussi
 La réussite de ton voyage à moto en Corse dépend aussi de quelques conseils pratiques qui te permettront d'anticiper les difficultés et de profiter pleinement de ton expérience sur les routes de l'île.
@@ -317,10 +324,17 @@ Pour un tour complet en une semaine, voici un itinéraire équilibré :
 
 La Corse t'offre un terrain de jeu exceptionnel à moto, mêlant plaisir de pilotage et découvertes culturelles. Quelle que soit ta monture, l'île de beauté saura te séduire par ses routes variées et ses paysages grandioses. Alors, enfile ton casque et pars à la conquête de ce joyau méditerranéen !
     `,
-    image: 'https://images.unsplash.com/photo-1508881598441-324f3974994b?auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1508881598441-324f3974994b?auto=format&fit=crop&q=80',
     date: '20 juin 2025',
-    author: 'Michel Costa',
-    category: 'Équipement et préparation'
+    author: {
+      name: 'Michel Costa',
+      avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
+      bio: 'Expert en motos de voyage et routes corses'
+    },
+    category: 'Équipement et préparation',
+    slug: 'quelle-moto-choisir',
+    readingTime: '8 min',
+    tags: ['motos', 'comparatif', 'choix-moto']
   },
   {
     id: 'equipement-saisonnier',
@@ -429,9 +443,16 @@ La gestion des différentes couches d'équipement nécessite une organisation ri
 
 En adaptant votre équipement à la saison et en restant flexible face aux variations météorologiques, vous maximiserez votre confort et votre sécurité sur les routes corses. N'oubliez pas que la météo peut changer rapidement en montagne, quelle que soit la saison : être préparé est la clé d'une expérience réussie.
     `,
-    image: 'https://images.unsplash.com/photo-1591637333472-2381b3d45a95?auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1591637333472-2381b3d45a95?auto=format&fit=crop&q=80',
     date: '28 juin 2025',
-    author: 'Jean Mattei',
-    category: 'Équipement et préparation'
+    author: {
+      name: 'Jean Mattei',
+      avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
+      bio: 'Spécialiste en équipement moto pour toutes saisons'
+    },
+    category: 'Équipement et préparation',
+    slug: 'equipement-saisonnier',
+    readingTime: '7 min',
+    tags: ['equipement', 'saisons', 'meteo', 'securite']
   }
 ];

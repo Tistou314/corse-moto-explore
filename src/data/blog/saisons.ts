@@ -1,15 +1,22 @@
-
 import { BlogPost } from '@/types/blog';
 
 export const saisonsArticles: BlogPost[] = [
   {
-    id: 'meilleures-saisons-moto-corse',
-    title: 'Les meilleures saisons pour découvrir la Corse à moto',
-    excerpt: 'Quand partir pour profiter au maximum des routes corses ? Analyse des avantages de chaque saison pour votre road trip.',
+    id: 'printemps-corse-moto',
+    title: 'Le printemps en Corse à moto : la saison idéale ?',
+    excerpt: 'Découvrez pourquoi la période avril-juin offre les meilleures conditions pour explorer l\'île de beauté sur deux roues.',
     content: `
-# Les meilleures saisons pour découvrir la Corse à moto
+# Le printemps en Corse à moto : la saison idéale ?
 
-La Corse offre des paysages magnifiques tout au long de l'année, mais chaque saison présente ses avantages et inconvénients pour la découvrir à moto. Voici un guide pour vous aider à choisir le moment idéal pour votre voyage.
+Le printemps est probablement la meilleure période pour découvrir la Corse à moto :
+
+* **Températures** : Douces et agréables (15-25°C)
+* **Affluence** : Modérée, les sites touristiques sont accessibles sans foule
+* **Nature** : L'île est en fleurs, particulièrement en mai avec le maquis qui exhale ses parfums
+* **Routes de montagne** : Généralement toutes ouvertes dès la mi-avril (sauf année exceptionnelle)
+* **Tarifs** : Plus abordables qu'en haute saison
+
+**Note** : Mai est particulièrement recommandé pour le parfait équilibre entre météo, affluence et beauté des paysages.
 
 ## Printemps (avril-juin) : la saison idéale
 
@@ -65,17 +72,24 @@ Pour la majorité des motards, le printemps (mai-juin) et le début de l'automne
 
 Quelle que soit la saison choisie, vérifiez toujours la météo avant de partir et adaptez votre équipement en conséquence. La montagne corse peut réserver des surprises, même en plein été !
     `,
-    image: 'https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?auto=format&fit=crop&q=80',
-    date: '20 février 2023',
-    author: 'Marie Santoni',
-    category: 'Conseils saisonniers'
+    imageUrl: 'https://cdn.pixabay.com/photo/2016/09/02/18/38/motorcycle-1639320_1280.jpg',
+    date: '20 février 2025',
+    author: {
+      name: 'Sophie Luciani',
+      avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
+      bio: 'Guide moto locale spécialiste des saisons en Corse'
+    },
+    category: 'Conseils saisonniers',
+    slug: 'printemps-corse-moto',
+    readingTime: '6 min',
+    tags: ['printemps', 'météo', 'conseils']
   },
   {
     id: 'automne-corse-moto',
-    title: 'L\'automne en Corse : la saison idéale pour les motards ?',
-    excerpt: 'Pourquoi l\'automne pourrait être le meilleur moment pour découvrir la Corse à moto : avantages, météo et ambiance.',
+    title: 'L\'automne en Corse à moto : couleurs flamboyantes et routes désertes',
+    excerpt: 'Comment profiter de l\'arrière-saison en Corse : météo, itinéraires recommandés et avantages de cette période méconnue.',
     content: `
-# L'automne en Corse : la saison idéale pour les motards ?
+# L'automne en Corse à moto : couleurs flamboyantes et routes désertes
 
 L'automne corse reste l'un des secrets les mieux gardés pour les amateurs de moto. Cette période offre un équilibre parfait entre conditions favorables et tranquillité, loin de l'effervescence estivale. Découvrez pourquoi envisager un voyage à moto en Corse entre septembre et novembre pourrait être votre meilleure décision.
 
@@ -223,154 +237,55 @@ L'automne corse offre aux motards une expérience d'une richesse exceptionnelle.
 
 Si vous recherchez l'essence même de l'expérience motarde – liberté, découverte et communion avec les paysages – sans les contraintes inhérentes à la période estivale, l'automne en Corse pourrait bien devenir votre saison de prédilection.
     `,
-    image: 'https://images.unsplash.com/photo-1475113548554-5a36f1f523d6?auto=format&fit=crop&q=80',
-    date: '20 juillet 2023',
-    author: 'Paul Rossi',
-    category: 'Conseils saisonniers'
+    imageUrl: 'https://cdn.pixabay.com/photo/2013/11/04/18/20/motorcycle-205782_1280.jpg',
+    date: '12 juillet 2025',
+    author: {
+      name: 'Marc Santini',
+      avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
+      bio: 'Organisateur de voyages moto en Corse depuis 2010'
+    },
+    category: 'Conseils saisonniers',
+    slug: 'automne-corse-moto',
+    readingTime: '7 min',
+    tags: ['automne', 'hors-saison', 'météo']
   },
   {
-    id: 'gerer-chaleur-ete-moto',
-    title: 'Rouler en Corse en été : comment gérer la chaleur et l\'affluence',
-    excerpt: 'Conseils pratiques pour supporter les températures estivales à moto et éviter les embouteillages touristiques.',
+    id: 'moto-corse-hiver',
+    title: 'La Corse à moto en hiver : possible ou à éviter ?',
+    excerpt: 'Analyse des conditions hivernales pour les motards, entre cols fermés et expériences uniques sur une île presque déserte.',
     content: `
-# Rouler en Corse en été : comment gérer la chaleur et l'affluence
+# La Corse à moto en hiver : possible ou à éviter ?
 
-La Corse en juillet-août offre des paysages magnifiques baignés de soleil, mais pose aussi de véritables défis aux motards : chaleur intense, routes encombrées et hébergements complets. Voici un guide complet pour profiter pleinement de votre voyage à moto pendant la haute saison estivale sans subir ses inconvénients.
+L'hiver n'est pas la saison la plus populaire, mais elle peut offrir une expérience unique :
 
-## Anticiper la chaleur : préparer corps et machine
+* **Températures** : Fraîches à douces sur la côte (8-15°C), froides en montagne
+* **Précipitations** : Plus fréquentes, neige possible en altitude
+* **Affluence** : Minimale, vous aurez les routes pour vous
+* **Limitations** : Certains cols de montagne peuvent être fermés
+* **Hébergement** : Choix limité, beaucoup d'établissements ferment
 
-### S'équiper intelligemment
-
-La chaleur corse peut dépasser les 35°C en plaine et sur les côtes, ce qui impose un équipement adapté :
-
-* **Casque** : Privilégiez un modèle bien ventilé avec visière photochromique
-* **Veste** : Optez pour un modèle textile technique à haute ventilation avec protections homologuées
-* **Gants** : Des gants d'été perforés courts offrent un bon compromis protection/ventilation
-* **Pantalon** : Les jeans moto avec fibres techniques ou pantalons textiles ventilés sont préférables
-* **Tour de cou rafraîchissant** : À humidifier régulièrement pour un effet refroidissant
-
-**À éviter absolument** : 
-* Les équipements non homologués sous prétexte qu'ils sont plus légers
-* La conduite en t-shirt, short ou tongs (dangereuse et passible d'amende)
-
-### Hydratation et protection
-
-* **Eau** : Emportez au minimum 1,5L par personne, idéalement dans un système d'hydratation type Camelback
-* **Pauses régulières** : Programmez un arrêt toutes les heures en période de forte chaleur
-* **Protection solaire** : Crème indice 50+ sur les zones exposées (cou, poignets)
-* **Compléments** : Des pastilles d'électrolytes peuvent aider à maintenir l'équilibre minéral
-
-### Préparer la moto pour la chaleur
-
-* **Vérification du système de refroidissement** : Niveau et qualité du liquide de refroidissement
-* **Pression des pneus** : Contrôlez-la à froid, la chaleur augmente la pression en roulant
-* **Protection réservoir** : Pour les motos à réservoir exposé, une housse réfléchissante peut éviter la surchauffe du carburant
-* **Lubrification chaîne** : Utilisez un lubrifiant adapté aux températures élevées
-
-## Stratégies pour éviter l'affluence estivale
-
-### Planification temporelle
-
-* **Départ matinal** : Commencez votre journée à l'aube (5h30-6h en été) pour profiter de températures clémentes et routes dégagées
-* **Pause méridienne** : Prévoyez une pause prolongée (12h-16h) aux heures les plus chaudes
-* **Roulage tardif** : La lumière reste excellente jusqu'à 21h en été, permettant des sessions de fin de journée agréables
-
-### Planification géographique
-
-* **Alternance littoral/montagne** : Fuyez la côte surchargée en milieu de journée pour les routes d'altitude plus fraîches
-* **Itinéraires alternatifs** : Utilisez des applications comme Calimoto ou Waze pour éviter les axes saturés
-* **Zones à éviter aux pics d'affluence** : 
-  * Porto-Vecchio et Bonifacio entre 10h et 17h
-  * Entrées/sorties d'Ajaccio et Bastia aux heures de pointe
-  * Route des Calanques de Piana entre 11h et 16h
-
-### Astuce de motard local
-
-*"Je recommande toujours aux visiteurs estivaux de faire exactement l'inverse du flux touristique : quand tout le monde descend à la plage, montez en altitude. Quand les touristes rentrent de la plage, descendez vers la côte pour profiter du coucher de soleil."* - Antoine, motard bastiais
-
-## Gestion des hébergements en haute saison
-
-### Réservation anticipée
-
-* **Délai optimal** : 3-6 mois à l'avance pour juillet-août
-* **Hébergements "motard-friendly"** : Privilégiez les établissements avec garage ou parking sécurisé
-* **Stratégie d'itinéraire** : Définissez 2-3 "camps de base" plutôt que de changer d'hébergement chaque jour
-
-### Solutions de dernière minute
-
-* **Applications spécialisées** : HotelTonight, Booking.com (filtres "disponible ce soir")
-* **Campings** : Généralement plus flexibles, certains gardent des emplacements pour les motards
-* **Réseaux locaux** : Groupes Facebook de motards corses, parfois solidaires pour l'hébergement
-
-## Itinéraires recommandés en pleine chaleur
-
-### Circuits côtiers pour les journées très chaudes
-
-* **Tour du Cap Corse** : Brise marine rafraîchissante, nombreux points de baignade
-* **Côte des Agriates** : Vents réguliers et criques isolées pour pauses baignade
-* **Route des Sanguinaires** (Ajaccio) : Facilement accessible et ventilée
-
-### Itinéraires d'altitude pour échapper à la canicule
-
-* **Col de Bavella et Alta Rocca** : 10-15°C de moins qu'en bord de mer
-* **Route des cols centraux** : Vizzavona, Vergio, Verde - fraîcheur garantie
-* **Niolu et vallée d'Asco** : Zones montagneuses préservées du tourisme de masse
-
-## Conseils de pilotage spécifiques à la chaleur
-
-### Techniques d'économie d'énergie
-
-* **Rythme adapté** : Privilégiez la fluidité à la performance
-* **Anticipation maximale** : Limitez les freinages/accélérations brusques
-* **Position détendue** : Évitez les crispations qui augmentent la fatigue
-
-### Sécurité renforcée
-
-* **Vigilance accrue** : La chaleur diminue les réflexes et la concentration
-* **Méfiance des revêtements** : Le goudron peut devenir particulièrement glissant par forte chaleur
-* **Attention aux autres usagers** : Les conducteurs de location et camping-cars sont nombreux et parfois imprévisibles
-
-## Pauses et rafraîchissement
-
-### Spots de baignade accessibles en moto
-
-* **Piscines naturelles de Bavella** : Parking à proximité, eau fraîche
-* **Plage de l'Ostriconi** : Accessible par une piste carrossable, peu fréquentée en matinée
-* **Rivière du Fango** : Points d'accès faciles depuis la route, ombre des arbres
-
-### Villages d'altitude pour les pauses déjeuner
-
-* **Evisa** : Place ombragée et restaurants à prix raisonnables
-* **Venaco** : Étape fraîche entre Corte et Ajaccio
-* **San Gavino di Carbini** : Atmosphère authentique et températures clémentes
-
-## Équipement et accessoires indispensables
-
-### Pour le motard
-
-* **Sous-vêtements techniques** : Évacuent efficacement la transpiration
-* **Brumisateur de poche** : Pour refroidissement d'urgence
-* **Lunettes de soleil polarisantes** : Réduisent l'éblouissement et la fatigue oculaire
-
-### Pour la moto
-
-* **Housse de protection** : Pour éviter la surchauffe de la selle et des instruments lors des arrêts
-* **Sac hydratation** : Fixé au réservoir ou au dos, permet de boire sans s'arrêter
-* **Thermos isotherme** : Maintient l'eau fraîche même exposée au soleil
-
-## Témoignage : Laurent, motard expérimenté
-
-*"Après trois étés consécutifs en Corse, j'ai développé mes propres astuces. Je me lève à 5h pour rouler jusqu'à 11h, puis je m'arrête dans un village pour déjeuner et faire la sieste. Je repars vers 17h pour quelques heures supplémentaires, profitant de la lumière dorée et des routes désertées. J'ai également appris à toujours avoir un plan B : quand la côte est bloquée, je file vers les montagnes. Avec cette méthode, même en plein août, j'ai pu profiter pleinement des routes corses sans subir les inconvénients de la haute saison."*
+**Pour qui** : Réservé aux motards expérimentés ne craignant pas les conditions changeantes.
 
 ## Conclusion
 
-La Corse estivale n'est pas à éviter pour les motards, mais elle demande une adaptation spécifique. Avec une bonne préparation, des horaires décalés et des itinéraires judicieusement choisis, vous transformerez les contraintes de chaleur et d'affluence en simples paramètres à gérer.
+L'hiver en Corse peut être une expérience unique pour les motards, mais elle nécessite une préparation approfondie :
 
-La récompense est à la hauteur de l'effort d'adaptation : des paysages méditerranéens dans leur splendeur maximale, des baignades rafraîchissantes après les sessions de roulage, et des soirées douces sur les terrasses des villages. Appliquez ces conseils, et votre voyage estival en Corse restera dans votre mémoire comme une expérience exceptionnelle plutôt qu'un parcours du combattant.
+* **Équipement adapté** : Vêtements chauds, chaussures imperméables, protection solaire
+* **Planification** : Horaires décalés, itinéraires prévus
+* **Vérifications** : État des pneus, état des routes, prévisions météo
+
+**Conseil** : Si vous êtes prêt à prendre le risque, l'hiver peut offrir des expériences inoubliables sur la Corse. Sinon, préférez les saisons plus chaudes pour une expérience plus confortable et moins stressante.
     `,
-    image: 'https://images.unsplash.com/photo-1534254698194-d1e9d209a9e2?auto=format&fit=crop&q=80',
-    date: '28 juillet 2023',
-    author: 'Marie Santoni',
-    category: 'Conseils saisonniers'
+    imageUrl: 'https://cdn.pixabay.com/photo/2020/12/01/21/35/motorcycle-5796525_1280.jpg',
+    date: '5 août 2025',
+    author: {
+      name: 'Pierre-Antoine Giustiniani',
+      avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
+      bio: 'Motard tout-terrain et moniteur de conduite hivernale'
+    },
+    category: 'Conseils saisonniers',
+    slug: 'moto-corse-hiver',
+    readingTime: '8 min',
+    tags: ['hiver', 'conditions difficiles', 'préparation']
   }
 ];
