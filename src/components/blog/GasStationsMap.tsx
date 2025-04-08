@@ -4,18 +4,41 @@ import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import MapBox from '@/components/map/MapBox';
-import { gasStationPOIs, strategicGasStationPOIs } from '@/data/points-of-interest/gas-stations-poi';
+import { 
+  gasStationPOIs, 
+  strategicGasStationPOIs 
+} from '@/data/points-of-interest/gas-stations-poi';
 import { Fuel, Info } from 'lucide-react';
+import { toast } from 'sonner';
 
 const GasStationsMap = () => {
   const [showStrategicOnly, setShowStrategicOnly] = useState(true);
   const [locations, setLocations] = useState(strategicGasStationPOIs);
   const [mapKey, setMapKey] = useState(() => `gas-map-${Date.now()}`);
   
+  // Vérifier le nombre de stations au démarrage
+  useEffect(() => {
+    console.log(`GasStationsMap init: ${strategicGasStationPOIs.length} stations stratégiques, ${gasStationPOIs.length} stations totales`);
+    
+    if (strategicGasStationPOIs.length === 0) {
+      toast.error("Aucune station stratégique trouvée");
+    }
+    
+    if (gasStationPOIs.length === 0) {
+      toast.error("Aucune station-service trouvée");
+    }
+  }, []);
+  
   // Force re-render of map when toggle changes
   useEffect(() => {
     console.log(`GasStationsMap: Switching to ${showStrategicOnly ? 'strategic' : 'all'} stations`);
     const newLocations = showStrategicOnly ? strategicGasStationPOIs : gasStationPOIs;
+    
+    // Log debug info
+    console.log(`Total stations disponibles: ${newLocations.length}`);
+    if (newLocations.length > 0) {
+      console.log(`Premier exemple: ${newLocations[0].title} [${newLocations[0].latitude}, ${newLocations[0].longitude}]`);
+    }
     
     // Générer une nouvelle clé pour forcer le rechargement complet de la carte
     setMapKey(`gas-map-${showStrategicOnly ? 'strategic' : 'all'}-${Date.now()}`);
@@ -24,7 +47,10 @@ const GasStationsMap = () => {
     setTimeout(() => {
       console.log(`Mise à jour des locations: ${newLocations.length} stations`);
       setLocations(newLocations);
-    }, 100);
+      
+      // Notify user
+      toast.success(`${newLocations.length} stations affichées sur la carte`);
+    }, 200); // Légère augmentation du délai pour assurer le rechargement
   }, [showStrategicOnly]);
 
   // Debug log to verify locations are being passed

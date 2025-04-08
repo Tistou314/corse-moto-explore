@@ -1,7 +1,15 @@
 
 import { v4 as uuidv4 } from 'uuid';
 import { MapLocation } from '@/components/map/types';
-import { allGasStations, strategicGasStations } from '@/data/gas-stations';
+import { 
+  allGasStations, 
+  strategicGasStations, 
+  mainGasStations,
+  bastiaStations,
+  ajaccioStations,
+  otherCityStations,
+  capCorseStations
+} from '@/data/gas-stations';
 
 /**
  * Convertit les stations-service en points d'intérêt pour la carte
@@ -43,5 +51,14 @@ const convertGasStationsToPOI = (stations: typeof allGasStations): MapLocation[]
 export const gasStationPOIs = convertGasStationsToPOI(allGasStations);
 export const strategicGasStationPOIs = convertGasStationsToPOI(strategicGasStations);
 
+// Générer des POIs pour les groupes spécifiques de stations
+export const bastiaPOIs = convertGasStationsToPOI(bastiaStations);
+export const ajaccioPOIs = convertGasStationsToPOI(ajaccioStations);
+export const capCorsePOIs = convertGasStationsToPOI(capCorseStations);
+export const otherCityPOIs = convertGasStationsToPOI(otherCityStations);
+export const mainCityPOIs = convertGasStationsToPOI(mainGasStations);
+
 // Debug log
 console.log(`POIs créés: ${gasStationPOIs.length} stations totales, ${strategicGasStationPOIs.length} stations stratégiques`);
+console.log(`POIs par région: Bastia (${bastiaPOIs.length}), Ajaccio (${ajaccioPOIs.length}), Cap Corse (${capCorsePOIs.length}), Autres villes (${otherCityPOIs.length})`);
+

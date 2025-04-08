@@ -5,6 +5,7 @@ import { useMap } from '@/contexts/MapContext';
 import { useMapInitialization } from './hooks/useMapInitialization';
 import { useMapMarkers } from './useMapMarkers';
 import { useMapRoute } from './useMapRoute';
+import { toast } from 'sonner';
 
 export const useMapbox = (
   locations: MapLocation[] = [],
@@ -22,6 +23,13 @@ export const useMapbox = (
   // For debugging - track when locations change
   useEffect(() => {
     console.log(`useMapbox: Received ${locations.length} locations`);
+    
+    // Vérifier si nous avons des stations-service
+    const gasStations = locations.filter(loc => loc.category === 'station-service');
+    if (gasStations.length > 0) {
+      console.log(`${gasStations.length} stations-service à afficher`);
+    }
+    
     if (locations.length > 0) {
       console.log('Sample location:', locations[0].title, 
         `[${locations[0].latitude}, ${locations[0].longitude}], type: ${locations[0].type}`);
@@ -34,6 +42,14 @@ export const useMapbox = (
   // Handle marker click
   const handleMarkerClick = (location: MapLocation) => {
     console.log('Marker clicked:', location.title);
+    
+    // Pour les stations-service, afficher des détails supplémentaires
+    if (location.category === 'station-service') {
+      toast.info(`Station: ${location.title}`, {
+        description: location.description
+      });
+    }
+    
     setSelectedLocation(location);
   };
 

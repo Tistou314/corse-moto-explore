@@ -52,6 +52,7 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   el.style.position = 'relative';
   el.style.border = '2px solid white';
   el.style.zIndex = '999'; // Élevé pour garantir la visibilité
+  el.style.transformOrigin = 'center'; // CRUCIAL: Empêche le glissement des marqueurs
   
   // Style spécifique pour les stations stratégiques
   if (location.isPrimary) {
@@ -116,9 +117,7 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     el.insertBefore(pulseEffect, el.firstChild);
   }
 
-  // Effet de survol - IMPORTANT: Utilisation de transform-origin pour éviter le glissement
-  el.style.transformOrigin = 'center'; // Fixation du point de transformation au centre
-  
+  // Effet de survol - le transformOrigin center est crucial pour éviter le glissement
   el.addEventListener('mouseenter', () => {
     el.style.transform = 'scale(1.2)';
     el.style.boxShadow = '0 4px 10px rgba(0,0,0,0.5)';
@@ -143,7 +142,7 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     
     const marker = new mapboxgl.Marker({
       element: el,
-      anchor: 'center'
+      anchor: 'center',
     })
       .setLngLat([location.longitude, location.latitude])
       .addTo(map);
@@ -159,6 +158,7 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     // Gestionnaire d'événement de clic
     el.addEventListener('click', (e) => {
       e.stopPropagation(); // Éviter la propagation de l'événement
+      e.preventDefault(); // Empêcher le comportement par défaut
       onClick(location);
       console.log(`Marqueur cliqué: ${location.title}`);
     });
