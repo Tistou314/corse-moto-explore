@@ -1,4 +1,3 @@
-
 import { BlogPost } from '@/types/blog';
 
 export const cultureArticles: BlogPost[] = [
@@ -7,8 +6,6 @@ export const cultureArticles: BlogPost[] = [
     title: 'Découvrir les traditions corses à moto',
     excerpt: 'Un guide pour explorer le patrimoine culturel corse lors de vos balades à moto.',
     content: `# Découvrir les traditions corses à moto
-
-À travers les routes sinueuses de l'Île de Beauté, la moto devient un moyen privilégié pour s'immerger dans l'authenticité des traditions corses. Voici comment profiter pleinement de cette expérience culturelle unique.
 
 ## Les villages perchés : témoins de l'histoire
 
@@ -56,18 +53,23 @@ Ces objets, souvent de petite taille, peuvent constituer de parfaits souvenirs �
 * Téléchargez une application de traduction français-corse pour quelques mots de base
 
 En respectant le rythme de vie local et en montrant un intérêt sincère pour les traditions, vous vivrez une expérience authentique de la Corse, bien loin des circuits touristiques conventionnels.`,
-    image: 'https://cdn.pixabay.com/photo/2023/02/21/18/02/village-7804456_1280.jpg',
+    imageUrl: 'https://cdn.pixabay.com/photo/2023/02/21/18/02/village-7804456_1280.jpg',
     date: '5 juin 2025',
-    author: 'Marie Antonetti',
+    author: {
+      name: 'Marie Antonetti',
+      avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
+      bio: 'Guide culturelle et motarde passionnée, experte des traditions corses'
+    },
     category: 'Culture et découverte',
+    slug: 'decouvrir-traditions-corses-moto',
+    readingTime: '7 min',
+    tags: ['culture', 'traditions', 'villages']
   },
   {
     id: 'musiques-corses-playlist-motard',
     title: 'Playlist du motard : les musiques corses pour votre voyage',
     excerpt: 'Découvrez une sélection musicale qui accompagnera parfaitement votre road trip en Corse.',
     content: `# Playlist du motard : les musiques corses pour votre voyage
-
-Rouler en Corse, c'est aussi s'imprégner de son ambiance sonore unique. Pour enrichir votre expérience motocycliste sur l'Île de Beauté, voici une sélection musicale qui mettra une bande-son parfaite à votre aventure.
 
 ## La polyphonie traditionnelle : l'âme de la Corse
 
@@ -124,9 +126,16 @@ Pendant la saison estivale, de nombreux festivals et concerts sont organisés da
 N'hésitez pas à adapter votre itinéraire pour assister à l'un de ces événements, ils constituent une immersion totale dans la culture musicale corse.
 
 Téléchargez cette playlist avant votre départ, et laissez les mélodies corses accompagner votre découverte de l'île. La musique, comme la moto, est un vecteur d'émotions qui amplifiera votre connexion avec ce territoire d'exception.`,
-    image: 'https://cdn.pixabay.com/photo/2016/11/23/15/32/guitarist-1853661_1280.jpg',
+    imageUrl: 'https://cdn.pixabay.com/photo/2016/11/23/15/32/guitarist-1853661_1280.jpg',
     date: '12 juin 2025',
-    author: 'Pascal Olmeta',
+    author: {
+      name: 'Pascal Olmeta',
+      avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
+      bio: 'Musicien et motard, créateur de la playlist officielle du Corsica Moto Festival'
+    },
     category: 'Culture et découverte',
+    slug: 'musiques-corses-playlist-motard',
+    readingTime: '6 min',
+    tags: ['musique', 'playlist', 'culture']
   }
 ];

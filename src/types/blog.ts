@@ -11,10 +11,10 @@ export interface BlogPost {
     avatar?: string;
     bio?: string;
   };
-  authorTitle?: string;
-  authorAvatar?: string;
   category: string;
   slug?: string;
   readingTime?: string;
   tags?: string[];
+  authorTitle?: string;
+  authorAvatar?: string;
 }

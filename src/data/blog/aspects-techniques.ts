@@ -1,4 +1,3 @@
-
 import { BlogPost } from '@/types/blog';
 
 export const aspectsTechniquesArticles: BlogPost[] = [
@@ -112,10 +111,17 @@ Une moto bien préparée vous permettra de profiter pleinement des joies des rou
 N'oubliez pas que même la moto la mieux préparée reste soumise à vos compétences de pilote. Adaptez votre conduite aux conditions locales, respectez les limitations de vitesse, et gardez toujours une marge de sécurité confortable.
 
 Avec ces préparatifs, votre deux-roues sera votre meilleur allié pour découvrir les trésors cachés de l'Île de Beauté, vous offrant sensations et souvenirs inoubliables en toute sécurité.`,
-    image: 'https://images.unsplash.com/photo-1616711906333-23e9305732d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1616711906333-23e9305732d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
     date: '5 août 2025',
-    author: 'Michel Ferrandi',
+    author: {
+      name: 'Michel Ferrandi',
+      avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
+      bio: 'Mécanicien moto spécialisé dans la préparation de motos pour les terrains exigeants'
+    },
     category: 'Aspects techniques',
+    slug: 'preparer-moto-routes-corses',
+    readingTime: '9 min',
+    tags: ['préparation', 'mécanique', 'maintenance', 'sécurité']
   },
   {
     id: 'gerer-chaleur-ete-moto',
@@ -210,7 +216,7 @@ Se déshydrater à moto est non seulement inconfortable mais dangereux, car cela
 * Emportez au minimum 2 litres d'eau par personne et par jour
 * Utilisez une poche à eau type Camelback ou un système équivalent pour boire facilement pendant la conduite
 * Privilégiez l'eau légèrement fraîche (pas glacée) et les boissons isotoniques
-* Limitez la caféine et évitez totalement l'alcool qui accentuent la déshydratation
+* Limitez la caféine et évitez totalement l'alcool qui accentue la déshydratation
 
 ### Signes d'alerte à surveiller
 
@@ -254,9 +260,16 @@ Ces pauses baignade sont idéales en milieu de journée, aux heures les plus cha
 La chaleur estivale corse peut être contraignante, mais avec une bonne préparation technique et quelques adaptations dans votre façon de voyager, elle ne sera qu'un détail face à la beauté des paysages et au plaisir de rouler sur ces routes d'exception.
 
 En combinant préparation de la moto, équipement adapté, hydratation constante et planification intelligente de votre itinéraire, vous transformerez ce qui pourrait être un inconfort en une expérience inoubliable. Les routes sinueuses de la montagne corse n'attendent que vous et votre machine, parfaitement préparés pour affronter la chaleur méditerranéenne.`,
-    image: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
     date: '12 août 2025',
-    author: 'Antoine Simeoni',
+    author: {
+      name: 'Antoine Simeoni',
+      avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
+      bio: 'Motard expérimenté ayant parcouru l\'île pendant plus de 15 étés consécutifs'
+    },
     category: 'Aspects techniques',
+    slug: 'gerer-chaleur-ete-moto',
+    readingTime: '8 min',
+    tags: ['chaleur', 'été', 'confort', 'refroidissement']
   }
 ];

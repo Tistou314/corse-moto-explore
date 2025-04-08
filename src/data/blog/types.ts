@@ -8,8 +8,8 @@ export interface BlogPost {
   category: string;
   author: {
     name: string;
-    avatar: string;
-    bio: string;
+    avatar?: string;
+    bio?: string;
   };
   date: string;
   imageUrl: string;

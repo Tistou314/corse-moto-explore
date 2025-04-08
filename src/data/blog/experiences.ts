@@ -1,4 +1,3 @@
-
 import { BlogPost } from '@/types/blog';
 
 export const experiencesArticles: BlogPost[] = [
@@ -79,10 +78,17 @@ Si vous envisagez votre première expérience corse à moto, voici mes conseils 
 6. Acceptez que tout ne se passera pas comme prévu - et c'est tant mieux
 
 La Corse à moto, c'est plus qu'un voyage, c'est une initiation. Même avec peu d'expérience, vous en reviendrez transformé, avec des souvenirs plein la tête et l'envie irrépressible d'y retourner.`,
-    image: 'https://cdn.pixabay.com/photo/2020/07/18/21/02/motorcycle-5418666_1280.jpg',
+    imageUrl: 'https://cdn.pixabay.com/photo/2020/07/18/21/02/motorcycle-5418666_1280.jpg',
     date: '5 juillet 2025',
-    author: 'Thomas Laurent',
+    author: {
+      name: 'Thomas Laurent',
+      avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
+      bio: 'Passionné de moto depuis 3 ans, récit de ma première grande aventure en Corse'
+    },
     category: 'Expériences et récits',
+    slug: 'premiere-fois-moto-corse',
+    readingTime: '8 min',
+    tags: ['débutant', 'récit', 'aventure']
   },
   {
     id: 'roadtrip-amis-corse-moto',
@@ -189,9 +195,16 @@ Six motards, c'est aussi six personnalités et six envies différentes. La réus
 Ce road trip corse entre amis restera gravé dans nos mémoires. Au-delà des routes exceptionnelles et des paysages à couper le souffle, c'est avant tout cette expérience partagée qui rend l'aventure si spéciale. La Corse se prête parfaitement à ce type de voyage collectif, offrant suffisamment de diversité pour satisfaire tous les types de motards.
 
 Alors n'hésitez plus, rassemblez vos amis motards et lancez-vous dans l'aventure corse. Les souvenirs que vous en rapporterez valent tous les détours.`,
-    image: 'https://cdn.pixabay.com/photo/2017/06/29/13/38/motorcycle-2453863_1280.jpg',
+    imageUrl: 'https://cdn.pixabay.com/photo/2017/06/29/13/38/motorcycle-2453863_1280.jpg',
     date: '12 juillet 2025',
-    author: 'Julien Rossi',
+    author: {
+      name: 'Julien Rossi',
+      avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
+      bio: 'Organisateur de road trips moto en groupe depuis 10 ans'
+    },
     category: 'Expériences et récits',
+    slug: 'roadtrip-amis-corse-moto',
+    readingTime: '9 min',
+    tags: ['groupe', 'amis', 'organisation', 'road-trip']
   }
 ];

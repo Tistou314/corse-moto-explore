@@ -1,4 +1,3 @@
-
 import { BlogPost } from './blog/types';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -18,62 +17,14 @@ const articlesSaisons: BlogPost[] = [];
 const articlesCommunautesMotards: BlogPost[] = [];
 const articlesSpotsPanoramiques: BlogPost[] = [];
 
-// Convert tourCapCorse to BlogPost format
-const articleCircuitCapCorse: BlogPost = {
-  id: tourCapCorse.id,
-  title: tourCapCorse.title,
-  slug: tourCapCorse.id,
-  excerpt: tourCapCorse.excerpt,
-  content: tourCapCorse.content,
-  category: tourCapCorse.category,
-  author: {
-    name: tourCapCorse.author,
-    avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
-    bio: 'Passionné(e) de moto et de la Corse'
-  },
-  date: tourCapCorse.date,
-  imageUrl: tourCapCorse.image,
-  readingTime: '8 min',
-  tags: ['cap-corse', 'itinéraire', 'tour']
-};
+// Convert tourCapCorse to BlogPost format - using directly as it now matches the type
+const articleCircuitCapCorse: BlogPost = tourCapCorse;
 
-// Convert route des vins to BlogPost format
-const articleRouteDesVins: BlogPost = {
-  id: routeDesVins?.id || 'route-des-vins',
-  title: routeDesVins?.title || 'La route des vins en Corse à moto',
-  slug: routeDesVins?.id || 'route-des-vins',
-  excerpt: routeDesVins?.excerpt || 'Découvrez les vignobles corses à moto sur un parcours exceptionnel',
-  content: routeDesVins?.content || 'Contenu de l\'article sur la route des vins',
-  category: routeDesVins?.category || 'Itinéraires et circuits',
-  author: {
-    name: routeDesVins?.author || 'Marie Santini',
-    avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
-    bio: 'Guide œnologique et motarde passionnée'
-  },
-  date: routeDesVins?.date || '28 juin 2024',
-  imageUrl: routeDesVins?.image || 'https://cdn.pixabay.com/photo/2016/11/18/12/51/barrels-1834333_1280.jpg',
-  readingTime: '6 min',
-  tags: ['vin', 'patrimonio', 'dégustation']
-};
+// Convert route des vins to BlogPost format - using directly as it now matches the type
+const articleRouteDesVins: BlogPost = routeDesVins;
 
-// Convert route grand sud to BlogPost format
-const articleRouteGrandSud: BlogPost = {
-  id: routeGrandSud?.id || 'route-grand-sud',
-  title: routeGrandSud?.title || 'La route du grand sud à moto',
-  slug: routeGrandSud?.id || 'route-grand-sud',
-  excerpt: routeGrandSud?.excerpt || 'Un itinéraire à travers les plus belles plages du sud de la Corse',
-  content: routeGrandSud?.content || 'Contenu de l\'article sur la route du grand sud',
-  category: routeGrandSud?.category || 'Itinéraires et circuits',
-  author: {
-    name: routeGrandSud?.author || 'Paul Franceschi',
-    avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
-    bio: 'Motard corse depuis 20 ans'
-  },
-  date: routeGrandSud?.date || '10 juillet 2024',
-  imageUrl: routeGrandSud?.image || 'https://cdn.pixabay.com/photo/2014/07/30/19/29/beach-406164_1280.jpg',
-  readingTime: '7 min',
-  tags: ['plages', 'bonifacio', 'porto-vecchio']
-};
+// Convert route grand sud to BlogPost format - using directly as it now matches the type
+const articleRouteGrandSud: BlogPost = routeGrandSud;
 
 // Article des stations-service
 export const articleStationsService: BlogPost = {

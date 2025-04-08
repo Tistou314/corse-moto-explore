@@ -1,3 +1,4 @@
+
 import { BlogPost } from '@/types/blog';
 
 export const routeDesVins: BlogPost = {
@@ -152,8 +153,15 @@ La N196 peut être chargée en été. Préférez un départ matinal et profitez 
 
 Cet itinéraire vous permettra de découvrir la diversité des terroirs corses tout en profitant de routes magnifiques. La Corse offre des vins de caractère qui racontent son histoire, entre influence maritime et montagneuse, tradition et modernité. Une aventure sensorielle qui complète parfaitement le plaisir de la conduite à moto sur les routes sinueuses de l'Île de Beauté.
     `,
-  image: 'https://cdn.pixabay.com/photo/2016/11/18/17/20/motorcycle-1835799_1280.jpg',
+  imageUrl: 'https://cdn.pixabay.com/photo/2016/11/18/17/20/motorcycle-1835799_1280.jpg',
   date: '15 mai 2023',
-  author: 'Marc Santocci',
-  category: 'Itinéraires et circuits'
+  author: {
+    name: 'Marc Santocci',
+    avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
+    bio: 'Œnologue et motard passionné, spécialiste des routes viticoles corses'
+  },
+  category: 'Itinéraires et circuits',
+  slug: 'route-des-vins-corses',
+  readingTime: '9 min',
+  tags: ['vin', 'dégustation', 'patrimonio', 'domaines']
 };

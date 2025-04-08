@@ -1,3 +1,4 @@
+
 import { BlogPost } from '@/types/blog';
 
 export const tourCapCorse: BlogPost = {
@@ -124,8 +125,15 @@ Si vous disposez de plus de temps, ces détours enrichiront votre circuit du Cap
 
 Le tour du Cap Corse concentre en une centaine de kilomètres une diversité de paysages extraordinaire. Entre mer et montagne, villages perchés et ports pittoresques, cette boucle offre un condensé des plus beaux aspects de l'île. Prenez votre temps, les détours et pauses imprévues font souvent les plus beaux souvenirs.
     `,
-  image: 'https://cdn.pixabay.com/photo/2018/10/19/12/14/motor-3758180_1280.jpg',
+  imageUrl: 'https://cdn.pixabay.com/photo/2018/10/19/12/14/motor-3758180_1280.jpg',
   date: '10 avril 2023',
-  author: 'Sophie Antonietti',
-  category: 'Itinéraires et circuits'
+  author: {
+    name: 'Sophie Antonietti',
+    avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
+    bio: 'Guide locale du Cap Corse et motarde depuis 15 ans'
+  },
+  category: 'Itinéraires et circuits',
+  slug: 'tour-cap-corse-moto',
+  readingTime: '8 min',
+  tags: ['cap-corse', 'littoral', 'route-panoramique']
 };

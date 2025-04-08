@@ -6,11 +6,18 @@ export const routeGrandSud: BlogPost = {
   title: 'La Boucle du Grand Sud : entre mer et montagne',
   excerpt: 'Découvrez le meilleur itinéraire pour explorer toutes les facettes du sud de la Corse en une journée',
   date: '10 juillet 2024',
-  author: 'Marie Santoni',
+  author: {
+    name: 'Marie Santoni',
+    avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
+    bio: 'Guide moto local et experte des routes du sud de la Corse'
+  },
   authorTitle: 'Guide moto local et experte des routes corses',
   authorAvatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=256&q=80',
   category: 'Itinéraires et circuits',
-  image: '/lovable-uploads/60e4855d-f792-4984-a882-c9e763c83da6.png',
+  imageUrl: '/lovable-uploads/60e4855d-f792-4984-a882-c9e763c83da6.png',
+  slug: 'route-grand-sud-2024',
+  readingTime: '10 min',
+  tags: ['sud', 'boucle', 'montagne', 'littoral'],
   content: `
 # La Boucle du Grand Sud : entre mer et montagne
 

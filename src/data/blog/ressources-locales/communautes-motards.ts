@@ -1,3 +1,4 @@
+
 import { BlogPost } from '@/types/blog';
 
 export const communautesMotards: BlogPost = {
@@ -194,8 +195,15 @@ La Corse cultive une communauté motarde dynamique et généralement accueillant
 
 Que ce soit à travers des événements organisés, des rencontres informelles ou des groupes en ligne, n'hésitez pas à aller vers les motards locaux. Leur connaissance intime du territoire, leurs conseils avisés et parfois leur amitié transformeront votre découverte de la Corse en une expérience authentique et privilégiée.
     `,
-  image: 'https://images.unsplash.com/photo-1558979159-7a2602c5ea95?auto=format&fit=crop&q=80',
+  imageUrl: 'https://images.unsplash.com/photo-1558979159-7a2602c5ea95?auto=format&fit=crop&q=80',
   date: '20 août 2023',
-  author: 'Antoine Paoli',
-  category: 'Ressources locales'
+  author: {
+    name: 'Antoine Paoli',
+    avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
+    bio: 'Président du moto-club I Sustenitori di u Asfaltu de Bastia depuis 7 ans'
+  },
+  category: 'Ressources locales',
+  slug: 'communautes-motards-corses',
+  readingTime: '11 min',
+  tags: ['communauté', 'moto-club', 'rencontres', 'événements']
 };
