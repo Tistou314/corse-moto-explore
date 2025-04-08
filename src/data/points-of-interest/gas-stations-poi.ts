@@ -5,26 +5,41 @@ import { allGasStations, strategicGasStations } from '@/data/gas-stations';
 
 /**
  * Convertit les stations-service en points d'intérêt pour la carte
- * @param onlyStrategic Si vrai, ne renvoie que les stations stratégiques
+ * @param stations Les stations à convertir
  * @returns Liste des stations sous forme de points d'intérêt
  */
-export const convertGasStationsToPOI = (onlyStrategic: boolean = false): MapLocation[] => {
-  const stations = onlyStrategic ? strategicGasStations : allGasStations;
+const convertGasStationsToPOI = (stations: typeof allGasStations): MapLocation[] => {
+  console.log(`Conversion de ${stations.length} stations en POIs`);
   
-  return stations.map(station => ({
-    id: station.id,
-    title: station.name,
-    latitude: station.latitude,
-    longitude: station.longitude,
-    type: 'pointOfInterest',
-    description: `${station.brand} - ${station.hours}${station.seasonalHours ? ' (horaires saisonniers)' : ''}`,
-    isPrimary: station.isStrategic,
-    address: station.address,
-    category: 'station-service',
-    services: station.services || []
-  }));
+  return stations.map(station => {
+    // Vérification des coordonnées
+    if (typeof station.latitude !== 'number' || 
+        typeof station.longitude !== 'number' ||
+        isNaN(station.latitude) || 
+        isNaN(station.longitude)) {
+      console.error(`Station avec coordonnées invalides: ${station.name}`, station);
+    }
+    
+    const poi: MapLocation = {
+      id: station.id,
+      title: station.name,
+      latitude: station.latitude,
+      longitude: station.longitude,
+      type: 'pointOfInterest',
+      description: `${station.brand} - ${station.hours}${station.seasonalHours ? ' (horaires saisonniers)' : ''}`,
+      isPrimary: station.isStrategic,
+      address: station.address,
+      category: 'station-service',
+      services: station.services || []
+    };
+    
+    return poi;
+  });
 };
 
-// Exporter directement les listes de POIs pour un accès facile
-export const gasStationPOIs = convertGasStationsToPOI(false);
-export const strategicGasStationPOIs = convertGasStationsToPOI(true);
+// Générer les POIs pour toutes les stations et les stations stratégiques
+export const gasStationPOIs = convertGasStationsToPOI(allGasStations);
+export const strategicGasStationPOIs = convertGasStationsToPOI(strategicGasStations);
+
+// Debug log
+console.log(`POIs créés: ${gasStationPOIs.length} stations totales, ${strategicGasStationPOIs.length} stations stratégiques`);

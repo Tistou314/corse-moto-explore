@@ -12,7 +12,7 @@ const MapBox = ({
   center = CorsicaCenter, 
   zoom = 8.5,
   locations = [],
-  interactive = false, // Par défaut non interactif (statique)
+  interactive = false,
   height = '400px',
   drawRoute = false,
   enableClustering = false
@@ -26,38 +26,18 @@ const MapBox = ({
     enableClustering
   );
 
+  const [mapKey] = useState(() => `map-${Date.now()}`);
   const [locationCount, setLocationCount] = useState(0);
-  const [mapKey, setMapKey] = useState(Date.now()); // Force re-render key
 
   // Force la réinitialisation de la carte lorsque les locations changent
   useEffect(() => {
-    console.log("MapBox: Changement des locations détecté");
-    setMapKey(Date.now());
+    console.log(`MapBox: Mise à jour des locations (${locations.length})`);
     setLocationCount(locations.length);
-  }, [locations.length]);
-
-  // Log locations for debugging
-  useEffect(() => {
-    console.log(`MapBox reçoit ${locations.length} emplacements:`, locations);
     
-    if (locations.length > 0) {
-      // Log des 2 premiers emplacements pour vérification
-      locations.slice(0, 2).forEach((loc, index) => {
-        console.log(`Location ${index}: ${loc.title} [${loc.latitude}, ${loc.longitude}], type: ${loc.type}`);
-      });
+    if (locations.length > 0 && isLoaded) {
+      toast.success(`${locations.length} emplacements affichés sur la carte`);
     }
-  }, [locations]);
-
-  // Show toast when locations are loaded
-  useEffect(() => {
-    if (isLoaded) {
-      if (locations.length > 0) {
-        toast.success(`${locations.length} emplacements affichés sur la carte`);
-      } else {
-        toast.warning("Aucun emplacement à afficher");
-      }
-    }
-  }, [isLoaded, locations.length]);
+  }, [locations.length, isLoaded]);
 
   // Handle token not being available
   if (!mapboxToken) {
@@ -73,14 +53,14 @@ const MapBox = ({
       <div 
         ref={mapContainer} 
         className="w-full h-full rounded-lg overflow-hidden border border-gray-200 shadow-lg" 
-        key={`map-container-${mapKey}`}
+        key={mapKey}
       />
       
       {selectedLocation && (
         <LocationPopup location={selectedLocation} onClose={closePopup} />
       )}
       
-      <div className="absolute top-3 right-12 bg-white p-2 rounded shadow-md z-10">
+      <div className="absolute top-3 right-3 bg-white p-2 rounded shadow-md z-10">
         <Badge variant="outline" className="flex items-center gap-1">
           <Info className="h-3 w-3" />
           <span>{locationCount} lieux</span>

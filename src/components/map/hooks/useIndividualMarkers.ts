@@ -31,7 +31,7 @@ export const useIndividualMarkers = (
       return;
     }
     
-    if (!locations || !locations.length) {
+    if (!locations || locations.length === 0) {
       console.log("Aucun emplacement à afficher");
       clearMarkers(); // Make sure to clear if no locations
       return;
@@ -39,25 +39,12 @@ export const useIndividualMarkers = (
     
     const map = mapRef.current;
     
-    console.log(`Création de ${locations.length} marqueurs individuels`);
+    // Nettoyer les marqueurs existants avant d'en créer de nouveaux
+    clearMarkers();
     
-    // Assurons-nous que la carte est chargée avant d'ajouter des marqueurs
-    if (!map.loaded()) {
-      console.log("La carte n'est pas encore complètement chargée, attente...");
-      
-      const onLoadHandler = () => {
-        addMarkers();
-        map.off('load', onLoadHandler);
-      };
-      
-      map.on('load', onLoadHandler);
-    } else {
-      addMarkers();
-    }
-    
-    function addMarkers() {
-      // Nettoyer les marqueurs existants
-      clearMarkers();
+    // Fonction pour ajouter les marqueurs
+    const addMarkers = () => {
+      console.log(`Création de ${locations.length} marqueurs individuels`);
       
       // Créer de nouveaux marqueurs
       const newMarkers = locations
@@ -73,23 +60,29 @@ export const useIndividualMarkers = (
           }
           return true;
         })
-        .map(location => {
-          // Debug pour les stations
-          if (location.type === 'gasStation') {
-            console.log(`Création marqueur station: ${location.title} [${location.latitude}, ${location.longitude}]`);
-          }
-          
-          // Utilisation du createMapMarker pour l'affichage cohérent
-          return createMapMarker({
-            location,
-            map,
-            onClick: onMarkerClick
-          });
-        })
+        .map(location => createMapMarker({
+          location,
+          map,
+          onClick: onMarkerClick
+        }))
         .filter(Boolean) as mapboxgl.Marker[];
       
       console.log(`${newMarkers.length}/${locations.length} marqueurs créés avec succès`);
       markersRef.current = newMarkers;
+    };
+    
+    // Assurons-nous que la carte est chargée avant d'ajouter des marqueurs
+    if (map.loaded()) {
+      addMarkers();
+    } else {
+      console.log("La carte n'est pas encore complètement chargée, attente...");
+      
+      const onLoadHandler = () => {
+        addMarkers();
+        map.off('load', onLoadHandler);
+      };
+      
+      map.on('load', onLoadHandler);
     }
 
     return () => {

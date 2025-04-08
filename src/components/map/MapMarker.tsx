@@ -20,13 +20,11 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   }
   
   // Ajout de logs pour debug
-  console.log(`Création marker pour: ${location.title} [${location.latitude}, ${location.longitude}], type: ${location.type}`);
+  console.log(`Création marker pour: ${location.title} [${location.latitude}, ${location.longitude}]`);
   
   // Vérification que les coordonnées sont dans une plage valide pour la Corse
   if (!isWithinCorsica(location.latitude, location.longitude)) {
-    console.warn(`Coordonnées hors de la Corse pour ${location.title}:`, 
-      `[${location.latitude}, ${location.longitude}]`,
-      "Vérifiez que les coordonnées ne sont pas inversées (latitude/longitude)");
+    console.warn(`Coordonnées possiblement hors de la Corse pour ${location.title}: [${location.latitude}, ${location.longitude}]`);
     // On continue quand même la création pour permettre de visualiser et déboguer
   }
 
@@ -39,10 +37,10 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     ? '#f59e0b' // couleur ambre pour stations-service 
     : (markerTypes[location.type] || '#000000');
   
-  // Styles de base pour le marqueur - IMPORTANT: z-index élevé pour s'assurer que les marqueurs sont visibles
+  // Styles de base pour le marqueur avec z-index élevé pour visibilité
   el.style.backgroundColor = color;
-  el.style.width = '36px'; // Augmenté pour une meilleure visibilité
-  el.style.height = '36px'; // Augmenté pour une meilleure visibilité
+  el.style.width = '36px';
+  el.style.height = '36px';
   el.style.borderRadius = '50%';
   el.style.display = 'flex';
   el.style.alignItems = 'center';
@@ -53,13 +51,13 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   el.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
   el.style.position = 'relative';
   el.style.border = '2px solid white';
-  el.style.zIndex = '9999'; // Très élevé pour garantir la visibilité
+  el.style.zIndex = '999'; // Élevé pour garantir la visibilité
   
   // Style spécifique pour les stations stratégiques
   if (location.isPrimary) {
     el.style.border = '4px solid white'; // Plus épais pour mieux distinguer
     el.style.boxShadow = '0 3px 8px rgba(0,0,0,0.5)';
-    el.style.zIndex = '10000'; // Stations stratégiques toujours au premier plan
+    el.style.zIndex = '1000'; // Stations stratégiques toujours au premier plan
     el.style.width = '40px'; // Encore plus grand pour les stations importantes
     el.style.height = '40px'; 
   }
@@ -67,13 +65,9 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   // Ajouter une icône en fonction du type
   let iconElement = document.createElement('span');
   
-  // Icône pour les stations service (maintenant points d'intérêt avec catégorie spéciale)
+  // Icône pour les stations service
   if (location.category === 'station-service') {
     iconElement.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22h12"/><path d="M4 9h10"/><path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18"/><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5"/></svg>';
-  } else if (location.type === 'itinerary') {
-    iconElement.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m3 9 4-4 5 5 4-4 3 3"/></svg>';
-  } else if (location.type === 'accommodation') {
-    iconElement.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h18"/><path d="M21 7v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7"/><path d="M6 20v2"/><path d="M18 20v2"/><path d="M8 2v5"/><path d="M16 2v5"/></svg>';
   } else if (location.type === 'pointOfInterest') {
     iconElement.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>';
   } else {
@@ -83,8 +77,8 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   
   el.appendChild(iconElement);
 
-  // Ajouter pulse effect pour toutes les stations-service
-  if (location.category === 'station-service') {
+  // Ajouter pulse effect pour les stations stratégiques
+  if (location.isPrimary && location.category === 'station-service') {
     const pulseEffect = document.createElement('div');
     pulseEffect.style.position = 'absolute';
     pulseEffect.style.borderRadius = '50%';
@@ -92,11 +86,11 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     pulseEffect.style.height = '100%';
     pulseEffect.style.backgroundColor = color;
     pulseEffect.style.opacity = '0.6';
-    pulseEffect.style.animation = 'pulse 3s infinite';
+    pulseEffect.style.animation = 'pulse 2s infinite';
     pulseEffect.style.zIndex = '-1';
     
     // Ajout de l'animation keyframe si elle n'existe pas déjà
-    const styleId = `marker-style-${location.id}`;
+    const styleId = 'marker-pulse-animation';
     if (!document.getElementById(styleId)) {
       const style = document.createElement('style');
       style.id = styleId;
@@ -142,8 +136,9 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   }
 
   try {
-    // IMPORTANT: Création du marqueur en vérifiant bien l'ordre longitude, latitude
+    // IMPORTANT: Création du marqueur avec ordre longitude, latitude pour Mapbox
     console.log(`Ajout du marker à la carte: [${location.longitude}, ${location.latitude}]`);
+    
     const marker = new mapboxgl.Marker({
       element: el,
       anchor: 'center'
