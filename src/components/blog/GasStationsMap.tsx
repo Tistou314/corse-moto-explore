@@ -1,10 +1,9 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { MapLocation } from '@/components/map/types';
 import MapBox from '@/components/map/MapBox';
-import { allGasStations, strategicGasStations, GasStation } from '@/data/gasStations';
+import { allGasStations, strategicGasStations, GasStation } from '@/data/gas-stations';
 import { Fuel, Clock, Info, Map as MapIcon } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -18,7 +17,6 @@ const GasStationsMap = ({ title = "Carte des stations-service en Corse" }: GasSt
   const [locations, setLocations] = useState<MapLocation[]>([]);
   const [mapKey, setMapKey] = useState(Date.now());
 
-  // Fonction pour convertir les stations en points sur la carte
   const convertToMapLocations = (stations: GasStation[]): MapLocation[] => {
     return stations.map(station => ({
       id: station.id,
@@ -47,7 +45,6 @@ const GasStationsMap = ({ title = "Carte des stations-service en Corse" }: GasSt
     const mappedLocations = convertToMapLocations(stationsToShow);
     console.log('Locations mappées:', mappedLocations.length, mappedLocations);
     
-    // Nouveau: forcer la réinitialisation complète du composant et de la carte
     setMapKey(Date.now());
     setLocations(mappedLocations);
     setDisplayCount(stationsToShow.length);
