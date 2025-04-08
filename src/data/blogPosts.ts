@@ -1,58 +1,84 @@
 
-import { BlogPost } from '@/types/blog';
-import { itinerairesArticles } from './blog/itineraires';
-import { aspectsPratiquesArticles } from './blog/aspects-pratiques';
-import { cultureArticles } from './blog/culture';
-import { equipementArticles } from './blog/equipement';
-import { experiencesArticles } from './blog/experiences';
-import { saisonsArticles } from './blog/saisons';
-import { aspectsTechniquesArticles } from './blog/aspects-techniques';
-import { ressourcesLocalesArticles } from './blog/ressources-locales';
+import { BlogPost } from './blog/types';
+import { v4 as uuidv4 } from 'uuid';
 
-// Make sure all blog posts have an image
-const ensureImage = (post: BlogPost): BlogPost => {
-  if (!post.image || post.image.trim() === '') {
-    // Default images based on category
-    const categoryDefaultImages: Record<string, string> = {
-      'Itinéraires et circuits': 'https://images.unsplash.com/photo-1500673922987-e212871fec22?auto=format&fit=crop&w=1600&q=80',
-      'Aspects pratiques': 'https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?auto=format&fit=crop&w=1600&q=80',
-      'Culture et découverte': 'https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=1600&q=80',
-      'Équipement et préparation': 'https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1600&q=80',
-      'Expériences et récits': 'https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1600&q=80',
-      'Conseils saisonniers': 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1600&q=80',
-      'Aspects techniques': 'https://images.unsplash.com/photo-1615729947596-a598e5de0ab3?auto=format&fit=crop&w=1600&q=80',
-      'Ressources locales': 'https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1600&q=80',
-    };
-    
-    return {
-      ...post,
-      image: categoryDefaultImages[post.category] || 'https://cdn.pixabay.com/photo/2020/04/23/10/54/corsica-5081729_1280.jpg'
-    };
-  }
-  return post;
+// Import articles from category folders
+import { articlesTechniques } from './blog/aspects-techniques';
+import { articlesPratiques } from './blog/aspects-pratiques';
+import { articlesEquipement } from './blog/equipement';
+import { articlesExperiences } from './blog/experiences';
+import { articlesCulture } from './blog/culture';
+import { articlesSaisons } from './blog/saisons';
+import { articlesCommunautesMotards } from './blog/ressources-locales/communautes-motards';
+import { articlesSpotsPanoramiques } from './blog/ressources-locales/spots-panoramiques';
+
+// Importer les articles sur les itinéraires
+import { articleCircuitCapCorse } from './blog/itineraires/circuit-cap-corse';
+import { articleRouteDesVins } from './blog/itineraires/route-des-vins';
+import { articleRouteGrandSud } from './blog/itineraires/route-grand-sud';
+
+// Article des stations-service
+export const articleStationsService: BlogPost = {
+  id: 'stations-service-corse',
+  title: 'Carte des stations-service en Corse',
+  slug: 'stations-service-corse',
+  excerpt: 'Guide complet des stations-service en Corse pour motards : où faire le plein lors de votre road trip à moto sur l\'Île de Beauté.',
+  content: `
+# Guide des stations-service en Corse pour motards
+
+La Corse, avec ses routes sinueuses et ses paysages montagneux spectaculaires, est un paradis pour les motards. Toutefois, lors de votre exploration de l'Île de Beauté, il est essentiel de bien planifier vos arrêts pour faire le plein. Certaines portions de routes, notamment dans les zones montagneuses et rurales, peuvent s'étendre sur plusieurs dizaines de kilomètres sans possibilité de ravitaillement.
+
+## Stations stratégiques à connaître
+
+Certaines stations-service sont considérées comme **stratégiques** pour les motards parcourant l'île. Leur importance est liée à leur emplacement dans des zones où les alternatives sont rares :
+
+- **Station de Vivario** : Point de ravitaillement crucial avant de traverser le centre montagneux
+- **Station de Venaco** : Indispensable si vous empruntez la route du centre
+- **Station de Calacuccia** : La seule option dans la région du Niolu
+- **Station du Col de Bavella** : Essentielle avant de s'aventurer dans la région de l'Alta Rocca
+- **Station de Porto** : Dernière station avant plusieurs heures de route côtière
+
+## Conseils pratiques
+
+- Faites toujours le plein avant de vous engager dans les routes de montagne ou les régions isolées
+- Les stations des zones rurales peuvent avoir des horaires réduits, notamment hors saison
+- Certaines stations peuvent être fermées le dimanche
+- Prévoyez un plan B pour votre ravitaillement lors de longs trajets
+- Les grands axes et les villes principales (Bastia, Ajaccio, Calvi, Porto-Vecchio) disposent de stations ouvertes plus tard, voire 24h/24
+
+## Carte des stations-service
+
+Consultez notre carte interactive ci-dessous pour localiser toutes les stations-service de l'île. Vous pouvez filtrer pour n'afficher que les stations stratégiques, essentielles pour votre périple à moto.
+
+*Cliquez sur les marqueurs pour obtenir plus d'informations sur chaque station.*
+  `,
+  category: 'aspects-pratiques',
+  author: {
+    name: 'Jean Toussaint',
+    avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
+    bio: 'Motard corse passionné et guide touristique depuis 15 ans. Connaît chaque virage et chaque station-service de l\'île.'
+  },
+  date: '2025-03-15',
+  imageUrl: '/lovable-uploads/137f7ca8-9347-4597-acb8-7f92a1430224.png',
+  readingTime: '4 min',
+  tags: ['stations-service', 'ravitaillement', 'conseils-pratiques', 'carte']
 };
 
-// Process all article arrays to ensure they have images
-const processedItinerairesArticles = itinerairesArticles.map(ensureImage);
-const processedAspectsPratiquesArticles = aspectsPratiquesArticles.map(ensureImage);
-const processedCultureArticles = cultureArticles.map(ensureImage);
-const processedEquipementArticles = equipementArticles.map(ensureImage);
-const processedExperiencesArticles = experiencesArticles.map(ensureImage);
-const processedSaisonsArticles = saisonsArticles.map(ensureImage);
-const processedAspectsTechniquesArticles = aspectsTechniquesArticles.map(ensureImage);
-const processedRessourcesLocalesArticles = ressourcesLocalesArticles.map(ensureImage);
-
-// Combine all articles from different categories
+// Combine all blog posts
 export const blogPosts: BlogPost[] = [
-  ...processedEquipementArticles,
-  ...processedSaisonsArticles,
-  ...processedAspectsPratiquesArticles,
-  ...processedItinerairesArticles,
-  ...processedCultureArticles,
-  ...processedExperiencesArticles,
-  ...processedAspectsTechniquesArticles,
-  ...processedRessourcesLocalesArticles
+  articleStationsService,
+  ...articlesTechniques,
+  ...articlesPratiques,
+  ...articlesEquipement,
+  ...articlesExperiences,
+  ...articlesCulture,
+  ...articlesSaisons,
+  ...articlesCommunautesMotards,
+  ...articlesSpotsPanoramiques,
+  articleCircuitCapCorse,
+  articleRouteDesVins,
+  articleRouteGrandSud,
 ];
 
-// Re-export the BlogPost interface for backward compatibility
-export type { BlogPost };
+// Sort by date descending
+blogPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());

@@ -1,10 +1,11 @@
+
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { MapLocation } from '@/components/map/types';
 import MapBox from '@/components/map/MapBox';
 import { allGasStations, strategicGasStations, GasStation } from '@/data/gas-stations';
-import { Fuel, Clock, Info, Map as MapIcon } from 'lucide-react';
+import { Fuel, Clock, Info, MapPin } from 'lucide-react';
 import { toast } from 'sonner';
 
 interface GasStationsMapProps {
@@ -88,23 +89,23 @@ const GasStationsMap = ({ title = "Carte des stations-service en Corse" }: GasSt
             locations={locations}
             height="500px" 
             interactive={true}
-            enableClustering={false}
+            enableClustering={true}
             zoom={8}
           />
         ) : (
           <div className="h-[500px] flex items-center justify-center bg-gray-50">
-            <MapIcon className="h-8 w-8 text-gray-300 animate-pulse" />
+            <MapPin className="h-8 w-8 text-gray-300 animate-pulse" />
           </div>
         )}
         
-        <div className="absolute bottom-4 left-4 bg-white/90 rounded-md p-3 shadow-md max-w-xs z-50">
+        <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-md p-3 shadow-md max-w-xs z-50">
           <div className="text-xs text-muted-foreground space-y-1">
             <div className="font-semibold flex items-center gap-1">
               <Clock className="h-3 w-3" />
               Légende:
             </div>
             <div className="flex items-center gap-1">
-              <span className="inline-block w-3 h-3 rounded-full bg-amber-500 border border-white"></span>
+              <span className="inline-block w-3 h-3 rounded-full bg-amber-500"></span>
               Station standard
             </div>
             <div className="flex items-center gap-1">
@@ -117,9 +118,12 @@ const GasStationsMap = ({ title = "Carte des stations-service en Corse" }: GasSt
       </div>
       
       <div className="text-sm text-muted-foreground">
-        <p>
-          <strong>Note:</strong> La carte montre {showStrategicOnly ? 'uniquement les stations stratégiques' : 'toutes les stations principales'}. 
-          {!showStrategicOnly && ' Utilisez le bouton "Stations stratégiques" pour afficher uniquement les stations essentielles.'}
+        <p className="flex items-start gap-1">
+          <Info className="h-4 w-4 mt-0.5 shrink-0" />
+          <span>
+            <strong>Note:</strong> La carte montre {showStrategicOnly ? 'uniquement les stations stratégiques' : 'toutes les stations principales'}. 
+            {!showStrategicOnly && ' Utilisez le bouton "Stations stratégiques" pour afficher uniquement les stations essentielles.'}
+          </span>
         </p>
       </div>
     </div>

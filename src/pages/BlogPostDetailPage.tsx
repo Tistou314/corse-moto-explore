@@ -29,6 +29,9 @@ const BlogPostDetailPage = () => {
       const foundPost = blogPosts.find(item => item.id === id);
       if (foundPost) {
         setPost(foundPost);
+        console.log(`Blog post loaded: ${foundPost.title}`);
+      } else {
+        console.error(`Blog post with id ${id} not found`);
       }
     }
   }, [id]);
@@ -98,7 +101,7 @@ const BlogPostDetailPage = () => {
             {/* Carte des stations service pour l'article spécifique */}
             {isGasStationPost && (
               <div className="my-12 border-t border-b border-gray-100 py-8">
-                <h2 className="text-2xl font-bold mb-6">Carte des stations-service en Corse</h2>
+                <h2 className="text-2xl font-bold mb-6">Carte interactive des stations-service</h2>
                 <GasStationsMap key={`gas-map-${id}-${Date.now()}`} />
               </div>
             )}
