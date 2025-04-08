@@ -11,8 +11,6 @@ export const routeGrandSud: BlogPost = {
     avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
     bio: 'Guide moto local et experte des routes du sud de la Corse'
   },
-  authorTitle: 'Guide moto local et experte des routes corses',
-  authorAvatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=256&q=80',
   category: 'Itinéraires et circuits',
   imageUrl: '/lovable-uploads/60e4855d-f792-4984-a882-c9e763c83da6.png',
   slug: 'route-grand-sud-2024',
