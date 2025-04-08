@@ -97,10 +97,10 @@ const BlogPostDetailPage = () => {
             
             {/* Carte des stations service pour l'article spécifique */}
             {isGasStationPost && (
-              <div className="my-8 border-t border-b border-gray-100 py-6">
-                <h2 className="text-2xl font-bold mb-4">Carte des stations-service en Corse</h2>
-                <GasStationsMap />
-                <div className="text-center text-sm text-muted-foreground mt-2">
+              <div className="my-12 border-t border-b border-gray-100 py-8">
+                <h2 className="text-2xl font-bold mb-6">Carte des stations-service en Corse</h2>
+                <GasStationsMap key={`gas-map-${id}`} />
+                <div className="text-center text-sm text-muted-foreground mt-4">
                   Carte interactive des stations-service de Corse
                 </div>
               </div>

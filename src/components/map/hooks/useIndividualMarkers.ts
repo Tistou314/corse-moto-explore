@@ -1,79 +1,82 @@
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useCallback } from 'react';
 import mapboxgl from 'mapbox-gl';
-import { MapLocation, isWithinCorsica } from '../types';
+import { MapLocation } from '../types';
 import { createMapMarker } from '../MapMarker';
 
 export const useIndividualMarkers = (
-  map: React.MutableRefObject<mapboxgl.Map | null>,
+  mapRef: React.MutableRefObject<mapboxgl.Map | null>,
   locations: MapLocation[] = [],
   onMarkerClick: (location: MapLocation) => void
 ) => {
   const markersRef = useRef<mapboxgl.Marker[]>([]);
   
-  // Add individual markers when locations change
+  // Fonction pour effacer tous les marqueurs
+  const clearMarkers = useCallback(() => {
+    if (markersRef.current.length > 0) {
+      console.log(`Nettoyage de ${markersRef.current.length} marqueurs existants`);
+      markersRef.current.forEach(marker => {
+        if (marker) marker.remove();
+      });
+      markersRef.current = [];
+    }
+  }, []);
+
+  // Add markers when locations change or map is initialized
   useEffect(() => {
-    // Skip if map is not available or no locations
-    if (!map.current) return;
-
-    // Remove existing markers
-    markersRef.current.forEach(marker => marker?.remove());
-    markersRef.current = [];
-
-    // Filter locations by type and validate coordinates
-    const validLocations = locations.filter(loc => 
-      typeof loc.latitude === 'number' && 
-      typeof loc.longitude === 'number' &&
-      !isNaN(loc.latitude) && 
-      !isNaN(loc.longitude)
-    );
+    console.log("useIndividualMarkers: Effect triggered");
     
-    if (validLocations.length === 0) {
-      console.warn("Aucun emplacement valide à afficher sur la carte.");
+    if (!mapRef.current) {
+      console.log("Carte non initialisée");
       return;
     }
-
-    console.log(`Traitement de ${validLocations.length} emplacements valides pour les markers`);
-
-    // Split locations by type
-    const itineraryPoints = validLocations.filter(loc => loc.type === 'itinerary');
-    const poiPoints = validLocations.filter(loc => loc.type === 'pointOfInterest');
-    const accommodationPoints = validLocations.filter(loc => loc.type === 'accommodation');
     
-    console.log('Creating individual markers:', {
-      itineraries: itineraryPoints.length,
-      pois: poiPoints.length,
-      accommodations: accommodationPoints.length
-    });
-
-    // Sort POIs so that primary ones come last (will be drawn on top)
-    const sortedPois = [...poiPoints].sort((a, b) => {
-      if (a.isPrimary && !b.isPrimary) return 1;
-      if (!a.isPrimary && b.isPrimary) return -1;
-      return 0;
-    });
-
-    // Add markers in specific order: itineraries, accommodations, then POIs (with primary POIs last)
-    [...itineraryPoints, ...accommodationPoints, ...sortedPois].forEach(location => {
-      const marker = createMapMarker({
-        location,
-        map: map.current!,
-        onClick: onMarkerClick
-      });
+    if (!locations || !locations.length) {
+      console.log("Aucun emplacement à afficher");
+      return;
+    }
+    
+    const map = mapRef.current;
+    
+    console.log(`Création de ${locations.length} marqueurs individuels`);
+    
+    // Assurons-nous que la carte est chargée avant d'ajouter des marqueurs
+    if (!map.loaded()) {
+      console.log("La carte n'est pas encore complètement chargée, attente...");
       
-      if (marker) {
-        markersRef.current.push(marker);
-      }
-    });
+      const onLoadHandler = () => {
+        addMarkers();
+        map.off('load', onLoadHandler);
+      };
+      
+      map.on('load', onLoadHandler);
+    } else {
+      addMarkers();
+    }
+    
+    function addMarkers() {
+      // Nettoyer les marqueurs existants
+      clearMarkers();
+      
+      // Créer de nouveaux marqueurs
+      const newMarkers = locations.map(location => {
+        // Utilisation du createMapMarker pour l'affichage cohérent
+        return createMapMarker({
+          location,
+          map,
+          onClick: onMarkerClick
+        });
+      }).filter(Boolean) as mapboxgl.Marker[];
+      
+      console.log(`${newMarkers.length}/${locations.length} marqueurs créés avec succès`);
+      markersRef.current = newMarkers;
+    }
 
-    console.log(`${markersRef.current.length} markers créés avec succès.`);
-
-    // Cleanup function
     return () => {
-      markersRef.current.forEach(marker => marker?.remove());
-      markersRef.current = [];
+      console.log("Nettoyage des marqueurs au démontage");
+      clearMarkers();
     };
-  }, [locations, map, onMarkerClick]);
+  }, [mapRef, locations, onMarkerClick, clearMarkers]);
 
-  return { markersRef };
+  return { markersRef, clearMarkers };
 };

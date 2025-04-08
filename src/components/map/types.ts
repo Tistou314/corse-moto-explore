@@ -46,6 +46,19 @@ export const CorsicaBounds = {
 
 // Vérification si les coordonnées sont dans les limites de la Corse
 export const isWithinCorsica = (latitude: number, longitude: number): boolean => {
+  // Vérifier d'abord que ce sont des nombres valides
+  if (isNaN(latitude) || isNaN(longitude)) {
+    return false;
+  }
+  
+  // Vérification normale dans les limites de la Corse
+  const withinBounds = (
+    latitude >= CorsicaBounds.minLatitude && 
+    latitude <= CorsicaBounds.maxLatitude &&
+    longitude >= CorsicaBounds.minLongitude && 
+    longitude <= CorsicaBounds.maxLongitude
+  );
+  
   // Vérifier si les coordonnées sont inversées (ce qui est une erreur courante)
   const possiblyInverted = 
     longitude >= CorsicaBounds.minLatitude && 
@@ -53,23 +66,12 @@ export const isWithinCorsica = (latitude: number, longitude: number): boolean =>
     latitude >= CorsicaBounds.minLongitude && 
     latitude <= CorsicaBounds.maxLongitude;
   
-  if (possiblyInverted) {
+  if (!withinBounds && possiblyInverted) {
     console.warn(
       `Coordonnées potentiellement inversées: [${latitude}, ${longitude}]. ` +
       `Essayez plutôt [${longitude}, ${latitude}]`
     );
   }
 
-  // Vérifier d'abord que ce sont des nombres valides
-  if (isNaN(latitude) || isNaN(longitude)) {
-    return false;
-  }
-  
-  // Vérification normale dans les limites de la Corse
-  return (
-    latitude >= CorsicaBounds.minLatitude && 
-    latitude <= CorsicaBounds.maxLatitude &&
-    longitude >= CorsicaBounds.minLongitude && 
-    longitude <= CorsicaBounds.maxLongitude
-  );
+  return withinBounds;
 };

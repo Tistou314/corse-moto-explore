@@ -5,7 +5,8 @@ import { Badge } from '@/components/ui/badge';
 import { MapLocation } from '@/components/map/types';
 import MapBox from '@/components/map/MapBox';
 import { allGasStations, strategicGasStations, GasStation } from '@/data/gasStations';
-import { Fuel, Clock, Info } from 'lucide-react';
+import { Fuel, Clock, Info, Map as MapIcon } from 'lucide-react';
+import { toast } from 'sonner';
 
 interface GasStationsMapProps {
   title?: string;
@@ -17,42 +18,57 @@ const GasStationsMap = ({ title = "Carte des stations-service en Corse" }: GasSt
   const [locations, setLocations] = useState<MapLocation[]>([]);
 
   // Fonction pour convertir les stations en points sur la carte
+  // Crucial pour le bon affichage des marqueurs
   const convertToMapLocations = (stations: GasStation[]): MapLocation[] => {
-    console.log(`Conversion de ${stations.length} stations en locations`);
-    return stations.map(station => {
-      console.log(`Station ${station.name}: [${station.latitude}, ${station.longitude}]`);
-      return {
-        id: station.id,
-        title: station.name,
-        latitude: station.latitude,
-        longitude: station.longitude,
-        type: 'gasStation',
-        description: `${station.brand} - ${station.hours}${station.seasonalHours ? ' (horaires saisonniers)' : ''}`,
-        isPrimary: station.isStrategic,
-        address: station.address
-      };
-    });
+    return stations.map(station => ({
+      id: station.id,
+      title: station.name,
+      latitude: station.latitude,
+      longitude: station.longitude,
+      type: 'gasStation',
+      description: `${station.brand} - ${station.hours}${station.seasonalHours ? ' (horaires saisonniers)' : ''}`,
+      isPrimary: station.isStrategic,
+      address: station.address
+    }));
   };
 
-  // Charger les stations dès le chargement du composant
+  // Log de debug
   useEffect(() => {
-    // Forcer un court délai pour s'assurer que le composant est bien monté
-    const timer = setTimeout(() => {
-      const stationsToShow = showStrategicOnly ? strategicGasStations : allGasStations;
-      
-      console.log(`Affichage de ${stationsToShow.length} stations sur la carte`);
-      console.log("Exemples de stations:", stationsToShow.slice(0, 2));
-      
-      const mappedLocations = convertToMapLocations(stationsToShow);
+    console.log('GasStationsMap - Remontage du composant');
+    console.log('État actuel showStrategicOnly:', showStrategicOnly);
+    
+    const stationsToShow = showStrategicOnly ? strategicGasStations : allGasStations;
+    console.log(`Préparation de ${stationsToShow.length} stations`);
+    
+    // Vérification des coordonnées d'exemple
+    if (stationsToShow.length > 0) {
+      const sample = stationsToShow[0];
+      console.log('Exemple station:', sample.name);
+      console.log('Coordonnées:', [sample.latitude, sample.longitude]);
+    }
+    
+    // Conversion des stations en locations et diagnostic
+    const mappedLocations = convertToMapLocations(stationsToShow);
+    console.log('Locations mappées:', mappedLocations.length);
+    
+    // Force le remontage complet de la carte à chaque changement
+    setLocations([]);
+    
+    // Applique les nouvelles locations après un court délai
+    setTimeout(() => {
       setLocations(mappedLocations);
       setDisplayCount(stationsToShow.length);
-    }, 100);
-    
-    return () => clearTimeout(timer);
+      
+      // Notification pour debug
+      toast.info(`${stationsToShow.length} stations prêtes à afficher`, {
+        duration: 2000,
+      });
+    }, 50);
   }, [showStrategicOnly]);
 
   const handleFilterChange = () => {
     setShowStrategicOnly(!showStrategicOnly);
+    toast.success(`Affichage des ${!showStrategicOnly ? 'stations stratégiques' : 'toutes les stations'}`);
   };
 
   return (
@@ -81,13 +97,19 @@ const GasStationsMap = ({ title = "Carte des stations-service en Corse" }: GasSt
       </div>
       
       <div className="relative bg-white rounded-lg shadow-lg overflow-hidden">
-        <MapBox 
-          locations={locations}
-          height="500px" 
-          interactive={true}
-          enableClustering={false}
-          zoom={8}
-        />
+        {locations.length > 0 ? (
+          <MapBox 
+            locations={locations}
+            height="500px" 
+            interactive={true}
+            enableClustering={false}
+            zoom={8}
+          />
+        ) : (
+          <div className="h-[500px] flex items-center justify-center bg-gray-50">
+            <MapIcon className="h-8 w-8 text-gray-300 animate-pulse" />
+          </div>
+        )}
         
         <div className="absolute bottom-4 left-4 bg-white/90 rounded-md p-3 shadow-md max-w-xs">
           <div className="text-xs text-muted-foreground space-y-1">

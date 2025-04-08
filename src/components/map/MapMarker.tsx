@@ -20,7 +20,7 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   }
   
   // Ajout de logs pour debug
-  console.log(`Création d'un marker pour ${location.title} aux coordonnées: [${location.latitude}, ${location.longitude}]`);
+  console.log(`Création marker pour: ${location.title} [${location.latitude}, ${location.longitude}], type: ${location.type}`);
   
   // Vérification que les coordonnées sont dans une plage valide pour la Corse
   if (!isWithinCorsica(location.latitude, location.longitude)) {
@@ -38,7 +38,7 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     ? '#f59e0b' // couleur ambre pour stations-service 
     : (markerTypes[location.type] || '#000000');
   
-  // Styles de base pour le marqueur
+  // Styles de base pour le marqueur - IMPORTANT: z-index élevé pour s'assurer que les marqueurs sont visibles
   el.style.backgroundColor = color;
   el.style.width = '30px';
   el.style.height = '30px';
@@ -52,13 +52,13 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   el.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
   el.style.position = 'relative';
   el.style.border = '2px solid white';
-  el.style.zIndex = '5';
+  el.style.zIndex = '1000'; // Augmenté considérablement pour garantir la visibilité
   
   // Style spécifique pour les stations stratégiques
   if (location.isPrimary) {
     el.style.border = '3px solid white';
     el.style.boxShadow = '0 3px 8px rgba(0,0,0,0.5)';
-    el.style.zIndex = '10'; // Stations stratégiques au premier plan
+    el.style.zIndex = '1001'; // Stations stratégiques au premier plan
   }
   
   // Ajouter une icône en fonction du type
@@ -138,7 +138,7 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   }
 
   try {
-    // Création du marqueur centré sur les coordonnées
+    // IMPORTANT: Création du marqueur en vérifiant bien l'ordre longitude, latitude
     console.log(`Ajout du marker à la carte: [${location.longitude}, ${location.latitude}]`);
     const marker = new mapboxgl.Marker({
       element: el,

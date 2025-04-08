@@ -27,10 +27,24 @@ const MapBox = ({
   );
 
   const [locationCount, setLocationCount] = useState(0);
+  const [mapKey, setMapKey] = useState(Date.now()); // Force re-render key
+
+  // Force la réinitialisation de la carte lorsque les locations changent
+  useEffect(() => {
+    setMapKey(Date.now());
+  }, [locations.length]);
 
   // Update location count when locations change
   useEffect(() => {
     setLocationCount(locations.length);
+    console.log(`MapBox reçoit ${locations.length} emplacements:`, locations);
+    
+    if (locations.length > 0) {
+      // Log des 2 premiers emplacements pour vérification
+      locations.slice(0, 2).forEach((loc, index) => {
+        console.log(`Location ${index}: ${loc.title} [${loc.latitude}, ${loc.longitude}], type: ${loc.type}`);
+      });
+    }
   }, [locations]);
 
   // Show toast when locations are loaded
@@ -38,11 +52,9 @@ const MapBox = ({
     if (isLoaded) {
       if (locations.length > 0) {
         toast.success(`${locations.length} emplacements affichés sur la carte`);
+      } else {
+        toast.warning("Aucun emplacement à afficher");
       }
-      toast.info('Carte de la Corse chargée', {
-        icon: <MapIcon className="h-4 w-4" />,
-        duration: 2000,
-      });
     }
   }, [isLoaded, locations.length]);
 
@@ -56,7 +68,7 @@ const MapBox = ({
   }
 
   return (
-    <div className="relative w-full" style={{ height }}>
+    <div className="relative w-full" style={{ height }} key={mapKey}>
       <div ref={mapContainer} className="w-full h-full rounded-lg overflow-hidden border border-gray-200 shadow-lg" />
       
       {selectedLocation && (
