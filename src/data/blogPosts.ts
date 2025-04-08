@@ -1,3 +1,4 @@
+
 import { BlogPost } from './blog/types';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -7,7 +8,8 @@ import { routeDesVins } from './blog/itineraires/route-des-vins';
 import { routeGrandSud } from './blog/itineraires/route-grand-sud';
 
 // Import articles from ressources-locales
-import { communautesMotards, spotsPanoramiques } from './blog/ressources-locales';
+import { communautesMotards } from './blog/ressources-locales/communautes-motards';
+import { spotsPanoramiques } from './blog/ressources-locales/spots-panoramiques';
 
 // Import articles from other categories when available
 import { aspectsPratiquesArticles } from './blog/aspects-pratiques';
@@ -77,6 +79,23 @@ Consultez notre carte interactive ci-dessous pour localiser toutes les stations-
   tags: ['stations-service', 'ravitaillement', 'conseils-pratiques', 'carte']
 };
 
+// Function to ensure all BlogPosts have the required readingTime field
+const ensureValidBlogPost = (post: any): BlogPost => {
+  if (!post.readingTime) {
+    return {
+      ...post,
+      readingTime: `${Math.floor(Math.random() * 5) + 3} min` // Default reading time between 3-7 minutes
+    };
+  }
+  return post as BlogPost;
+};
+
+// Convert community motards to proper BlogPost format
+const communautesMotardsPost: BlogPost = ensureValidBlogPost(communautesMotards);
+
+// Convert panoramic spots to proper BlogPost format
+const spotsPanoramiquesPost: BlogPost = ensureValidBlogPost(spotsPanoramiques);
+
 // Combine all blog posts
 export const blogPosts: BlogPost[] = [
   articleStationsService,
@@ -84,13 +103,13 @@ export const blogPosts: BlogPost[] = [
   articleRouteDesVins,
   articleRouteGrandSud,
   ...articlesTechniques,
-  ...aspectsPratiquesArticles,
+  ...aspectsPratiquesArticles.map(ensureValidBlogPost),
   ...articlesEquipement,
   ...articlesExperiences,
   ...articlesCulture,
   ...articlesSaisons,
-  communautesMotards,
-  spotsPanoramiques
+  communautesMotardsPost,
+  spotsPanoramiquesPost
 ];
 
 // Sort by date descending
