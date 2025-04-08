@@ -1,6 +1,7 @@
+
 import { BlogPost } from '@/types/blog';
 
-export const spotsPanoramiquesArticle: BlogPost = {
+export const spotsPanoramiques: BlogPost = {
   id: 'spots-photos-panoramiques',
   title: 'Les meilleurs spots panoramiques pour photographier la Corse à moto',
   excerpt: 'Découvrez les points de vue les plus spectaculaires accessibles à moto pour immortaliser vos souvenirs corses.',
