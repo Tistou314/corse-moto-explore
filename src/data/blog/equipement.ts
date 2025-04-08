@@ -7,39 +7,214 @@ export const equipementArticles: BlogPost[] = [
     excerpt: 'Guide complet pour planifier et réussir votre aventure motarde en Corse, des itinéraires aux conseils pratiques.',
     content: `# Comment organiser son road trip à moto en Corse pour en profiter au maximum ?
 
-La Corse à moto, c'est le rêve de tout motard ! Imaginez-vous roulant sur des routes sinueuses qui épousent les falaises, avec la mer turquoise d'un côté et les montagnes majestueuses de l'autre. 
+La Corse à moto, c'est le rêve de tout motard ! Imaginez-vous roulant sur des routes sinueuses qui épousent les falaises, avec la mer turquoise d'un côté et les montagnes majestueuses de l'autre. L'île de Beauté offre aux passionnés de deux-roues un terrain de jeu exceptionnel, mêlant sensations fortes et paysages à couper le souffle. Que vous soyez un pilote chevronné ou un motard du dimanche, voici le guide ultime pour transformer votre road trip corse en une aventure inoubliable.
 
-## Pourquoi la Corse est un paradis pour les motards ?
+## La Corse, paradis des motards : pourquoi s'y rendre ?
 
-L'île de Beauté offre aux passionnés de deux-roues un terrain de jeu exceptionnel, mêlant :
+L'île de Beauté porte bien son nom. Avec ses 1000 km de côtes, ses montagnes qui plongent dans la mer et ses villages perchés, la Corse est une destination rêvée pour les motards. Ses routes sinueuses offrent un cocktail parfait de virages techniques et de panoramas spectaculaires.
 
-* **Sensations fortes** à chaque virage
-* **Paysages à couper le souffle**
-* **Diversité des routes** : côtières, montagneuses, forestières
+Ce qui rend la Corse unique pour un road trip moto, c'est cette diversité de paysages concentrée sur une seule île. Le matin, vous pouvez rouler en montagne, déjeuner dans un village typique et vous baigner l'après-midi dans une crique sauvage. Chaque virage révèle un nouveau tableau, chaque col franchi dévoile un panorama différent.
 
-### Les points forts de la Corse à moto
+Et puis il y a cette ambiance si particulière, ce mélange de culture méditerranéenne et de fierté insulaire. Les Corses vous accueilleront avec chaleur, surtout si vous prenez le temps de vous arrêter dans les petits villages loin des sentiers battus. Un verre de vin local sur une terrasse après une journée de moto, ça n'a pas de prix !
 
-- Routes sinueuses surplombant la mer turquoise
-- Cols montagneux offrant des panoramas spectaculaires
-- Villages authentiques à découvrir
-- Cuisine et culture méditerranéennes
+## Planifier votre road trip en Corse
 
-## Préparation : les clés d'un road trip réussi
+La réussite d'un voyage moto en Corse passe par une planification bien pensée, sans pour autant tuer l'esprit d'aventure.
 
-Que vous soyez un pilote chevronné ou un motard du dimanche, voici le guide ultime pour transformer votre échappée à deux roues en une expérience inoubliable.
+### Quand partir ? Les meilleures saisons pour la moto en Corse
 
-### Points essentiels à préparer
+Mai-juin et septembre-octobre sont les périodes idéales pour un road trip à moto en Corse. Les températures sont douces (15-25°C), les routes moins fréquentées et les prix plus abordables. 
 
-- **Moto** : choisir la monture adaptée
-- **Équipement** : sécurité et confort
-- **Itinéraire** : planification flexible
-- **Budget** : estimation des coûts
+En plein été (juillet-août), vous profiterez d'un temps magnifique mais attention à la chaleur en combinaison et aux routes bondées. Les cols de montagne peuvent atteindre 35°C, ce qui devient vite inconfortable.
 
-## Conclusion
+L'hiver n'est pas recommandé pour la moto : routes parfois enneigées en altitude, fermeture de nombreux hébergements et restaurants, traversées en ferry moins fréquentes.
 
-La Corse à moto, c'est bien plus qu'un simple voyage - c'est une aventure sensorielle complète où liberté, découverte et sensations fortes se mêlent à chaque virage.
+### Préparer votre moto pour l'aventure corse
 
-**Prêt à conquérir les plus belles routes corses ?** Suivez ce guide pas à pas !`
+Votre monture mérite une attention particulière avant de s'attaquer aux virages corses :
+
+* Faites une révision complète : freins, pneus, chaîne, niveaux.
+* Optez pour des pneus sport-touring ou routiers avec une bonne tenue sur route sèche.
+* Vérifiez vos suspensions et ajustez-les si nécessaire pour le duo et les bagages.
+* Prévoyez un kit de réparation basique (rustines, mini-compresseur, outils).
+* Pensez à un antivol solide, les motos attirent les regards en Corse.
+
+Si vous louez une moto sur place, réservez bien à l'avance, surtout en haute saison. Les BMW GS, Ducati Multistrada ou Honda Africa Twin sont parfaites pour les routes corses.
+
+### L'équipement indispensable du motard en Corse
+
+La météo corse peut être capricieuse, surtout en montagne. Voici l'équipement à ne pas oublier :
+
+* Un casque avec visière solaire intégrée ou des lunettes de soleil.
+* Une veste et un pantalon avec protections et membranes imperméables.
+* Des gants mi-saison et une paire imperméable en secours.
+* Des bottes confortables pour marcher lors des pauses.
+* Un tour de cou multifonction contre le soleil ou le vent frais des cols.
+* Un sac à dos hydratation ou une gourde accessible facilement.
+* Une crème solaire haute protection et un stick à lèvres.
+* Un appareil photo résistant aux chocs ou un smartphone bien protégé.
+
+N'oubliez pas que vous pourrez alterner moto et baignade : un maillot et une serviette microfibre prennent peu de place dans vos sacoches !
+
+## Les itinéraires magiques de la Corse à moto
+
+La Corse regorge de routes mythiques qui font le bonheur des motards. Voici les plus belles à ne pas manquer.
+
+### La route des Calanques : frissons garantis entre Piana et Porto
+
+Cette portion de la D81 est un véritable chef-d'œuvre de la nature. Les Calanques de Piana, ces formations rocheuses rougeoyantes sculptées par l'érosion, plongent directement dans la mer bleu cobalt. La route qui les traverse est un enchantement pour les motards.
+
+Sur environ 12 km, vous enchaînerez les virages en épingle avec des à-pics vertigineux d'un côté et des falaises de l'autre. Le revêtement est bon mais restez vigilant : les touristes s'arrêtent parfois brusquement pour admirer la vue.
+
+Mon conseil de motard : roulez-y tôt le matin ou en fin de journée pour éviter les cars de touristes. Le coucher de soleil y est magique, les roches prenant alors une teinte flamboyante.
+
+### Le Cap Corse : la boucle panoramique à ne pas manquer
+
+Le Cap Corse forme une péninsule sauvage au nord de l'île. La route D80 en fait le tour sur environ 110 km, offrant des vues imprenables alternant entre mer et montagne.
+
+En partant de Bastia vers l'ouest, vous longerez d'abord la côte plus escarpée avec ses villages perchés comme Nonza et son étonnante plage noire. Puis, en contournant le cap par le nord, vous découvrirez des marines pittoresques et des criques sauvages sur la côte est.
+
+J'adore m'arrêter au petit port de Centuri pour déguster une assiette de langoustes fraîches, ou faire une pause café à Macinaggio en admirant les bateaux. Cette boucle se fait tranquillement en une journée, avec de nombreuses pauses photo et baignade.
+
+### La traversée de la Castagniccia : au cœur de la Corse authentique
+
+La Castagniccia, région forestière du nord-est, est moins connue mais offre des routes superbes pour les amateurs de virages. Cette région montagneuse couverte de châtaigniers abrite des villages typiques accrochés aux pentes.
+
+Depuis Bastia, empruntez la D71 vers La Porta, puis perdez-vous dans le dédale des petites routes comme la D515 ou la D46. Le revêtement peut être moyen par endroits, mais la tranquillité et l'authenticité valent largement ce petit inconvénient.
+
+J'aime particulièrement la route qui mène à San Lorenzo, avec ses tunnels de verdure et ses ponts génois. En automne, les couleurs y sont extraordinaires, et vous pourrez goûter aux spécialités à base de châtaignes dans les petites auberges.
+
+### Les cols de l'intérieur : sensations fortes entre montagnes et forêts
+
+Pour les motards qui aiment le pilotage technique, les cols corses sont un régal. Le col de Bavella (D268) offre des vues spectaculaires sur les Aiguilles, ces pics rocheux qui dominent la forêt. Le col de Vergio, point culminant routier de l'île (1477m), vous fera traverser la majestueuse forêt d'Aïtone.
+
+La route des cols entre Corte et Porto (D84) est un condensé de ce que la Corse offre de plus beau : gorges profondes, forêts de pins laricio, villages perchés et panoramas à 360°.
+
+Mon petit plaisir : m'arrêter au col de Sorba pour admirer la vue sur la vallée du Taravo, ou faire une pause au bord du lac de Calacuccia après avoir franchi le col de Vergio. Prévoyez un pull même en été, il peut faire frais à cette altitude !
+
+## Conseils pratiques pour votre road trip corse
+
+Quelques astuces de motard pour que votre voyage se déroule sans accroc et avec un maximum de plaisir.
+
+### Où dormir ? Les hébergements adaptés aux motards
+
+Trouver un hébergement avec un parking sécurisé pour votre moto est la priorité. Voici mes recommandations par région :
+
+* **Ajaccio et environs :** L'Hôtel du Golfe à Ajaccio propose un parking fermé et des chambres avec vue sur la mer. À 15 km, le camping Les Oliviers accueille les motards avec des emplacements dédiés.
+* **Porto et la côte ouest :** L'Hôtel Splendid à Porto dispose d'un garage pour les motos et se trouve à deux pas des restaurants. Le camping de la Plage à Bussaglia offre des emplacements ombragés à 50 m de la mer.
+* **Bastia et le Cap Corse :** La Maison Mathieu, chambre d'hôtes à Erbalunga, propose un patio fermé pour les motos et un accueil chaleureux par Mathieu, lui-même motard.
+* **Bonifacio et le sud :** L'Hôtel du Roy d'Aragon au cœur de Bonifacio dispose d'un parking privé. Plus abordable, le camping Pianaccia à Santa Giulia est idéal pour allier moto et plage.
+* **Corte et la montagne :** L'Hôtel du Nord à Corte est tenu par un couple de passionnés de moto qui vous indiqueront les meilleures routes. La gîte d'étape A Pasturella à Venaco offre un hébergement simple mais authentique.
+
+Mon astuce : réservez votre première et dernière nuit près du port de débarquement/embarquement pour éviter le stress des horaires de ferry.
+
+### Rouler en sécurité sur les routes corses
+
+Les routes corses sont magnifiques mais peuvent être piègeuses :
+
+* Méfiez-vous du gravillonnage, fréquent au printemps après les réparations hivernales.
+* Attention aux animaux en liberté : vaches, cochons et chèvres traversent sans prévenir.
+* Dans les villages, ralentissez : les rues sont étroites et les enfants jouent parfois sur la route.
+* En montagne, anticipez les virages en épingle : certains se resserrent brusquement.
+* Gardez toujours une bouteille d'eau dans vos sacoches, la déshydratation guette en été.
+* Ne sous-estimez pas les distances : 100 km en Corse peuvent prendre 2h30 à cause des virages.
+
+J'ai pris l'habitude de m'arrêter toutes les heures pour admirer le paysage et me dégourdir les jambes. Votre concentration et votre plaisir n'en seront que meilleurs.
+
+### Les saveurs corses à découvrir en chemin
+
+Rouler à moto ouvre l'appétit ! La Corse regorge de spécialités à déguster lors de vos pauses :
+
+* **Sur la route des Calanques :** Arrêtez-vous à l'auberge A Tramula à Porto pour goûter leur sanglier aux olives et leur tarte aux châtaignes.
+* **Dans le Cap Corse :** Le bar des pêcheurs à Centuri sert les meilleures langoustes de l'île. Plus modeste mais délicieux, le café du port à Macinaggio propose des assiettes de charcuterie corse.
+* **En Castagniccia :** L'auberge U Pignatonu à La Porta sert une cuisine traditionnelle à base de châtaignes. Leur soupe corse et leur civet de sanglier sont divins.
+* **Dans les cols :** Au col de Vizzavona, la brasserie A Stella propose des bières artisanales corses parfaites pour se rafraîchir (avec modération bien sûr).
+* **À Bonifacio :** Le restaurant L'Archivolto, dans une ruelle de la vieille ville, sert un délicieux agneau corse aux herbes du maquis.
+
+Pensez à faire une pause dans les petites épiceries de village pour acheter du saucisson, du fromage et du pain pour vos pique-niques face à la mer !
+
+## Organiser votre voyage étape par étape
+
+Passons maintenant aux aspects pratiques de l'organisation de votre road trip.
+
+### Créer votre itinéraire personnalisé
+
+Voici un exemple d'itinéraire sur 7 jours, adaptable selon vos envies :
+
+| Jour | Itinéraire                   | Distance (km) | Durée (estimation) | Points forts                                            |
+|------|------------------------------|---------------|--------------------|---------------------------------------------------------|
+| 1    | Ajaccio - Propriano          | 80            | 2h                 | Golfe d'Ajaccio, plages du sud, village de Propriano    |
+| 2    | Propriano - Bonifacio        | 70            | 1h30               | Lion de Roccapina, falaises de Bonifacio                |
+| 3    | Bonifacio - Porto-Vecchio    | 30            | 45min              | Plages de Palombaggia et Santa Giulia                   |
+| 4    | Porto-Vecchio - Zonza        | 50            | 1h30               | Col de l'Ospedale, Aiguilles de Bavella                 |
+| 5    | Zonza - Corte                | 90            | 2h30               | Forêt de l'Ospedale, gorges de la Restonica            |
+| 6    | Corte - Saint-Florent        | 120           | 3h                 | Vallée du Golo, désert des Agriates                     |
+| 7    | Saint-Florent - Ajaccio      | 150           | 3h30               | Cap Corse, côte ouest, retour à Ajaccio                 |
+
+Mon conseil : ne prévoyez pas plus de 150 km par jour pour profiter pleinement des paysages et faire des pauses. Alternez les journées "roulantes" avec des journées plus légères où vous pourrez explorer à pied ou vous baigner.
+
+Pour une première fois en Corse, le tour de l'île par la côte est un classique qui permet de voir l'essentiel. Si vous revenez, vous pourrez alors explorer plus en profondeur l'intérieur montagneux.
+
+### Comment réserver ferry et hébergements ?
+
+Pour le ferry, plusieurs compagnies desservent la Corse depuis le continent :
+
+* Corsica Ferries depuis Nice, Toulon ou Savone (Italie)
+* La Méridionale depuis Marseille
+* Corsica Linea depuis Marseille ou Nice
+
+Réservez votre traversée au moins 3 mois à l'avance pour les périodes estivales. Comparez les prix et les horaires, certaines traversées de nuit vous permettent de gagner une journée sur place.
+
+Pour les hébergements, je vous conseille de réserver au moins les premières et dernières nuits, puis de garder un peu de flexibilité pour le reste du séjour. Les applications comme Booking ou Hotels.com permettent de trouver des hébergements de dernière minute, même en haute saison.
+
+En camping, la réservation n'est pas toujours nécessaire hors juillet-août, mais reste recommandée pour les emplacements les plus agréables.
+
+### Les applications et cartes utiles pour votre road trip
+
+Quelques outils numériques qui faciliteront votre voyage :
+
+* **Waze ou Google Maps :** indispensables pour la navigation, mais attention aux zones sans réseau en montagne.
+* **Maps.me :** permet de télécharger les cartes et de naviguer hors connexion.
+* **Windy :** pour consulter les prévisions météo locales, très utile en montagne.
+* **Park4night :** pour trouver des spots sympas où s'arrêter et pique-niquer.
+* **TripAdvisor :** pour dénicher les bonnes tables et les activités.
+* **Liberty Rider :** application spéciale motards avec alertes sécurité et suivi GPS.
+
+N'oubliez pas une bonne vieille carte routière papier de la Corse ! Elle ne tombe jamais en panne et permet d'avoir une vue d'ensemble de votre parcours.
+
+## Immortaliser et partager votre aventure corse
+
+Votre road trip moto en Corse sera rempli de moments magiques que vous voudrez capturer et partager.
+
+### Rencontrer d'autres motards : les communautés locales
+
+La Corse compte une communauté de motards accueillante et passionnée. Voici comment les rencontrer :
+
+* Le Moto Club Ajaccien organise régulièrement des sorties ouvertes aux visiteurs.
+* Le groupe Facebook "Motards en Corse" permet d'échanger avec des locaux qui pourront vous conseiller.
+* Le bar Le Rallye à Ajaccio est un point de rencontre informel des motards le week-end.
+* Le rassemblement "Moto Tour de Corse" a lieu chaque année en mai, avec des balades organisées.
+
+Les motards corses connaissent les meilleurs virages et les routes secrètes. Ils vous indiqueront aussi les zones où la prudence est de mise (radar, gravillons, etc.).
+
+### Capturer les meilleurs moments : photos et vidéos de votre périple
+
+La Corse offre des décors de rêve pour vos photos et vidéos moto :
+
+* Emportez une caméra d'action type GoPro fixée sur votre casque ou moto.
+* Les meilleurs spots photos : le belvédère des Calanques de Piana, le col de Bavella, la marine de Girolata accessible uniquement à pied ou en bateau, la citadelle de Bonifacio.
+* Pensez à photographier votre moto dans le décor pour donner une échelle aux paysages.
+* Le lever et le coucher du soleil offrent les plus belles lumières, notamment sur la côte ouest.
+
+Petit truc de motard photographe : pour les photos de groupe, utilisez le retardateur de votre smartphone et posez-le sur votre moto (sur le guidon avec le téléphone calé contre le compteur).
+
+N'oubliez pas de créer un album partagé avec vos compagnons de route. Ces souvenirs de virages corses vous réchaufferont le cœur pendant les longs mois d'hiver !
+
+La Corse à moto, c'est bien plus qu'un simple road trip, c'est une expérience qui marque à vie. Entre mer et montagne, villages authentiques et routes de rêve, vous reviendrez transformé de cette aventure sur l'île de Beauté. Alors, casque sur la tête et sourire aux lèvres, la Corse vous attend pour une symphonie de virages dont vous vous souviendrez longtemps !`,
+    image: 'https://images.unsplash.com/photo-1508881598441-324f3974994b?auto=format&fit=crop&q=80',
+    date: '20 juin 2025',
+    author: 'Michel Costa',
+    category: 'Équipement et préparation'
   },
   {
     id: 'quelle-moto-choisir',
@@ -47,7 +222,7 @@ La Corse à moto, c'est bien plus qu'un simple voyage - c'est une aventure senso
     excerpt: 'Analyse comparative des types de motos les plus adaptés aux routes corses, entre sportives, trails, et routières.',
     content: `
 # Quelle moto choisir pour un voyage en Corse ?
-La Corse, véritable paradis pour les motards, offre des routes sinueuses et des panoramas spectaculaires à chaque virage. Avant de partir à l'assaut de l'île de beauté, le choix de ta monture est primordial pour profiter pleinement de cette aventure. Entre routes côtières ensoleillées et cols montagneux exigeants, la moto idéale dépendra de ton style de conduite et des exp��riences que tu recherches.
+La Corse, véritable paradis pour les motards, offre des routes sinueuses et des panoramas spectaculaires à chaque virage. Avant de partir à l'assaut de l'île de beauté, le choix de ta monture est primordial pour profiter pleinement de cette aventure. Entre routes côtières ensoleillées et cols montagneuses exigeants, la moto idéale dépendra de ton style de conduite et des exp��riences que tu recherches.
 
 ## Les types de motos adaptés à la Corse
 Les routes corses, aussi diverses que ses paysages, appellent à réfléchir au type de moto le plus adapté. Du littoral aux sommets, chaque machine présente ses avantages spécifiques.
