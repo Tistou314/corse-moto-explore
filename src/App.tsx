@@ -17,6 +17,7 @@ import HebergementPage from "./pages/HebergementPage";
 import AccommodationDetailPage from "./pages/AccommodationDetailPage";
 import FAQPage from "./pages/FAQPage";
 import AdminPage from "./pages/AdminPage";
+import GasStationsPage from "./pages/GasStationsPage"; // Add import for the new page
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ const App = () => (
             <Route path="/hebergements" element={<HebergementPage />} />
             <Route path="/hebergements/:id" element={<AccommodationDetailPage />} />
             <Route path="/faq" element={<FAQPage />} />
+            <Route path="/stations" element={<GasStationsPage />} /> {/* Add the new route */}
             <Route path="/admin/*" element={<AdminPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
