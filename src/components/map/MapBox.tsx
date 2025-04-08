@@ -1,12 +1,11 @@
 
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { MapBoxProps, CorsicaCenter } from './types';
 import { useMapbox } from './useMapbox';
 import LocationPopup from './LocationPopup';
 import { Badge } from '@/components/ui/badge';
 import { Info, Map as MapIcon } from 'lucide-react';
-import { toast } from 'sonner';
 
 const MapBox = ({ 
   center = CorsicaCenter, 
@@ -26,18 +25,17 @@ const MapBox = ({
     enableClustering
   );
 
-  const [mapKey] = useState(() => `map-${Date.now()}`);
-  const [locationCount, setLocationCount] = useState(0);
+  // On utilise une ref pour éviter des renders inutiles
+  const locationCountRef = useRef(locations.length);
+  const [displayCount, setDisplayCount] = useState(locations.length);
 
-  // Force la réinitialisation de la carte lorsque les locations changent
+  // Mise à jour du compteur uniquement quand nécessaire
   useEffect(() => {
-    console.log(`MapBox: Mise à jour des locations (${locations.length})`);
-    setLocationCount(locations.length);
-    
-    if (locations.length > 0 && isLoaded) {
-      toast.success(`${locations.length} emplacements affichés sur la carte`);
+    if (locationCountRef.current !== locations.length) {
+      locationCountRef.current = locations.length;
+      setDisplayCount(locations.length);
     }
-  }, [locations.length, isLoaded]);
+  }, [locations.length]);
 
   // Handle token not being available
   if (!mapboxToken) {
@@ -49,11 +47,10 @@ const MapBox = ({
   }
 
   return (
-    <div className="relative w-full" style={{ height }}>
+    <div className="relative w-full h-full" style={{ height }}>
       <div 
         ref={mapContainer} 
         className="w-full h-full rounded-lg overflow-hidden border border-gray-200 shadow-lg" 
-        key={mapKey}
       />
       
       {selectedLocation && (
@@ -63,7 +60,7 @@ const MapBox = ({
       <div className="absolute top-3 right-3 bg-white p-2 rounded shadow-md z-10">
         <Badge variant="outline" className="flex items-center gap-1">
           <Info className="h-3 w-3" />
-          <span>{locationCount} lieux</span>
+          <span>{displayCount} lieux</span>
         </Badge>
       </div>
     </div>

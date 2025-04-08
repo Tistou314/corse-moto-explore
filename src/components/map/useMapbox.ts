@@ -20,32 +20,18 @@ export const useMapbox = (
   const [selectedLocation, setSelectedLocation] = useState<MapLocation | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   
-  // For debugging - track when locations change
-  useEffect(() => {
-    console.log(`useMapbox: Received ${locations.length} locations`);
-    
-    // Vérifier si nous avons des stations-service
-    const gasStations = locations.filter(loc => loc.category === 'station-service');
-    if (gasStations.length > 0) {
-      console.log(`${gasStations.length} stations-service à afficher`);
-    }
-    
-    if (locations.length > 0) {
-      console.log('Sample location:', locations[0].title, 
-        `[${locations[0].latitude}, ${locations[0].longitude}], type: ${locations[0].type}`);
-    }
-  }, [locations]);
-  
-  // Initialize the map
+  // Initialize the map with a stable setup
   const { map } = useMapInitialization(mapContainer, mapboxToken, center, zoom, interactive, setIsLoaded);
   
-  // Handle marker click
+  // Handle marker click with a stable reference
   const handleMarkerClick = (location: MapLocation) => {
     console.log('Marker clicked:', location.title);
     
     // Pour les stations-service, afficher des détails supplémentaires
     if (location.category === 'station-service') {
+      const toastId = `station-${location.id}`;
       toast.info(`Station: ${location.title}`, {
+        id: toastId,
         description: location.description
       });
     }
@@ -53,7 +39,7 @@ export const useMapbox = (
     setSelectedLocation(location);
   };
 
-  // Add markers to the map - force fresh key to ensure re-rendering
+  // Utilisez les hooks avec les références stables
   const { markersRef } = useMapMarkers(
     map, 
     locations, 
@@ -61,7 +47,7 @@ export const useMapbox = (
     enableClustering
   );
   
-  // Draw route on the map if enabled
+  // Route drawing
   const { routeRef } = useMapRoute(map, locations, drawRoute);
 
   const closePopup = () => {

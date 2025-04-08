@@ -33,7 +33,7 @@ export const useIndividualMarkers = (
     
     if (!locations || locations.length === 0) {
       console.log("Aucun emplacement à afficher");
-      clearMarkers(); // Make sure to clear if no locations
+      clearMarkers();
       return;
     }
     
@@ -42,44 +42,71 @@ export const useIndividualMarkers = (
     // Pour éviter les problèmes de rendu, on nettoie toujours avant d'ajouter
     clearMarkers();
     
-    // Fonction pour ajouter les marqueurs
+    // Fonction pour ajouter les marqueurs de façon fiable
     const addMarkers = () => {
       console.log(`Création de ${locations.length} marqueurs individuels`);
       
-      // Créer de nouveaux marqueurs
-      const newMarkers = locations
-        .filter(location => {
-          // Valider que les coordonnées sont correctes
-          if (!location || 
-              typeof location.latitude !== 'number' || 
-              typeof location.longitude !== 'number' ||
-              isNaN(location.latitude) || 
-              isNaN(location.longitude)) {
-            console.error(`Coordonnées invalides pour ${location?.title || 'marker inconnu'}:`, location);
-            return false;
+      // Ajouter les marqueurs par lots pour éviter de surcharger le rendu
+      const addMarkersInBatches = (locationsToAdd: MapLocation[], batchSize = 20) => {
+        const markers: mapboxgl.Marker[] = [];
+        
+        // Fonction récursive pour ajouter par lots
+        const addBatch = (startIndex: number) => {
+          if (startIndex >= locationsToAdd.length) {
+            // Tous les marqueurs ont été ajoutés
+            markersRef.current = markers;
+            return;
           }
-          return true;
-        })
-        .map(location => {
-          const marker = createMapMarker({
-            location,
-            map,
-            onClick: onMarkerClick
-          });
-          return marker;
-        })
-        .filter(Boolean) as mapboxgl.Marker[];
+          
+          // Calculer l'index de fin du lot actuel
+          const endIndex = Math.min(startIndex + batchSize, locationsToAdd.length);
+          
+          // Ajouter le lot actuel
+          for (let i = startIndex; i < endIndex; i++) {
+            const location = locationsToAdd[i];
+            
+            // Valider les coordonnées
+            if (!location || 
+                typeof location.latitude !== 'number' || 
+                typeof location.longitude !== 'number' ||
+                isNaN(location.latitude) || 
+                isNaN(location.longitude)) {
+              continue;
+            }
+            
+            try {
+              const marker = createMapMarker({
+                location,
+                map,
+                onClick: onMarkerClick
+              });
+              
+              if (marker) {
+                markers.push(marker);
+              }
+            } catch (error) {
+              console.error(`Erreur lors de la création du marker pour ${location.title}:`, error);
+            }
+          }
+          
+          // Programmer le prochain lot avec un délai
+          setTimeout(() => {
+            addBatch(endIndex);
+          }, 5);
+        };
+        
+        // Démarrer avec le premier lot
+        addBatch(0);
+      };
       
-      console.log(`${newMarkers.length}/${locations.length} marqueurs créés avec succès`);
-      markersRef.current = newMarkers;
+      // Démarrer l'ajout par lots
+      addMarkersInBatches(locations);
     };
     
     // Assurons-nous que la carte est chargée avant d'ajouter des marqueurs
     if (map.loaded()) {
       addMarkers();
     } else {
-      console.log("La carte n'est pas encore complètement chargée, attente...");
-      
       const onLoadHandler = () => {
         addMarkers();
         map.off('load', onLoadHandler);
@@ -89,7 +116,6 @@ export const useIndividualMarkers = (
     }
 
     return () => {
-      console.log("Nettoyage des marqueurs au démontage");
       clearMarkers();
     };
   }, [mapRef, locations, onMarkerClick, clearMarkers]);

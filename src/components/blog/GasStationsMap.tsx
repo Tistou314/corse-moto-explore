@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
@@ -14,55 +14,32 @@ import { toast } from 'sonner';
 const GasStationsMap = () => {
   const [showStrategicOnly, setShowStrategicOnly] = useState(true);
   const [locations, setLocations] = useState(strategicGasStationPOIs);
-  const [mapKey, setMapKey] = useState(() => `gas-map-${Date.now()}`);
   
-  // Vérifier le nombre de stations au démarrage
+  // Utiliser un ID stable pour la carte qui ne change que lors des toggles
+  const [mapKey, setMapKey] = useState('strategic-stations-map');
+  
+  // Utiliser useCallback pour la fonction de toggle
+  const toggleStationDisplay = useCallback(() => {
+    const newShowStrategic = !showStrategicOnly;
+    setShowStrategicOnly(newShowStrategic);
+    
+    // Générer une nouvelle clé uniquement lors du changement de type d'affichage
+    setMapKey(newShowStrategic ? 'strategic-stations-map' : 'all-stations-map');
+    
+    // Mettre à jour les locations immédiatement
+    const newLocations = newShowStrategic ? strategicGasStationPOIs : gasStationPOIs;
+    setLocations(newLocations);
+    
+    // Notification à l'utilisateur
+    toast.success(`${newLocations.length} stations affichées sur la carte`, {
+      id: 'stations-update',
+    });
+  }, [showStrategicOnly]);
+  
+  // Initialisation au chargement
   useEffect(() => {
     console.log(`GasStationsMap init: ${strategicGasStationPOIs.length} stations stratégiques, ${gasStationPOIs.length} stations totales`);
-    
-    if (strategicGasStationPOIs.length === 0) {
-      toast.error("Aucune station stratégique trouvée");
-    }
-    
-    if (gasStationPOIs.length === 0) {
-      toast.error("Aucune station-service trouvée");
-    }
   }, []);
-  
-  // Force re-render of map when toggle changes
-  useEffect(() => {
-    console.log(`GasStationsMap: Switching to ${showStrategicOnly ? 'strategic' : 'all'} stations`);
-    const newLocations = showStrategicOnly ? strategicGasStationPOIs : gasStationPOIs;
-    
-    // Log debug info
-    console.log(`Total stations disponibles: ${newLocations.length}`);
-    if (newLocations.length > 0) {
-      console.log(`Premier exemple: ${newLocations[0].title} [${newLocations[0].latitude}, ${newLocations[0].longitude}]`);
-    }
-    
-    // Générer une nouvelle clé pour forcer le rechargement complet de la carte
-    setMapKey(`gas-map-${showStrategicOnly ? 'strategic' : 'all'}-${Date.now()}`);
-    
-    // Set locations with a slight delay to ensure clean re-render
-    setTimeout(() => {
-      console.log(`Mise à jour des locations: ${newLocations.length} stations`);
-      setLocations(newLocations);
-      
-      // Notify user
-      toast.success(`${newLocations.length} stations affichées sur la carte`);
-    }, 200); // Légère augmentation du délai pour assurer le rechargement
-  }, [showStrategicOnly]);
-
-  // Debug log to verify locations are being passed
-  useEffect(() => {
-    console.log(`GasStationsMap: Rendering with ${locations.length} locations`);
-    
-    if (locations.length > 0) {
-      console.log('First location:', locations[0]);
-    } else {
-      console.warn('No gas station locations available');
-    }
-  }, [locations]);
 
   return (
     <div className="space-y-4">
@@ -71,7 +48,7 @@ const GasStationsMap = () => {
           <Switch 
             id="strategic-stations" 
             checked={showStrategicOnly} 
-            onCheckedChange={setShowStrategicOnly} 
+            onCheckedChange={toggleStationDisplay} 
           />
           <Label htmlFor="strategic-stations" className="flex items-center gap-2">
             {showStrategicOnly ? (
@@ -90,7 +67,7 @@ const GasStationsMap = () => {
         <Button 
           variant="outline" 
           size="sm" 
-          onClick={() => setShowStrategicOnly(!showStrategicOnly)}
+          onClick={toggleStationDisplay}
           className="flex items-center gap-1"
         >
           <Fuel className="h-4 w-4" />

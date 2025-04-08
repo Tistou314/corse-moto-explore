@@ -19,9 +19,6 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     return null;
   }
   
-  // Ajout de logs pour debug
-  console.log(`Création marker pour: ${location.title} [${location.latitude}, ${location.longitude}]`);
-  
   // Vérification que les coordonnées sont dans une plage valide pour la Corse
   if (!isWithinCorsica(location.latitude, location.longitude)) {
     console.warn(`Coordonnées possiblement hors de la Corse pour ${location.title}: [${location.latitude}, ${location.longitude}]`);
@@ -32,12 +29,11 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   el.className = 'marker';
   
   // Déterminer la couleur du marqueur en fonction du type
-  // Stations-service maintenant converties en POI avec catégorie spécifique
   const color = location.category === 'station-service' 
     ? '#f59e0b' // couleur ambre pour stations-service 
     : (markerTypes[location.type] || '#000000');
   
-  // Styles de base pour le marqueur avec z-index élevé pour visibilité
+  // Styles de base pour le marqueur
   el.style.backgroundColor = color;
   el.style.width = '36px';
   el.style.height = '36px';
@@ -48,18 +44,22 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   el.style.color = 'white';
   el.style.boxShadow = '0 2px 6px rgba(0,0,0,0.3)';
   el.style.cursor = 'pointer';
-  el.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
   el.style.position = 'relative';
   el.style.border = '2px solid white';
-  el.style.zIndex = '999'; // Élevé pour garantir la visibilité
-  el.style.transformOrigin = 'center'; // CRUCIAL: Empêche le glissement des marqueurs
+  el.style.zIndex = '999';
+  
+  // CORRECTION: Définir explicitly transformOrigin pour corriger le glissement
+  el.style.transform = 'translate(-50%, -50%)';  
+  el.style.transformOrigin = 'center center';
+  el.style.top = '0';
+  el.style.left = '0';
   
   // Style spécifique pour les stations stratégiques
   if (location.isPrimary) {
-    el.style.border = '4px solid white'; // Plus épais pour mieux distinguer
+    el.style.border = '4px solid white'; 
     el.style.boxShadow = '0 3px 8px rgba(0,0,0,0.5)';
-    el.style.zIndex = '1000'; // Stations stratégiques toujours au premier plan
-    el.style.width = '40px'; // Encore plus grand pour les stations importantes
+    el.style.zIndex = '1000';
+    el.style.width = '40px';
     el.style.height = '40px'; 
   }
   
@@ -117,17 +117,19 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     el.insertBefore(pulseEffect, el.firstChild);
   }
 
-  // Effet de survol - le transformOrigin center est crucial pour éviter le glissement
+  // CORRIGER: Effets de survol sans changer la transformation translate
   el.addEventListener('mouseenter', () => {
-    el.style.transform = 'scale(1.2)';
     el.style.boxShadow = '0 4px 10px rgba(0,0,0,0.5)';
+    el.style.filter = 'brightness(1.1)';
+    el.style.zIndex = '1001';
   });
   
   el.addEventListener('mouseleave', () => {
-    el.style.transform = 'scale(1)';
     el.style.boxShadow = location.isPrimary 
       ? '0 3px 8px rgba(0,0,0,0.5)' 
       : '0 2px 6px rgba(0,0,0,0.3)';
+    el.style.filter = 'brightness(1)';
+    el.style.zIndex = location.isPrimary ? '1000' : '999';
   });
 
   // Ajouter un titre au survol
@@ -138,8 +140,6 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
 
   try {
     // IMPORTANT: Création du marqueur avec ordre longitude, latitude pour Mapbox
-    console.log(`Ajout du marker à la carte: [${location.longitude}, ${location.latitude}]`);
-    
     const marker = new mapboxgl.Marker({
       element: el,
       anchor: 'center',
@@ -147,20 +147,11 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
       .setLngLat([location.longitude, location.latitude])
       .addTo(map);
 
-    // Animation d'entrée du marqueur
-    setTimeout(() => {
-      el.style.transform = 'scale(1.2)';
-      setTimeout(() => {
-        el.style.transform = 'scale(1)';
-      }, 300);
-    }, 100);
-
     // Gestionnaire d'événement de clic
     el.addEventListener('click', (e) => {
-      e.stopPropagation(); // Éviter la propagation de l'événement
-      e.preventDefault(); // Empêcher le comportement par défaut
+      e.stopPropagation();
+      e.preventDefault();
       onClick(location);
-      console.log(`Marqueur cliqué: ${location.title}`);
     });
 
     return marker;
