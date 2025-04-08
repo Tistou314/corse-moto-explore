@@ -1,112 +1,47 @@
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
 import MapBox from '@/components/map/MapBox';
 import { gasStationPOIs, strategicGasStationPOIs } from '@/data/points-of-interest/gas-stations-poi';
-import { Fuel, Clock, Info, MapPin } from 'lucide-react';
-import { toast } from 'sonner';
 
-interface GasStationsMapProps {
-  title?: string;
-}
-
-const GasStationsMap = ({ title = "Carte des stations-service en Corse" }: GasStationsMapProps) => {
-  const [showStrategicOnly, setShowStrategicOnly] = useState(false);
-  const [mapKey, setMapKey] = useState(Date.now());
-  
-  // Utilise directement les POIs précalculés
+const GasStationsMap = () => {
+  const [showStrategicOnly, setShowStrategicOnly] = useState(true);
   const locations = showStrategicOnly ? strategicGasStationPOIs : gasStationPOIs;
-  const displayCount = locations.length;
-
-  useEffect(() => {
-    console.log('GasStationsMap - Initialisation du composant');
-    console.log(`Affichage de ${locations.length} stations comme points d'intérêt`);
-    
-    if (locations.length > 0) {
-      const sample = locations[0];
-      console.log('Exemple station (POI):', sample.title);
-      console.log('Coordonnées:', [sample.latitude, sample.longitude]);
-    }
-    
-    // Force re-render de la carte quand le filtre change
-    setMapKey(Date.now());
-    
-  }, [showStrategicOnly, locations.length]);
-
-  const handleFilterChange = () => {
-    setShowStrategicOnly(!showStrategicOnly);
-    toast.success(`Affichage des ${!showStrategicOnly ? 'stations stratégiques' : 'toutes les stations'}`);
-  };
 
   return (
-    <div className="space-y-4 my-8" key={`gas-container-${mapKey}`}>
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-2">
-        <h3 className="text-xl font-bold flex items-center gap-2">
-          <Fuel className="h-5 w-5 text-amber-500" />
-          {title}
-        </h3>
-        
-        <div className="flex gap-2 items-center">
-          <Badge variant={showStrategicOnly ? "outline" : "default"} className="flex gap-1 items-center">
-            <Info className="h-3 w-3" />
-            <span>{displayCount} stations</span>
-          </Badge>
-          
-          <Button 
-            variant={showStrategicOnly ? "default" : "outline"}
-            size="sm"
-            onClick={handleFilterChange}
-            className="flex items-center gap-1"
-          >
-            {showStrategicOnly ? "Toutes les stations" : "Stations stratégiques"}
-          </Button>
-        </div>
-      </div>
-      
-      <div className="relative bg-white rounded-lg shadow-lg overflow-hidden">
-        {locations.length > 0 ? (
-          <MapBox 
-            key={`gas-map-${mapKey}`}
-            locations={locations}
-            height="500px" 
-            interactive={true}
-            enableClustering={true}
-            zoom={8}
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center space-x-2">
+          <Switch 
+            id="strategic-stations" 
+            checked={showStrategicOnly} 
+            onCheckedChange={setShowStrategicOnly} 
           />
-        ) : (
-          <div className="h-[500px] flex items-center justify-center bg-gray-50">
-            <MapPin className="h-8 w-8 text-gray-300 animate-pulse" />
-          </div>
-        )}
-        
-        <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-md p-3 shadow-md max-w-xs z-50">
-          <div className="text-xs text-muted-foreground space-y-1">
-            <div className="font-semibold flex items-center gap-1">
-              <Clock className="h-3 w-3" />
-              Légende:
-            </div>
-            <div className="flex items-center gap-1">
-              <span className="inline-block w-3 h-3 rounded-full bg-amber-500"></span>
-              Station standard
-            </div>
-            <div className="flex items-center gap-1">
-              <span className="inline-block w-3 h-3 rounded-full bg-amber-500 border-2 border-white"></span>
-              Station stratégique
-            </div>
-            <p className="pt-1">Cliquez sur les marqueurs pour plus d'informations.</p>
-          </div>
+          <Label htmlFor="strategic-stations">
+            {showStrategicOnly ? 'Stations stratégiques uniquement' : 'Toutes les stations'}
+          </Label>
         </div>
+        <Button variant="outline" size="sm" onClick={() => setShowStrategicOnly(!showStrategicOnly)}>
+          {showStrategicOnly ? 'Voir toutes les stations' : 'Voir stations stratégiques'}
+        </Button>
       </div>
       
-      <div className="text-sm text-muted-foreground">
-        <p className="flex items-start gap-1">
-          <Info className="h-4 w-4 mt-0.5 shrink-0" />
-          <span>
-            <strong>Note:</strong> La carte montre {showStrategicOnly ? 'uniquement les stations stratégiques' : 'toutes les stations principales'}. 
-            {!showStrategicOnly && ' Utilisez le bouton "Stations stratégiques" pour afficher uniquement les stations essentielles.'}
-          </span>
-        </p>
+      <div className="h-[500px] rounded-lg overflow-hidden border">
+        <MapBox 
+          locations={locations}
+          height="500px"
+          interactive={true}
+          enableClustering={true}
+        />
+      </div>
+      
+      <div className="text-sm text-muted-foreground text-center">
+        {showStrategicOnly 
+          ? "Affichage des stations stratégiques essentielles pour les motards"
+          : `Affichage des ${locations.length} stations-service en Corse`
+        }
       </div>
     </div>
   );

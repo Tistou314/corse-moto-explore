@@ -8,29 +8,17 @@ import { routeDesVins } from './blog/itineraires/route-des-vins';
 import { routeGrandSud } from './blog/itineraires/route-grand-sud';
 
 // Import articles from ressources-locales
-import { communautesMotards } from './blog/ressources-locales/communautes-motards';
-import { spotsPanoramiques } from './blog/ressources-locales/spots-panoramiques';
+import { communautesMotards, spotsPanoramiques } from './blog/ressources-locales';
 
 // Import articles from other categories when available
 import { aspectsPratiquesArticles } from './blog/aspects-pratiques';
 
-// Manually create mock arrays for the other categories
-// These would normally be imported from their respective files
+// Catégories vides à remplir ultérieurement
 const articlesTechniques: BlogPost[] = [];
-const articlesPratiques: BlogPost[] = [];
 const articlesEquipement: BlogPost[] = [];
 const articlesExperiences: BlogPost[] = [];
 const articlesCulture: BlogPost[] = [];
 const articlesSaisons: BlogPost[] = [];
-
-// Convert tourCapCorse to BlogPost format - using directly as it now matches the type
-const articleCircuitCapCorse: BlogPost = tourCapCorse as BlogPost;
-
-// Convert route des vins to BlogPost format - using directly as it now matches the type
-const articleRouteDesVins: BlogPost = routeDesVins as BlogPost;
-
-// Convert route grand sud to BlogPost format - using directly as it now matches the type
-const articleRouteGrandSud: BlogPost = routeGrandSud as BlogPost;
 
 // Article des stations-service
 export const articleStationsService: BlogPost = {
@@ -79,7 +67,7 @@ Consultez notre carte interactive ci-dessous pour localiser toutes les stations-
   tags: ['stations-service', 'ravitaillement', 'conseils-pratiques', 'carte']
 };
 
-// Function to ensure all BlogPosts have the required readingTime field
+// Function to ensure all BlogPosts have the required fields
 const ensureValidBlogPost = (post: any): BlogPost => {
   if (!post.readingTime) {
     return {
@@ -90,26 +78,20 @@ const ensureValidBlogPost = (post: any): BlogPost => {
   return post as BlogPost;
 };
 
-// Convert community motards to proper BlogPost format
-const communautesMotardsPost: BlogPost = ensureValidBlogPost(communautesMotards);
-
-// Convert panoramic spots to proper BlogPost format
-const spotsPanoramiquesPost: BlogPost = ensureValidBlogPost(spotsPanoramiques);
-
 // Combine all blog posts
 export const blogPosts: BlogPost[] = [
   articleStationsService,
-  articleCircuitCapCorse,
-  articleRouteDesVins,
-  articleRouteGrandSud,
+  ensureValidBlogPost(tourCapCorse),
+  ensureValidBlogPost(routeDesVins),
+  ensureValidBlogPost(routeGrandSud),
   ...articlesTechniques,
   ...aspectsPratiquesArticles.map(ensureValidBlogPost),
   ...articlesEquipement,
   ...articlesExperiences,
   ...articlesCulture,
   ...articlesSaisons,
-  communautesMotardsPost,
-  spotsPanoramiquesPost
+  ensureValidBlogPost(communautesMotards),
+  ensureValidBlogPost(spotsPanoramiques)
 ];
 
 // Sort by date descending

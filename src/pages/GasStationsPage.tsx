@@ -1,32 +1,21 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import MapBox from '@/components/map/MapBox';
 import MapContainer from '@/components/map/MapContainer';
-import { allGasStations } from '@/data/gas-stations';
-import { MapLocation } from '@/components/map/types';
+import { 
+  gasStationPOIs, 
+  strategicGasStationPOIs 
+} from '@/data/points-of-interest/gas-stations-poi';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Badge } from '@/components/ui/badge';
+import { MapPin, Info } from 'lucide-react';
 
 const GasStationsPage = () => {
-  const [gasStationLocations, setGasStationLocations] = useState<MapLocation[]>([]);
+  const [showStrategic, setShowStrategic] = useState(true);
+  const locationsToShow = showStrategic ? strategicGasStationPOIs : gasStationPOIs;
   
-  useEffect(() => {
-    // Transform gas stations data into map locations
-    const locations = allGasStations.map(station => ({
-      id: station.id,
-      title: station.name,
-      latitude: station.latitude,
-      longitude: station.longitude,
-      description: `${station.brand} - ${station.fuelTypes.join(', ')}`,
-      type: 'gasStation' as const,
-      isPrimary: station.isStrategic
-    }));
-    
-    setGasStationLocations(locations);
-    console.log('Loaded gas stations:', locations.length);
-  }, []);
-
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -46,33 +35,91 @@ const GasStationsPage = () => {
           </div>
         </div>
 
-        <MapContainer locations={gasStationLocations} />
-        
-        <div className="mt-8">
-          <h2 className="text-2xl font-bold mb-4">À propos des stations-service en Corse</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow">
-              <h3 className="text-xl font-semibold mb-3">Stations stratégiques</h3>
-              <p className="mb-2">
-                Les stations marquées comme stratégiques sont essentielles pour les motards traversant la Corse. 
-                Elles sont situées à des points clés où le ravitaillement peut être difficile.
-              </p>
-              <p>
-                Il est recommandé de faire le plein à ces stations pour éviter de se retrouver en panne sèche 
-                dans les zones montagneuses ou isolées.
-              </p>
+        <Tabs defaultValue="map" className="w-full">
+          <TabsList className="mb-6">
+            <TabsTrigger value="map">Carte</TabsTrigger>
+            <TabsTrigger value="info">Informations</TabsTrigger>
+          </TabsList>
+          
+          <TabsContent value="map" className="space-y-4">
+            <div className="flex justify-between items-center">
+              <h2 className="text-2xl font-semibold">Carte des stations-service</h2>
+              <div className="flex items-center gap-2">
+                <Badge 
+                  variant={showStrategic ? "default" : "outline"} 
+                  className="cursor-pointer"
+                  onClick={() => setShowStrategic(true)}
+                >
+                  <MapPin className="h-3 w-3 mr-1" />
+                  Stations stratégiques
+                </Badge>
+                <Badge 
+                  variant={!showStrategic ? "default" : "outline"} 
+                  className="cursor-pointer"
+                  onClick={() => setShowStrategic(false)}
+                >
+                  <MapPin className="h-3 w-3 mr-1" />
+                  Toutes les stations
+                </Badge>
+              </div>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow">
-              <h3 className="text-xl font-semibold mb-3">Conseils pour les motards</h3>
-              <ul className="list-disc pl-5 space-y-2">
-                <li>Vérifiez toujours votre niveau de carburant avant de partir pour les routes montagneuses</li>
-                <li>Les stations dans les zones rurales peuvent avoir des horaires réduits, surtout hors saison</li>
-                <li>Certaines stations peuvent être fermées le dimanche ou les jours fériés</li>
-                <li>Prévoyez un plan B pour le ravitaillement lors de longs trajets</li>
-              </ul>
+            
+            <MapContainer locations={locationsToShow} />
+            
+            <div className="bg-muted p-4 rounded-lg">
+              <div className="flex items-center gap-2">
+                <Info className="h-4 w-4 text-muted-foreground" />
+                <p className="text-sm text-muted-foreground">
+                  {showStrategic 
+                    ? "Les stations stratégiques sont essentielles pour les motards traversant des zones isolées."
+                    : "Toutes les stations-service disponibles en Corse sont affichées sur la carte."}
+                </p>
+              </div>
             </div>
-          </div>
-        </div>
+          </TabsContent>
+          
+          <TabsContent value="info">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-white p-6 rounded-lg shadow">
+                <h3 className="text-xl font-semibold mb-3">Stations stratégiques</h3>
+                <p className="mb-2">
+                  Les stations marquées comme stratégiques sont essentielles pour les motards traversant la Corse. 
+                  Elles sont situées à des points clés où le ravitaillement peut être difficile.
+                </p>
+                <p>
+                  Il est recommandé de faire le plein à ces stations pour éviter de se retrouver en panne sèche 
+                  dans les zones montagneuses ou isolées.
+                </p>
+              </div>
+              
+              <div className="bg-white p-6 rounded-lg shadow">
+                <h3 className="text-xl font-semibold mb-3">Conseils pour les motards</h3>
+                <ul className="list-disc pl-5 space-y-2">
+                  <li>Vérifiez toujours votre niveau de carburant avant de partir pour les routes montagneuses</li>
+                  <li>Les stations dans les zones rurales peuvent avoir des horaires réduits, surtout hors saison</li>
+                  <li>Certaines stations peuvent être fermées le dimanche ou les jours fériés</li>
+                  <li>Prévoyez un plan B pour le ravitaillement lors de longs trajets</li>
+                </ul>
+              </div>
+              
+              <div className="md:col-span-2 bg-white p-6 rounded-lg shadow">
+                <h3 className="text-xl font-semibold mb-3">Article détaillé</h3>
+                <p className="mb-4">
+                  Pour plus d'informations sur les stations-service en Corse, consultez notre article dédié :
+                </p>
+                <Link 
+                  to="/blog/stations-service-corse" 
+                  className="inline-flex items-center text-corsica-blue hover:underline"
+                >
+                  Lire notre guide complet des stations-service
+                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </TabsContent>
+        </Tabs>
       </main>
 
       <Footer />
