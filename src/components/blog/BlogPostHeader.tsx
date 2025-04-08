@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, Calendar, User, Tag } from 'lucide-react';
-import { BlogPost } from '@/types/blog';
+import { BlogPost } from '@/data/blog/types';
 import { useEffect, useState } from 'react';
 
 type BlogPostHeaderProps = {
@@ -13,7 +13,7 @@ const BlogPostHeader = ({ post }: BlogPostHeaderProps) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   
   // Ensure we have a fallback image if none is provided
-  const headerImage = post.image || "https://cdn.pixabay.com/photo/2020/04/23/10/54/corsica-5081729_1280.jpg";
+  const headerImage = post.imageUrl || "https://cdn.pixabay.com/photo/2020/04/23/10/54/corsica-5081729_1280.jpg";
   
   useEffect(() => {
     // Précharger l'image d'arrière-plan
@@ -72,7 +72,7 @@ const BlogPostHeader = ({ post }: BlogPostHeaderProps) => {
             </span>
             <span className="inline-flex items-center bg-white/10 px-3 py-1 rounded-full backdrop-blur-sm">
               <User className="w-4 h-4 mr-2" />
-              {post.author}
+              {post.author.name}
             </span>
           </motion.div>
         </div>

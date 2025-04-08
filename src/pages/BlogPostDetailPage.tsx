@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 import { useParams } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { blogPosts, BlogPost } from '@/data/blogPosts';
+import { blogPosts } from '@/data/blogPosts';
+import { BlogPost } from '@/data/blog/types';
 import { useToast } from "@/hooks/use-toast";
 
 // Imports existants

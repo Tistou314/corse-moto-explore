@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import { BlogPost } from '@/types/blog';
+import { BlogPost } from '@/data/blog/types';
 import { ArrowRight } from 'lucide-react';
 
 type RelatedPostsProps = {
@@ -31,7 +31,7 @@ const RelatedPosts = ({ currentPostId, category, posts }: RelatedPostsProps) => 
           >
             <div className="h-44 rounded-xl overflow-hidden mb-3 shadow-md">
               <img 
-                src={relatedPost.image} 
+                src={relatedPost.imageUrl} 
                 alt={relatedPost.title} 
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
