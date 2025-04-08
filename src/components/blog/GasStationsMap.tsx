@@ -2,9 +2,8 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { MapLocation } from '@/components/map/types';
 import MapBox from '@/components/map/MapBox';
-import { allGasStations, strategicGasStations, GasStation } from '@/data/gas-stations';
+import { gasStationPOIs, strategicGasStationPOIs } from '@/data/points-of-interest/gas-stations-poi';
 import { Fuel, Clock, Info, MapPin } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -14,43 +13,26 @@ interface GasStationsMapProps {
 
 const GasStationsMap = ({ title = "Carte des stations-service en Corse" }: GasStationsMapProps) => {
   const [showStrategicOnly, setShowStrategicOnly] = useState(false);
-  const [displayCount, setDisplayCount] = useState(allGasStations.length);
-  const [locations, setLocations] = useState<MapLocation[]>([]);
   const [mapKey, setMapKey] = useState(Date.now());
-
-  const convertToMapLocations = (stations: GasStation[]): MapLocation[] => {
-    return stations.map(station => ({
-      id: station.id,
-      title: station.name,
-      latitude: station.latitude,
-      longitude: station.longitude,
-      type: 'gasStation',
-      description: `${station.brand} - ${station.hours}${station.seasonalHours ? ' (horaires saisonniers)' : ''}`,
-      isPrimary: station.isStrategic,
-      address: station.address
-    }));
-  };
+  
+  // Utilise directement les POIs précalculés
+  const locations = showStrategicOnly ? strategicGasStationPOIs : gasStationPOIs;
+  const displayCount = locations.length;
 
   useEffect(() => {
     console.log('GasStationsMap - Initialisation du composant');
+    console.log(`Affichage de ${locations.length} stations comme points d'intérêt`);
     
-    const stationsToShow = showStrategicOnly ? strategicGasStations : allGasStations;
-    console.log(`Préparation de ${stationsToShow.length} stations`);
-    
-    if (stationsToShow.length > 0) {
-      const sample = stationsToShow[0];
-      console.log('Exemple station:', sample.name);
+    if (locations.length > 0) {
+      const sample = locations[0];
+      console.log('Exemple station (POI):', sample.title);
       console.log('Coordonnées:', [sample.latitude, sample.longitude]);
     }
     
-    const mappedLocations = convertToMapLocations(stationsToShow);
-    console.log('Locations mappées:', mappedLocations.length, mappedLocations);
-    
+    // Force re-render de la carte quand le filtre change
     setMapKey(Date.now());
-    setLocations(mappedLocations);
-    setDisplayCount(stationsToShow.length);
     
-  }, [showStrategicOnly]);
+  }, [showStrategicOnly, locations.length]);
 
   const handleFilterChange = () => {
     setShowStrategicOnly(!showStrategicOnly);

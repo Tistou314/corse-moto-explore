@@ -34,8 +34,8 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   el.className = 'marker';
   
   // Déterminer la couleur du marqueur en fonction du type
-  // Utiliser une couleur vive pour les stations-service pour une meilleure visibilité
-  const color = location.type === 'gasStation' 
+  // Stations-service maintenant converties en POI avec catégorie spécifique
+  const color = location.category === 'station-service' 
     ? '#f59e0b' // couleur ambre pour stations-service 
     : (markerTypes[location.type] || '#000000');
   
@@ -67,8 +67,8 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   // Ajouter une icône en fonction du type
   let iconElement = document.createElement('span');
   
-  // Icône pour les stations service
-  if (location.type === 'gasStation') {
+  // Icône pour les stations service (maintenant points d'intérêt avec catégorie spéciale)
+  if (location.category === 'station-service') {
     iconElement.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22h12"/><path d="M4 9h10"/><path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18"/><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5"/></svg>';
   } else if (location.type === 'itinerary') {
     iconElement.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m3 9 4-4 5 5 4-4 3 3"/></svg>';
@@ -84,7 +84,7 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   el.appendChild(iconElement);
 
   // Ajouter pulse effect pour toutes les stations-service
-  if (location.type === 'gasStation') {
+  if (location.category === 'station-service') {
     const pulseEffect = document.createElement('div');
     pulseEffect.style.position = 'absolute';
     pulseEffect.style.borderRadius = '50%';

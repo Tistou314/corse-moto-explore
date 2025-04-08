@@ -1,4 +1,3 @@
-
 // Type definitions for map components
 
 // Map Location types
@@ -7,11 +6,13 @@ export interface MapLocation {
   title: string;
   latitude: number; // Coordonnée Y - verticale
   longitude: number; // Coordonnée X - horizontale
-  type: 'itinerary' | 'accommodation' | 'pointOfInterest' | 'gasStation';
+  type: string;
   description?: string;
   image?: string;
-  isPrimary?: boolean;
   address?: string;
+  isPrimary?: boolean;
+  category?: string; // Ajout d'un champ category pour distinguer les types spécifiques de POI
+  services?: string[]; // Pour stocker les services disponibles aux stations
 }
 
 // Map props
