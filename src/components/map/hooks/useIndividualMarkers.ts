@@ -39,7 +39,7 @@ export const useIndividualMarkers = (
     
     const map = mapRef.current;
     
-    // Nettoyer les marqueurs existants avant d'en créer de nouveaux
+    // Pour éviter les problèmes de rendu, on nettoie toujours avant d'ajouter
     clearMarkers();
     
     // Fonction pour ajouter les marqueurs
@@ -60,11 +60,14 @@ export const useIndividualMarkers = (
           }
           return true;
         })
-        .map(location => createMapMarker({
-          location,
-          map,
-          onClick: onMarkerClick
-        }))
+        .map(location => {
+          const marker = createMapMarker({
+            location,
+            map,
+            onClick: onMarkerClick
+          });
+          return marker;
+        })
         .filter(Boolean) as mapboxgl.Marker[];
       
       console.log(`${newMarkers.length}/${locations.length} marqueurs créés avec succès`);

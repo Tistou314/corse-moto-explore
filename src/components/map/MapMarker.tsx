@@ -116,7 +116,9 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     el.insertBefore(pulseEffect, el.firstChild);
   }
 
-  // Effet de survol
+  // Effet de survol - IMPORTANT: Utilisation de transform-origin pour éviter le glissement
+  el.style.transformOrigin = 'center'; // Fixation du point de transformation au centre
+  
   el.addEventListener('mouseenter', () => {
     el.style.transform = 'scale(1.2)';
     el.style.boxShadow = '0 4px 10px rgba(0,0,0,0.5)';
@@ -155,7 +157,8 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     }, 100);
 
     // Gestionnaire d'événement de clic
-    el.addEventListener('click', () => {
+    el.addEventListener('click', (e) => {
+      e.stopPropagation(); // Éviter la propagation de l'événement
       onClick(location);
       console.log(`Marqueur cliqué: ${location.title}`);
     });

@@ -10,13 +10,20 @@ import { Fuel, Info } from 'lucide-react';
 const GasStationsMap = () => {
   const [showStrategicOnly, setShowStrategicOnly] = useState(true);
   const [locations, setLocations] = useState(strategicGasStationPOIs);
+  const [mapKey, setMapKey] = useState(() => `gas-map-${Date.now()}`);
   
   // Force re-render of map when toggle changes
   useEffect(() => {
     console.log(`GasStationsMap: Switching to ${showStrategicOnly ? 'strategic' : 'all'} stations`);
+    const newLocations = showStrategicOnly ? strategicGasStationPOIs : gasStationPOIs;
+    
+    // Générer une nouvelle clé pour forcer le rechargement complet de la carte
+    setMapKey(`gas-map-${showStrategicOnly ? 'strategic' : 'all'}-${Date.now()}`);
+    
     // Set locations with a slight delay to ensure clean re-render
     setTimeout(() => {
-      setLocations(showStrategicOnly ? strategicGasStationPOIs : gasStationPOIs);
+      console.log(`Mise à jour des locations: ${newLocations.length} stations`);
+      setLocations(newLocations);
     }, 100);
   }, [showStrategicOnly]);
 
@@ -67,7 +74,7 @@ const GasStationsMap = () => {
       
       <div className="h-[500px] rounded-lg overflow-hidden border relative">
         <MapBox 
-          key={`gas-map-${showStrategicOnly}-${Date.now()}`}
+          key={mapKey}
           locations={locations}
           height="500px"
           interactive={true}

@@ -18,10 +18,12 @@ const convertGasStationsToPOI = (stations: typeof allGasStations): MapLocation[]
         isNaN(station.latitude) || 
         isNaN(station.longitude)) {
       console.error(`Station avec coordonnées invalides: ${station.name}`, station);
+      // Retourner null pour filtrer plus tard
+      return null;
     }
     
     const poi: MapLocation = {
-      id: station.id,
+      id: station.id || uuidv4(), // Assurer un ID unique
       title: station.name,
       latitude: station.latitude,
       longitude: station.longitude,
@@ -34,7 +36,7 @@ const convertGasStationsToPOI = (stations: typeof allGasStations): MapLocation[]
     };
     
     return poi;
-  });
+  }).filter(Boolean) as MapLocation[]; // Filtrer les entrées nulles
 };
 
 // Générer les POIs pour toutes les stations et les stations stratégiques
