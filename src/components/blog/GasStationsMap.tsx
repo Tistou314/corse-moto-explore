@@ -16,9 +16,9 @@ const GasStationsMap = ({ title = "Carte des stations-service en Corse" }: GasSt
   const [showStrategicOnly, setShowStrategicOnly] = useState(false);
   const [displayCount, setDisplayCount] = useState(allGasStations.length);
   const [locations, setLocations] = useState<MapLocation[]>([]);
+  const [mapKey, setMapKey] = useState(Date.now());
 
   // Fonction pour convertir les stations en points sur la carte
-  // Crucial pour le bon affichage des marqueurs
   const convertToMapLocations = (stations: GasStation[]): MapLocation[] => {
     return stations.map(station => ({
       id: station.id,
@@ -32,38 +32,26 @@ const GasStationsMap = ({ title = "Carte des stations-service en Corse" }: GasSt
     }));
   };
 
-  // Log de debug
   useEffect(() => {
-    console.log('GasStationsMap - Remontage du composant');
-    console.log('État actuel showStrategicOnly:', showStrategicOnly);
+    console.log('GasStationsMap - Initialisation du composant');
     
     const stationsToShow = showStrategicOnly ? strategicGasStations : allGasStations;
     console.log(`Préparation de ${stationsToShow.length} stations`);
     
-    // Vérification des coordonnées d'exemple
     if (stationsToShow.length > 0) {
       const sample = stationsToShow[0];
       console.log('Exemple station:', sample.name);
       console.log('Coordonnées:', [sample.latitude, sample.longitude]);
     }
     
-    // Conversion des stations en locations et diagnostic
     const mappedLocations = convertToMapLocations(stationsToShow);
-    console.log('Locations mappées:', mappedLocations.length);
+    console.log('Locations mappées:', mappedLocations.length, mappedLocations);
     
-    // Force le remontage complet de la carte à chaque changement
-    setLocations([]);
+    // Nouveau: forcer la réinitialisation complète du composant et de la carte
+    setMapKey(Date.now());
+    setLocations(mappedLocations);
+    setDisplayCount(stationsToShow.length);
     
-    // Applique les nouvelles locations après un court délai
-    setTimeout(() => {
-      setLocations(mappedLocations);
-      setDisplayCount(stationsToShow.length);
-      
-      // Notification pour debug
-      toast.info(`${stationsToShow.length} stations prêtes à afficher`, {
-        duration: 2000,
-      });
-    }, 50);
   }, [showStrategicOnly]);
 
   const handleFilterChange = () => {
@@ -72,7 +60,7 @@ const GasStationsMap = ({ title = "Carte des stations-service en Corse" }: GasSt
   };
 
   return (
-    <div className="space-y-4 my-8">
+    <div className="space-y-4 my-8" key={`gas-container-${mapKey}`}>
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-2">
         <h3 className="text-xl font-bold flex items-center gap-2">
           <Fuel className="h-5 w-5 text-amber-500" />
@@ -99,6 +87,7 @@ const GasStationsMap = ({ title = "Carte des stations-service en Corse" }: GasSt
       <div className="relative bg-white rounded-lg shadow-lg overflow-hidden">
         {locations.length > 0 ? (
           <MapBox 
+            key={`gas-map-${mapKey}`}
             locations={locations}
             height="500px" 
             interactive={true}
@@ -111,7 +100,7 @@ const GasStationsMap = ({ title = "Carte des stations-service en Corse" }: GasSt
           </div>
         )}
         
-        <div className="absolute bottom-4 left-4 bg-white/90 rounded-md p-3 shadow-md max-w-xs">
+        <div className="absolute bottom-4 left-4 bg-white/90 rounded-md p-3 shadow-md max-w-xs z-50">
           <div className="text-xs text-muted-foreground space-y-1">
             <div className="font-semibold flex items-center gap-1">
               <Clock className="h-3 w-3" />

@@ -99,10 +99,7 @@ const BlogPostDetailPage = () => {
             {isGasStationPost && (
               <div className="my-12 border-t border-b border-gray-100 py-8">
                 <h2 className="text-2xl font-bold mb-6">Carte des stations-service en Corse</h2>
-                <GasStationsMap key={`gas-map-${id}`} />
-                <div className="text-center text-sm text-muted-foreground mt-4">
-                  Carte interactive des stations-service de Corse
-                </div>
+                <GasStationsMap key={`gas-map-${id}-${Date.now()}`} />
               </div>
             )}
             

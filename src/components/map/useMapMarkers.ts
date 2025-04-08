@@ -33,8 +33,17 @@ export const useMapMarkers = (
       console.log(`useMapMarkers: Changement de locations ${prevLength} -> ${newLength}`);
       
       if (newLength > 0) {
+        // Log des emplacements pour vérification
         console.log('Premier emplacement:', locations[0].title, 
           `[${locations[0].latitude}, ${locations[0].longitude}], type: ${locations[0].type}`);
+          
+        // Vérifier si ce sont des stations service
+        const gasStations = locations.filter(loc => loc.type === 'gasStation');
+        if (gasStations.length > 0) {
+          console.log(`Nombre de stations service: ${gasStations.length}`);
+          console.log('Exemple station:', gasStations[0].title, 
+            `[${gasStations[0].latitude}, ${gasStations[0].longitude}]`);
+        }
       }
     }
     
@@ -48,9 +57,7 @@ export const useMapMarkers = (
     
     console.log(`Ajustement de la carte pour ${locations.length} emplacements`);
     
-    // Nettoyer les anciens marqueurs à chaque changement
-    clearMarkers();
-    
+    // Valider les données de localisation
     const validLocations = locations.filter(loc => 
       typeof loc.latitude === 'number' && 
       typeof loc.longitude === 'number' &&
@@ -72,7 +79,7 @@ export const useMapMarkers = (
         fitMapToLocations(map.current, validLocations);
         console.log("Carte ajustée aux emplacements");
       }
-    }, 300); // Délai augmenté pour s'assurer que la carte est prête
+    }, 500); // Délai augmenté pour s'assurer que la carte est prête
 
     return () => clearTimeout(timer);
   }, [locations, map, clearMarkers]);

@@ -5,8 +5,8 @@
 export interface MapLocation {
   id: string;
   title: string;
-  latitude: number;
-  longitude: number;
+  latitude: number; // Coordonnée Y - verticale
+  longitude: number; // Coordonnée X - horizontale
   type: 'itinerary' | 'accommodation' | 'pointOfInterest' | 'gasStation';
   description?: string;
   image?: string;
@@ -16,7 +16,7 @@ export interface MapLocation {
 
 // Map props
 export interface MapBoxProps {
-  center?: [number, number];
+  center?: [number, number]; // [longitude, latitude] pour MapBox
   zoom?: number;
   locations?: MapLocation[];
   interactive?: boolean;
@@ -33,7 +33,7 @@ export const markerTypes = {
   gasStation: '#f59e0b', // amber/orange for gas stations
 };
 
-// Center coordinates for Corsica
+// Center coordinates for Corsica [longitude, latitude]
 export const CorsicaCenter: [number, number] = [9.03, 42.16];
 
 // Coordonnées approximatives de la boîte englobant la Corse

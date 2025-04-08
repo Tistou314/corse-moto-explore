@@ -24,7 +24,7 @@ export const useIndividualMarkers = (
 
   // Add markers when locations change or map is initialized
   useEffect(() => {
-    console.log("useIndividualMarkers: Effect triggered");
+    console.log("useIndividualMarkers: Effect triggered with", locations.length, "locations");
     
     if (!mapRef.current) {
       console.log("Carte non initialisée");
@@ -33,6 +33,7 @@ export const useIndividualMarkers = (
     
     if (!locations || !locations.length) {
       console.log("Aucun emplacement à afficher");
+      clearMarkers(); // Make sure to clear if no locations
       return;
     }
     
@@ -59,14 +60,33 @@ export const useIndividualMarkers = (
       clearMarkers();
       
       // Créer de nouveaux marqueurs
-      const newMarkers = locations.map(location => {
-        // Utilisation du createMapMarker pour l'affichage cohérent
-        return createMapMarker({
-          location,
-          map,
-          onClick: onMarkerClick
-        });
-      }).filter(Boolean) as mapboxgl.Marker[];
+      const newMarkers = locations
+        .filter(location => {
+          // Valider que les coordonnées sont correctes
+          if (!location || 
+              typeof location.latitude !== 'number' || 
+              typeof location.longitude !== 'number' ||
+              isNaN(location.latitude) || 
+              isNaN(location.longitude)) {
+            console.error(`Coordonnées invalides pour ${location?.title || 'marker inconnu'}:`, location);
+            return false;
+          }
+          return true;
+        })
+        .map(location => {
+          // Debug pour les stations
+          if (location.type === 'gasStation') {
+            console.log(`Création marqueur station: ${location.title} [${location.latitude}, ${location.longitude}]`);
+          }
+          
+          // Utilisation du createMapMarker pour l'affichage cohérent
+          return createMapMarker({
+            location,
+            map,
+            onClick: onMarkerClick
+          });
+        })
+        .filter(Boolean) as mapboxgl.Marker[];
       
       console.log(`${newMarkers.length}/${locations.length} marqueurs créés avec succès`);
       markersRef.current = newMarkers;

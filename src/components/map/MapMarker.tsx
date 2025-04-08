@@ -27,6 +27,7 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     console.warn(`Coordonnées hors de la Corse pour ${location.title}:`, 
       `[${location.latitude}, ${location.longitude}]`,
       "Vérifiez que les coordonnées ne sont pas inversées (latitude/longitude)");
+    // On continue quand même la création pour permettre de visualiser et déboguer
   }
 
   const el = document.createElement('div');
@@ -40,8 +41,8 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   
   // Styles de base pour le marqueur - IMPORTANT: z-index élevé pour s'assurer que les marqueurs sont visibles
   el.style.backgroundColor = color;
-  el.style.width = '30px';
-  el.style.height = '30px';
+  el.style.width = '36px'; // Augmenté pour une meilleure visibilité
+  el.style.height = '36px'; // Augmenté pour une meilleure visibilité
   el.style.borderRadius = '50%';
   el.style.display = 'flex';
   el.style.alignItems = 'center';
@@ -52,13 +53,15 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   el.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
   el.style.position = 'relative';
   el.style.border = '2px solid white';
-  el.style.zIndex = '1000'; // Augmenté considérablement pour garantir la visibilité
+  el.style.zIndex = '9999'; // Très élevé pour garantir la visibilité
   
   // Style spécifique pour les stations stratégiques
   if (location.isPrimary) {
-    el.style.border = '3px solid white';
+    el.style.border = '4px solid white'; // Plus épais pour mieux distinguer
     el.style.boxShadow = '0 3px 8px rgba(0,0,0,0.5)';
-    el.style.zIndex = '1001'; // Stations stratégiques au premier plan
+    el.style.zIndex = '10000'; // Stations stratégiques toujours au premier plan
+    el.style.width = '40px'; // Encore plus grand pour les stations importantes
+    el.style.height = '40px'; 
   }
   
   // Ajouter une icône en fonction du type
@@ -66,7 +69,7 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   
   // Icône pour les stations service
   if (location.type === 'gasStation') {
-    iconElement.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22h12"/><path d="M4 9h10"/><path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18"/><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5"/></svg>';
+    iconElement.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22h12"/><path d="M4 9h10"/><path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18"/><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5"/></svg>';
   } else if (location.type === 'itinerary') {
     iconElement.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m3 9 4-4 5 5 4-4 3 3"/></svg>';
   } else if (location.type === 'accommodation') {
@@ -80,21 +83,8 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   
   el.appendChild(iconElement);
 
-  // Effet de survol
-  el.addEventListener('mouseenter', () => {
-    el.style.transform = 'scale(1.1)';
-    el.style.boxShadow = '0 4px 10px rgba(0,0,0,0.5)';
-  });
-  
-  el.addEventListener('mouseleave', () => {
-    el.style.transform = 'scale(1)';
-    el.style.boxShadow = location.isPrimary 
-      ? '0 3px 8px rgba(0,0,0,0.5)' 
-      : '0 2px 6px rgba(0,0,0,0.3)';
-  });
-
-  // Effet de pulse pour les stations stratégiques
-  if (location.isPrimary) {
+  // Ajouter pulse effect pour toutes les stations-service
+  if (location.type === 'gasStation') {
     const pulseEffect = document.createElement('div');
     pulseEffect.style.position = 'absolute';
     pulseEffect.style.borderRadius = '50%';
@@ -102,7 +92,8 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     pulseEffect.style.height = '100%';
     pulseEffect.style.backgroundColor = color;
     pulseEffect.style.opacity = '0.6';
-    pulseEffect.style.animation = 'pulse 2s infinite';
+    pulseEffect.style.animation = 'pulse 3s infinite';
+    pulseEffect.style.zIndex = '-1';
     
     // Ajout de l'animation keyframe si elle n'existe pas déjà
     const styleId = `marker-style-${location.id}`;
@@ -131,6 +122,19 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     el.insertBefore(pulseEffect, el.firstChild);
   }
 
+  // Effet de survol
+  el.addEventListener('mouseenter', () => {
+    el.style.transform = 'scale(1.2)';
+    el.style.boxShadow = '0 4px 10px rgba(0,0,0,0.5)';
+  });
+  
+  el.addEventListener('mouseleave', () => {
+    el.style.transform = 'scale(1)';
+    el.style.boxShadow = location.isPrimary 
+      ? '0 3px 8px rgba(0,0,0,0.5)' 
+      : '0 2px 6px rgba(0,0,0,0.3)';
+  });
+
   // Ajouter un titre au survol
   el.title = location.title || 'Point d\'intérêt';
   if (location.description) {
@@ -146,6 +150,14 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     })
       .setLngLat([location.longitude, location.latitude])
       .addTo(map);
+
+    // Animation d'entrée du marqueur
+    setTimeout(() => {
+      el.style.transform = 'scale(1.2)';
+      setTimeout(() => {
+        el.style.transform = 'scale(1)';
+      }, 300);
+    }, 100);
 
     // Gestionnaire d'événement de clic
     el.addEventListener('click', () => {

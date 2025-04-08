@@ -31,12 +31,13 @@ const MapBox = ({
 
   // Force la réinitialisation de la carte lorsque les locations changent
   useEffect(() => {
+    console.log("MapBox: Changement des locations détecté");
     setMapKey(Date.now());
+    setLocationCount(locations.length);
   }, [locations.length]);
 
-  // Update location count when locations change
+  // Log locations for debugging
   useEffect(() => {
-    setLocationCount(locations.length);
     console.log(`MapBox reçoit ${locations.length} emplacements:`, locations);
     
     if (locations.length > 0) {
@@ -68,8 +69,12 @@ const MapBox = ({
   }
 
   return (
-    <div className="relative w-full" style={{ height }} key={mapKey}>
-      <div ref={mapContainer} className="w-full h-full rounded-lg overflow-hidden border border-gray-200 shadow-lg" />
+    <div className="relative w-full" style={{ height }}>
+      <div 
+        ref={mapContainer} 
+        className="w-full h-full rounded-lg overflow-hidden border border-gray-200 shadow-lg" 
+        key={`map-container-${mapKey}`}
+      />
       
       {selectedLocation && (
         <LocationPopup location={selectedLocation} onClose={closePopup} />
