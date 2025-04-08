@@ -2,7 +2,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { MapLocation, CorsicaCenter } from './types';
 import { useMap } from '@/contexts/MapContext';
-import { useMapInitialization } from './useMapInitialization';
+import { useMapInitialization } from './hooks/useMapInitialization'; // Updated import path
 import { useMapMarkers } from './useMapMarkers';
 import { useMapRoute } from './useMapRoute';
 
