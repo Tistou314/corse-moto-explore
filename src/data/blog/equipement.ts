@@ -66,7 +66,7 @@ Cette portion de la D81 est un véritable chef-d'œuvre de la nature. Les Calanq
 
 Sur environ 12 km, vous enchaînerez les virages en épingle avec des à-pics vertigineux d'un côté et des falaises de l'autre. Le revêtement est bon mais restez vigilant : les touristes s'arrêtent parfois brusquement pour admirer la vue.
 
-Mon conseil de motard : roulez-y tôt le matin ou en fin de journée pour éviter les cars de touristes. Le coucher de soleil y est magique, les roches prenant alors une teinte flamboyante.
+Mon conseil de motard : roulez-y tôt le matin ou en fin de journée pour éviter les cars de touristes. Le coucher de soleil y est magique, les roches prennent alors une teinte flamboyante.
 
 ### Le Cap Corse : la boucle panoramique à ne pas manquer
 
