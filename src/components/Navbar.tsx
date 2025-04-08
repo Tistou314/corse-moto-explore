@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Bike } from 'lucide-react';
+import { Menu, X, Bike, MapPin, Fuel } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,6 +36,10 @@ const Navbar = () => {
             </Link>
             <Link to="/blog" className="text-foreground hover:text-corsica-blue font-medium transition-colors">
               Blog
+            </Link>
+            <Link to="/stations" className="text-foreground hover:text-corsica-blue font-medium transition-colors flex items-center">
+              <Fuel className="w-4 h-4 mr-1" />
+              Stations
             </Link>
             <Link to="/contact" className="text-foreground hover:text-corsica-blue font-medium transition-colors">
               Contact
@@ -95,6 +99,14 @@ const Navbar = () => {
               Blog
             </Link>
             <Link 
+              to="/stations" 
+              className="block py-2 px-3 text-foreground hover:text-corsica-blue hover:bg-muted rounded-lg flex items-center"
+              onClick={() => setIsOpen(false)}
+            >
+              <Fuel className="w-4 h-4 mr-1" />
+              Stations-service
+            </Link>
+            <Link 
               to="/contact" 
               className="block py-2 px-3 text-foreground hover:text-corsica-blue hover:bg-muted rounded-lg"
               onClick={() => setIsOpen(false)}
@@ -109,4 +121,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

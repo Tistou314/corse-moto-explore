@@ -23,9 +23,9 @@ type FormData = {
   title: string;
   excerpt: string;
   content: string;
-  image: string;
+  imageUrl: string;
   category: string;
-  author: string;
+  authorName: string;
 };
 
 const PostCreate = () => {
@@ -41,9 +41,9 @@ const PostCreate = () => {
       title: "",
       excerpt: "",
       content: "",
-      image: "",
+      imageUrl: "",
       category: "",
-      author: "Équipe Moto en Corse",
+      authorName: "Équipe Moto en Corse",
     },
   });
   
@@ -109,7 +109,7 @@ const PostCreate = () => {
               
               <FormField
                 control={form.control}
-                name="image"
+                name="imageUrl"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Image de l'article</FormLabel>
@@ -152,7 +152,7 @@ const PostCreate = () => {
                 
                 <FormField
                   control={form.control}
-                  name="author"
+                  name="authorName"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Auteur</FormLabel>

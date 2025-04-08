@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import BlogPostCard from '@/components/BlogPostCard';
-import { BlogPost } from '@/data/blogPosts';
+import { BlogPost } from '@/data/blog/types';
 import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 import { cn } from '@/lib/utils';
 
@@ -54,9 +54,9 @@ const BlogSection = ({ posts }: BlogSectionProps) => {
                 id={post.id}
                 title={post.title}
                 excerpt={post.excerpt}
-                image={post.imageUrl} // Updated to use imageUrl
+                image={post.imageUrl}
                 date={post.date}
-                author={post.author.name} // Updated to use author.name
+                author={post.author.name}
                 category={post.category}
               />
             </div>

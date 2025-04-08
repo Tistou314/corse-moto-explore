@@ -23,9 +23,9 @@ type FormData = {
   title: string;
   excerpt: string;
   content: string;
-  image: string;
+  imageUrl: string;
   category: string;
-  author: string;
+  authorName: string;
 };
 
 const PostEdit = () => {
@@ -47,9 +47,9 @@ const PostEdit = () => {
           title: foundPost.title,
           excerpt: foundPost.excerpt,
           content: foundPost.content,
-          image: foundPost.image,
+          imageUrl: foundPost.imageUrl,
           category: foundPost.category,
-          author: foundPost.author,
+          authorName: foundPost.author.name,
         });
       } else {
         // Article non trouvé, rediriger vers la liste
@@ -65,9 +65,9 @@ const PostEdit = () => {
       title: "",
       excerpt: "",
       content: "",
-      image: "",
+      imageUrl: "",
       category: "",
-      author: "",
+      authorName: "",
     },
   });
   
@@ -141,7 +141,7 @@ const PostEdit = () => {
               
               <FormField
                 control={form.control}
-                name="image"
+                name="imageUrl"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Image de l'article</FormLabel>
@@ -184,7 +184,7 @@ const PostEdit = () => {
                 
                 <FormField
                   control={form.control}
-                  name="author"
+                  name="authorName"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Auteur</FormLabel>

@@ -126,7 +126,7 @@ const PostsList = () => {
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-md overflow-hidden">
                         <img 
-                          src={post.image} 
+                          src={post.imageUrl} 
                           alt={post.title} 
                           className="w-full h-full object-cover"
                           onError={(e) => {
@@ -142,7 +142,7 @@ const PostsList = () => {
                     <Badge variant="outline">{post.category}</Badge>
                   </TableCell>
                   <TableCell>{post.date}</TableCell>
-                  <TableCell>{post.author}</TableCell>
+                  <TableCell>{post.author.name}</TableCell>
                   <TableCell className="text-right space-x-2">
                     <Button asChild variant="ghost" size="icon">
                       <Link to={`/admin/posts/edit/${post.id}`}>

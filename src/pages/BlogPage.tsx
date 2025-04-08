@@ -199,9 +199,9 @@ const BlogPage = () => {
                   id={post.id}
                   title={post.title}
                   excerpt={post.excerpt}
-                  image={post.image}
+                  image={post.imageUrl}
                   date={post.date}
-                  author={post.author}
+                  author={post.author.name}
                   category={post.category}
                 />
               ))}
