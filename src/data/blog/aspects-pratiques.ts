@@ -68,10 +68,17 @@ Plusieurs compagnies assurent la liaison entre le continent et la Corse :
 
 Avec une bonne préparation, la traversée en ferry devient une partie agréable de votre voyage vers la Corse. C'est déjà le début de l'aventure !
     `,
-    image: 'https://images.unsplash.com/photo-1635100677600-8f7a76c5e4d8?auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1635100677600-8f7a76c5e4d8?auto=format&fit=crop&q=80',
     date: '5 avril 2025',
-    author: 'Paul Rossi',
-    category: 'Aspects pratiques'
+    author: {
+      name: 'Paul Rossi',
+      avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
+      bio: 'Expert en logistique maritime et motard passionné depuis 15 ans.'
+    },
+    category: 'Aspects pratiques',
+    slug: 'traversee-ferry-moto',
+    readingTime: '7 min',
+    tags: ['ferry', 'transport', 'préparation', 'conseils']
   },
   {
     id: 'stations-service-corse',
@@ -205,10 +212,17 @@ Recommandations finales :
 
 Bon voyage et bonnes routes à travers l'Île de Beauté !
     `,
-    image: 'https://images.unsplash.com/photo-1602436294480-4e3f8e3d2fbb?auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1602436294480-4e3f8e3d2fbb?auto=format&fit=crop&q=80',
     date: '15 mai 2025',
-    author: 'Thomas Albertini',
-    category: 'Aspects pratiques'
+    author: {
+      name: 'Thomas Albertini',
+      avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
+      bio: 'Guide touristique spécialisé dans les road trips en Corse depuis 10 ans.'
+    },
+    category: 'Aspects pratiques',
+    slug: 'stations-service-corse',
+    readingTime: '8 min',
+    tags: ['stations-service', 'ravitaillement', 'carte', 'planification']
   },
   {
     id: 'hebergements-securises-motos',
@@ -503,9 +517,16 @@ La Corse offre un large éventail d'hébergements adaptés aux besoins spécifiq
 
 N'hésitez pas à mentionner que vous venez à moto lors de votre réservation : de nombreux établissements, même sans garage dédié, peuvent proposer des solutions personnalisées pour sécuriser votre deux-roues.
     `,
-    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80',
     date: '28 mai 2025',
-    author: 'Marie Santoni',
-    category: 'Aspects pratiques'
+    author: {
+      name: 'Marie Santoni',
+      avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png', 
+      bio: 'Propriétaire d\'une chambre d\'hôtes motards-friendly dans le Cap Corse.'
+    },
+    category: 'Aspects pratiques',
+    slug: 'hebergements-securises-motos',
+    readingTime: '10 min',
+    tags: ['hébergement', 'sécurité', 'hôtels', 'camping']
   }
 ];
