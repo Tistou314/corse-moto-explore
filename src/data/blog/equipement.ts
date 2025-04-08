@@ -1,12 +1,12 @@
-
 import { BlogPost } from '@/types/blog';
 
 export const equipementArticles: BlogPost[] = [
   {
     id: 'preparer-moto-corse',
-    title: 'Comment bien préparer son road trip à moto en Corse',
-    excerpt: 'Conseils pratiques pour préparer votre monture avant d\'affronter les routes corses, entre mer et montagne.',
-    content: `
+    title: 'Comment organiser son road trip à moto en Corse pour en profiter au maximum ?',
+    excerpt: 'Guide complet pour planifier et réussir votre aventure motarde en Corse, des itinéraires aux conseils pratiques.',
+    content: `# Comment organiser son road trip à moto en Corse pour en profiter au maximum ?
+La Corse à moto, c'est le rêve de tout motard ! Imaginez-vous roulant sur des routes sinueuses qui épousent les falaises, avec la mer turquoise d'un côté et les montagnes majestueuses de l'autre. L'île de Beauté offre aux passionnés de deux-roues un terrain de jeu exceptionnel, mêlant sensations fortes et paysages à couper le souffle. Que vous soyez un pilote chevronné ou un motard du dimanche, voici le guide ultime pour transformer votre road trip corse en une aventure inoubliable.
 # Comment bien préparer son road trip à moto en Corse ?
 La Corse, véritable paradis des motards, vous attend avec ses routes sinueuses surplombant la mer turquoise et ses cols montagneux offrant des panoramas spectaculaires. Un road trip à moto sur l'île de beauté représente bien plus qu'un simple voyage - c'est une aventure sensorielle complète où liberté, découverte et sensations fortes se mêlent à chaque virage. Prêt à enfourcher votre machine et à conquérir les plus belles routes corses ? Suivez ce guide complet pour transformer votre échappée à deux roues en une expérience inoubliable.
 ## Road trip moto en Corse : l'aventure à l'état pur
