@@ -1,14 +1,29 @@
 
 import { GasStation } from './types';
 import { strategicGasStations } from './strategic';
-import { bastiaStations, ajaccioStations, otherCityStations } from './cities';
+import { 
+  bastiaStations, 
+  ajaccioStations, 
+  otherCityStations,
+  nebbioStations,
+  balagneStations,
+  extremeSudStations,
+  centreStations,
+  castagnacciaStations,
+  valincoStations
+} from './regions';
 import { capCorseStations } from './cap-corse';
 
 // Compile all main gas stations into one array
 export const mainGasStations: GasStation[] = [
   ...bastiaStations,
+  ...nebbioStations,
   ...ajaccioStations,
-  ...otherCityStations,
+  ...balagneStations,
+  ...extremeSudStations,
+  ...centreStations,
+  ...castagnacciaStations,
+  ...valincoStations,
   ...capCorseStations
 ];
 
@@ -18,5 +33,5 @@ export const allGasStations = [...strategicGasStations, ...mainGasStations];
 // Re-export types and individual gas station groups for direct access
 export * from './types';
 export * from './strategic';
-export * from './cities';
+export * from './regions';
 export * from './cap-corse';
