@@ -1,4 +1,3 @@
-
 import { BlogPost } from './blog/types';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -6,6 +5,12 @@ import { v4 as uuidv4 } from 'uuid';
 import { tourCapCorse } from './blog/itineraires/circuit-cap-corse';
 import { routeDesVins } from './blog/itineraires/route-des-vins';
 import { routeGrandSud } from './blog/itineraires/route-grand-sud';
+
+// Import articles from ressources-locales
+import { communautesMotards, spotsPanoramiques } from './blog/ressources-locales';
+
+// Import articles from other categories when available
+import { aspectsPratiquesArticles } from './blog/aspects-pratiques';
 
 // Manually create mock arrays for the other categories
 // These would normally be imported from their respective files
@@ -15,8 +20,6 @@ const articlesEquipement: BlogPost[] = [];
 const articlesExperiences: BlogPost[] = [];
 const articlesCulture: BlogPost[] = [];
 const articlesSaisons: BlogPost[] = [];
-const articlesCommunautesMotards: BlogPost[] = [];
-const articlesSpotsPanoramiques: BlogPost[] = [];
 
 // Convert tourCapCorse to BlogPost format - using directly as it now matches the type
 const articleCircuitCapCorse: BlogPost = tourCapCorse as BlogPost;
@@ -81,13 +84,13 @@ export const blogPosts: BlogPost[] = [
   articleRouteDesVins,
   articleRouteGrandSud,
   ...articlesTechniques,
-  ...articlesPratiques,
+  ...aspectsPratiquesArticles,
   ...articlesEquipement,
   ...articlesExperiences,
   ...articlesCulture,
   ...articlesSaisons,
-  ...articlesCommunautesMotards,
-  ...articlesSpotsPanoramiques,
+  communautesMotards,
+  spotsPanoramiques
 ];
 
 // Sort by date descending
