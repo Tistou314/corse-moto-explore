@@ -15,7 +15,7 @@ import CommentsSection from '@/components/blog/CommentsSection';
 import RelatedPosts from '@/components/blog/RelatedPosts';
 import BlogPostNotFound from '@/components/blog/BlogPostNotFound';
 
-// Nouveau import pour la carte des stations service
+// Import pour la carte des stations service
 import GasStationsMap from '@/components/blog/GasStationsMap';
 
 const BlogPostDetailPage = () => {
@@ -51,6 +51,9 @@ const BlogPostDetailPage = () => {
 
   // Vérifier si c'est l'article des stations-service
   const isGasStationPost = id === 'stations-service-corse';
+
+  // Log pour le debug
+  console.log('BlogPostDetailPage - isGasStationPost:', isGasStationPost);
 
   if (!post) {
     return (
@@ -92,7 +95,14 @@ const BlogPostDetailPage = () => {
             />
             
             {/* Carte des stations service pour l'article spécifique */}
-            {isGasStationPost && <GasStationsMap />}
+            {isGasStationPost && (
+              <div>
+                <GasStationsMap />
+                <div className="text-center text-sm text-muted-foreground mt-2">
+                  Carte interactive des stations-service de Corse
+                </div>
+              </div>
+            )}
             
             {/* Author Info */}
             <AuthorCard author={post.author} />

@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { MapLocation } from '@/components/map/types';
@@ -14,9 +14,11 @@ interface GasStationsMapProps {
 const GasStationsMap = ({ title = "Carte des stations-service en Corse" }: GasStationsMapProps) => {
   const [showStrategicOnly, setShowStrategicOnly] = useState(false);
   const [displayCount, setDisplayCount] = useState(allGasStations.length);
+  const [locations, setLocations] = useState<MapLocation[]>([]);
 
   // Convertir les stations en points sur la carte
   const convertToMapLocations = (stations: GasStation[]): MapLocation[] => {
+    console.log(`Conversion de ${stations.length} stations en locations`);
     return stations.map(station => ({
       id: station.id,
       title: station.name,
@@ -29,20 +31,23 @@ const GasStationsMap = ({ title = "Carte des stations-service en Corse" }: GasSt
     }));
   };
 
-  // Préparer les locations selon le filtre
-  const locations = showStrategicOnly 
-    ? convertToMapLocations(strategicGasStations)
-    : convertToMapLocations(allGasStations);
+  // Mettre à jour les stations affichées quand le filtre change
+  useEffect(() => {
+    const stationsToShow = showStrategicOnly ? strategicGasStations : allGasStations;
+    const mappedLocations = convertToMapLocations(stationsToShow);
+    console.log(`Affichage de ${mappedLocations.length} stations sur la carte`, mappedLocations);
+    setLocations(mappedLocations);
+    setDisplayCount(stationsToShow.length);
+  }, [showStrategicOnly]);
 
   // Mettre à jour le compteur quand le filtre change
   const handleFilterChange = () => {
     setShowStrategicOnly(!showStrategicOnly);
-    setDisplayCount(!showStrategicOnly ? strategicGasStations.length : allGasStations.length);
   };
 
   return (
     <div className="space-y-4 my-8">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mb-2">
         <h3 className="text-xl font-bold flex items-center gap-2">
           <Fuel className="h-5 w-5 text-amber-500" />
           {title}

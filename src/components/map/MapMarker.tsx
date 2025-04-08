@@ -1,7 +1,6 @@
 
 import mapboxgl from 'mapbox-gl';
 import { markerTypes, MapLocation, isWithinCorsica } from './types';
-import { Fuel } from 'lucide-react';
 
 interface CreateMarkerProps {
   location: MapLocation;
@@ -19,6 +18,9 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
     console.error(`Coordonnées invalides pour ${location?.title || 'marker inconnu'}:`, location);
     return null;
   }
+  
+  // Ajout de logs pour debug
+  console.log(`Création d'un marker pour ${location.title} aux coordonnées: [${location.latitude}, ${location.longitude}]`);
   
   // Vérification que les coordonnées sont dans une plage valide pour la Corse
   if (!isWithinCorsica(location.latitude, location.longitude)) {
@@ -62,12 +64,14 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
       el.style.boxShadow = '0 3px 8px rgba(0,0,0,0.4)';
     }
   } else if (location.type === 'gasStation') {
+    // Utiliser l'icône Fuel pour les stations-service
     iconElement.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22h12"/><path d="M4 9h10"/><path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18"/><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5"/></svg>';
     
-    // Style for strategic gas stations
+    // Style spécifique pour les stations stratégiques
     if (location.isPrimary) {
       el.style.border = '3px solid white';
       el.style.boxShadow = '0 3px 8px rgba(0,0,0,0.4)';
+      el.style.zIndex = '10'; // S'assurer que les stations stratégiques sont au premier plan
     }
   }
   
