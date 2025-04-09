@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useParams } from 'react-router-dom';
@@ -34,7 +33,7 @@ const BlogPostDetailPage = () => {
       }
     }
   }, [slug]);
-
+  
   const handleLike = () => {
     setLiked(!liked);
     toast({

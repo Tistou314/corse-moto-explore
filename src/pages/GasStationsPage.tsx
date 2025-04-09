@@ -1,9 +1,8 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import MapContainer from '@/components/map/MapContainer';
 import { 
   gasStationPOIs, 
   strategicGasStationPOIs,
@@ -19,97 +18,14 @@ import {
   luccianaBigugliaPOIs,
   plaineOrientalePOIs
 } from '@/data/points-of-interest/gas-stations-poi';
-import { MapLocation } from '@/components/map/types';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { MapPin, Info, Fuel } from 'lucide-react';
-
-const regionOptions = [
-  { value: "all", label: "Toute la Corse" },
-  { value: "bastia", label: "Bastia" },
-  { value: "ajaccio", label: "Ajaccio" },
-  { value: "cap-corse", label: "Cap Corse" },
-  { value: "nebbio", label: "Nebbio" },
-  { value: "balagne", label: "Balagne" },
-  { value: "extreme-sud", label: "Extrême Sud" },
-  { value: "centre", label: "Centre" },
-  { value: "castagniccia", label: "Castagniccia" },
-  { value: "valinco", label: "Valinco" },
-  { value: "lucciana-biguglia", label: "Lucciana-Biguglia" },
-  { value: "plaine-orientale", label: "Plaine Orientale" }
-];
+import { Info, Fuel } from 'lucide-react';
 
 const GasStationsPage = () => {
-  const [showStrategic, setShowStrategic] = useState(true);
-  const [selectedRegion, setSelectedRegion] = useState("all");
-  const [locations, setLocations] = useState<MapLocation[]>(strategicGasStationPOIs);
-  const [mapKey, setMapKey] = useState("strategic-all");
-  
-  useEffect(() => {
-    updateDisplayedStations();
-  }, [showStrategic, selectedRegion]);
-  
-  const updateDisplayedStations = () => {
-    let newLocations: MapLocation[];
-    
-    // Sélectionner la région
-    if (selectedRegion === "all") {
-      newLocations = showStrategic ? strategicGasStationPOIs : gasStationPOIs;
-    } else {
-      // Obtenir les stations de la région sélectionnée
-      let regionStations: MapLocation[] = [];
-      switch (selectedRegion) {
-        case "bastia": regionStations = bastiaPOIs; break;
-        case "ajaccio": regionStations = ajaccioPOIs; break;
-        case "cap-corse": regionStations = capCorsePOIs; break;
-        case "nebbio": regionStations = nebbioPOIs; break;
-        case "balagne": regionStations = balagnePOIs; break;
-        case "extreme-sud": regionStations = extremeSudPOIs; break;
-        case "centre": regionStations = centrePOIs; break;
-        case "castagniccia": regionStations = castagnacciaPOIs; break;
-        case "valinco": regionStations = valincoPOIs; break;
-        case "lucciana-biguglia": regionStations = luccianaBigugliaPOIs; break;
-        case "plaine-orientale": regionStations = plaineOrientalePOIs; break;
-        default: regionStations = gasStationPOIs;
-      }
-      
-      // Filtrer les stations stratégiques si nécessaire
-      if (showStrategic) {
-        regionStations = regionStations.filter(station => station.isPrimary);
-      }
-      
-      newLocations = regionStations;
-    }
-    
-    setLocations(newLocations);
-    setMapKey(`${showStrategic ? 'strategic' : 'all'}-${selectedRegion}-${Date.now()}`);
-  };
-  
-  const handleRegionChange = (value: string) => {
-    setSelectedRegion(value);
-  };
+  const totalStations = gasStationPOIs.length;
+  const strategicStations = strategicGasStationPOIs.length;
 
-  // Calculer le centre et le zoom en fonction de la région sélectionnée
-  const getMapSettings = () => {
-    switch (selectedRegion) {
-      case "bastia": return { center: [9.45, 42.7], zoom: 10 };
-      case "ajaccio": return { center: [8.75, 41.92], zoom: 10 };
-      case "cap-corse": return { center: [9.4, 42.88], zoom: 10 };
-      case "nebbio": return { center: [9.3, 42.68], zoom: 10 };
-      case "balagne": return { center: [8.85, 42.6], zoom: 10 };
-      case "extreme-sud": return { center: [9.2, 41.55], zoom: 10 };
-      case "centre": return { center: [9.15, 42.35], zoom: 10 };
-      case "castagniccia": return { center: [9.45, 42.47], zoom: 10 };
-      case "valinco": return { center: [8.9, 41.68], zoom: 10 };
-      case "lucciana-biguglia": return { center: [9.43, 42.57], zoom: 11 };
-      case "plaine-orientale": return { center: [9.4, 42.1], zoom: 9 };
-      default: return { center: [9.13, 42.3], zoom: 7.5 };
-    }
-  };
-  
-  const mapSettings = getMapSettings();
-  
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -129,72 +45,11 @@ const GasStationsPage = () => {
           </div>
         </div>
 
-        <Tabs defaultValue="map" className="w-full">
+        <Tabs defaultValue="info" className="w-full">
           <TabsList className="mb-6">
-            <TabsTrigger value="map">Carte</TabsTrigger>
             <TabsTrigger value="info">Informations</TabsTrigger>
+            <TabsTrigger value="list">Liste des régions</TabsTrigger>
           </TabsList>
-          
-          <TabsContent value="map" className="space-y-4">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
-              <h2 className="text-2xl font-semibold">Carte des stations-service</h2>
-              
-              <div className="flex flex-col sm:flex-row items-center gap-4">
-                <div className="flex items-center gap-2">
-                  <Badge 
-                    variant={showStrategic ? "default" : "outline"} 
-                    className="cursor-pointer"
-                    onClick={() => setShowStrategic(true)}
-                  >
-                    <Fuel className="h-3 w-3 mr-1" />
-                    Stations stratégiques
-                  </Badge>
-                  <Badge 
-                    variant={!showStrategic ? "default" : "outline"} 
-                    className="cursor-pointer"
-                    onClick={() => setShowStrategic(false)}
-                  >
-                    <MapPin className="h-3 w-3 mr-1" />
-                    Toutes les stations
-                  </Badge>
-                </div>
-                
-                <Select value={selectedRegion} onValueChange={handleRegionChange}>
-                  <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Sélectionner une région" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {regionOptions.map(option => (
-                      <SelectItem key={option.value} value={option.value}>
-                        {option.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-            
-            <div key={mapKey}>
-              <MapContainer 
-                locations={locations}
-                center={mapSettings.center as [number, number]}
-                zoom={mapSettings.zoom}
-              />
-            </div>
-            
-            <div className="bg-muted p-4 rounded-lg">
-              <div className="flex items-center gap-2">
-                <Info className="h-4 w-4 text-muted-foreground" />
-                <p className="text-sm text-muted-foreground">
-                  {selectedRegion !== "all" 
-                    ? `Stations de la région ${selectedRegion === "cap-corse" ? "du Cap Corse" : `de ${selectedRegion.charAt(0).toUpperCase() + selectedRegion.slice(1)}`} (${locations.length} stations)`
-                    : (showStrategic 
-                        ? "Les stations stratégiques sont essentielles pour les motards traversant des zones isolées."
-                        : "Toutes les stations-service disponibles en Corse sont affichées sur la carte.")}
-                </p>
-              </div>
-            </div>
-          </TabsContent>
           
           <TabsContent value="info">
             <div className="grid md:grid-cols-2 gap-6">
@@ -208,6 +63,15 @@ const GasStationsPage = () => {
                   Il est recommandé de faire le plein à ces stations pour éviter de se retrouver en panne sèche 
                   dans les zones montagneuses ou isolées.
                 </p>
+                <div className="mt-4 flex items-center gap-2">
+                  <Badge variant="outline" className="flex items-center gap-1">
+                    <Fuel className="h-3 w-3" />
+                    <span>{strategicStations} stations stratégiques</span>
+                  </Badge>
+                  <Badge variant="outline">
+                    {totalStations} stations au total
+                  </Badge>
+                </div>
               </div>
               
               <div className="bg-white p-6 rounded-lg shadow">
@@ -221,19 +85,78 @@ const GasStationsPage = () => {
               </div>
               
               <div className="md:col-span-2 bg-white p-6 rounded-lg shadow">
-                <h3 className="text-xl font-semibold mb-3">Article détaillé</h3>
+                <h3 className="text-xl font-semibold mb-3">Liste détaillée</h3>
                 <p className="mb-4">
-                  Pour plus d'informations sur les stations-service en Corse, consultez notre article dédié :
+                  Pour plus d'informations et consulter la liste des stations-service par région en Corse :
                 </p>
                 <Link 
                   to="/blog/stations-service-corse" 
                   className="inline-flex items-center text-corsica-blue hover:underline"
                 >
-                  Lire notre guide complet des stations-service
+                  Consulter la liste complète des stations-service par région
                   <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </Link>
+              </div>
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="list">
+            <div className="bg-white p-6 rounded-lg shadow">
+              <h3 className="text-xl font-semibold mb-3">Stations-service par région</h3>
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <Link to="/blog/stations-service-corse" className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                  <h4 className="font-medium">Bastia</h4>
+                  <p className="text-sm text-muted-foreground">{bastiaPOIs.length} stations</p>
+                </Link>
+                <Link to="/blog/stations-service-corse" className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                  <h4 className="font-medium">Ajaccio</h4>
+                  <p className="text-sm text-muted-foreground">{ajaccioPOIs.length} stations</p>
+                </Link>
+                <Link to="/blog/stations-service-corse" className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                  <h4 className="font-medium">Cap Corse</h4>
+                  <p className="text-sm text-muted-foreground">{capCorsePOIs.length} stations</p>
+                </Link>
+                <Link to="/blog/stations-service-corse" className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                  <h4 className="font-medium">Nebbio</h4>
+                  <p className="text-sm text-muted-foreground">{nebbioPOIs.length} stations</p>
+                </Link>
+                <Link to="/blog/stations-service-corse" className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                  <h4 className="font-medium">Balagne</h4>
+                  <p className="text-sm text-muted-foreground">{balagnePOIs.length} stations</p>
+                </Link>
+                <Link to="/blog/stations-service-corse" className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                  <h4 className="font-medium">Extrême Sud</h4>
+                  <p className="text-sm text-muted-foreground">{extremeSudPOIs.length} stations</p>
+                </Link>
+                <Link to="/blog/stations-service-corse" className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                  <h4 className="font-medium">Centre</h4>
+                  <p className="text-sm text-muted-foreground">{centrePOIs.length} stations</p>
+                </Link>
+                <Link to="/blog/stations-service-corse" className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                  <h4 className="font-medium">Castagniccia</h4>
+                  <p className="text-sm text-muted-foreground">{castagnacciaPOIs.length} stations</p>
+                </Link>
+                <Link to="/blog/stations-service-corse" className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                  <h4 className="font-medium">Valinco</h4>
+                  <p className="text-sm text-muted-foreground">{valincoPOIs.length} stations</p>
+                </Link>
+                <Link to="/blog/stations-service-corse" className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                  <h4 className="font-medium">Lucciana-Biguglia</h4>
+                  <p className="text-sm text-muted-foreground">{luccianaBigugliaPOIs.length} stations</p>
+                </Link>
+                <Link to="/blog/stations-service-corse" className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                  <h4 className="font-medium">Plaine Orientale</h4>
+                  <p className="text-sm text-muted-foreground">{plaineOrientalePOIs.length} stations</p>
+                </Link>
+              </div>
+              
+              <div className="mt-6 pt-4 border-t flex items-center">
+                <Info className="h-4 w-4 text-muted-foreground mr-2" />
+                <p className="text-sm text-muted-foreground">
+                  Cliquez sur une région pour voir la liste détaillée des stations-service.
+                </p>
               </div>
             </div>
           </TabsContent>
