@@ -22,6 +22,9 @@ import PointOfInterestCreate from "@/components/admin/points-of-interest/PointOf
 import ItinerariesList from "@/components/admin/itineraries/ItinerariesList";
 import ItineraryEdit from "@/components/admin/itineraries/ItineraryEdit";
 import ItineraryCreate from "@/components/admin/itineraries/ItineraryCreate";
+import GasStationsList from "@/components/admin/gas-stations/GasStationsList";
+import GasStationCreate from "@/components/admin/gas-stations/GasStationCreate";
+import GasStationEdit from "@/components/admin/gas-stations/GasStationEdit";
 
 const AdminPage = () => {
   const navigate = useNavigate();
@@ -57,6 +60,9 @@ const AdminPage = () => {
           <Route path="/itineraries" element={<ItinerariesList />} />
           <Route path="/itineraries/new" element={<ItineraryCreate />} />
           <Route path="/itineraries/edit/:id" element={<ItineraryEdit />} />
+          <Route path="/gas-stations" element={<GasStationsList />} />
+          <Route path="/gas-stations/new" element={<GasStationCreate />} />
+          <Route path="/gas-stations/edit/:id" element={<GasStationEdit />} />
         </Routes>
       </AdminLayout>
     </>

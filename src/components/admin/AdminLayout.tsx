@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { LayoutDashboard, FileText, Layers, Menu, X, LogOut, Hotel, MapPin, Map } from "lucide-react";
+import { LayoutDashboard, FileText, Layers, Menu, X, LogOut, Hotel, MapPin, Map, Droplet } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 
@@ -49,6 +49,11 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
       name: "Itinéraires", 
       icon: <Map className="w-5 h-5 mr-2" />, 
       path: "/admin/itineraries" 
+    },
+    { 
+      name: "Stations-service", 
+      icon: <Droplet className="w-5 h-5 mr-2" />, 
+      path: "/admin/gas-stations" 
     },
   ];
 
