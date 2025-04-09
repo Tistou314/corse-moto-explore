@@ -11,7 +11,7 @@ export const calviAccommodations: Accommodation[] = [
     description: "Charmant hôtel familial situé au cœur de L'Île-Rousse, à quelques pas de la plage. Parfait pour les motards qui souhaitent explorer la région de la Balagne tout en profitant d'un cadre urbain agréable.",
     priceRange: "90€ - 170€",
     rating: 4.1,
-    image: "https://cdn.pixabay.com/photo/2016/11/21/15/42/beach-1846009_1280.jpg",
+    image: "/lovable-uploads/022ab12c-1e1f-4cf5-b98e-71c905a7d42c.png",
     amenities: ["Climatisation", "Wifi gratuit", "Proximité plage", "Restaurant", "Bar"],
     bikerAmenities: ["Parking sécurisé", "Itinéraires moto"],
     contact: {
@@ -23,3 +23,4 @@ export const calviAccommodations: Accommodation[] = [
     longitude: 8.9407538
   }
 ];
+
