@@ -73,7 +73,7 @@ const GasStationEdit = () => {
     // Combine all gas stations collections
     const allStations = [
       ...capCorseStations,
-      ...strategicStations,
+      ...strategicGasStations,
       ...allRegionalStations,
     ];
     
