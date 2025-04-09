@@ -50,7 +50,7 @@ export const ajaccioAccommodations: Accommodation[] = [
     description: "Élégant hôtel situé le long de la route des Sanguinaires, offrant une vue imprenable sur la mer Méditerranée. L'établissement est idéalement situé pour les motards souhaitant explorer la côte ouest.",
     priceRange: "100€ - 200€",
     rating: 4.2,
-    image: "https://cdn.pixabay.com/photo/2020/01/15/18/01/room-4768551_1280.jpg",
+    image: "/lovable-uploads/62b4ce49-f171-4ad5-b5a9-8394b08772ac.png",
     amenities: ["Climatisation", "Restaurant", "Bar", "Vue mer", "Wifi gratuit"],
     bikerAmenities: ["Parking sécurisé"],
     contact: {
