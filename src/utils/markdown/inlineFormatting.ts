@@ -20,9 +20,9 @@ export const formatInlineStyles = (text: string): string => {
   // Process regular links
   text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-corsica-blue hover:underline">$1</a>');
   
-  // Process bold text (** or __)
-  text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-  text = text.replace(/__(.*?)__/g, '<strong>$1</strong>');
+  // Process bold text (** or __) with corsica blue color
+  text = text.replace(/\*\*(.*?)\*\*/g, '<strong class="text-corsica-blue">$1</strong>');
+  text = text.replace(/__(.*?)__/g, '<strong class="text-corsica-blue">$1</strong>');
   
   // Process italic text (* or _)
   text = text.replace(/\*(.*?)\*/g, '<em>$1</em>');
