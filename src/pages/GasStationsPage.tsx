@@ -4,27 +4,38 @@ import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { 
-  gasStationPOIs, 
-  strategicGasStationPOIs,
-  bastiaPOIs,
-  ajaccioPOIs,
-  capCorsePOIs,
-  nebbioPOIs,
-  balagnePOIs,
-  extremeSudPOIs,
-  centrePOIs,
-  castagnacciaPOIs,
-  valincoPOIs,
-  luccianaBigugliaPOIs,
-  plaineOrientalePOIs
-} from '@/data/points-of-interest/gas-stations-poi';
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle
+} from '@/components/ui/navigation-menu';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { Info, Fuel } from 'lucide-react';
+import { Fuel, Map, List, Info } from 'lucide-react';
+import { 
+  allGasStations, 
+  strategicGasStations 
+} from '@/data/gas-stations';
 
 const GasStationsPage = () => {
-  const totalStations = gasStationPOIs.length;
-  const strategicStations = strategicGasStationPOIs.length;
+  // Compteurs pour la page
+  const totalStations = allGasStations.length;
+  const strategicStations = strategicGasStations.length;
+  
+  // Groupement par région pour l'affichage
+  const groupedByRegion = allGasStations.reduce((acc, station) => {
+    if (!acc[station.region]) {
+      acc[station.region] = [];
+    }
+    acc[station.region].push(station);
+    return acc;
+  }, {} as Record<string, typeof allGasStations>);
+  
+  const regions = Object.keys(groupedByRegion).sort();
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -48,7 +59,8 @@ const GasStationsPage = () => {
         <Tabs defaultValue="info" className="w-full">
           <TabsList className="mb-6">
             <TabsTrigger value="info">Informations</TabsTrigger>
-            <TabsTrigger value="list">Liste des régions</TabsTrigger>
+            <TabsTrigger value="tips">Conseils pratiques</TabsTrigger>
+            <TabsTrigger value="regions">Régions</TabsTrigger>
           </TabsList>
           
           <TabsContent value="info">
@@ -75,81 +87,78 @@ const GasStationsPage = () => {
               </div>
               
               <div className="bg-white p-6 rounded-lg shadow">
-                <h3 className="text-xl font-semibold mb-3">Conseils pour les motards</h3>
+                <h3 className="text-xl font-semibold mb-3">Stations importantes</h3>
                 <ul className="list-disc pl-5 space-y-2">
-                  <li>Vérifiez toujours votre niveau de carburant avant de partir pour les routes montagneuses</li>
-                  <li>Les stations dans les zones rurales peuvent avoir des horaires réduits, surtout hors saison</li>
-                  <li>Certaines stations peuvent être fermées le dimanche ou les jours fériés</li>
-                  <li>Prévoyez un plan B pour le ravitaillement lors de longs trajets</li>
+                  <li><strong>Station de Vivario</strong> : Point de ravitaillement crucial avant de traverser le centre montagneux</li>
+                  <li><strong>Station de Venaco</strong> : Indispensable si vous empruntez la route du centre</li>
+                  <li><strong>Station de Calacuccia</strong> : La seule option dans la région du Niolu</li>
+                  <li><strong>Station du Col de Bavella</strong> : Essentielle avant de s'aventurer dans la région de l'Alta Rocca</li>
+                  <li><strong>Station de Porto</strong> : Dernière station avant plusieurs heures de route côtière</li>
                 </ul>
-              </div>
-              
-              <div className="md:col-span-2 bg-white p-6 rounded-lg shadow">
-                <h3 className="text-xl font-semibold mb-3">Liste détaillée</h3>
-                <p className="mb-4">
-                  Pour plus d'informations et consulter la liste des stations-service par région en Corse :
-                </p>
-                <Link 
-                  to="/blog/stations-service-corse" 
-                  className="inline-flex items-center text-corsica-blue hover:underline"
-                >
-                  Consulter la liste complète des stations-service par région
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </Link>
               </div>
             </div>
           </TabsContent>
           
-          <TabsContent value="list">
+          <TabsContent value="tips">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-white p-6 rounded-lg shadow">
+                <h3 className="text-xl font-semibold mb-3">Conseils pour les motards</h3>
+                <ul className="list-disc pl-5 space-y-2">
+                  <li>Faites toujours le plein avant de vous engager dans les routes de montagne ou les régions isolées</li>
+                  <li>Les stations des zones rurales peuvent avoir des horaires réduits, notamment hors saison</li>
+                  <li>Certaines stations peuvent être fermées le dimanche</li>
+                  <li>L'autonomie réelle de votre moto sur routes sinueuses est souvent 20-30% inférieure à celle annoncée</li>
+                  <li>Prévoyez un plan B pour votre ravitaillement lors de longs trajets</li>
+                </ul>
+              </div>
+              
+              <div className="bg-white p-6 rounded-lg shadow">
+                <h3 className="text-xl font-semibold mb-3">Planification et itinéraires</h3>
+                <p className="mb-4">Pour bien planifier vos pleins :</p>
+                <ul className="list-disc pl-5 space-y-2">
+                  <li>Identifiez les stations stratégiques sur votre itinéraire avant de partir</li>
+                  <li>Ne laissez jamais votre réservoir descendre en dessous de la moitié dans les zones isolées</li>
+                  <li>Consultez les horaires d'ouverture des stations en dehors des villes principales</li>
+                  <li>Les grands axes et les villes principales (Bastia, Ajaccio, Calvi, Porto-Vecchio) disposent de stations ouvertes plus tard, voire 24h/24</li>
+                </ul>
+              </div>
+              
+              <div className="md:col-span-2 bg-white p-6 rounded-lg shadow">
+                <h3 className="text-xl font-semibold mb-3">Spécificités saisonnières</h3>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <h4 className="font-medium mb-2">Haute saison (Juin-Septembre)</h4>
+                    <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
+                      <li>Files d'attente possibles dans les zones touristiques</li>
+                      <li>Horaires étendus pour la plupart des stations</li>
+                      <li>Prix légèrement plus élevés dans certaines stations côtières</li>
+                      <li>Presque toutes les stations sont ouvertes</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-medium mb-2">Basse saison (Octobre-Mai)</h4>
+                    <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
+                      <li>Horaires réduits dans les zones rurales et montagneuses</li>
+                      <li>Certaines stations fermées dans les villages très touristiques</li>
+                      <li>Planification plus importante nécessaire pour les longs trajets</li>
+                      <li>Stations des axes principaux toujours ouvertes</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="regions">
             <div className="bg-white p-6 rounded-lg shadow">
               <h3 className="text-xl font-semibold mb-3">Stations-service par région</h3>
               <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-                <Link to="/blog/stations-service-corse" className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-                  <h4 className="font-medium">Bastia</h4>
-                  <p className="text-sm text-muted-foreground">{bastiaPOIs.length} stations</p>
-                </Link>
-                <Link to="/blog/stations-service-corse" className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-                  <h4 className="font-medium">Ajaccio</h4>
-                  <p className="text-sm text-muted-foreground">{ajaccioPOIs.length} stations</p>
-                </Link>
-                <Link to="/blog/stations-service-corse" className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-                  <h4 className="font-medium">Cap Corse</h4>
-                  <p className="text-sm text-muted-foreground">{capCorsePOIs.length} stations</p>
-                </Link>
-                <Link to="/blog/stations-service-corse" className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-                  <h4 className="font-medium">Nebbio</h4>
-                  <p className="text-sm text-muted-foreground">{nebbioPOIs.length} stations</p>
-                </Link>
-                <Link to="/blog/stations-service-corse" className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-                  <h4 className="font-medium">Balagne</h4>
-                  <p className="text-sm text-muted-foreground">{balagnePOIs.length} stations</p>
-                </Link>
-                <Link to="/blog/stations-service-corse" className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-                  <h4 className="font-medium">Extrême Sud</h4>
-                  <p className="text-sm text-muted-foreground">{extremeSudPOIs.length} stations</p>
-                </Link>
-                <Link to="/blog/stations-service-corse" className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-                  <h4 className="font-medium">Centre</h4>
-                  <p className="text-sm text-muted-foreground">{centrePOIs.length} stations</p>
-                </Link>
-                <Link to="/blog/stations-service-corse" className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-                  <h4 className="font-medium">Castagniccia</h4>
-                  <p className="text-sm text-muted-foreground">{castagnacciaPOIs.length} stations</p>
-                </Link>
-                <Link to="/blog/stations-service-corse" className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-                  <h4 className="font-medium">Valinco</h4>
-                  <p className="text-sm text-muted-foreground">{valincoPOIs.length} stations</p>
-                </Link>
-                <Link to="/blog/stations-service-corse" className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-                  <h4 className="font-medium">Lucciana-Biguglia</h4>
-                  <p className="text-sm text-muted-foreground">{luccianaBigugliaPOIs.length} stations</p>
-                </Link>
-                <Link to="/blog/stations-service-corse" className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-                  <h4 className="font-medium">Plaine Orientale</h4>
-                  <p className="text-sm text-muted-foreground">{plaineOrientalePOIs.length} stations</p>
-                </Link>
+                {regions.map((region) => (
+                  <Link to="/blog/stations-service-corse" key={region} className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                    <h4 className="font-medium">{region}</h4>
+                    <p className="text-sm text-muted-foreground">{groupedByRegion[region].length} stations</p>
+                  </Link>
+                ))}
               </div>
               
               <div className="mt-6 pt-4 border-t flex items-center">
