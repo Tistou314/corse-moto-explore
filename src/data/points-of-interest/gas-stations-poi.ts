@@ -1,6 +1,6 @@
 
 import { v4 as uuidv4 } from 'uuid';
-import { MapLocation, validateAndFixCoordinates } from '@/components/map/types';
+import { MapLocation, validateAndFixCoordinates, isWithinCorsica } from '@/components/map/types';
 import { 
   allGasStations, 
   strategicGasStations, 
@@ -20,39 +20,44 @@ import {
 
 /**
  * Convertit les stations-service en points d'intérêt pour la carte
- * @param stations Les stations à convertir
- * @returns Liste des stations sous forme de points d'intérêt
+ * avec validation renforcée des coordonnées
  */
 const convertGasStationsToPOI = (stations: typeof allGasStations): MapLocation[] => {
   console.log(`Conversion de ${stations.length} stations en POIs`);
   
-  return stations.map(station => {
-    // Vérification des coordonnées
+  const pois = stations.map(station => {
+    // Validation initiale
     if (typeof station.latitude !== 'number' || 
         typeof station.longitude !== 'number' ||
         isNaN(station.latitude) || 
         isNaN(station.longitude)) {
       console.error(`Station avec coordonnées invalides: ${station.name}`, station);
-      // Retourner null pour filtrer plus tard
       return null;
     }
     
-    // Validation/correction des coordonnées
+    // Validation et correction des coordonnées
     const validatedCoords = validateAndFixCoordinates(station.latitude, station.longitude);
     if (!validatedCoords) {
       console.error(`Station avec coordonnées hors limites: ${station.name}`, station);
       return null;
     }
     
-    // Utiliser les coordonnées validées/corrigées
+    // Utiliser les coordonnées validées
     const [validLat, validLng] = validatedCoords;
     
+    // Vérification finale que les coordonnées sont bien pour la Corse
+    if (!isWithinCorsica(validLat, validLng, 0.5)) {
+      console.error(`Station "${station.name}" avec coordonnées hors de Corse après validation: [${validLat}, ${validLng}]`);
+      return null;
+    }
+    
+    // Créer le POI avec des coordonnées validées
     const poi: MapLocation = {
-      id: station.id || uuidv4(), // Assurer un ID unique
+      id: station.id || uuidv4(),
       title: station.name,
       latitude: validLat,
       longitude: validLng,
-      type: 'pointOfInterest',
+      type: 'gasStation', // Changement de type pour meilleure identification
       description: `${station.brand} - ${station.hours}${station.seasonalHours ? ' (horaires saisonniers)' : ''}`,
       isPrimary: station.isStrategic,
       address: station.address,
@@ -61,7 +66,15 @@ const convertGasStationsToPOI = (stations: typeof allGasStations): MapLocation[]
     };
     
     return poi;
-  }).filter(Boolean) as MapLocation[]; // Filtrer les entrées nulles
+  }).filter(Boolean) as MapLocation[];
+  
+  // Log de debugging pour les coordonnées
+  console.log(`Conversion terminée: ${pois.length}/${stations.length} stations valides`);
+  if (pois.length > 0) {
+    console.log(`Exemple de coordonnées: ${pois[0].title} - [${pois[0].latitude}, ${pois[0].longitude}]`);
+  }
+  
+  return pois;
 };
 
 // Générer les POIs pour toutes les stations et les stations stratégiques

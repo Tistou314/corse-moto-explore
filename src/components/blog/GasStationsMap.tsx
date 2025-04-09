@@ -22,7 +22,7 @@ import {
 } from '@/data/points-of-interest/gas-stations-poi';
 import { Fuel, Info, Map as MapIcon } from 'lucide-react';
 import { toast } from 'sonner';
-import { MapLocation } from '@/components/map/types';
+import { MapLocation, CorsicaCenter } from '@/components/map/types';
 
 const GasStationsMap = () => {
   const [showStrategicOnly, setShowStrategicOnly] = useState(true);
@@ -85,11 +85,19 @@ const GasStationsMap = () => {
       }
     }
     
+    // Vérification et logging des emplacements
+    if (newLocations.length > 0) {
+      console.log(`Mise à jour de la carte: ${newLocations.length} stations pour ${region}`);
+      console.log(`Exemple: ${newLocations[0].title} [${newLocations[0].latitude}, ${newLocations[0].longitude}]`);
+    } else {
+      console.warn(`Aucune station trouvée pour la région ${region}`);
+    }
+    
     setLocations(newLocations);
     
     // Générer une nouvelle clé pour recharger la carte
     setTimeout(() => {
-      const newKey = `${region}-${isStrategic ? 'strategic' : 'all'}-stations-map-${instanceId}`;
+      const newKey = `${region}-${isStrategic ? 'strategic' : 'all'}-stations-map-${instanceId}-${Date.now()}`;
       setMapKey(newKey);
       
       // Notification à l'utilisateur
@@ -117,39 +125,27 @@ const GasStationsMap = () => {
   useEffect(() => {
     console.log(`GasStationsMap init: ${strategicGasStationPOIs.length} stations stratégiques, ${gasStationPOIs.length} stations totales`);
     
-    // Vérification de la validité des coordonnées
-    const validateCoordinates = (pois) => {
-      return pois.filter(poi => {
-        if (!poi || typeof poi.latitude !== 'number' || typeof poi.longitude !== 'number') {
-          console.error("POI avec coordonnées manquantes:", poi?.title);
-          return false;
-        }
-        return true;
-      });
-    };
-    
-    const validStrategic = validateCoordinates(strategicGasStationPOIs);
-    const validAll = validateCoordinates(gasStationPOIs);
-    
-    console.log(`Stations valides: ${validStrategic.length}/${strategicGasStationPOIs.length} stratégiques, ${validAll.length}/${gasStationPOIs.length} totales`);
-    
-    // Si les données sont initialisées avec des erreurs, utiliser les données valides
-    if (validStrategic.length !== strategicGasStationPOIs.length) {
-      setLocations(validStrategic);
+    // Vérification initiale des données
+    if (strategicGasStationPOIs.length > 0) {
+      const sample = strategicGasStationPOIs[0];
+      console.log(`Station exemple: ${sample.title} [${sample.latitude}, ${sample.longitude}]`);
     }
+    
+    // Force update pour s'assurer que les emplacements sont corrects
+    updateLocations(showStrategicOnly, selectedRegion);
   }, []);
 
   // Calculer le centre et le zoom en fonction de la région sélectionnée
   const getMapSettings = () => {
     switch (selectedRegion) {
       case "bastia":
-        return { center: [9.45, 42.7], zoom: 10 };
+        return { center: [9.45, 42.7], zoom: 11 };
       case "ajaccio":
-        return { center: [8.75, 41.92], zoom: 10 };
+        return { center: [8.75, 41.92], zoom: 11 };
       case "cap-corse":
         return { center: [9.4, 42.88], zoom: 10 };
       case "nebbio":
-        return { center: [9.3, 42.68], zoom: 10 };
+        return { center: [9.3, 42.68], zoom: 11 };
       case "balagne":
         return { center: [8.85, 42.6], zoom: 10 };
       case "extreme-sud":
@@ -165,7 +161,11 @@ const GasStationsMap = () => {
       case "plaine-orientale":
         return { center: [9.4, 42.1], zoom: 9 };
       default:
-        return { center: showStrategicOnly ? [9.13, 42.16] : [9.13, 42.3], zoom: showStrategicOnly ? 8 : 7.5 };
+        // Pour la vue de toute la Corse, utiliser les coordonnées correctes
+        return { 
+          center: CorsicaCenter, // [9.13, 42.16] - Centre géographique de la Corse
+          zoom: 8.5  // Zoom optimal pour voir toute l'île
+        };
     }
   };
 
@@ -226,7 +226,7 @@ const GasStationsMap = () => {
           height="500px"
           interactive={true}
           enableClustering={false}
-          center={mapSettings.center as [number, number]}
+          center={mapSettings.center}
           zoom={mapSettings.zoom}
         />
       </div>

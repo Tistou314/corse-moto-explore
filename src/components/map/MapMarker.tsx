@@ -28,14 +28,20 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   
   // Utiliser les coordonnées validées/corrigées
   const [validLat, validLng] = validatedCoords;
+  
+  // Vérification finale - les coordonnées doivent être dans la Corse
+  if (!isWithinCorsica(validLat, validLng)) {
+    console.error(`Marker ${location.title} a des coordonnées hors de Corse après validation: [${validLat}, ${validLng}]`);
+    return null;
+  }
 
   const el = document.createElement('div');
   el.className = 'marker';
   
   // Déterminer la couleur du marqueur en fonction du type
-  const color = location.category === 'station-service' 
+  const color = location.type === 'gasStation' 
     ? '#f59e0b' // couleur ambre pour stations-service 
-    : (markerTypes[location.type] || '#000000');
+    : (location.category === 'station-service' ? '#f59e0b' : (markerTypes[location.type] || '#000000'));
   
   // Styles de base pour le marqueur
   el.style.backgroundColor = color;
@@ -52,9 +58,6 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   el.style.border = '2px solid white';
   el.style.zIndex = '999';
   
-  // Problème de glissement corrigé - ne pas utiliser transform: translate ici
-  // Le marker est correctement positionné par Mapbox
-  
   // Style spécifique pour les stations stratégiques
   if (location.isPrimary) {
     el.style.border = '4px solid white'; 
@@ -68,7 +71,7 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   let iconElement = document.createElement('span');
   
   // Icône pour les stations service
-  if (location.category === 'station-service') {
+  if (location.type === 'gasStation' || location.category === 'station-service') {
     iconElement.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22h12"/><path d="M4 9h10"/><path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18"/><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5"/></svg>';
   } else if (location.type === 'pointOfInterest') {
     iconElement.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>';
@@ -80,7 +83,7 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   el.appendChild(iconElement);
 
   // Ajouter pulse effect pour les stations stratégiques
-  if (location.isPrimary && location.category === 'station-service') {
+  if (location.isPrimary && (location.type === 'gasStation' || location.category === 'station-service')) {
     const pulseEffect = document.createElement('div');
     pulseEffect.style.position = 'absolute';
     pulseEffect.style.borderRadius = '50%';
@@ -140,13 +143,13 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   }
 
   try {
-    // Création du marqueur avec ordre longitude, latitude pour Mapbox
-    // et utilisation des coordonnées validées
+    // IMPORTANT: Création du marqueur avec ordre longitude, latitude pour Mapbox
+    // Cette inversion est normale et nécessaire car Mapbox attend [lng, lat] et non [lat, lng]
     const marker = new mapboxgl.Marker({
       element: el,
       anchor: 'center'
     })
-      .setLngLat([validLng, validLat])
+      .setLngLat([validLng, validLat]) // Attention: Mapbox utilise l'ordre [longitude, latitude]
       .addTo(map);
 
     // Gestionnaire d'événement de clic

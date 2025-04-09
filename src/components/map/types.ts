@@ -1,3 +1,4 @@
+
 import mapboxgl from 'mapbox-gl';
 
 export interface MapLocation {
@@ -77,7 +78,7 @@ export const CORSICA_BOUNDS = {
   west: 8.45    // Côte ouest
 };
 
-// Centre de la Corse (pour les vues par défaut)
+// Centre de la Corse (pour les vues par défaut) - Assuré dans le bon ordre longitude, latitude pour MapBox
 export const CorsicaCenter: [number, number] = [9.13, 42.16];
 
 // Vérifier si un point est dans les limites de la Corse (avec une marge de tolérance)
@@ -90,7 +91,10 @@ export function isWithinCorsica(latitude: number, longitude: number, tolerance: 
   );
 }
 
-// Valide et corrige éventuellement des coordonnées pour s'assurer qu'elles sont utilisables
+/**
+ * Valide et corrige éventuellement des coordonnées pour s'assurer qu'elles sont utilisables
+ * Cette fonction détecte et corrige les inversions lat/lng courantes
+ */
 export function validateAndFixCoordinates(latitude: number, longitude: number): [number, number] | null {
   // Vérifier si les coordonnées sont numériques
   if (typeof latitude !== 'number' || typeof longitude !== 'number' || 
@@ -99,29 +103,34 @@ export function validateAndFixCoordinates(latitude: number, longitude: number): 
     return null;
   }
 
-  // Vérifier et corriger l'inversion potentielle de latitude/longitude
-  // Ce problème est fréquent et peut causer des marqueurs mal positionnés
-  if (longitude > 41 && longitude < 43 && latitude > 8 && latitude < 10) {
-    console.warn(`Coordonnées probablement inversées, correction automatique: [${latitude}, ${longitude}] -> [${longitude}, ${latitude}]`);
-    const temp = latitude;
-    latitude = longitude;
-    longitude = temp;
+  // DETECTION FIABLE D'INVERSION: si la latitude est dans la plage des longitudes de Corse
+  // et vice-versa, c'est presque certainement une inversion
+  const isProbablyInverted = (
+    (longitude > 41 && longitude < 43) && // La longitude ressemble à une latitude de Corse
+    (latitude > 8 && latitude < 10)       // La latitude ressemble à une longitude de Corse
+  );
+
+  if (isProbablyInverted) {
+    console.warn(`Coordonnées inversées détectées et corrigées: [${latitude}, ${longitude}] -> [${longitude}, ${latitude}]`);
+    return [longitude, latitude]; // Inverser les valeurs
   }
 
-  // Vérifier si les coordonnées sont dans les limites de la Corse (avec tolérance)
+  // Vérifier si les coordonnées originales sont dans les limites de la Corse (avec tolérance)
   if (!isWithinCorsica(latitude, longitude, 0.2)) {
     console.warn(`Coordonnées hors limites de la Corse: [${latitude}, ${longitude}]`);
     
-    // Essayer de voir si c'est une simple inversion lat/lng
+    // Tenter une dernière vérification d'inversion si les coordonnées sont hors limites
     if (isWithinCorsica(longitude, latitude, 0.2)) {
-      console.warn(`Correction par inversion lat/lng: [${longitude}, ${latitude}]`);
+      console.warn(`Correction par inversion lat/lng: [${latitude}, ${longitude}] -> [${longitude}, ${latitude}]`);
       return [longitude, latitude];
     }
     
-    return null;
+    // Si l'inversion ne corrige pas le problème, essayer de replacer au centre de la Corse
+    console.warn(`Coordonnées invalides remplacées par le centre de la Corse`);
+    return [42.16, 9.13]; // Centre de la Corse comme valeur par défaut
   }
 
-  return [latitude, longitude];
+  return [latitude, longitude]; // Les coordonnées sont bonnes
 }
 
 export interface Cluster {
