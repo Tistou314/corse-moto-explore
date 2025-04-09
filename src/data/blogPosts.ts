@@ -20,7 +20,7 @@ const articlesTechniques: BlogPost[] = [];
 const articlesExperiences: BlogPost[] = [];
 const articlesSaisons: BlogPost[] = [];
 
-// Article des stations-service
+// Article des stations-service - défini comme unique article sur ce sujet
 export const articleStationsService: BlogPost = {
   id: 'stations-service-corse',
   title: 'Carte des stations-service en Corse',
@@ -53,7 +53,7 @@ Certaines stations-service sont considérées comme **stratégiques** pour les m
 
 Consultez notre liste complète des stations-service par région dans la page dédiée pour planifier vos ravitaillements pendant votre voyage à moto en Corse.
   `,
-  category: 'aspects-pratiques',
+  category: 'Aspects pratiques',
   author: {
     name: 'Jean Toussaint',
     avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
@@ -76,7 +76,7 @@ const ensureValidBlogPost = (post: any): BlogPost => {
   return post as BlogPost;
 };
 
-// Combine all blog posts
+// Combine all blog posts - IMPORTANT: articleStationsService n'est inclus qu'une seule fois
 export const blogPosts: BlogPost[] = [
   articleStationsService,
   ensureValidBlogPost(tourCapCorse),

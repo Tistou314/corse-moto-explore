@@ -15,7 +15,6 @@ import BlogPage from "@/pages/BlogPage";
 import BlogPostDetailPage from "@/pages/BlogPostDetailPage";
 import AdminPage from "@/pages/AdminPage";
 import GasStationsPage from "@/pages/GasStationsPage";
-import StationServicePage from "@/pages/blog/StationServicePage";
 import NotFound from "@/pages/NotFound";
 
 function App() {
@@ -36,7 +35,7 @@ function App() {
           <Route path="/blog/:slug" element={<BlogPostDetailPage />} />
           <Route path="/admin/*" element={<AdminPage />} />
           <Route path="/gas-stations" element={<GasStationsPage />} />
-          <Route path="/blog/stations-service-corse" element={<StationServicePage />} />
+          {/* Nous supprimons la route directe pour éviter les doublons */}
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Toaster position="bottom-right" />
