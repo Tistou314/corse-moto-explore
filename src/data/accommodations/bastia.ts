@@ -11,7 +11,7 @@ export const bastiaAccommodations: Accommodation[] = [
     description: "Charmant relais situé sur la route du Cap Corse, parfait comme point de départ pour explorer cette magnifique péninsule. Accueil chaleureux et conseils personnalisés pour les motards.",
     priceRange: "80€ - 150€",
     rating: 4.2,
-    image: "https://cdn.pixabay.com/photo/2016/03/28/09/34/bedroom-1285156_1280.jpg",
+    image: "/lovable-uploads/f0a702d1-389f-45b9-b92f-25947b798f34.png",
     amenities: ["Restaurant", "Terrasse", "Wifi gratuit", "Climatisation"],
     bikerAmenities: ["Parking sécurisé", "Itinéraires moto", "Propriétaires motards"],
     contact: {
