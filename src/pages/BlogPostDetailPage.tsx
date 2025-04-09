@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useParams } from 'react-router-dom';
@@ -33,7 +32,6 @@ const BlogPostDetailPage = () => {
       }
     }
     
-    // Assurez-vous que la page commence en haut lors du chargement
     window.scrollTo(0, 0);
   }, [slug]);
   
