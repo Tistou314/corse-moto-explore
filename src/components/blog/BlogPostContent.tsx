@@ -26,7 +26,7 @@ const BlogPostContent = ({ post, liked, onLike, onShare }: BlogPostContentProps)
   }, [post]);
 
   // Format the markdown content to HTML
-  const formattedContent = formatContent(post.content);
+  const formattedContent = formatContent(post.content, post.id);
 
   return (
     <div className="blog-post-content">
@@ -59,7 +59,7 @@ const BlogPostContent = ({ post, liked, onLike, onShare }: BlogPostContentProps)
       </div>
       
       <article 
-        className="prose prose-lg max-w-none"
+        className="prose prose-lg max-w-none blog-content"
         dangerouslySetInnerHTML={{ __html: formattedContent }}
       />
       
