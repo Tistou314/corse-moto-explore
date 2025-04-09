@@ -28,7 +28,7 @@ const Navbar = () => {
             <Link to="/itineraires" className="text-foreground hover:text-corsica-blue font-medium transition-colors">
               Itinéraires
             </Link>
-            <Link to="/guide" className="text-foreground hover:text-corsica-blue font-medium transition-colors">
+            <Link to="/guide-pratique" className="text-foreground hover:text-corsica-blue font-medium transition-colors">
               Guide pratique
             </Link>
             <Link to="/hebergements" className="text-foreground hover:text-corsica-blue font-medium transition-colors">
@@ -78,7 +78,7 @@ const Navbar = () => {
               Itinéraires
             </Link>
             <Link 
-              to="/guide" 
+              to="/guide-pratique" 
               className="block py-2 px-3 text-foreground hover:text-corsica-blue hover:bg-muted rounded-lg"
               onClick={() => setIsOpen(false)}
             >
