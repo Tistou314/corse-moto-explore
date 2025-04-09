@@ -15,27 +15,25 @@ import AuthorCard from '@/components/blog/AuthorCard';
 import CommentsSection from '@/components/blog/CommentsSection';
 import RelatedPosts from '@/components/blog/RelatedPosts';
 import BlogPostNotFound from '@/components/blog/BlogPostNotFound';
-
-// Import pour la carte des stations service
-import GasStationsMap from '@/components/blog/GasStationsMap';
+import { Link } from 'react-router-dom';
 
 const BlogPostDetailPage = () => {
-  const { id } = useParams<{ id: string }>();
+  const { slug } = useParams<{ slug: string }>();
   const [post, setPost] = useState<BlogPost | null>(null);
   const [liked, setLiked] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
-    if (id) {
-      const foundPost = blogPosts.find(item => item.id === id);
+    if (slug) {
+      const foundPost = blogPosts.find(item => item.id === slug);
       if (foundPost) {
         setPost(foundPost);
         console.log(`Blog post loaded: ${foundPost.title}`);
       } else {
-        console.error(`Blog post with id ${id} not found`);
+        console.error(`Blog post with id ${slug} not found`);
       }
     }
-  }, [id]);
+  }, [slug]);
 
   const handleLike = () => {
     setLiked(!liked);
@@ -54,11 +52,11 @@ const BlogPostDetailPage = () => {
   };
 
   // Vérifier si c'est l'article des stations-service
-  const isGasStationPost = id === 'stations-service-corse';
+  const isGasStationPost = slug === 'stations-service-corse';
 
   // Log pour le debug
   console.log('BlogPostDetailPage - isGasStationPost:', isGasStationPost);
-  console.log('BlogPostDetailPage - current id:', id);
+  console.log('BlogPostDetailPage - current slug:', slug);
 
   if (!post) {
     return (
@@ -99,11 +97,17 @@ const BlogPostDetailPage = () => {
               onShare={handleShare} 
             />
             
-            {/* Carte des stations service pour l'article spécifique */}
+            {/* Link to stations service page for the specific article */}
             {isGasStationPost && (
               <div className="my-12 border-t border-b border-gray-100 py-8">
-                <h2 className="text-2xl font-bold mb-6">Carte interactive des stations-service</h2>
-                <GasStationsMap key={`gas-map-${id}-${Date.now()}`} />
+                <h2 className="text-2xl font-bold mb-6">Stations-service en Corse</h2>
+                <p className="mb-4">Consultez notre liste complète des stations-service par région pour planifier vos ravitaillements pendant votre voyage à moto en Corse.</p>
+                <Link 
+                  to="/blog/stations-service-corse" 
+                  className="inline-flex items-center px-4 py-2 bg-corsica-blue text-white rounded-md hover:bg-corsica-blue/90 transition-colors"
+                >
+                  Voir les stations-service
+                </Link>
               </div>
             )}
             
