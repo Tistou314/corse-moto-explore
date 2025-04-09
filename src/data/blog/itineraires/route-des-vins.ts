@@ -49,7 +49,7 @@ Le col de Teghime présente des virages parfois serrés avec quelques portions a
 Faites le tour du Cap Corse par la côte ouest (D80), plus sauvage et impressionnante. Arrêtez-vous à Nonza pour admirer la plage de galets noirs, puis continuez jusqu'à Luri, nichée dans la vallée.
 
 **Astuce motard** : 
-La route du Cap est étroite par endroits. Prévoyez de partir tôt pour éviter les camping-cars en haute saison.
+La route du Cap est étroite par endroits. Prévoyez de partir tôt pour éviter les camping-cars en haute saison. Pour plus de détails sur cet itinéraire, consultez notre article sur le [tour du Cap Corse à moto](/blog/tour-cap-corse-moto).
 
 ## Jour 3 : Vers la Balagne et les vins de Calvi
 
@@ -69,7 +69,7 @@ La route du Cap est étroite par endroits. Prévoyez de partir tôt pour éviter
 Depuis Bastia, rejoignez Saint-Florent puis prenez la route des Agriates (D81). Ces paysages lunaires contrastent avec les vignes qui apparaîtront à l'approche de Calvi.
 
 **Astuce motard** : 
-La D81 à travers les Agriates offre de beaux virages, mais restez vigilant car la chaussée peut être gravillonneuse par endroits.
+La D81 à travers les Agriates offre de beaux virages, mais restez vigilant car la chaussée peut être gravillonneuse par endroits. Si vous voyagez en été, consultez notre article sur [la gestion de la chaleur à moto](/blog/gerer-chaleur-ete-moto).
 
 ## Jour 4 : Pause à Calvi et vins de Corbara
 
@@ -89,7 +89,7 @@ La D81 à travers les Agriates offre de beaux virages, mais restez vigilant car 
 Boucle à travers les villages de Balagne : Calvi → Lumio → Sant'Antonino → Pigna → Corbara → Calvi. Routes sinueuses et panoramas garantis.
 
 **Astuce motard** : 
-Les ruelles des villages peuvent être étroites et pentues. Garez votre moto à l'entrée des villages et continuez à pied.
+Les ruelles des villages peuvent être étroites et pentues. Garez votre moto à l'entrée des villages et continuez à pied. Profitez-en pour découvrir les [traditions corses](/blog/decouvrir-traditions-corses-moto) dans ces villages authentiques.
 
 ## Jour 5 : Vers le cœur de l'île et l'AOC Ajaccio
 
@@ -109,7 +109,7 @@ Les ruelles des villages peuvent être étroites et pentues. Garez votre moto à
 Quittez Calvi par la D151 vers Galeria, puis prenez le Col de Palmarella. Rejoignez ensuite Porto et suivez les Calanques de Piana (D81). Poursuivez par le Col de Sevi pour rejoindre Sagone, puis Ajaccio.
 
 **Astuce motard** : 
-Cette étape est longue et technique, avec plusieurs cols. Partez tôt et prévoyez des pauses régulières.
+Cette étape est longue et technique, avec plusieurs cols. Partez tôt et prévoyez des pauses régulières. Pour une variante plus au sud, découvrez notre itinéraire de [la Boucle du Grand Sud](/blog/route-grand-sud-2024).
 
 ## Jour 6 : La région de Sartène et Figari
 
@@ -151,6 +151,8 @@ La N196 peut être chargée en été. Préférez un départ matinal et profitez 
 * **Top case ou sacoche** : indispensable pour transporter quelques bouteilles en sécurité
 * **Protection anti-chocs** : manchons spécifiques ou simplement des chaussettes pour protéger le verre
 * **Carnet de notes** : pour consigner vos découvertes et impressions
+
+Pour une expérience optimale, consultez notre [guide pratique](/guide-pratique) avant votre départ et assurez-vous d'avoir [préparé votre moto](/blog/preparer-moto-routes-corses) pour les routes corses.
 
 Cet itinéraire vous permettra de découvrir la diversité des terroirs corses tout en profitant de routes magnifiques. La Corse offre des vins de caractère qui racontent son histoire, entre influence maritime et montagneuse, tradition et modernité. Une aventure sensorielle qui complète parfaitement le plaisir de la conduite à moto sur les routes sinueuses de l'Île de Beauté.
     `,

@@ -1,52 +1,68 @@
 
-import { Helmet } from 'react-helmet';
-import { BlogPost } from '@/types/blog';
-import { Accommodation } from '@/data/accommodations/types';
+import { useEffect } from 'react';
+import { SchemaType } from '@/utils/schema/common';
+import { generateWebsiteSchema } from '@/utils/schema/websiteSchema';
+import { generateOrganizationSchema } from '@/utils/schema/organizationSchema';
+import { generateBlogSchema } from '@/utils/schema/blogSchema';
+import { generateItinerarySchema } from '@/utils/schema/itinerarySchema';
+import { BlogPost } from '@/data/blog/types';
 import { Itinerary } from '@/data/itineraries/types';
-import {
-  SchemaType,
-  generateWebsiteSchema,
-  generateOrganizationSchema,
-  generateBlogSchema,
-  generateBlogPostSchema,
-  generateAccommodationSchema,
-  generateItinerarySchema
-} from '@/utils/schema';
 
-type SchemaOrgProps = {
+interface SchemaOrgProps {
   type: SchemaType;
-  data?: any;
-  url?: string;
+  data?: BlogPost | Itinerary | any;
+}
+
+const SchemaOrg = ({ type, data }: SchemaOrgProps) => {
+  useEffect(() => {
+    // Get current URL
+    const url = window.location.href;
+    
+    // Remove any existing schema
+    const existingScripts = document.querySelectorAll('script[type="application/ld+json"]');
+    existingScripts.forEach(script => script.remove());
+    
+    // Generate schemas based on type
+    let schemas = [];
+    
+    // Always include website and organization schemas
+    schemas.push(generateWebsiteSchema(url));
+    schemas.push(generateOrganizationSchema(url));
+    
+    // Add specific schema based on page type
+    switch(type) {
+      case 'blog':
+      case 'article':
+        if (data) {
+          schemas.push(generateBlogSchema(data as BlogPost, url));
+        }
+        break;
+      case 'itinerary':
+        if (data) {
+          schemas.push(generateItinerarySchema(data as Itinerary, url));
+        }
+        break;
+      // Add more cases as needed
+    }
+    
+    // Add schemas to document head
+    schemas.forEach(schema => {
+      if (schema) {
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.text = schema;
+        document.head.appendChild(script);
+      }
+    });
+    
+    // Cleanup on unmount
+    return () => {
+      const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+      scripts.forEach(script => script.remove());
+    };
+  }, [type, data]);
+  
+  return null;
 };
 
-export default function SchemaOrg({ type, data, url = window.location.href }: SchemaOrgProps) {
-  // Choose the right schema based on the type
-  const getSchemaByType = () => {
-    switch (type) {
-      case 'website':
-        return generateWebsiteSchema(url);
-      case 'blog':
-        return generateBlogSchema(url);
-      case 'article':
-        return generateBlogPostSchema(data as BlogPost, url);
-      case 'accommodation':
-        return generateAccommodationSchema(data as Accommodation, url);
-      case 'itinerary':
-        return generateItinerarySchema(data as Itinerary, url);
-      case 'organization':
-        return generateOrganizationSchema(url);
-      default:
-        return null;
-    }
-  };
-
-  const schema = getSchemaByType();
-  
-  if (!schema) return null;
-
-  return (
-    <Helmet>
-      <script type="application/ld+json">{schema}</script>
-    </Helmet>
-  );
-}
+export default SchemaOrg;

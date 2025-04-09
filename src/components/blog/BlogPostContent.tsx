@@ -4,6 +4,8 @@ import { Heart, Share2, Tag } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { formatContent } from '@/utils/markdownFormatter';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { getRelatedPosts } from '@/utils/markdown/internalLinking';
 
 type BlogPostContentProps = {
   post: BlogPost;
@@ -17,42 +19,69 @@ const BlogPostContent = ({ post, liked, onLike, onShare }: BlogPostContentProps)
     // Check for CTAs or special elements in the content
     console.log("Post content contains [CTA::", post.content.includes("[CTA:"));
     console.log("Post content contains tables:", post.content.includes("|--"));
-  }, [post.content]);
+    
+    // Get related posts for debugging
+    const related = getRelatedPosts(post);
+    console.log("Related posts:", related.map(p => p.title));
+  }, [post]);
 
-  // Format the markdown content to HTML
-  const formattedContent = formatContent(post.content);
+  // Format the markdown content to HTML with internal links
+  const formattedContent = formatContent(post.content, post.id);
 
   return (
-    <div className="bg-white rounded-xl shadow-card p-6 md:p-8 mb-8">
-      <div className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-corsica-blue prose-p:text-gray-700 prose-a:text-corsica-blue prose-a:no-underline hover:prose-a:underline" 
-           dangerouslySetInnerHTML={{ __html: formattedContent }} />
-      
-      <div className="mt-8 pt-6 border-t flex flex-wrap gap-4 items-center justify-between">
-        <div className="flex items-center space-x-3">
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            className={`flex items-center rounded-full px-4 ${liked ? 'text-corsica-red bg-corsica-red/10' : ''}`}
-            onClick={onLike}
-          >
-            <Heart className={`w-5 h-5 mr-2 ${liked ? 'fill-corsica-red' : ''}`} />
-            <span>{liked ? 'Aimé' : 'J\'aime'}</span>
-          </Button>
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            className="flex items-center rounded-full px-4"
-            onClick={onShare}
-          >
-            <Share2 className="w-5 h-5 mr-2" />
-            <span>Partager</span>
-          </Button>
+    <div className="blog-post-content">
+      <div className="flex justify-between items-center mb-6 pb-6 border-b">
+        <div className="flex space-x-2">
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-corsica-blue/10 text-corsica-blue">
+            {post.category}
+          </span>
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100">
+            {post.readingTime}
+          </span>
         </div>
-        <div className="flex items-center">
-          <Tag className="w-5 h-5 mr-2 text-muted-foreground" />
-          <span className="text-sm text-muted-foreground">{post.category}</span>
+        
+        <div className="flex space-x-2">
+          <Button
+            size="sm"
+            variant={liked ? "default" : "outline"}
+            onClick={onLike}
+            className={liked ? "bg-corsica-blue" : ""}
+          >
+            <Heart className={`h-4 w-4 mr-1 ${liked ? "fill-white" : ""}`} />
+            {liked ? "Aimé" : "J'aime"}
+          </Button>
+          
+          <Button size="sm" variant="outline" onClick={onShare}>
+            <Share2 className="h-4 w-4 mr-1" />
+            Partager
+          </Button>
         </div>
       </div>
+      
+      <article 
+        className="prose prose-lg max-w-none"
+        dangerouslySetInnerHTML={{ __html: formattedContent }}
+      />
+      
+      {post.tags && post.tags.length > 0 && (
+        <div className="mt-8 pt-6 border-t">
+          <h4 className="text-lg font-medium mb-3 flex items-center">
+            <Tag className="h-5 w-5 mr-2" />
+            Mots-clés
+          </h4>
+          <div className="flex flex-wrap gap-2">
+            {post.tags.map(tag => (
+              <Link 
+                key={tag} 
+                to={`/blog?tag=${tag}`}
+                className="px-3 py-1 rounded-full text-sm bg-gray-100 hover:bg-gray-200 transition-colors"
+              >
+                {tag}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
