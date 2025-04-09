@@ -1,4 +1,3 @@
-
 import { v4 as uuidv4 } from 'uuid';
 import { GasStation } from '../types';
 
@@ -8,7 +7,7 @@ export const valincoStations: GasStation[] = [
     name: "Station Propriano Port",
     brand: "Total",
     latitude: 41.6753,
-    longitude: 8.9036, // Coordonnées vérifiées
+    longitude: 8.9036,
     address: "Avenue Napoléon III, Propriano",
     region: "Valinco",
     hours: "7h-20h",
@@ -22,12 +21,116 @@ export const valincoStations: GasStation[] = [
     name: "Station Sartène",
     brand: "Esso",
     latitude: 41.6211,
-    longitude: 8.9740, // Coordonnées corrigées
+    longitude: 8.9740,
     address: "Route de Bonifacio, Sartène",
     region: "Valinco",
     hours: "7h-19h",
     fuelTypes: ["SP95", "SP98", "Gasoil"],
     services: ["Boutique"],
+    isStrategic: false
+  },
+  {
+    id: uuidv4(),
+    name: "TotalEnergies BARACCI AUTOMOBILES",
+    brand: "TotalEnergies",
+    latitude: 41.676553,
+    longitude: 8.904015,
+    address: "Arconchello, 20113 Olmeto",
+    region: "Valinco",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique", "Garage"],
+    isStrategic: false
+  },
+  {
+    id: uuidv4(),
+    name: "TotalEnergies M. DIGIACOMI Ange-Noël",
+    brand: "TotalEnergies",
+    latitude: 41.621075,
+    longitude: 8.973434,
+    address: "Place Saint Damien, 20100 Sartène",
+    region: "Valinco",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique"],
+    isStrategic: false
+  },
+  {
+    id: uuidv4(),
+    name: "TotalEnergies M. LEONETTI André",
+    brand: "TotalEnergies",
+    latitude: 41.701382,
+    longitude: 8.928127,
+    address: "Marinca – Route Départementale 157, 20113 Olmeto",
+    region: "Valinco",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique"],
+    isStrategic: false
+  },
+  {
+    id: uuidv4(),
+    name: "Station Vito Sansone",
+    brand: "Vito",
+    latitude: 41.676502,
+    longitude: 8.904298,
+    address: "4 Quartier Saint Joseph, 20110 Propriano",
+    region: "Valinco",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique"],
+    isStrategic: false
+  },
+  {
+    id: uuidv4(),
+    name: "VITO Cerlini Christian",
+    brand: "Vito",
+    latitude: 41.621441,
+    longitude: 8.977362,
+    address: "Lieu-Dit Bellagamba, 20100 Sartène",
+    region: "Valinco",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique"],
+    isStrategic: false
+  },
+  {
+    id: uuidv4(),
+    name: "VITO Bartoli distribution",
+    brand: "Vito",
+    latitude: 41.623989,
+    longitude: 8.980016,
+    address: "Zone Industrielle Rizzanese, 20100 Sartène",
+    region: "Valinco",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique", "Lavage"],
+    isStrategic: false
+  },
+  {
+    id: uuidv4(),
+    name: "VITO Bartoli",
+    brand: "Vito",
+    latitude: 41.731390,
+    longitude: 8.792104,
+    address: "Porto Pollo, 20156 Serra-di-Ferro",
+    region: "Valinco",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "Gasoil"],
+    services: ["Boutique"],
+    isStrategic: true
+  },
+  {
+    id: uuidv4(),
+    name: "VITO Chez Mimi",
+    brand: "Vito",
+    latitude: 41.673523,
+    longitude: 8.902387,
+    address: "San Giuseppu, 20110 Propriano",
+    region: "Valinco",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique", "Restauration"],
     isStrategic: false
   }
 ];

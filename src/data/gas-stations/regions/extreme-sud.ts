@@ -1,4 +1,3 @@
-
 import { v4 as uuidv4 } from 'uuid';
 import { GasStation } from '../types';
 
@@ -7,8 +6,8 @@ export const extremeSudStations: GasStation[] = [
     id: uuidv4(),
     name: "Station du Port",
     brand: "Esso",
-    latitude: 41.5896, // Coordonnées corrigées
-    longitude: 9.2773, // Coordonnées corrigées
+    latitude: 41.5896,
+    longitude: 9.2773,
     address: "Quai Pascal Paoli, Porto-Vecchio",
     region: "Extrême Sud",
     hours: "24/7",
@@ -21,7 +20,7 @@ export const extremeSudStations: GasStation[] = [
     name: "Leclerc Porto-Vecchio",
     brand: "Leclerc",
     latitude: 41.6031,
-    longitude: 9.2919, // Coordonnées vérifiées
+    longitude: 9.2919,
     address: "Route de Bastia, Porto-Vecchio",
     region: "Extrême Sud",
     hours: "24/7",
@@ -34,7 +33,7 @@ export const extremeSudStations: GasStation[] = [
     name: "Station Port de Bonifacio",
     brand: "Vito",
     latitude: 41.3873,
-    longitude: 9.1597, // Coordonnées vérifiées
+    longitude: 9.1597,
     address: "Quai Comparetti, Bonifacio",
     region: "Extrême Sud",
     hours: "7h-21h",
@@ -42,5 +41,174 @@ export const extremeSudStations: GasStation[] = [
     services: ["Boutique"],
     isStrategic: false,
     seasonalHours: true
+  },
+  {
+    id: uuidv4(),
+    name: "Botti",
+    brand: "Indépendant",
+    latitude: 41.387119,
+    longitude: 9.159878,
+    address: "Sennola, 20169 Bonifacio",
+    region: "Extrême Sud",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "Gasoil"],
+    services: ["Boutique"],
+    isStrategic: true
+  },
+  {
+    id: uuidv4(),
+    name: "EPB station VITO",
+    brand: "Vito",
+    latitude: 41.583570,
+    longitude: 9.279005,
+    address: "Les 4 Chemins, 20137 Porto-Vecchio",
+    region: "Extrême Sud",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique", "Lavage"],
+    isStrategic: false
+  },
+  {
+    id: uuidv4(),
+    name: "EPB station VITO Stabiacciu",
+    brand: "Vito",
+    latitude: 41.569320,
+    longitude: 9.273698,
+    address: "Route de Bonifacio, 20137 Porto-Vecchio",
+    region: "Extrême Sud",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique", "Lavage"],
+    isStrategic: false
+  },
+  {
+    id: uuidv4(),
+    name: "Station Vito",
+    brand: "Vito",
+    latitude: 41.670468,
+    longitude: 9.340454,
+    address: "Lieu Dit Molendinu, 20144 Sainte Lucie De Porto Vecchio",
+    region: "Extrême Sud",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "Gasoil"],
+    services: ["Boutique"],
+    isStrategic: true
+  },
+  {
+    id: uuidv4(),
+    name: "Station Vito BALESI AUTOMOBILES",
+    brand: "Vito",
+    latitude: 41.640088,
+    longitude: 9.347950,
+    address: "Route N 198, 20137 Porto-Vecchio",
+    region: "Extrême Sud",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique", "Lavage"],
+    isStrategic: false
+  },
+  {
+    id: uuidv4(),
+    name: "Station Vito St Cyprien",
+    brand: "Vito",
+    latitude: 41.648611,
+    longitude: 9.354444,
+    address: "358 San Cipriano, 20137 Lecci",
+    region: "Extrême Sud",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique"],
+    isStrategic: true
+  },
+  {
+    id: uuidv4(),
+    name: "TotalEnergies ASJP",
+    brand: "TotalEnergies",
+    latitude: 41.387786,
+    longitude: 9.159227,
+    address: "Cala Longa, 20169 Bonifacio",
+    region: "Extrême Sud",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique"],
+    isStrategic: true
+  },
+  {
+    id: uuidv4(),
+    name: "TotalEnergies BEL OMBRA",
+    brand: "TotalEnergies",
+    latitude: 41.601226,
+    longitude: 9.290819,
+    address: "Station Total - Quartier la Poretta, 20137 Porto-Vecchio",
+    region: "Extrême Sud",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique", "Lavage"],
+    isStrategic: false
+  },
+  {
+    id: uuidv4(),
+    name: "TotalEnergies le relais du soleil",
+    brand: "TotalEnergies",
+    latitude: 41.598379,
+    longitude: 9.290756,
+    address: "Route de Bastia, 20137 Porto-Vecchio",
+    region: "Extrême Sud",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique", "Lavage"],
+    isStrategic: false
+  },
+  {
+    id: uuidv4(),
+    name: "TotalEnergies RELAIS DE Trinité ANDREANI",
+    brand: "TotalEnergies",
+    latitude: 41.574812,
+    longitude: 9.279865,
+    address: "Station Total la Trinité – Route Nationale 198 – Pitrera, 20137 Porto-Vecchio",
+    region: "Extrême Sud",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique", "Lavage"],
+    isStrategic: false
+  },
+  {
+    id: uuidv4(),
+    name: "TotalEnergies TOMASI Marie-Josée",
+    brand: "TotalEnergies",
+    latitude: 41.489161,
+    longitude: 9.061551,
+    address: "Station Total – Route Nationale 196, 20131 Pianottoli-Caldarello",
+    region: "Extrême Sud",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique"],
+    isStrategic: true
+  },
+  {
+    id: uuidv4(),
+    name: "Vito Garage Quilichini",
+    brand: "Vito",
+    latitude: 41.475467,
+    longitude: 9.048957,
+    address: "Route N 196 Lancciato Padulelli, 20131 Pianottoli-Caldarello",
+    region: "Extrême Sud",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "Gasoil"],
+    services: ["Boutique", "Garage"],
+    isStrategic: true
+  },
+  {
+    id: uuidv4(),
+    name: "Vito Groupe Bradesi",
+    brand: "Vito",
+    latitude: 41.744467,
+    longitude: 9.277636,
+    address: "Lieudit Cavo Zonza, 20144 Zonza",
+    region: "Extrême Sud",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "Gasoil"],
+    services: ["Boutique"],
+    isStrategic: true
   }
 ];

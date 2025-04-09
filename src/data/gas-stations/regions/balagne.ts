@@ -1,4 +1,3 @@
-
 import { v4 as uuidv4 } from 'uuid';
 import { GasStation } from '../types';
 
@@ -7,8 +6,8 @@ export const balagneStations: GasStation[] = [
     id: uuidv4(),
     name: "Total Energies Calvi",
     brand: "Total",
-    latitude: 42.5649, // Coordonnées corrigées
-    longitude: 8.7571, // Coordonnées corrigées
+    latitude: 42.5649,
+    longitude: 8.7571,
     address: "Avenue Santa Maria, Calvi",
     region: "Balagne",
     hours: "7h-21h",
@@ -22,7 +21,7 @@ export const balagneStations: GasStation[] = [
     name: "Station L'Île-Rousse",
     brand: "Vito",
     latitude: 42.6338,
-    longitude: 8.9383, // Coordonnées vérifiées
+    longitude: 8.9383,
     address: "Avenue Paul Doumer, L'Île-Rousse",
     region: "Balagne",
     hours: "7h-20h",
@@ -30,5 +29,110 @@ export const balagneStations: GasStation[] = [
     services: ["Boutique", "Gonflage"],
     isStrategic: false,
     seasonalHours: true
+  },
+  {
+    id: uuidv4(),
+    name: "Eni Da l'Isula",
+    brand: "Eni",
+    latitude: 42.637157,
+    longitude: 8.937232,
+    address: "Avenue Paul Doumer, 20220 L'Île-Rousse",
+    region: "Balagne",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique", "Lavage"],
+    isStrategic: true
+  },
+  {
+    id: uuidv4(),
+    name: "TotalEnergies d'Exploitation du Relais de BALAGNE",
+    brand: "TotalEnergies",
+    latitude: 42.566076,
+    longitude: 8.756444,
+    address: "Station Total – Relais de la Balagne, 20260 Calvi",
+    region: "Balagne",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique", "Lavage"],
+    isStrategic: true
+  },
+  {
+    id: uuidv4(),
+    name: "TotalEnergies STATION GRAZIANI",
+    brand: "TotalEnergies",
+    latitude: 42.636823,
+    longitude: 8.936235,
+    address: "36 Avenue Paul Doumer, 20220 L'Île-Rousse",
+    region: "Balagne",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique"],
+    isStrategic: false
+  },
+  {
+    id: uuidv4(),
+    name: "TotalEnergies STATION TOTAL ALGAJOLA",
+    brand: "TotalEnergies",
+    latitude: 42.609123,
+    longitude: 8.872557,
+    address: "Route Nationale 197, 20220 Algajola",
+    region: "Balagne",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique"],
+    isStrategic: false
+  },
+  {
+    id: uuidv4(),
+    name: "TotalEnergies Station Total Cargèse",
+    brand: "TotalEnergies",
+    latitude: 42.136186,
+    longitude: 8.596311,
+    address: "Rue de la République, 20130 Cargèse",
+    region: "Balagne",
+    hours: "Fermée, ouvre demain à 00h",
+    fuelTypes: ["SP95", "Gasoil"],
+    services: ["Boutique"],
+    isStrategic: true,
+    seasonalHours: true
+  },
+  {
+    id: uuidv4(),
+    name: "Vito Domarchi",
+    brand: "Vito",
+    latitude: 42.682337,
+    longitude: 9.300862,
+    address: "Route Calvi, 20217 Saint-Florent",
+    region: "Balagne",
+    hours: "Fermée, ouvre à 07h",
+    fuelTypes: ["SP95", "Gasoil"],
+    services: ["Boutique"],
+    isStrategic: true
+  },
+  {
+    id: uuidv4(),
+    name: "Vito Dynes – Relais de la Pietra",
+    brand: "Vito",
+    latitude: 42.637531, 
+    longitude: 8.939831,
+    address: "29, Avenue Pdt Paul Doumer, 20220 L'Île-Rousse",
+    region: "Balagne",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique", "Lavage"],
+    isStrategic: false
+  },
+  {
+    id: uuidv4(),
+    name: "VITO le Relais d'Alzeta ACQUAVIVA",
+    brand: "Vito",
+    latitude: 42.558018,
+    longitude: 8.745361,
+    address: "Lieu Dit Alzeta, 20260 Calvi",
+    region: "Balagne",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique", "Lavage"],
+    isStrategic: true
   }
 ];

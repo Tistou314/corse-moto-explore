@@ -13,7 +13,9 @@ import {
   centreStations,
   castagnacciaStations,
   valincoStations,
-  capCorseStations
+  capCorseStations,
+  luccianaBigugliaStations,
+  plaineOrientaleStations
 } from '@/data/gas-stations';
 
 /**
@@ -76,6 +78,8 @@ export const extremeSudPOIs = convertGasStationsToPOI(extremeSudStations);
 export const centrePOIs = convertGasStationsToPOI(centreStations);
 export const castagnacciaPOIs = convertGasStationsToPOI(castagnacciaStations);
 export const valincoPOIs = convertGasStationsToPOI(valincoStations);
+export const luccianaBigugliaPOIs = convertGasStationsToPOI(luccianaBigugliaStations);
+export const plaineOrientalePOIs = convertGasStationsToPOI(plaineOrientaleStations);
 
 // Regroupement pour compatibilité avec le code existant
 export const otherCityPOIs = convertGasStationsToPOI([
@@ -84,10 +88,12 @@ export const otherCityPOIs = convertGasStationsToPOI([
   ...centreStations,
   ...castagnacciaStations,
   ...valincoStations,
+  ...luccianaBigugliaStations,
+  ...plaineOrientaleStations,
   ...nebbioStations
 ]);
 export const mainCityPOIs = convertGasStationsToPOI(mainGasStations);
 
 // Debug log
 console.log(`POIs créés: ${gasStationPOIs.length} stations totales, ${strategicGasStationPOIs.length} stations stratégiques`);
-console.log(`POIs par région: Bastia (${bastiaPOIs.length}), Ajaccio (${ajaccioPOIs.length}), Cap Corse (${capCorsePOIs.length}), Nebbio (${nebbioPOIs.length}), Balagne (${balagnePOIs.length}), Extrême Sud (${extremeSudPOIs.length}), Centre (${centrePOIs.length}), Castagniccia (${castagnacciaPOIs.length}), Valinco (${valincoPOIs.length}), Autres villes (${otherCityPOIs.length})`);
+console.log(`POIs par région: Bastia (${bastiaPOIs.length}), Ajaccio (${ajaccioPOIs.length}), Cap Corse (${capCorsePOIs.length}), Nebbio (${nebbioPOIs.length}), Balagne (${balagnePOIs.length}), Extrême Sud (${extremeSudPOIs.length}), Centre (${centrePOIs.length}), Castagniccia (${castagnacciaPOIs.length}), Valinco (${valincoPOIs.length}), Lucciana-Biguglia (${luccianaBigugliaPOIs.length}), Plaine Orientale (${plaineOrientalePOIs.length})`);

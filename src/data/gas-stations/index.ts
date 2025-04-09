@@ -10,7 +10,9 @@ import {
   extremeSudStations,
   centreStations,
   castagnacciaStations,
-  valincoStations
+  valincoStations,
+  luccianaBigugliaStations,
+  plaineOrientaleStations
 } from './regions';
 import { capCorseStations } from './cap-corse';
 
@@ -24,7 +26,9 @@ export const mainGasStations: GasStation[] = [
   ...centreStations,
   ...castagnacciaStations,
   ...valincoStations,
-  ...capCorseStations
+  ...capCorseStations,
+  ...luccianaBigugliaStations,
+  ...plaineOrientaleStations
 ];
 
 // Combine strategic and main gas stations

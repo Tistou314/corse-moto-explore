@@ -1,4 +1,3 @@
-
 import { v4 as uuidv4 } from 'uuid';
 import { GasStation } from '../types';
 
@@ -30,5 +29,18 @@ export const nebbioStations: GasStation[] = [
     services: ["Boutique"],
     isStrategic: false,
     seasonalHours: true
+  },
+  {
+    id: uuidv4(),
+    name: "TotalEnergies ORSINI JM",
+    brand: "TotalEnergies",
+    latitude: 42.682034,
+    longitude: 9.303731,
+    address: "36, Rue Principale, 20217 Saint-Florent",
+    region: "Nebbio",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "SP98", "Gasoil"],
+    services: ["Boutique"],
+    isStrategic: true
   }
 ];

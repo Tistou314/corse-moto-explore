@@ -1,4 +1,3 @@
-
 import { v4 as uuidv4 } from 'uuid';
 import { GasStation } from './types';
 
@@ -96,6 +95,22 @@ export const capCorseStations: GasStation[] = [
     fuelTypes: ["SP95", "SP98", "Gasoil"],
     services: ["Boutique"],
     isStrategic: false,
+    seasonalHours: true
+  },
+  
+  // New stations
+  {
+    id: uuidv4(),
+    name: "TotalEnergies I TRE TOTAL ROGLIANO",
+    brand: "TotalEnergies",
+    latitude: 42.959800,
+    longitude: 9.453200,
+    address: "Macinaggio, 20248 Rogliano",
+    region: "Cap Corse",
+    hours: "Ouvert en continu",
+    fuelTypes: ["SP95", "Gasoil"],
+    services: ["Boutique"],
+    isStrategic: true,
     seasonalHours: true
   }
 ];

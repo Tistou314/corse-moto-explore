@@ -16,7 +16,9 @@ import {
   extremeSudPOIs,
   centrePOIs,
   castagnacciaPOIs,
-  valincoPOIs
+  valincoPOIs,
+  luccianaBigugliaPOIs,
+  plaineOrientalePOIs
 } from '@/data/points-of-interest/gas-stations-poi';
 import { Fuel, Info, Map as MapIcon } from 'lucide-react';
 import { toast } from 'sonner';
@@ -66,6 +68,12 @@ const GasStationsMap = () => {
           break;
         case "valinco":
           newLocations = valincoPOIs;
+          break;
+        case "lucciana-biguglia":
+          newLocations = luccianaBigugliaPOIs;
+          break;
+        case "plaine-orientale":
+          newLocations = plaineOrientalePOIs;
           break;
         default:
           newLocations = isStrategic ? strategicGasStationPOIs : gasStationPOIs;
@@ -152,6 +160,10 @@ const GasStationsMap = () => {
         return { center: [9.45, 42.47], zoom: 10 };
       case "valinco":
         return { center: [8.9, 41.68], zoom: 10 };
+      case "lucciana-biguglia":
+        return { center: [9.43, 42.57], zoom: 11 };
+      case "plaine-orientale":
+        return { center: [9.4, 42.1], zoom: 9 };
       default:
         return { center: showStrategicOnly ? [9.13, 42.16] : [9.13, 42.3], zoom: showStrategicOnly ? 8 : 7.5 };
     }
@@ -200,6 +212,8 @@ const GasStationsMap = () => {
               <SelectItem value="centre">Centre</SelectItem>
               <SelectItem value="castagniccia">Castagniccia</SelectItem>
               <SelectItem value="valinco">Valinco</SelectItem>
+              <SelectItem value="lucciana-biguglia">Lucciana-Biguglia</SelectItem>
+              <SelectItem value="plaine-orientale">Plaine Orientale</SelectItem>
             </SelectContent>
           </Select>
         </div>

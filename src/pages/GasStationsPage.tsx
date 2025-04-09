@@ -15,7 +15,9 @@ import {
   extremeSudPOIs,
   centrePOIs,
   castagnacciaPOIs,
-  valincoPOIs
+  valincoPOIs,
+  luccianaBigugliaPOIs,
+  plaineOrientalePOIs
 } from '@/data/points-of-interest/gas-stations-poi';
 import { MapLocation } from '@/components/map/types';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -33,7 +35,9 @@ const regionOptions = [
   { value: "extreme-sud", label: "Extrême Sud" },
   { value: "centre", label: "Centre" },
   { value: "castagniccia", label: "Castagniccia" },
-  { value: "valinco", label: "Valinco" }
+  { value: "valinco", label: "Valinco" },
+  { value: "lucciana-biguglia", label: "Lucciana-Biguglia" },
+  { value: "plaine-orientale", label: "Plaine Orientale" }
 ];
 
 const GasStationsPage = () => {
@@ -65,6 +69,8 @@ const GasStationsPage = () => {
         case "centre": regionStations = centrePOIs; break;
         case "castagniccia": regionStations = castagnacciaPOIs; break;
         case "valinco": regionStations = valincoPOIs; break;
+        case "lucciana-biguglia": regionStations = luccianaBigugliaPOIs; break;
+        case "plaine-orientale": regionStations = plaineOrientalePOIs; break;
         default: regionStations = gasStationPOIs;
       }
       
@@ -96,6 +102,8 @@ const GasStationsPage = () => {
       case "centre": return { center: [9.15, 42.35], zoom: 10 };
       case "castagniccia": return { center: [9.45, 42.47], zoom: 10 };
       case "valinco": return { center: [8.9, 41.68], zoom: 10 };
+      case "lucciana-biguglia": return { center: [9.43, 42.57], zoom: 11 };
+      case "plaine-orientale": return { center: [9.4, 42.1], zoom: 9 };
       default: return { center: [9.13, 42.3], zoom: 7.5 };
     }
   };
@@ -152,7 +160,7 @@ const GasStationsPage = () => {
                 </div>
                 
                 <Select value={selectedRegion} onValueChange={handleRegionChange}>
-                  <SelectTrigger className="w-[160px]">
+                  <SelectTrigger className="w-[180px]">
                     <SelectValue placeholder="Sélectionner une région" />
                   </SelectTrigger>
                   <SelectContent>

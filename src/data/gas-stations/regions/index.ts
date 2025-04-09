@@ -8,6 +8,8 @@ import { extremeSudStations } from './extreme-sud';
 import { centreStations } from './centre';
 import { castagnacciaStations } from './castagniccia';
 import { valincoStations } from './valinco';
+import { luccianaBigugliaStations } from './lucciana-biguglia';
+import { plaineOrientaleStations } from './plaine-orientale';
 
 // Export all regional stations
 export {
@@ -18,7 +20,9 @@ export {
   extremeSudStations,
   centreStations,
   castagnacciaStations,
-  valincoStations
+  valincoStations,
+  luccianaBigugliaStations,
+  plaineOrientaleStations
 };
 
 // Combine all regional stations into otherCityStations for backward compatibility
@@ -27,5 +31,8 @@ export const otherCityStations: GasStation[] = [
   ...extremeSudStations,
   ...centreStations,
   ...castagnacciaStations,
-  ...valincoStations
+  ...valincoStations,
+  ...luccianaBigugliaStations,
+  ...plaineOrientaleStations,
+  ...nebbioStations
 ];
