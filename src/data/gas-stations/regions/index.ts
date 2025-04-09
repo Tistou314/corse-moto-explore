@@ -25,6 +25,20 @@ export {
   plaineOrientaleStations
 };
 
+// Combine all regional stations into one array for convenience
+export const allRegionalStations: GasStation[] = [
+  ...bastiaStations,
+  ...nebbioStations,
+  ...ajaccioStations,
+  ...balagneStations,
+  ...extremeSudStations,
+  ...centreStations,
+  ...castagnacciaStations,
+  ...valincoStations,
+  ...luccianaBigugliaStations,
+  ...plaineOrientaleStations
+];
+
 // Combine all regional stations into otherCityStations for backward compatibility
 export const otherCityStations: GasStation[] = [
   ...balagneStations,

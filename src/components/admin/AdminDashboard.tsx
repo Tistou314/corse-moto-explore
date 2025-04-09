@@ -5,7 +5,7 @@ import { blogPosts } from "@/data/blogPosts";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { capCorseStations } from "@/data/gas-stations";
-import { strategicStations } from "@/data/gas-stations/strategic";
+import { strategicGasStations } from "@/data/gas-stations/strategic";
 import { allRegionalStations } from "@/data/gas-stations/regions";
 import { accommodations } from "@/data/accommodations";
 import { itineraries } from "@/data/itineraries";
@@ -17,7 +17,7 @@ const AdminDashboard = () => {
   // Count all gas stations
   const gasStationsCount = [
     ...capCorseStations, 
-    ...strategicStations, 
+    ...strategicGasStations, 
     ...allRegionalStations
   ].length;
   

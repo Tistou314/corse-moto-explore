@@ -21,7 +21,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { capCorseStations } from "@/data/gas-stations";
-import { strategicStations } from "@/data/gas-stations/strategic";
+import { strategicGasStations } from "@/data/gas-stations/strategic";
 import { allRegionalStations } from "@/data/gas-stations/regions";
 
 const GasStationsList = () => {
@@ -31,7 +31,7 @@ const GasStationsList = () => {
   // Combine all gas stations
   const allStations = [
     ...capCorseStations,
-    ...strategicStations,
+    ...strategicGasStations,
     ...allRegionalStations,
   ];
 

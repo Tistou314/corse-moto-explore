@@ -26,7 +26,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { toast } from "sonner";
 import { capCorseStations } from "@/data/gas-stations";
-import { strategicStations } from "@/data/gas-stations/strategic";
+import { strategicGasStations } from "@/data/gas-stations/strategic";
 import { allRegionalStations } from "@/data/gas-stations/regions";
 
 const formSchema = z.object({
