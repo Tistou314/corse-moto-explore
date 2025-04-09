@@ -1,3 +1,4 @@
+
 /**
  * Utility functions for formatting markdown content into HTML
  */
@@ -17,11 +18,12 @@ export const formatContent = (content: string, postId?: string): string => {
   // Apply inline styling and then convert to HTML with marked
   content = formatInlineStyles(content);
   
-  // Convert to HTML using marked
-  const html = marked(content, {
+  // Convert to HTML using marked (with synchronous option)
+  const html = marked.parse(content, {
+    async: false,
     breaks: true,  // Convert \n to <br>
     gfm: true      // Use GitHub Flavored Markdown
-  });
+  }) as string;
   
   return html;
 }
