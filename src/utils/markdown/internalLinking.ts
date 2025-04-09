@@ -61,7 +61,7 @@ export const addInternalLinks = (content: string, currentPostId: string): string
             // Remplace seulement la première occurrence pour éviter trop de liens
             processedText = processedText.replace(
               regex, 
-              `[${keyword}](/blog/${target.id})`
+              `[${keyword}](/blog/${target.slug || target.id})`
             );
             return processedText; // Une fois qu'un lien est ajouté, arrête de chercher d'autres mots-clés pour ce post
           }

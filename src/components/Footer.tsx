@@ -20,13 +20,13 @@ const Footer = () => {
               des conseils pratiques et des recommandations d'hébergement.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-white/80 hover:text-corsica-orange transition-colors w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20">
+              <a href="#" className="text-white/80 hover:text-corsica-orange transition-colors w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20" aria-label="Facebook">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="text-white/80 hover:text-corsica-orange transition-colors w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20">
+              <a href="#" className="text-white/80 hover:text-corsica-orange transition-colors w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20" aria-label="Instagram">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="text-white/80 hover:text-corsica-orange transition-colors w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20">
+              <a href="#" className="text-white/80 hover:text-corsica-orange transition-colors w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20" aria-label="Twitter">
                 <Twitter className="w-5 h-5" />
               </a>
             </div>

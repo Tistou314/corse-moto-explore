@@ -80,7 +80,7 @@ La dernière portion de cette grande boucle:
 
 La Boucle du Grand Sud représente l'itinéraire idéal pour les motards disposant d'une seule journée pour capturer l'essence de la Corse méridionale. Sa conception circulaire ingénieuse permet de découvrir une diversité de paysages, de défis techniques et d'expériences culturelles qu'on trouverait difficilement ailleurs sur une distance aussi raisonnable.
 
-Pour en savoir plus sur cet itinéraire et voir le tracé détaillé, consultez notre [section itinéraires](/itineraires/boucle-grand-sud) sur le site.
+Pour en savoir plus sur cet itinéraire et voir le tracé détaillé, consultez notre [itinéraire détaillé](/itineraires/boucle-grand-sud) sur le site.
 
 ---
 
