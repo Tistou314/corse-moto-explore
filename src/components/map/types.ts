@@ -1,32 +1,18 @@
+import mapboxgl from 'mapbox-gl';
 
-import { ReactNode } from 'react';
-
-// Position centrale de la Corse
-export const CorsicaCenter: [number, number] = [9.13, 42.16];
-
-// Limites géographiques précises de la Corse (pour validation)
-export const CorsicaBounds = {
-  north: 43.05,  // Limite nord (Cap Corse)
-  south: 41.32,  // Limite sud (Bonifacio)
-  east: 9.60,    // Limite est (côte est)
-  west: 8.50     // Limite ouest (côte ouest)
-};
-
-export type LocationType = 'pointOfInterest' | 'route' | 'gasStation' | 'accommodation' | 'campingspot' | 'restaurant' | 'other';
-
-export type MapLocation = {
+export interface MapLocation {
   id: string;
   title: string;
   latitude: number;
   longitude: number;
+  type: 'itinerary' | 'accommodation' | 'pointOfInterest' | 'gasStation';
   description?: string;
-  type: string;
-  category?: string;
   image?: string;
   isPrimary?: boolean;
   address?: string;
+  category?: string;
   services?: string[];
-};
+}
 
 export interface MapBoxProps {
   center?: [number, number];
@@ -38,64 +24,112 @@ export interface MapBoxProps {
   enableClustering?: boolean;
 }
 
-export interface MapLayoutProps {
-  children: ReactNode;
-  title?: string;
+export const markerTypes: { [key: string]: string } = {
+  itinerary: '#e67e22', // Ambre
+  accommodation: '#3498db', // Bleu
+  pointOfInterest: '#2ecc71', // Vert
+  gasStation: '#f1c40f' // Jaune
+};
+
+export interface LocationPopupProps {
+  location: MapLocation;
+  onClose: () => void;
+}
+
+// Définition du type pour les données de l'itinéraire
+export interface ItineraryData {
+  id: string;
+  title: string;
+  distance: number;
+  duration: string;
+  difficulty: 'Facile' | 'Modéré' | 'Difficile';
+  description: string;
+  image: string;
+  latitude: number;
+  longitude: number;
+  pointsOfInterest?: {
+    name: string;
+    latitude: number;
+    longitude: number;
+    description?: string;
+    image?: string;
+  }[];
+}
+
+// Définition du type pour les données d'hébergement
+export interface AccommodationData {
+  id: string;
+  name: string;
+  type: string;
+  location: string;
+  latitude: number;
+  longitude: number;
+  image: string;
+  address: string;
   description?: string;
 }
 
-// Couleurs pour différents types de marqueurs
-export const markerTypes: Record<string, string> = {
-  pointOfInterest: '#3b82f6',
-  route: '#ef4444',
-  gasStation: '#f59e0b',
-  accommodation: '#10b981',
-  campingspot: '#10b981',
-  restaurant: '#8b5cf6',
-  other: '#6b7280'
+// Constantes pour les limites géographiques de la Corse
+export const CORSICA_BOUNDS = {
+  north: 43.03, // Pointe nord du Cap Corse
+  south: 41.33, // Pointe sud de Bonifacio
+  east: 9.63,   // Côte est
+  west: 8.45    // Côte ouest
 };
 
-/**
- * Vérifie si une coordonnée est en Corse en fonction des limites définies
- * Inclut une marge pour les stations côtières
- */
-export const isWithinCorsica = (lat: number, lng: number): boolean => {
-  // Ajout d'une petite marge de 0.03 degrés (environ 3km) pour les stations côtières
-  const margin = 0.03;
-  
+// Centre de la Corse (pour les vues par défaut)
+export const CorsicaCenter: [number, number] = [9.13, 42.16];
+
+// Vérifier si un point est dans les limites de la Corse (avec une marge de tolérance)
+export function isWithinCorsica(latitude: number, longitude: number, tolerance: number = 0.1): boolean {
   return (
-    lat >= CorsicaBounds.south - margin &&
-    lat <= CorsicaBounds.north + margin &&
-    lng >= CorsicaBounds.west - margin &&
-    lng <= CorsicaBounds.east + margin
+    latitude >= CORSICA_BOUNDS.south - tolerance &&
+    latitude <= CORSICA_BOUNDS.north + tolerance &&
+    longitude >= CORSICA_BOUNDS.west - tolerance &&
+    longitude <= CORSICA_BOUNDS.east + tolerance
   );
-};
+}
 
-/**
- * Vérifie et corrige les coordonnées pour s'assurer qu'elles sont dans les limites de la Corse
- * Retourne les coordonnées corrigées ou null si trop éloignées
- */
-export const validateAndFixCoordinates = (lat: number, lng: number): [number, number] | null => {
-  // Si les coordonnées sont vraiment trop éloignées de la Corse (plus de 20km), on considère qu'elles sont invalides
-  const bigMargin = 0.2; // environ 20km
-  
-  if (lat < CorsicaBounds.south - bigMargin || 
-      lat > CorsicaBounds.north + bigMargin || 
-      lng < CorsicaBounds.west - bigMargin || 
-      lng > CorsicaBounds.east + bigMargin) {
-    console.error(`Coordonnées invalides, trop éloignées de la Corse: [${lat}, ${lng}]`);
+// Valide et corrige éventuellement des coordonnées pour s'assurer qu'elles sont utilisables
+export function validateAndFixCoordinates(latitude: number, longitude: number): [number, number] | null {
+  // Vérifier si les coordonnées sont numériques
+  if (typeof latitude !== 'number' || typeof longitude !== 'number' || 
+      isNaN(latitude) || isNaN(longitude)) {
+    console.error(`Coordonnées invalides: [${latitude}, ${longitude}]`);
     return null;
   }
-  
-  // Si les coordonnées sont légèrement en dehors des limites, on les corrige avec une petite marge
-  const margin = 0.03; // environ 3km
-  
-  const correctedLat = Math.max(CorsicaBounds.south - margin, Math.min(lat, CorsicaBounds.north + margin));
-  const correctedLng = Math.max(CorsicaBounds.west - margin, Math.min(lng, CorsicaBounds.east + margin));
-  
-  if (correctedLat !== lat || correctedLng !== lng) {
-    console.warn(`Coordonnées corrigées: [${lat}, ${lng}] -> [${correctedLat}, ${correctedLng}]`);
+
+  // Vérifier et corriger l'inversion potentielle de latitude/longitude
+  // Ce problème est fréquent et peut causer des marqueurs mal positionnés
+  if (longitude > 41 && longitude < 43 && latitude > 8 && latitude < 10) {
+    console.warn(`Coordonnées probablement inversées, correction automatique: [${latitude}, ${longitude}] -> [${longitude}, ${latitude}]`);
+    const temp = latitude;
+    latitude = longitude;
+    longitude = temp;
   }
-  
-  return [correctedLat, correctedLng];
-};
+
+  // Vérifier si les coordonnées sont dans les limites de la Corse (avec tolérance)
+  if (!isWithinCorsica(latitude, longitude, 0.2)) {
+    console.warn(`Coordonnées hors limites de la Corse: [${latitude}, ${longitude}]`);
+    
+    // Essayer de voir si c'est une simple inversion lat/lng
+    if (isWithinCorsica(longitude, latitude, 0.2)) {
+      console.warn(`Correction par inversion lat/lng: [${longitude}, ${latitude}]`);
+      return [longitude, latitude];
+    }
+    
+    return null;
+  }
+
+  return [latitude, longitude];
+}
+
+export interface Cluster {
+  properties: {
+    cluster_id: string;
+    point_count: number;
+  };
+  geometry: {
+    coordinates: [number, number];
+  };
+}
