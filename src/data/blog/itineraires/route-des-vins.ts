@@ -1,5 +1,5 @@
-
 import { BlogPost } from '@/types/blog';
+import { standardAuthor } from '@/data/blogPosts';
 
 export const routeDesVins: BlogPost = {
   id: 'route-des-vins-corses',
@@ -155,11 +155,7 @@ Cet itinéraire vous permettra de découvrir la diversité des terroirs corses t
     `,
   imageUrl: 'https://cdn.pixabay.com/photo/2016/11/18/17/20/motorcycle-1835799_1280.jpg',
   date: '15 mai 2023',
-  author: {
-    name: 'Marc Santocci',
-    avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
-    bio: 'Œnologue et motard passionné, spécialiste des routes viticoles corses'
-  },
+  author: standardAuthor,
   category: 'Itinéraires et circuits',
   slug: 'route-des-vins-corses',
   readingTime: '9 min',

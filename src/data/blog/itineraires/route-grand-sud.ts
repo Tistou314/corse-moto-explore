@@ -1,16 +1,12 @@
-
 import { BlogPost } from '@/types/blog';
+import { standardAuthor } from '@/data/blogPosts';
 
 export const routeGrandSud: BlogPost = {
   id: 'route-grand-sud-2024',
   title: 'La Boucle du Grand Sud : entre mer et montagne',
   excerpt: 'Découvrez le meilleur itinéraire pour explorer toutes les facettes du sud de la Corse en une journée',
   date: '10 juillet 2024',
-  author: {
-    name: 'Marie Santoni',
-    avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
-    bio: 'Guide moto local et experte des routes du sud de la Corse'
-  },
+  author: standardAuthor,
   category: 'Itinéraires et circuits',
   imageUrl: '/lovable-uploads/60e4855d-f792-4984-a882-c9e763c83da6.png',
   slug: 'route-grand-sud-2024',

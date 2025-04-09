@@ -1,4 +1,5 @@
 import { BlogPost } from '@/types/blog';
+import { standardAuthor } from '@/data/blogPosts';
 
 export const experiencesArticles: BlogPost[] = [
   {
@@ -82,11 +83,7 @@ Si vous envisagez votre première expérience corse à moto, voici mes conseils 
 La Corse à moto, c'est plus qu'un voyage, c'est une initiation. Même avec peu d'expérience, vous en reviendrez transformé, avec des souvenirs plein la tête et l'envie irrépressible d'y retourner.`,
     imageUrl: 'https://cdn.pixabay.com/photo/2020/07/18/21/02/motorcycle-5418666_1280.jpg',
     date: '5 juillet 2025',
-    author: {
-      name: 'Thomas Laurent',
-      avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
-      bio: 'Passionné de moto depuis 3 ans, récit de ma première grande aventure en Corse'
-    },
+    author: standardAuthor,
     category: 'Expériences et récits',
     slug: 'premiere-fois-moto-corse',
     readingTime: '8 min',
@@ -199,11 +196,7 @@ Six motards, c'est aussi six personnalités et six envies différentes. La réus
 Alors n'hésitez plus, rassemblez vos amis motards et lancez-vous dans l'aventure corse. Les souvenirs que vous en rapporterez valent tous les détours.`,
     imageUrl: 'https://cdn.pixabay.com/photo/2017/06/29/13/38/motorcycle-2453863_1280.jpg',
     date: '12 juillet 2025',
-    author: {
-      name: 'Julien Rossi',
-      avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
-      bio: 'Organisateur de road trips moto en groupe depuis 10 ans'
-    },
+    author: standardAuthor,
     category: 'Expériences et récits',
     slug: 'roadtrip-amis-corse-moto',
     readingTime: '9 min',

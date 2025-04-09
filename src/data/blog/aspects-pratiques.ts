@@ -1,5 +1,6 @@
 import { BlogPost } from '../blog/types';
 import { v4 as uuidv4 } from 'uuid';
+import { standardAuthor } from '../blogPosts';
 
 // Keep only legitimate posts in this category
 export const aspectsPratiquesArticles: BlogPost[] = [
@@ -91,11 +92,7 @@ Au moment du débarquement :
 En suivant ces conseils, votre traversée maritime vers la Corse se déroulera dans les meilleures conditions pour débuter votre aventure à moto sur l'Île de Beauté.
     `,
     category: "Aspects pratiques",
-    author: {
-      name: "Paul Rossi",
-      avatar: "https://i.pravatar.cc/150?u=paulrossi",
-      bio: "Motard passionné et guide touristique en Corse depuis 15 ans."
-    },
+    author: standardAuthor,
     date: "2025-04-05",
     imageUrl: "https://cdn.pixabay.com/photo/2018/09/22/17/05/corsica-3695755_1280.jpg",
     readingTime: "7 min",

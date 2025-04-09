@@ -1,5 +1,5 @@
-
 import { BlogPost } from '@/types/blog';
+import { standardAuthor } from '@/data/blogPosts';
 
 export const communautesMotards: BlogPost = {
   id: 'communautes-motards-corses',
@@ -197,11 +197,7 @@ Que ce soit à travers des événements organisés, des rencontres informelles o
     `,
   imageUrl: 'https://images.unsplash.com/photo-1558979159-7a2602c5ea95?auto=format&fit=crop&q=80',
   date: '20 août 2023',
-  author: {
-    name: 'Antoine Paoli',
-    avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
-    bio: 'Président du moto-club I Sustenitori di u Asfaltu de Bastia depuis 7 ans'
-  },
+  author: standardAuthor,
   category: 'Ressources locales',
   slug: 'communautes-motards-corses',
   readingTime: '11 min',

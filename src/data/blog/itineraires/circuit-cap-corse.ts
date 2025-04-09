@@ -1,5 +1,5 @@
-
 import { BlogPost } from '@/types/blog';
+import { standardAuthor } from '@/data/blogPosts';
 
 export const tourCapCorse: BlogPost = {
   id: 'tour-cap-corse-moto',
@@ -127,11 +127,7 @@ Le tour du Cap Corse concentre en une centaine de kilomètres une diversité de 
     `,
   imageUrl: 'https://cdn.pixabay.com/photo/2018/10/19/12/14/motor-3758180_1280.jpg',
   date: '10 avril 2023',
-  author: {
-    name: 'Sophie Antonietti',
-    avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
-    bio: 'Guide locale du Cap Corse et motarde depuis 15 ans'
-  },
+  author: standardAuthor,
   category: 'Itinéraires et circuits',
   slug: 'tour-cap-corse-moto',
   readingTime: '8 min',

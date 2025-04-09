@@ -1,4 +1,5 @@
 import { BlogPost } from '@/types/blog';
+import { standardAuthor } from '@/data/blogPosts';
 
 export const cultureArticles: BlogPost[] = [
   {
@@ -57,11 +58,7 @@ Ces objets, souvent de petite taille, peuvent constituer de parfaits souvenirs �
 En respectant le rythme de vie local et en montrant un intérêt sincère pour les traditions, vous vivrez une expérience authentique de la Corse, bien loin des circuits touristiques conventionnels.`,
     imageUrl: 'https://cdn.pixabay.com/photo/2023/02/21/18/02/village-7804456_1280.jpg',
     date: '5 juin 2025',
-    author: {
-      name: 'Marie Antonetti',
-      avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
-      bio: 'Guide culturelle et motarde passionnée, experte des traditions corses'
-    },
+    author: standardAuthor,
     category: 'Culture et découverte',
     slug: 'decouvrir-traditions-corses-moto',
     readingTime: '7 min',
@@ -132,11 +129,7 @@ N'hésitez pas à adapter votre itinéraire pour assister à l'un de ces événe
 Téléchargez cette playlist avant votre départ, et laissez les mélodies corses accompagner votre découverte de l'île. La musique, comme la moto, est un vecteur d'émotions qui amplifiera votre connexion avec ce territoire d'exception.`,
     imageUrl: 'https://cdn.pixabay.com/photo/2016/11/23/15/32/guitarist-1853661_1280.jpg',
     date: '12 juin 2025',
-    author: {
-      name: 'Pascal Olmeta',
-      avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
-      bio: 'Musicien et motard, créateur de la playlist officielle du Corsica Moto Festival'
-    },
+    author: standardAuthor,
     category: 'Culture et découverte',
     slug: 'musiques-corses-playlist-motard',
     readingTime: '6 min',

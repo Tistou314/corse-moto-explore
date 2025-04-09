@@ -20,18 +20,29 @@ import { experiencesArticles } from './blog/experiences';
 const articlesTechniques: BlogPost[] = [];
 const articlesSaisons: BlogPost[] = [];
 
+// Auteur standard pour tous les articles
+export const standardAuthor = {
+  name: "Matthieu",
+  avatar: "/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png",
+  bio: "Motard passionné qui s'est laissé surprendre par la Corse"
+};
+
 // Function to ensure all BlogPosts have the required fields
 const ensureValidBlogPost = (post: any): BlogPost => {
   if (!post.readingTime) {
     return {
       ...post,
-      readingTime: `${Math.floor(Math.random() * 5) + 3} min` // Default reading time between 3-7 minutes
+      readingTime: `${Math.floor(Math.random() * 5) + 3} min`, // Default reading time between 3-7 minutes
+      author: standardAuthor // Apply standard author
     };
   }
-  return post as BlogPost;
+  return {
+    ...post as BlogPost,
+    author: standardAuthor // Apply standard author
+  };
 };
 
-// Combine all blog posts - Removed all references to stations-service posts
+// Combine all blog posts
 export const blogPosts: BlogPost[] = [
   ensureValidBlogPost(tourCapCorse),
   ensureValidBlogPost(routeDesVins),
