@@ -1,4 +1,3 @@
-
 import { Accommodation } from './types';
 
 export const ajaccioAccommodations: Accommodation[] = [
@@ -31,7 +30,7 @@ export const ajaccioAccommodations: Accommodation[] = [
     description: "Resort luxueux situé dans la baie d'Ajaccio à Porticcio. Offre des équipements haut de gamme et un spa pour se détendre après une longue journée de conduite à moto.",
     priceRange: "180€ - 400€",
     rating: 4.6,
-    image: "https://cdn.pixabay.com/photo/2017/03/22/17/39/reception-2165756_1280.jpg",
+    image: "/lovable-uploads/4f782a78-47e0-4676-a139-1ff26b164087.png",
     amenities: ["Spa", "Piscine", "Restaurant", "Bar", "Climatisation", "Vue mer"],
     bikerAmenities: ["Parking sécurisé", "Garage"],
     contact: {
