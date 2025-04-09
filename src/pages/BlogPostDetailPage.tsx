@@ -51,9 +51,6 @@ const BlogPostDetailPage = () => {
     });
   };
 
-  // L'article sur les stations service est uniquement accessible via /blog/stations-service-corse
-  const isGasStationPost = slug === 'stations-service-corse';
-
   if (!post) {
     return (
       <div className="min-h-screen flex flex-col">
@@ -89,19 +86,6 @@ const BlogPostDetailPage = () => {
               onLike={handleLike} 
               onShare={handleShare} 
             />
-            
-            {isGasStationPost && (
-              <div className="my-12 border-t border-b border-gray-100 py-8">
-                <h2 className="text-2xl font-bold mb-6">Stations-service en Corse</h2>
-                <p className="mb-4">Consultez notre liste complète des stations-service par région pour planifier vos ravitaillements pendant votre voyage à moto en Corse.</p>
-                <Link 
-                  to="/gas-stations" 
-                  className="inline-flex items-center px-4 py-2 bg-corsica-blue text-white rounded-md hover:bg-corsica-blue/90 transition-colors"
-                >
-                  Voir les stations-service
-                </Link>
-              </div>
-            )}
             
             <AuthorCard author={post.author} />
             

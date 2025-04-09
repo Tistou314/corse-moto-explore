@@ -20,51 +20,6 @@ const articlesTechniques: BlogPost[] = [];
 const articlesExperiences: BlogPost[] = [];
 const articlesSaisons: BlogPost[] = [];
 
-// Article des stations-service - défini comme unique article sur ce sujet
-export const articleStationsService: BlogPost = {
-  id: 'stations-service-corse',
-  title: 'Carte des stations-service en Corse',
-  slug: 'stations-service-corse',
-  excerpt: 'Guide complet des stations-service en Corse pour motards : où faire le plein lors de votre road trip à moto sur l\'Île de Beauté.',
-  content: `
-# Guide des stations-service en Corse pour motards
-
-La Corse, avec ses routes sinueuses et ses paysages montagneux spectaculaires, est un paradis pour les motards. Toutefois, lors de votre exploration de l'Île de Beauté, il est essentiel de bien planifier vos arrêts pour faire le plein. Certaines portions de routes, notamment dans les zones montagneuses et rurales, peuvent s'étendre sur plusieurs dizaines de kilomètres sans possibilité de ravitaillement.
-
-## Stations stratégiques à connaître
-
-Certaines stations-service sont considérées comme **stratégiques** pour les motards parcourant l'île. Leur importance est liée à leur emplacement dans des zones où les alternatives sont rares :
-
-- **Station de Vivario** : Point de ravitaillement crucial avant de traverser le centre montagneux
-- **Station de Venaco** : Indispensable si vous empruntez la route du centre
-- **Station de Calacuccia** : La seule option dans la région du Niolu
-- **Station du Col de Bavella** : Essentielle avant de s'aventurer dans la région de l'Alta Rocca
-- **Station de Porto** : Dernière station avant plusieurs heures de route côtière
-
-## Conseils pratiques
-
-- Faites toujours le plein avant de vous engager dans les routes de montagne ou les régions isolées
-- Les stations des zones rurales peuvent avoir des horaires réduits, notamment hors saison
-- Certaines stations peuvent être fermées le dimanche
-- Prévoyez un plan B pour votre ravitaillement lors de longs trajets
-- Les grands axes et les villes principales (Bastia, Ajaccio, Calvi, Porto-Vecchio) disposent de stations ouvertes plus tard, voire 24h/24
-
-## Liste des stations-service
-
-Consultez notre liste complète des stations-service par région dans la page dédiée pour planifier vos ravitaillements pendant votre voyage à moto en Corse.
-  `,
-  category: 'Aspects pratiques',
-  author: {
-    name: 'Jean Toussaint',
-    avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
-    bio: 'Motard corse passionné et guide touristique depuis 15 ans. Connaît chaque virage et chaque station-service de l\'île.'
-  },
-  date: '2025-03-15',
-  imageUrl: '/lovable-uploads/137f7ca8-9347-4597-acb8-7f92a1430224.png',
-  readingTime: '4 min',
-  tags: ['stations-service', 'ravitaillement', 'conseils-pratiques', 'carte']
-};
-
 // Function to ensure all BlogPosts have the required fields
 const ensureValidBlogPost = (post: any): BlogPost => {
   if (!post.readingTime) {
@@ -76,9 +31,8 @@ const ensureValidBlogPost = (post: any): BlogPost => {
   return post as BlogPost;
 };
 
-// Combine all blog posts - Important: fixed the duplication issue by including articleStationsService only once
+// Combine all blog posts - Removed articleStationsService
 export const blogPosts: BlogPost[] = [
-  // articleStationsService, - Removing this duplicate entry
   ensureValidBlogPost(tourCapCorse),
   ensureValidBlogPost(routeDesVins),
   ensureValidBlogPost(routeGrandSud),
@@ -89,8 +43,7 @@ export const blogPosts: BlogPost[] = [
   ...cultureArticles.map(ensureValidBlogPost),
   ...articlesSaisons,
   ensureValidBlogPost(communautesMotards),
-  ensureValidBlogPost(spotsPanoramiques),
-  articleStationsService // Including only one instance of the article
+  ensureValidBlogPost(spotsPanoramiques)
 ];
 
 // Sort by date descending
