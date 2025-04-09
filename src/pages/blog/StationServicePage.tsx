@@ -1,10 +1,9 @@
-
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { ArrowUp } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import { 
   bastiaStations,
   nebbioStations,
@@ -19,6 +18,7 @@ import {
 } from '@/data/gas-stations/regions';
 
 const StationServicePage = () => {
+  const [isVisible, setIsVisible] = useState(false);
   const allStations = [
     ...bastiaStations,
     ...nebbioStations,
@@ -36,7 +36,25 @@ const StationServicePage = () => {
   
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    const toggleVisibility = () => {
+      if (window.pageYOffset > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+    
+    window.addEventListener('scroll', toggleVisibility);
+    return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -140,6 +158,16 @@ const StationServicePage = () => {
             </div>
           ))}
         </div>
+
+        {isVisible && (
+          <button 
+            onClick={scrollToTop} 
+            className="fixed bottom-6 right-6 bg-corsica-blue text-white p-3 rounded-full shadow-lg hover:bg-corsica-blue/90 transition-colors z-50"
+            aria-label="Retour en haut de page"
+          >
+            <ArrowUp className="w-6 h-6" />
+          </button>
+        )}
       </main>
 
       <Footer />
