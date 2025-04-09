@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -15,6 +15,15 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { 
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
+} from '@/components/ui/table';
 import { Fuel, Map, List, Info } from 'lucide-react';
 import { 
   allGasStations, 
@@ -22,9 +31,12 @@ import {
 } from '@/data/gas-stations';
 
 const GasStationsPage = () => {
+  // État pour le filtrage des stations
+  const [activeRegion, setActiveRegion] = useState('all');
+  
   // Compteurs pour la page
   const totalStations = allGasStations.length;
-  const strategicStations = strategicGasStations.length;
+  const strategicStationsCount = strategicGasStations.length;
   
   // Groupement par région pour l'affichage
   const groupedByRegion = allGasStations.reduce((acc, station) => {
@@ -36,6 +48,11 @@ const GasStationsPage = () => {
   }, {} as Record<string, typeof allGasStations>);
   
   const regions = Object.keys(groupedByRegion).sort();
+  
+  // Stations à afficher selon le filtre actif
+  const displayedStations = activeRegion === 'all' 
+    ? allGasStations 
+    : groupedByRegion[activeRegion] || [];
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -60,6 +77,7 @@ const GasStationsPage = () => {
           <TabsList className="mb-6">
             <TabsTrigger value="info">Informations</TabsTrigger>
             <TabsTrigger value="tips">Conseils pratiques</TabsTrigger>
+            <TabsTrigger value="list">Liste des stations</TabsTrigger>
             <TabsTrigger value="regions">Régions</TabsTrigger>
           </TabsList>
           
@@ -78,7 +96,7 @@ const GasStationsPage = () => {
                 <div className="mt-4 flex items-center gap-2">
                   <Badge variant="outline" className="flex items-center gap-1">
                     <Fuel className="h-3 w-3" />
-                    <span>{strategicStations} stations stratégiques</span>
+                    <span>{strategicStationsCount} stations stratégiques</span>
                   </Badge>
                   <Badge variant="outline">
                     {totalStations} stations au total
@@ -149,15 +167,102 @@ const GasStationsPage = () => {
             </div>
           </TabsContent>
           
+          <TabsContent value="list">
+            <div className="bg-white p-6 rounded-lg shadow">
+              <div className="mb-6">
+                <h3 className="text-xl font-semibold mb-4">Liste complète des stations</h3>
+                <div className="mb-4 flex flex-wrap gap-2">
+                  <Button 
+                    variant={activeRegion === 'all' ? "default" : "outline"}
+                    onClick={() => setActiveRegion('all')}
+                  >
+                    Toutes ({allGasStations.length})
+                  </Button>
+                  {regions.map(region => (
+                    <Button 
+                      key={region}
+                      variant={activeRegion === region ? "default" : "outline"}
+                      onClick={() => setActiveRegion(region)}
+                    >
+                      {region} ({groupedByRegion[region].length})
+                    </Button>
+                  ))}
+                </div>
+                
+                <div className="overflow-x-auto">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Nom</TableHead>
+                        <TableHead>Marque</TableHead>
+                        <TableHead>Adresse</TableHead>
+                        <TableHead>Horaires</TableHead>
+                        <TableHead>Carburants</TableHead>
+                        <TableHead>Services</TableHead>
+                        <TableHead>Stratégique</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {displayedStations.map((station) => (
+                        <TableRow key={station.id}>
+                          <TableCell className="font-medium">{station.name}</TableCell>
+                          <TableCell>{station.brand}</TableCell>
+                          <TableCell>{station.address}</TableCell>
+                          <TableCell>{station.hours}{station.seasonalHours ? ' (saisonnier)' : ''}</TableCell>
+                          <TableCell>
+                            <div className="flex flex-wrap gap-1">
+                              {station.fuelTypes.map(fuel => (
+                                <Badge key={fuel} variant="outline" className="text-xs">
+                                  {fuel}
+                                </Badge>
+                              ))}
+                            </div>
+                          </TableCell>
+                          <TableCell>
+                            {station.services && station.services.length > 0 ? (
+                              <div className="flex flex-wrap gap-1">
+                                {station.services.map(service => (
+                                  <Badge key={service} variant="secondary" className="text-xs">
+                                    {service}
+                                  </Badge>
+                                ))}
+                              </div>
+                            ) : (
+                              "-"
+                            )}
+                          </TableCell>
+                          <TableCell>
+                            {station.isStrategic ? (
+                              <Badge variant="warning" className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200">Oui</Badge>
+                            ) : (
+                              "Non"
+                            )}
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
+              </div>
+            </div>
+          </TabsContent>
+          
           <TabsContent value="regions">
             <div className="bg-white p-6 rounded-lg shadow">
               <h3 className="text-xl font-semibold mb-3">Stations-service par région</h3>
               <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {regions.map((region) => (
-                  <Link to="/blog/stations-service-corse" key={region} className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-                    <h4 className="font-medium">{region}</h4>
-                    <p className="text-sm text-muted-foreground">{groupedByRegion[region].length} stations</p>
-                  </Link>
+                  <Button
+                    key={region}
+                    variant="outline"
+                    className="justify-start h-auto py-4 px-4" 
+                    onClick={() => setActiveRegion(region)}
+                  >
+                    <div className="text-left">
+                      <h4 className="font-medium">{region}</h4>
+                      <p className="text-sm text-muted-foreground">{groupedByRegion[region].length} stations</p>
+                    </div>
+                  </Button>
                 ))}
               </div>
               

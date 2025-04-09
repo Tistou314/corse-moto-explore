@@ -9,6 +9,16 @@ import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { 
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
+} from '@/components/ui/table';
+import { Badge } from '@/components/ui/badge';
+import { Fuel } from 'lucide-react';
+import { 
   bastiaStations,
   nebbioStations,
   ajaccioStations,
@@ -23,20 +33,30 @@ import {
 
 const StationServicePage = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const allStations = [
-    ...bastiaStations,
-    ...nebbioStations,
-    ...ajaccioStations,
-    ...balagneStations,
-    ...extremeSudStations,
-    ...centreStations,
-    ...castagnacciaStations,
-    ...valincoStations,
-    ...luccianaBigugliaStations,
-    ...plaineOrientaleStations
-  ];
-
-  const strategicStations = allStations.filter(station => station.isStrategic);
+  const [activeRegion, setActiveRegion] = useState('all');
+  
+  // Group stations by region
+  const regionMap = {
+    'all': [...bastiaStations, ...nebbioStations, ...ajaccioStations, ...balagneStations, 
+           ...extremeSudStations, ...centreStations, ...castagnacciaStations, ...valincoStations, 
+           ...luccianaBigugliaStations, ...plaineOrientaleStations],
+    'Bastia': bastiaStations,
+    'Nebbio': nebbioStations,
+    'Ajaccio': ajaccioStations,
+    'Balagne': balagneStations,
+    'Extrême Sud': extremeSudStations,
+    'Centre': centreStations,
+    'Castagniccia': castagnacciaStations,
+    'Valinco': valincoStations,
+    'Lucciana-Biguglia': luccianaBigugliaStations,
+    'Plaine Orientale': plaineOrientaleStations
+  };
+  
+  // Get stations for current active region
+  const displayedStations = regionMap[activeRegion] || regionMap.all;
+  
+  // Count strategic stations
+  const strategicStations = displayedStations.filter(station => station.isStrategic);
   
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -86,7 +106,7 @@ const StationServicePage = () => {
           </p>
 
           {/* Section des recommandations */}
-          <div className="mb-12 space-y-6">
+          <div className="mb-6 space-y-6">
             <Alert className="bg-amber-50 border-amber-200">
               <AlertTitle className="text-amber-800 text-lg font-medium">
                 Stations stratégiques à connaître
@@ -98,7 +118,7 @@ const StationServicePage = () => {
               </AlertDescription>
             </Alert>
             
-            <Card>
+            <Card className="mb-6">
               <CardHeader>
                 <CardTitle>Conseils pour votre ravitaillement en Corse</CardTitle>
               </CardHeader>
@@ -120,61 +140,100 @@ const StationServicePage = () => {
                     <li>En haute saison (juillet-août), prévoyez plus de temps pour faire le plein dans les zones touristiques</li>
                   </ul>
                 </div>
-
-                <div>
-                  <h3 className="font-medium mb-2">Stations à privilégier</h3>
-                  <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
-                    <li><strong>Centre montagneux</strong> : ne manquez pas les stations de Vivario ou Venaco avant de traverser</li>
-                    <li><strong>Région du Niolu</strong> : la station de Calacuccia est souvent la seule option</li>
-                    <li><strong>Alta Rocca</strong> : ravitaillez-vous au Col de Bavella avant de parcourir cette région</li>
-                    <li><strong>Côte Ouest</strong> : la station de Porto est essentielle avant la route côtière sinueuse</li>
-                  </ul>
-                </div>
               </CardContent>
             </Card>
           </div>
 
-          <h2 className="text-2xl font-semibold mb-4">Liste des stations par région</h2>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {allStations.map((station) => (
-            <div 
-              key={station.id} 
-              className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
-            >
-              <h3 className="text-xl font-semibold mb-2">{station.name}</h3>
-              <p className="text-muted-foreground mb-2">
-                <strong>Marque:</strong> {station.brand}
-              </p>
-              <p className="text-muted-foreground mb-2">
-                <strong>Région:</strong> {station.region}
-              </p>
-              {station.address && (
-                <p className="text-muted-foreground mb-2">
-                  <strong>Adresse:</strong> {station.address}
-                </p>
-              )}
-              <p className="text-muted-foreground mb-2">
-                <strong>Horaires:</strong> {station.hours}
-              </p>
-              <div className="mt-4">
-                <strong>Types de carburant:</strong>
-                <ul className="list-disc list-inside text-sm">
-                  {station.fuelTypes.map((fuel) => (
-                    <li key={fuel}>{fuel}</li>
-                  ))}
-                </ul>
-              </div>
-              {station.isStrategic && (
-                <div className="mt-4">
-                  <span className="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">
-                    Station stratégique
-                  </span>
-                </div>
-              )}
+          <div className="mb-6">
+            <h2 className="text-2xl font-semibold mb-4">Liste des stations par région</h2>
+            <div className="mb-4 flex flex-wrap gap-2">
+              <Button 
+                variant={activeRegion === 'all' ? "default" : "outline"}
+                onClick={() => setActiveRegion('all')}
+              >
+                Toutes ({regionMap.all.length})
+              </Button>
+              {Object.keys(regionMap).filter(key => key !== 'all').map(region => (
+                <Button 
+                  key={region}
+                  variant={activeRegion === region ? "default" : "outline"}
+                  onClick={() => setActiveRegion(region)}
+                >
+                  {region} ({regionMap[region].length})
+                </Button>
+              ))}
             </div>
-          ))}
+            
+            <div className="bg-white p-4 rounded-lg shadow mb-4">
+              <div className="flex justify-between items-center mb-2">
+                <h3 className="text-lg font-medium">
+                  {activeRegion === 'all' ? 'Toutes les stations' : `Stations en ${activeRegion}`}
+                </h3>
+                <Badge variant="outline" className="flex items-center gap-1">
+                  <Fuel className="h-3 w-3" />
+                  <span>{displayedStations.length} stations</span>
+                  {strategicStations.length > 0 && (
+                    <span> • {strategicStations.length} stratégiques</span>
+                  )}
+                </Badge>
+              </div>
+            </div>
+            
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Nom</TableHead>
+                    <TableHead>Marque</TableHead>
+                    <TableHead>Adresse</TableHead>
+                    <TableHead>Horaires</TableHead>
+                    <TableHead>Carburants</TableHead>
+                    <TableHead>Services</TableHead>
+                    <TableHead>Stratégique</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {displayedStations.map((station) => (
+                    <TableRow key={station.id}>
+                      <TableCell className="font-medium">{station.name}</TableCell>
+                      <TableCell>{station.brand}</TableCell>
+                      <TableCell>{station.address}</TableCell>
+                      <TableCell>{station.hours}{station.seasonalHours ? ' (saisonnier)' : ''}</TableCell>
+                      <TableCell>
+                        <div className="flex flex-wrap gap-1">
+                          {station.fuelTypes.map(fuel => (
+                            <Badge key={fuel} variant="outline" className="text-xs">
+                              {fuel}
+                            </Badge>
+                          ))}
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        {station.services && station.services.length > 0 ? (
+                          <div className="flex flex-wrap gap-1">
+                            {station.services.map(service => (
+                              <Badge key={service} variant="secondary" className="text-xs">
+                                {service}
+                              </Badge>
+                            ))}
+                          </div>
+                        ) : (
+                          "-"
+                        )}
+                      </TableCell>
+                      <TableCell>
+                        {station.isStrategic ? (
+                          <Badge variant="warning" className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200">Oui</Badge>
+                        ) : (
+                          "Non"
+                        )}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          </div>
         </div>
         
         <div className="mt-10 text-center">
