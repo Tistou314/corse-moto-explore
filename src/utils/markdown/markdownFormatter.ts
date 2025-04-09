@@ -12,11 +12,7 @@ export const formatContent = (content: string, postId?: string): string => {
   // Configurer les options de marked pour un meilleur rendu
   marked.setOptions({
     breaks: true,
-    gfm: true,
-    // Remove the smartLists option as it doesn't exist in the current MarkedOptions type
-    // smartLists: true,  
-    // Remove the smartypants option as it doesn't exist in the current MarkedOptions type
-    // smartypants: true
+    gfm: true
   });
   
   // Appliquer le style en ligne et convertir en HTML
@@ -38,8 +34,7 @@ export const formatContent = (content: string, postId?: string): string => {
       '<div class="overflow-x-auto my-8"><table class="w-full border-collapse text-sm">')
     .replace(/<\/table>/g, '</table></div>')
     
-    // Styles de titres avec une palette plus nuancée
-    .replace(/<h1([^>]*)>/g, '<h1$1 class="text-3xl md:text-4xl lg:text-5xl font-bold my-8 text-corsica-blue/90">')
+    // Styles de titres avec une palette plus nuancée (en commençant à partir de h2)
     .replace(/<h2([^>]*)>/g, '<h2$1 class="text-2xl md:text-3xl font-bold my-7 pt-2 text-corsica-slate">')
     .replace(/<h3([^>]*)>/g, '<h3$1 class="text-xl md:text-2xl font-bold my-6 text-corsica-dark">')
     .replace(/<h4([^>]*)>/g, '<h4$1 class="text-lg md:text-xl font-bold my-5 text-corsica-slate/90">')
