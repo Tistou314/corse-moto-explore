@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -113,6 +114,11 @@ const StationServicePage = () => {
               <p className="text-muted-foreground mb-2">
                 <strong>Région:</strong> {station.region}
               </p>
+              {station.address && (
+                <p className="text-muted-foreground mb-2">
+                  <strong>Adresse:</strong> {station.address}
+                </p>
+              )}
               <p className="text-muted-foreground mb-2">
                 <strong>Horaires:</strong> {station.hours}
               </p>
