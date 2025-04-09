@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useParams } from 'react-router-dom';
@@ -31,6 +32,9 @@ const BlogPostDetailPage = () => {
         console.error(`Blog post with id ${slug} not found`);
       }
     }
+    
+    // Assurez-vous que la page commence en haut lors du chargement
+    window.scrollTo(0, 0);
   }, [slug]);
   
   const handleLike = () => {

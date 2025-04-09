@@ -2,6 +2,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Toaster } from "@/components/ui/sonner";
 import { MapProvider } from "@/contexts/MapContext";
+import ScrollToTop from "@/components/ScrollToTop";
 import Index from "@/pages/Index";
 import ContactPage from "@/pages/ContactPage";
 import FAQPage from "@/pages/FAQPage";
@@ -21,6 +22,7 @@ function App() {
   return (
     <MapProvider>
       <Router>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/contact" element={<ContactPage />} />
