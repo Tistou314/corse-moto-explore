@@ -51,7 +51,7 @@ export const bastiaAccommodations: Accommodation[] = [
     description: "Hôtel avec spa situé près de l'aéroport de Bastia, offrant un véritable havre de paix. Idéal pour se détendre après une journée intense de route, avec son spa et sa piscine.",
     priceRange: "100€ - 220€",
     rating: 4.4,
-    image: "https://cdn.pixabay.com/photo/2020/10/18/09/16/bedroom-5664221_1280.jpg",
+    image: "/lovable-uploads/c9c69fc8-07ec-474b-9707-bb25b3ee2ec1.png",
     amenities: ["Spa", "Piscine", "Restaurant", "Bar", "Climatisation", "Wifi gratuit"],
     bikerAmenities: ["Parking sécurisé", "Garage"],
     contact: {
@@ -63,3 +63,4 @@ export const bastiaAccommodations: Accommodation[] = [
     longitude: 9.469483
   }
 ];
+
