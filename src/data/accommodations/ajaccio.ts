@@ -1,3 +1,4 @@
+
 import { Accommodation } from './types';
 
 export const ajaccioAccommodations: Accommodation[] = [
@@ -70,7 +71,7 @@ export const ajaccioAccommodations: Accommodation[] = [
     description: "Hôtel de charme entouré de pins, à proximité des plages des Sanguinaires. Un cadre idéal pour les motards à la recherche de tranquillité après une journée d'exploration.",
     priceRange: "90€ - 180€",
     rating: 4.0,
-    image: "https://cdn.pixabay.com/photo/2018/08/08/13/34/housing-development-3591293_1280.jpg",
+    image: "/lovable-uploads/5ba3cc29-9514-4f3f-acf3-0afaa48d8799.png",
     amenities: ["Climatisation", "Restaurant", "Bar", "Jardin", "Wifi gratuit"],
     bikerAmenities: ["Parking sécurisé"],
     contact: {
