@@ -1,5 +1,6 @@
+
 import { BlogPost } from '@/types/blog';
-import { standardAuthor } from '@/data/blogPosts';
+import { standardAuthor } from '@/data/authors';
 
 export const routeGrandSud: BlogPost = {
   id: 'route-grand-sud-2024',

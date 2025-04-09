@@ -1,6 +1,7 @@
 
 import { BlogPost } from '@/types/blog';
 import { v4 as uuidv4 } from 'uuid';
+import { standardAuthor } from './authors';
 
 // Import articles from itineraires
 import { tourCapCorse } from './blog/itineraires/circuit-cap-corse';
@@ -19,13 +20,6 @@ import { experiencesArticles } from './blog/experiences';
 // Catégories vides à remplir ultérieurement
 const articlesTechniques: BlogPost[] = [];
 const articlesSaisons: BlogPost[] = [];
-
-// Auteur standard pour tous les articles
-export const standardAuthor = {
-  name: "Matthieu",
-  avatar: "/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png",
-  bio: "Motard passionné qui s'est laissé surprendre par la Corse"
-};
 
 // Function to ensure all BlogPosts have the required fields
 const ensureValidBlogPost = (post: any): BlogPost => {

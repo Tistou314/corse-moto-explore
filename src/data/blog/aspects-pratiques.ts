@@ -1,6 +1,6 @@
 import { BlogPost } from '../blog/types';
 import { v4 as uuidv4 } from 'uuid';
-import { standardAuthor } from '../blogPosts';
+import { standardAuthor } from '@/data/authors';
 
 // Keep only legitimate posts in this category
 export const aspectsPratiquesArticles: BlogPost[] = [
