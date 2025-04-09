@@ -1,9 +1,13 @@
+
 import React, { useEffect, useState } from 'react';
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, ArrowLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Hero from '@/components/Hero';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { 
   bastiaStations,
   nebbioStations,
@@ -60,8 +64,22 @@ const StationServicePage = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       
+      <Hero 
+        title="Stations-service en Corse" 
+        subtitle="Trouvez facilement où faire le plein lors de votre road trip moto sur l'Île de Beauté"
+        imagePath="/lovable-uploads/137f7ca8-9347-4597-acb8-7f92a1430224.png"
+      />
+      
       <main className="flex-grow container mx-auto px-4 py-8">
         <div className="mb-8">
+          <Link 
+            to="/blog" 
+            className="inline-flex items-center text-corsica-blue hover:text-corsica-blue/80 mb-6 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Retour aux articles
+          </Link>
+          
           <h1 className="text-3xl font-bold mb-2">Stations-service en Corse</h1>
           <p className="text-muted-foreground mb-6">
             Liste complète des stations-service pour les motards en Corse.
@@ -157,6 +175,14 @@ const StationServicePage = () => {
               )}
             </div>
           ))}
+        </div>
+        
+        <div className="mt-10 text-center">
+          <Link to="/blog">
+            <Button className="bg-corsica-blue hover:bg-corsica-blue/90">
+              <ArrowLeft className="w-4 h-4 mr-2" /> Retour aux articles du blog
+            </Button>
+          </Link>
         </div>
 
         {isVisible && (
