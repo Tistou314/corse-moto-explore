@@ -9,7 +9,6 @@ import { routeGrandSud } from './blog/itineraires/route-grand-sud';
 
 // Import articles from ressources-locales
 import { communautesMotards } from './blog/ressources-locales';
-import { spotsPanoramiques } from './blog/ressources-locales';
 
 // Import articles from other categories when available
 import { aspectsPratiquesArticles } from './blog/aspects-pratiques';
@@ -32,7 +31,7 @@ const ensureValidBlogPost = (post: any): BlogPost => {
   return post as BlogPost;
 };
 
-// Combine all blog posts - Removed articleStationsService and spotsPanoramiques to avoid duplication
+// Combine all blog posts - Removed all references to stations-service posts
 export const blogPosts: BlogPost[] = [
   ensureValidBlogPost(tourCapCorse),
   ensureValidBlogPost(routeDesVins),

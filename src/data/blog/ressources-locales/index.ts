@@ -1,8 +1,7 @@
 
 import { communautesMotards } from './communautes-motards';
-import { spotsPanoramiques } from './spots-panoramiques';
 
+// Removed the spotsPanoramiques export
 export { 
-  communautesMotards,
-  spotsPanoramiques 
+  communautesMotards
 };

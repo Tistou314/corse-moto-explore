@@ -35,7 +35,6 @@ function App() {
           <Route path="/blog/:slug" element={<BlogPostDetailPage />} />
           <Route path="/admin/*" element={<AdminPage />} />
           <Route path="/gas-stations" element={<GasStationsPage />} />
-          {/* Nous supprimons la route directe pour éviter les doublons */}
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Toaster position="bottom-right" />
