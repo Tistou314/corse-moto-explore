@@ -2,6 +2,9 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import { 
   bastiaStations,
   nebbioStations,
@@ -29,6 +32,8 @@ const StationServicePage = () => {
     ...plaineOrientaleStations
   ];
 
+  const strategicStations = allStations.filter(station => station.isStrategic);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -36,9 +41,60 @@ const StationServicePage = () => {
       <main className="flex-grow container mx-auto px-4 py-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">Stations-service en Corse</h1>
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground mb-6">
             Liste complète des stations-service pour les motards en Corse.
           </p>
+
+          {/* Section des recommandations */}
+          <div className="mb-12 space-y-6">
+            <Alert className="bg-amber-50 border-amber-200">
+              <AlertTitle className="text-amber-800 text-lg font-medium">
+                Stations stratégiques à connaître
+              </AlertTitle>
+              <AlertDescription className="text-amber-700">
+                Certaines stations sont essentielles lors de votre road trip à moto en Corse, 
+                car elles sont situées dans des zones où les alternatives sont rares. 
+                Elles sont identifiées par un badge spécial dans notre liste.
+              </AlertDescription>
+            </Alert>
+            
+            <Card>
+              <CardHeader>
+                <CardTitle>Conseils pour votre ravitaillement en Corse</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div>
+                  <h3 className="font-medium mb-2">Préparez votre itinéraire</h3>
+                  <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
+                    <li>Planifiez vos arrêts carburant à l'avance, surtout dans les zones montagneuses</li>
+                    <li>Ne laissez jamais votre réservoir descendre en dessous de la moitié en régions isolées</li>
+                    <li>Considérez l'autonomie réelle de votre moto sur routes sinueuses (souvent 20-30% inférieure)</li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h3 className="font-medium mb-2">Horaires et disponibilité</h3>
+                  <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
+                    <li>Les stations des petits villages peuvent avoir des horaires réduits, surtout hors saison</li>
+                    <li>Certaines stations peuvent être fermées le dimanche ou les jours fériés</li>
+                    <li>En haute saison (juillet-août), prévoyez plus de temps pour faire le plein dans les zones touristiques</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="font-medium mb-2">Stations à privilégier</h3>
+                  <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
+                    <li><strong>Centre montagneux</strong> : ne manquez pas les stations de Vivario ou Venaco avant de traverser</li>
+                    <li><strong>Région du Niolu</strong> : la station de Calacuccia est souvent la seule option</li>
+                    <li><strong>Alta Rocca</strong> : ravitaillez-vous au Col de Bavella avant de parcourir cette région</li>
+                    <li><strong>Côte Ouest</strong> : la station de Porto est essentielle avant la route côtière sinueuse</li>
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <h2 className="text-2xl font-semibold mb-4">Liste des stations par région</h2>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
