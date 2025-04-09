@@ -1,5 +1,5 @@
 
-import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { Mail, MapPin, Clock } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactForm from '@/components/ContactForm';
@@ -38,14 +38,6 @@ const ContactPage = () => {
                     <div>
                       <h3 className="font-medium">Email</h3>
                       <p className="text-muted-foreground">contact@lacorseamoto.fr</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <Phone className="w-5 h-5 text-corsica-blue mt-1 mr-3" />
-                    <div>
-                      <h3 className="font-medium">Téléphone</h3>
-                      <p className="text-muted-foreground">+33 6 XX XX XX XX</p>
                     </div>
                   </div>
                   

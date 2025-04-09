@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Twitter, Mail, MapPin, Phone, Bike, Fuel } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Mail, MapPin, Bike } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -76,7 +76,6 @@ const Footer = () => {
               <li>
                 <Link to="/gas-stations" className="text-gray-300 hover:text-white transition-colors flex items-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
-                  <Fuel className="w-4 h-4 mr-1" />
                   Stations
                 </Link>
               </li>
@@ -98,12 +97,6 @@ const Footer = () => {
                   <MapPin className="w-4 h-4" />
                 </div>
                 <span className="text-gray-300">Corse, France</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-4 h-4" />
-                </div>
-                <span className="text-gray-300">+33 6 XX XX XX XX</span>
               </li>
               <li className="flex items-center space-x-3">
                 <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
