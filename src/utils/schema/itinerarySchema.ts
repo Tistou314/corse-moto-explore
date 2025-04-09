@@ -1,21 +1,32 @@
 
-import { Itinerary } from '@/data/itineraries/types';
+import { Itinerary, PointOfInterest } from '@/data/itineraries/types';
 
 export const generateItinerarySchema = (itinerary: Itinerary, url: string) => {
   if (!itinerary) return null;
 
+  // Define default coordinates for the center of Corsica
+  const defaultLatitude = 42.0396;
+  const defaultLongitude = 9.0129;
+
   // Handle startPoint coordinates which might be a string or an object
-  const startLatitude = typeof itinerary.startPoint === 'object' && itinerary.startPoint && 'latitude' in itinerary.startPoint
-    ? itinerary.startPoint.latitude 
-    : 42.0396; // Default to center of Corsica
+  let startLatitude = defaultLatitude;
+  let startLongitude = defaultLongitude;
+  
+  // Check if startPoint exists and is an object
+  if (typeof itinerary.startPoint === 'object' && itinerary.startPoint !== null) {
+    // Check if it has latitude and longitude properties
+    if ('latitude' in itinerary.startPoint) {
+      startLatitude = (itinerary.startPoint as { latitude: number }).latitude;
+    }
     
-  const startLongitude = typeof itinerary.startPoint === 'object' && itinerary.startPoint && 'longitude' in itinerary.startPoint
-    ? itinerary.startPoint.longitude 
-    : 9.0129;
+    if ('longitude' in itinerary.startPoint) {
+      startLongitude = (itinerary.startPoint as { longitude: number }).longitude;
+    }
+  }
 
   // Handle distance that might be a string or number
   const distanceValue = typeof itinerary.distance === 'string' 
-    ? itinerary.distance.replace("km", "").trim() 
+    ? itinerary.distance.replace(/km/i, "").trim() 
     : itinerary.distance.toString();
 
   const itinerarySchema = {
