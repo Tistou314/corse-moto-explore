@@ -1,25 +1,32 @@
-
+/**
+ * Utility functions for formatting markdown content into HTML
+ */
 import { marked } from 'marked';
 import { formatInlineStyles } from './inlineFormatting';
 import { addInternalLinks } from './internalLinking';
 
 /**
- * Convertit le contenu markdown en HTML avec formatage amélioré
+ * Format markdown text to HTML
  */
 export const formatContent = (content: string, postId?: string): string => {
-  // Ajouter des liens internes si un postId est fourni
+  // If a postId is provided, add internal links first
   if (postId) {
     content = addInternalLinks(content, postId);
   }
   
-  // Appliquer les styles inline (gras, italique, liens)
+  // Apply inline styling and then convert to HTML with marked
   content = formatInlineStyles(content);
-
-  // Convertir en HTML avec marked
+  
+  // Convert to HTML using marked
   const html = marked(content, {
-    breaks: true,
-    gfm: true
+    breaks: true,  // Convert \n to <br>
+    gfm: true      // Use GitHub Flavored Markdown
   });
   
   return html;
-};
+}
+
+/**
+ * Helper function for inline styles (bold, italic, links, CTAs)
+ * Note: This is now imported from inlineFormatting.ts
+ */

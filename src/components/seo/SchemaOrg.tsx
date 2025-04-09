@@ -11,12 +11,13 @@ import { Itinerary } from '@/data/itineraries/types';
 interface SchemaOrgProps {
   type: SchemaType;
   data?: BlogPost | Itinerary | any;
+  url?: string;  // Make url optional in the props
 }
 
-const SchemaOrg = ({ type, data }: SchemaOrgProps) => {
+const SchemaOrg = ({ type, data, url }: SchemaOrgProps) => {
   useEffect(() => {
-    // Get current URL
-    const url = window.location.href;
+    // Get current URL if not provided
+    const pageUrl = url || window.location.href;
     
     // Remove any existing schema
     const existingScripts = document.querySelectorAll('script[type="application/ld+json"]');
@@ -26,20 +27,20 @@ const SchemaOrg = ({ type, data }: SchemaOrgProps) => {
     let schemas = [];
     
     // Always include website and organization schemas
-    schemas.push(generateWebsiteSchema(url));
-    schemas.push(generateOrganizationSchema(url));
+    schemas.push(generateWebsiteSchema(pageUrl));
+    schemas.push(generateOrganizationSchema(pageUrl));
     
     // Add specific schema based on page type
     switch(type) {
       case 'blog':
       case 'article':
         if (data) {
-          schemas.push(generateBlogSchema(data as BlogPost, url));
+          schemas.push(generateBlogSchema(data as BlogPost, pageUrl));
         }
         break;
       case 'itinerary':
         if (data) {
-          schemas.push(generateItinerarySchema(data as Itinerary, url));
+          schemas.push(generateItinerarySchema(data as Itinerary, pageUrl));
         }
         break;
       // Add more cases as needed
@@ -60,7 +61,7 @@ const SchemaOrg = ({ type, data }: SchemaOrgProps) => {
       const scripts = document.querySelectorAll('script[type="application/ld+json"]');
       scripts.forEach(script => script.remove());
     };
-  }, [type, data]);
+  }, [type, data, url]);
   
   return null;
 };

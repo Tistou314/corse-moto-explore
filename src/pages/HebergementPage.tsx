@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -20,7 +19,6 @@ const HebergementPage = () => {
   const [filteredAccommodations, setFilteredAccommodations] = useState(accommodations);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-  // Use URL params to set initial filters
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const typeParam = urlParams.get('type');
@@ -29,11 +27,9 @@ const HebergementPage = () => {
     }
   }, []);
 
-  // Filter accommodations based on search and filters
   useEffect(() => {
     let filtered = [...accommodations];
 
-    // Filter by search query
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
       filtered = filtered.filter(
@@ -44,23 +40,19 @@ const HebergementPage = () => {
       );
     }
 
-    // Filter by type
     if (selectedType !== 'all') {
       filtered = filtered.filter(acc => acc.type === selectedType);
     }
 
-    // Filter by region
     if (selectedRegion !== 'all') {
       filtered = filtered.filter(acc => acc.region === selectedRegion);
     }
 
-    // Filter by price (simplified since our data has string price ranges)
     filtered = filtered.filter(acc => {
       const minPrice = parseInt(acc.priceRange.split('€')[0].trim());
       return !isNaN(minPrice) && minPrice >= priceRange[0] && minPrice <= priceRange[1];
     });
 
-    // Filter by amenities
     if (selectedAmenities.length > 0) {
       filtered = filtered.filter(acc => 
         selectedAmenities.every(amenity => 
@@ -95,7 +87,6 @@ const HebergementPage = () => {
         imagePath="/lovable-uploads/0e248deb-e0c7-4afb-b4fe-2dfdef43fa71.png"
       />
 
-      {/* Overview Section */}
       <section className="container mx-auto py-12 px-4">
         <div className="max-w-3xl mx-auto mb-12 text-center">
           <h2 className="text-3xl font-bold mb-4">Des hébergements adaptés aux motards</h2>
@@ -108,7 +99,6 @@ const HebergementPage = () => {
         <AccommodationTypeCards />
       </section>
 
-      {/* Search and Filter Section */}
       <AccommodationFilters
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
@@ -125,7 +115,6 @@ const HebergementPage = () => {
         filteredCount={filteredAccommodations.length}
       />
 
-      {/* Accommodations Listing */}
       <section className="container mx-auto py-12 px-4">
         {filteredAccommodations.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -141,7 +130,6 @@ const HebergementPage = () => {
         )}
       </section>
 
-      {/* Booking Tips Section */}
       <BookingTips />
 
       <Footer />

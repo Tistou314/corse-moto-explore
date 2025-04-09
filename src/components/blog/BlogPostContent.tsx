@@ -2,7 +2,7 @@
 import { BlogPost } from '@/types/blog';
 import { Heart, Share2, Tag } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { formatContent } from '@/utils/markdownFormatter';
+import { formatContent } from '@/utils/markdown/markdownFormatter';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getRelatedPosts } from '@/utils/markdown/internalLinking';
@@ -25,8 +25,8 @@ const BlogPostContent = ({ post, liked, onLike, onShare }: BlogPostContentProps)
     console.log("Related posts:", related.map(p => p.title));
   }, [post]);
 
-  // Format the markdown content to HTML with internal links
-  const formattedContent = formatContent(post.content, post.id);
+  // Format the markdown content to HTML
+  const formattedContent = formatContent(post.content);
 
   return (
     <div className="blog-post-content">
