@@ -8,16 +8,17 @@ import { routeDesVins } from './blog/itineraires/route-des-vins';
 import { routeGrandSud } from './blog/itineraires/route-grand-sud';
 
 // Import articles from ressources-locales
-import { communautesMotards, spotsPanoramiques } from './blog/ressources-locales';
+import { communautesMotards } from './blog/ressources-locales';
+import { spotsPanoramiques } from './blog/ressources-locales';
 
 // Import articles from other categories when available
 import { aspectsPratiquesArticles } from './blog/aspects-pratiques';
 import { cultureArticles } from './blog/culture';
 import { equipementArticles } from './blog/equipement';
+import { experiencesArticles } from './blog/experiences';
 
 // Catégories vides à remplir ultérieurement
 const articlesTechniques: BlogPost[] = [];
-const articlesExperiences: BlogPost[] = [];
 const articlesSaisons: BlogPost[] = [];
 
 // Function to ensure all BlogPosts have the required fields
@@ -31,7 +32,7 @@ const ensureValidBlogPost = (post: any): BlogPost => {
   return post as BlogPost;
 };
 
-// Combine all blog posts - Removed articleStationsService
+// Combine all blog posts - Removed articleStationsService and spotsPanoramiques to avoid duplication
 export const blogPosts: BlogPost[] = [
   ensureValidBlogPost(tourCapCorse),
   ensureValidBlogPost(routeDesVins),
@@ -39,11 +40,10 @@ export const blogPosts: BlogPost[] = [
   ...articlesTechniques,
   ...aspectsPratiquesArticles.map(ensureValidBlogPost),
   ...equipementArticles.map(ensureValidBlogPost),
-  ...articlesExperiences,
+  ...experiencesArticles.map(ensureValidBlogPost),
   ...cultureArticles.map(ensureValidBlogPost),
   ...articlesSaisons,
-  ensureValidBlogPost(communautesMotards),
-  ensureValidBlogPost(spotsPanoramiques)
+  ensureValidBlogPost(communautesMotards)
 ];
 
 // Sort by date descending
