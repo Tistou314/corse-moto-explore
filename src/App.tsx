@@ -12,7 +12,6 @@ import GuidePratiquePage from "@/pages/GuidePratiquePage";
 import AccommodationDetailPage from "@/pages/AccommodationDetailPage";
 import BlogPage from "@/pages/BlogPage";
 import BlogPostDetailPage from "@/pages/BlogPostDetailPage";
-import MapPage from "@/pages/MapPage";
 import AdminPage from "@/pages/AdminPage";
 import GasStationsPage from "@/pages/GasStationsPage";
 import StationServicePage from "@/pages/blog/StationServicePage";
@@ -33,7 +32,6 @@ function App() {
           <Route path="/hebergements/:id" element={<AccommodationDetailPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<BlogPostDetailPage />} />
-          <Route path="/map" element={<MapPage />} />
           <Route path="/admin/*" element={<AdminPage />} />
           <Route path="/gas-stations" element={<GasStationsPage />} />
           <Route path="/blog/stations-service-corse" element={<StationServicePage />} />

@@ -1,12 +1,9 @@
 
-import { useMap } from '@/contexts/MapContext';
-import MapBox from './map/MapBox';
+import React from 'react';
 
 const MapPlaceholder = () => {
-  const { isMapConfigured } = useMap();
-
-  // La carte est maintenant toujours configurée
-  return <MapBox />;
+  // Composant vide - les cartes ont été supprimées sur demande
+  return null;
 };
 
 export default MapPlaceholder;

@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { itineraries, Itinerary } from '@/data/itineraries';
 import ItineraryHero from '@/components/itineraries/ItineraryHero';
 import ItineraryDescription from '@/components/itineraries/ItineraryDescription';
-import ItineraryMap from '@/components/itineraries/ItineraryMap';
 import ItineraryPointsOfInterest from '@/components/itineraries/ItineraryPointsOfInterest';
 import ItineraryRating from '@/components/itineraries/ItineraryRating';
 import ItinerarySidebar from '@/components/itineraries/ItinerarySidebar';
@@ -22,30 +21,7 @@ const ItineraryDetailPage = () => {
       const foundItinerary = itineraries.find(item => item.id === id);
       if (foundItinerary) {
         setItinerary(foundItinerary);
-        
-        // Log pour vérifier que les points d'intérêt sont correctement chargés
-        console.log('Points d\'intérêt de l\'itinéraire:', 
-          foundItinerary.pointsOfInterest?.length || 0,
-          'éléments trouvés');
-        
-        // Vérifier les coordonnées des points d'intérêt
-        if (foundItinerary.pointsOfInterest && foundItinerary.pointsOfInterest.length > 0) {
-          foundItinerary.pointsOfInterest.forEach((poi, index) => {
-            if (typeof poi === 'object' && 'latitude' in poi && 'longitude' in poi) {
-              console.log(`POI #${index} - ${poi.name}: [${poi.latitude}, ${poi.longitude}]`);
-              
-              // Alerte pour les coordonnées potentiellement inversées
-              if (poi.latitude > poi.longitude) {
-                console.warn(`⚠️ Coordonnées potentiellement inversées pour ${poi.name}`);
-                toast.warning(`Vérifier les coordonnées de ${poi.name} - possible inversion lat/long`);
-              }
-            } else {
-              console.warn(`POI #${index} sans coordonnées ou au format incorrect:`, poi);
-            }
-          });
-        }
       }
-      // If not found, we will show a not found message
     }
   }, [id]);
 
@@ -86,13 +62,6 @@ const ItineraryDetailPage = () => {
             {/* Left Column - Main Description */}
             <div className="lg:col-span-2">
               <ItineraryDescription itinerary={itinerary} />
-              <ItineraryMap itinerary={{
-                id: itinerary.id,
-                title: itinerary.title,
-                latitude: itinerary.latitude,
-                longitude: itinerary.longitude,
-                pointsOfInterest: itinerary.pointsOfInterest
-              }} />
               <ItineraryPointsOfInterest itinerary={itinerary} />
               <ItineraryRating />
             </div>
