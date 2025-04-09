@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -7,6 +8,7 @@ import SearchAndFilter from '@/components/blog/SearchAndFilter';
 import FeaturedResources from '@/components/blog/FeaturedResources';
 import NewsletterSignup from '@/components/blog/NewsletterSignup';
 import SchemaOrg from '@/components/seo/SchemaOrg';
+import Hero from '@/components/Hero';
 
 const BlogPage = () => {
   const [searchTerm, setSearchTerm] = useState('');

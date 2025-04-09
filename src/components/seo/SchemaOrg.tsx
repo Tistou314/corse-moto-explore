@@ -146,8 +146,8 @@ export default function SchemaOrg({ type, data, url = window.location.href }: Sc
       })),
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": accommodation.latitude,
-        "longitude": accommodation.longitude
+        "latitude": accommodation.latitude || 0,
+        "longitude": accommodation.longitude || 0
       }
     };
     return JSON.stringify(accommodationSchema);
@@ -156,6 +156,20 @@ export default function SchemaOrg({ type, data, url = window.location.href }: Sc
   // Itinerary schema (as TouristAttraction + Trip)
   const generateItinerarySchema = (itinerary: Itinerary) => {
     if (!itinerary) return null;
+
+    // Handle startPoint coordinates which might be a string or an object
+    const startLatitude = typeof itinerary.startPoint === 'object' && itinerary.startPoint?.latitude 
+      ? itinerary.startPoint.latitude 
+      : 42.0396; // Default to center of Corsica
+      
+    const startLongitude = typeof itinerary.startPoint === 'object' && itinerary.startPoint?.longitude 
+      ? itinerary.startPoint.longitude 
+      : 9.0129;
+
+    // Handle distance that might be a string or number
+    const distanceValue = typeof itinerary.distance === 'string' 
+      ? itinerary.distance.replace("km", "").trim() 
+      : itinerary.distance.toString();
 
     const itinerarySchema = {
       "@context": "https://schema.org",
@@ -172,8 +186,8 @@ export default function SchemaOrg({ type, data, url = window.location.href }: Sc
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": itinerary.startPoint?.latitude || 42.0396, // Default to center of Corsica if no start point
-        "longitude": itinerary.startPoint?.longitude || 9.0129
+        "latitude": startLatitude,
+        "longitude": startLongitude
       },
       "itinerary": {
         "@type": "ItemList",
@@ -183,15 +197,15 @@ export default function SchemaOrg({ type, data, url = window.location.href }: Sc
           "position": index + 1,
           "item": {
             "@type": "TouristAttraction",
-            "name": poi.name,
-            "description": poi.description
+            "name": typeof poi === 'object' ? poi.name : poi,
+            "description": typeof poi === 'object' && poi.description ? poi.description : ""
           }
         })) || []
       },
       "estimatedDuration": `PT${itinerary.duration.replace("h", "")}H`,
       "distance": {
         "@type": "QuantitativeValue",
-        "value": itinerary.distance.replace("km", "").trim(),
+        "value": distanceValue,
         "unitCode": "KMT"
       }
     };
