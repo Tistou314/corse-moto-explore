@@ -77,6 +77,8 @@ Si vous envisagez votre première expérience corse à moto, voici mes conseils 
 5. Parlez aux locaux, ils connaissent les meilleurs spots
 6. Acceptez que tout ne se passera pas comme prévu - et c'est tant mieux
 
+## Prêt pour votre propre aventure
+
 La Corse à moto, c'est plus qu'un voyage, c'est une initiation. Même avec peu d'expérience, vous en reviendrez transformé, avec des souvenirs plein la tête et l'envie irrépressible d'y retourner.`,
     imageUrl: 'https://cdn.pixabay.com/photo/2020/07/18/21/02/motorcycle-5418666_1280.jpg',
     date: '5 juillet 2025',
@@ -192,7 +194,7 @@ Six motards, c'est aussi six personnalités et six envies différentes. La réus
 6. **Réservez vos hébergements à l'avance** en haute saison
 7. **Prévoyez une journée de repos** en milieu de séjour
 
-Ce road trip corse entre amis restera gravé dans nos mémoires. Au-delà des routes exceptionnelles et des paysages à couper le souffle, c'est avant tout cette expérience partagée qui rend l'aventure si spéciale. La Corse se prête parfaitement à ce type de voyage collectif, offrant suffisamment de diversité pour satisfaire tous les types de motards.
+## Votre road trip corse : une histoire à écrire
 
 Alors n'hésitez plus, rassemblez vos amis motards et lancez-vous dans l'aventure corse. Les souvenirs que vous en rapporterez valent tous les détours.`,
     imageUrl: 'https://cdn.pixabay.com/photo/2017/06/29/13/38/motorcycle-2453863_1280.jpg',
