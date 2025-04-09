@@ -23,19 +23,24 @@ const BlogPostsList = ({ posts, searchTerm, selectedCategory }: BlogPostsListPro
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
 
+  // Filter out any potential duplicates by id
+  const uniquePosts = sortedPosts.filter(
+    (post, index, self) => index === self.findIndex((p) => p.id === post.id)
+  );
+
   return (
     <>
       <div className="mb-8">
         <h2 className="text-2xl font-bold">
-          {sortedPosts.length} 
-          {sortedPosts.length === 1 ? ' article trouvé' : ' articles trouvés'}
+          {uniquePosts.length} 
+          {uniquePosts.length === 1 ? ' article trouvé' : ' articles trouvés'}
           {selectedCategory && ` dans "${selectedCategory}"`}
         </h2>
       </div>
       
-      {sortedPosts.length > 0 ? (
+      {uniquePosts.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {sortedPosts.map((post) => (
+          {uniquePosts.map((post) => (
             <BlogPostCard 
               key={post.id}
               id={post.id}

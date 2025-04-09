@@ -76,9 +76,9 @@ const ensureValidBlogPost = (post: any): BlogPost => {
   return post as BlogPost;
 };
 
-// Combine all blog posts - IMPORTANT: articleStationsService n'est inclus qu'une seule fois
+// Combine all blog posts - Important: fixed the duplication issue by including articleStationsService only once
 export const blogPosts: BlogPost[] = [
-  articleStationsService,
+  // articleStationsService, - Removing this duplicate entry
   ensureValidBlogPost(tourCapCorse),
   ensureValidBlogPost(routeDesVins),
   ensureValidBlogPost(routeGrandSud),
@@ -89,7 +89,8 @@ export const blogPosts: BlogPost[] = [
   ...cultureArticles.map(ensureValidBlogPost),
   ...articlesSaisons,
   ensureValidBlogPost(communautesMotards),
-  ensureValidBlogPost(spotsPanoramiques)
+  ensureValidBlogPost(spotsPanoramiques),
+  articleStationsService // Including only one instance of the article
 ];
 
 // Sort by date descending
