@@ -85,8 +85,8 @@ const GasStationEdit = () => {
         name: station.name,
         address: station.address || "",
         region: station.region || "",
-        latitude: String(station.lat),
-        longitude: String(station.lng),
+        latitude: String(station.latitude),
+        longitude: String(station.longitude),
         isStrategic: !!station.isStrategic,
       });
     } else {
