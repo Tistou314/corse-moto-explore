@@ -14,13 +14,17 @@ export const generateItinerarySchema = (itinerary: Itinerary, url: string) => {
   
   // Check if startPoint exists and is an object
   if (typeof itinerary.startPoint === 'object' && itinerary.startPoint !== null) {
-    // Check if it has latitude and longitude properties
-    if ('latitude' in itinerary.startPoint) {
-      startLatitude = (itinerary.startPoint as { latitude: number }).latitude;
+    // Check if it has latitude and longitude properties using optional chaining and type assertion
+    const startPointObj = itinerary.startPoint as { latitude?: number; longitude?: number };
+    
+    // Safely access latitude with null check
+    if (startPointObj && typeof startPointObj.latitude === 'number') {
+      startLatitude = startPointObj.latitude;
     }
     
-    if ('longitude' in itinerary.startPoint) {
-      startLongitude = (itinerary.startPoint as { longitude: number }).longitude;
+    // Safely access longitude with null check
+    if (startPointObj && typeof startPointObj.longitude === 'number') {
+      startLongitude = startPointObj.longitude;
     }
   }
 
