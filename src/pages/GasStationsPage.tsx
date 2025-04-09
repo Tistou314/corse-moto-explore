@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -31,6 +32,7 @@ import {
 
 const GasStationsPage = () => {
   const [activeRegion, setActiveRegion] = useState('all');
+  const [activeTab, setActiveTab] = useState('info');
   
   const totalStations = allGasStations.length;
   const strategicStationsCount = strategicGasStations.length;
@@ -48,6 +50,11 @@ const GasStationsPage = () => {
   const displayedStations = activeRegion === 'all' 
     ? allGasStations 
     : groupedByRegion[activeRegion] || [];
+
+  // Assurez-vous de faire défiler vers le haut lorsque la région change
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [activeRegion]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -68,7 +75,7 @@ const GasStationsPage = () => {
           </div>
         </div>
 
-        <Tabs defaultValue="info" className="w-full">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="mb-6">
             <TabsTrigger value="info">Informations</TabsTrigger>
             <TabsTrigger value="tips">Conseils pratiques</TabsTrigger>
@@ -251,7 +258,10 @@ const GasStationsPage = () => {
                     key={region}
                     variant="outline"
                     className="justify-start h-auto py-4 px-4" 
-                    onClick={() => setActiveRegion(region)}
+                    onClick={() => {
+                      setActiveRegion(region);
+                      setActiveTab("list"); // Changer automatiquement vers l'onglet "Liste des stations"
+                    }}
                   >
                     <div className="text-left">
                       <h4 className="font-medium">{region}</h4>
