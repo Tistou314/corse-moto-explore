@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { ArrowUp, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -35,7 +34,6 @@ const StationServicePage = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeRegion, setActiveRegion] = useState('all');
   
-  // Group stations by region
   const regionMap = {
     'all': [...bastiaStations, ...nebbioStations, ...ajaccioStations, ...balagneStations, 
            ...extremeSudStations, ...centreStations, ...castagnacciaStations, ...valincoStations, 
@@ -52,10 +50,8 @@ const StationServicePage = () => {
     'Plaine Orientale': plaineOrientaleStations
   };
   
-  // Get stations for current active region
   const displayedStations = regionMap[activeRegion] || regionMap.all;
   
-  // Count strategic stations
   const strategicStations = displayedStations.filter(station => station.isStrategic);
   
   useEffect(() => {
@@ -105,7 +101,6 @@ const StationServicePage = () => {
             Liste complète des stations-service pour les motards en Corse.
           </p>
 
-          {/* Section des recommandations */}
           <div className="mb-6 space-y-6">
             <Alert className="bg-amber-50 border-amber-200">
               <AlertTitle className="text-amber-800 text-lg font-medium">
@@ -223,7 +218,7 @@ const StationServicePage = () => {
                       </TableCell>
                       <TableCell>
                         {station.isStrategic ? (
-                          <Badge variant="warning" className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200">Oui</Badge>
+                          <Badge variant="secondary" className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200">Oui</Badge>
                         ) : (
                           "Non"
                         )}

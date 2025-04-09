@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -31,14 +30,11 @@ import {
 } from '@/data/gas-stations';
 
 const GasStationsPage = () => {
-  // État pour le filtrage des stations
   const [activeRegion, setActiveRegion] = useState('all');
   
-  // Compteurs pour la page
   const totalStations = allGasStations.length;
   const strategicStationsCount = strategicGasStations.length;
   
-  // Groupement par région pour l'affichage
   const groupedByRegion = allGasStations.reduce((acc, station) => {
     if (!acc[station.region]) {
       acc[station.region] = [];
@@ -49,7 +45,6 @@ const GasStationsPage = () => {
   
   const regions = Object.keys(groupedByRegion).sort();
   
-  // Stations à afficher selon le filtre actif
   const displayedStations = activeRegion === 'all' 
     ? allGasStations 
     : groupedByRegion[activeRegion] || [];
@@ -233,7 +228,7 @@ const GasStationsPage = () => {
                           </TableCell>
                           <TableCell>
                             {station.isStrategic ? (
-                              <Badge variant="warning" className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200">Oui</Badge>
+                              <Badge variant="secondary" className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200">Oui</Badge>
                             ) : (
                               "Non"
                             )}
