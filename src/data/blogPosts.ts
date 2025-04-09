@@ -1,4 +1,3 @@
-
 import { BlogPost } from '@/types/blog';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -49,11 +48,9 @@ Certaines stations-service sont considérées comme **stratégiques** pour les m
 - Prévoyez un plan B pour votre ravitaillement lors de longs trajets
 - Les grands axes et les villes principales (Bastia, Ajaccio, Calvi, Porto-Vecchio) disposent de stations ouvertes plus tard, voire 24h/24
 
-## Carte des stations-service
+## Liste des stations-service
 
-Consultez notre carte interactive ci-dessous pour localiser toutes les stations-service de l'île. Vous pouvez filtrer pour n'afficher que les stations stratégiques, essentielles pour votre périple à moto.
-
-*Cliquez sur les marqueurs pour obtenir plus d'informations sur chaque station.*
+Consultez notre liste complète des stations-service par région dans la page dédiée pour planifier vos ravitaillements pendant votre voyage à moto en Corse.
   `,
   category: 'aspects-pratiques',
   author: {

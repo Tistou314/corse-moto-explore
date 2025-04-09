@@ -7,7 +7,6 @@ import { blogPosts } from '@/data/blogPosts';
 import { BlogPost } from '@/data/blog/types';
 import { useToast } from "@/hooks/use-toast";
 
-// Imports existants
 import BlogPostHeader from '@/components/blog/BlogPostHeader';
 import BlogPostContent from '@/components/blog/BlogPostContent';
 import AuthorCard from '@/components/blog/AuthorCard';
@@ -43,17 +42,14 @@ const BlogPostDetailPage = () => {
   };
 
   const handleShare = () => {
-    // In a real app, this would open a share dialog
     toast({
       title: "Lien copié !",
       description: "Le lien a été copié dans votre presse-papier.",
     });
   };
 
-  // Vérifier si c'est l'article des stations-service
   const isGasStationPost = slug === 'stations-service-corse';
 
-  // Log pour le debug
   console.log('BlogPostDetailPage - isGasStationPost:', isGasStationPost);
   console.log('BlogPostDetailPage - current slug:', slug);
 
@@ -76,10 +72,8 @@ const BlogPostDetailPage = () => {
     >
       <Navbar />
       
-      {/* Hero Image & Post Header */}
       <BlogPostHeader post={post} />
 
-      {/* Main Content */}
       <motion.div 
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -88,7 +82,6 @@ const BlogPostDetailPage = () => {
       >
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto space-y-10">
-            {/* Article Content */}
             <BlogPostContent 
               post={post} 
               liked={liked} 
@@ -96,7 +89,6 @@ const BlogPostDetailPage = () => {
               onShare={handleShare} 
             />
             
-            {/* Link to stations service page for the specific article */}
             {isGasStationPost && (
               <div className="my-12 border-t border-b border-gray-100 py-8">
                 <h2 className="text-2xl font-bold mb-6">Stations-service en Corse</h2>
@@ -110,13 +102,10 @@ const BlogPostDetailPage = () => {
               </div>
             )}
             
-            {/* Author Info */}
             <AuthorCard author={post.author} />
             
-            {/* Comments Section */}
             <CommentsSection />
             
-            {/* Related Posts */}
             <RelatedPosts currentPostId={post.id} category={post.category} posts={blogPosts} />
           </div>
         </div>
