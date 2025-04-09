@@ -13,8 +13,10 @@ export const formatContent = (content: string, postId?: string): string => {
   marked.setOptions({
     breaks: true,
     gfm: true,
-    smartLists: true,
-    smartypants: true
+    // Remove the smartLists option as it doesn't exist in the current MarkedOptions type
+    // smartLists: true,  
+    // Remove the smartypants option as it doesn't exist in the current MarkedOptions type
+    // smartypants: true
   });
   
   // Appliquer le style en ligne et convertir en HTML
