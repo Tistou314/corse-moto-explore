@@ -10,7 +10,8 @@ import AccommodationsSection from '@/components/home/AccommodationsSection';
 import CampingSection from '@/components/home/CampingSection';
 import CTASection from '@/components/home/CTASection';
 import GitesSection from '@/components/home/GitesSection';
-import MapSection from '@/components/home/MapSection'; // Include the MapSection
+import MapSection from '@/components/home/MapSection'; 
+import SchemaOrg from '@/components/seo/SchemaOrg';
 import { itineraries } from '@/data/itineraries';
 import { blogPosts } from '@/data/blogPosts';
 import { accommodations } from '@/data/accommodations';
@@ -42,6 +43,9 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SchemaOrg type="website" />
+      <SchemaOrg type="organization" />
+      
       <Navbar />
       
       {/* Hero Section with coastal road image */}

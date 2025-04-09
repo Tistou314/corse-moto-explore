@@ -10,6 +10,7 @@ import ItineraryDescription from '@/components/itineraries/ItineraryDescription'
 import ItineraryPointsOfInterest from '@/components/itineraries/ItineraryPointsOfInterest';
 import ItineraryRating from '@/components/itineraries/ItineraryRating';
 import ItinerarySidebar from '@/components/itineraries/ItinerarySidebar';
+import SchemaOrg from '@/components/seo/SchemaOrg';
 import { toast } from 'sonner';
 
 const ItineraryDetailPage = () => {
@@ -51,6 +52,8 @@ const ItineraryDetailPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SchemaOrg type="itinerary" data={itinerary} />
+      
       <Navbar />
       
       <ItineraryHero itinerary={itinerary} />

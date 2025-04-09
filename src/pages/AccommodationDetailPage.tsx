@@ -13,6 +13,7 @@ import MapBox from '@/components/map/MapBox';
 import { MapLocation } from '@/components/map/types';
 import { Accommodation } from '@/data/accommodations/types';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+import SchemaOrg from '@/components/seo/SchemaOrg';
 
 const AccommodationDetailPage = () => {
   const { id } = useParams();
@@ -51,6 +52,8 @@ const AccommodationDetailPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SchemaOrg type="accommodation" data={accommodation} />
+      
       <Navbar />
       
       <div className="container mx-auto px-4 py-12">

@@ -8,6 +8,7 @@ import { itineraries } from '@/data/itineraries';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search, Filter } from 'lucide-react';
+import SchemaOrg from '@/components/seo/SchemaOrg';
 
 const ItinerairesPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -36,6 +37,8 @@ const ItinerairesPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SchemaOrg type="website" url={window.location.href} />
+      
       <Navbar />
       
       {/* Hero Section avec la nouvelle image de Bonifacio */}

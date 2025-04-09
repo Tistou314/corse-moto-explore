@@ -9,6 +9,7 @@ import AccommodationTypeCards from '@/components/accommodations/AccommodationTyp
 import AccommodationFilters from '@/components/accommodations/AccommodationFilters';
 import BookingTips from '@/components/accommodations/BookingTips';
 import NoResults from '@/components/accommodations/NoResults';
+import SchemaOrg from '@/components/seo/SchemaOrg';
 
 const HebergementPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -84,6 +85,8 @@ const HebergementPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SchemaOrg type="website" url={window.location.href} />
+      
       <Navbar />
       
       <Hero 

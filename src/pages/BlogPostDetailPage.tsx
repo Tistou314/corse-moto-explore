@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import { blogPosts } from '@/data/blogPosts';
 import { BlogPost } from '@/data/blog/types';
 import { useToast } from "@/hooks/use-toast";
+import SchemaOrg from '@/components/seo/SchemaOrg';
 
 import BlogPostHeader from '@/components/blog/BlogPostHeader';
 import BlogPostContent from '@/components/blog/BlogPostContent';
@@ -68,6 +69,8 @@ const BlogPostDetailPage = () => {
       transition={{ duration: 0.5 }}
       className="min-h-screen flex flex-col bg-gray-50"
     >
+      <SchemaOrg type="article" data={post} />
+      
       <Navbar />
       
       <BlogPostHeader post={post} />

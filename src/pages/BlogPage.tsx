@@ -1,13 +1,12 @@
-
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import Hero from '@/components/Hero';
 import { blogPosts } from '@/data/blogPosts';
+import BlogPostsList from '@/components/blog/BlogPostsList';
 import SearchAndFilter from '@/components/blog/SearchAndFilter';
 import FeaturedResources from '@/components/blog/FeaturedResources';
-import BlogPostsList from '@/components/blog/BlogPostsList';
 import NewsletterSignup from '@/components/blog/NewsletterSignup';
+import SchemaOrg from '@/components/seo/SchemaOrg';
 
 const BlogPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -16,7 +15,9 @@ const BlogPage = () => {
   const categories = Array.from(new Set(blogPosts.map(post => post.category))).sort();
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      <SchemaOrg type="blog" />
+      
       <Navbar />
       
       <Hero 
