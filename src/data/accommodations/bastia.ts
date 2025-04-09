@@ -31,7 +31,7 @@ export const bastiaAccommodations: Accommodation[] = [
     description: "Hôtel moderne situé à proximité de Bastia, facile d'accès depuis le port et l'aéroport. Un excellent point de départ pour explorer le Cap Corse ou descendre vers l'intérieur de l'île.",
     priceRange: "85€ - 160€",
     rating: 3.8,
-    image: "https://cdn.pixabay.com/photo/2020/04/21/14/08/videoconferencing-5073196_1280.jpg",
+    image: "/lovable-uploads/0a9d0690-525a-4b87-a78f-c7ec868066a9.png",
     amenities: ["Restaurant", "Bar", "Climatisation", "Wifi gratuit", "Parking"],
     bikerAmenities: ["Parking sécurisé"],
     contact: {
