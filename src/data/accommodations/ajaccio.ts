@@ -11,7 +11,7 @@ export const ajaccioAccommodations: Accommodation[] = [
     description: "Hôtel élégant situé sur la Route des Sanguinaires avec une vue magnifique sur la baie d'Ajaccio. Parfait pour les motards qui veulent explorer la côte ouest de la Corse.",
     priceRange: "120€ - 250€",
     rating: 4.3,
-    image: "https://cdn.pixabay.com/photo/2018/02/24/17/17/window-3178666_1280.jpg",
+    image: "/lovable-uploads/8ad6059c-3be0-4ac9-bcce-f48495f63260.png",
     amenities: ["Piscine", "Restaurant", "Bar", "Climatisation", "Vue mer"],
     bikerAmenities: ["Parking sécurisé", "Itinéraires moto"],
     contact: {
