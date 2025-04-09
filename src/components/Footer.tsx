@@ -1,5 +1,6 @@
+
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Twitter, Mail, MapPin, Phone, Bike } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Mail, MapPin, Phone, Bike, Fuel } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -48,40 +49,41 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/guide" className="text-gray-300 hover:text-white transition-colors flex items-center">
+                <Link to="/guide-pratique" className="text-gray-300 hover:text-white transition-colors flex items-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
-                  Guide Pratique
+                  Guide pratique
                 </Link>
               </li>
+              <li>
+                <Link to="/hebergements" className="text-gray-300 hover:text-white transition-colors flex items-center">
+                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
+                  Hébergements
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* More Links */}
+          <div>
+            <h3 className="text-lg font-heading font-bold mb-5 border-b border-white/10 pb-2">Plus de liens</h3>
+            <ul className="space-y-3">
               <li>
                 <Link to="/blog" className="text-gray-300 hover:text-white transition-colors flex items-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
                   Blog
                 </Link>
               </li>
-            </ul>
-          </div>
-
-          {/* Informations */}
-          <div>
-            <h3 className="text-lg font-heading font-bold mb-5 border-b border-white/10 pb-2">Informations</h3>
-            <ul className="space-y-3">
               <li>
-                <Link to="/mentions-legales" className="text-gray-300 hover:text-white transition-colors flex items-center">
+                <Link to="/gas-stations" className="text-gray-300 hover:text-white transition-colors flex items-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
-                  Mentions Légales
+                  <Fuel className="w-4 h-4 mr-1" />
+                  Stations
                 </Link>
               </li>
               <li>
-                <Link to="/politique-confidentialite" className="text-gray-300 hover:text-white transition-colors flex items-center">
+                <Link to="/contact" className="text-gray-300 hover:text-white transition-colors flex items-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
-                  Politique de Confidentialité
-                </Link>
-              </li>
-              <li>
-                <Link to="/faq" className="text-gray-300 hover:text-white transition-colors flex items-center">
-                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
-                  FAQ
+                  Contact
                 </Link>
               </li>
             </ul>
