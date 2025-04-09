@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -9,16 +8,16 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Search, Filter, X } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { Link } from 'react-router-dom';
+import { Fuel } from 'lucide-react';
 
 const BlogPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [showCategoryMenu, setShowCategoryMenu] = useState(false);
 
-  // Get unique categories and sort them alphabetically
   const categories = Array.from(new Set(blogPosts.map(post => post.category))).sort();
 
-  // Filter posts based on search term and category
   const filteredPosts = blogPosts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
                          post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
@@ -28,12 +27,10 @@ const BlogPage = () => {
     return matchesSearch && matchesCategory;
   });
 
-  // Sort posts by date (newest first)
   const sortedPosts = [...filteredPosts].sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
 
-  // Get category color
   const getCategoryColor = (category: string) => {
     switch(category) {
       case 'Itinéraires et circuits':
@@ -57,7 +54,6 @@ const BlogPage = () => {
     }
   };
 
-  // Close category menu when clicking outside
   useEffect(() => {
     const handleClickOutside = () => {
       setShowCategoryMenu(false);
@@ -73,14 +69,26 @@ const BlogPage = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       
-      {/* Hero Section */}
       <Hero 
         title="Blog & Expériences"
         subtitle="Conseils, récits et expériences pour enrichir votre aventure à moto en Corse."
         imagePath="https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?auto=format&fit=crop&q=80"
       />
 
-      {/* Search and Filters */}
+      <section className="bg-muted py-8">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Link to="/blog/stations-service-corse" className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow flex items-center">
+              <Fuel className="w-8 h-8 mr-4 text-corsica-blue" />
+              <div>
+                <h3 className="text-lg font-semibold">Stations-service en Corse</h3>
+                <p className="text-muted-foreground text-sm">Guide complet des stations pour motards</p>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section className="py-8 bg-white sticky top-16 z-10 border-b">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-4 items-center">
@@ -155,7 +163,6 @@ const BlogPage = () => {
             )}
           </div>
           
-          {/* Category badges for quick filtering */}
           <div className="mt-4 flex flex-wrap gap-2">
             {categories.map(category => (
               <Badge
@@ -180,7 +187,6 @@ const BlogPage = () => {
         </div>
       </section>
 
-      {/* Blog Posts */}
       <section className="py-12 bg-muted flex-grow">
         <div className="container mx-auto px-4">
           <div className="mb-8">
@@ -225,7 +231,6 @@ const BlogPage = () => {
         </div>
       </section>
 
-      {/* Newsletter */}
       <section className="py-12 bg-corsica-blue text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
