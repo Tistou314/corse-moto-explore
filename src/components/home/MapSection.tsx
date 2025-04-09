@@ -1,10 +1,11 @@
 
-import MapBox from '@/components/map/MapBox';
+import { useRef } from 'react';
 import { useMap } from '@/contexts/MapContext';
 import { MapLocation, isWithinCorsica } from '@/components/map/types';
 import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 import { cn } from '@/lib/utils';
 import { itineraries } from '@/data/itineraries';
+import MapBox from '@/components/map/MapBox';
 
 const MapSection = () => {
   const { ref, isVisible } = useScrollAnimation<HTMLElement>();
@@ -49,13 +50,15 @@ const MapSection = () => {
         </div>
 
         <div className="mb-8 h-[400px]">
-          <MapBox 
-            locations={preparePreviewLocations()}
-            height="400px"
-            interactive={false}
-            enableClustering={false}
-            drawRoute={false}
-          />
+          {isMapConfigured && (
+            <MapBox 
+              locations={preparePreviewLocations()}
+              height="400px"
+              interactive={false}
+              enableClustering={false}
+              drawRoute={false}
+            />
+          )}
         </div>
       </div>
     </section>
