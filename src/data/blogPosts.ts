@@ -1,3 +1,4 @@
+
 import { BlogPost } from '@/types/blog';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -12,10 +13,10 @@ import { communautesMotards, spotsPanoramiques } from './blog/ressources-locales
 // Import articles from other categories when available
 import { aspectsPratiquesArticles } from './blog/aspects-pratiques';
 import { cultureArticles } from './blog/culture';
+import { equipementArticles } from './blog/equipement';
 
 // Catégories vides à remplir ultérieurement
 const articlesTechniques: BlogPost[] = [];
-const articlesEquipement: BlogPost[] = [];
 const articlesExperiences: BlogPost[] = [];
 const articlesSaisons: BlogPost[] = [];
 
@@ -83,7 +84,7 @@ export const blogPosts: BlogPost[] = [
   ensureValidBlogPost(routeGrandSud),
   ...articlesTechniques,
   ...aspectsPratiquesArticles.map(ensureValidBlogPost),
-  ...articlesEquipement,
+  ...equipementArticles.map(ensureValidBlogPost),
   ...articlesExperiences,
   ...cultureArticles.map(ensureValidBlogPost),
   ...articlesSaisons,
