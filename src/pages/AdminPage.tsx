@@ -1,6 +1,6 @@
 
 import { useEffect } from "react";
-import { Routes, Route, useNavigate, Link } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import AdminLayout from "@/components/admin/AdminLayout";
 import AdminDashboard from "@/components/admin/AdminDashboard";
@@ -27,13 +27,6 @@ import GasStationCreate from "@/components/admin/gas-stations/GasStationCreate";
 import GasStationEdit from "@/components/admin/gas-stations/GasStationEdit";
 
 const AdminPage = () => {
-  const navigate = useNavigate();
-
-  // Effet pour vérifier l'authentification (à implémenter plus tard si nécessaire)
-  useEffect(() => {
-    // Code d'authentification à ajouter ici si nécessaire
-  }, [navigate]);
-
   return (
     <>
       <Helmet>
@@ -41,28 +34,28 @@ const AdminPage = () => {
       </Helmet>
       <AdminLayout>
         <Routes>
-          <Route path="/" element={<AdminDashboard />} />
-          <Route path="/posts" element={<PostsList />} />
-          <Route path="/posts/new" element={<PostCreate />} />
-          <Route path="/posts/edit/:id" element={<PostEdit />} />
-          <Route path="/categories" element={<CategoriesList />} />
-          <Route path="/categories/new" element={<CategoryCreate />} />
-          <Route path="/categories/edit/:id" element={<CategoryEdit />} />
-          <Route path="/pages" element={<PagesList />} />
-          <Route path="/pages/new" element={<PageCreate />} />
-          <Route path="/pages/edit/:id" element={<PageEdit />} />
-          <Route path="/accommodations" element={<AccommodationsList />} />
-          <Route path="/accommodations/new" element={<AccommodationCreate />} />
-          <Route path="/accommodations/edit/:id" element={<AccommodationEdit />} />
-          <Route path="/points-of-interest" element={<PointsOfInterestList />} />
-          <Route path="/points-of-interest/new" element={<PointOfInterestCreate />} />
-          <Route path="/points-of-interest/edit/:id" element={<PointOfInterestEdit />} />
-          <Route path="/itineraries" element={<ItinerariesList />} />
-          <Route path="/itineraries/new" element={<ItineraryCreate />} />
-          <Route path="/itineraries/edit/:id" element={<ItineraryEdit />} />
-          <Route path="/gas-stations" element={<GasStationsList />} />
-          <Route path="/gas-stations/new" element={<GasStationCreate />} />
-          <Route path="/gas-stations/edit/:id" element={<GasStationEdit />} />
+          <Route index element={<AdminDashboard />} />
+          <Route path="posts" element={<PostsList />} />
+          <Route path="posts/new" element={<PostCreate />} />
+          <Route path="posts/edit/:id" element={<PostEdit />} />
+          <Route path="categories" element={<CategoriesList />} />
+          <Route path="categories/new" element={<CategoryCreate />} />
+          <Route path="categories/edit/:id" element={<CategoryEdit />} />
+          <Route path="pages" element={<PagesList />} />
+          <Route path="pages/new" element={<PageCreate />} />
+          <Route path="pages/edit/:id" element={<PageEdit />} />
+          <Route path="accommodations" element={<AccommodationsList />} />
+          <Route path="accommodations/new" element={<AccommodationCreate />} />
+          <Route path="accommodations/edit/:id" element={<AccommodationEdit />} />
+          <Route path="points-of-interest" element={<PointsOfInterestList />} />
+          <Route path="points-of-interest/new" element={<PointOfInterestCreate />} />
+          <Route path="points-of-interest/edit/:id" element={<PointOfInterestEdit />} />
+          <Route path="itineraries" element={<ItinerariesList />} />
+          <Route path="itineraries/new" element={<ItineraryCreate />} />
+          <Route path="itineraries/edit/:id" element={<ItineraryEdit />} />
+          <Route path="gas-stations" element={<GasStationsList />} />
+          <Route path="gas-stations/new" element={<GasStationCreate />} />
+          <Route path="gas-stations/edit/:id" element={<GasStationEdit />} />
         </Routes>
       </AdminLayout>
     </>
