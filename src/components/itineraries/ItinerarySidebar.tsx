@@ -2,7 +2,7 @@
 import { Itinerary } from '@/data/itineraries';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { Download, Share2, MapPin, Calendar, AlertTriangle, Award, MapIcon, RouteIcon } from 'lucide-react';
+import { Share2, Calendar, AlertTriangle, Award, MapIcon } from 'lucide-react';
 
 interface ItinerarySidebarProps {
   itinerary: Itinerary;
@@ -56,10 +56,6 @@ const ItinerarySidebar = ({ itinerary, nearbyItineraries }: ItinerarySidebarProp
         </ul>
         
         <div className="mt-6 flex flex-col space-y-3">
-          <Button className="w-full bg-corsica-blue hover:bg-corsica-blue/90">
-            <Download className="w-4 h-4 mr-2" />
-            Télécharger le GPX
-          </Button>
           <Button variant="outline" className="w-full">
             <Share2 className="w-4 h-4 mr-2" />
             Partager
