@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { 
@@ -27,12 +28,21 @@ interface PointOfInterest {
 interface ItineraryFormData {
   title: string;
   description: string;
+  fullDescription: string; // Added fullDescription field
   image: string;
   region: string;
   distance: number;
   duration: string;
   difficulty: string;
   mapUrl: string;
+  startPoint: string; // Added startPoint field
+  endPoint: string; // Added endPoint field
+  elevation: string; // Added elevation field
+  roadType: string; // Added roadType field
+  bestSeason: string; // Added bestSeason field
+  roadCondition: string; // Added roadCondition field
+  highlights: string[]; // Added highlights field
+  tips: string[]; // Added tips field
   points: PointOfInterest[];
 }
 
@@ -46,6 +56,10 @@ const regions = [
   "Cap Corse", "Bastia", "Costa Verde", "Corte", "Ajaccio", "Balagne", "Porto", "Sud", "Extrême Sud"
 ];
 
+const roadTypes = [
+  "Route nationale", "Routes départementales", "Routes de montagne", "Routes côtières", "Routes mixtes"
+];
+
 const ItineraryEdit = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
@@ -55,12 +69,21 @@ const ItineraryEdit = () => {
     defaultValues: {
       title: "",
       description: "",
+      fullDescription: "", // Initialize fullDescription
       image: "",
       region: "",
       distance: 0,
       duration: "",
       difficulty: "",
       mapUrl: "",
+      startPoint: "", // Initialize startPoint
+      endPoint: "", // Initialize endPoint
+      elevation: "", // Initialize elevation
+      roadType: "", // Initialize roadType
+      bestSeason: "", // Initialize bestSeason
+      roadCondition: "", // Initialize roadCondition
+      highlights: [], // Initialize highlights
+      tips: [], // Initialize tips
       points: [],
     },
   });
@@ -72,12 +95,21 @@ const ItineraryEdit = () => {
         form.reset({
           title: itinerary.title,
           description: itinerary.description,
+          fullDescription: itinerary.fullDescription || "", // Set fullDescription from data
           image: itinerary.image,
           region: itinerary.region,
           distance: parseInt(itinerary.distance.toString()), // Convert to number
           duration: itinerary.duration,
           difficulty: itinerary.difficulty,
           mapUrl: "",
+          startPoint: itinerary.startPoint || "", // Set startPoint from data
+          endPoint: itinerary.endPoint || "", // Set endPoint from data
+          elevation: itinerary.elevation || "", // Set elevation from data
+          roadType: itinerary.roadType || "", // Set roadType from data
+          bestSeason: itinerary.bestSeason || "", // Set bestSeason from data
+          roadCondition: itinerary.roadCondition || "", // Set roadCondition from data
+          highlights: itinerary.highlights || [], // Set highlights from data
+          tips: itinerary.tips || [], // Set tips from data
           points: Array.isArray(itinerary.pointsOfInterest) 
             ? itinerary.pointsOfInterest.map(poi => {
                 if (typeof poi === 'string') {
@@ -109,6 +141,8 @@ const ItineraryEdit = () => {
   }, [id, navigate, form]);
   
   const points = form.watch("points");
+  const highlightsList = form.watch("highlights") || [];
+  const tipsList = form.watch("tips") || [];
   
   const addPoint = () => {
     const currentPoints = form.getValues("points") || [];
@@ -124,6 +158,39 @@ const ItineraryEdit = () => {
     const currentPoints = [...form.getValues("points")];
     currentPoints[index][field] = value;
     form.setValue("points", currentPoints);
+  };
+  
+  // Add methods for highlights and tips
+  const addHighlight = () => {
+    const currentHighlights = form.getValues("highlights") || [];
+    form.setValue("highlights", [...currentHighlights, ""]);
+  };
+  
+  const removeHighlight = (index: number) => {
+    const currentHighlights = form.getValues("highlights") || [];
+    form.setValue("highlights", currentHighlights.filter((_, i) => i !== index));
+  };
+  
+  const updateHighlight = (index: number, value: string) => {
+    const currentHighlights = [...(form.getValues("highlights") || [])];
+    currentHighlights[index] = value;
+    form.setValue("highlights", currentHighlights);
+  };
+  
+  const addTip = () => {
+    const currentTips = form.getValues("tips") || [];
+    form.setValue("tips", [...currentTips, ""]);
+  };
+  
+  const removeTip = (index: number) => {
+    const currentTips = form.getValues("tips") || [];
+    form.setValue("tips", currentTips.filter((_, i) => i !== index));
+  };
+  
+  const updateTip = (index: number, value: string) => {
+    const currentTips = [...(form.getValues("tips") || [])];
+    currentTips[index] = value;
+    form.setValue("tips", currentTips);
   };
   
   const onSubmit = (data: ItineraryFormData) => {
@@ -170,14 +237,38 @@ const ItineraryEdit = () => {
                 name="description"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Description</FormLabel>
+                    <FormLabel>Description courte</FormLabel>
                     <FormControl>
                       <Textarea 
-                        placeholder="Description de l'itinéraire" 
+                        placeholder="Description courte de l'itinéraire" 
                         className="min-h-[120px]" 
                         {...field} 
                       />
                     </FormControl>
+                    <FormDescription>
+                      Une brève description qui apparaîtra dans les listes et cartes d'itinéraires
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="fullDescription"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Description complète</FormLabel>
+                    <FormControl>
+                      <Textarea 
+                        placeholder="Description détaillée de l'itinéraire" 
+                        className="min-h-[300px]" 
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormDescription>
+                      Description détaillée qui apparaîtra sur la page de l'itinéraire. Vous pouvez utiliser du Markdown pour le formatage.
+                    </FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -285,6 +376,100 @@ const ItineraryEdit = () => {
                 )}
               />
               
+              <div className="grid grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="startPoint"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Point de départ</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Point de départ" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="endPoint"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Point d'arrivée</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Point d'arrivée" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              
+              <FormField
+                control={form.control}
+                name="elevation"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Dénivelé</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Ex: 850m" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="roadType"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Type de route</FormLabel>
+                    <FormControl>
+                      <select
+                        className="w-full h-10 rounded-md border border-input bg-background px-3 py-2"
+                        {...field}
+                      >
+                        <option value="">Sélectionner un type de route</option>
+                        {roadTypes.map(type => (
+                          <option key={type} value={type}>{type}</option>
+                        ))}
+                      </select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="bestSeason"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Meilleure saison</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Ex: Mai à Octobre" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="roadCondition"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>État des routes</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Ex: Bon état général" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
               <FormField
                 control={form.control}
                 name="mapUrl"
@@ -304,6 +489,7 @@ const ItineraryEdit = () => {
             </div>
           </div>
           
+          {/* Points d'intérêt */}
           <div className="space-y-6 border rounded-md p-4">
             <div className="flex justify-between items-center">
               <h3 className="text-lg font-medium">Points d'intérêt sur l'itinéraire</h3>
@@ -362,6 +548,84 @@ const ItineraryEdit = () => {
             ) : (
               <div className="text-center py-4 text-muted-foreground">
                 Aucun point d'intérêt ajouté pour cet itinéraire.
+              </div>
+            )}
+          </div>
+          
+          {/* Highlights (Points forts) */}
+          <div className="space-y-6 border rounded-md p-4">
+            <div className="flex justify-between items-center">
+              <h3 className="text-lg font-medium">Points forts de l'itinéraire</h3>
+              <Button type="button" onClick={addHighlight} variant="outline" className="flex items-center">
+                <Plus className="mr-2 h-4 w-4" />
+                Ajouter un point fort
+              </Button>
+            </div>
+            
+            {highlightsList && highlightsList.length > 0 ? (
+              <div className="space-y-4">
+                {highlightsList.map((highlight, index) => (
+                  <div key={index} className="border rounded-md p-4 relative flex items-center">
+                    <Input
+                      value={highlight}
+                      onChange={(e) => updateHighlight(index, e.target.value)}
+                      placeholder="Point fort de l'itinéraire"
+                      className="flex-grow"
+                    />
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="icon"
+                      className="ml-2"
+                      onClick={() => removeHighlight(index)}
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-4 text-muted-foreground">
+                Aucun point fort ajouté pour cet itinéraire.
+              </div>
+            )}
+          </div>
+          
+          {/* Tips (Conseils) */}
+          <div className="space-y-6 border rounded-md p-4">
+            <div className="flex justify-between items-center">
+              <h3 className="text-lg font-medium">Conseils pour les motards</h3>
+              <Button type="button" onClick={addTip} variant="outline" className="flex items-center">
+                <Plus className="mr-2 h-4 w-4" />
+                Ajouter un conseil
+              </Button>
+            </div>
+            
+            {tipsList && tipsList.length > 0 ? (
+              <div className="space-y-4">
+                {tipsList.map((tip, index) => (
+                  <div key={index} className="border rounded-md p-4 relative flex items-center">
+                    <Input
+                      value={tip}
+                      onChange={(e) => updateTip(index, e.target.value)}
+                      placeholder="Conseil pour les motards"
+                      className="flex-grow"
+                    />
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="icon"
+                      className="ml-2"
+                      onClick={() => removeTip(index)}
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-4 text-muted-foreground">
+                Aucun conseil ajouté pour cet itinéraire.
               </div>
             )}
           </div>
