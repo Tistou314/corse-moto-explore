@@ -148,13 +148,52 @@ const ItineraryEdit = () => {
   const onSubmit = (data: ItineraryFormData) => {
     setIsLoading(true);
     
-    setTimeout(() => {
-      console.log("Itinéraire mis à jour:", data);
+    try {
+      // Trouver l'index de l'itinéraire actuel
+      const itineraryIndex = itineraries.findIndex(itin => itin.id === id);
       
+      if (itineraryIndex !== -1) {
+        // Mettre à jour l'itinéraire dans le tableau
+        const updatedItinerary = {
+          ...itineraries[itineraryIndex],
+          title: data.title,
+          description: data.description,
+          fullDescription: data.fullDescription,
+          image: data.image,
+          region: data.region,
+          distance: data.distance,
+          duration: data.duration,
+          difficulty: data.difficulty as 'facile' | 'moyen' | 'difficile',
+          startPoint: data.startPoint,
+          endPoint: data.endPoint,
+          elevation: data.elevation,
+          roadType: data.roadType,
+          bestSeason: data.bestSeason,
+          roadCondition: data.roadCondition,
+          highlights: data.highlights,
+          tips: data.tips,
+          pointsOfInterest: data.points
+        };
+        
+        // Remplacer l'itinéraire dans le tableau
+        itineraries[itineraryIndex] = updatedItinerary;
+        
+        console.log("Itinéraire mis à jour:", updatedItinerary);
+        
+        // Simuler un délai de sauvegarde
+        setTimeout(() => {
+          setIsLoading(false);
+          toast.success("Itinéraire mis à jour avec succès");
+          // Rediriger vers la page de l'itinéraire mis à jour
+          navigate(`/itineraires/${id}`);
+        }, 1000);
+      } else {
+        throw new Error("Itinéraire non trouvé");
+      }
+    } catch (error) {
       setIsLoading(false);
-      toast.success("Itinéraire mis à jour avec succès");
-      navigate("/admin/itineraries");
-    }, 1000);
+      toast.error("Erreur lors de la mise à jour: " + (error as Error).message);
+    }
   };
   
   return (

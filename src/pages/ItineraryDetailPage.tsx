@@ -17,11 +17,15 @@ const ItineraryDetailPage = () => {
   const { id } = useParams<{ id: string }>();
   const [itinerary, setItinerary] = useState<Itinerary | null>(null);
 
+  // Ajouter un effet pour recharger l'itinéraire à chaque rendu
   useEffect(() => {
     if (id) {
       const foundItinerary = itineraries.find(item => item.id === id);
       if (foundItinerary) {
+        console.log("Itinéraire chargé:", foundItinerary);
         setItinerary(foundItinerary);
+      } else {
+        console.error("Itinéraire non trouvé avec l'ID:", id);
       }
     }
   }, [id]);
