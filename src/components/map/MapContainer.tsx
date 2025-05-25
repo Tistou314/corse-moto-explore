@@ -9,7 +9,6 @@ interface MapContainerProps {
 }
 
 const MapContainer = ({ locations, center, zoom }: MapContainerProps) => {
-  // Log pour debug
   console.log('MapContainer rendering with locations:', locations.length);
   
   if (locations.length === 0) {
@@ -31,8 +30,8 @@ const MapContainer = ({ locations, center, zoom }: MapContainerProps) => {
           locations={locations} 
           height="600px"
           enableClustering={true}
-          zoom={zoom || 8} // Utiliser le zoom fourni ou une valeur par défaut
-          center={center} // Utiliser le centre fourni ou la valeur par défaut de MapBox
+          zoom={zoom || 8}
+          center={center}
           drawRoute={false}
         />
       </div>

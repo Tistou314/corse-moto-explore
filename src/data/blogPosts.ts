@@ -1,6 +1,5 @@
 
 import { BlogPost } from '@/types/blog';
-import { v4 as uuidv4 } from 'uuid';
 import { standardAuthor } from './authors';
 
 // Import articles from itineraires
@@ -26,13 +25,13 @@ const ensureValidBlogPost = (post: any): BlogPost => {
   if (!post.readingTime) {
     return {
       ...post,
-      readingTime: `${Math.floor(Math.random() * 5) + 3} min`, // Default reading time between 3-7 minutes
-      author: standardAuthor // Apply standard author
+      readingTime: `${Math.floor(Math.random() * 5) + 3} min`,
+      author: standardAuthor
     };
   }
   return {
     ...post as BlogPost,
-    author: standardAuthor // Apply standard author
+    author: standardAuthor
   };
 };
 

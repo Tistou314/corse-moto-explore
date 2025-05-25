@@ -5,7 +5,7 @@ import { MapBoxProps, CorsicaCenter } from './types';
 import { useMapbox } from './useMapbox';
 import LocationPopup from './LocationPopup';
 import { Badge } from '@/components/ui/badge';
-import { Info, Map as MapIcon } from 'lucide-react';
+import { Info } from 'lucide-react';
 
 const MapBox = ({ 
   center = CorsicaCenter, 
@@ -25,11 +25,9 @@ const MapBox = ({
     enableClustering
   );
 
-  // On utilise une ref pour éviter des renders inutiles
   const locationCountRef = useRef(locations.length);
   const [displayCount, setDisplayCount] = useState(locations.length);
 
-  // Mise à jour du compteur uniquement quand nécessaire
   useEffect(() => {
     if (locationCountRef.current !== locations.length) {
       locationCountRef.current = locations.length;
@@ -37,7 +35,6 @@ const MapBox = ({
     }
   }, [locations.length]);
 
-  // Handle token not being available
   if (!mapboxToken) {
     return (
       <div className="text-red-500 p-4 bg-red-50 rounded">

@@ -11,13 +11,11 @@ import ItineraryPointsOfInterest from '@/components/itineraries/ItineraryPointsO
 import ItineraryRating from '@/components/itineraries/ItineraryRating';
 import ItinerarySidebar from '@/components/itineraries/ItinerarySidebar';
 import SchemaOrg from '@/components/seo/SchemaOrg';
-import { toast } from 'sonner';
 
 const ItineraryDetailPage = () => {
   const { id } = useParams<{ id: string }>();
   const [itinerary, setItinerary] = useState<Itinerary | null>(null);
 
-  // Ajouter un effet pour recharger l'itinéraire à chaque rendu
   useEffect(() => {
     if (id) {
       const foundItinerary = itineraries.find(item => item.id === id);
@@ -50,7 +48,6 @@ const ItineraryDetailPage = () => {
     );
   }
 
-  // Get nearby itineraries (same region, excluding current)
   const nearbyItineraries = itineraries
     .filter(item => item.id !== itinerary.id && item.region === itinerary.region);
 
@@ -62,18 +59,15 @@ const ItineraryDetailPage = () => {
       
       <ItineraryHero itinerary={itinerary} />
 
-      {/* Main Content */}
       <div className="bg-white py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Left Column - Main Description */}
             <div className="lg:col-span-2">
               <ItineraryDescription itinerary={itinerary} />
               <ItineraryPointsOfInterest itinerary={itinerary} />
               <ItineraryRating />
             </div>
 
-            {/* Right Column - Sidebar */}
             <div>
               <ItinerarySidebar 
                 itinerary={itinerary}
