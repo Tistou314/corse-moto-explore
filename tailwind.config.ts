@@ -56,7 +56,7 @@ export default {
 					// Palette principale modernisée avec des tons plus doux
 					azure: '#0EA5E9',        // Méditerranée moderne
 					emerald: '#10B981',      // Forêts corses
-					honey: '#D97706',        // Miel corse (remplace l'amber agressif)
+					sage: '#84CC16',         // Vert doux (remplace le honey)
 					coral: '#F97316',        // Couchers de soleil
 					ruby: '#DC2626',         // Accent drapeau
 					slate: '#475569',        // Granite des montagnes
@@ -76,11 +76,11 @@ export default {
 					emerald600: '#059669',
 					emerald900: '#064E3B',
 					
-					honey50: '#FFF7ED',      // Tons miel plus doux
-					honey100: '#FFEDD5',
-					honey500: '#D97706',     // Miel principal
-					honey600: '#C2410C',     // Plus foncé pour les hover
-					honey900: '#9A3412'      // Le plus foncé
+					sage50: '#F7FEE7',        // Tons sage plus doux
+					sage100: '#ECFCCB',
+					sage500: '#84CC16',       // Sage principal
+					sage600: '#65A30D',       // Plus foncé pour les hover
+					sage900: '#365314'        // Le plus foncé
 				}
 			},
 			borderRadius: {
@@ -118,14 +118,14 @@ export default {
 				'medium': '0 4px 25px -2px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
 				'strong': '0 10px 40px -4px rgba(0, 0, 0, 0.18), 0 20px 25px -5px rgba(0, 0, 0, 0.1)',
 				'glow': '0 0 20px rgba(14, 165, 233, 0.15)',
-				'glow-honey': '0 0 20px rgba(217, 119, 6, 0.15)'
+				'glow-sage': '0 0 20px rgba(132, 204, 22, 0.15)'
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
 				'corsica-sunset': 'linear-gradient(135deg, #F97316 0%, #DC2626 100%)',
 				'corsica-sea': 'linear-gradient(135deg, #0EA5E9 0%, #10B981 100%)',
-				'corsica-honey': 'linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%)'
+				'corsica-sage': 'linear-gradient(135deg, #F7FEE7 0%, #ECFCCB 100%)'
 			},
 			keyframes: {
 				'accordion-down': {

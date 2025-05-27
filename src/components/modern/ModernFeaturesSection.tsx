@@ -30,8 +30,8 @@ const features = [
     icon: Camera,
     title: "Spots Photographiques",
     description: "Les plus beaux points de vue et lieux incontournables pour capturer la beauté de la Corse.",
-    color: "corsica-honey",
-    gradient: "from-corsica-honey50 to-corsica-honey100"
+    color: "corsica-slate",
+    gradient: "from-slate-50 to-slate-100"
   },
   {
     icon: Navigation,
@@ -44,8 +44,8 @@ const features = [
     icon: Compass,
     title: "Guide Local",
     description: "Conseils d'experts locaux, culture corse, spécialités culinaires et événements à ne pas manquer.",
-    color: "corsica-slate",
-    gradient: "from-slate-50 to-slate-100"
+    color: "corsica-emerald",
+    gradient: "from-corsica-emerald50 to-corsica-emerald100"
   }
 ];
 
