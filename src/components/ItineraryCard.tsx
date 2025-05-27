@@ -15,9 +15,9 @@ interface ItineraryCardProps {
 }
 
 const difficultyColors = {
-  facile: 'bg-green-100 text-green-800',
-  moyen: 'bg-yellow-100 text-yellow-800',
-  difficile: 'bg-red-100 text-red-800',
+  facile: 'bg-corsica-emerald/20 text-corsica-emerald border-corsica-emerald/30',
+  moyen: 'bg-corsica-coral/20 text-corsica-coral border-corsica-coral/30',
+  difficile: 'bg-red-100 text-red-800 border-red-200',
 };
 
 const ItineraryCard = ({
@@ -55,8 +55,8 @@ const ItineraryCard = ({
   const cardImage = image || fallbackImage;
   
   return (
-    <div className="itinerary-card flex flex-col h-full">
-      <div className="relative h-48 overflow-hidden">
+    <div className="itinerary-card flex flex-col h-full bg-white rounded-lg shadow-soft hover:shadow-medium transition-all duration-300">
+      <div className="relative h-48 overflow-hidden rounded-t-lg">
         <OptimizedImage 
           src={cardImage} 
           alt={title} 
@@ -71,21 +71,21 @@ const ItineraryCard = ({
         </div>
       </div>
       <div className="p-5 flex flex-col flex-grow">
-        <h3 className="text-xl font-bold mb-2">{title}</h3>
-        <p className="text-muted-foreground mb-4 line-clamp-2">{description}</p>
+        <h3 className="text-xl font-bold mb-2 text-corsica-charcoal">{title}</h3>
+        <p className="text-corsica-slate mb-4 line-clamp-2">{description}</p>
         <div className="flex items-center space-x-4 mb-4 mt-auto">
           <div className="flex items-center">
-            <Clock className="h-4 w-4 text-muted-foreground mr-1" />
-            <span className="text-sm text-muted-foreground">{duration}</span>
+            <Clock className="h-4 w-4 text-corsica-azure mr-1" />
+            <span className="text-sm text-corsica-slate">{duration}</span>
           </div>
           <div className="flex items-center">
-            <Route className="h-4 w-4 text-muted-foreground mr-1" />
-            <span className="text-sm text-muted-foreground">{distance}</span>
+            <Route className="h-4 w-4 text-corsica-azure mr-1" />
+            <span className="text-sm text-corsica-slate">{distance}</span>
           </div>
         </div>
         <Link 
           to={`/itineraires/${id}`} 
-          className="text-corsica-blue hover:text-corsica-blue/80 font-medium flex items-center"
+          className="text-corsica-azure hover:text-corsica-azure/80 font-medium flex items-center"
         >
           Voir l'itinéraire
           <ArrowRight className="ml-1 h-4 w-4" />
