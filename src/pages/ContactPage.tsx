@@ -6,16 +6,16 @@ import ContactForm from '@/components/ContactForm';
 
 const ContactPage = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white">
       <Navbar />
       
       {/* Main Content */}
-      <div className="flex-grow bg-muted py-12">
+      <div className="flex-grow bg-gray-50 py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold mb-4">Contactez-nous</h1>
-              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              <h1 className="text-4xl font-bold mb-4 text-gray-900">Contactez-nous</h1>
+              <p className="text-gray-600 text-lg max-w-2xl mx-auto">
                 Une question sur un itinéraire ? Besoin de conseils pour votre voyage à moto en Corse ?
                 N'hésitez pas à nous contacter !
               </p>
@@ -23,43 +23,43 @@ const ContactPage = () => {
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Contact Form */}
-              <div className="lg:col-span-2 bg-white p-8 rounded-lg shadow-sm">
-                <h2 className="text-2xl font-bold mb-6">Envoyez-nous un message</h2>
+              <div className="lg:col-span-2 bg-white p-8 rounded-lg shadow-sm border">
+                <h2 className="text-2xl font-bold mb-6 text-gray-900">Envoyez-nous un message</h2>
                 <ContactForm />
               </div>
 
               {/* Contact Info */}
-              <div className="bg-white p-8 rounded-lg shadow-sm">
-                <h2 className="text-2xl font-bold mb-6">Informations</h2>
+              <div className="bg-white p-8 rounded-lg shadow-sm border">
+                <h2 className="text-2xl font-bold mb-6 text-gray-900">Informations</h2>
                 
                 <div className="space-y-6">
                   <div className="flex items-start">
                     <Mail className="w-5 h-5 text-corsica-blue mt-1 mr-3" />
                     <div>
-                      <h3 className="font-medium">Email</h3>
-                      <p className="text-muted-foreground">contact@lacorseamoto.fr</p>
+                      <h3 className="font-medium text-gray-900">Email</h3>
+                      <p className="text-gray-600">contact@lacorseamoto.fr</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start">
                     <MapPin className="w-5 h-5 text-corsica-blue mt-1 mr-3" />
                     <div>
-                      <h3 className="font-medium">Localisation</h3>
-                      <p className="text-muted-foreground">Corse, France</p>
+                      <h3 className="font-medium text-gray-900">Localisation</h3>
+                      <p className="text-gray-600">Corse, France</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start">
                     <Clock className="w-5 h-5 text-corsica-blue mt-1 mr-3" />
                     <div>
-                      <h3 className="font-medium">Horaires de réponse</h3>
-                      <p className="text-muted-foreground">Lundi - Vendredi: 9h - 18h</p>
+                      <h3 className="font-medium text-gray-900">Horaires de réponse</h3>
+                      <p className="text-gray-600">Lundi - Vendredi: 9h - 18h</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="mt-8 pt-6 border-t">
-                  <h3 className="font-medium mb-3">Suivez-nous</h3>
+                  <h3 className="font-medium mb-3 text-gray-900">Suivez-nous</h3>
                   <div className="flex space-x-4">
                     <a href="#" className="bg-corsica-blue text-white p-2 rounded-full hover:bg-corsica-blue/80 transition-colors">
                       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -85,32 +85,32 @@ const ContactPage = () => {
 
             {/* FAQ Section */}
             <div className="mt-16">
-              <h2 className="text-2xl font-bold mb-6 text-center">Questions fréquentes</h2>
-              <div className="bg-white rounded-lg shadow-sm p-6">
+              <h2 className="text-2xl font-bold mb-6 text-center text-gray-900">Questions fréquentes</h2>
+              <div className="bg-white rounded-lg shadow-sm p-6 border">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <h3 className="font-bold text-lg mb-2">Quand est-il préférable de visiter la Corse à moto ?</h3>
-                    <p className="text-muted-foreground">
+                    <h3 className="font-bold text-lg mb-2 text-gray-900">Quand est-il préférable de visiter la Corse à moto ?</h3>
+                    <p className="text-gray-600">
                       Les meilleures périodes sont mai-juin et septembre-octobre, offrant un climat agréable 
                       et moins d'affluence touristique.
                     </p>
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg mb-2">Quels documents dois-je apporter pour ma moto ?</h3>
-                    <p className="text-muted-foreground">
+                    <h3 className="font-bold text-lg mb-2 text-gray-900">Quels documents dois-je apporter pour ma moto ?</h3>
+                    <p className="text-gray-600">
                       Votre permis de conduire, carte grise, attestation d'assurance et carte verte sont nécessaires.
                     </p>
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg mb-2">Les itinéraires sont-ils adaptés aux débutants ?</h3>
-                    <p className="text-muted-foreground">
+                    <h3 className="font-bold text-lg mb-2 text-gray-900">Les itinéraires sont-ils adaptés aux débutants ?</h3>
+                    <p className="text-gray-600">
                       Certains itinéraires sont accessibles aux débutants, d'autres plus techniques. Chaque parcours 
                       indique son niveau de difficulté.
                     </p>
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg mb-2">Puis-je télécharger les tracés GPS ?</h3>
-                    <p className="text-muted-foreground">
+                    <h3 className="font-bold text-lg mb-2 text-gray-900">Puis-je télécharger les tracés GPS ?</h3>
+                    <p className="text-gray-600">
                       Oui, tous nos itinéraires proposent des traces GPS téléchargeables aux formats GPX et KML.
                     </p>
                   </div>
