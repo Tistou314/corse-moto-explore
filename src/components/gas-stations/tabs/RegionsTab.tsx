@@ -20,7 +20,7 @@ const RegionsTab = ({ regions, groupedByRegion, setActiveRegion, setActiveTab }:
           <Button
             key={region}
             variant="outline"
-            className="justify-start h-auto py-4 px-4" 
+            className="justify-start h-auto py-4 px-4 border-corsica-azure text-corsica-azure hover:bg-corsica-azure hover:text-white transition-colors" 
             onClick={() => {
               setActiveRegion(region);
               setActiveTab("list"); // Changer automatiquement vers l'onglet "Liste des stations"
