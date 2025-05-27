@@ -59,27 +59,27 @@ const AccommodationTypeCards = () => {
           {accommodationTypesInfo.map((type, index) => (
             <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
               <div className="p-1">
-                <Card className="overflow-hidden">
+                <Card className="overflow-hidden bg-white hover:shadow-lg transition-shadow">
                   {type.image && (
                     <div className="w-full h-48 overflow-hidden">
-                      <AspectRatio ratio={16 / 9} className="bg-muted">
+                      <AspectRatio ratio={16 / 9} className="bg-corsica-pearl">
                         <OptimizedImage 
                           src={type.image} 
                           alt={type.title} 
                           className="object-cover w-full h-full"
-                          priority={index < 2} // Prioritize loading for first 2 images
+                          priority={index < 2}
                         />
                       </AspectRatio>
                     </div>
                   )}
-                  <CardHeader>
+                  <CardHeader className="bg-corsica-azure text-white">
                     <div className="flex items-center space-x-4">
-                      <type.icon className="w-6 h-6 text-primary" />
-                      <CardTitle className="text-lg">{type.title}</CardTitle>
+                      <type.icon className="w-6 h-6 text-white" />
+                      <CardTitle className="text-lg text-white">{type.title}</CardTitle>
                     </div>
                   </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">{type.description}</p>
+                  <CardContent className="bg-white">
+                    <p className="text-corsica-charcoal">{type.description}</p>
                   </CardContent>
                 </Card>
               </div>
@@ -92,15 +92,15 @@ const AccommodationTypeCards = () => {
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
         {accommodationTypesInfo.map((type, index) => (
-          <Card key={index} className="hover:shadow-lg transition-shadow">
-            <CardHeader>
+          <Card key={index} className="hover:shadow-lg transition-shadow bg-white border-corsica-azure/20">
+            <CardHeader className="bg-corsica-azure text-white">
               <div className="flex items-center space-x-4">
-                <type.icon className="w-8 h-8 text-primary" />
-                <CardTitle>{type.title}</CardTitle>
+                <type.icon className="w-8 h-8 text-white" />
+                <CardTitle className="text-white">{type.title}</CardTitle>
               </div>
             </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">{type.description}</p>
+            <CardContent className="bg-white">
+              <p className="text-corsica-charcoal">{type.description}</p>
             </CardContent>
           </Card>
         ))}
