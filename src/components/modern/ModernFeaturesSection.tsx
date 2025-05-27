@@ -30,8 +30,8 @@ const features = [
     icon: Camera,
     title: "Spots Photographiques",
     description: "Les plus beaux points de vue et lieux incontournables pour capturer la beauté de la Corse.",
-    color: "corsica-amber",
-    gradient: "from-corsica-amber50 to-corsica-amber100"
+    color: "corsica-honey",
+    gradient: "from-corsica-honey50 to-corsica-honey100"
   },
   {
     icon: Navigation,
