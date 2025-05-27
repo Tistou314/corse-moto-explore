@@ -54,7 +54,7 @@ const BlogPage = () => {
         </div>
       </section>
 
-      <section className="py-12 bg-corsica-blue text-white">
+      <section className="py-12 bg-corsica-azure text-white">
         <NewsletterSignup />
       </section>
 

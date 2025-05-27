@@ -4,14 +4,14 @@ import { Facebook, Instagram, Twitter, Mail, MapPin, Bike, Settings } from 'luci
 
 const Footer = () => {
   return (
-    <footer className="bg-corsica-dark text-white pt-16 pb-8">
+    <footer className="bg-corsica-charcoal text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* About */}
           <div>
             <div className="flex items-center space-x-3 mb-5">
               <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                <Bike className="w-6 h-6 text-corsica-red" />
+                <Bike className="w-6 h-6 text-corsica-azure" />
               </div>
               <h3 className="text-xl font-heading font-bold">La Corse à Moto</h3>
             </div>
@@ -20,13 +20,13 @@ const Footer = () => {
               des conseils pratiques et des recommandations d'hébergement.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-white/80 hover:text-corsica-orange transition-colors w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20" aria-label="Facebook">
+              <a href="#" className="text-white/80 hover:text-corsica-coral transition-colors w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20" aria-label="Facebook">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="text-white/80 hover:text-corsica-orange transition-colors w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20" aria-label="Instagram">
+              <a href="#" className="text-white/80 hover:text-corsica-coral transition-colors w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20" aria-label="Instagram">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="text-white/80 hover:text-corsica-orange transition-colors w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20" aria-label="Twitter">
+              <a href="#" className="text-white/80 hover:text-corsica-coral transition-colors w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20" aria-label="Twitter">
                 <Twitter className="w-5 h-5" />
               </a>
             </div>
@@ -38,25 +38,25 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <Link to="/" className="text-gray-300 hover:text-white transition-colors flex items-center">
-                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-coral mr-2 opacity-75"></span>
                   Accueil
                 </Link>
               </li>
               <li>
                 <Link to="/itineraires" className="text-gray-300 hover:text-white transition-colors flex items-center">
-                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-coral mr-2 opacity-75"></span>
                   Itinéraires
                 </Link>
               </li>
               <li>
                 <Link to="/guide-pratique" className="text-gray-300 hover:text-white transition-colors flex items-center">
-                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-coral mr-2 opacity-75"></span>
                   Guide pratique
                 </Link>
               </li>
               <li>
                 <Link to="/hebergements" className="text-gray-300 hover:text-white transition-colors flex items-center">
-                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-coral mr-2 opacity-75"></span>
                   Hébergements
                 </Link>
               </li>
@@ -69,25 +69,25 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <Link to="/blog" className="text-gray-300 hover:text-white transition-colors flex items-center">
-                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-coral mr-2 opacity-75"></span>
                   Blog
                 </Link>
               </li>
               <li>
                 <Link to="/gas-stations" className="text-gray-300 hover:text-white transition-colors flex items-center">
-                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-coral mr-2 opacity-75"></span>
                   Stations
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="text-gray-300 hover:text-white transition-colors flex items-center">
-                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-coral mr-2 opacity-75"></span>
                   Contact
                 </Link>
               </li>
               <li>
                 <Link to="/admin" className="text-gray-300 hover:text-white transition-colors flex items-center">
-                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-orange mr-2 opacity-75"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-coral mr-2 opacity-75"></span>
                   Administration
                 </Link>
               </li>

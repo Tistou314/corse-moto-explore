@@ -24,7 +24,7 @@ const features = [
     title: "Hébergements Sélectionnés",
     description: "Hôtels, gîtes et campings adaptés aux motards avec services dédiés et emplacements sécurisés.",
     color: "corsica-coral",
-    gradient: "from-orange-50 to-orange-100"
+    gradient: "from-corsica-coral/10 to-corsica-coral/20"
   },
   {
     icon: Camera,

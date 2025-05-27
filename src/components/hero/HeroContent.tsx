@@ -24,7 +24,7 @@ const HeroContent = ({ title, subtitle, cta }: HeroContentProps) => {
         </p>
         {cta && (
           <Link to={cta.link}>
-            <Button className="bg-corsica-orange hover:bg-corsica-orange/90 text-white px-8 py-6 text-lg rounded-xl font-medium shadow-lg hover:shadow-xl transition-all">
+            <Button className="bg-corsica-coral hover:bg-corsica-coral/90 text-white px-8 py-6 text-lg rounded-xl font-medium shadow-lg hover:shadow-xl transition-all">
               {cta.text}
             </Button>
           </Link>

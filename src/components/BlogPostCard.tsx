@@ -41,9 +41,9 @@ const BlogPostCard = ({
       case 'Conseils saisonniers':
         return 'bg-corsica-coral';
       case 'Aspects techniques':
-        return 'bg-blue-500';
+        return 'bg-corsica-azure';
       case 'Ressources locales':
-        return 'bg-green-500';
+        return 'bg-corsica-emerald';
       default:
         return 'bg-corsica-azure';
     }
