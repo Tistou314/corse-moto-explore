@@ -69,7 +69,15 @@ const ItinerariesSection = ({ itineraries }: ItinerariesSectionProps) => {
                 transitionDelay: isVisible ? `${(index + 1) * 150}ms` : '0ms'
               }}
             >
-              <ItineraryCard itinerary={itinerary} />
+              <ItineraryCard 
+                id={itinerary.id}
+                title={itinerary.title}
+                description={itinerary.description}
+                image={itinerary.image}
+                duration={itinerary.duration}
+                distance={itinerary.distance}
+                difficulty={itinerary.difficulty}
+              />
             </div>
           ))}
         </div>
