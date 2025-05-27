@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import AccommodationCard from '@/components/AccommodationCard';
@@ -29,7 +30,7 @@ const AccommodationsSection = ({ accommodations }: AccommodationsSectionProps) =
             </p>
           </div>
           <Link to="/hebergements">
-            <Button variant="outline" className="mt-4 md:mt-0">
+            <Button variant="outline" className="mt-4 md:mt-0 border-corsica-azure text-corsica-azure hover:bg-corsica-azure hover:text-white">
               Voir tous les hébergements
             </Button>
           </Link>

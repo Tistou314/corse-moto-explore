@@ -15,9 +15,9 @@ const AccommodationCard = ({ accommodation }: AccommodationCardProps) => {
 
   // Map type to color
   const typeColors = {
-    hotel: "bg-blue-100 text-blue-800",
-    gite: "bg-green-100 text-green-800",
-    camping: "bg-corsica-sage100 text-corsica-sage600"
+    hotel: "bg-corsica-azure text-white",
+    gite: "bg-corsica-emerald text-white",
+    camping: "bg-corsica-sage text-white"
   };
 
   // Map type to label
@@ -49,7 +49,7 @@ const AccommodationCard = ({ accommodation }: AccommodationCardProps) => {
       <CardHeader className="pb-2">
         <div className="flex justify-between items-start">
           <CardTitle className="text-xl">{accommodation.name}</CardTitle>
-          <Badge className={typeColors[accommodation.type as keyof typeof typeColors] || "bg-gray-100 text-gray-800"}>
+          <Badge className={typeColors[accommodation.type as keyof typeof typeColors] || "bg-corsica-azure text-white"}>
             {typeLabels[accommodation.type as keyof typeof typeLabels] || accommodation.type}
           </Badge>
         </div>
@@ -69,12 +69,12 @@ const AccommodationCard = ({ accommodation }: AccommodationCardProps) => {
           <p className="text-sm font-medium mb-2">Équipements motards :</p>
           <div className="flex flex-wrap gap-1">
             {accommodation.bikerAmenities.slice(0, 3).map((amenity, index) => (
-              <Badge key={index} variant="outline" className="text-xs">
+              <Badge key={index} variant="outline" className="text-xs border-corsica-sage text-corsica-sage">
                 {amenity}
               </Badge>
             ))}
             {accommodation.bikerAmenities.length > 3 && (
-              <Badge variant="outline" className="text-xs">
+              <Badge variant="outline" className="text-xs border-corsica-sage text-corsica-sage">
                 +{accommodation.bikerAmenities.length - 3}
               </Badge>
             )}

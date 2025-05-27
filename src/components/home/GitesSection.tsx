@@ -30,7 +30,7 @@ const GitesSection = ({ gites }: GitesSectionProps) => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center mb-12">
           <div className="flex items-center">
-            <Home className="w-8 h-8 text-primary mr-3" />
+            <Home className="w-8 h-8 text-corsica-azure mr-3" />
             <div>
               <h2 className="text-3xl font-bold mb-2">Gîtes</h2>
               <p className="text-muted-foreground">
@@ -39,7 +39,7 @@ const GitesSection = ({ gites }: GitesSectionProps) => {
             </div>
           </div>
           <Link to="/hebergements?type=gite">
-            <Button variant="outline" className="mt-4 md:mt-0">
+            <Button variant="outline" className="mt-4 md:mt-0 border-corsica-azure text-corsica-azure hover:bg-corsica-azure hover:text-white">
               Voir tous les gîtes
             </Button>
           </Link>

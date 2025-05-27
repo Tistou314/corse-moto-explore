@@ -47,7 +47,7 @@ const OptimizedImage = ({
   return (
     <div className={`relative overflow-hidden ${aspectRatioClass} ${containerClassName}`}>
       {!loaded && !priority && (
-        <Skeleton className={`absolute inset-0 ${className}`} />
+        <Skeleton className={`absolute inset-0 bg-corsica-pearl ${className}`} />
       )}
       <img
         src={finalSrc}
