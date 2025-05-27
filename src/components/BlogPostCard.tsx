@@ -12,6 +12,7 @@ interface BlogPostCardProps {
   date: string;
   author: string;
   category: string;
+  readingTime: string;
 }
 
 const BlogPostCard = ({
@@ -22,6 +23,7 @@ const BlogPostCard = ({
   date,
   author,
   category,
+  readingTime,
 }: BlogPostCardProps) => {
   // Function to get category color
   const getCategoryColor = (category: string) => {
@@ -79,15 +81,18 @@ const BlogPostCard = ({
           </div>
         </div>
         <p className="text-muted-foreground mb-4 line-clamp-3">{excerpt}</p>
-        <Link 
-          to={`/blog/${id}`} 
-          className="text-corsica-blue hover:text-corsica-blue/80 font-medium mt-auto inline-flex items-center"
-        >
-          Lire plus
-          <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-          </svg>
-        </Link>
+        <div className="flex items-center justify-between mt-auto">
+          <span className="text-xs text-muted-foreground">{readingTime}</span>
+          <Link 
+            to={`/blog/${id}`} 
+            className="text-corsica-blue hover:text-corsica-blue/80 font-medium inline-flex items-center"
+          >
+            Lire plus
+            <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </Link>
+        </div>
       </div>
     </div>
   );
