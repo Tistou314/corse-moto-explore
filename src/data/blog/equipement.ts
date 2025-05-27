@@ -1,458 +1,645 @@
+
 import { BlogPost } from '@/types/blog';
+import { standardAuthor } from '@/data/authors';
 
 export const equipementArticles: BlogPost[] = [
   {
-    id: 'preparer-moto-corse',
-    title: 'Comment organiser son road trip à moto en Corse pour en profiter au maximum ?',
-    excerpt: 'Guide complet pour planifier et réussir votre aventure motarde en Corse, des itinéraires aux conseils pratiques.',
-    content: `# Comment organiser son road trip à moto en Corse pour en profiter au maximum ?
+    id: 'equipement-essentiel-moto-corse',
+    title: 'Équipement essentiel pour rouler en Corse',
+    excerpt: 'Guide complet de l\'équipement indispensable pour un voyage à moto en Corse : sécurité, confort et praticité selon les saisons.',
+    content: `# Équipement essentiel pour rouler en Corse
 
-La Corse à moto, c'est le rêve de tout motard ! Imaginez-vous roulant sur des routes sinueuses qui épousent les falaises, avec la mer turquoise d'un côté et les montagnes majestueuses de l'autre. L'île de Beauté offre aux passionnés de deux-roues un terrain de jeu exceptionnel, mêlant sensations fortes et paysages à couper le souffle. Que vous soyez un pilote chevronné ou un motard du dimanche, voici le guide ultime pour transformer votre road trip corse en une aventure inoubliable.
+Rouler en Corse nécessite un équipement adapté aux spécificités de l'île : routes sinueuses, variations climatiques importantes et parfois manque d'infrastructures. Voici votre guide complet pour bien vous équiper.
 
-## La Corse, paradis des motards : pourquoi s'y rendre ?
+## Équipement de sécurité : priorité absolue
 
-L'île de Beauté porte bien son nom. Avec ses 1000 km de côtes, ses montagnes qui plongent dans la mer et ses villages perchés, la Corse est une destination rêvée pour les motards. Ses routes sinueuses offrent un cocktail parfait de virages techniques et de panoramas spectaculaires.
+### Le casque : votre meilleur allié
 
-Ce qui rend la Corse unique pour un road trip moto, c'est cette diversité de paysages concentrée sur une seule île. Le matin, vous pouvez rouler en montagne, déjeuner dans un village typique et vous baigner l'après-midi dans une crique sauvage. Chaque virage révèle un nouveau tableau, chaque col franchi dévoile un panorama différent.
+**Critères de choix pour la Corse :**
 
-Et puis il y a cette ambiance si particulière, ce mélange de culture méditerranéenne et de fierté insulaire. Les Corses vous accueilleront avec chaleur, surtout si vous prenez le temps de vous arrêter dans les petits villages loin des sentiers battus. Un verre de vin local sur une terrasse après une journée de moto, ça n'a pas de prix !
+**Ventilation optimale :**
+* **Aérations multiples :** Indispensables pour les étés corses (jusqu'à 35°C)
+* **Écran interne :** Anti-buée pour les matins humides en bord de mer
+* **Système de ventilation active :** Extracteurs d'air à l'arrière
 
-## Planifier votre road trip en Corse
+**Modèles recommandés :**
+* **Shoei GT-Air II :** Excellent compromis touring/sport, très ventilé
+* **HJC RPHA 11 :** Rapport qualité-prix exceptionnel, léger
+* **Arai Chaser-X :** Qualité premium, forme optimisée
+* **AGV K6 :** Design italien, excellent en conditions chaudes
 
-La réussite d'un voyage moto en Corse passe par une planification bien pensée, sans pour autant tuer l'esprit d'aventure.
+**Budget :** 250-600€ selon la gamme
 
-### Quand partir ? Les meilleures saisons pour la moto en Corse
+### Protection corporelle adaptée au climat
 
-Mai-juin et septembre-octobre sont les périodes idéales pour un road trip à moto en Corse. Les températures sont douces (15-25°C), les routes moins fréquentées et les prix plus abordables. 
+**Blouson moto toutes saisons :**
+
+**Caractéristiques indispensables :**
+* **Membrane imperméable-respirante :** Type Gore-Tex ou similaire
+* **Doublure amovible :** Pour s'adapter aux variations thermiques
+* **Ventilations zipées :** Aérations sous les bras et dans le dos
+* **Protections CE niveau 2 :** Coudes, épaules, dos
 
-En plein été (juillet-août), vous profiterez d'un temps magnifique mais attention à la chaleur en combinaison et aux routes bondées. Les cols de montagne peuvent atteindre 35°C, ce qui devient vite inconfortable.
+**Modèles touring recommandés :**
+* **Alpinestars Andes v3 :** Référence en matière de polyvalence
+* **Rev'it Sand 4 H2O :** Excellent en conditions chaudes
+* **Rukka Armaxion :** Qualité finlandaise, très résistant
+* **IXS Tour Classic :** Bon rapport qualité-prix
 
-L'hiver n'est pas recommandé pour la moto : routes parfois enneigées en altitude, fermeture de nombreux hébergements et restaurants, traversées en ferry moins fréquentes.
+**Pantalon moto :**
+* **Textile touring :** Préférable au cuir pour le confort thermique
+* **Protections genoux et hanches :** CE niveau 2 obligatoire
+* **Ventilations :** Essentielles pour l'été corse
+* **Imperméabilité :** Doublure amovible pour les orages d'automne
 
-### Préparer votre moto pour l'aventure corse
+### Gants et bottes : confort et protection
 
-Votre monture mérite une attention particulière avant de s'attaquer aux virages corses :
+**Gants adaptés aux saisons :**
 
-* Faites une révision complète : freins, pneus, chaîne, niveaux.
-* Optez pour des pneus sport-touring ou routiers avec une bonne tenue sur route sèche.
-* Vérifiez vos suspensions et ajustez-les si nécessaire pour le duo et les bagages.
-* Prévoyez un kit de réparation basique (rustines, mini-compresseur, outils).
-* Pensez à un antivol solide, les motos attirent les regards en Corse.
+**Été (juin-septembre) :**
+* **Matière :** Cuir perforé ou textile respirant
+* **Protection :** Coques sur métacarpes et phalanges
+* **Modèles :** Alpinestars SMX-1 Air, Dainese Bora
 
-Si vous louez une moto sur place, réservez bien à l'avance, surtout en haute saison. Les BMW GS, Ducati Multistrada ou Honda Africa Twin sont parfaites pour les routes corses.
+**Hiver/Demi-saison :**
+* **Étanchéité :** Membrane imperméable obligatoire
+* **Isolation :** Doublure thermique amovible
+* **Modèles :** Held Travel 5, Rev'it Summit 3 H2O
 
-### L'équipement indispensable du motard en Corse
+**Chaussures moto :**
+* **Montantes :** Protection malléoles indispensable
+* **Semelles :** Antidérapantes pour les arrêts sur graviers
+* **Respirabilité :** Priorité pour le confort de marche en été
+* **Recommandations :** Sidi Adventure 2, TCX Blend 2, Forma Terra Evo
 
-La météo corse peut être capricieuse, surtout en montagne. Voici l'équipement à ne pas oublier :
+## Équipement technique et bagagerie
+
+### Système de bagagerie adapté
 
-* Un casque avec visière solaire intégrée ou des lunettes de soleil.
-* Une veste et un pantalon avec protections et membranes imperméables.
-* Des gants mi-saison et une paire imperméable en secours.
-* Des bottes confortables pour marcher lors des pauses.
-* Un tour de cou multifonction contre le soleil ou le vent frais des cols.
-* Un sac à dos hydratation ou une gourde accessible facilement.
-* Une crème solaire haute protection et un stick à lèvres.
-* Un appareil photo résistant aux chocs ou un smartphone bien protégé.
+**Top case rigide :**
+* **Capacité :** 35-45 litres suffisent pour 1-2 semaines
+* **Avantages :** Sécurité, étanchéité, facilité d'ouverture
+* **Marques référence :** Givi, Shad, SW-Motech
+* **Budget :** 200-400€ avec platine
+
+**Sacoches latérales :**
 
-N'oubliez pas que vous pourrez alterner moto et baignade : un maillot et une serviette microfibre prennent peu de place dans vos sacoches !
+**Rigides (aluminium) :**
+* **Avantages :** Sécurité maximale, résistance aux chocs
+* **Inconvénients :** Poids, largeur dans les épingles corses
+* **Recommandations :** BMW Vario, Touratech Zega Pro
+* **Capacité :** 2x 35-40 litres
 
-## Les itinéraires magiques de la Corse à moto
+**Souples (cordura) :**
+* **Avantages :** Légèreté, flexibilité dans les passages étroits
+* **Étanchéité :** Sacs étanches intérieurs obligatoires
+* **Modèles :** Ortlieb Motorcycle, Kriega OS-Adventure
+* **Capacité :** 2x 18-25 litres
 
-La Corse regorge de routes mythiques qui font le bonheur des motards. Voici les plus belles à ne pas manquer.
+### Système de navigation GPS
 
-### La route des Calanques : frissons garantis entre Piana et Porto
+**GPS moto dédié :**
 
-Cette portion de la D81 est un véritable chef-d'œuvre de la nature. Les Calanques de Piana, ces formations rocheuses rougeoyantes sculptées par l'érosion, plongent directement dans la mer bleu cobalt. La route qui les traverse est un enchantement pour les motards.
+**Garmin zumo XT :**
+* **Avantages :** Cartes spécialisées moto, routes sinueuses
+* **Résistance :** Étanche, résiste aux vibrations
+* **Autonomie :** 6h, rechargeable sur la moto
+* **Prix :** 400-500€
+
+**TomTom Rider 550 :**
+* **Points forts :** Interface intuitive, cartes offline
+* **Trafic :** Informations en temps réel
+* **Communauté :** Partage d'itinéraires motards
+* **Prix :** 350-450€
+
+**Alternative smartphone :**
+* **Applications :** Waze, Google Maps, Calimoto
+* **Support :** RAM Mount X-Grip, SP Connect
+* **Alimentation :** Prise USB étanche obligatoire
+* **Inconvénients :** Lisibilité au soleil, autonomie
+
+### Communication et connectivité
+
+**Intercoms Bluetooth :**
+
+**Sena 30K :**
+* **Portée :** 2 km en terrain dégagé
+* **Fonctions :** Musique, GPS, communication group
+* **Autonomie :** 13h de conversation
+* **Prix :** 250-300€
+
+**Cardo Packtalk Bold :**
+* **Technologie :** DMC pour conversations naturelles
+* **Groupes :** Jusqu'à 15 motards connectés
+* **Résistance :** IP67, étanche à la pluie
+* **Prix :** 300-350€
+
+## Équipement spécifique aux conditions corses
 
-Sur environ 12 km, vous enchaînerez les virages en épingle avec des à-pics vertigineux d'un côté et des falaises de l'autre. Le revêtement est bon mais restez vigilant : les touristes s'arrêtent parfois brusquement pour admirer la vue.
+### Protection solaire et chaleur
+
+**Vêtements techniques :**
+* **Sous-vêtements :** Merino ou fibres synthétiques évacuant l'humidité
+* **T-shirts techniques :** Manches longues anti-UV
+* **Bandana :** Protection nuque et absorption transpiration
+
+**Accessoires solaires :**
+* **Écran teinté :** Indispensable, plusieurs teintes selon luminosité
+* **Crème solaire :** SPF 50+ résistante à la transpiration
+* **Lunettes de soleil :** Pour les pauses, protection UV maximale
+
+### Gestion de l'eau et hydratation
+
+**Système d'hydratation :**
+* **Camelbak :** Poche à eau intégrée au sac à dos
+* **Tubes d'hydratation :** Passage dans le casque
+* **Capacité :** 2-3 litres minimum pour les journées d'été
+
+**Refroidissement corporel :**
+* **Gilets rafraîchissants :** Trempage à l'eau froide
+* **Bandanas réfrigérants :** Gel polymère rafraîchissant
+* **Efficacité :** 2-4h de fraîcheur selon température
+
+### Kit de réparation et outils
+
+**Outils de base :**
+* **Clés Allen :** Jeu complet 3-10mm
+* **Tournevis :** Plat et cruciforme
+* **Clés plates :** 8, 10, 12, 13, 17mm selon la moto
+* **Pince multiprise :** Universelle et compacte
+
+**Pièces de rechange :**
+* **Fusibles :** Assortiment complet
+* **Ampoules :** Phare, stop, clignotants
+* **Durites :** Liquide de frein, kit de réparation
+* **Câbles :** Embrayage et accélérateur si non hydrauliques
+
+**Kit crevaison :**
+* **Bombe anti-crevaison :** Solution d'urgence temporaire
+* **Mèches de réparation :** Pour réparations définitives
+* **Compresseur 12V :** Gonflage et vérification pression
+* **Manomètre :** Contrôle précis de la pression
+
+## Équipement selon les saisons
+
+### Printemps (mars-mai) : polyvalence obligatoire
+
+**Vêtements :**
+* **Système 3 en 1 :** Blouson avec doublure et membrane amovibles
+* **Gants intermédiaires :** Mi-saison avec protection pluie
+* **Pantalon modulable :** Doublure thermique amovible
 
-Mon conseil de motard : roulez-y tôt le matin ou en fin de journée pour éviter les cars de touristes. Le coucher de soleil y est magique, les roches prennent alors une teinte flamboyante.
-
-### Le Cap Corse : la boucle panoramique à ne pas manquer
-
-Le Cap Corse forme une péninsule sauvage au nord de l'île. La route D80 en fait le tour sur environ 110 km, offrant des vues imprenables alternant entre mer et montagne.
-
-En partant de Bastia vers l'ouest, vous longerez d'abord la côte plus escarpée avec ses villages perchés comme Nonza et son étonnante plage noire. Puis, en contournant le cap par le nord, vous découvrirez des marines pittoresques et des criques sauvages sur la côte est.
-
-J'adore m'arrêter au petit port de Centuri pour déguster une assiette de langoustes fraîches, ou faire une pause café à Macinaggio en admirant les bateaux. Cette boucle se fait tranquillement en une journée, avec de nombreuses pauses photo et baignade.
-
-### La traversée de la Castagniccia : au cœur de la Corse authentique
-
-La Castagniccia, région forestière du nord-est, est moins connue mais offre des routes superbes pour les amateurs de virages. Cette région montagneuse couverte de châtaigniers abrite des villages typiques accrochés aux pentes.
-
-Depuis Bastia, empruntez la D71 vers La Porta, puis perdez-vous dans le dédale des petites routes comme la D515 ou la D46. Le revêtement peut être moyen par endroits, mais la tranquillité et l'authenticité valent largement ce petit inconvénient.
-
-J'aime particulièrement la route qui mène à San Lorenzo, avec ses tunnels de verdure et ses ponts génois. En automne, les couleurs y sont extraordinaires, et vous pourrez goûter aux spécialités à base de châtaignes dans les petites auberges.
-
-### Les cols de l'intérieur : sensations fortes entre montagnes et forêts
-
-Pour les motards qui aiment le pilotage technique, les cols corses sont un régal. Le col de Bavella (D268) offre des vues spectaculaires sur les Aiguilles, ces pics rocheux qui dominent la forêt. Le col de Vergio, point culminant routier de l'île (1477m), vous fera traverser la majestueuse forêt d'Aïtone.
-
-La route des cols entre Corte et Porto (D84) est un condensé de ce que la Corse offre de plus beau : gorges profondes, forêts de pins laricio, villages perchés et panoramas à 360°.
-
-Mon petit plaisir : m'arrêter au col de Sorba pour admirer la vue sur la vallée du Taravo, ou faire une pause au bord du lac de Calacuccia après avoir franchi le col de Vergio. Prévoyez un pull même en été, il peut faire frais à cette altitude !
-
-## Conseils pratiques pour votre road trip corse
-
-Quelques astuces de motard pour que votre voyage se déroule sans accroc et avec un maximum de plaisir.
-
-### Où dormir ? Les hébergements adaptés aux motards
-
-Trouver un hébergement avec un parking sécurisé pour votre moto est la priorité. Voici mes recommandations par région :
-
-* **Ajaccio et environs :** L'Hôtel du Golfe à Ajaccio propose un parking fermé et des chambres avec vue sur la mer. À 15 km, le camping Les Oliviers accueille les motards avec des emplacements dédiés.
-* **Porto et la côte ouest :** L'Hôtel Splendid à Porto dispose d'un garage pour les motos et se trouve à deux pas des restaurants. Le camping de la Plage à Bussaglia offre des emplacements ombragés à 50 m de la mer.
-* **Bastia et le Cap Corse :** La Maison Mathieu, chambre d'hôtes à Erbalunga, propose un patio fermé pour les motos et un accueil chaleureux par Mathieu, lui-même motard.
-* **Bonifacio et le sud :** L'Hôtel du Roy d'Aragon au cœur de Bonifacio dispose d'un parking privé. Plus abordable, le camping Pianaccia à Santa Giulia est idéal pour allier moto et plage.
-* **Corte et la montagne :** L'Hôtel du Nord à Corte est tenu par un couple de passionnés de moto qui vous indiqueront les meilleures routes. La gîte d'étape A Pasturella à Venaco offre un hébergement simple mais authentique.
-
-Mon astuce : réservez votre première et dernière nuit près du port de débarquement/embarquement pour éviter le stress des horaires de ferry.
-
-### Rouler en sécurité sur les routes corses
-
-Les routes corses sont magnifiques mais peuvent être piègeuses :
-
-* Méfiez-vous du gravillonnage, fréquent au printemps après les réparations hivernales.
-* Attention aux animaux en liberté : vaches, cochons et chèvres traversent sans prévenir.
-* Dans les villages, ralentissez : les rues sont étroites et les enfants jouent parfois sur la route.
-* En montagne, anticipez les virages en épingle : certains se resserrent brusquement.
-* Gardez toujours une bouteille d'eau dans vos sacoches, la déshydratation guette en été.
-* Ne sous-estimez pas les distances : 100 km en Corse peuvent prendre 2h30 à cause des virages.
-
-J'ai pris l'habitude de m'arrêter toutes les heures pour admirer le paysage et me dégourdir les jambes. Votre concentration et votre plaisir n'en seront que meilleurs.
-
-### Les saveurs corses à découvrir en chemin
-
-Rouler à moto ouvre l'appétit ! La Corse regorge de spécialités à déguster lors de vos pauses :
-
-* **Sur la route des Calanques :** Arrêtez-vous à l'auberge A Tramula à Porto pour goûter leur sanglier aux olives et leur tarte aux châtaignes.
-* **Dans le Cap Corse :** Le bar des pêcheurs à Centuri sert les meilleures langoustes de l'île. Plus modeste mais délicieux, le café du port à Macinaggio propose des assiettes de charcuterie corse.
-* **En Castagniccia :** L'auberge U Pignatonu à La Porta sert une cuisine traditionnelle à base de châtaignes. Leur soupe corse et leur civet de sanglier sont divins.
-* **Dans les cols :** Au col de Vizzavona, la brasserie A Stella propose des bières artisanales corses parfaites pour se rafraîchir (avec modération bien sûr).
-* **À Bonifacio :** Le restaurant L'Archivolto, dans une ruelle de la vieille ville, sert un délicieux agneau corse aux herbes du maquis.
-
-Pensez à faire une pause dans les petites épiceries de village pour acheter du saucisson, du fromage et du pain pour vos pique-niques face à la mer !
-
-## Organiser votre voyage étape par étape
-
-Passons maintenant aux aspects pratiques de l'organisation de votre road trip.
-
-### Créer votre itinéraire personnalisé
-
-Voici un exemple d'itinéraire sur 7 jours, adaptable selon vos envies :
-
-| Jour | Itinéraire                   | Distance (km) | Durée (estimation) | Points forts                                            |
-|------|------------------------------|---------------|--------------------|---------------------------------------------------------|
-| 1    | Ajaccio - Propriano          | 80            | 2h                 | Golfe d'Ajaccio, plages du sud, village de Propriano    |
-| 2    | Propriano - Bonifacio        | 70            | 1h30               | Lion de Roccapina, falaises de Bonifacio                |
-| 3    | Bonifacio - Porto-Vecchio    | 30            | 45min              | Plages de Palombaggia et Santa Giulia                   |
-| 4    | Porto-Vecchio - Zonza        | 50            | 1h30               | Col de l'Ospedale, Aiguilles de Bavella                 |
-| 5    | Zonza - Corte                | 90            | 2h30               | Forêt de l'Ospedale, gorges de la Restonica            |
-| 6    | Corte - Saint-Florent        | 120           | 3h                 | Vallée du Golo, désert des Agriates                     |
-| 7    | Saint-Florent - Ajaccio      | 150           | 3h30               | Cap Corse, côte ouest, retour à Ajaccio                 |
-
-Mon conseil : ne prévoyez pas plus de 150 km par jour pour profiter pleinement des paysages et faire des pauses. Alternez les journées "roulantes" avec des journées plus légères où vous pourrez explorer à pied ou vous baigner.
-
-Pour une première fois en Corse, le tour de l'île par la côte est un classique qui permet de voir l'essentiel. Si vous revenez, vous pourrez alors explorer plus en profondeur l'intérieur montagneux.
-
-### Comment réserver ferry et hébergements ?
-
-Pour le ferry, plusieurs compagnies desservent la Corse depuis le continent :
-
-* Corsica Ferries depuis Nice, Toulon ou Savone (Italie)
-* La Méridionale depuis Marseille
-* Corsica Linea depuis Marseille ou Nice
-
-Réservez votre traversée au moins 3 mois à l'avance pour les périodes estivales. Comparez les prix et les horaires, certaines traversées de nuit vous permettent de gagner une journée sur place.
-
-Pour les hébergements, je vous conseille de réserver au moins les premières et dernières nuits, puis de garder un peu de flexibilité pour le reste du séjour. Les applications comme Booking ou Hotels.com permettent de trouver des hébergements de dernière minute, même en haute saison.
-
-En camping, la réservation n'est pas toujours nécessaire hors juillet-août, mais reste recommandée pour les emplacements les plus agréables.
-
-### Les applications et cartes utiles pour votre road trip
-
-Quelques outils numériques qui faciliteront votre voyage :
-
-* **Waze ou Google Maps :** indispensables pour la navigation, mais attention aux zones sans réseau en montagne.
-* **Maps.me :** permet de télécharger les cartes et de naviguer hors connexion.
-* **Windy :** pour consulter les prévisions météo locales, très utile en montagne.
-* **Park4night :** pour trouver des spots sympas où s'arrêter et pique-niquer.
-* **TripAdvisor :** pour dénicher les bonnes tables et les activités.
-* **Liberty Rider :** application spéciale motards avec alertes sécurité et suivi GPS.
-
-N'oubliez pas une bonne vieille carte routière papier de la Corse ! Elle ne tombe jamais en panne et permet d'avoir une vue d'ensemble de votre parcours.
-
-## Immortaliser et partager votre aventure corse
-
-Votre road trip moto en Corse sera rempli de moments magiques que vous voudrez capturer et partager.
-
-### Rencontrer d'autres motards : les communautés locales
-
-La Corse compte une communauté de motards accueillante et passionnée. Voici comment les rencontrer :
-
-* Le Moto Club Ajaccien organise régulièrement des sorties ouvertes aux visiteurs.
-* Le groupe Facebook "Motards en Corse" permet d'échanger avec des locaux qui pourront vous conseiller.
-* Le bar Le Rallye à Ajaccio est un point de rencontre informel des motards le week-end.
-* Le rassemblement "Moto Tour de Corse" a lieu chaque année en mai, avec des balades organisées.
-
-Les motards corses connaissent les meilleurs virages et les routes secrètes. Ils vous indiqueront aussi les zones où la prudence est de mise (radar, gravillons, etc.).
-
-### Capturer les meilleurs moments : photos et vidéos de votre périple
-
-La Corse offre des décors de rêve pour vos photos et vidéos moto :
-
-* Emportez une caméra d'action type GoPro fixée sur votre casque ou moto.
-* Les meilleurs spots photos : le belvédère des Calanques de Piana, le col de Bavella, la marine de Girolata accessible uniquement à pied ou en bateau, la citadelle de Bonifacio.
-* Pensez à photographier votre moto dans le décor pour donner une échelle aux paysages.
-* Le lever et le coucher du soleil offrent les plus belles lumières, notamment sur la côte ouest.
-
-Petit truc de motard photographe : pour les photos de groupe, utilisez le retardateur de votre smartphone et posez-le sur votre moto (sur le guidon avec le téléphone calé contre le compteur).
-
-N'oubliez pas de créer un album partagé avec vos compagnons de route. Ces souvenirs de virages corses vous réchaufferont le cœur pendant les longs mois d'hiver !
-
-La Corse à moto, c'est bien plus qu'un simple road trip, c'est une expérience qui marque à vie. Entre mer et montagne, villages authentiques et routes de rêve, vous reviendrez transformé de cette aventure sur l'île de Beauté. Alors, casque sur la tête et sourire aux lèvres, la Corse vous attend pour une symphonie de virages dont vous vous souviendrez longtemps !`,
-    imageUrl: 'https://images.unsplash.com/photo-1508881598441-324f3974994b?auto=format&fit=crop&q=80',
-    date: '20 juin 2025',
-    author: {
-      name: 'Michel Costa',
-      avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
-      bio: 'Motard passionné et guide expérimenté en Corse'
-    },
+**Particularités :**
+* **Pollen :** Masque anti-allergènes si sensibilité
+* **Pluie fréquente :** Surpantalon étanche obligatoire
+* **Températures variables :** 8°C le matin, 20°C l'après-midi
+
+### Été (juin-septembre) : priorité à la ventilation
+
+**Équipement spécialisé :**
+* **Blousons mesh :** Textile aéré avec protections rigides
+* **Gants perforés :** Maximum de ventilation
+* **Casque clair :** Couleurs claires pour réfléchir la chaleur
+
+**Gestion de la chaleur :**
+* **Hydratation :** 3-4 litres d'eau par jour minimum
+* **Électrolytes :** Compléments pour compenser sudation
+* **Pauses fréquentes :** Toutes les heures aux heures chaudes
+
+### Automne (octobre-novembre) : préparation au froid
+
+**Superposition :**
+* **Couches multiples :** Système en pelures d'oignon
+* **Sous-vêtements thermiques :** Laine mérinos ou synthétique
+* **Gants chauffants :** Option électrique pour les matins froids
+
+**Spécificités automnales :**
+* **Feuilles mortes :** Prudence accrue, adhérence réduite
+* **Brouillard matinal :** Éclairage et visibilité renforcés
+* **Jours courts :** Équipement réfléchissant obligatoire
+
+### Hiver (décembre-février) : conditions extrêmes
+
+**Protection thermique :**
+* **Vêtements chauffants :** Gilets et gants électriques
+* **Cagoule :** Protection intégrale tête et cou
+* **Chaussettes chauffantes :** Confort essentiel
+
+**Sécurité hivernale :**
+* **Pneus adaptés :** Gomme tendre pour températures basses
+* **Chaînes :** Obligatoires en montagne (col de Vizzavona)
+* **Kit de survie :** Couverture de survie, provisions énergétiques
+
+## Budget équipement complet
+
+### Équipement minimal sécurisé
+
+**Basique sécurité (1200-1800€) :**
+* Casque : 250-400€
+* Blouson : 300-500€
+* Pantalon : 200-350€
+* Gants : 80-150€
+* Bottes : 150-250€
+* Protection dorsale : 80-120€
+
+### Équipement confort touring
+
+**Intermédiaire (2500-3500€) :**
+* Équipement sécurité haut de gamme
+* Système bagagerie : 400-600€
+* GPS : 400-500€
+* Intercom : 250-350€
+* Outils et réparation : 150-250€
+
+### Équipement premium
+
+**Haut de gamme (4000-6000€) :**
+* Équipement technique premium
+* Vêtements chauffants électriques
+* Bagagerie aluminium complète
+* Accessoires confort maximisé
+
+## Conseils d'entretien et stockage
+
+### Entretien après usage
+
+**Nettoyage :**
+* **Vêtements textiles :** Lavage spécialisé, reproofing régulier
+* **Cuirs :** Nettoyage et nourrissage après usage
+* **Casque :** Nettoyage intérieur, vérification des mousses
+
+**Vérifications régulières :**
+* **Protections :** Contrôle d'usure, remplacement si déformées
+* **Fermetures :** Zips, scratches, boutons-pression
+* **Étanchéité :** Test après chaque saison
+
+### Stockage intersaison
+
+**Conditions optimales :**
+* **Lieu sec :** Éviter cave humide ou grenier surchauffé
+* **Aération :** Circulation d'air pour éviter moisissures
+* **Protection :** Housses respirantes, pas de plastique
+
+**Préparation :**
+* **Nettoyage complet :** Avant stockage obligatoire
+* **Desserrage :** Sangles et élastiques relâchés
+* **Vérification :** Inspection avant remisage
+
+## Votre checklist équipement Corse
+
+Cette checklist vous accompagnera dans vos préparatifs pour garantir un voyage en toute sérénité :
+
+**Sécurité obligatoire :**
+- [ ] Casque homologué avec écran teinté
+- [ ] Blouson avec protections CE niveau 2
+- [ ] Pantalon avec protections genoux et hanches
+- [ ] Gants certifiés
+- [ ] Bottes montantes
+- [ ] Protection dorsale
+
+**Confort et praticité :**
+- [ ] Système de bagagerie étanche
+- [ ] GPS ou support smartphone
+- [ ] Intercom ou kit main-libre
+- [ ] Vêtements techniques selon saison
+- [ ] Kit hydratation
+- [ ] Trousse de premiers secours
+
+**Technique et dépannage :**
+- [ ] Outils de base
+- [ ] Kit anti-crevaison
+- [ ] Pièces de rechange essentielles
+- [ ] Chargeur/powerbank
+- [ ] Câbles et adaptateurs
+
+Un équipement bien choisi et entretenu transformera votre voyage en Corse en une expérience inoubliable, alliant plaisir de conduite et sérénité face aux imprévus. L'investissement dans un équipement de qualité se révèle toujours rentable à long terme, tant pour votre sécurité que pour votre confort de voyage.`,
+    imageUrl: 'https://cdn.pixabay.com/photo/2016/11/29/05/07/equipment-1867772_1280.jpg',
+    date: '10 juin 2025',
+    author: standardAuthor,
     category: 'Équipement et préparation',
-    slug: 'preparer-moto-corse',
-    readingTime: '10 min',
-    tags: ['preparation', 'road-trip', 'voyage', 'equipement']
+    slug: 'equipement-essentiel-moto-corse',
+    readingTime: '18 min',
+    tags: ['équipement', 'sécurité', 'casque', 'blouson', 'bagagerie', 'GPS']
   },
   {
-    id: 'quelle-moto-choisir',
-    title: 'Quelle moto choisir pour un voyage en Corse ?',
-    excerpt: 'Analyse comparative des types de motos les plus adaptés aux routes corses, entre sportives, trails, et routières.',
-    content: `
-# Quelle moto choisir pour un voyage en Corse ?
-La Corse, véritable paradis pour les motards, offre des routes sinueuses et des panoramas spectaculaires à chaque virage. Avant de partir à l'assaut de l'île de beauté, le choix de ta monture est primordial pour profiter pleinement de cette aventure. Entre routes côtières ensoleillées et cols montagneuses exigeants, la moto idéale dépendra de ton style de conduite et des expériences que tu recherches.
+    id: 'preparation-moto-voyage-corse',
+    title: 'Préparer sa moto pour un voyage en Corse',
+    excerpt: 'Guide technique complet pour préparer votre moto avant un voyage en Corse : révision, pneus, freinage et check-list détaillée.',
+    content: `# Préparer sa moto pour un voyage en Corse
 
-## Les types de motos adaptés à la Corse
-Les routes corses, aussi diverses que ses paysages, appellent à réfléchir au type de moto le plus adapté. Du littoral aux sommets, chaque machine présente ses avantages spécifiques.
+Un voyage en Corse met votre moto à rude épreuve : routes sinueuses, dénivelés importants, chaleur estivale et parfois manque de services techniques. Une préparation minutieuse est essentielle pour voyager sereinement.
 
-### Scooters : agilité urbaine et balades côtières
-Le scooter représente une option pratique pour explorer les villes et longer les côtes corses. Sa maniabilité te permettra de te faufiler dans les ruelles d'Ajaccio ou de te garer facilement à Bastia. Idéal pour les courtes distances et les trajets urbains, il montre ses limites sur les routes montagneuses et les longs parcours.
+## Révision générale : les fondamentaux
 
-### Routières : confort et polyvalence pour les longs trajets
-Pour faire le tour complet de l'île sans sacrifier ton confort, une routière comme la BMW R 1250 RT ou la Yamaha FJR1300 s'avère judicieuse. Ces motos offrent une position de conduite ergonomique, une bonne protection contre les éléments et une capacité de chargement généreuse. Moins agiles en ville, elles brillent sur les longues distances entre les différentes régions de l'île.
+### Contrôle moteur et transmission
 
-### Trails : polyvalence sur tous types de routes
-Le trail représente le compromis parfait pour la Corse. Une Triumph Tiger 900 ou une BMW GS te permettra de t'aventurer aussi bien sur l'asphalte que sur les chemins de terre. Leur position de conduite surélevée offre une excellente visibilité dans les virages en épingle, tandis que leur suspension absorbe les irrégularités des routes parfois capricieuses.
+**Vidange et filtres :**
 
-### Trails sportifs et sportives : pour les amateurs de sensations
-Si tu recherches plus de dynamisme, un trail sportif comme la Triumph Tiger Sport 660 combine puissance et polyvalence. Pour les purs amateurs de sensations fortes, une sportive te permettra d'attaquer les virages des Calanques de Piana avec précision, mais au prix d'un confort limité sur les longues distances.
+**Huile moteur :**
+* **Timing :** Maximum 1000 km avant le départ
+* **Qualité :** Huile synthèse haute performance (5W40 ou 10W50)
+* **Quantité :** Vérifier le niveau, prévoir un bidon de complément
+* **Filtre :** Remplacement obligatoire avec vidange
 
-## Préparer son voyage à moto en Corse
-La préparation d'un voyage à moto en Corse mérite une attention particulière. Entre choix de la période, itinéraires et équipements, chaque détail compte pour transformer ton périple en une expérience inoubliable. La diversité des paysages et des routes exige une planification adaptée aux spécificités de l'île.
+**Filtre à air :**
+* **Inspection :** Nettoyage ou remplacement si encrassé
+* **Importance :** Air maritime + poussière des routes corses
+* **Préventif :** Emporter un filtre de rechange pour longs séjours
 
-### Quand partir : choisir la meilleure période
-Le printemps (avril-juin) et l'automne (septembre-octobre) constituent les périodes idéales pour découvrir la Corse à moto. Tu éviteras ainsi la foule estivale tout en profitant de températures clémentes. Au printemps, la nature en fleurs offre un spectacle coloré exceptionnel, tandis que l'automne permet de profiter des plages moins fréquentées et d'une mer encore chaude.
+**Liquide de refroidissement :**
+* **Niveau :** Vérification vase d'expansion et radiateur
+* **Qualité :** Mélange 50/50 antigel/eau déminéralisée
+* **Fuite :** Contrôle durites et colliers de serrage
+* **Thermostat :** Test d'ouverture (crucial pour les montées corses)
 
-| Mois      | Température moyenne (°C) | Précipitations moyennes (mm) | Heures d'ensoleillement moyennes par jour | Humidité relative moyenne (%) |
-|-----------|---------------------------|------------------------------|----------------------------------------|-----------------------------|
-| Avril     | 15                        | 60                           | 7                                        | 75                          |
-| Mai       | 19                        | 45                           | 9                                        | 70                          |
-| Juin      | 23                        | 30                           | 10                                       | 65                          |
-| Septembre | 24                        | 50                           | 8                                        | 70                          |
-| Octobre   | 20                        | 90                           | 6                                        | 78                          |
+**Transmission :**
+* **Chaîne :** Nettoyage, graissage, tension selon constructeur
+* **Pignons :** Contrôle d'usure (dents en "dent de requin" = remplacement)
+* **Cardan :** Vidange huile de pont selon kilométrage
+* **Courroie :** Inspection tension et état (scooters/maxi-scooters)
 
-### Définir son itinéraire : les routes incontournables
-La Corse regorge de routes spectaculaires qui feront le bonheur de tout motard. Parmi les tracés à ne pas manquer :
+### Pneumatiques : votre sécurité sur route
 
-* **Le tour du Cap Corse** : une boucle de 130 km offrant des vues imprenables sur la mer et des villages pittoresques comme Centuri.
-* **La route des Calanques de Piana** : classée au patrimoine mondial de l'UNESCO, avec ses falaises rouges plongeant dans la mer.
-* **Les Aiguilles de Bavella** : un massif montagneux impressionnant avec des virages techniques et des panoramas grandioses.
-* **La Scala Santa Regina** : une route spectaculaire taillée dans la roche entre Corte et la région de Niolo.
+**Choix des pneus pour la Corse :**
 
-### Équipements essentiels pour le motard en Corse
-Un équipement adapté garantit sécurité et confort tout au long de ton voyage. N'oublie pas d'emporter :
+**Pneus sport-touring recommandés :**
+* **Michelin Road 5 :** Excellent sur route mouillée, longévité
+* **Bridgestone T32 :** Accroche remarquable, résistance chaleur
+* **Pirelli Angel GT II :** Polyvalence route/sport, durabilité
+* **Dunlop RoadSmart III :** Bon rapport performance/prix
 
-* Un casque homologué, des gants, un blouson avec protections, un pantalon renforcé et des bottes.
-* Une combinaison de pluie légère, les orages pouvant survenir rapidement en montagne.
-* Une trousse de premiers secours, un kit de réparation basique et un antivol solide.
-* Un GPS ou une application de navigation avec les cartes de Corse téléchargées.
+**Contrôles indispensables :**
+* **Profondeur :** Minimum 3mm (légal 1,6mm insuffisant)
+* **Usure :** Régularité sur toute la largeur
+* **Fissures :** Flancs et gomme de roulement
+* **Âge :** Maximum 5 ans même si peu utilisés
 
-### Options de location de motos sur place
-Si tu préfères ne pas venir avec ta propre machine, plusieurs agences proposent des locations sur l'île. Corsica Moto Evasion et d'autres prestataires locaux offrent une gamme variée de motos. Pense à réserver plusieurs semaines à l'avance, particulièrement pour les périodes les plus demandées, et vérifie les conditions d'assurance et de kilométrage.
+**Pressions :**
+* **À froid :** Selon constructeur + 0,1-0,2 bar pour le chargement
+* **Contrôle :** Avant chaque étape importante
+* **Manomètre :** Vérification précision de votre équipement
 
-## Pourquoi choisir la Corse pour un road trip à moto
-La Corse séduit les motards du monde entier par son caractère unique. Entre mer et montagne, cette île offre une expérience de pilotage incomparable, enrichie par un patrimoine culturel authentique et une gastronomie savoureuse.
+### Freinage : sécurité vitale en montagne
 
-### Diversité des paysages et des routes
-L'île de beauté concentre une variété de paysages exceptionnelle sur un territoire relativement compact. En une seule journée, tu peux passer des plages de sable fin aux cols de montagne à plus de 1000 mètres d'altitude. Cette diversité se reflète dans les routes : côtières et panoramiques au bord de la mer, techniques et sinueuses en montagne. Chaque virage révèle un nouveau tableau, chaque col franchi dévoile un horizon différent.
+**Plaquettes de frein :**
 
-### Climat favorable et patrimoine culturel
-Le climat méditerranéen de la Corse, avec son ensoleillement généréux, crée des conditions idéales pour la pratique de la moto. Au-delà des paysages, l'île te réserve un riche patrimoine à découvrir lors de tes pauses : citadelles génoises à Bonifacio et Calvi, villages perchés de Balagne, site préhistorique de Filitosa. Sans oublier les spécialités gastronomiques comme le brocciu, la charcuterie corse ou les vins du patrimonio qui récompenseront tes efforts après une journée en selle.
+**État d'usure :**
+* **Épaisseur minimum :** 3mm de garniture restante
+* **Usure irrégulière :** Signe d'un problème d'étrier ou disque
+* **Remplacement préventif :** Si moins de 5mm avant départ
 
-## Conseils pratiques pour un séjour réussi
-La réussite de ton voyage à moto en Corse dépend aussi de quelques conseils pratiques qui te permettront d'anticiper les difficultés et de profiter pleinement de ton expérience sur les routes de l'île.
+**Qualité adaptée :**
+* **Plaquettes organiques :** Confort, peu d'échauffement
+* **Plaquettes métalliques :** Performance, résistance à la température
+* **Compromis :** Semi-métalliques pour usage mixte
 
-### Sécurité et réglementation routière
-La prudence reste de mise sur les routes corses, parfois étroites et sinueuses. Adapte ta vitesse aux conditions, particulièrement dans les virages en épingle des routes de montagne où la visibilité est réduite. Les limitations de vitesse sont identiques à celles du continent, mais la configuration des routes impose souvent naturellement une allure modérée. Reste vigilant face aux troupeaux qui peuvent traverser inopinément, notamment dans les régions montagneuses.
+**Disques de frein :**
+* **Épaisseur :** Contrôle avec pied à coulisse
+* **Planéité :** Pas de voilage (contrôle au comparateur)
+* **Rainures :** Usure uniforme, pas de rayures profondes
 
-### Entretien de la moto pendant le voyage
-Vérifie régulièrement l'état de ta machine, surtout si tu enchaînes les cols et les routes exigeantes. Une attention particulière à la pression des pneus, au niveau d'huile et à la tension de chaîne t'évitera bien des désagréments. Emporte avec toi un kit de base comprenant :
+**Liquide de frein :**
+* **Remplacement :** Tous les 2 ans ou 20 000 km
+* **Point d'ébullition :** DOT 4 minimum (DOT 5.1 recommandé)
+* **Couleur :** Miel clair (brun = remplacement urgent)
+* **Purge :** Élimination bulles d'air, toucher ferme obligatoire
 
-* Des outils multifonctions adaptés à ta moto.
-* Une bombe anti-crevaison et un kit de réparation tubeless.
-* Des fusibles et une lampe frontale pour les interventions imprévues.
+### Éclairage et signalisation
 
-## Questions fréquentes des motards voyageant en Corse
+**Optiques :**
+* **Ampoules :** Test tous feux avant/arrière
+* **Réglage :** Hauteur faisceau (crucial avec bagages)
+* **Nettoyage :** Optiques propres = visibilité maximale
+* **Spare :** Ampoules de rechange dans les bagages
 
-### Quelle moto pour les débutants en Corse ?
-Si tu débutes à moto, privilégie une machine légère et maniable comme une Yamaha MT-07 ou une Honda CB500X. Ces motos offrent un bon compromis entre puissance et facilité de prise en main, idéal pour apprivoiser les routes sinueuses sans stress. Les trails de moyenne cylindrée constituent également un excellent choix, leur position haute facilitant la lecture de la route dans les virages techniques.
+**Clignotants :**
+* **Fréquence :** Normale (accélération = ampoule grillée)
+* **Fixation :** Resserrage après vibrations routes corses
+* **LED :** Vérification compatibilité avec centrale clignotant
 
-### Comment gérer les bagages sur une moto en Corse ?
-Le choix du système de bagagerie dépend de ta moto et de la durée de ton séjour. Pour un voyage d'une semaine, un top-case complété par des sacoches latérales souples offre un bon compromis. Répartis le poids équitablement et place les objets lourds au fond et au centre. Un sac de réservoir magnétique ou à fixation rapide te permettra de garder à portée de main les objets dont tu as besoin fréquemment, comme ton appareil photo pour immortaliser les panoramas corses.
+## Préparation spécifique aux conditions corses
 
-## Témoignages et itinéraires de motards en Corse
-Les expériences des motards ayant sillonné les routes corses constituent une source précieuse d'inspiration pour planifier ton propre voyage.
+### Adaptation aux routes de montagne
 
-### Road trip de 7 jours autour de l'île
-"Mon tour de Corse en Tiger 900 reste mon plus beau voyage à moto. J'ai commencé par le Cap Corse avant de descendre la côte ouest jusqu'à Bonifacio. Les Calanques de Piana m'ont offert des paysages à couper le souffle. J'ai ensuite remonté par l'intérieur des terres, avec une étape mémorable à Corte. Je recommande de ne pas dépasser 200 km par jour pour prendre le temps d'apprécier chaque région."
+**Embrayage :**
+* **Point de patinage :** Test en côte pour vérifier l'état
+* **Jeu câble :** 2-3mm de débattement libre au levier
+* **Hydraulique :** Niveau liquide et purge si toucher spongieux
+* **Usure :** Remplacement préventif si plus de 40 000 km
 
-Pour un tour complet en une semaine, voici un itinéraire équilibré :
+**Suspension :**
+* **Précharge :** Adaptation au poids des bagages
+* **Amortissement :** Réglage détente/compression selon charge
+* **Étanchéité :** Contrôle fuites d'huile fourreaux/amortisseur
+* **Roulements :** Jeu colonne direction et bras oscillant
 
-* Bastia → Saint-Florent → Porto (jour 1-2)
-* Porto → Ajaccio → Bonifacio (jour 3-4)
-* Bonifacio → Porto-Vecchio → Corte (jour 5-6)
-* Corte → Cap Corse → Bastia (jour 7)
+### Protection contre la corrosion marine
 
-La Corse t'offre un terrain de jeu exceptionnel à moto, mêlant plaisir de pilotage et découvertes culturelles. Quelle que soit ta monture, l'île de beauté saura te séduire par ses routes variées et ses paysages grandioses. Alors, enfile ton casque et pars à la conquête de ce joyau méditerranéen !
-    `,
-    imageUrl: 'https://images.unsplash.com/photo-1508881598441-324f3974994b?auto=format&fit=crop&q=80',
-    date: '20 juin 2025',
-    author: {
-      name: 'Michel Costa',
-      avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
-      bio: 'Expert en motos de voyage et routes corses'
-    },
+**Traitement préventif :**
+* **Nettoyage complet :** Dégraissage châssis et moteur
+* **Protection :** Spray anticorrosion sur parties métalliques
+* **Graissage :** Tous les points de graissage (livret entretien)
+* **Câbles :** Lubrification gaines et points d'articulation
+
+**Zones sensibles :**
+* **Échappement :** Contrôle fixations et étanchéité
+* **Radiateur :** Nettoyage ailettes, protection contre projections
+* **Connecteurs électriques :** Graisse diélectrique
+* **Roulements :** Étanchéité roues, direction, transmission
+
+### Système de refroidissement renforcé
+
+**Pour les motos refroidies par air :**
+* **Ailettes :** Nettoyage complet dégraissage
+* **Circulation :** Déflecteurs et caches en bon état
+* **Huile :** Grade adapté hautes températures
+
+**Pour les motos refroidies par liquide :**
+* **Radiateur :** Nettoyage haute pression (prudent sur ailettes)
+* **Ventilateur :** Test fonctionnement automatique
+* **Durites :** Remplacement si plus de 4 ans
+* **Bouchon radiateur :** Contrôle étanchéité et pression
+
+## Check-list technique pré-départ
+
+### Contrôles à J-15
+
+**Mécanique générale :**
+- [ ] Vidange moteur et filtre huile
+- [ ] Contrôle/remplacement filtre à air
+- [ ] Vérification niveau liquide refroidissement
+- [ ] Contrôle état et tension chaîne
+- [ ] Inspection pneumatiques et pressions
+- [ ] Test système de freinage complet
+- [ ] Vérification éclairage et signalisation
+- [ ] Contrôle suspension et direction
+
+**Électricité :**
+- [ ] Test batterie (tension et charge)
+- [ ] Vérification alternateur/régulateur
+- [ ] Contrôle faisceau électrique
+- [ ] Test démarreur électrique
+- [ ] Vérification fixation batteries auxiliaires
+
+### Contrôles à J-3
+
+**Finitions :**
+- [ ] Serrage boulonnerie générale
+- [ ] Graissage points d'articulation
+- [ ] Nettoyage complet
+- [ ] Protection anticorrosion
+- [ ] Test final tous systèmes
+
+**Documentation :**
+- [ ] Carte grise et assurance à jour
+- [ ] Carnet entretien complété
+- [ ] Coordonnées garages corses
+- [ ] Numéros assistance constructeur
+
+### Contrôles quotidiens en voyage
+
+**Avant chaque étape :**
+- [ ] Pression pneus à froid
+- [ ] Niveau huile moteur
+- [ ] Fonctionnement freins
+- [ ] Éclairage complet
+- [ ] Fixation bagages
+- [ ] Propreté optiques
+
+## Trousse d'outils et pièces de rechange
+
+### Outillage minimal indispensable
+
+**Outils universels :**
+* **Clés Allen :** 3, 4, 5, 6, 8, 10mm
+* **Clés plates :** 8, 10, 12, 13, 17, 19mm
+* **Tournevis :** Plat 6mm, cruciforme moyen
+* **Pince :** Multiprise 200mm
+* **Clé à pipe :** 16mm (bougies) ou spécifique moto
+
+**Spécialisé moto :**
+* **Démonte obus :** Contrôle pression pneus
+* **Clé chaîne :** Attache rapide ou dérive-chaîne
+* **Multimètre :** Contrôle électrique basique
+* **Clé filtre à huile :** Si accessible
+
+### Pièces de rechange prioritaires
+
+**Consommables :**
+* **Fusibles :** Assortiment complet (5A à 30A)
+* **Ampoules :** Phare, stop, clignotants
+* **Huile moteur :** 1 litre complément
+* **Liquide frein :** Petit flacon DOT 4
+
+**Réparations courantes :**
+* **Chambre à air :** Si pneus avec chambre
+* **Kit réparation tubeless :** Mèches et colle
+* **Colliers serrage :** Assortiment 25-40mm
+* **Fil électrique :** 1,5mm² rouge et noir
+* **Scotch électricien :** Isolant haute qualité
+
+**Sécurité :**
+* **Maillon rapide :** Chaîne de transmission
+* **Durite frein :** 50cm de rechange
+* **Câble embrayage :** Si non hydraulique
+* **Gaine et câble :** Accélérateur de secours
+
+## Adresses utiles en Corse
+
+### Concessionnaires par région
+
+**Haute-Corse :**
+* **Bastia :** Yamaha Corse (04 95 32 47 23)
+* **Calvi :** Moto Service Balagne (04 95 65 08 56)
+* **Corte :** Garage Central (04 95 46 02 75)
+
+**Corse-du-Sud :**
+* **Ajaccio :** Honda Moto Corse (04 95 20 61 28)
+* **Porto-Vecchio :** Sud Corse Moto (04 95 70 29 85)
+* **Propriano :** Garage du Valinco (04 95 76 07 12)
+
+### Spécialistes pneumatiques
+
+**Changement/réparation :**
+* **Bastia :** Pneus Services (24h/24)
+* **Ajaccio :** Point S Moto
+* **Calvi :** Garage du Port
+* **Bonifacio :** Moto Pneus Sud
+
+### Services d'assistance
+
+**Assurances :**
+* **MAIF :** 3915 (assistance 24h/24)
+* **AMV :** 01 44 28 60 00
+* **Thélem :** 01 40 01 50 50
+
+**Constructeurs :**
+* **BMW :** 0800 07 24 24
+* **Honda :** 0 969 32 22 32
+* **Yamaha :** 0 825 00 12 34
+
+## Budget entretien pré-voyage
+
+### Révision complète standard
+
+**Main d'œuvre :** 200-350€ selon complexité
+**Consommables courants :**
+* Huile + filtre : 50-80€
+* Plaquettes avant/arrière : 80-150€
+* Pneus avant/arrière : 250-400€
+* Liquide frein : 30-50€
+
+### Révision approfondie
+
+**Budget préventif :** 500-800€
+* Révision standard
+* Remplacement préventif pièces d'usure
+* Contrôle approfondi sécurité
+* Mise à jour logiciels (motos récentes)
+
+### Pièces et outils voyage
+
+**Trousse complète :** 150-250€
+* Outillage de base
+* Pièces de rechange essentielles
+* Kit réparation et dépannage
+* Produits d'entretien
+
+## Calendrier de préparation optimal
+
+### 6 semaines avant
+
+- [ ] Prise de rendez-vous garage
+- [ ] Commande pièces spécifiques
+- [ ] Vérification garanties constructeur
+
+### 3 semaines avant
+
+- [ ] Révision complète effectuée
+- [ ] Tests de validation
+- [ ] Constitution trousse outils/pièces
+
+### 1 semaine avant
+
+- [ ] Contrôles finaux
+- [ ] Chargement et test bagages
+- [ ] Vérification documentation
+
+### Jour J
+
+- [ ] Check-list matinale
+- [ ] Photo compteur kilométrique
+- [ ] Contact famille/assurance
+
+Une moto parfaitement préparée vous permettra de profiter pleinement des merveilles corses sans stress mécanique. L'investissement en temps et argent dans cette préparation sera largement compensé par la sérénité et le plaisir de conduite tout au long de votre aventure insulaire.
+
+Cette préparation méthodique transformera votre voyage en une expérience mémorable où votre seule préoccupation sera de choisir entre les mille beautés que la Corse offre à chaque virage.`,
+    imageUrl: 'https://cdn.pixabay.com/photo/2016/11/19/12/27/motorcycle-1839447_1280.jpg',
+    date: '15 juin 2025',
+    author: standardAuthor,
     category: 'Équipement et préparation',
-    slug: 'quelle-moto-choisir',
-    readingTime: '8 min',
-    tags: ['motos', 'comparatif', 'choix-moto']
-  },
-  {
-    id: 'equipement-saisonnier',
-    title: 'L\'équipement essentiel pour rouler en Corse selon la saison',
-    excerpt: 'Guide détaillé sur l\'équipement du motard à prévoir selon la période de votre voyage, de la tenue estivale à la protection contre les intempéries.',
-    content: `
-# L'équipement essentiel pour rouler en Corse selon la saison
-
-La Corse offre des conditions climatiques variables selon les saisons et l'altitude. Choisir l'équipement adapté est essentiel pour profiter pleinement de votre aventure à moto tout au long de l'année. Voici un guide détaillé pour vous aider à préparer votre équipement en fonction de la période de votre voyage.
-
-## Printemps (avril-juin) : l'équipement polyvalent
-
-Le printemps corse est marqué par des variations de température importantes entre le matin, la journée et le soir, ainsi qu'entre le littoral et la montagne.
-
-### Équipement recommandé
-
-* **Blouson** : Textile technique avec membrane imperméable et doublure amovible
-* **Pantalon** : Textile avec membrane, idéalement convertible avec zip
-* **Gants** : Une paire mi-saison imperméable + une paire légère pour les journées chaudes
-* **Couche intermédiaire** : Polaire fine ou softshell facile à ranger
-* **Sous-vêtements techniques** : Pour évacuer la transpiration lors des montées de cols
-* **Protection pluie** : Même avec un équipement imperméable, un sur-pantalon et une veste de pluie légère peuvent s'avérer utiles
-
-### Conseils spécifiques
-
-* **Multicouches** : Privilégiez l'approche "pelure d'oignon" pour s'adapter aux variations de température
-* **Points d'attention** : Les cols de montagne peuvent présenter jusqu'à 15°C de différence avec le littoral
-
-## Été (juillet-août) : priorité à la ventilation
-
-L'été corse peut être très chaud, particulièrement sur les routes côtières et dans les zones urbaines comme Ajaccio ou Bastia.
-
-### Équipement recommandé
-
-* **Blouson** : Textile ou cuir perforé avec ventilation maximale
-* **Pantalon** : Modèle ventilé avec protections homologuées (évitez le jean classique)
-* **Gants** : Courts et ventilés pour la journée + une paire légère imperméable en cas d'orage
-* **Casque** : Bien ventilé, idéalement avec visière photochromique
-* **Tour de cou** : Version rafraîchissante ou bandana humidifiable
-* **Sous-vêtements** : Techniques à séchage rapide, évitez le coton
-* **Hydratation** : Système d'hydratation type Camelback indispensable
-
-### Conseils spécifiques
-
-* **Protection solaire** : Crème solaire haute protection pour le visage et le cou
-* **Pauses régulières** : Prévoyez des arrêts fréquents aux heures les plus chaudes
-* **Vigilance** : Même en été, prévoyez une couche chaude pour les cols d'altitude
-
-## Automne (septembre-octobre) : préparé à tout
-
-L'automne offre des conditions souvent idéales mais peut réserver des surprises météorologiques, particulièrement en octobre.
-
-### Équipement recommandé
-
-* **Blouson** : Textile étanche avec doublure thermique, idéalement Gore-Tex ou équivalent
-* **Pantalon** : Membrane imperméable avec doublure thermique
-* **Gants** : Mi-saison étanches avec isolation légère
-* **Couches intermédiaires** : Mérinos ou synthétique technique
-* **Protection pluie** : Équipement complet et facilement accessible
-* **Accessoires** : Cache-cou chaud, sous-gants en soie
-
-### Conseils spécifiques
-
-* **Météo** : Consultez les prévisions quotidiennement, les perturbations peuvent arriver rapidement
-* **Bagages** : Organisez votre équipement pour accéder facilement aux couches supplémentaires
-
-## Hiver (novembre-mars) : pour les plus aventureux
-
-Bien que moins fréquentée à moto, la Corse hivernale offre des paysages magnifiques. Les routes principales restent généralement ouvertes, mais certains cols peuvent être fermés.
-
-### Équipement recommandé
-
-* **Blouson** : Haute protection thermique avec membrane imperméable
-* **Pantalon** : Isolant avec membrane imperméable
-* **Gants** : Chauffants ou très isolants et parfaitement étanches
-* **Sous-vêtements thermiques** : Couche base en laine mérinos recommandée
-* **Couches intermédiaires** : Polaire épaisse ou veste à isolation synthétique/duvet
-* **Protection contre le froid** : Cagoule, tour de cou épais, protection poitrine
-* **Options** : Équipements chauffants (gilet, gants, poignées) fortement conseillés
-
-### Conseils spécifiques
-
-* **Journées courtes** : Planifiez vos trajets en tenant compte de la luminosité réduite
-* **Conditions routières** : Vigilance accrue sur les zones ombragées (risque de verglas)
-* **Hébergement** : Vérifiez l'ouverture des établissements, certains ferment en basse saison
-
-## Équipement indispensable toute l'année
-
-Quelle que soit la saison, certains éléments restent essentiels :
-
-* **Casque intégral** : La meilleure protection, idéalement avec système de communication
-* **Protection dorsale** : Séparée ou intégrée au blouson
-* **Bottes moto** : Offrant protection et imperméabilité
-* **Trousse de premiers secours** : Compacte mais complète
-* **Kit de dépannage** : Outils de base et bombe anti-crevaison
-* **Documents** : Carte verte d'assurance, carte européenne d'assurance maladie
-
-## Transportez votre équipement
-
-La gestion des différentes couches d'équipement nécessite une organisation rigoureuse :
-
-* **Sacoche de réservoir** : Idéale pour l'accès rapide aux équipements fréquemment utilisés
-* **Valises latérales** : Pour les vêtements de rechange et équipements volumineux
-* **Top case** : Pratique pour ranger le casque lors des pauses
-* **Sacs étanches** : Indispensables pour protéger vos affaires
-
-En adaptant votre équipement à la saison et en restant flexible face aux variations météorologiques, vous maximiserez votre confort et votre sécurité sur les routes corses. N'oubliez pas que la météo peut changer rapidement en montagne, quelle que soit la saison : être préparé est la clé d'une expérience réussie.
-    `,
-    imageUrl: 'https://images.unsplash.com/photo-1591637333472-2381b3d45a95?auto=format&fit=crop&q=80',
-    date: '28 juin 2025',
-    author: {
-      name: 'Jean Mattei',
-      avatar: '/lovable-uploads/ecea1661-19fa-49d7-8d7c-ab03fc569d77.png',
-      bio: 'Spécialiste en équipement moto pour toutes saisons'
-    },
-    category: 'Équipement et préparation',
-    slug: 'equipement-saisonnier',
-    readingTime: '7 min',
-    tags: ['equipement', 'saisons', 'meteo', 'securite']
+    slug: 'preparation-moto-voyage-corse',
+    readingTime: '16 min',
+    tags: ['préparation', 'mécanique', 'révision', 'pneus', 'freinage', 'check-list']
   }
 ];
