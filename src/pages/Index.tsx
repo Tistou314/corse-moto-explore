@@ -2,8 +2,8 @@
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import Hero from '@/components/Hero';
-import FeaturesSection from '@/components/home/FeaturesSection';
+import ModernHero from '@/components/modern/ModernHero';
+import ModernFeaturesSection from '@/components/modern/ModernFeaturesSection';
 import ItinerariesSection from '@/components/home/ItinerariesSection';
 import BlogSection from '@/components/home/BlogSection';
 import AccommodationsSection from '@/components/home/AccommodationsSection';
@@ -38,9 +38,6 @@ const Index = () => {
     .filter(acc => acc.type === 'gite')
     .slice(0, 3);
 
-  // Utiliser une image de route côtière spectaculaire
-  const heroImage = "/lovable-uploads/6f930ced-66d6-4bfe-adb7-246828fa75a7.png";
-
   return (
     <div className="min-h-screen flex flex-col">
       <SchemaOrg type="website" />
@@ -48,16 +45,11 @@ const Index = () => {
       
       <Navbar />
       
-      {/* Hero Section with coastal road image */}
-      <Hero 
-        title="Découvrez la Corse à Moto"
-        subtitle="Explorez les plus belles routes, parcours et paysages de l'Île de Beauté. Guides, itinéraires et conseils pour une aventure inoubliable."
-        cta={{ text: "Découvrir les itinéraires", link: "/itineraires" }}
-        imagePath={heroImage}
-      />
+      {/* Modern Hero Section with carousel */}
+      <ModernHero />
 
-      {/* Features Section */}
-      <FeaturesSection />
+      {/* Modern Features Section */}
+      <ModernFeaturesSection />
 
       {/* Featured Itineraries */}
       <ItinerariesSection itineraries={featuredItineraries} />
