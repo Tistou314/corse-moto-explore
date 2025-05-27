@@ -35,7 +35,7 @@ const GasStationsPage = () => {
   }, [activeRegion]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-corsica-pearl">
+    <div className="min-h-screen flex flex-col bg-white">
       <Navbar />
       
       <main className="flex-grow container mx-auto px-4 py-8">
