@@ -114,7 +114,7 @@ const ModernHero = () => {
                   <span className="text-gray-300">lieux</span>
                 </div>
                 <div className="flex items-center text-white">
-                  <Users className="w-5 h-5 mr-2 text-corsica-amber" />
+                  <Users className="w-5 h-5 mr-2 text-corsica-coral" />
                   <span className="text-2xl font-bold mr-1">{slide.stats.travelers}+</span>
                   <span className="text-gray-300">voyageurs</span>
                 </div>
@@ -126,7 +126,7 @@ const ModernHero = () => {
               <Link to={slide.cta.link}>
                 <Button 
                   size="lg" 
-                  className="bg-corsica-azure hover:bg-corsica-azure600 text-white px-8 py-4 text-lg rounded-xl font-semibold shadow-strong hover:shadow-glow transition-all duration-300 transform hover:scale-105"
+                  className="bg-corsica-coral hover:bg-corsica-coral/90 text-white px-8 py-4 text-lg rounded-xl font-semibold shadow-strong hover:shadow-glow transition-all duration-300 transform hover:scale-105"
                 >
                   {slide.cta.text}
                 </Button>

@@ -51,7 +51,7 @@ const AccommodationDetailPage = () => {
   const websiteUrl = accommodation.contact?.website;
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-corsica-pearl">
       <SchemaOrg type="accommodation" data={accommodation} />
       
       <Navbar />
@@ -70,7 +70,7 @@ const AccommodationDetailPage = () => {
           </div>
           
           {/* Details Section */}
-          <div>
+          <div className="bg-white rounded-lg p-6 shadow-lg">
             <AccommodationHeader accommodation={accommodation} />
             <RatingStars rating={accommodation.rating} />
             
