@@ -104,7 +104,7 @@ const ContactForm = () => {
       </div>
       <Button 
         type="submit" 
-        className="w-full bg-corsica-blue hover:bg-corsica-blue/90"
+        className="w-full bg-corsica-azure hover:bg-corsica-azure600 text-white"
         disabled={isSubmitting}
       >
         {isSubmitting ? 'Envoi en cours...' : 'Envoyer'}
