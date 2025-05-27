@@ -1,3 +1,4 @@
+
 import { StarIcon } from "lucide-react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -16,7 +17,7 @@ const AccommodationCard = ({ accommodation }: AccommodationCardProps) => {
   const typeColors = {
     hotel: "bg-blue-100 text-blue-800",
     gite: "bg-green-100 text-green-800",
-    camping: "bg-amber-100 text-amber-800"
+    camping: "bg-corsica-sage100 text-corsica-sage600"
   };
 
   // Map type to label

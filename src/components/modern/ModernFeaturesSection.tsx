@@ -37,8 +37,8 @@ const features = [
     icon: Navigation,
     title: "Stations Service",
     description: "Carte interactive des stations essence avec horaires, services et conseils pour ne jamais tomber en panne.",
-    color: "corsica-ruby",
-    gradient: "from-red-50 to-red-100"
+    color: "corsica-sage",
+    gradient: "from-corsica-sage50 to-corsica-sage100"
   },
   {
     icon: Compass,

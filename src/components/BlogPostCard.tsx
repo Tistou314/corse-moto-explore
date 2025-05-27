@@ -29,7 +29,7 @@ const BlogPostCard = ({
   const getCategoryColor = (category: string) => {
     switch(category) {
       case 'Itinéraires et circuits':
-        return 'bg-amber-500';
+        return 'bg-corsica-sage';
       case 'Aspects pratiques':
         return 'bg-sky-500';
       case 'Culture et découverte':
@@ -45,7 +45,7 @@ const BlogPostCard = ({
       case 'Ressources locales':
         return 'bg-green-500';
       default:
-        return 'bg-corsica-blue';
+        return 'bg-corsica-azure';
     }
   };
 

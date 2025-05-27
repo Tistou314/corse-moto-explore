@@ -13,7 +13,7 @@ const AccommodationHeader = ({ accommodation }: AccommodationHeaderProps) => {
       <Badge className={`
         ${accommodation.type === 'hotel' ? 'bg-blue-100 text-blue-800' : 
           accommodation.type === 'gite' ? 'bg-green-100 text-green-800' : 
-          'bg-amber-100 text-amber-800'}
+          'bg-corsica-sage100 text-corsica-sage600'}
       `}>
         {accommodation.type === 'hotel' ? 'Hôtel' : 
          accommodation.type === 'gite' ? 'Gîte' : 
