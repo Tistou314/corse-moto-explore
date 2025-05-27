@@ -42,11 +42,31 @@ const GasStationsPage = () => {
         <GasStationsHeader />
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="mb-6 bg-white border border-corsica-azure/20">
-            <TabsTrigger value="info" className="data-[state=active]:bg-corsica-azure data-[state=active]:text-white">Informations</TabsTrigger>
-            <TabsTrigger value="tips" className="data-[state=active]:bg-corsica-azure data-[state=active]:text-white">Conseils pratiques</TabsTrigger>
-            <TabsTrigger value="list" className="data-[state=active]:bg-corsica-azure data-[state=active]:text-white">Liste des stations</TabsTrigger>
-            <TabsTrigger value="regions" className="data-[state=active]:bg-corsica-azure data-[state=active]:text-white">Régions</TabsTrigger>
+          <TabsList className="mb-6 bg-white border-2 border-corsica-azure/30 shadow-md">
+            <TabsTrigger 
+              value="info" 
+              className="data-[state=active]:bg-corsica-azure data-[state=active]:text-white data-[state=active]:shadow-md text-corsica-charcoal font-semibold hover:bg-corsica-azure/10 transition-all"
+            >
+              Informations
+            </TabsTrigger>
+            <TabsTrigger 
+              value="tips" 
+              className="data-[state=active]:bg-corsica-azure data-[state=active]:text-white data-[state=active]:shadow-md text-corsica-charcoal font-semibold hover:bg-corsica-azure/10 transition-all"
+            >
+              Conseils pratiques
+            </TabsTrigger>
+            <TabsTrigger 
+              value="list" 
+              className="data-[state=active]:bg-corsica-azure data-[state=active]:text-white data-[state=active]:shadow-md text-corsica-charcoal font-semibold hover:bg-corsica-azure/10 transition-all"
+            >
+              Liste des stations
+            </TabsTrigger>
+            <TabsTrigger 
+              value="regions" 
+              className="data-[state=active]:bg-corsica-azure data-[state=active]:text-white data-[state=active]:shadow-md text-corsica-charcoal font-semibold hover:bg-corsica-azure/10 transition-all"
+            >
+              Régions
+            </TabsTrigger>
           </TabsList>
           
           <TabsContent value="info">
