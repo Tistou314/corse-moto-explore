@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -53,17 +54,16 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				corsica: {
-					// Palette principale modernisée avec des tons plus doux
+					// Palette principale modernisée avec des tons bleus uniquement
 					azure: '#0EA5E9',        // Méditerranée moderne
 					emerald: '#10B981',      // Forêts corses
-					sage: '#84CC16',         // Vert doux (remplace le honey)
 					coral: '#F97316',        // Couchers de soleil
 					ruby: '#DC2626',         // Accent drapeau
 					slate: '#475569',        // Granite des montagnes
 					pearl: '#F8FAFC',        // Arrière-plan clair
 					charcoal: '#1E293B',     // Sombre principal
 					
-					// Tons secondaires
+					// Tons secondaires bleus uniquement
 					azure50: '#F0F9FF',
 					azure100: '#E0F2FE',
 					azure500: '#0EA5E9',
@@ -74,13 +74,7 @@ export default {
 					emerald100: '#D1FAE5',
 					emerald500: '#10B981',
 					emerald600: '#059669',
-					emerald900: '#064E3B',
-					
-					sage50: '#F7FEE7',        // Tons sage plus doux
-					sage100: '#ECFCCB',
-					sage500: '#84CC16',       // Sage principal
-					sage600: '#65A30D',       // Plus foncé pour les hover
-					sage900: '#365314'        // Le plus foncé
+					emerald900: '#064E3B'
 				}
 			},
 			borderRadius: {
@@ -117,15 +111,13 @@ export default {
 				'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
 				'medium': '0 4px 25px -2px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
 				'strong': '0 10px 40px -4px rgba(0, 0, 0, 0.18), 0 20px 25px -5px rgba(0, 0, 0, 0.1)',
-				'glow': '0 0 20px rgba(14, 165, 233, 0.15)',
-				'glow-sage': '0 0 20px rgba(132, 204, 22, 0.15)'
+				'glow': '0 0 20px rgba(14, 165, 233, 0.15)'
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
 				'corsica-sunset': 'linear-gradient(135deg, #F97316 0%, #DC2626 100%)',
-				'corsica-sea': 'linear-gradient(135deg, #0EA5E9 0%, #10B981 100%)',
-				'corsica-sage': 'linear-gradient(135deg, #F7FEE7 0%, #ECFCCB 100%)'
+				'corsica-sea': 'linear-gradient(135deg, #0EA5E9 0%, #10B981 100%)'
 			},
 			keyframes: {
 				'accordion-down': {
