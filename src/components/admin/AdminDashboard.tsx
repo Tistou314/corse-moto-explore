@@ -34,65 +34,65 @@ const AdminDashboard = () => {
       </div>
       
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
+        <Card className="bg-corsica-azure text-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Articles</CardTitle>
-            <FileText className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-medium text-white">Articles</CardTitle>
+            <FileText className="h-4 w-4 text-white" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{blogPosts.length}</div>
-            <p className="text-xs text-muted-foreground">
+            <div className="text-2xl font-bold text-white">{blogPosts.length}</div>
+            <p className="text-xs text-corsica-azure100">
               Articles publiés
             </p>
-            <Button asChild className="w-full mt-4 bg-corsica-azure hover:bg-corsica-azure600" size="sm">
+            <Button asChild className="w-full mt-4 bg-white text-corsica-azure hover:bg-corsica-azure50" size="sm">
               <Link to="/admin/posts">Gérer les articles</Link>
             </Button>
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="bg-corsica-emerald text-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Hébergements</CardTitle>
-            <Hotel className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-medium text-white">Hébergements</CardTitle>
+            <Hotel className="h-4 w-4 text-white" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{accommodationsCount}</div>
-            <p className="text-xs text-muted-foreground">
+            <div className="text-2xl font-bold text-white">{accommodationsCount}</div>
+            <p className="text-xs text-corsica-emerald100">
               Hébergements disponibles
             </p>
-            <Button asChild className="w-full mt-4 bg-corsica-azure hover:bg-corsica-azure600" size="sm">
+            <Button asChild className="w-full mt-4 bg-white text-corsica-emerald hover:bg-corsica-emerald50" size="sm">
               <Link to="/admin/accommodations">Gérer les hébergements</Link>
             </Button>
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="bg-corsica-coral text-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Itinéraires</CardTitle>
-            <Map className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-medium text-white">Itinéraires</CardTitle>
+            <Map className="h-4 w-4 text-white" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{itinerariesCount}</div>
-            <p className="text-xs text-muted-foreground">
+            <div className="text-2xl font-bold text-white">{itinerariesCount}</div>
+            <p className="text-xs text-orange-100">
               Itinéraires proposés
             </p>
-            <Button asChild className="w-full mt-4 bg-corsica-azure hover:bg-corsica-azure600" size="sm">
+            <Button asChild className="w-full mt-4 bg-white text-corsica-coral hover:bg-orange-50" size="sm">
               <Link to="/admin/itineraries">Gérer les itinéraires</Link>
             </Button>
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="bg-corsica-slate text-white">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Stations-service</CardTitle>
-            <Droplet className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-medium text-white">Stations-service</CardTitle>
+            <Droplet className="h-4 w-4 text-white" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{gasStationsCount}</div>
-            <p className="text-xs text-muted-foreground">
+            <div className="text-2xl font-bold text-white">{gasStationsCount}</div>
+            <p className="text-xs text-slate-200">
               Stations-service référencées
             </p>
-            <Button asChild className="w-full mt-4 bg-corsica-azure hover:bg-corsica-azure600" size="sm">
+            <Button asChild className="w-full mt-4 bg-white text-corsica-slate hover:bg-slate-50" size="sm">
               <Link to="/admin/gas-stations">Gérer les stations</Link>
             </Button>
           </CardContent>
@@ -100,21 +100,21 @@ const AdminDashboard = () => {
       </div>
       
       <div className="grid gap-4 md:grid-cols-2">
-        <Card className="col-span-2">
-          <CardHeader>
-            <CardTitle>Activité récente</CardTitle>
-            <CardDescription>
+        <Card className="col-span-2 bg-white">
+          <CardHeader className="bg-corsica-azure text-white">
+            <CardTitle className="text-white">Activité récente</CardTitle>
+            <CardDescription className="text-corsica-azure100">
               Dernières modifications sur le site
             </CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="bg-white">
             <div className="space-y-4">
               <div className="flex items-center">
-                <div className="mr-4 bg-blue-100 p-2 rounded-full">
-                  <FileText className="h-4 w-4 text-blue-700" />
+                <div className="mr-4 bg-corsica-azure100 p-2 rounded-full">
+                  <FileText className="h-4 w-4 text-corsica-azure" />
                 </div>
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">
+                  <p className="text-sm font-medium leading-none text-black">
                     Article modifié: Circuit Cap Corse
                   </p>
                   <p className="text-sm text-muted-foreground">
@@ -123,11 +123,11 @@ const AdminDashboard = () => {
                 </div>
               </div>
               <div className="flex items-center">
-                <div className="mr-4 bg-green-100 p-2 rounded-full">
-                  <FileText className="h-4 w-4 text-green-700" />
+                <div className="mr-4 bg-corsica-emerald100 p-2 rounded-full">
+                  <FileText className="h-4 w-4 text-corsica-emerald" />
                 </div>
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">
+                  <p className="text-sm font-medium leading-none text-black">
                     Nouvel article: Préparation de moto pour la Corse
                   </p>
                   <p className="text-sm text-muted-foreground">
@@ -140,7 +140,7 @@ const AdminDashboard = () => {
                   <Droplet className="h-4 w-4 text-corsica-azure" />
                 </div>
                 <div className="space-y-1">
-                  <p className="text-sm font-medium leading-none">
+                  <p className="text-sm font-medium leading-none text-black">
                     Nouvelle station: Station du Col de Bavella
                   </p>
                   <p className="text-sm text-muted-foreground">
