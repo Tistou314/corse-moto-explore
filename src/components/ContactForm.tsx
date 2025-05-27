@@ -44,7 +44,7 @@ const ContactForm = () => {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium mb-1">
+          <label htmlFor="name" className="block text-sm font-medium mb-1 text-gray-900">
             Nom
           </label>
           <Input
@@ -54,10 +54,11 @@ const ContactForm = () => {
             onChange={handleChange}
             required
             placeholder="Votre nom"
+            className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-500"
           />
         </div>
         <div>
-          <label htmlFor="email" className="block text-sm font-medium mb-1">
+          <label htmlFor="email" className="block text-sm font-medium mb-1 text-gray-900">
             Email
           </label>
           <Input
@@ -68,11 +69,12 @@ const ContactForm = () => {
             onChange={handleChange}
             required
             placeholder="votre@email.com"
+            className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-500"
           />
         </div>
       </div>
       <div>
-        <label htmlFor="subject" className="block text-sm font-medium mb-1">
+        <label htmlFor="subject" className="block text-sm font-medium mb-1 text-gray-900">
           Sujet
         </label>
         <Input
@@ -82,10 +84,11 @@ const ContactForm = () => {
           onChange={handleChange}
           required
           placeholder="Sujet de votre message"
+          className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-500"
         />
       </div>
       <div>
-        <label htmlFor="message" className="block text-sm font-medium mb-1">
+        <label htmlFor="message" className="block text-sm font-medium mb-1 text-gray-900">
           Message
         </label>
         <Textarea
@@ -96,6 +99,7 @@ const ContactForm = () => {
           required
           placeholder="Votre message..."
           rows={5}
+          className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-500"
         />
       </div>
       <Button 
