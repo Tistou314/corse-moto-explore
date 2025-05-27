@@ -83,7 +83,7 @@ const GasStationsList = () => {
                       Stratégique
                     </span>
                   ) : (
-                    <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-corsica-sage/10 text-corsica-sage">
+                    <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-corsica-azure/10 text-corsica-azure">
                       Standard
                     </span>
                   )}

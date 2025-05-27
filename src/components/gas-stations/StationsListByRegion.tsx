@@ -89,7 +89,7 @@ const StationsListByRegion = ({
                 <TableCell>
                   <div className="flex flex-wrap gap-1">
                     {station.fuelTypes.map(fuel => (
-                      <Badge key={fuel} variant="outline" className="text-xs border-corsica-sage text-corsica-sage">
+                      <Badge key={fuel} variant="outline" className="text-xs border-corsica-emerald text-corsica-emerald">
                         {fuel}
                       </Badge>
                     ))}
