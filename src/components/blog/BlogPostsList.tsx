@@ -50,6 +50,7 @@ const BlogPostsList = ({ posts, searchTerm, selectedCategory }: BlogPostsListPro
               date={post.date}
               author={post.author.name}
               category={post.category}
+              readingTime={post.readingTime}
             />
           ))}
         </div>
