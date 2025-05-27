@@ -88,10 +88,10 @@ const HebergementPage = () => {
         imagePath="/lovable-uploads/0e248deb-e0c7-4afb-b4fe-2dfdef43fa71.png"
       />
 
-      <section className="container mx-auto py-12 px-4 bg-corsica-pearl">
+      <section className="container mx-auto py-12 px-4 bg-white">
         <div className="max-w-3xl mx-auto mb-12 text-center">
-          <h2 className="text-3xl font-bold mb-4">Des hébergements adaptés aux motards</h2>
-          <p className="text-lg text-muted-foreground">
+          <h2 className="text-3xl font-bold mb-4 text-corsica-charcoal">Des hébergements adaptés aux motards</h2>
+          <p className="text-lg text-corsica-slate">
             La Corse offre une variété d'options d'hébergement qui comprennent parfaitement les besoins des motards. 
             Des parkings sécurisés aux conseils d'itinéraires, découvrez nos établissements recommandés.
           </p>
@@ -116,7 +116,7 @@ const HebergementPage = () => {
         filteredCount={filteredAccommodations.length}
       />
 
-      <section className="container mx-auto py-12 px-4 bg-corsica-pearl">
+      <section className="container mx-auto py-12 px-4 bg-white">
         {filteredAccommodations.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredAccommodations.map((accommodation) => (
