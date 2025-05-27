@@ -28,7 +28,7 @@ const BlogPage = () => {
         imagePath="https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?auto=format&fit=crop&q=80"
       />
 
-      <section className="bg-muted py-8">
+      <section className="bg-white py-8">
         <FeaturedResources />
       </section>
 
@@ -44,7 +44,7 @@ const BlogPage = () => {
         </div>
       </section>
 
-      <section className="py-12 bg-muted flex-grow">
+      <section className="py-12 bg-white flex-grow">
         <div className="container mx-auto px-4">
           <BlogPostsList 
             posts={blogPosts} 
