@@ -30,11 +30,12 @@ const StationsListByRegion = ({
 }: StationsListByRegionProps) => {
   return (
     <div className="mb-6">
-      <h2 className="text-2xl font-semibold mb-4">Liste des stations par région</h2>
+      <h2 className="text-2xl font-semibold mb-4 text-corsica-charcoal">Liste des stations par région</h2>
       <div className="mb-4 flex flex-wrap gap-2">
         <Button 
           variant={activeRegion === 'all' ? "default" : "outline"}
           onClick={() => setActiveRegion('all')}
+          className={activeRegion === 'all' ? "bg-corsica-azure hover:bg-corsica-azure/90" : "border-corsica-azure text-corsica-azure hover:bg-corsica-azure hover:text-white"}
         >
           Toutes ({regionMap.all.length})
         </Button>
@@ -43,6 +44,7 @@ const StationsListByRegion = ({
             key={region}
             variant={activeRegion === region ? "default" : "outline"}
             onClick={() => setActiveRegion(region)}
+            className={activeRegion === region ? "bg-corsica-azure hover:bg-corsica-azure/90" : "border-corsica-azure text-corsica-azure hover:bg-corsica-azure hover:text-white"}
           >
             {region} ({regionMap[region].length})
           </Button>
@@ -51,10 +53,10 @@ const StationsListByRegion = ({
       
       <div className="bg-white p-4 rounded-lg shadow mb-4">
         <div className="flex justify-between items-center mb-2">
-          <h3 className="text-lg font-medium">
+          <h3 className="text-lg font-medium text-corsica-charcoal">
             {activeRegion === 'all' ? 'Toutes les stations' : `Stations en ${activeRegion}`}
           </h3>
-          <Badge variant="outline" className="flex items-center gap-1">
+          <Badge variant="outline" className="flex items-center gap-1 border-corsica-azure text-corsica-azure">
             <Fuel className="h-3 w-3" />
             <span>{displayedStations.length} stations</span>
             {strategicStations.length > 0 && (
@@ -87,7 +89,7 @@ const StationsListByRegion = ({
                 <TableCell>
                   <div className="flex flex-wrap gap-1">
                     {station.fuelTypes.map(fuel => (
-                      <Badge key={fuel} variant="outline" className="text-xs">
+                      <Badge key={fuel} variant="outline" className="text-xs border-corsica-sage text-corsica-sage">
                         {fuel}
                       </Badge>
                     ))}
@@ -97,7 +99,7 @@ const StationsListByRegion = ({
                   {station.services && station.services.length > 0 ? (
                     <div className="flex flex-wrap gap-1">
                       {station.services.map(service => (
-                        <Badge key={service} variant="secondary" className="text-xs">
+                        <Badge key={service} variant="secondary" className="text-xs bg-corsica-azure/10 text-corsica-azure">
                           {service}
                         </Badge>
                       ))}
@@ -108,7 +110,7 @@ const StationsListByRegion = ({
                 </TableCell>
                 <TableCell>
                   {station.isStrategic ? (
-                    <Badge variant="secondary" className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200">Oui</Badge>
+                    <Badge variant="secondary" className="bg-corsica-coral/10 text-corsica-coral">Oui</Badge>
                   ) : (
                     "Non"
                   )}

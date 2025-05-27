@@ -52,7 +52,7 @@ const GasStationsList = () => {
     <>
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold tracking-tight">Stations-service</h1>
-        <Button asChild>
+        <Button asChild className="bg-corsica-azure hover:bg-corsica-azure/90">
           <Link to="/admin/gas-stations/new">
             <Plus className="h-4 w-4 mr-2" />
             Ajouter une station
@@ -78,7 +78,15 @@ const GasStationsList = () => {
                 <TableCell>{station.region || "Non spécifiée"}</TableCell>
                 <TableCell>{station.address || "Non spécifiée"}</TableCell>
                 <TableCell>
-                  {station.isStrategic ? "Stratégique" : "Standard"}
+                  {station.isStrategic ? (
+                    <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-corsica-coral/10 text-corsica-coral">
+                      Stratégique
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-corsica-sage/10 text-corsica-sage">
+                      Standard
+                    </span>
+                  )}
                 </TableCell>
                 <TableCell className="flex space-x-2">
                   <Button

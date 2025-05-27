@@ -35,18 +35,18 @@ const GasStationsPage = () => {
   }, [activeRegion]);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-corsica-pearl">
       <Navbar />
       
       <main className="flex-grow container mx-auto px-4 py-8">
         <GasStationsHeader />
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="mb-6">
-            <TabsTrigger value="info">Informations</TabsTrigger>
-            <TabsTrigger value="tips">Conseils pratiques</TabsTrigger>
-            <TabsTrigger value="list">Liste des stations</TabsTrigger>
-            <TabsTrigger value="regions">Régions</TabsTrigger>
+          <TabsList className="mb-6 bg-white border border-corsica-azure/20">
+            <TabsTrigger value="info" className="data-[state=active]:bg-corsica-azure data-[state=active]:text-white">Informations</TabsTrigger>
+            <TabsTrigger value="tips" className="data-[state=active]:bg-corsica-azure data-[state=active]:text-white">Conseils pratiques</TabsTrigger>
+            <TabsTrigger value="list" className="data-[state=active]:bg-corsica-azure data-[state=active]:text-white">Liste des stations</TabsTrigger>
+            <TabsTrigger value="regions" className="data-[state=active]:bg-corsica-azure data-[state=active]:text-white">Régions</TabsTrigger>
           </TabsList>
           
           <TabsContent value="info">

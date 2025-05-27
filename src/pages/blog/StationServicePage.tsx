@@ -67,7 +67,7 @@ const StationServicePage = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-corsica-pearl">
       <Navbar />
       
       <Hero 

@@ -8,7 +8,7 @@ const BackToBlogs = () => {
   return (
     <div className="mt-10 text-center">
       <Link to="/blog">
-        <Button className="bg-corsica-blue hover:bg-corsica-blue/90">
+        <Button className="bg-corsica-azure hover:bg-corsica-azure/90 text-white">
           <ArrowLeft className="w-4 h-4 mr-2" /> Retour aux articles du blog
         </Button>
       </Link>
