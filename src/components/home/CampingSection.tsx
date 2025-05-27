@@ -32,14 +32,14 @@ const CampingSection = ({ campings }: CampingSectionProps) => {
           <div className="flex items-center">
             <Tent className="w-8 h-8 text-corsica-azure mr-3" />
             <div>
-              <h2 className="text-3xl font-bold mb-2">Campings Motards-Friendly</h2>
+              <h2 className="text-3xl font-bold mb-2 text-corsica-charcoal">Campings Motards-Friendly</h2>
               <p className="text-muted-foreground">
                 Des campings sélectionnés pour les motards en itinérance
               </p>
             </div>
           </div>
           <Link to="/hebergements?type=camping">
-            <Button variant="outline" className="mt-4 md:mt-0 border-corsica-azure text-corsica-azure hover:bg-corsica-azure hover:text-white">
+            <Button className="mt-4 md:mt-0 bg-corsica-azure hover:bg-corsica-azure/90 text-white">
               Voir tous les campings
             </Button>
           </Link>

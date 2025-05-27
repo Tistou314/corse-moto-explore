@@ -99,7 +99,7 @@ const ItinerairesPage = () => {
               <Button
                 variant="outline"
                 onClick={resetFilters}
-                className="w-full md:w-auto"
+                className="w-full md:w-auto border-corsica-azure text-corsica-azure hover:bg-corsica-azure hover:text-white"
               >
                 Réinitialiser
               </Button>
@@ -109,7 +109,7 @@ const ItinerairesPage = () => {
       </section>
 
       {/* Itineraries List */}
-      <section className="py-12 bg-muted flex-grow">
+      <section className="py-12 bg-corsica-pearl flex-grow">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl font-bold">
@@ -143,7 +143,12 @@ const ItinerairesPage = () => {
               <p className="text-muted-foreground mb-4">
                 Essayez d'ajuster vos critères de recherche ou de réinitialiser les filtres.
               </p>
-              <Button onClick={resetFilters}>Réinitialiser les filtres</Button>
+              <Button 
+                onClick={resetFilters}
+                className="bg-corsica-azure hover:bg-corsica-azure/90 text-white"
+              >
+                Réinitialiser les filtres
+              </Button>
             </div>
           )}
         </div>
