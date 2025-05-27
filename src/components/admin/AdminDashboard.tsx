@@ -44,7 +44,7 @@ const AdminDashboard = () => {
             <p className="text-xs text-muted-foreground">
               Articles publiés
             </p>
-            <Button asChild className="w-full mt-4" size="sm">
+            <Button asChild className="w-full mt-4 bg-corsica-azure hover:bg-corsica-azure600" size="sm">
               <Link to="/admin/posts">Gérer les articles</Link>
             </Button>
           </CardContent>
@@ -60,7 +60,7 @@ const AdminDashboard = () => {
             <p className="text-xs text-muted-foreground">
               Hébergements disponibles
             </p>
-            <Button asChild className="w-full mt-4" size="sm">
+            <Button asChild className="w-full mt-4 bg-corsica-azure hover:bg-corsica-azure600" size="sm">
               <Link to="/admin/accommodations">Gérer les hébergements</Link>
             </Button>
           </CardContent>
@@ -76,7 +76,7 @@ const AdminDashboard = () => {
             <p className="text-xs text-muted-foreground">
               Itinéraires proposés
             </p>
-            <Button asChild className="w-full mt-4" size="sm">
+            <Button asChild className="w-full mt-4 bg-corsica-azure hover:bg-corsica-azure600" size="sm">
               <Link to="/admin/itineraries">Gérer les itinéraires</Link>
             </Button>
           </CardContent>
@@ -92,7 +92,7 @@ const AdminDashboard = () => {
             <p className="text-xs text-muted-foreground">
               Stations-service référencées
             </p>
-            <Button asChild className="w-full mt-4" size="sm">
+            <Button asChild className="w-full mt-4 bg-corsica-azure hover:bg-corsica-azure600" size="sm">
               <Link to="/admin/gas-stations">Gérer les stations</Link>
             </Button>
           </CardContent>
@@ -136,8 +136,8 @@ const AdminDashboard = () => {
                 </div>
               </div>
               <div className="flex items-center">
-                <div className="mr-4 bg-amber-100 p-2 rounded-full">
-                  <Droplet className="h-4 w-4 text-amber-700" />
+                <div className="mr-4 bg-corsica-azure/20 p-2 rounded-full">
+                  <Droplet className="h-4 w-4 text-corsica-azure" />
                 </div>
                 <div className="space-y-1">
                   <p className="text-sm font-medium leading-none">

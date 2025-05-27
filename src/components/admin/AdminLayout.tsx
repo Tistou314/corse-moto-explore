@@ -70,7 +70,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
       {/* Navigation pour bureau */}
       <aside className="hidden md:flex flex-col w-64 bg-white shadow-md">
         <div className="p-4 border-b">
-          <h1 className="text-xl font-bold text-corsica-blue">Administration</h1>
+          <h1 className="text-xl font-bold text-corsica-azure">Administration</h1>
         </div>
         <nav className="flex-1 p-4 space-y-1">
           {navItems.map((item) => (
@@ -79,7 +79,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
               to={item.path}
               className={`flex items-center px-4 py-3 rounded-md transition-colors ${
                 isActive(item.path)
-                  ? "bg-corsica-blue text-white"
+                  ? "bg-corsica-azure text-white"
                   : "hover:bg-gray-100"
               }`}
             >
@@ -105,7 +105,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
         </SheetTrigger>
         <SheetContent side="left" className="w-64 p-0">
           <div className="p-4 border-b flex justify-between items-center">
-            <h1 className="text-xl font-bold text-corsica-blue">Administration</h1>
+            <h1 className="text-xl font-bold text-corsica-azure">Administration</h1>
           </div>
           <nav className="flex-1 p-4 space-y-1">
             {navItems.map((item) => (
@@ -115,7 +115,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
                 onClick={() => setOpen(false)}
                 className={`flex items-center px-4 py-3 rounded-md transition-colors ${
                   isActive(item.path)
-                    ? "bg-corsica-blue text-white"
+                    ? "bg-corsica-azure text-white"
                     : "hover:bg-gray-100"
                 }`}
               >
@@ -140,7 +140,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
       {/* Contenu principal */}
       <main className="flex-1 p-6">
         <div className="md:hidden flex justify-between items-center mb-6">
-          <h1 className="text-xl font-bold text-corsica-blue">Administration</h1>
+          <h1 className="text-xl font-bold text-corsica-azure">Administration</h1>
           <Button variant="outline" size="icon" onClick={() => setOpen(true)}>
             <Menu className="h-5 w-5" />
           </Button>
