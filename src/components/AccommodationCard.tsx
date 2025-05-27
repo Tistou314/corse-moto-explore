@@ -90,7 +90,7 @@ const AccommodationCard = ({ accommodation }: AccommodationCardProps) => {
                 key={i}
                 className={`w-4 h-4 ${
                   i < Math.floor(accommodation.rating)
-                    ? "text-yellow-500 fill-yellow-500"
+                    ? "text-corsica-coral fill-corsica-coral"
                     : "text-gray-300"
                 }`}
               />

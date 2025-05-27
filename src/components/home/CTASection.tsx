@@ -11,7 +11,7 @@ const CTASection = () => {
     <section 
       ref={ref}
       className={cn(
-        "py-20 bg-corsica-blue text-white transition-all duration-700 ease-in-out relative",
+        "py-20 bg-corsica-azure text-white transition-all duration-700 ease-in-out relative",
         isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
       )}
       style={{
@@ -31,7 +31,7 @@ const CTASection = () => {
             <Button 
               size="lg" 
               className={cn(
-                "bg-white text-corsica-blue hover:bg-corsica-light transition-all duration-300",
+                "bg-white text-corsica-azure hover:bg-corsica-pearl transition-all duration-300",
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               )}
               style={{ transitionDelay: "100ms" }}

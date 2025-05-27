@@ -39,7 +39,7 @@ const BlogPostCard = ({
       case 'Expériences et récits':
         return 'bg-violet-500';
       case 'Conseils saisonniers':
-        return 'bg-orange-500';
+        return 'bg-corsica-coral';
       case 'Aspects techniques':
         return 'bg-blue-500';
       case 'Ressources locales':
@@ -85,7 +85,7 @@ const BlogPostCard = ({
           <span className="text-xs text-muted-foreground">{readingTime}</span>
           <Link 
             to={`/blog/${id}`} 
-            className="text-corsica-blue hover:text-corsica-blue/80 font-medium inline-flex items-center"
+            className="text-corsica-azure hover:text-corsica-azure/80 font-medium inline-flex items-center"
           >
             Lire plus
             <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
