@@ -135,7 +135,7 @@ const ModernHero = () => {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="border-2 border-white/30 text-white hover:bg-white hover:text-corsica-charcoal px-8 py-4 text-lg rounded-xl font-semibold backdrop-blur-sm transition-all duration-300"
+                  className="border-2 border-corsica-azure/60 text-corsica-azure bg-corsica-azure/10 hover:bg-corsica-azure hover:text-white px-8 py-4 text-lg rounded-xl font-semibold backdrop-blur-sm transition-all duration-300"
                 >
                   Guide pratique
                 </Button>

@@ -61,7 +61,7 @@ const ItinerairesPage = () => {
                 <Input
                   type="text"
                   placeholder="Rechercher par nom ou description..."
-                  className="pl-10 border-corsica-azure/30 focus:border-corsica-azure"
+                  className="pl-10 border-corsica-azure/30 focus:border-corsica-azure bg-corsica-azure/5"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />

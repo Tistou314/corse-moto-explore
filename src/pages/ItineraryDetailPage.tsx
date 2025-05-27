@@ -32,14 +32,14 @@ const ItineraryDetailPage = () => {
     return (
       <div className="min-h-screen flex flex-col">
         <Navbar />
-        <div className="flex-grow flex items-center justify-center bg-muted">
+        <div className="flex-grow flex items-center justify-center bg-corsica-pearl">
           <div className="text-center p-8">
-            <h1 className="text-3xl font-bold mb-4">Itinéraire non trouvé</h1>
-            <p className="text-muted-foreground mb-6">
+            <h1 className="text-3xl font-bold mb-4 text-corsica-charcoal">Itinéraire non trouvé</h1>
+            <p className="text-corsica-slate mb-6">
               L'itinéraire que vous recherchez n'existe pas ou a été supprimé.
             </p>
             <Link to="/itineraires">
-              <Button>Retour aux itinéraires</Button>
+              <Button className="bg-corsica-azure hover:bg-corsica-azure/90 text-white">Retour aux itinéraires</Button>
             </Link>
           </div>
         </div>
