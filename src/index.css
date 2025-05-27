@@ -8,13 +8,13 @@
 @layer base {
   :root {
     --background: 248 250 252;
-    --foreground: 30 41 59;
+    --foreground: 0 0 0;
 
     --card: 255 255 255;
-    --card-foreground: 30 41 59;
+    --card-foreground: 0 0 0;
 
     --popover: 255 255 255;
-    --popover-foreground: 30 41 59;
+    --popover-foreground: 0 0 0;
 
     --primary: 14 165 233;
     --primary-foreground: 248 250 252;
@@ -26,7 +26,7 @@
     --muted-foreground: 71 85 105;
 
     --accent: 132 204 22;
-    --accent-foreground: 30 41 59;
+    --accent-foreground: 0 0 0;
 
     --destructive: 220 38 38;
     --destructive-foreground: 248 250 252;
@@ -45,12 +45,16 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-black font-sans antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading;
+    @apply font-heading text-black;
+  }
+
+  p, td, th, li, div, span {
+    @apply text-black;
   }
 
   /* Scroll bar moderne */
@@ -122,7 +126,7 @@
   }
   
   .blog-content p {
-    @apply my-6 leading-relaxed text-gray-700;
+    @apply my-6 leading-relaxed text-black;
   }
   
   .blog-content img {
@@ -130,7 +134,7 @@
   }
   
   .blog-content blockquote {
-    @apply pl-6 italic border-l-4 border-corsica-azure/70 text-gray-600 my-8 py-4 bg-corsica-azure50 rounded-r-xl;
+    @apply pl-6 italic border-l-4 border-corsica-azure/70 text-black my-8 py-4 bg-corsica-azure50 rounded-r-xl;
   }
   
   .blog-content ul {
@@ -142,7 +146,7 @@
   }
   
   .blog-content li {
-    @apply text-gray-700;
+    @apply text-black;
   }
   
   .blog-content a {
@@ -150,15 +154,15 @@
   }
   
   .blog-content h2 {
-    @apply text-3xl md:text-4xl font-bold mt-12 mb-6 font-heading text-corsica-charcoal;
+    @apply text-3xl md:text-4xl font-bold mt-12 mb-6 font-heading text-black;
   }
   
   .blog-content h3 {
-    @apply text-2xl md:text-3xl font-bold mt-10 mb-4 font-heading text-corsica-charcoal;
+    @apply text-2xl md:text-3xl font-bold mt-10 mb-4 font-heading text-black;
   }
   
   .blog-content h4 {
-    @apply text-xl md:text-2xl font-bold mt-8 mb-3 text-corsica-charcoal;
+    @apply text-xl md:text-2xl font-bold mt-8 mb-3 text-black;
   }
   
   .blog-content hr {
@@ -170,11 +174,11 @@
   }
   
   .blog-content th {
-    @apply bg-corsica-azure50 text-left p-4 font-semibold text-corsica-charcoal border-b border-gray-200;
+    @apply bg-corsica-azure50 text-left p-4 font-semibold text-black border-b border-gray-200;
   }
   
   .blog-content td {
-    @apply p-4 border-b border-gray-100 text-gray-700;
+    @apply p-4 border-b border-gray-100 text-black;
   }
   
   .blog-content code {
