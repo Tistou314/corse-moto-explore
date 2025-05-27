@@ -35,7 +35,7 @@ const StationsListByRegion = ({
         <Button 
           variant={activeRegion === 'all' ? "default" : "outline"}
           onClick={() => setActiveRegion('all')}
-          className={activeRegion === 'all' ? "bg-corsica-azure hover:bg-corsica-azure/90" : "border-corsica-azure text-corsica-azure hover:bg-corsica-azure hover:text-white"}
+          className={activeRegion === 'all' ? "bg-corsica-azure hover:bg-corsica-azure/90 text-white" : "border-corsica-azure text-corsica-azure hover:bg-corsica-azure hover:text-white"}
         >
           Toutes ({regionMap.all.length})
         </Button>
@@ -44,7 +44,7 @@ const StationsListByRegion = ({
             key={region}
             variant={activeRegion === region ? "default" : "outline"}
             onClick={() => setActiveRegion(region)}
-            className={activeRegion === region ? "bg-corsica-azure hover:bg-corsica-azure/90" : "border-corsica-azure text-corsica-azure hover:bg-corsica-azure hover:text-white"}
+            className={activeRegion === region ? "bg-corsica-azure hover:bg-corsica-azure/90 text-white" : "border-corsica-azure text-corsica-azure hover:bg-corsica-azure hover:text-white"}
           >
             {region} ({regionMap[region].length})
           </Button>
