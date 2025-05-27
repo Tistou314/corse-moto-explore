@@ -28,6 +28,7 @@ const StationsListTab = ({
           <Button 
             variant={activeRegion === 'all' ? "default" : "outline"}
             onClick={() => setActiveRegion('all')}
+            className={activeRegion === 'all' ? "bg-corsica-azure hover:bg-corsica-azure/90 text-white" : "border-corsica-azure text-corsica-azure hover:bg-corsica-azure hover:text-white"}
           >
             Toutes ({groupedByRegion ? Object.values(groupedByRegion).flat().length : 0})
           </Button>
@@ -36,6 +37,7 @@ const StationsListTab = ({
               key={region}
               variant={activeRegion === region ? "default" : "outline"}
               onClick={() => setActiveRegion(region)}
+              className={activeRegion === region ? "bg-corsica-azure hover:bg-corsica-azure/90 text-white" : "border-corsica-azure text-corsica-azure hover:bg-corsica-azure hover:text-white"}
             >
               {region} ({groupedByRegion[region].length})
             </Button>
@@ -65,7 +67,7 @@ const StationsListTab = ({
                   <TableCell>
                     <div className="flex flex-wrap gap-1">
                       {station.fuelTypes.map(fuel => (
-                        <Badge key={fuel} variant="outline" className="text-xs">
+                        <Badge key={fuel} variant="outline" className="text-xs border-corsica-sage text-corsica-sage">
                           {fuel}
                         </Badge>
                       ))}
@@ -75,7 +77,7 @@ const StationsListTab = ({
                     {station.services && station.services.length > 0 ? (
                       <div className="flex flex-wrap gap-1">
                         {station.services.map(service => (
-                          <Badge key={service} variant="secondary" className="text-xs">
+                          <Badge key={service} variant="secondary" className="text-xs bg-corsica-azure/10 text-corsica-azure">
                             {service}
                           </Badge>
                         ))}
@@ -86,7 +88,7 @@ const StationsListTab = ({
                   </TableCell>
                   <TableCell>
                     {station.isStrategic ? (
-                      <Badge variant="secondary" className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200">Oui</Badge>
+                      <Badge variant="secondary" className="bg-corsica-coral/10 text-corsica-coral">Oui</Badge>
                     ) : (
                       "Non"
                     )}
