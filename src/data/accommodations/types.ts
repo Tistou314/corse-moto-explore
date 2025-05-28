@@ -1,4 +1,3 @@
-
 import { LucideIcon } from 'lucide-react';
 import { Car, Home, Wrench, Bike, MapPin, Utensils, Wifi, ShieldCheck } from 'lucide-react';
 
@@ -50,6 +49,12 @@ export interface Accommodation {
   address?: string;
   latitude?: number;
   longitude?: number;
+  enrichment?: {
+    lastUpdated: string;
+    source?: string;
+    hasRealPhoto: boolean;
+    hasValidatedContact: boolean;
+  };
 }
 
 export const regions = [

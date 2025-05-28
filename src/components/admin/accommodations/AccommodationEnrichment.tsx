@@ -9,12 +9,13 @@ import { Zap, Download, AlertCircle, CheckCircle, RefreshCw } from "lucide-react
 import { SerpApiService } from "@/services/serpApiService";
 import { accommodations } from "@/data/accommodations";
 import { toast } from "sonner";
+import type { Accommodation } from "@/data/accommodations/types";
 
 const AccommodationEnrichment = () => {
   const [apiKey, setApiKey] = useState('842b3858bf9273f13432a352d7acbfbe58d09888c9f3593ee7025a349f27ab04');
   const [isEnriching, setIsEnriching] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [enrichedData, setEnrichedData] = useState<any[]>([]);
+  const [enrichedData, setEnrichedData] = useState<Accommodation[]>([]);
   const [stats, setStats] = useState({
     total: 0,
     processed: 0,
@@ -34,7 +35,7 @@ const AccommodationEnrichment = () => {
 
     try {
       const serpApi = new SerpApiService(apiKey);
-      const enrichedAccommodations = [];
+      const enrichedAccommodations: Accommodation[] = [];
       
       for (let i = 0; i < accommodations.length; i++) {
         const accommodation = accommodations[i];
@@ -45,7 +46,7 @@ const AccommodationEnrichment = () => {
           const enrichedData = await serpApi.searchAccommodation(accommodation.name, accommodation.location);
           
           let improved = false;
-          const updatedAccommodation = { ...accommodation };
+          const updatedAccommodation: Accommodation = { ...accommodation };
           
           if (enrichedData) {
             // Mise à jour de l'image si trouvée
