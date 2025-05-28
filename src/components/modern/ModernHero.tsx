@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -25,7 +24,7 @@ const heroSlides: HeroSlide[] = [
     title: "Découvrez la Corse à Moto",
     subtitle: "Explorez les plus belles routes, parcours et paysages de l'Île de Beauté. Guides complets, itinéraires détaillés et conseils d'experts.",
     cta: { text: "Explorer les itinéraires", link: "/itineraires" },
-    stats: { routes: 15, places: 200, travelers: 5000 }
+    stats: { routes: 15, places: 50, travelers: 1000 }
   },
   {
     image: "/lovable-uploads/a96b2fab-3ff7-4f98-8400-0dc93f7457d4.png",
@@ -105,17 +104,17 @@ const ModernHero = () => {
               <div className="flex flex-wrap gap-8 mb-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
                 <div className="flex items-center text-white">
                   <MapPin className="w-5 h-5 mr-2 text-corsica-azure" />
-                  <span className="text-2xl font-bold mr-1">{slide.stats.routes}+</span>
+                  <span className="text-2xl font-bold mr-1">{slide.stats.routes}</span>
                   <span className="text-gray-300">itinéraires</span>
                 </div>
                 <div className="flex items-center text-white">
                   <Calendar className="w-5 h-5 mr-2 text-corsica-emerald" />
-                  <span className="text-2xl font-bold mr-1">{slide.stats.places}+</span>
+                  <span className="text-2xl font-bold mr-1">{slide.stats.places}</span>
                   <span className="text-gray-300">lieux</span>
                 </div>
                 <div className="flex items-center text-white">
                   <Users className="w-5 h-5 mr-2 text-corsica-coral" />
-                  <span className="text-2xl font-bold mr-1">{slide.stats.travelers}+</span>
+                  <span className="text-2xl font-bold mr-1">{slide.stats.travelers}</span>
                   <span className="text-gray-300">voyageurs</span>
                 </div>
               </div>
