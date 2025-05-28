@@ -44,7 +44,7 @@ const CTASection = () => {
               size="lg" 
               variant="outline" 
               className={cn(
-                "border-white text-white hover:bg-white/10 transition-all duration-300",
+                "border-white text-white hover:bg-white hover:text-corsica-azure transition-all duration-300",
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               )}
               style={{ transitionDelay: "200ms" }}
