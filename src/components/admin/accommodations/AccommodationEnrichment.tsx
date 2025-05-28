@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { Zap, Download, AlertCircle, CheckCircle, RefreshCw } from "lucide-react";
+import { Zap, Download, AlertCircle, CheckCircle, RefreshCw, Filter } from "lucide-react";
 import { SerpApiService } from "@/services/serpApiService";
 import { accommodations } from "@/data/accommodations";
 import { toast } from "sonner";
@@ -20,7 +20,14 @@ const AccommodationEnrichment = () => {
     total: 0,
     processed: 0,
     improved: 0,
-    errors: 0
+    errors: 0,
+    skipped: 0
+  });
+
+  // Filtrer les hébergements qui ont besoin d'être mis à jour
+  const accommodationsToUpdate = accommodations.filter(acc => {
+    // Skip ceux qui ont une image uploadée (commencent par /lovable-uploads/)
+    return !acc.image.startsWith('/lovable-uploads/');
   });
 
   const handleEnrichment = async () => {
@@ -31,17 +38,26 @@ const AccommodationEnrichment = () => {
 
     setIsEnriching(true);
     setProgress(0);
-    setStats({ total: accommodations.length, processed: 0, improved: 0, errors: 0 });
+    setStats({ 
+      total: accommodationsToUpdate.length, 
+      processed: 0, 
+      improved: 0, 
+      errors: 0, 
+      skipped: accommodations.length - accommodationsToUpdate.length 
+    });
+
+    console.log(`Début de l'enrichissement de ${accommodationsToUpdate.length} hébergements`);
+    console.log(`${accommodations.length - accommodationsToUpdate.length} hébergements ignorés (déjà à jour)`);
 
     try {
       const serpApi = new SerpApiService(apiKey);
       const enrichedAccommodations: Accommodation[] = [];
       
-      for (let i = 0; i < accommodations.length; i++) {
-        const accommodation = accommodations[i];
+      for (let i = 0; i < accommodationsToUpdate.length; i++) {
+        const accommodation = accommodationsToUpdate[i];
         
         try {
-          console.log(`Traitement de ${accommodation.name} (${i + 1}/${accommodations.length})`);
+          console.log(`Traitement de ${accommodation.name} (${i + 1}/${accommodationsToUpdate.length})`);
           
           const enrichedData = await serpApi.searchAccommodation(accommodation.name, accommodation.location);
           
@@ -49,16 +65,18 @@ const AccommodationEnrichment = () => {
           const updatedAccommodation: Accommodation = { ...accommodation };
           
           if (enrichedData) {
-            // Mise à jour de l'image si trouvée
+            // Mise à jour de l'image si trouvée et différente
             if (enrichedData.image && enrichedData.image !== accommodation.image) {
               updatedAccommodation.image = enrichedData.image;
               improved = true;
+              console.log(`✓ Image mise à jour pour ${accommodation.name}`);
             }
             
             // Mise à jour du rating si meilleur
             if (enrichedData.rating && enrichedData.rating > accommodation.rating) {
               updatedAccommodation.rating = enrichedData.rating;
               improved = true;
+              console.log(`✓ Rating amélioré pour ${accommodation.name}: ${enrichedData.rating}`);
             }
             
             // Mise à jour des contacts si manquants
@@ -68,6 +86,7 @@ const AccommodationEnrichment = () => {
                 phone: enrichedData.phone
               };
               improved = true;
+              console.log(`✓ Téléphone ajouté pour ${accommodation.name}`);
             }
             
             if (enrichedData.website && !accommodation.contact?.website) {
@@ -76,15 +95,20 @@ const AccommodationEnrichment = () => {
                 website: enrichedData.website
               };
               improved = true;
+              console.log(`✓ Site web ajouté pour ${accommodation.name}`);
             }
             
             // Ajout des métadonnées d'enrichissement
             updatedAccommodation.enrichment = {
               lastUpdated: new Date().toISOString(),
-              source: enrichedData.source,
+              source: enrichedData.source || 'SerpAPI',
               hasRealPhoto: !!enrichedData.image,
               hasValidatedContact: !!(enrichedData.phone || enrichedData.website)
             };
+            
+            if (improved) {
+              console.log(`✓ ${accommodation.name} enrichi avec succès`);
+            }
           }
           
           enrichedAccommodations.push(updatedAccommodation);
@@ -96,21 +120,21 @@ const AccommodationEnrichment = () => {
           }));
           
         } catch (error) {
-          console.error(`Erreur pour ${accommodation.name}:`, error);
+          console.error(`❌ Erreur pour ${accommodation.name}:`, error);
           enrichedAccommodations.push(accommodation);
           setStats(prev => ({ ...prev, processed: i + 1, errors: prev.errors + 1 }));
         }
         
-        setProgress(((i + 1) / accommodations.length) * 100);
+        setProgress(((i + 1) / accommodationsToUpdate.length) * 100);
         
         // Délai pour éviter la surcharge de l'API
-        if (i < accommodations.length - 1) {
+        if (i < accommodationsToUpdate.length - 1) {
           await new Promise(resolve => setTimeout(resolve, 1500));
         }
       }
       
       setEnrichedData(enrichedAccommodations);
-      toast.success(`Enrichissement terminé ! ${stats.improved} hébergements améliorés`);
+      toast.success(`Enrichissement terminé ! ${stats.improved} hébergements améliorés sur ${accommodationsToUpdate.length} traités`);
       
     } catch (error) {
       console.error('Erreur lors de l\'enrichissement:', error);
@@ -140,7 +164,11 @@ const AccommodationEnrichment = () => {
             Enrichissement automatique des hébergements
           </CardTitle>
           <CardDescription>
-            Mise à jour automatique de tous les hébergements avec photos réelles et informations vérifiées via SerpAPI
+            Mise à jour automatique des hébergements avec photos réelles et informations vérifiées via SerpAPI.
+            <br />
+            <span className="text-green-600 font-medium">
+              {accommodationsToUpdate.length} hébergements à traiter, {accommodations.length - accommodationsToUpdate.length} déjà à jour (ignorés)
+            </span>
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -153,11 +181,22 @@ const AccommodationEnrichment = () => {
               placeholder="Votre clé API SerpAPI"
             />
           </div>
+
+          <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+            <div className="flex items-center gap-2 text-blue-800 mb-2">
+              <Filter className="h-4 w-4" />
+              <span className="font-medium">Filtrage intelligent</span>
+            </div>
+            <p className="text-sm text-blue-700">
+              Seuls les hébergements sans images uploadées seront traités. 
+              Les hébergements avec des images dans "/lovable-uploads/" sont considérés comme à jour.
+            </p>
+          </div>
           
           <div className="flex items-center gap-4">
             <Button 
               onClick={handleEnrichment}
-              disabled={isEnriching || !apiKey}
+              disabled={isEnriching || !apiKey || accommodationsToUpdate.length === 0}
               className="flex items-center gap-2"
             >
               {isEnriching ? (
@@ -165,7 +204,7 @@ const AccommodationEnrichment = () => {
               ) : (
                 <Zap className="h-4 w-4" />
               )}
-              {isEnriching ? 'Enrichissement en cours...' : 'Enrichir tous les hébergements'}
+              {isEnriching ? 'Enrichissement en cours...' : `Enrichir ${accommodationsToUpdate.length} hébergements`}
             </Button>
             
             {enrichedData.length > 0 && (
@@ -188,10 +227,14 @@ const AccommodationEnrichment = () => {
               </div>
               <Progress value={progress} className="w-full" />
               
-              <div className="flex gap-4 text-sm">
+              <div className="flex gap-4 text-sm flex-wrap">
                 <Badge variant="outline" className="flex items-center gap-1">
                   <CheckCircle className="h-3 w-3" />
                   Améliorés: {stats.improved}
+                </Badge>
+                <Badge variant="secondary" className="flex items-center gap-1">
+                  <Filter className="h-3 w-3" />
+                  Ignorés: {stats.skipped}
                 </Badge>
                 {stats.errors > 0 && (
                   <Badge variant="destructive" className="flex items-center gap-1">
@@ -210,7 +253,7 @@ const AccommodationEnrichment = () => {
           <CardHeader>
             <CardTitle>Résultats de l'enrichissement</CardTitle>
             <CardDescription>
-              {enrichedData.length} hébergements traités, {stats.improved} améliorés
+              {enrichedData.length} hébergements traités, {stats.improved} améliorés, {stats.skipped} ignorés
             </CardDescription>
           </CardHeader>
           <CardContent>
