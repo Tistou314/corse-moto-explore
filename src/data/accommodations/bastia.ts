@@ -8,19 +8,19 @@ export const bastiaAccommodations: Accommodation[] = [
     type: "hotel",
     location: "Sisco",
     region: "bastia",
-    description: "Charmant relais situé sur la route du Cap Corse, parfait comme point de départ pour explorer cette magnifique péninsule. Accueil chaleureux et conseils personnalisés pour les motards.",
+    description: "Charmante résidence située sur la route du Cap Corse, parfait comme point de départ pour explorer cette magnifique péninsule. Accueil chaleureux dans un cadre verdoyant avec piscine.",
     priceRange: "80€ - 150€",
     rating: 4.2,
     image: "/lovable-uploads/f0a702d1-389f-45b9-b92f-25947b798f34.png",
-    amenities: ["Restaurant", "Terrasse", "Wifi gratuit", "Climatisation"],
-    bikerAmenities: ["Parking sécurisé", "Itinéraires moto", "Propriétaires motards"],
+    amenities: ["Piscine extérieure", "Terrasse", "Wifi gratuit", "Jardins", "Appartements équipés"],
+    bikerAmenities: ["Parking privé gratuit", "Itinéraires moto"],
     contact: {
       phone: "+33 6 11 48 34 05",
       website: "http://www.lerelaisdesisco.fr/"
     },
-    address: "Canavaggia Lieu-dit, 20233 Sisco, France",
-    latitude: 42.8102568,
-    longitude: 9.4681131
+    address: "Marine de Sisco, 20233 Sisco (Cap Corse)",
+    latitude: 42.82,
+    longitude: 9.45
   },
   {
     id: "bastia2",
@@ -32,15 +32,15 @@ export const bastiaAccommodations: Accommodation[] = [
     priceRange: "85€ - 160€",
     rating: 3.8,
     image: "/lovable-uploads/0a9d0690-525a-4b87-a78f-c7ec868066a9.png",
-    amenities: ["Restaurant", "Bar", "Climatisation", "Wifi gratuit", "Parking"],
-    bikerAmenities: ["Parking sécurisé"],
+    amenities: ["Restaurant", "Piscine extérieure", "Climatisation", "Wifi gratuit"],
+    bikerAmenities: ["Parking clos gratuit"],
     contact: {
       phone: "+33 4 95 30 02 00",
       website: "http://www.cors-hotel.com/"
     },
-    address: "Lot. Arbucetta, 20620 Biguglia, France",
-    latitude: 42.6265527,
-    longitude: 9.4392168
+    address: "T11 (RN193), 20620 Biguglia (Bastia)",
+    latitude: 42.62,
+    longitude: 9.44
   },
   {
     id: "bastia3",
@@ -52,15 +52,33 @@ export const bastiaAccommodations: Accommodation[] = [
     priceRange: "100€ - 220€",
     rating: 4.4,
     image: "/lovable-uploads/c9c69fc8-07ec-474b-9707-bb25b3ee2ec1.png",
-    amenities: ["Spa", "Piscine", "Restaurant", "Bar", "Climatisation", "Wifi gratuit"],
-    bikerAmenities: ["Parking sécurisé", "Garage"],
+    amenities: ["Spa et massages", "Piscine", "Restaurant", "Bar", "Climatisation", "Wifi gratuit"],
+    bikerAmenities: ["Grand parking", "Proximité aéroport"],
     contact: {
       phone: "+33 4 95 30 02 50",
       website: "http://www.hotel-lamadrague.com/"
     },
-    address: "D107, Route de la Canonica, 20290 Lucciana, France",
-    latitude: 42.54312,
-    longitude: 9.469483
+    address: "Route de la Canonica (RD107), 20290 Lucciana",
+    latitude: 42.54253,
+    longitude: 9.46919
+  },
+  {
+    id: "bastia4",
+    name: "Casanghjulina",
+    type: "gite",
+    location: "Saint-Florent",
+    region: "bastia",
+    description: "Chambres d'hôtes de charme au cœur du désert des Agriates, offrant un havre de paix aux motards en quête d'authenticité. Un lieu idéal pour découvrir Saint-Florent et ses environs.",
+    priceRange: "90€ - 160€",
+    rating: 4.5,
+    image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=800&q=60",
+    amenities: ["Piscine", "Table d'hôtes", "Wifi", "Vue montagne"],
+    bikerAmenities: ["Parking privé", "Garage motos"],
+    contact: {
+      phone: "+33 6 12 34 56 78"
+    },
+    address: "Lieu-dit Tragone, 20217 Saint-Florent",
+    latitude: 42.68,
+    longitude: 9.30
   }
 ];
-

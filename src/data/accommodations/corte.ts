@@ -9,17 +9,17 @@ export const corteAccommodations: Accommodation[] = [
     location: "Olivese",
     region: "corte",
     description: "Authentique ferme-auberge située sur le col de la Vaccia, offrant une expérience unique dans un cadre montagneux exceptionnel. Idéale pour les motards qui parcourent les routes sinueuses du centre de l'île.",
-    priceRange: "70€ - 120€",
+    priceRange: "50€ - 70€",
     rating: 4.4,
-    image: "https://cdn.pixabay.com/photo/2019/06/15/11/31/corsica-4275625_1280.jpg",
-    amenities: ["Restaurant", "Produits fermiers", "Vue montagne", "Authentique"],
-    bikerAmenities: ["Parking sécurisé", "Routes panoramiques", "Propriétaires motards"],
+    image: "https://images.unsplash.com/photo-1493962853295-0fd70327578a?auto=format&fit=crop&w=800&q=60",
+    amenities: ["Table d'hôtes généreuse", "Produits fermiers", "Vue panoramique sur le col", "Spécialités corses"],
+    bikerAmenities: ["Parking gratuit", "Site isolé en montagne", "Routes panoramiques"],
     contact: {
       phone: "+33 6 84 75 70 27",
       website: "https://www.auberge-coldelavaccia.fr/"
     },
-    address: "Coldelavaccia, 20140 Olivese, France",
-    latitude: 41.8333802,
-    longitude: 9.0909544
+    address: "Col de la Vaccia (RD69), 20140 Olivese",
+    latitude: 41.82194,
+    longitude: 9.08444
   }
 ];

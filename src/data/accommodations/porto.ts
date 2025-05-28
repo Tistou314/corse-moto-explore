@@ -8,20 +8,18 @@ export const portoAccommodations: Accommodation[] = [
     type: "hotel",
     location: "Piana",
     region: "porto",
-    description: "Situé au cœur des célèbres calanques de Piana (UNESCO), cet hôtel 3★ surplombe la mer avec une vue spectaculaire sur le golfe de Porto. Idéal pour les motards explorant la côte ouest, il offre un accès direct aux routes panoramiques D81 et D84. Parking moto sécurisé avec caméras et restaurant panoramique sur place.",
-    priceRange: "110€ - 180€",
-    rating: 9.2,
-    image: "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923_1280.jpg",
-    amenities: ["Vue mer", "Restaurant", "Terrasse panoramique", "Climatisation"],
-    bikerAmenities: ["Parking sécurisé", "Proche routes panoramiques", "Itinéraires moto"],
+    description: "Hôtel emblématique offrant une vue spectaculaire sur les célèbres Calanques de Piana. Sa terrasse classée historique est l'endroit idéal pour admirer le coucher de soleil après une journée de moto dans cette région exceptionnelle.",
+    priceRange: "80€ - 130€",
+    rating: 4.6,
+    image: "https://images.unsplash.com/photo-1452378174528-3090a4bba7b2?auto=format&fit=crop&w=800&q=60",
+    amenities: ["Restaurant panoramique", "Terrasse classée historique", "Vue exceptionnelle sur les Calanques", "Bar lounge", "Wifi"],
+    bikerAmenities: ["Parking privé gratuit", "Routes panoramiques"],
     contact: {
-      phone: "+33 4 95 27 82 42",
-      email: "contact@hotellesrochesrouges.com",
-      website: "hotel-les-roches-rouges.com"
+      phone: "+33 4 95 27 81 81",
+      website: "http://www.roches-rouges.com"
     },
-    bookingLink: "https://www.booking.com/hotel/fr/les-roches-rouges-piana.fr.html",
-    address: "Route des Calanques, 20115 Piana",
-    latitude: 42.2505,
-    longitude: 8.6732
+    address: "Route de Porto, 20115 Piana",
+    latitude: 42.24028,
+    longitude: 8.64167
   }
 ];
