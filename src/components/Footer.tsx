@@ -13,7 +13,7 @@ const Footer = () => {
               <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
                 <Bike className="w-6 h-6 text-corsica-azure" />
               </div>
-              <h3 className="text-xl font-heading font-bold">La Corse à Moto</h3>
+              <h3 className="text-xl font-heading font-bold text-white">La Corse à Moto</h3>
             </div>
             <p className="text-gray-300 mb-6">
               Votre guide complet pour explorer la Corse à moto, avec des itinéraires détaillés, 
@@ -34,7 +34,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-heading font-bold mb-5 border-b border-white/10 pb-2">Liens Rapides</h3>
+            <h3 className="text-lg font-heading font-bold mb-5 border-b border-white/10 pb-2 text-white">Liens Rapides</h3>
             <ul className="space-y-3">
               <li>
                 <Link to="/" className="text-gray-300 hover:text-white transition-colors flex items-center">
@@ -65,7 +65,7 @@ const Footer = () => {
 
           {/* More Links */}
           <div>
-            <h3 className="text-lg font-heading font-bold mb-5 border-b border-white/10 pb-2">Plus de liens</h3>
+            <h3 className="text-lg font-heading font-bold mb-5 border-b border-white/10 pb-2 text-white">Plus de liens</h3>
             <ul className="space-y-3">
               <li>
                 <Link to="/blog" className="text-gray-300 hover:text-white transition-colors flex items-center">
@@ -96,17 +96,17 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h3 className="text-lg font-heading font-bold mb-5 border-b border-white/10 pb-2">Contact</h3>
+            <h3 className="text-lg font-heading font-bold mb-5 border-b border-white/10 pb-2 text-white">Contact</h3>
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
                 <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <MapPin className="w-4 h-4" />
+                  <MapPin className="w-4 h-4 text-white" />
                 </div>
                 <span className="text-gray-300">Corse, France</span>
               </li>
               <li className="flex items-center space-x-3">
                 <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-4 h-4" />
+                  <Mail className="w-4 h-4 text-white" />
                 </div>
                 <span className="text-gray-300">contact@lacorseamoto.fr</span>
               </li>
