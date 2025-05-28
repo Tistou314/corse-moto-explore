@@ -16,12 +16,12 @@ const BlogSection = ({ posts }: BlogSectionProps) => {
   return (
     <section 
       ref={ref}
-      className="py-24 bg-gradient-to-br from-corsica-sage50 via-corsica-pearl to-corsica-azure50 relative overflow-hidden"
+      className="py-24 bg-gradient-to-br from-corsica-azure/5 via-corsica-pearl to-corsica-emerald/5 relative overflow-hidden"
     >
       {/* Motifs décoratifs en arrière-plan */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-corsica-sage rounded-full mix-blend-multiply filter blur-3xl"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-corsica-azure rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-corsica-azure rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-corsica-emerald rounded-full mix-blend-multiply filter blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -31,8 +31,8 @@ const BlogSection = ({ posts }: BlogSectionProps) => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         )}>
           <div className="lg:max-w-2xl">
-            <div className="inline-flex items-center bg-corsica-sage/10 rounded-full px-4 py-2 mb-6">
-              <span className="text-corsica-sage600 font-semibold text-sm">Conseils & Expériences</span>
+            <div className="inline-flex items-center bg-corsica-azure/10 rounded-full px-4 py-2 mb-6">
+              <span className="text-corsica-azure font-semibold text-sm">Conseils & Expériences</span>
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-corsica-charcoal mb-6">
               Articles, guides et récits pour enrichir votre voyage
@@ -48,7 +48,7 @@ const BlogSection = ({ posts }: BlogSectionProps) => {
           )} style={{ transitionDelay: '200ms' }}>
             <Link 
               to="/blog"
-              className="inline-flex items-center bg-corsica-sage hover:bg-corsica-sage600 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-medium hover:shadow-glow-sage group"
+              className="inline-flex items-center bg-corsica-azure hover:bg-corsica-azure/90 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-medium hover:shadow-glow group"
             >
               Voir tous les articles
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -98,7 +98,7 @@ const BlogSection = ({ posts }: BlogSectionProps) => {
             </Link>
             <Link 
               to="/guide-pratique"
-              className="border-2 border-corsica-sage text-corsica-sage600 hover:bg-corsica-sage hover:text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300"
+              className="border-2 border-corsica-emerald text-corsica-emerald hover:bg-corsica-emerald hover:text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300"
             >
               Guide pratique
             </Link>
