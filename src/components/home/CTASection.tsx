@@ -21,8 +21,8 @@ const CTASection = () => {
       }}
     >
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold mb-4">Prêt pour l'aventure ?</h2>
-        <p className="text-xl mb-8 max-w-2xl mx-auto">
+        <h2 className="text-3xl font-bold mb-4 text-white">Prêt pour l'aventure ?</h2>
+        <p className="text-xl mb-8 max-w-2xl mx-auto text-white">
           Commencez à planifier votre voyage à moto en Corse dès maintenant
           et découvrez les routes les plus spectaculaires de l'île.
         </p>
@@ -44,7 +44,7 @@ const CTASection = () => {
               size="lg" 
               variant="outline" 
               className={cn(
-                "border-corsica-azure bg-corsica-azure text-white hover:bg-corsica-azure/90 transition-all duration-300",
+                "border-white bg-transparent text-white hover:bg-white hover:text-corsica-azure transition-all duration-300",
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               )}
               style={{ transitionDelay: "200ms" }}
