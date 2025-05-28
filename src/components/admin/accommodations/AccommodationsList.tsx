@@ -1,7 +1,6 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Edit, Trash, Plus, Search, Filter } from "lucide-react";
+import { Edit, Trash, Plus, Search, Zap } from "lucide-react";
 import { 
   Table, 
   TableBody, 
@@ -23,6 +22,8 @@ import {
 import { accommodations, accommodationTypes } from "@/data/accommodations";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import AccommodationEnrichment from "./AccommodationEnrichment";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const AccommodationsList = () => {
   const [accommodationList, setAccommodationList] = useState(accommodations);
@@ -84,123 +85,138 @@ const AccommodationsList = () => {
         </Button>
       </div>
       
-      <div className="flex flex-col gap-4 sm:flex-row">
-        <div className="relative flex-1">
-          <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-          <Input
-            placeholder="Rechercher un hébergement..."
-            className="pl-8"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </div>
+      <Tabs defaultValue="list" className="w-full">
+        <TabsList>
+          <TabsTrigger value="list">Liste des hébergements</TabsTrigger>
+          <TabsTrigger value="enrichment" className="flex items-center gap-2">
+            <Zap className="h-4 w-4" />
+            Enrichissement automatique
+          </TabsTrigger>
+        </TabsList>
         
-        <Select value={typeFilter} onValueChange={setTypeFilter}>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Type d'hébergement" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">Tous les types</SelectItem>
-            {Object.entries(accommodationTypeLabels).map(([value, label]) => (
-              <SelectItem key={value} value={value}>
-                {label} ({typeStats[value] || 0})
-              </SelectItem>
+        <TabsContent value="list" className="space-y-4">
+          <div className="flex flex-col gap-4 sm:flex-row">
+            <div className="relative flex-1">
+              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+              <Input
+                placeholder="Rechercher un hébergement..."
+                className="pl-8"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
+            
+            <Select value={typeFilter} onValueChange={setTypeFilter}>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Type d'hébergement" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Tous les types</SelectItem>
+                {Object.entries(accommodationTypeLabels).map(([value, label]) => (
+                  <SelectItem key={value} value={value}>
+                    {label} ({typeStats[value] || 0})
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          
+          <div className="flex flex-wrap gap-2">
+            <Badge variant="outline" className="bg-slate-100">
+              Total: {accommodationList.length}
+            </Badge>
+            {Object.entries(typeStats).map(([type, count]) => (
+              <Badge 
+                key={type} 
+                variant={typeFilter === type ? "default" : "outline"}
+                className={`cursor-pointer ${typeFilter === type ? "bg-primary" : ""}`}
+                onClick={() => setTypeFilter(type === typeFilter ? "all" : type)}
+              >
+                {accommodationTypeLabels[type] || type}: {count}
+              </Badge>
             ))}
-          </SelectContent>
-        </Select>
-      </div>
-      
-      {/* Affichage des statistiques */}
-      <div className="flex flex-wrap gap-2">
-        <Badge variant="outline" className="bg-slate-100">
-          Total: {accommodationList.length}
-        </Badge>
-        {Object.entries(typeStats).map(([type, count]) => (
-          <Badge 
-            key={type} 
-            variant={typeFilter === type ? "default" : "outline"}
-            className={`cursor-pointer ${typeFilter === type ? "bg-primary" : ""}`}
-            onClick={() => setTypeFilter(type === typeFilter ? "all" : type)}
-          >
-            {accommodationTypeLabels[type] || type}: {count}
-          </Badge>
-        ))}
-      </div>
-      
-      <div className="border rounded-md">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-[300px]">Nom</TableHead>
-              <TableHead>Lieu</TableHead>
-              <TableHead>Type</TableHead>
-              <TableHead>Prix</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {filteredAccommodations.length > 0 ? (
-              filteredAccommodations.map((accommodation) => (
-                <TableRow key={accommodation.id}>
-                  <TableCell className="font-medium">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-md overflow-hidden">
-                        <img 
-                          src={accommodation.image} 
-                          alt={accommodation.name} 
-                          className="w-full h-full object-cover"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.src = "https://images.unsplash.com/photo-1558882224-dda166733046?auto=format&fit=crop&w=800&q=60";
-                          }}
-                        />
-                      </div>
-                      <span>{accommodation.name}</span>
-                    </div>
-                  </TableCell>
-                  <TableCell>{accommodation.location}</TableCell>
-                  <TableCell>
-                    <Badge 
-                      variant="outline" 
-                      className={
-                        accommodation.type === 'hotel' ? 'bg-blue-50 text-blue-800 border-blue-200' :
-                        accommodation.type === 'gite' ? 'bg-green-50 text-green-800 border-green-200' :
-                        accommodation.type === 'camping' ? 'bg-amber-50 text-amber-800 border-amber-200' :
-                        ''
-                      }
-                    >
-                      {accommodationTypeLabels[accommodation.type] || accommodation.type}
-                    </Badge>
-                  </TableCell>
-                  <TableCell>{accommodation.priceRange}</TableCell>
-                  <TableCell className="text-right space-x-2">
-                    <Button asChild variant="ghost" size="icon">
-                      <Link to={`/admin/accommodations/edit/${accommodation.id}`}>
-                        <Edit className="h-4 w-4" />
-                        <span className="sr-only">Modifier</span>
-                      </Link>
-                    </Button>
-                    <Button 
-                      variant="ghost" 
-                      size="icon"
-                      onClick={() => handleDelete(accommodation)}
-                    >
-                      <Trash className="h-4 w-4" />
-                      <span className="sr-only">Supprimer</span>
-                    </Button>
-                  </TableCell>
+          </div>
+          
+          <div className="border rounded-md">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-[300px]">Nom</TableHead>
+                  <TableHead>Lieu</TableHead>
+                  <TableHead>Type</TableHead>
+                  <TableHead>Prix</TableHead>
+                  <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell colSpan={5} className="text-center py-6 text-muted-foreground">
-                  Aucun hébergement trouvé.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </div>
+              </TableHeader>
+              <TableBody>
+                {filteredAccommodations.length > 0 ? (
+                  filteredAccommodations.map((accommodation) => (
+                    <TableRow key={accommodation.id}>
+                      <TableCell className="font-medium">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-md overflow-hidden">
+                            <img 
+                              src={accommodation.image} 
+                              alt={accommodation.name} 
+                              className="w-full h-full object-cover"
+                              onError={(e) => {
+                                const target = e.target as HTMLImageElement;
+                                target.src = "https://images.unsplash.com/photo-1558882224-dda166733046?auto=format&fit=crop&w=800&q=60";
+                              }}
+                            />
+                          </div>
+                          <span>{accommodation.name}</span>
+                        </div>
+                      </TableCell>
+                      <TableCell>{accommodation.location}</TableCell>
+                      <TableCell>
+                        <Badge 
+                          variant="outline" 
+                          className={
+                            accommodation.type === 'hotel' ? 'bg-blue-50 text-blue-800 border-blue-200' :
+                            accommodation.type === 'gite' ? 'bg-green-50 text-green-800 border-green-200' :
+                            accommodation.type === 'camping' ? 'bg-amber-50 text-amber-800 border-amber-200' :
+                            ''
+                          }
+                        >
+                          {accommodationTypeLabels[accommodation.type] || accommodation.type}
+                        </Badge>
+                      </TableCell>
+                      <TableCell>{accommodation.priceRange}</TableCell>
+                      <TableCell className="text-right space-x-2">
+                        <Button asChild variant="ghost" size="icon">
+                          <Link to={`/admin/accommodations/edit/${accommodation.id}`}>
+                            <Edit className="h-4 w-4" />
+                            <span className="sr-only">Modifier</span>
+                          </Link>
+                        </Button>
+                        <Button 
+                          variant="ghost" 
+                          size="icon"
+                          onClick={() => handleDelete(accommodation)}
+                        >
+                          <Trash className="h-4 w-4" />
+                          <span className="sr-only">Supprimer</span>
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  ))
+                ) : (
+                  <TableRow>
+                    <TableCell colSpan={5} className="text-center py-6 text-muted-foreground">
+                      Aucun hébergement trouvé.
+                    </TableCell>
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </div>
+        </TabsContent>
+        
+        <TabsContent value="enrichment">
+          <AccommodationEnrichment />
+        </TabsContent>
+      </Tabs>
       
       {/* Dialogue de confirmation de suppression */}
       <Dialog open={deleteDialog} onOpenChange={setDeleteDialog}>
