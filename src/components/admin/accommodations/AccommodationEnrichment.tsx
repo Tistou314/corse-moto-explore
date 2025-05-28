@@ -1,11 +1,10 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { Zap, Download, AlertCircle, CheckCircle, RefreshCw, Filter } from "lucide-react";
+import { Zap, Download, AlertCircle, CheckCircle, RefreshCw, Filter, Play } from "lucide-react";
 import { SerpApiService } from "@/services/serpApiService";
 import { accommodations } from "@/data/accommodations";
 import { toast } from "sonner";
@@ -14,6 +13,7 @@ import type { Accommodation } from "@/data/accommodations/types";
 const AccommodationEnrichment = () => {
   const [apiKey, setApiKey] = useState('842b3858bf9273f13432a352d7acbfbe58d09888c9f3593ee7025a349f27ab04');
   const [isEnriching, setIsEnriching] = useState(false);
+  const [autoStarted, setAutoStarted] = useState(false);
   const [progress, setProgress] = useState(0);
   const [enrichedData, setEnrichedData] = useState<Accommodation[]>([]);
   const [stats, setStats] = useState({
@@ -30,6 +30,16 @@ const AccommodationEnrichment = () => {
     return !acc.image.startsWith('/lovable-uploads/');
   });
 
+  // Auto-start enrichment when component mounts and API key is available
+  useEffect(() => {
+    if (apiKey && !autoStarted && accommodationsToUpdate.length > 0) {
+      setAutoStarted(true);
+      setTimeout(() => {
+        handleEnrichment();
+      }, 1000);
+    }
+  }, [apiKey, autoStarted, accommodationsToUpdate.length]);
+
   const handleEnrichment = async () => {
     if (!apiKey) {
       toast.error("Veuillez saisir votre clé API SerpAPI");
@@ -45,6 +55,11 @@ const AccommodationEnrichment = () => {
       errors: 0, 
       skipped: accommodations.length - accommodationsToUpdate.length 
     });
+
+    console.log(`🚀 Début de l'enrichissement automatique de ${accommodationsToUpdate.length} hébergements`);
+    console.log(`✅ ${accommodations.length - accommodationsToUpdate.length} hébergements ignorés (déjà à jour)`);
+    
+    toast.info(`Enrichissement automatique démarré pour ${accommodationsToUpdate.length} hébergements`);
 
     console.log(`Début de l'enrichissement de ${accommodationsToUpdate.length} hébergements`);
     console.log(`${accommodations.length - accommodationsToUpdate.length} hébergements ignorés (déjà à jour)`);
@@ -162,6 +177,7 @@ const AccommodationEnrichment = () => {
           <CardTitle className="flex items-center gap-2">
             <Zap className="h-5 w-5 text-yellow-500" />
             Enrichissement automatique des hébergements
+            {isEnriching && <RefreshCw className="h-4 w-4 animate-spin text-blue-500" />}
           </CardTitle>
           <CardDescription>
             Mise à jour automatique des hébergements avec photos réelles et informations vérifiées via SerpAPI.
@@ -169,6 +185,14 @@ const AccommodationEnrichment = () => {
             <span className="text-green-600 font-medium">
               {accommodationsToUpdate.length} hébergements à traiter, {accommodations.length - accommodationsToUpdate.length} déjà à jour (ignorés)
             </span>
+            {autoStarted && !isEnriching && (
+              <div className="mt-2">
+                <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
+                  <CheckCircle className="h-3 w-3 mr-1" />
+                  Enrichissement terminé automatiquement
+                </Badge>
+              </div>
+            )}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -179,16 +203,17 @@ const AccommodationEnrichment = () => {
               value={apiKey}
               onChange={(e) => setApiKey(e.target.value)}
               placeholder="Votre clé API SerpAPI"
+              disabled={isEnriching}
             />
           </div>
 
           <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
             <div className="flex items-center gap-2 text-blue-800 mb-2">
               <Filter className="h-4 w-4" />
-              <span className="font-medium">Filtrage intelligent</span>
+              <span className="font-medium">Filtrage intelligent activé</span>
             </div>
             <p className="text-sm text-blue-700">
-              Seuls les hébergements sans images uploadées seront traités. 
+              Traitement automatique en cours. Seuls les hébergements sans images uploadées sont traités. 
               Les hébergements avec des images dans "/lovable-uploads/" sont considérés comme à jour.
             </p>
           </div>
@@ -201,10 +226,14 @@ const AccommodationEnrichment = () => {
             >
               {isEnriching ? (
                 <RefreshCw className="h-4 w-4 animate-spin" />
+              ) : autoStarted ? (
+                <Play className="h-4 w-4" />
               ) : (
                 <Zap className="h-4 w-4" />
               )}
-              {isEnriching ? 'Enrichissement en cours...' : `Enrichir ${accommodationsToUpdate.length} hébergements`}
+              {isEnriching ? 'Enrichissement en cours...' : 
+               autoStarted ? 'Relancer l\'enrichissement' : 
+               `Enrichir ${accommodationsToUpdate.length} hébergements`}
             </Button>
             
             {enrichedData.length > 0 && (
@@ -251,7 +280,7 @@ const AccommodationEnrichment = () => {
       {enrichedData.length > 0 && (
         <Card>
           <CardHeader>
-            <CardTitle>Résultats de l'enrichissement</CardTitle>
+            <CardTitle>Résultats de l'enrichissement automatique</CardTitle>
             <CardDescription>
               {enrichedData.length} hébergements traités, {stats.improved} améliorés, {stats.skipped} ignorés
             </CardDescription>
