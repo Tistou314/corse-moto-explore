@@ -15,7 +15,7 @@ const Footer = () => {
               </div>
               <h3 className="text-xl font-heading font-bold text-white">La Corse à Moto</h3>
             </div>
-            <p className="text-gray-300 mb-6">
+            <p className="text-white/80 mb-6">
               Votre guide complet pour explorer la Corse à moto, avec des itinéraires détaillés, 
               des conseils pratiques et des recommandations d'hébergement.
             </p>
@@ -37,25 +37,25 @@ const Footer = () => {
             <h3 className="text-lg font-heading font-bold mb-5 border-b border-white/10 pb-2 text-white">Liens Rapides</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/" className="text-gray-300 hover:text-white transition-colors flex items-center">
+                <Link to="/" className="text-white/80 hover:text-white transition-colors flex items-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-corsica-coral mr-2 opacity-75"></span>
                   Accueil
                 </Link>
               </li>
               <li>
-                <Link to="/itineraires" className="text-gray-300 hover:text-white transition-colors flex items-center">
+                <Link to="/itineraires" className="text-white/80 hover:text-white transition-colors flex items-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-corsica-coral mr-2 opacity-75"></span>
                   Itinéraires
                 </Link>
               </li>
               <li>
-                <Link to="/guide-pratique" className="text-gray-300 hover:text-white transition-colors flex items-center">
+                <Link to="/guide-pratique" className="text-white/80 hover:text-white transition-colors flex items-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-corsica-coral mr-2 opacity-75"></span>
                   Guide pratique
                 </Link>
               </li>
               <li>
-                <Link to="/hebergements" className="text-gray-300 hover:text-white transition-colors flex items-center">
+                <Link to="/hebergements" className="text-white/80 hover:text-white transition-colors flex items-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-corsica-coral mr-2 opacity-75"></span>
                   Hébergements
                 </Link>
@@ -68,25 +68,25 @@ const Footer = () => {
             <h3 className="text-lg font-heading font-bold mb-5 border-b border-white/10 pb-2 text-white">Plus de liens</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/blog" className="text-gray-300 hover:text-white transition-colors flex items-center">
+                <Link to="/blog" className="text-white/80 hover:text-white transition-colors flex items-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-corsica-coral mr-2 opacity-75"></span>
                   Blog
                 </Link>
               </li>
               <li>
-                <Link to="/gas-stations" className="text-gray-300 hover:text-white transition-colors flex items-center">
+                <Link to="/gas-stations" className="text-white/80 hover:text-white transition-colors flex items-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-corsica-coral mr-2 opacity-75"></span>
                   Stations
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-300 hover:text-white transition-colors flex items-center">
+                <Link to="/contact" className="text-white/80 hover:text-white transition-colors flex items-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-corsica-coral mr-2 opacity-75"></span>
                   Contact
                 </Link>
               </li>
               <li>
-                <Link to="/admin" className="text-gray-300 hover:text-white transition-colors flex items-center">
+                <Link to="/admin" className="text-white/80 hover:text-white transition-colors flex items-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-corsica-coral mr-2 opacity-75"></span>
                   Administration
                 </Link>
@@ -102,19 +102,19 @@ const Footer = () => {
                 <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <MapPin className="w-4 h-4 text-white" />
                 </div>
-                <span className="text-gray-300">Corse, France</span>
+                <span className="text-white/80">Corse, France</span>
               </li>
               <li className="flex items-center space-x-3">
                 <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
                   <Mail className="w-4 h-4 text-white" />
                 </div>
-                <span className="text-gray-300">contact@lacorseamoto.fr</span>
+                <span className="text-white/80">contact@lacorseamoto.fr</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-12 pt-8 text-center text-gray-400">
+        <div className="border-t border-white/10 mt-12 pt-8 text-center text-white/60">
           <p>&copy; {new Date().getFullYear()} La Corse à Moto. Tous droits réservés.</p>
         </div>
       </div>
