@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -175,19 +176,19 @@ const AccommodationEnrichment = () => {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Zap className="h-5 w-5 text-yellow-500" />
+            <Zap className="h-5 w-5 text-corsica-azure" />
             Enrichissement automatique des hébergements
-            {isEnriching && <RefreshCw className="h-4 w-4 animate-spin text-blue-500" />}
+            {isEnriching && <RefreshCw className="h-4 w-4 animate-spin text-corsica-azure" />}
           </CardTitle>
           <CardDescription>
             Mise à jour automatique des hébergements avec photos réelles et informations vérifiées via SerpAPI.
             <br />
-            <span className="text-green-600 font-medium">
+            <span className="text-corsica-emerald font-medium">
               {accommodationsToUpdate.length} hébergements à traiter, {accommodations.length - accommodationsToUpdate.length} déjà à jour (ignorés)
             </span>
             {autoStarted && !isEnriching && (
               <div className="mt-2">
-                <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
+                <Badge variant="outline" className="bg-corsica-emerald50 text-corsica-emerald border-corsica-emerald">
                   <CheckCircle className="h-3 w-3 mr-1" />
                   Enrichissement terminé automatiquement
                 </Badge>
@@ -207,12 +208,12 @@ const AccommodationEnrichment = () => {
             />
           </div>
 
-          <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-            <div className="flex items-center gap-2 text-blue-800 mb-2">
+          <div className="bg-corsica-azure50 p-4 rounded-lg border border-corsica-azure100">
+            <div className="flex items-center gap-2 text-corsica-azure900 mb-2">
               <Filter className="h-4 w-4" />
               <span className="font-medium">Filtrage intelligent activé</span>
             </div>
-            <p className="text-sm text-blue-700">
+            <p className="text-sm text-corsica-azure600">
               Traitement automatique en cours. Seuls les hébergements sans images uploadées sont traités. 
               Les hébergements avec des images dans "/lovable-uploads/" sont considérés comme à jour.
             </p>
@@ -257,7 +258,7 @@ const AccommodationEnrichment = () => {
               <Progress value={progress} className="w-full" />
               
               <div className="flex gap-4 text-sm flex-wrap">
-                <Badge variant="outline" className="flex items-center gap-1">
+                <Badge variant="outline" className="flex items-center gap-1 bg-corsica-emerald50 text-corsica-emerald border-corsica-emerald">
                   <CheckCircle className="h-3 w-3" />
                   Améliorés: {stats.improved}
                 </Badge>
