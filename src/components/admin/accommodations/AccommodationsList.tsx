@@ -1,4 +1,5 @@
 
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Edit, Trash, Plus, Search, Zap } from "lucide-react";
@@ -97,18 +98,18 @@ const AccommodationsList = () => {
         
         <TabsContent value="list" className="space-y-4">
           <div className="flex flex-col gap-4 sm:flex-row">
-            <div className="relative flex-1">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+            <div className="relative flex-1 bg-corsica-azure50 rounded-md">
+              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-corsica-azure" />
               <Input
                 placeholder="Rechercher un hébergement..."
-                className="pl-8 border-corsica-azure100 focus:border-corsica-azure"
+                className="pl-8 border-corsica-azure100 focus:border-corsica-azure bg-white"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
             
             <Select value={typeFilter} onValueChange={setTypeFilter}>
-              <SelectTrigger className="w-[180px] border-corsica-azure100">
+              <SelectTrigger className="w-[180px] border-corsica-azure100 bg-corsica-emerald50">
                 <SelectValue placeholder="Type d'hébergement" />
               </SelectTrigger>
               <SelectContent>
@@ -248,3 +249,4 @@ const AccommodationsList = () => {
 };
 
 export default AccommodationsList;
+
