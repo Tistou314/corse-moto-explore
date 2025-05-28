@@ -39,7 +39,7 @@ const GitesSection = ({ gites }: GitesSectionProps) => {
             </div>
           </div>
           <Link to="/hebergements?type=gite">
-            <Button variant="outline" className="mt-4 md:mt-0 border-corsica-azure text-corsica-azure hover:bg-corsica-azure hover:text-white">
+            <Button className="mt-4 md:mt-0 bg-corsica-azure hover:bg-corsica-azure600 text-white border-corsica-azure">
               Voir tous les gîtes
             </Button>
           </Link>
