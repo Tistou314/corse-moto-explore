@@ -26,10 +26,10 @@ export interface MapBoxProps {
 }
 
 export const markerTypes: { [key: string]: string } = {
-  itinerary: '#e67e22', // Ambre
-  accommodation: '#3498db', // Bleu
-  pointOfInterest: '#2ecc71', // Vert
-  gasStation: '#f1c40f' // Jaune
+  itinerary: '#F97316', // Coral
+  accommodation: '#0EA5E9', // Azure
+  pointOfInterest: '#10B981', // Emerald
+  gasStation: '#F97316' // Coral
 };
 
 export interface LocationPopupProps {
