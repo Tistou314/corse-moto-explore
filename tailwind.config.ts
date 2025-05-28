@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -74,7 +73,13 @@ export default {
 					emerald100: '#D1FAE5',
 					emerald500: '#10B981',
 					emerald600: '#059669',
-					emerald900: '#064E3B'
+					emerald900: '#064E3B',
+					
+					coral50: '#FFF7ED',
+					coral100: '#FFEDD5',
+					coral500: '#F97316',
+					coral600: '#EA580C',
+					coral900: '#9A3412'
 				}
 			},
 			borderRadius: {

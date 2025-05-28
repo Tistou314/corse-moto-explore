@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Edit, Trash, Plus, Search, Zap } from "lucide-react";
@@ -78,7 +79,7 @@ const AccommodationsList = () => {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h1 className="text-2xl font-bold tracking-tight">Hébergements</h1>
-        <Button asChild>
+        <Button asChild className="bg-corsica-azure hover:bg-corsica-azure600">
           <Link to="/admin/accommodations/new" className="flex items-center">
             <Plus className="mr-2 h-4 w-4" /> Nouvel hébergement
           </Link>
@@ -86,9 +87,9 @@ const AccommodationsList = () => {
       </div>
       
       <Tabs defaultValue="list" className="w-full">
-        <TabsList>
-          <TabsTrigger value="list">Liste des hébergements</TabsTrigger>
-          <TabsTrigger value="enrichment" className="flex items-center gap-2">
+        <TabsList className="bg-corsica-azure50">
+          <TabsTrigger value="list" className="data-[state=active]:bg-corsica-azure data-[state=active]:text-white">Liste des hébergements</TabsTrigger>
+          <TabsTrigger value="enrichment" className="flex items-center gap-2 data-[state=active]:bg-corsica-azure data-[state=active]:text-white">
             <Zap className="h-4 w-4" />
             Enrichissement automatique
           </TabsTrigger>
@@ -100,14 +101,14 @@ const AccommodationsList = () => {
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
               <Input
                 placeholder="Rechercher un hébergement..."
-                className="pl-8"
+                className="pl-8 border-corsica-azure100 focus:border-corsica-azure"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
             
             <Select value={typeFilter} onValueChange={setTypeFilter}>
-              <SelectTrigger className="w-[180px]">
+              <SelectTrigger className="w-[180px] border-corsica-azure100">
                 <SelectValue placeholder="Type d'hébergement" />
               </SelectTrigger>
               <SelectContent>
@@ -122,14 +123,18 @@ const AccommodationsList = () => {
           </div>
           
           <div className="flex flex-wrap gap-2">
-            <Badge variant="outline" className="bg-slate-100">
+            <Badge variant="outline" className="bg-corsica-azure50 border-corsica-azure text-corsica-azure">
               Total: {accommodationList.length}
             </Badge>
             {Object.entries(typeStats).map(([type, count]) => (
               <Badge 
                 key={type} 
                 variant={typeFilter === type ? "default" : "outline"}
-                className={`cursor-pointer ${typeFilter === type ? "bg-primary" : ""}`}
+                className={`cursor-pointer ${
+                  typeFilter === type 
+                    ? "bg-corsica-azure text-white" 
+                    : "bg-corsica-emerald50 text-corsica-emerald border-corsica-emerald hover:bg-corsica-emerald hover:text-white"
+                }`}
                 onClick={() => setTypeFilter(type === typeFilter ? "all" : type)}
               >
                 {accommodationTypeLabels[type] || type}: {count}
@@ -137,10 +142,10 @@ const AccommodationsList = () => {
             ))}
           </div>
           
-          <div className="border rounded-md">
+          <div className="border rounded-md border-corsica-azure100">
             <Table>
               <TableHeader>
-                <TableRow>
+                <TableRow className="border-corsica-azure100">
                   <TableHead className="w-[300px]">Nom</TableHead>
                   <TableHead>Lieu</TableHead>
                   <TableHead>Type</TableHead>
@@ -151,10 +156,10 @@ const AccommodationsList = () => {
               <TableBody>
                 {filteredAccommodations.length > 0 ? (
                   filteredAccommodations.map((accommodation) => (
-                    <TableRow key={accommodation.id}>
+                    <TableRow key={accommodation.id} className="border-corsica-azure50">
                       <TableCell className="font-medium">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-md overflow-hidden">
+                          <div className="w-10 h-10 rounded-md overflow-hidden border border-corsica-azure100">
                             <img 
                               src={accommodation.image} 
                               alt={accommodation.name} 
@@ -173,9 +178,9 @@ const AccommodationsList = () => {
                         <Badge 
                           variant="outline" 
                           className={
-                            accommodation.type === 'hotel' ? 'bg-blue-50 text-blue-800 border-blue-200' :
-                            accommodation.type === 'gite' ? 'bg-green-50 text-green-800 border-green-200' :
-                            accommodation.type === 'camping' ? 'bg-amber-50 text-amber-800 border-amber-200' :
+                            accommodation.type === 'hotel' ? 'bg-corsica-azure50 text-corsica-azure border-corsica-azure' :
+                            accommodation.type === 'gite' ? 'bg-corsica-emerald50 text-corsica-emerald border-corsica-emerald' :
+                            accommodation.type === 'camping' ? 'bg-corsica-coral50 text-corsica-coral border-corsica-coral' :
                             ''
                           }
                         >
@@ -184,7 +189,7 @@ const AccommodationsList = () => {
                       </TableCell>
                       <TableCell>{accommodation.priceRange}</TableCell>
                       <TableCell className="text-right space-x-2">
-                        <Button asChild variant="ghost" size="icon">
+                        <Button asChild variant="ghost" size="icon" className="hover:bg-corsica-azure50 hover:text-corsica-azure">
                           <Link to={`/admin/accommodations/edit/${accommodation.id}`}>
                             <Edit className="h-4 w-4" />
                             <span className="sr-only">Modifier</span>
@@ -193,6 +198,7 @@ const AccommodationsList = () => {
                         <Button 
                           variant="ghost" 
                           size="icon"
+                          className="hover:bg-red-50 hover:text-red-600"
                           onClick={() => handleDelete(accommodation)}
                         >
                           <Trash className="h-4 w-4" />
