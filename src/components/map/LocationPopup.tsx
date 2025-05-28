@@ -22,7 +22,7 @@ const LocationPopup = ({ location, onClose }: LocationPopupProps) => {
       
       <div className="flex items-start gap-3">
         {isGasStation ? (
-          <div className="w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center text-white">
+          <div className="w-10 h-10 bg-corsica-coral rounded-full flex items-center justify-center text-white">
             <Fuel className="w-5 h-5" />
           </div>
         ) : (
@@ -51,9 +51,9 @@ const LocationPopup = ({ location, onClose }: LocationPopupProps) => {
           {isGasStation && (
             <div className="mt-3 text-sm space-y-2">
               {location.isPrimary && (
-                <div className="bg-amber-50 border border-amber-200 rounded p-2 flex items-center gap-2">
-                  <Info className="h-4 w-4 text-amber-500" />
-                  <span className="text-amber-800">Station stratégique pour les motards</span>
+                <div className="bg-corsica-coral/10 border border-corsica-coral/30 rounded p-2 flex items-center gap-2">
+                  <Info className="h-4 w-4 text-corsica-coral" />
+                  <span className="text-corsica-coral">Station stratégique pour les motards</span>
                 </div>
               )}
               

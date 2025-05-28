@@ -134,7 +134,7 @@
   }
   
   .blog-content blockquote {
-    @apply pl-6 italic border-l-4 border-corsica-azure/70 text-black my-8 py-4 bg-corsica-azure50 rounded-r-xl;
+    @apply pl-6 italic border-l-4 border-corsica-azure/70 text-black my-8 py-4 bg-corsica-azure/10 rounded-r-xl;
   }
   
   .blog-content ul {
@@ -174,7 +174,7 @@
   }
   
   .blog-content th {
-    @apply bg-corsica-azure50 text-left p-4 font-semibold text-black border-b border-gray-200;
+    @apply bg-corsica-azure/10 text-left p-4 font-semibold text-black border-b border-gray-200;
   }
   
   .blog-content td {
@@ -182,7 +182,7 @@
   }
   
   .blog-content code {
-    @apply bg-corsica-azure50 text-corsica-azure px-2 py-1 rounded-lg text-sm font-mono;
+    @apply bg-corsica-azure/10 text-corsica-azure px-2 py-1 rounded-lg text-sm font-mono;
   }
   
   .blog-content pre {

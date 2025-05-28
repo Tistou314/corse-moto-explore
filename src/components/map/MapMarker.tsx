@@ -38,10 +38,10 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   const el = document.createElement('div');
   el.className = 'marker';
   
-  // Déterminer la couleur du marqueur en fonction du type
+  // Déterminer la couleur du marqueur en fonction du type - remplacer l'ambre par du coral
   const color = location.type === 'gasStation' 
-    ? '#f59e0b' // couleur ambre pour stations-service 
-    : (location.category === 'station-service' ? '#f59e0b' : (markerTypes[location.type] || '#000000'));
+    ? '#F97316' // couleur coral pour stations-service 
+    : (location.category === 'station-service' ? '#F97316' : (markerTypes[location.type] || '#000000'));
   
   // Styles de base pour le marqueur
   el.style.backgroundColor = color;

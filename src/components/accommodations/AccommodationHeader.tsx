@@ -11,9 +11,9 @@ const AccommodationHeader = ({ accommodation }: AccommodationHeaderProps) => {
     <div className="flex justify-between items-start mb-6">
       <h1 className="text-3xl font-bold">{accommodation.name}</h1>
       <Badge className={`
-        ${accommodation.type === 'hotel' ? 'bg-blue-100 text-blue-800' : 
-          accommodation.type === 'gite' ? 'bg-green-100 text-green-800' : 
-          'bg-corsica-sage100 text-corsica-sage600'}
+        ${accommodation.type === 'hotel' ? 'bg-corsica-azure/10 text-corsica-azure' : 
+          accommodation.type === 'gite' ? 'bg-corsica-emerald/10 text-corsica-emerald' : 
+          'bg-corsica-coral/10 text-corsica-coral'}
       `}>
         {accommodation.type === 'hotel' ? 'Hôtel' : 
          accommodation.type === 'gite' ? 'Gîte' : 
