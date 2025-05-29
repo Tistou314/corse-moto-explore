@@ -23,14 +23,14 @@ const StationsListTab = ({
   return (
     <div className="bg-white p-6 rounded-lg shadow">
       <div className="mb-6">
-        <h3 className="text-xl font-semibold mb-4">Liste complète des stations</h3>
+        <h3 className="text-xl font-semibold mb-4 text-black">Liste complète des stations</h3>
         <div className="mb-4 flex flex-wrap gap-2">
           <Button 
             variant={activeRegion === 'all' ? "default" : "outline"}
             onClick={() => setActiveRegion('all')}
             className={activeRegion === 'all' ? "bg-corsica-azure hover:bg-corsica-azure/90 text-white" : "border-corsica-azure text-corsica-azure hover:bg-corsica-azure hover:text-white"}
           >
-            Toutes ({groupedByRegion ? Object.values(groupedByRegion).flat().length : 0})
+            <span className="text-black font-medium">Toutes ({groupedByRegion ? Object.values(groupedByRegion).flat().length : 0})</span>
           </Button>
           {regions.map(region => (
             <Button 
@@ -39,7 +39,7 @@ const StationsListTab = ({
               onClick={() => setActiveRegion(region)}
               className={activeRegion === region ? "bg-corsica-azure hover:bg-corsica-azure/90 text-white" : "border-corsica-azure text-corsica-azure hover:bg-corsica-azure hover:text-white"}
             >
-              {region} ({groupedByRegion[region].length})
+              <span className="text-black font-medium">{region} ({groupedByRegion[region].length})</span>
             </Button>
           ))}
         </div>
@@ -47,23 +47,23 @@ const StationsListTab = ({
         <div className="overflow-x-auto">
           <Table>
             <TableHeader>
-              <TableRow>
-                <TableHead>Nom</TableHead>
-                <TableHead>Marque</TableHead>
-                <TableHead>Adresse</TableHead>
-                <TableHead>Horaires</TableHead>
-                <TableHead>Carburants</TableHead>
-                <TableHead>Services</TableHead>
-                <TableHead>Stratégique</TableHead>
+              <TableRow className="border-b border-gray-200">
+                <TableHead className="text-black font-semibold">Nom</TableHead>
+                <TableHead className="text-black font-semibold">Marque</TableHead>
+                <TableHead className="text-black font-semibold">Adresse</TableHead>
+                <TableHead className="text-black font-semibold">Horaires</TableHead>
+                <TableHead className="text-black font-semibold">Carburants</TableHead>
+                <TableHead className="text-black font-semibold">Services</TableHead>
+                <TableHead className="text-black font-semibold">Stratégique</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {displayedStations.map((station) => (
-                <TableRow key={station.id}>
-                  <TableCell className="font-medium">{station.name}</TableCell>
-                  <TableCell>{station.brand}</TableCell>
-                  <TableCell>{station.address}</TableCell>
-                  <TableCell>{station.hours}{station.seasonalHours ? ' (saisonnier)' : ''}</TableCell>
+                <TableRow key={station.id} className="border-b border-gray-100 hover:bg-gray-50">
+                  <TableCell className="font-medium text-black">{station.name}</TableCell>
+                  <TableCell className="text-black">{station.brand}</TableCell>
+                  <TableCell className="text-black">{station.address}</TableCell>
+                  <TableCell className="text-black">{station.hours}{station.seasonalHours ? ' (saisonnier)' : ''}</TableCell>
                   <TableCell>
                     <div className="flex flex-wrap gap-1">
                       {station.fuelTypes.map(fuel => (
@@ -83,14 +83,14 @@ const StationsListTab = ({
                         ))}
                       </div>
                     ) : (
-                      "-"
+                      <span className="text-black">-</span>
                     )}
                   </TableCell>
                   <TableCell>
                     {station.isStrategic ? (
                       <Badge variant="secondary" className="bg-corsica-coral/10 text-corsica-coral">Oui</Badge>
                     ) : (
-                      "Non"
+                      <span className="text-black">Non</span>
                     )}
                   </TableCell>
                 </TableRow>
