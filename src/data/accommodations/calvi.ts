@@ -17,7 +17,6 @@ export const calviAccommodations: Accommodation[] = [
     address: 'Route du Port, 20220 L\'Île-Rousse',
     latitude: 42.6340,
     longitude: 8.9373,
-    region: 'calvi',
     enrichment: {
       lastUpdated: '2025-01-01',
       hasRealPhoto: false,
