@@ -24,7 +24,7 @@ const ActionButtons = ({ websiteUrl }: ActionButtonsProps) => {
   return (
     <div className="mt-6 flex gap-4 flex-wrap">
       {websiteUrl ? (
-        <Button onClick={handleWebsiteClick} className="flex items-center gap-2">
+        <Button onClick={handleWebsiteClick} className="flex items-center gap-2 bg-corsica-azure hover:bg-corsica-azure600 text-white">
           <GlobeIcon size={18} />
           Site web
         </Button>
@@ -34,7 +34,7 @@ const ActionButtons = ({ websiteUrl }: ActionButtonsProps) => {
         </Button>
       )}
       
-      <Button variant="outline" onClick={() => navigate('/hebergements')}>
+      <Button variant="outline" onClick={() => navigate('/hebergements')} className="border-corsica-azure text-corsica-azure hover:bg-corsica-azure hover:text-white">
         Retour à la liste
       </Button>
     </div>

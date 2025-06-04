@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -56,7 +57,7 @@ export default {
 					// Palette principale sans jaune
 					azure: '#0EA5E9',        // Méditerranée moderne
 					emerald: '#10B981',      // Forêts corses
-					coral: '#F97316',        // Couchers de soleil
+					coral: '#F97316',        // Couchers de soleil (remplace jaune)
 					ruby: '#DC2626',         // Accent drapeau
 					slate: '#475569',        // Granite des montagnes
 					pearl: '#F8FAFC',        // Arrière-plan clair

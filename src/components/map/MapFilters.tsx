@@ -70,7 +70,7 @@ const MapFilters = ({
               variant={!activeFilter ? "default" : "outline"} 
               size="sm" 
               onClick={() => setActiveFilter(null)}
-              className={!activeFilter ? "bg-corsica-blue hover:bg-corsica-blue/90" : ""}
+              className={!activeFilter ? "bg-corsica-azure hover:bg-corsica-azure/90" : ""}
             >
               <Map className="w-4 h-4 mr-2" />
               Tout
@@ -79,7 +79,7 @@ const MapFilters = ({
               variant={activeFilter === 'itinerary' ? "default" : "outline"} 
               size="sm" 
               onClick={() => setActiveFilter('itinerary')}
-              className={activeFilter === 'itinerary' ? "bg-blue-600 hover:bg-blue-700" : ""}
+              className={activeFilter === 'itinerary' ? "bg-corsica-azure hover:bg-corsica-azure/90" : ""}
             >
               <Route className="w-4 h-4 mr-2" />
               Itinéraires
@@ -88,7 +88,7 @@ const MapFilters = ({
               variant={activeFilter === 'accommodation' ? "default" : "outline"} 
               size="sm" 
               onClick={() => setActiveFilter('accommodation')}
-              className={activeFilter === 'accommodation' ? "bg-green-600 hover:bg-green-700" : ""}
+              className={activeFilter === 'accommodation' ? "bg-corsica-emerald hover:bg-corsica-emerald/90" : ""}
             >
               <Hotel className="w-4 h-4 mr-2" />
               Hébergements
@@ -97,7 +97,7 @@ const MapFilters = ({
               variant={activeFilter === 'pointOfInterest' ? "default" : "outline"} 
               size="sm" 
               onClick={() => setActiveFilter('pointOfInterest')}
-              className={activeFilter === 'pointOfInterest' ? "bg-red-600 hover:bg-red-700" : ""}
+              className={activeFilter === 'pointOfInterest' ? "bg-corsica-coral hover:bg-corsica-coral/90" : ""}
             >
               <Info className="w-4 h-4 mr-2" />
               Points d'intérêt
