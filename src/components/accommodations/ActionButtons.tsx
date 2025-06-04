@@ -34,7 +34,7 @@ const ActionButtons = ({ websiteUrl }: ActionButtonsProps) => {
         </Button>
       )}
       
-      <Button variant="outline" onClick={() => navigate('/hebergements')} className="border-corsica-azure text-corsica-azure hover:bg-corsica-azure hover:text-white">
+      <Button variant="outline" onClick={() => navigate('/hebergements')} className="border-corsica-emerald text-corsica-emerald hover:bg-corsica-emerald hover:text-white">
         Retour à la liste
       </Button>
     </div>
