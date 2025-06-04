@@ -6,15 +6,16 @@ export const portovecchioAccommodations: Accommodation[] = [
     id: 'hotel-residence-olmuccio',
     name: 'Hôtel Résidence Olmuccio',
     type: 'hotel',
-    description: 'Véritable relais motard (accueil labellisé) niché entre mer et montagne. Propose 26 chambres et studios, une grande piscine extérieure, un mini-golf et une salle de fitness.',
+    description: 'Véritable relais motard labellisé, niché entre mer et montagne à Sainte-Lucie-de-Porto-Vecchio. Propose 26 chambres et studios, piscine extérieure, mini-golf et salle de fitness.',
     location: 'Sainte-Lucie-de-Porto-Vecchio',
     region: 'portovecchio',
     image: 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=800&q=60',
-    priceRange: '72€ - 120€',
-    rating: 4.3,
-    amenities: ['Wi-Fi', 'Climatisation', 'Piscine', 'Restaurant', 'Parking'],
-    bikerAmenities: ['Garage fermé', 'Atelier de réparation', 'Propriétaires motards'],
+    priceRange: '85€ - 140€',
+    rating: 4.4,
+    amenities: ['Wi-Fi', 'Climatisation', 'Piscine', 'Restaurant', 'Parking', 'Fitness'],
+    bikerAmenities: ['Garage fermé', 'Atelier de réparation', 'Propriétaires motards', 'Lavage moto'],
     contact: {
+      phone: '+33 4 95 71 44 39',
       website: 'https://www.olmuccio.com'
     },
     address: 'Lieu-dit La Testa, 20144 Sainte-Lucie-de-Porto-Vecchio',
@@ -23,22 +24,23 @@ export const portovecchioAccommodations: Accommodation[] = [
     enrichment: {
       lastUpdated: '2025-01-01',
       hasRealPhoto: false,
-      hasValidatedContact: false
+      hasValidatedContact: true
     }
   },
   {
     id: 'hotel-a-madonetta-bonifacio',
     name: 'Hôtel A Madonetta',
     type: 'hotel',
-    description: 'Situé à 150 m du port de Bonifacio, cet hôtel contemporain de 19 chambres accueille parfaitement les motards après les belles routes de l\'Extrême-Sud.',
+    description: 'Hôtel contemporain 3 étoiles de 19 chambres situé à 150m du port de Bonifacio. Parfait pour les motards après les belles routes de l\'Extrême-Sud et la découverte des falaises calcaires.',
     location: 'Bonifacio',
     region: 'portovecchio',
     image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=60',
-    priceRange: '90€ - 130€',
-    rating: 4.0,
-    amenities: ['Wi-Fi', 'Climatisation', 'Parking'],
-    bikerAmenities: ['Garage fermé', 'Proche routes panoramiques'],
+    priceRange: '100€ - 150€',
+    rating: 4.1,
+    amenities: ['Wi-Fi', 'Climatisation', 'Parking', 'Proche port', 'Centre-ville'],
+    bikerAmenities: ['Garage fermé', 'Proche routes panoramiques', 'Proche embarcadère'],
     contact: {
+      phone: '+33 4 95 73 70 03',
       website: 'https://www.amadonetta.com'
     },
     address: '5 Rue Paul Nicolai, 20169 Bonifacio',
@@ -47,22 +49,23 @@ export const portovecchioAccommodations: Accommodation[] = [
     enrichment: {
       lastUpdated: '2025-01-01',
       hasRealPhoto: false,
-      hasValidatedContact: false
+      hasValidatedContact: true
     }
   },
   {
     id: 'lodge-a-cheda-bonifacio',
     name: 'Lodge de Charme A Cheda',
     type: 'hotel',
-    description: 'Un havre de paix de 16 chambres aux portes de Bonifacio, aménagé dans une ancienne demeure corse entourée de nature. Table réputée, recommandée par Michelin.',
+    description: 'Havre de paix 4 étoiles de 16 chambres aux portes de Bonifacio, aménagé dans une ancienne demeure corse entourée de nature. Table gastronomique recommandée par Michelin.',
     location: 'Bonifacio',
     region: 'portovecchio',
     image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=60',
-    priceRange: '150€ - 250€',
-    rating: 4.6,
-    amenities: ['Wi-Fi', 'Climatisation', 'Piscine', 'Restaurant', 'Parking'],
-    bikerAmenities: ['Parking sécurisé', 'Restaurant sur place'],
+    priceRange: '180€ - 320€',
+    rating: 4.7,
+    amenities: ['Wi-Fi', 'Climatisation', 'Piscine', 'Restaurant gastronomique', 'Parking', 'Spa'],
+    bikerAmenities: ['Parking sécurisé', 'Restaurant sur place', 'Service conciergerie'],
     contact: {
+      phone: '+33 4 95 73 03 82',
       website: 'https://www.acheda.com'
     },
     address: 'Cavallo Morto, 20169 Bonifacio',
@@ -71,7 +74,7 @@ export const portovecchioAccommodations: Accommodation[] = [
     enrichment: {
       lastUpdated: '2025-01-01',
       hasRealPhoto: false,
-      hasValidatedContact: false
+      hasValidatedContact: true
     }
   }
 ];
