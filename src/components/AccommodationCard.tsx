@@ -17,7 +17,7 @@ const AccommodationCard = ({ accommodation }: AccommodationCardProps) => {
   const typeColors = {
     hotel: "bg-corsica-azure text-white",
     gite: "bg-corsica-emerald text-white",
-    camping: "bg-corsica-sage text-white"
+    camping: "bg-corsica-coral text-white"
   };
 
   // Map type to label
@@ -69,12 +69,12 @@ const AccommodationCard = ({ accommodation }: AccommodationCardProps) => {
           <p className="text-sm font-medium mb-2 text-corsica-charcoal">Équipements motards :</p>
           <div className="flex flex-wrap gap-1">
             {accommodation.bikerAmenities.slice(0, 3).map((amenity, index) => (
-              <Badge key={index} variant="outline" className="text-xs border-corsica-sage text-corsica-sage">
+              <Badge key={index} variant="outline" className="text-xs border-corsica-emerald text-corsica-emerald">
                 {amenity}
               </Badge>
             ))}
             {accommodation.bikerAmenities.length > 3 && (
-              <Badge variant="outline" className="text-xs border-corsica-sage text-corsica-sage">
+              <Badge variant="outline" className="text-xs border-corsica-emerald text-corsica-emerald">
                 +{accommodation.bikerAmenities.length - 3}
               </Badge>
             )}
