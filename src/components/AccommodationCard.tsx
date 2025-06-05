@@ -13,7 +13,7 @@ interface AccommodationCardProps {
 const AccommodationCard = ({ accommodation }: AccommodationCardProps) => {
   const navigate = useNavigate();
 
-  // Map type to color
+  // Map type to color - AUCUNE TRACE DE JAUNE
   const typeColors = {
     hotel: "bg-corsica-azure text-white",
     gite: "bg-corsica-emerald text-white",

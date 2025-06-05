@@ -29,7 +29,7 @@ const ActionButtons = ({ websiteUrl }: ActionButtonsProps) => {
           Site web
         </Button>
       ) : (
-        <Button disabled className="opacity-50">
+        <Button disabled className="opacity-50 bg-corsica-slate">
           Pas de site web
         </Button>
       )}
