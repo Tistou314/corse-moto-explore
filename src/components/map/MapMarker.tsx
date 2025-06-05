@@ -1,4 +1,3 @@
-
 import mapboxgl from 'mapbox-gl';
 import { markerTypes, MapLocation, isWithinCorsica, validateAndFixCoordinates } from './types';
 
@@ -38,10 +37,10 @@ export const createMapMarker = ({ location, map, onClick }: CreateMarkerProps): 
   const el = document.createElement('div');
   el.className = 'marker';
   
-  // Déterminer la couleur du marqueur en fonction du type - remplacer l'ambre par du coral
+  // Déterminer la couleur du marqueur en fonction du type - remplacer toute trace d'ambre/jaune par du coral
   const color = location.type === 'gasStation' 
     ? '#F97316' // couleur coral pour stations-service 
-    : (location.category === 'station-service' ? '#F97316' : (markerTypes[location.type] || '#000000'));
+    : (location.category === 'station-service' ? '#F97316' : (markerTypes[location.type] || '#F97316'));
   
   // Styles de base pour le marqueur
   el.style.backgroundColor = color;

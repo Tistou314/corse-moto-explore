@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -35,7 +34,7 @@ const SearchAndFilter = ({
       case 'Expériences et récits':
         return 'bg-violet-500 hover:bg-violet-600';
       case 'Conseils saisonniers':
-        return 'bg-orange-500 hover:bg-orange-600';
+        return 'bg-corsica-coral hover:bg-corsica-coral/90';
       case 'Aspects techniques':
         return 'bg-blue-500 hover:bg-blue-600';
       case 'Ressources locales':

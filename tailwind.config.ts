@@ -54,7 +54,7 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				corsica: {
-					// Palette principale sans jaune
+					// Palette principale sans jaune - TOUTE TRACE DE JAUNE SUPPRIMÉE
 					azure: '#0EA5E9',        // Méditerranée moderne
 					emerald: '#10B981',      // Forêts corses
 					coral: '#F97316',        // Couchers de soleil (remplace jaune)
