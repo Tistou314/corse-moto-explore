@@ -28,7 +28,7 @@ const ItineraryRating = () => {
               <Star 
                 className={`w-8 h-8 ${
                   (hoverRating !== null ? star <= hoverRating : star <= (rating || 0))
-                    ? "text-yellow-400 fill-yellow-400"
+                    ? "text-corsica-coral fill-corsica-coral"
                     : "text-gray-300"
                 }`}
               />

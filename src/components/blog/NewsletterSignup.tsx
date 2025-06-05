@@ -16,7 +16,7 @@ const NewsletterSignup = () => {
             placeholder="Votre adresse email" 
             className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
           />
-          <Button className="bg-white text-corsica-blue hover:bg-white/90">
+          <Button className="bg-white text-corsica-azure hover:bg-white/90">
             S'abonner
           </Button>
         </div>

@@ -85,7 +85,7 @@ const MapFilters = ({
               Itinéraires
             </Button>
             <Button 
-              variant={activeFilter === 'accommodation' ? "default" : "outline"} 
+              variant={activeFilter === 'accommodation' ? "secondary" : "outline"} 
               size="sm" 
               onClick={() => setActiveFilter('accommodation')}
               className={activeFilter === 'accommodation' ? "bg-corsica-emerald hover:bg-corsica-emerald/90" : ""}
@@ -94,10 +94,10 @@ const MapFilters = ({
               Hébergements
             </Button>
             <Button 
-              variant={activeFilter === 'pointOfInterest' ? "default" : "outline"} 
+              variant={activeFilter === 'pointOfInterest' ? "outline" : "outline"} 
               size="sm" 
               onClick={() => setActiveFilter('pointOfInterest')}
-              className={activeFilter === 'pointOfInterest' ? "bg-corsica-coral hover:bg-corsica-coral/90" : ""}
+              className={activeFilter === 'pointOfInterest' ? "bg-corsica-coral hover:bg-corsica-coral/90 text-white border-corsica-coral" : ""}
             >
               <Info className="w-4 h-4 mr-2" />
               Points d'intérêt

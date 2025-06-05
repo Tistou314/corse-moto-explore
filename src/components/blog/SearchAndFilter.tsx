@@ -25,7 +25,7 @@ const SearchAndFilter = ({
   const getCategoryColor = (category: string) => {
     switch(category) {
       case 'Itinéraires et circuits':
-        return 'bg-amber-500 hover:bg-amber-600';
+        return 'bg-corsica-coral hover:bg-corsica-coral/90';
       case 'Aspects pratiques':
         return 'bg-sky-500 hover:bg-sky-600';
       case 'Culture et découverte':
@@ -41,7 +41,7 @@ const SearchAndFilter = ({
       case 'Ressources locales':
         return 'bg-green-500 hover:bg-green-600';
       default:
-        return 'bg-corsica-blue hover:bg-corsica-blue/90';
+        return 'bg-corsica-azure hover:bg-corsica-azure/90';
     }
   };
 
