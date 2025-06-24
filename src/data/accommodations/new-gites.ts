@@ -218,5 +218,95 @@ export const gitesDeFramce: Accommodation[] = [
     address: "Alata",
     latitude: 41.9833,
     longitude: 8.7667
+  },
+  {
+    id: "tente-lodge-quarciu",
+    name: "Tente lodge - U Quarciu",
+    type: "gite",
+    description: "Tente lodge unique pour 5 personnes. Hébergement insolite avec équipements motards garantis selon le label Gîtes de France Corse.",
+    location: "Ghisonaccia",
+    region: "ghisonaccia",
+    image: "https://images.unsplash.com/photo-1504851149312-7a075b496cc7?auto=format&fit=crop&w=800&q=60",
+    priceRange: "68€ - 80€",
+    rating: 5.0,
+    amenities: [
+      "Tente lodge",
+      "5 personnes",
+      "Draps et linge fournis",
+      "Cuisine équipée"
+    ],
+    bikerAmenities: [
+      "Garage ou abri couvert sécurisé",
+      "Sol dur et plat",
+      "Accès carrossable",
+      "Équipements moto complets"
+    ],
+    contact: {
+      phone: "04 95 10 54 30",
+      website: "www.gites-corsica.com"
+    },
+    address: "Résidence U Quarciu, Ghisonaccia",
+    latitude: 42.0167,
+    longitude: 9.4
+  },
+  {
+    id: "bella-vista-cateri",
+    name: "Bella Vista - Cateri",
+    type: "gite",
+    description: "Gîte pour 4 personnes avec 1 chambre à Cateri. Vue panoramique et équipements motards garantis selon le label Gîtes de France.",
+    location: "Cateri",
+    region: "calvi",
+    image: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=800&q=60",
+    priceRange: "52€ - 65€",
+    rating: 4.9,
+    amenities: [
+      "4 personnes, 1 chambre",
+      "Vue panoramique",
+      "Cuisine équipée",
+      "Terrasse"
+    ],
+    bikerAmenities: [
+      "Garage sécurisé",
+      "Sol dur et plat",
+      "Accès carrossable",
+      "Équipements moto"
+    ],
+    contact: {
+      phone: "04 95 10 54 30",
+      website: "www.gites-corsica.com"
+    },
+    address: "Cateri",
+    latitude: 42.5667,
+    longitude: 8.8833
+  },
+  {
+    id: "u-pagliaghju-cateri",
+    name: "U PAGLIAGHJU - Cateri",
+    type: "gite",
+    description: "Gîte pour 2 personnes avec 1 chambre à Cateri. Hébergement de charme avec équipements motards garantis.",
+    location: "Cateri",
+    region: "calvi",
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=60",
+    priceRange: "58€ - 70€",
+    rating: 4.9,
+    amenities: [
+      "2 personnes, 1 chambre",
+      "Hébergement traditionnel",
+      "Cuisine équipée",
+      "Jardin"
+    ],
+    bikerAmenities: [
+      "Garage sécurisé",
+      "Sol dur et plat",
+      "Accès carrossable",
+      "Équipements moto"
+    ],
+    contact: {
+      phone: "04 95 10 54 30",
+      website: "www.gites-corsica.com"
+    },
+    address: "Cateri",
+    latitude: 42.5667,
+    longitude: 8.8833
   }
 ];
