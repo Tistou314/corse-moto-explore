@@ -43,6 +43,7 @@ const AccommodationCard = ({ accommodation }: AccommodationCardProps) => {
           fallbackSrc="https://images.unsplash.com/photo-1558882224-dda166733046?auto=format&fit=crop&w=800&q=60"
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
           aspectRatio="16/9"
+          priority={false}
         />
       </div>
       

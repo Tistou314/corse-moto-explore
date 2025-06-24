@@ -15,7 +15,7 @@ import ActionButtons from '@/components/accommodations/ActionButtons';
 import MapBox from '@/components/map/MapBox';
 import { MapLocation } from '@/components/map/types';
 import { Accommodation } from '@/data/accommodations/types';
-import { AspectRatio } from '@/components/ui/aspect-ratio';
+import OptimizedImage from '@/components/ui/optimized-image';
 import SchemaOrg from '@/components/seo/SchemaOrg';
 
 const AccommodationDetailPage = () => {
@@ -63,13 +63,16 @@ const AccommodationDetailPage = () => {
         <div className="grid md:grid-cols-2 gap-8">
           {/* Single Image Section */}
           <div>
-            <AspectRatio ratio={4/3} className="bg-muted">
-              <img 
+            <div className="aspect-[4/3] bg-muted rounded-lg overflow-hidden">
+              <OptimizedImage
                 src={accommodation.image} 
                 alt={`${accommodation.name} - Vue`} 
+                fallbackSrc="https://images.unsplash.com/photo-1558882224-dda166733046?auto=format&fit=crop&w=800&q=60"
                 className="rounded-lg shadow-lg object-cover w-full h-full"
+                aspectRatio="4/3"
+                priority={true}
               />
-            </AspectRatio>
+            </div>
           </div>
           
           {/* Details Section */}
