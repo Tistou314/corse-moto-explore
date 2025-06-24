@@ -14,7 +14,9 @@ const DetailedDescription = ({ description, location }: DetailedDescriptionProps
         Description détaillée
       </h4>
       <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-        <p className="text-muted-foreground leading-relaxed mb-4">{description}</p>
+        <p className="text-corsica-charcoal leading-relaxed mb-4 text-sm">
+          {description}
+        </p>
         <div className="flex items-center mt-3 pt-3 border-t border-slate-200">
           <span className="text-sm font-medium text-corsica-azure">Localisation :</span>
           <span className="text-sm text-muted-foreground ml-2">{location}</span>
