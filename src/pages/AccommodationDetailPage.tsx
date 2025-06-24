@@ -8,6 +8,9 @@ import AccommodationHeader from '@/components/accommodations/AccommodationHeader
 import RatingStars from '@/components/accommodations/RatingStars';
 import ContactInfo from '@/components/accommodations/ContactInfo';
 import BikerAmenities from '@/components/accommodations/BikerAmenities';
+import AccommodationServices from '@/components/accommodations/AccommodationServices';
+import PriceDisplay from '@/components/accommodations/PriceDisplay';
+import DetailedDescription from '@/components/accommodations/DetailedDescription';
 import ActionButtons from '@/components/accommodations/ActionButtons';
 import MapBox from '@/components/map/MapBox';
 import { MapLocation } from '@/components/map/types';
@@ -74,12 +77,25 @@ const AccommodationDetailPage = () => {
             <AccommodationHeader accommodation={accommodation} />
             <RatingStars rating={accommodation.rating} />
             
-            <div className="mb-6">
-              <p className="text-muted-foreground">{accommodation.description}</p>
-            </div>
+            {/* Prix et note */}
+            <PriceDisplay priceRange={accommodation.priceRange} rating={accommodation.rating} />
             
+            {/* Description détaillée */}
+            <DetailedDescription 
+              description={accommodation.description} 
+              location={accommodation.location} 
+            />
+            
+            {/* Informations de contact */}
             <ContactInfo accommodation={accommodation} />
+            
+            {/* Services disponibles */}
+            <AccommodationServices amenities={accommodation.amenities} />
+            
+            {/* Équipements motards */}
             <BikerAmenities amenities={accommodation.bikerAmenities} />
+            
+            {/* Boutons d'action */}
             <ActionButtons websiteUrl={websiteUrl} />
           </div>
         </div>
