@@ -17,12 +17,14 @@ import { MapLocation } from '@/components/map/types';
 import { Accommodation } from '@/data/accommodations/types';
 import OptimizedImage from '@/components/ui/optimized-image';
 import SchemaOrg from '@/components/seo/SchemaOrg';
+import { useAccommodationImages } from '@/hooks/useAccommodationImages';
 
 const AccommodationDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [accommodation, setAccommodation] = useState<Accommodation | null>(null);
   const [mapLocation, setMapLocation] = useState<MapLocation[]>([]);
+  const { image: uploadedImage, loading } = useAccommodationImages(id || '');
 
   useEffect(() => {
     const foundAccommodation = accommodations.find(acc => acc.id === id);
@@ -52,6 +54,9 @@ const AccommodationDetailPage = () => {
   
   // Get the website URL directly from accommodation
   const websiteUrl = accommodation.contact?.website;
+  
+  // Utiliser l'image uploadée si disponible, sinon l'image par défaut
+  const imageToUse = uploadedImage || accommodation.image;
 
   return (
     <div className="min-h-screen flex flex-col bg-corsica-pearl">
@@ -65,7 +70,7 @@ const AccommodationDetailPage = () => {
           <div>
             <div className="aspect-[4/3] bg-muted rounded-lg overflow-hidden">
               <OptimizedImage
-                src={accommodation.image} 
+                src={imageToUse} 
                 alt={`${accommodation.name} - Vue`} 
                 fallbackSrc="https://images.unsplash.com/photo-1558882224-dda166733046?auto=format&fit=crop&w=800&q=60"
                 className="rounded-lg shadow-lg object-cover w-full h-full"

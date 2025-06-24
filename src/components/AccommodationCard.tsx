@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Accommodation } from "@/data/accommodations/types";
 import { useNavigate } from "react-router-dom";
 import OptimizedImage from "@/components/ui/optimized-image";
+import { useAccommodationImages } from "@/hooks/useAccommodationImages";
 
 interface AccommodationCardProps {
   accommodation: Accommodation;
@@ -12,6 +13,7 @@ interface AccommodationCardProps {
 
 const AccommodationCard = ({ accommodation }: AccommodationCardProps) => {
   const navigate = useNavigate();
+  const { image: uploadedImage, loading } = useAccommodationImages(accommodation.id);
 
   // Map type to color - AUCUNE TRACE DE JAUNE
   const typeColors = {
@@ -31,6 +33,9 @@ const AccommodationCard = ({ accommodation }: AccommodationCardProps) => {
     navigate(`/hebergements/${accommodation.id}`);
   };
 
+  // Utiliser l'image uploadée si disponible, sinon l'image par défaut
+  const imageToUse = uploadedImage || accommodation.image;
+
   return (
     <Card 
       className="overflow-hidden h-full flex flex-col hover:shadow-lg transition-all duration-300 cursor-pointer bg-white" 
@@ -38,7 +43,7 @@ const AccommodationCard = ({ accommodation }: AccommodationCardProps) => {
     >
       <div className="aspect-video w-full overflow-hidden">
         <OptimizedImage
-          src={accommodation.image}
+          src={imageToUse}
           alt={accommodation.name}
           fallbackSrc="https://images.unsplash.com/photo-1558882224-dda166733046?auto=format&fit=crop&w=800&q=60"
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
