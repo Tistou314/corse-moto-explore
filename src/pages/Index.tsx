@@ -14,9 +14,7 @@ import MapSection from '@/components/home/MapSection';
 import SchemaOrg from '@/components/seo/SchemaOrg';
 import { itineraries } from '@/data/itineraries';
 import { blogPosts } from '@/data/blogPosts';
-import { accommodations } from '@/data/accommodations';
-import { campingAccommodations } from '@/data/accommodations/camping';
-import { gitesAccommodations } from '@/data/accommodations';
+import { accommodations, campingAccommodations, gitesAccommodations } from '@/data/accommodations';
 
 const Index = () => {
   // Get featured itineraries (first 3)
