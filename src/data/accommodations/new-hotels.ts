@@ -1,4 +1,3 @@
-
 import { Accommodation } from './types';
 
 export const newHotels: Accommodation[] = [
@@ -6,10 +5,10 @@ export const newHotels: Accommodation[] = [
     id: "villa-les-orangers",
     name: "LA VILLA LES ORANGERS",
     type: "hotel",
-    description: "Hôtel*** Restaurant avec 2 piscines chauffées et vue panoramique. Situé à 4,5 km des plages et 6 km de Propriano, cet établissement offre un cadre exceptionnel avec chambres Standard, Confort, Luxe et Suites. Restaurant et bar sur place dans un environnement privilégié.",
+    description: "Hôtel*** Restaurant avec 2 piscines chauffées et vue panoramique. Situé à 4,5 km des plages et 6 km de Propriano, cet établissement offre un cadre exceptionnel avec chambres Standard, Confort, Luxe et Suites.",
     location: "Olmeto",
     region: "propriano",
-    image: "/lovable-uploads/1c898a43-4169-4626-a5bb-33930ac79ec2.png",
+    image: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=800&q=60",
     priceRange: "120€ - 200€",
     rating: 4.6,
     amenities: [
@@ -18,9 +17,7 @@ export const newHotels: Accommodation[] = [
       "WiFi gratuit",
       "Chambres Standard, Confort, Luxe, Suites",
       "Climatisation",
-      "Terrasse panoramique",
-      "Parking sécurisé",
-      "Vue panoramique exceptionnelle"
+      "Terrasse panoramique"
     ],
     bikerAmenities: [
       "Garage sécurisé",
