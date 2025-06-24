@@ -1,6 +1,6 @@
 
 import { Badge } from '@/components/ui/badge';
-import { WifiIcon, CarIcon, UtensilsIcon, SwimmingPoolIcon } from 'lucide-react';
+import { UtensilsIcon } from 'lucide-react';
 
 interface AccommodationServicesProps {
   amenities: string[];
