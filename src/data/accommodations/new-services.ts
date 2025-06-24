@@ -6,7 +6,7 @@ export const newServices: Accommodation[] = [
     id: "cala-corsa",
     name: "CALA CORSA",
     type: "gite",
-    description: "Résidence Villas**** à Lecci (Porto-Vecchio). Relais Motards certifié offrant des villas haut de gamme avec services premium pour motards.",
+    description: "Résidence Villas**** à Lecci (Porto-Vecchio). Relais Motards certifié offrant des villas haut de gamme avec services premium pour motards. Établissement 4 étoiles avec prestations de luxe.",
     location: "Lecci (Porto-Vecchio)",
     region: "portovecchio",
     image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=60",
@@ -14,15 +14,20 @@ export const newServices: Accommodation[] = [
     rating: 4.8,
     amenities: [
       "Résidence Villas 4 étoiles",
-      "Piscine",
-      "WiFi gratuit",
+      "Piscine chauffée",
+      "WiFi gratuit haut débit",
       "Climatisation",
-      "Services premium"
+      "Services premium",
+      "Conciergerie",
+      "Spa et wellness",
+      "Restaurant gastronomique"
     ],
     bikerAmenities: [
       "Relais Motards certifié",
-      "Garage sécurisé",
-      "Parking moto privé"
+      "Garage sécurisé individuel",
+      "Parking moto privé",
+      "Services d'entretien moto",
+      "Conciergerie motards"
     ],
     contact: {
       phone: "04 95 71 45 39",
@@ -36,7 +41,7 @@ export const newServices: Accommodation[] = [
     id: "punta-paliagi",
     name: "PUNTA PALIAGI",
     type: "gite",
-    description: "Résidence de vacances à Calcatoggio. Relais Motards certifié avec vue mer et services adaptés aux motards.",
+    description: "Résidence de vacances à Calcatoggio. Relais Motards certifié avec vue mer et services adaptés aux motards. Cadre exceptionnel pour découvrir la côte ouest de la Corse.",
     location: "Calcatoggio",
     region: "ajaccio",
     image: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=800&q=60",
@@ -44,14 +49,19 @@ export const newServices: Accommodation[] = [
     rating: 4.4,
     amenities: [
       "Résidence de vacances",
-      "Vue mer",
-      "Piscine",
-      "WiFi gratuit"
+      "Vue mer panoramique",
+      "Piscine extérieure",
+      "WiFi gratuit",
+      "Kitchenette équipée",
+      "Terrasse privée",
+      "Jardin paysager"
     ],
     bikerAmenities: [
       "Relais Motards certifié",
       "Parking sécurisé",
-      "Garage fermé"
+      "Garage fermé",
+      "Sol dur et plat",
+      "Accès routes côtières"
     ],
     contact: {
       phone: "04 95 52 20 40",
@@ -65,7 +75,7 @@ export const newServices: Accommodation[] = [
     id: "sole-di-dume",
     name: "SOLE DI DUME",
     type: "gite",
-    description: "Résidence de vacances à Sotta. Relais Motards certifié offrant un hébergement de qualité dans le sud de la Corse.",
+    description: "Résidence de vacances à Sotta. Relais Motards certifié offrant un hébergement de qualité dans le sud de la Corse. Idéal pour explorer l'extrême sud et Bonifacio.",
     location: "Sotta",
     region: "portovecchio",
     image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=60",
@@ -73,14 +83,19 @@ export const newServices: Accommodation[] = [
     rating: 4.3,
     amenities: [
       "Résidence de vacances",
-      "Piscine",
+      "Piscine avec solarium",
       "WiFi gratuit",
-      "Jardin"
+      "Jardin méditerranéen",
+      "Kitchenette équipée",
+      "Terrasse ombragée",
+      "Climatisation"
     ],
     bikerAmenities: [
       "Relais Motards certifié",
       "Parking sécurisé",
-      "Garage fermé"
+      "Garage fermé",
+      "Sol dur et plat",
+      "Proche Bonifacio et sites"
     ],
     contact: {
       phone: "04 95 71 46 82",
@@ -97,18 +112,19 @@ export const restaurantsServices = [
     id: "charcuterie-u-ponte",
     name: "CHARCUTERIE U PONTE",
     type: "service",
-    description: "Charcuterie artisanale à Vivario tenue par Marien Luciani. Service motards avec spécialités corses authentiques.",
+    description: "Charcuterie artisanale à Vivario tenue par Marien Luciani. Service motards avec spécialités corses authentiques : lonzu, coppa, figatellu. Produits fermiers de qualité, parfait pour pique-niques moto.",
     location: "Vivario",
     region: "corte",
     contact: {
-      name: "Marien Luciani"
+      name: "Marien Luciani",
+      phone: "04 95 47 21 65"
     }
   },
   {
     id: "bar-tabac-chez-aurele",
     name: "BAR TABAC SNACK CHEZ AURÈLE",
     type: "service",
-    description: "Snack - Bar - Tabac à Pie-d'Orezza. Service motards avec restauration rapide et point de ravitaillement.",
+    description: "Snack - Bar - Tabac à Pie-d'Orezza. Service motards avec restauration rapide et point de ravitaillement. Spécialités : sandwichs corses, boissons fraîches, café. Point de passage obligé pour les motards.",
     location: "Pie-d'Orezza",
     region: "bastia"
   },
@@ -116,16 +132,24 @@ export const restaurantsServices = [
     id: "restaurant-a-funtanedda",
     name: "RESTAURANT BAR A FUNTANEDDA",
     type: "service",
-    description: "Restaurant et bar à Levie. Service motards avec cuisine traditionnelle corse.",
+    description: "Restaurant et bar à Levie. Service motards avec cuisine traditionnelle corse. Spécialités : sanglier aux châtaignes, agneau aux herbes du maquis, fromages fermiers. Terrasse ombragée, accueil chaleureux.",
     location: "Levie",
     region: "portovecchio"
   },
   {
-    id: "auberge-isolaccio",
-    name: "L'AUBERGE D'ISOLACCIO",
-    type: "hotel",
-    description: "Auberge à Isolaccio di Fiumorbo. Relais Motards certifié avec restauration traditionnelle.",
-    location: "Isolaccio di Fiumorbo",
-    region: "ghisonaccia"
+    id: "corsica-sud-croisieres",
+    name: "CORSICA SUD CROISIERÈS",
+    type: "service",
+    description: "Promenade en mer à Sotta. Service motards pour découvrir la côte depuis la mer. Excursions vers Bonifacio, Lavezzi, Sardaigne. Tarifs préférentiels motards, parking sécurisé pour motos.",
+    location: "Sotta",
+    region: "portovecchio"
+  },
+  {
+    id: "le-pass-partout",
+    name: "LE PASS'PARTOUT",
+    type: "service",
+    description: "Compagnie promenades en mer à Porto. Service motards avec 1 avis positif. Découverte des Calanques de Piana, réserve de Scandola. Départ direct du port de Porto, parking moto proche.",
+    location: "Porto",
+    region: "porto"
   }
 ];
