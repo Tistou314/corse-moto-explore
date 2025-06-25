@@ -61,7 +61,7 @@ const MapTokenInput = () => {
   return (
     <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-sm mb-8">
       <h2 className="text-xl font-bold mb-4 flex items-center">
-        <Key className="w-5 h-5 mr-2 text-corsica-blue" />
+        <Key className="w-5 h-5 mr-2 text-corsica-azure" />
         Configuration de la carte
       </h2>
       
@@ -102,9 +102,9 @@ const MapTokenInput = () => {
         </div>
       ) : (
         <div>
-          <Alert className="mb-4 bg-yellow-50 border-yellow-200">
-            <AlertTriangle className="h-4 w-4 text-yellow-600" />
-            <AlertDescription className="text-yellow-700">
+          <Alert className="mb-4 bg-corsica-coral/10 border-corsica-coral/20">
+            <AlertTriangle className="h-4 w-4 text-corsica-coral" />
+            <AlertDescription className="text-corsica-coral">
               Token Mapbox requis pour utiliser la carte interactive.
             </AlertDescription>
           </Alert>
@@ -136,7 +136,7 @@ const MapTokenInput = () => {
             </div>
             
             <Button 
-              className="w-full bg-corsica-blue hover:bg-corsica-blue/90"
+              className="w-full bg-corsica-azure hover:bg-corsica-azure/90"
               onClick={handleSaveToken}
               disabled={!tokenInput.trim()}
             >
