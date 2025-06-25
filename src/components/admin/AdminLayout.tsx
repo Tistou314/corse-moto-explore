@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { LayoutDashboard, FileText, Layers, Menu, X, LogOut, Hotel, MapPin, Map, Droplet } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -12,6 +13,7 @@ interface AdminLayoutProps {
 const AdminLayout = ({ children }: AdminLayoutProps) => {
   const location = useLocation();
   const [open, setOpen] = useState(false);
+  const { logout } = useAuth();
 
   // Navigation items
   const navItems = [
@@ -65,6 +67,10 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
     return location.pathname.startsWith(path);
   };
 
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <div className="flex min-h-screen bg-gray-100">
       {/* Navigation pour bureau */}
@@ -88,11 +94,19 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
             </Link>
           ))}
         </nav>
-        <div className="p-4 border-t">
+        <div className="p-4 border-t space-y-2">
           <Link to="/" className="flex items-center text-gray-600 hover:text-black">
             <LogOut className="w-5 h-5 mr-2" />
             <span>Retour au site</span>
           </Link>
+          <Button 
+            onClick={handleLogout}
+            variant="ghost" 
+            className="w-full justify-start text-red-600 hover:text-red-700 hover:bg-red-50"
+          >
+            <LogOut className="w-5 h-5 mr-2" />
+            <span>Déconnexion</span>
+          </Button>
         </div>
       </aside>
 
@@ -124,7 +138,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
               </Link>
             ))}
           </nav>
-          <div className="p-4 border-t">
+          <div className="p-4 border-t space-y-2">
             <Link 
               to="/" 
               className="flex items-center text-gray-600 hover:text-black"
@@ -133,6 +147,17 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
               <LogOut className="w-5 h-5 mr-2" />
               <span>Retour au site</span>
             </Link>
+            <Button 
+              onClick={() => {
+                handleLogout();
+                setOpen(false);
+              }}
+              variant="ghost" 
+              className="w-full justify-start text-red-600 hover:text-red-700 hover:bg-red-50"
+            >
+              <LogOut className="w-5 h-5 mr-2" />
+              <span>Déconnexion</span>
+            </Button>
           </div>
         </SheetContent>
       </Sheet>

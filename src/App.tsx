@@ -2,6 +2,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Toaster } from "@/components/ui/sonner";
 import { MapProvider } from "@/contexts/MapContext";
+import { AuthProvider } from "@/contexts/AuthContext";
 import ScrollToTop from "@/components/ScrollToTop";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import Index from "@/pages/Index";
@@ -20,28 +21,30 @@ import NotFound from "@/pages/NotFound";
 
 function App() {
   return (
-    <MapProvider>
-      <Router>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/faq" element={<FAQPage />} />
-          <Route path="/hebergements" element={<HebergementPage />} />
-          <Route path="/itineraires" element={<ItinerairesPage />} />
-          <Route path="/itineraires/:id" element={<ItineraryDetailPage />} />
-          <Route path="/guide-pratique" element={<GuidePratiquePage />} />
-          <Route path="/hebergements/:id" element={<AccommodationDetailPage />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/blog/:slug" element={<BlogPostDetailPage />} />
-          <Route path="/admin/*" element={<AdminPage />} />
-          <Route path="/gas-stations" element={<GasStationsPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <ScrollToTopButton />
-        <Toaster position="bottom-right" />
-      </Router>
-    </MapProvider>
+    <AuthProvider>
+      <MapProvider>
+        <Router>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/faq" element={<FAQPage />} />
+            <Route path="/hebergements" element={<HebergementPage />} />
+            <Route path="/itineraires" element={<ItinerairesPage />} />
+            <Route path="/itineraires/:id" element={<ItineraryDetailPage />} />
+            <Route path="/guide-pratique" element={<GuidePratiquePage />} />
+            <Route path="/hebergements/:id" element={<AccommodationDetailPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:slug" element={<BlogPostDetailPage />} />
+            <Route path="/admin/*" element={<AdminPage />} />
+            <Route path="/gas-stations" element={<GasStationsPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <ScrollToTopButton />
+          <Toaster position="bottom-right" />
+        </Router>
+      </MapProvider>
+    </AuthProvider>
   );
 }
 

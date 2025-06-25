@@ -1,8 +1,6 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
-const DEFAULT_MAPBOX_TOKEN = 'pk.eyJ1IjoidGlzdG91ODAiLCJhIjoiY205MnQwc2N5MGJ5NTJscXRjZWl5OTI2OCJ9.gOC3-fgs2N_XvKDag37waA';
-
 type MapContextType = {
   mapboxToken: string;
   setMapboxToken: (token: string) => void;
@@ -14,18 +12,20 @@ const MapContext = createContext<MapContextType | undefined>(undefined);
 export const MapProvider = ({ children }: { children: ReactNode }) => {
   const [mapboxToken, setMapboxToken] = useState<string>(() => {
     if (typeof window !== 'undefined') {
-      return localStorage.getItem('mapbox_token') || DEFAULT_MAPBOX_TOKEN;
+      return localStorage.getItem('mapbox_token') || '';
     }
-    return DEFAULT_MAPBOX_TOKEN;
+    return '';
   });
 
-  const [isMapConfigured, setIsMapConfigured] = useState<boolean>(true);
+  const [isMapConfigured, setIsMapConfigured] = useState<boolean>(false);
 
   useEffect(() => {
-    if (mapboxToken && mapboxToken !== DEFAULT_MAPBOX_TOKEN) {
+    if (mapboxToken && mapboxToken.startsWith('pk.')) {
       localStorage.setItem('mapbox_token', mapboxToken);
+      setIsMapConfigured(true);
+    } else {
+      setIsMapConfigured(false);
     }
-    setIsMapConfigured(true);
   }, [mapboxToken]);
 
   return (

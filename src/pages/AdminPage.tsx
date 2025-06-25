@@ -2,6 +2,8 @@
 import { useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { useAuth } from "@/contexts/AuthContext";
+import AdminLogin from "@/components/admin/AdminLogin";
 import AdminLayout from "@/components/admin/AdminLayout";
 import AdminDashboard from "@/components/admin/AdminDashboard";
 import PostsList from "@/components/admin/posts/PostsList";
@@ -27,6 +29,27 @@ import GasStationCreate from "@/components/admin/gas-stations/GasStationCreate";
 import GasStationEdit from "@/components/admin/gas-stations/GasStationEdit";
 
 const AdminPage = () => {
+  const { isAuthenticated, isLoading } = useAuth();
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-corsica-azure"></div>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <>
+        <Helmet>
+          <title>Connexion Admin | Moto en Corse</title>
+        </Helmet>
+        <AdminLogin />
+      </>
+    );
+  }
+
   return (
     <>
       <Helmet>

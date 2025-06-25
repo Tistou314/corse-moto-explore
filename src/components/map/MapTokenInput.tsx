@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
-import { Key, Shield } from 'lucide-react';
+import { Key, Shield, AlertTriangle } from 'lucide-react';
 
 const MapTokenInput = () => {
   const { mapboxToken, setMapboxToken, isMapConfigured } = useMap();
@@ -13,32 +13,40 @@ const MapTokenInput = () => {
   const [showToken, setShowToken] = useState(false);
   const { toast } = useToast();
   
+  const validateMapboxToken = (token: string): boolean => {
+    // Basic validation for Mapbox token format
+    const tokenRegex = /^pk\.[a-zA-Z0-9_-]{50,}$/;
+    return tokenRegex.test(token);
+  };
+  
   const handleSaveToken = () => {
-    if (tokenInput.trim().startsWith('pk.')) {
-      // Validation supplémentaire de la structure du token
-      const tokenRegex = /^pk\.[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/;
-      if (tokenRegex.test(tokenInput.trim())) {
-        setMapboxToken(tokenInput.trim());
-        toast({
-          title: "Configuration Mapbox",
-          description: "La clé API Mapbox a été enregistrée avec succès.",
-          variant: "default"
-        });
-        setTokenInput('');
-      } else {
-        toast({
-          variant: "destructive",
-          title: "Format de clé API incorrect",
-          description: "Le token Mapbox ne semble pas avoir un format valide.",
-        });
-      }
-    } else {
+    const trimmedToken = tokenInput.trim();
+    
+    if (!trimmedToken) {
       toast({
         variant: "destructive",
-        title: "Clé API invalide",
-        description: "Veuillez fournir une clé API Mapbox valide commençant par 'pk.'",
+        title: "Token requis",
+        description: "Veuillez entrer un token Mapbox.",
       });
+      return;
     }
+
+    if (!validateMapboxToken(trimmedToken)) {
+      toast({
+        variant: "destructive",
+        title: "Format de token invalide",
+        description: "Le token Mapbox doit commencer par 'pk.' et avoir le bon format.",
+      });
+      return;
+    }
+
+    setMapboxToken(trimmedToken);
+    toast({
+      title: "Configuration Mapbox",
+      description: "La clé API Mapbox a été enregistrée avec succès.",
+      variant: "default"
+    });
+    setTokenInput('');
   };
 
   const handleResetToken = () => {
@@ -94,6 +102,13 @@ const MapTokenInput = () => {
         </div>
       ) : (
         <div>
+          <Alert className="mb-4 bg-yellow-50 border-yellow-200">
+            <AlertTriangle className="h-4 w-4 text-yellow-600" />
+            <AlertDescription className="text-yellow-700">
+              Token Mapbox requis pour utiliser la carte interactive.
+            </AlertDescription>
+          </Alert>
+          
           <p className="text-muted-foreground mb-4">
             Pour utiliser la carte interactive, vous avez besoin d'une clé API Mapbox. 
             Veuillez entrer votre clé publique (commençant par pk.).
@@ -107,6 +122,7 @@ const MapTokenInput = () => {
                 onChange={(e) => setTokenInput(e.target.value)}
                 placeholder="pk.eyJ1..."
                 className="font-mono"
+                maxLength={200}
               />
               <div className="flex justify-end mt-2">
                 <Button 
