@@ -55,7 +55,7 @@ const ModernFeaturesSection = () => {
   return (
     <section 
       ref={ref}
-      className="py-24 bg-gradient-to-b from-corsica-pearl to-white relative overflow-hidden"
+      className="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden"
     >
       {/* Motifs décoratifs en arrière-plan */}
       <div className="absolute inset-0 opacity-5">

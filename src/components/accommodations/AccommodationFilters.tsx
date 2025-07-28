@@ -56,7 +56,7 @@ const AccommodationFilters = ({
                           selectedAmenities.length > 0 || priceRange[0] > 0 || priceRange[1] < 200;
 
   return (
-    <section className="bg-corsica-pearl py-8">
+    <section className="bg-gray-50 py-8">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row gap-4 items-center mb-8">
           <div className="relative flex-grow">

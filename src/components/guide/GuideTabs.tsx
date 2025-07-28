@@ -23,7 +23,7 @@ const GuideTabs = () => {
 
   return (
     <Tabs defaultValue="preparation" onValueChange={setActiveTab}>
-      <TabsList className="grid grid-cols-2 md:grid-cols-4 mb-8 bg-corsica-pearl border border-corsica-azure/20">
+      <TabsList className="grid grid-cols-2 md:grid-cols-4 mb-8 bg-gray-50 border border-corsica-azure/20">
         <TabsTrigger 
           value="preparation" 
           className="data-[state=active]:bg-corsica-azure data-[state=active]:text-white text-corsica-charcoal hover:bg-corsica-azure/10"

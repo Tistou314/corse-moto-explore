@@ -59,7 +59,7 @@ const AccommodationDetailPage = () => {
   const imageToUse = uploadedImage || accommodation.image;
 
   return (
-    <div className="min-h-screen flex flex-col bg-corsica-pearl">
+    <div className="min-h-screen flex flex-col bg-gray-50">
       <SchemaOrg type="accommodation" data={accommodation} />
       
       <Navbar />

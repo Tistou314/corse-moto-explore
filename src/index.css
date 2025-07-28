@@ -193,7 +193,7 @@
 /* Loading states */
 @layer utilities {
   .skeleton {
-    @apply animate-pulse bg-gradient-to-r from-corsica-pearl via-gray-300 to-corsica-pearl bg-[length:200%_100%];
+    @apply animate-pulse bg-gradient-to-r from-white via-gray-200 to-white bg-[length:200%_100%];
     animation: shimmer 1.5s infinite;
   }
 

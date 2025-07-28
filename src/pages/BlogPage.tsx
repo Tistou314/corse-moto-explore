@@ -17,7 +17,7 @@ const BlogPage = () => {
   const categories = Array.from(new Set(blogPosts.map(post => post.category))).sort();
 
   return (
-    <div className="min-h-screen flex flex-col bg-corsica-pearl">
+    <div className="min-h-screen flex flex-col bg-gray-50">
       <SchemaOrg type="blog" />
       
       <Navbar />
