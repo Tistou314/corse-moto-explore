@@ -23,7 +23,7 @@ const GitesSection = ({ gites }: GitesSectionProps) => {
     <section 
       ref={ref}
       className={cn(
-        "py-16 bg-slate-50 transition-all duration-700 ease-in-out",
+        "py-16 bg-white transition-all duration-700 ease-in-out",
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       )}
     >
