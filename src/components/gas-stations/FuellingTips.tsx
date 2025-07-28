@@ -6,11 +6,11 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 const FuellingTips = () => {
   return (
     <div className="mb-6 space-y-6">
-      <Alert className="bg-amber-50 border-amber-200">
-        <AlertTitle className="text-amber-800 text-lg font-medium">
+      <Alert className="bg-corsica-azure/10 border-corsica-azure/20">
+        <AlertTitle className="text-corsica-azure text-lg font-medium">
           Stations stratégiques à connaître
         </AlertTitle>
-        <AlertDescription className="text-amber-700">
+        <AlertDescription className="text-corsica-azure">
           Certaines stations sont essentielles lors de votre road trip à moto en Corse, 
           car elles sont situées dans des zones où les alternatives sont rares. 
           Elles sont identifiées par un badge spécial dans notre liste.

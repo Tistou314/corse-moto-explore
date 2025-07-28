@@ -34,7 +34,7 @@ const ItineraryTable = () => {
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
                     ${itinerary.difficulty === 'facile' ? 'bg-green-100 text-green-800' : 
-                      itinerary.difficulty === 'moyen' ? 'bg-yellow-100 text-yellow-800' : 
+                      itinerary.difficulty === 'moyen' ? 'bg-corsica-coral/10 text-corsica-coral' : 
                       'bg-red-100 text-red-800'}`}>
                     {itinerary.difficulty.charAt(0).toUpperCase() + itinerary.difficulty.slice(1)}
                   </span>

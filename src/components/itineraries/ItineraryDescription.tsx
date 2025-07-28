@@ -129,20 +129,20 @@ const ItineraryDescription = ({ itinerary }: ItineraryDescriptionProps) => {
           )}
           
           {itinerary.tips && itinerary.tips.length > 0 && (
-            <div className="bg-amber-50 rounded-lg p-8 border border-amber-200">
+            <div className="bg-corsica-azure/10 rounded-lg p-8 border border-corsica-azure/20">
               <div className="flex items-center mb-6 space-x-4">
-                <div className="bg-amber-500 rounded-full p-3">
+                <div className="bg-corsica-azure rounded-full p-3">
                   <AlertTriangle className="w-5 h-5 text-white" />
                 </div>
-                <h4 className="font-bold text-xl text-amber-800">Conseils utiles</h4>
+                <h4 className="font-bold text-xl text-corsica-azure">Conseils utiles</h4>
               </div>
               <ul className="space-y-3 pl-2">
                 {itinerary.tips.map((tip, index) => (
                   <li 
                     key={index} 
-                    className="text-amber-700 leading-relaxed flex items-start group"
+                    className="text-corsica-azure leading-relaxed flex items-start group"
                   >
-                    <span className="mr-3 text-amber-500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                    <span className="mr-3 text-corsica-azure opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                     {tip}
                   </li>
                 ))}

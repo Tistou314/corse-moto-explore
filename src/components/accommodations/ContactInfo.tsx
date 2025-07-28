@@ -64,13 +64,13 @@ const ContactInfo = ({ accommodation }: ContactInfoProps) => {
           <div className="flex items-center gap-3">
             <GlobeIcon className="h-5 w-5 text-corsica-azure flex-shrink-0" />
             {!hasProtocol(accommodation.contact.website) && (
-              <AlertTriangleIcon className="h-4 w-4 text-amber-500 flex-shrink-0" />
+              <AlertTriangleIcon className="h-4 w-4 text-corsica-coral flex-shrink-0" />
             )}
             <a 
               href={formatWebsite(accommodation.contact.website)} 
               target="_blank" 
               rel="noopener noreferrer"
-              className={`hover:underline text-sm font-medium truncate ${!hasProtocol(accommodation.contact.website) ? 'text-amber-600' : 'text-corsica-azure'}`}
+              className={`hover:underline text-sm font-medium truncate ${!hasProtocol(accommodation.contact.website) ? 'text-corsica-coral' : 'text-corsica-azure'}`}
               title={!hasProtocol(accommodation.contact.website) ? "Cette URL n'a pas de protocole (http:// ou https://). Le navigateur ajoutera https:// automatiquement." : ""}
             >
               {getDisplayUrl(accommodation.contact.website)}

@@ -16,7 +16,7 @@ const RatingStars = ({ rating }: RatingStarsProps) => {
           key={i}
           className={`w-6 h-6 ${
             i < Math.floor(normalizedRating)
-              ? "text-yellow-500 fill-yellow-500"
+              ? "text-corsica-coral fill-corsica-coral"
               : "text-gray-300"
           }`}
         />

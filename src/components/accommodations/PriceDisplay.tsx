@@ -22,7 +22,7 @@ const PriceDisplay = ({ priceRange, rating }: PriceDisplayProps) => {
           <p className="text-sm text-muted-foreground">Note</p>
           <div className="flex items-center">
             <span className="text-lg font-bold text-corsica-emerald">{rating}</span>
-            <span className="text-yellow-400 ml-1">★</span>
+            <span className="text-corsica-coral ml-1">★</span>
           </div>
         </div>
       )}

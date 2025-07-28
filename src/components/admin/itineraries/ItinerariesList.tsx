@@ -62,7 +62,7 @@ const ItinerariesList = () => {
     if (difficulty.toLowerCase() === "facile") {
       return "border-green-500 text-green-600";
     } else if (difficulty.toLowerCase() === "moyen") {
-      return "border-yellow-500 text-yellow-600";
+      return "border-corsica-coral text-corsica-coral";
     } else {
       return "border-red-500 text-red-600";
     }

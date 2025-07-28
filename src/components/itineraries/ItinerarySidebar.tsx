@@ -32,7 +32,7 @@ const ItinerarySidebar = ({ itinerary, nearbyItineraries }: ItinerarySidebarProp
             <span className="text-muted-foreground">Difficulté</span>
             <span className={`font-medium
               ${itinerary.difficulty === 'facile' ? 'text-green-600' : 
-                itinerary.difficulty === 'moyen' ? 'text-yellow-600' : 
+                itinerary.difficulty === 'moyen' ? 'text-corsica-coral' : 
                 'text-red-600'}`}>
               {itinerary.difficulty.charAt(0).toUpperCase() + itinerary.difficulty.slice(1)}
             </span>
@@ -67,13 +67,13 @@ const ItinerarySidebar = ({ itinerary, nearbyItineraries }: ItinerarySidebarProp
       {itinerary.tips && itinerary.tips.length > 0 && (
         <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
           <h2 className="text-xl font-bold mb-4 flex items-center">
-            <AlertTriangle className="w-4 h-4 mr-2 text-amber-500" />
+            <AlertTriangle className="w-4 h-4 mr-2 text-corsica-azure" />
             Conseils motards
           </h2>
           <ul className="space-y-2 text-muted-foreground">
             {itinerary.tips.map((tip, index) => (
               <li key={index} className="flex items-start py-2 border-b last:border-0">
-                <span className="w-6 h-6 mr-2 flex-shrink-0 flex items-center justify-center bg-amber-100 text-amber-800 rounded-full">
+                <span className="w-6 h-6 mr-2 flex-shrink-0 flex items-center justify-center bg-corsica-azure/10 text-corsica-azure rounded-full">
                   {index + 1}
                 </span>
                 <span>{tip}</span>

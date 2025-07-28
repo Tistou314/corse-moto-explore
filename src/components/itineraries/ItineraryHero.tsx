@@ -55,7 +55,7 @@ const ItineraryHero = ({ itinerary }: ItineraryHeroProps) => {
             </span>
             <span className={`px-3 py-1 rounded-full text-sm font-medium
               ${itinerary.difficulty === 'facile' ? 'bg-green-500' : 
-                itinerary.difficulty === 'moyen' ? 'bg-yellow-500' : 
+                itinerary.difficulty === 'moyen' ? 'bg-corsica-coral' : 
                 'bg-red-500'}`}>
               {itinerary.difficulty.charAt(0).toUpperCase() + itinerary.difficulty.slice(1)}
             </span>
