@@ -16,7 +16,7 @@ const BlogSection = ({ posts }: BlogSectionProps) => {
   return (
     <section 
       ref={ref}
-      className="py-24 bg-gradient-to-br from-corsica-azure/5 via-corsica-pearl to-corsica-emerald/5 relative overflow-hidden"
+      className="py-24 bg-gradient-to-br from-corsica-azure/5 via-white to-corsica-emerald/5 relative overflow-hidden"
     >
       {/* Motifs décoratifs en arrière-plan */}
       <div className="absolute inset-0 opacity-5">
