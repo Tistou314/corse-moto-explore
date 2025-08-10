@@ -3,6 +3,7 @@ import React from 'react';
 import { Map, Compass, Shield, Heart, Camera, Navigation } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 import { cn } from '@/lib/utils';
+import { Link } from 'react-router-dom';
 
 const features = [
   {
@@ -124,12 +125,12 @@ const ModernFeaturesSection = () => {
         )} style={{ transitionDelay: '600ms' }}>
           <p className="text-gray-600 mb-6">Prêt à commencer votre aventure ?</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-corsica-azure hover:bg-corsica-azure600 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-medium hover:shadow-glow">
+            <Link to="/itineraires" className="bg-corsica-azure hover:bg-corsica-azure600 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-medium hover:shadow-glow">
               Découvrir les itinéraires
-            </button>
-            <button className="border-2 border-corsica-azure text-corsica-azure hover:bg-corsica-azure hover:text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300">
-              Télécharger le guide
-            </button>
+            </Link>
+            <Link to="/guide-pratique" className="border-2 border-corsica-azure text-corsica-azure hover:bg-corsica-azure hover:text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300">
+              Voir le guide pratique
+            </Link>
           </div>
         </div>
       </div>
