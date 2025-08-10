@@ -1,148 +1,164 @@
-
 import { Accommodation } from './types';
 
 export const newCampings: Accommodation[] = [
   {
-    id: "camping-loso",
-    name: "CAMPING L'OSO",
+    id: "camping-e-canicce",
+    name: "Camping E Canicce",
     type: "camping",
-    description: "Camping*** Relais Motards certifié à Porto-Vecchio. 92 emplacements sur 4 hectares arborés avec piscine et accès privilégié aux plages. Spécialement équipé pour l'accueil des motards. Situation exceptionnelle : 10 min du centre de Porto-Vecchio et 5 min des plages.",
-    location: "Porto-Vecchio",
+    description:
+      "Camping 3 étoiles dans la vallée de l’Asco. Particulièrement attentionné avec les motards: site sécurisé et motos abritées sous parking couvert pour protection soleil/vent.",
+    location: "Moltifao",
+    region: "corte",
+    image: "https://images.unsplash.com/photo-1504851149312-7a075b496cc7?auto=format&fit=crop&w=800&q=60",
+    priceRange: "18€ - 35€",
+    rating: 4.4,
+    amenities: ["Vallée de l’Asco", "Bar", "WiFi", "Laverie"],
+    bikerAmenities: ["Parking couvert motos", "Site sécurisé"],
+    contact: {
+      phone: "+33 4 95 35 16 75",
+      email: "ecanicce@gmail.com",
+      website: "https://campingecanicce.com"
+    },
+    address: "Route de l’Asco, 20218 Moltifao"
+  },
+  {
+    id: "camping-l-oso",
+    name: "Camping L’Oso",
+    type: "camping",
+    description:
+      "Relais Motards de 92 emplacements avec piscine et services. Parking privé/fermé, recharge électrique, lavage/séchage vêtements, outils, accueil groupes, roadbooks.",
+    location: "Porto‑Vecchio",
     region: "portovecchio",
     image: "https://images.unsplash.com/photo-1504851149312-7a075b496cc7?auto=format&fit=crop&w=800&q=60",
     priceRange: "26€ - 32€",
     rating: 4.4,
-    amenities: [
-      "92 emplacements (33 nus + 59 locations)",
-      "Hébergements climatisés",
-      "Piscine ouverte 8h-20h",
-      "Espace arboré 4 hectares",
-      "WiFi gratuit",
-      "Portail sécurisé",
-      "Sanitaires modernes",
-      "Laverie"
-    ],
+    amenities: ["92 emplacements", "Piscine", "WiFi", "Laverie"],
     bikerAmenities: [
-      "Relais Motards certifié",
-      "Emplacements 100m² ombragés",
-      "Accès sécurisé",
-      "Parking moto dédié",
-      "Sol stabilisé",
-      "Tarifs motards préférentiels"
+      "Parking privé et fermé",
+      "Borne de recharge",
+      "Lavage/séchage vêtements",
+      "Roadbooks"
     ],
     contact: {
       phone: "+33 (0)4 95 71 60 99",
       email: "camping.loso@gmail.com",
-      website: "www.campingloso.com"
+      website: "https://campingloso.com"
     },
-    address: "Route de Cala Rossa, 20137 Porto-Vecchio",
-    latitude: 41.5833,
-    longitude: 9.2833
+    address: "Route de Cala Rossa, 20137 Porto‑Vecchio"
   },
   {
     id: "camping-europa-beach",
-    name: "CAMPING EUROPA BEACH",
+    name: "Camping Europa Beach",
     type: "camping",
-    description: "Camping*** Relais Motards certifié à Querciolo/Folelli, 33 km au Sud de Bastia. 4 hectares semi-boisé en bord de mer avec plage de sable fin. Spécialement équipé pour l'accueil des motards avec tentes ou bungalows. Ouvert du 1er Mai au 10 Octobre.",
-    location: "Querciolo/Folelli",
+    description:
+      "Camping 4 ha en bord de mer (Sorbo Ocagnano/Querciolo). Accueil motards avec tentes ou bungalows, stationnement moto à côté, bar, petite épicerie, laverie, Wi‑Fi.",
+    location: "Sorbo Ocagnano / Querciolo",
     region: "bastia",
     image: "https://images.unsplash.com/photo-1508873696983-2dfd5898f08b?auto=format&fit=crop&w=800&q=60",
     priceRange: "24€ - 35€",
     rating: 4.2,
-    amenities: [
-      "4 hectares semi-boisé",
-      "Bord de mer, plage de sable fin",
-      "Bar avec terrasse",
-      "Market et pain frais",
-      "Petit-déjeuner servi",
-      "Billard, pétanque, ping-pong",
-      "Sanitaires chauffés",
-      "Laverie automatique"
-    ],
-    bikerAmenities: [
-      "Relais Motards certifié",
-      "Tentes ou bungalows motards",
-      "Stationnement moto à côté",
-      "Accès sécurisé",
-      "Sol stabilisé",
-      "Conseils routes touristiques"
-    ],
+    amenities: ["4 ha face à la mer", "Bar", "Épicerie", "Laverie"],
+    bikerAmenities: ["Stationnement moto à côté", "Accueil tentes/bungalows"],
     contact: {
-      phone: "04 95 38 53 47",
-      website: "www.camping-europa-beach.com"
+      phone: "07 88 10 77 25",
+      website: "https://www.camping-europa-beach.com"
     },
-    address: "Querciolo/Folelli, 33 km Sud de Bastia",
-    latitude: 42.2167,
-    longitude: 9.5167
+    address: "Route de Pinarello, 20213 Sorbo Ocagnano"
   },
   {
-    id: "camping-arutoli",
-    name: "CAMPING ARUTOLI",
+    id: "camping-u-stabiacciu",
+    name: "Camping Ü Stabiacciu",
     type: "camping",
-    description: "Camping*** à Porto-Vecchio recommandé par les motards. 150 emplacements avec restaurant, bar et piscine extérieure. Service congélation eau et glaces disponible. Situé à 30 min à pied de la citadelle et du port.",
-    location: "Porto-Vecchio",
-    region: "portovecchio",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=60",
-    priceRange: "22€ - 38€",
-    rating: 4.3,
-    amenities: [
-      "150 emplacements spacieux",
-      "Restaurant avec spécialités corses",
-      "Bar convivial",
-      "Piscine extérieure",
-      "Parking gratuit",
-      "Eau chaude gratuite",
-      "Épicerie de dépannage",
-      "Aire de jeux enfants"
-    ],
-    bikerAmenities: [
-      "Service congélation eau et glaces",
-      "Parking moto sécurisé",
-      "Sol dur et plat",
-      "30 min à pied citadelle/port",
-      "Conseils itinéraires locaux"
-    ],
-    contact: {
-      phone: "04 95 70 12 73",
-      website: "www.camping-arutoli.com"
-    },
-    address: "Route de l'Ospedale, Porto-Vecchio",
-    latitude: 41.5833,
-    longitude: 9.3167
-  },
-  {
-    id: "camping-kevano-plage",
-    name: "CAMPING KEVANO PLAGE",
-    type: "camping",
-    description: "Camping*** à Pianottoli-Caldarello près de Bonifacio. Accès privilégié à la plage et réserve naturelle. Situation exceptionnelle entre Lion de Roccapina (12 miles) et port de Bonifacio (13 miles). Hébergements variés : emplacements, mobil-homes, bungalows.",
-    location: "Pianottoli-Caldarello",
+    description:
+      "Camping proche du centre de Porto‑Vecchio. Propose régulièrement une « Motorbike special offer » avec réductions sur chambres et emplacements.",
+    location: "Porto‑Vecchio",
     region: "portovecchio",
     image: "https://images.unsplash.com/photo-1520637836862-4d197d17c13a?auto=format&fit=crop&w=800&q=60",
-    priceRange: "25€ - 40€",
-    rating: 4.5,
-    amenities: [
-      "Accès privilégié plage",
-      "Réserve naturelle adjacente",
-      "Emplacements, mobil-homes, bungalows",
-      "Restaurant gastronomique",
-      "Bar avec vue mer",
-      "Piscine avec pataugeoire",
-      "Épicerie",
-      "Animation en saison"
-    ],
-    bikerAmenities: [
-      "Parking moto sécurisé",
-      "Sol stabilisé",
-      "12 miles Lion de Roccapina",
-      "13 miles port Bonifacio",
-      "Accès routes panoramiques"
-    ],
+    priceRange: "20€ - 40€",
+    rating: 4.1,
+    amenities: ["Proche centre", "WiFi", "Bar"],
+    bikerAmenities: ["Offres spéciales motards", "Parking", "Séchage/Lavage vêtements"],
     contact: {
-      phone: "04 95 71 03 69",
-      website: "www.kevano-plage.com"
+      phone: "04 95 70 37 17",
+      email: "stabiacciu@wanadoo.fr",
+      website: "https://stabiacciu.com"
     },
-    address: "Pianottoli-Caldarello",
-    latitude: 41.3833,
-    longitude: 8.9667
+    address: "Route de Palombaggia, 20137 Porto‑Vecchio"
+  },
+  {
+    id: "camping-casa-di-luna",
+    name: "Camping Casa Di Luna",
+    type: "camping",
+    description:
+      "Camping à Galéria avec 122 emplacements ombragés et modernes. Accueil randonneurs, cyclistes, motards; emplacements dédiés; bar, laverie, frigo/congélateur à la réception.",
+    location: "Galéria",
+    region: "calvi",
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=60",
+    priceRange: "18€ - 35€",
+    rating: 4.3,
+    amenities: ["122 emplacements", "Bar", "Laverie", "Services pratiques"],
+    bikerAmenities: ["Accueil motards", "Stationnement facile"],
+    contact: {
+      phone: "06 74 67 73 01",
+      website: "https://casadiluna.net"
+    },
+    address: "La Vaitela, 20245 Galéria"
+  },
+  {
+    id: "camping-u-casone",
+    name: "Camping U Casone",
+    type: "camping",
+    description:
+      "Camping à Ghisonaccia dans un parc arboré avec piscines et accès direct à la plage. Accueil adapté aux motards.",
+    location: "Ghisonaccia",
+    region: "ghisonaccia",
+    image: "https://images.unsplash.com/photo-1520637836862-4d197d17c13a?auto=format&fit=crop&w=800&q=60",
+    priceRange: "20€ - 40€",
+    rating: 4.1,
+    amenities: ["Piscines", "Accès plage", "Parc arboré"],
+    bikerAmenities: ["Accueil motards", "Grandes parcelles ombragées"],
+    contact: {
+      phone: "04 95 56 20 71 / 06 84 50 11 68",
+      website: "https://ucasone.net"
+    },
+    address: "Chemin de Caprone, 20240 Ghisonaccia"
+  },
+  {
+    id: "camping-l-araguina",
+    name: "Camping L’Araguina",
+    type: "camping",
+    description:
+      "Camping urbain à 200 m du port de Bonifacio. 50 emplacements ombragés et 8 chalets, bar, Wi‑Fi, location d’avril à octobre; fréquenté par des groupes de motards (réserver à l’avance).",
+    location: "Bonifacio",
+    region: "portovecchio",
+    image: "https://images.unsplash.com/photo-1520637836862-4d197d17c13a?auto=format&fit=crop&w=800&q=60",
+    priceRange: "22€ - 38€",
+    rating: 4.0,
+    amenities: ["Proche port", "Bar", "Wi‑Fi", "Chalets"],
+    bikerAmenities: ["Accueil groupes motards", "Conseil réservation"],
+    contact: {
+      phone: "04 95 73 02 96",
+      website: "https://campingaraguina.com"
+    },
+    address: "Avenue Sylvère Bohn, 20169 Bonifacio"
+  },
+  {
+    id: "hotel-camping-acquaviva",
+    name: "Hôtel – Camping Acquaviva",
+    type: "camping",
+    description:
+      "Hôtel*** et camping au cœur du Niolu (Calacuccia) pensé pour les bikers: garage fermé gratuit pour motos, parking gratuit, itinéraires et balades moto, bar, jardin, Wi‑Fi.",
+    location: "Calacuccia (Niolu)",
+    region: "corte",
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=60",
+    priceRange: "20€ - 45€",
+    rating: 4.3,
+    amenities: ["Bar", "Jardin", "Wi‑Fi"],
+    bikerAmenities: ["Garage fermé gratuit", "Parking gratuit", "Itinéraires moto"],
+    contact: {
+      phone: "+33 4 95 48 06 90 / +33 6 27 80 36 86",
+      website: "https://acquaviva-corse.fr"
+    },
+    address: "Lieu‑Dit Scadarcciole, 20224 Calacuccia"
   }
 ];
