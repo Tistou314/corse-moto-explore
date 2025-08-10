@@ -48,9 +48,9 @@ const ItinerarySidebar = ({ itinerary, nearbyItineraries }: ItinerarySidebarProp
             </li>
           )}
           {itinerary.roadCondition && (
-            <li className="flex justify-between py-2">
-              <span className="text-muted-foreground">État des routes</span>
-              <span className="font-medium">{itinerary.roadCondition}</span>
+            <li className="flex items-start gap-3 py-2 min-w-0">
+              <span className="text-muted-foreground shrink-0 whitespace-nowrap">État des routes</span>
+              <span className="font-medium leading-snug flex-1">{itinerary.roadCondition}</span>
             </li>
           )}
         </ul>
