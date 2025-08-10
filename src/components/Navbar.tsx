@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Bike, Fuel, Settings } from 'lucide-react';
+import { Menu, X, Bike, Fuel } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Navbar = () => {
@@ -31,8 +31,7 @@ const Navbar = () => {
     { path: '/hebergements', label: 'Hébergements' },
     { path: '/blog', label: 'Blog' },
     { path: '/gas-stations', label: 'Stations', icon: Fuel },
-    { path: '/contact', label: 'Contact' },
-    { path: '/admin', label: 'Admin', icon: Settings }
+    { path: '/contact', label: 'Contact' }
   ];
 
   return (

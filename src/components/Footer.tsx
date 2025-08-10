@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Twitter, Mail, MapPin, Bike, Settings } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Mail, MapPin, Bike } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -83,12 +83,6 @@ const Footer = () => {
                 <Link to="/contact" className="text-white/80 hover:text-white transition-colors flex items-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-corsica-coral mr-2 opacity-75"></span>
                   Contact
-                </Link>
-              </li>
-              <li>
-                <Link to="/admin" className="text-white/80 hover:text-white transition-colors flex items-center">
-                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-coral mr-2 opacity-75"></span>
-                  Administration
                 </Link>
               </li>
             </ul>

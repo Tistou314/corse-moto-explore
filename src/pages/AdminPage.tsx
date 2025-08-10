@@ -44,6 +44,7 @@ const AdminPage = () => {
       <>
         <Helmet>
           <title>Connexion Admin | Moto en Corse</title>
+          <meta name="robots" content="noindex, nofollow" />
         </Helmet>
         <AdminLogin />
       </>
@@ -52,9 +53,10 @@ const AdminPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Administration | Moto en Corse</title>
-      </Helmet>
+        <Helmet>
+          <title>Administration | Moto en Corse</title>
+          <meta name="robots" content="noindex, nofollow" />
+        </Helmet>
       <AdminLayout>
         <Routes>
           <Route index element={<AdminDashboard />} />

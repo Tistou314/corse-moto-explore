@@ -1,0 +1,31 @@
+# Vite/React SPA routing on Apache (O2Switch)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Serve existing files/directories
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Fallback to index.html for SPA routes
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Optional security headers (adjust as needed)
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "no-referrer-when-downgrade"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set Permissions-Policy "geolocation=(), microphone=()"
+</IfModule>
+
+# Basic Auth for /admin (server-side protection)
+# To enable, replace AuthUserFile with your absolute path and uncomment the block
+# You can generate .htpasswd in cPanel (O2Switch) or with `htpasswd`
+#
+# <If "req('REQUEST_URI') =~ m#^/admin#">
+#   AuthType Basic
+#   AuthName "Accès restreint"
+#   AuthUserFile /home/CHANGE_ME/.htpasswd
+#   Require valid-user
+# </If>
