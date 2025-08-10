@@ -13,3 +13,6 @@ Allow: /
 User-agent: *
 Disallow: /admin
 Allow: /
+
+Sitemap: https://lacorseamoto.fr/sitemap.xml
+Sitemap: /sitemap.xml
