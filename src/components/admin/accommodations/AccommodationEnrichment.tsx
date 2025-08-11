@@ -12,7 +12,7 @@ import { toast } from "sonner";
 import type { Accommodation } from "@/data/accommodations/types";
 
 const AccommodationEnrichment = () => {
-  const [apiKey, setApiKey] = useState('842b3858bf9273f13432a352d7acbfbe58d09888c9f3593ee7025a349f27ab04');
+  const [apiKey, setApiKey] = useState<string>(() => localStorage.getItem('SERP_API_KEY') || '');
   const [isEnriching, setIsEnriching] = useState(false);
   const [autoStarted, setAutoStarted] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -202,7 +202,7 @@ const AccommodationEnrichment = () => {
             <Input
               type="password"
               value={apiKey}
-              onChange={(e) => setApiKey(e.target.value)}
+              onChange={(e) => { const v = e.target.value; setApiKey(v); localStorage.setItem('SERP_API_KEY', v); } }}}
               placeholder="Votre clé API SerpAPI"
               disabled={isEnriching}
             />
