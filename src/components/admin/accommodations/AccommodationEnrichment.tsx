@@ -202,7 +202,7 @@ const AccommodationEnrichment = () => {
             <Input
               type="password"
               value={apiKey}
-              onChange={(e) => { const v = e.target.value; setApiKey(v); localStorage.setItem('SERP_API_KEY', v); } }}}
+              onChange={(e) => { const v = e.target.value; setApiKey(v); localStorage.setItem('SERP_API_KEY', v); }}
               placeholder="Votre clé API SerpAPI"
               disabled={isEnriching}
             />
