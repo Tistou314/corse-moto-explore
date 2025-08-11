@@ -18,6 +18,7 @@ import BlogPostDetailPage from "@/pages/BlogPostDetailPage";
 import AdminPage from "@/pages/AdminPage";
 import GasStationsPage from "@/pages/GasStationsPage";
 import NotFound from "@/pages/NotFound";
+import SerpApiSettingsPage from "@/pages/SerpApiSettingsPage";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
             <Route path="/blog/:slug" element={<BlogPostDetailPage />} />
             <Route path="/admin/*" element={<AdminPage />} />
             <Route path="/gas-stations" element={<GasStationsPage />} />
+            <Route path="/serp-key" element={<SerpApiSettingsPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <ScrollToTopButton />
