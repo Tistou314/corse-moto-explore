@@ -31,6 +31,7 @@ const Navbar = () => {
     { path: '/hebergements', label: 'Hébergements' },
     { path: '/blog', label: 'Blog' },
     { path: '/gas-stations', label: 'Stations', icon: Fuel },
+    { path: '/serp-key', label: 'Photos réelles' },
     { path: '/contact', label: 'Contact' }
   ];
 

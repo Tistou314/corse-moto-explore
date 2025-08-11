@@ -1,4 +1,5 @@
 
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Toaster } from "@/components/ui/sonner";
 import { MapProvider } from "@/contexts/MapContext";
@@ -21,6 +22,13 @@ import NotFound from "@/pages/NotFound";
 import SerpApiSettingsPage from "@/pages/SerpApiSettingsPage";
 
 function App() {
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const key = params.get('apiKey');
+    if (key) {
+      localStorage.setItem('SERP_API_KEY', key);
+    }
+  }, []);
   return (
     <AuthProvider>
       <MapProvider>
