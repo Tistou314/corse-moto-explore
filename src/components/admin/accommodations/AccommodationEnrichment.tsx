@@ -81,6 +81,10 @@ const AccommodationEnrichment = () => {
           const updatedAccommodation: Accommodation = { ...accommodation };
           
           if (enrichedData) {
+            // Cache Serp image for immediate use by UI
+            if (enrichedData.image) {
+              localStorage.setItem(`accommodation_${accommodation.id}_serp_image`, enrichedData.image);
+            }
             // Mise à jour de l'image si trouvée et différente
             if (enrichedData.image && enrichedData.image !== accommodation.image) {
               updatedAccommodation.image = enrichedData.image;
