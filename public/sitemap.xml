@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
-    <loc>https://lacorseamoto.fr/sitemaps/static.xml</loc>
+    <loc>https://corseamoto.com/sitemaps/static.xml</loc>
     <lastmod>2025-01-15</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://lacorseamoto.fr/sitemaps/itineraries.xml</loc>
+    <loc>https://corseamoto.com/sitemaps/itineraries.xml</loc>
     <lastmod>2025-01-15</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://lacorseamoto.fr/sitemaps/accommodations.xml</loc>
+    <loc>https://corseamoto.com/sitemaps/accommodations.xml</loc>
     <lastmod>2025-01-15</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://lacorseamoto.fr/sitemaps/blog.xml</loc>
+    <loc>https://corseamoto.com/sitemaps/blog.xml</loc>
     <lastmod>2025-01-15</lastmod>
   </sitemap>
 </sitemapindex>

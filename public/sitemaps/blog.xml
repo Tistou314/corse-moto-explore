@@ -2,21 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Articles Itinéraires -->
   <url>
-    <loc>https://lacorseamoto.fr/blog/tour-cap-corse-moto</loc>
+    <loc>https://corseamoto.com/blog/tour-cap-corse-moto</loc>
     <lastmod>2024-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://lacorseamoto.fr/blog/route-des-vins-corses</loc>
+    <loc>https://corseamoto.com/blog/route-des-vins-corses</loc>
     <lastmod>2024-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://lacorseamoto.fr/blog/route-grand-sud-2024</loc>
+    <loc>https://corseamoto.com/blog/route-grand-sud-2024</loc>
     <lastmod>2024-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -24,7 +24,7 @@
   
   <!-- Articles Aspects Pratiques -->
   <url>
-    <loc>https://lacorseamoto.fr/blog/budget-voyage-moto-corse</loc>
+    <loc>https://corseamoto.com/blog/budget-voyage-moto-corse</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -32,14 +32,14 @@
   
   <!-- Articles Équipement -->
   <url>
-    <loc>https://lacorseamoto.fr/blog/equipement-essentiel-moto-corse</loc>
+    <loc>https://corseamoto.com/blog/equipement-essentiel-moto-corse</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://lacorseamoto.fr/blog/preparation-moto-voyage-corse</loc>
+    <loc>https://corseamoto.com/blog/preparation-moto-voyage-corse</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -47,14 +47,14 @@
   
   <!-- Articles Expériences -->
   <url>
-    <loc>https://lacorseamoto.fr/blog/premiere-fois-moto-corse</loc>
+    <loc>https://corseamoto.com/blog/premiere-fois-moto-corse</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://lacorseamoto.fr/blog/roadtrip-amis-corse-moto</loc>
+    <loc>https://corseamoto.com/blog/roadtrip-amis-corse-moto</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -62,14 +62,14 @@
   
   <!-- Articles Culture -->
   <url>
-    <loc>https://lacorseamoto.fr/blog/decouvrir-traditions-corses-moto</loc>
+    <loc>https://corseamoto.com/blog/decouvrir-traditions-corses-moto</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://lacorseamoto.fr/blog/musiques-corses-playlist-motard</loc>
+    <loc>https://corseamoto.com/blog/musiques-corses-playlist-motard</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -77,7 +77,7 @@
   
   <!-- Articles Ressources Locales -->
   <url>
-    <loc>https://lacorseamoto.fr/blog/communautes-motards-corses</loc>
+    <loc>https://corseamoto.com/blog/communautes-motards-corses</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

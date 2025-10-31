@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Itinéraires du Nord -->
   <url>
-    <loc>https://lacorseamoto.fr/itineraires/cap-corse</loc>
+    <loc>https://corseamoto.com/itineraires/cap-corse</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -10,7 +10,7 @@
   
   <!-- Itinéraires du Nord-Est -->
   <url>
-    <loc>https://lacorseamoto.fr/itineraires/castagniccia</loc>
+    <loc>https://corseamoto.com/itineraires/castagniccia</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -18,14 +18,14 @@
   
   <!-- Itinéraires du Nord-Ouest -->
   <url>
-    <loc>https://lacorseamoto.fr/itineraires/route-cretes</loc>
+    <loc>https://corseamoto.com/itineraires/route-cretes</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://lacorseamoto.fr/itineraires/tour-balagne</loc>
+    <loc>https://corseamoto.com/itineraires/tour-balagne</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -33,7 +33,7 @@
   
   <!-- Itinéraires de l'Ouest -->
   <url>
-    <loc>https://lacorseamoto.fr/itineraires/calanques-piana</loc>
+    <loc>https://corseamoto.com/itineraires/calanques-piana</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -41,14 +41,14 @@
   
   <!-- Itinéraires du Centre -->
   <url>
-    <loc>https://lacorseamoto.fr/itineraires/traversee-centre</loc>
+    <loc>https://corseamoto.com/itineraires/traversee-centre</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://lacorseamoto.fr/itineraires/route-niolu</loc>
+    <loc>https://corseamoto.com/itineraires/route-niolu</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -56,7 +56,7 @@
   
   <!-- Itinéraires du Sud-Est -->
   <url>
-    <loc>https://lacorseamoto.fr/itineraires/route-cols</loc>
+    <loc>https://corseamoto.com/itineraires/route-cols</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -64,14 +64,14 @@
   
   <!-- Itinéraires du Sud -->
   <url>
-    <loc>https://lacorseamoto.fr/itineraires/corniche-sud</loc>
+    <loc>https://corseamoto.com/itineraires/corniche-sud</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://lacorseamoto.fr/itineraires/boucle-grand-sud</loc>
+    <loc>https://corseamoto.com/itineraires/boucle-grand-sud</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
