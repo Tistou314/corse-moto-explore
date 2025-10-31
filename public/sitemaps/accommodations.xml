@@ -1,29 +1,187 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://lacorseamoto.fr/hebergements/best-western-plus-ajaccio-amiraute</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/best-western-montecristo-bastia</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/hotel-corsica-spa-serena</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/best-western-premier-dolce-vita</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/best-western-premier-santa-maria</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/best-western-hotel-alcyon</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/hotel-u-ricordu</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/hotel-capo-d-orto</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/hotel-prea-gianca</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/hotel-kalliste-ajaccio</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/hotel-maria-stella</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/hotel-punta-e-mare</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/hotel-le-filosorma</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/hotel-le-grillon</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/hotel-residence-olmuccio</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/maison-de-la-vigne</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/gites-o-fil-de-leau-francardo</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/couvent-saint-hyacinthe</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/camping-e-canicce</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/camping-l-oso</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/camping-europa-beach</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/camping-u-stabiacciu</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/camping-casa-di-luna</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/camping-u-casone</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/camping-l-araguina</loc></url>
-  <url><loc>https://lacorseamoto.fr/hebergements/hotel-camping-acquaviva</loc></url>
+  <!-- Hôtels -->
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/best-western-plus-ajaccio-amiraute</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/best-western-montecristo-bastia</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/hotel-corsica-spa-serena</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/best-western-premier-dolce-vita</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/best-western-premier-santa-maria</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/best-western-hotel-alcyon</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/hotel-u-ricordu</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/hotel-capo-d-orto</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/hotel-prea-gianca</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/hotel-kalliste-ajaccio</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/hotel-maria-stella</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/hotel-punta-e-mare</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/hotel-le-filosorma</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/hotel-le-grillon</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/hotel-residence-olmuccio</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Gîtes -->
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/maison-de-la-vigne</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/gites-o-fil-de-leau-francardo</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/couvent-saint-hyacinthe</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Campings -->
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/camping-e-canicce</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/camping-l-oso</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/camping-europa-beach</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/camping-u-stabiacciu</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/camping-casa-di-luna</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/camping-u-casone</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/camping-l-araguina</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements/hotel-camping-acquaviva</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

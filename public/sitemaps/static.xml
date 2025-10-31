@@ -1,11 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://lacorseamoto.fr/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://lacorseamoto.fr/itineraires</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://lacorseamoto.fr/hebergements</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://lacorseamoto.fr/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://lacorseamoto.fr/gas-stations</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://lacorseamoto.fr/guide-pratique</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://lacorseamoto.fr/contact</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://lacorseamoto.fr/faq</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <!-- Page d'accueil -->
+  <url>
+    <loc>https://lacorseamoto.fr/</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Pages principales -->
+  <url>
+    <loc>https://lacorseamoto.fr/itineraires</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/hebergements</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/blog</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/carte</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/gas-stations</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/guide-pratique</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Pages secondaires -->
+  <url>
+    <loc>https://lacorseamoto.fr/contact</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/faq</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
 </urlset>

@@ -1,13 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://lacorseamoto.fr/itineraires/cap-corse</loc></url>
-  <url><loc>https://lacorseamoto.fr/itineraires/route-cretes</loc></url>
-  <url><loc>https://lacorseamoto.fr/itineraires/tour-balagne</loc></url>
-  <url><loc>https://lacorseamoto.fr/itineraires/calanques-piana</loc></url>
-  <url><loc>https://lacorseamoto.fr/itineraires/traversee-centre</loc></url>
-  <url><loc>https://lacorseamoto.fr/itineraires/route-niolu</loc></url>
-  <url><loc>https://lacorseamoto.fr/itineraires/castagniccia</loc></url>
-  <url><loc>https://lacorseamoto.fr/itineraires/route-cols</loc></url>
-  <url><loc>https://lacorseamoto.fr/itineraires/corniche-sud</loc></url>
-  <url><loc>https://lacorseamoto.fr/itineraires/boucle-grand-sud</loc></url>
+  <!-- Itinéraires du Nord -->
+  <url>
+    <loc>https://lacorseamoto.fr/itineraires/cap-corse</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Itinéraires du Nord-Est -->
+  <url>
+    <loc>https://lacorseamoto.fr/itineraires/castagniccia</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Itinéraires du Nord-Ouest -->
+  <url>
+    <loc>https://lacorseamoto.fr/itineraires/route-cretes</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/itineraires/tour-balagne</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Itinéraires de l'Ouest -->
+  <url>
+    <loc>https://lacorseamoto.fr/itineraires/calanques-piana</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Itinéraires du Centre -->
+  <url>
+    <loc>https://lacorseamoto.fr/itineraires/traversee-centre</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/itineraires/route-niolu</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Itinéraires du Sud-Est -->
+  <url>
+    <loc>https://lacorseamoto.fr/itineraires/route-cols</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Itinéraires du Sud -->
+  <url>
+    <loc>https://lacorseamoto.fr/itineraires/corniche-sud</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://lacorseamoto.fr/itineraires/boucle-grand-sud</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
