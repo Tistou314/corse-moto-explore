@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
@@ -78,6 +79,11 @@ const HebergementPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
+      <Helmet>
+        <title>Hébergements Moto en Corse - Hôtels, Gîtes & Campings pour Motards</title>
+        <meta name="description" content="Trouvez le logement parfait pour votre voyage moto en Corse : hôtels, gîtes et campings adaptés aux motards avec parking sécurisé et services dédiés." />
+      </Helmet>
+      
       <SchemaOrg type="website" url={window.location.href} />
       
       <Navbar />

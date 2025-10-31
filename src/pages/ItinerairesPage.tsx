@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
@@ -37,6 +38,11 @@ const ItinerairesPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <Helmet>
+        <title>Itinéraires Moto en Corse - Les Plus Belles Routes de l'Île de Beauté</title>
+        <meta name="description" content="Découvrez les plus beaux itinéraires moto de Corse : routes panoramiques, cols mythiques et parcours adaptés à tous les niveaux. Traces GPS incluses." />
+      </Helmet>
+      
       <SchemaOrg type="website" url={window.location.href} />
       
       <Navbar />

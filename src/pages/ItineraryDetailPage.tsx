@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
@@ -51,8 +52,17 @@ const ItineraryDetailPage = () => {
   const nearbyItineraries = itineraries
     .filter(item => item.id !== itinerary.id && item.region === itinerary.region);
 
+  // Prepare meta tags
+  const pageTitle = `${itinerary.title} - Itinéraire Moto ${itinerary.region} | ${itinerary.distance}km`;
+  const pageDescription = `${itinerary.description.substring(0, 150)}... Difficulté: ${itinerary.difficulty}. Durée: ${itinerary.duration}. Trace GPS disponible.`;
+
   return (
     <div className="min-h-screen flex flex-col">
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+      </Helmet>
+      
       <SchemaOrg type="itinerary" data={itinerary} />
       
       <Navbar />

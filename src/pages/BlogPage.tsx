@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { blogPosts } from '@/data/blogPosts';
@@ -18,6 +19,11 @@ const BlogPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
+      <Helmet>
+        <title>Blog Moto Corse - Conseils, Récits & Expériences de Voyages</title>
+        <meta name="description" content="Conseils pratiques, récits d'expériences et astuces pour enrichir votre aventure moto en Corse. Découvrez les témoignages de passionnés." />
+      </Helmet>
+      
       <SchemaOrg type="blog" />
       
       <Navbar />

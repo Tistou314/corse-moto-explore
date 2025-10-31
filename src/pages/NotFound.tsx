@@ -2,6 +2,7 @@
 import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
+import { Helmet } from 'react-helmet';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { ArrowLeft } from "lucide-react";
@@ -18,6 +19,12 @@ const NotFound = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Page Non Trouvée - 404 | La Corse à Moto</title>
+        <meta name="description" content="La page que vous recherchez n'existe pas. Retournez à l'accueil pour découvrir nos itinéraires moto en Corse." />
+        <meta name="robots" content="noindex, follow" />
+      </Helmet>
+      
       <Navbar />
       <motion.div 
         initial={{ opacity: 0 }}

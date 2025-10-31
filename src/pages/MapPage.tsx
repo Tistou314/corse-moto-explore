@@ -10,16 +10,8 @@ import MapContainer from '@/components/map/MapContainer';
 import ItineraryTable from '@/components/map/ItineraryTable';
 import { useMapLocations } from '@/hooks/useMapLocations';
 
-const getPageMetadata = () => {
-  return {
-    title: "Carte Interactive | Moto en Corse",
-    description: "Explorez les itinéraires et points d'intérêt pour votre aventure moto en Corse."
-  };
-};
-
 const MapPage = () => {
   const { isMapConfigured } = useMap();
-  const metadata = getPageMetadata();
   const {
     filteredLocations,
     locationStats,
@@ -34,8 +26,8 @@ const MapPage = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Helmet>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
+        <title>Carte Interactive Moto Corse - Itinéraires & Points d'Intérêt</title>
+        <meta name="description" content="Explorez les itinéraires moto, hébergements et points d'intérêt de Corse sur une carte interactive. Planifiez votre road trip facilement." />
       </Helmet>
       
       <Navbar />

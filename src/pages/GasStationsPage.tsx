@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -36,6 +37,11 @@ const GasStationsPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
+      <Helmet>
+        <title>Stations-Service en Corse - Guide Complet pour Motards</title>
+        <meta name="description" content="Carte interactive des stations-service en Corse avec conseils de ravitaillement pour motards. Planifiez vos étapes essence sur les routes corses." />
+      </Helmet>
+      
       <Navbar />
       
       <main className="flex-grow container mx-auto px-4 py-8">

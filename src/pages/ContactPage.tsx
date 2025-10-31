@@ -1,4 +1,5 @@
 
+import { Helmet } from 'react-helmet';
 import { Mail, MapPin, Clock } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -7,6 +8,11 @@ import ContactForm from '@/components/ContactForm';
 const ContactPage = () => {
   return (
     <div className="min-h-screen flex flex-col bg-white">
+      <Helmet>
+        <title>Contact - La Corse à Moto | Questions & Conseils</title>
+        <meta name="description" content="Contactez-nous pour toute question sur vos itinéraires moto en Corse, hébergements ou conseils de voyage. Réponse rapide et personnalisée." />
+      </Helmet>
+      
       <Navbar />
       
       {/* Main Content */}

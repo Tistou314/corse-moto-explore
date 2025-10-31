@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
@@ -68,6 +69,11 @@ const StationServicePage = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
+      <Helmet>
+        <title>Stations-Service Corse - Guide des Points de Ravitaillement Moto</title>
+        <meta name="description" content="Guide complet des stations-service en Corse par région. Conseils de ravitaillement, stations stratégiques et planification d'étapes pour votre road trip moto." />
+      </Helmet>
+      
       <Navbar />
       
       <Hero 

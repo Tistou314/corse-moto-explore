@@ -1,5 +1,6 @@
 
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ModernHero from '@/components/modern/ModernHero';
@@ -38,6 +39,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <Helmet>
+        <title>La Corse à Moto - Itinéraires, Hébergements & Guide Complet</title>
+        <meta name="description" content="Découvrez les meilleurs itinéraires moto en Corse, des hébergements adaptés aux motards et un guide pratique complet pour explorer l'Île de Beauté en deux-roues." />
+      </Helmet>
+      
       <SchemaOrg type="website" />
       <SchemaOrg type="organization" />
       

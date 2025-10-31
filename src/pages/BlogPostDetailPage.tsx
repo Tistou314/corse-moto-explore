@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useParams, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { blogPosts } from '@/data/blogPosts';
@@ -66,12 +67,22 @@ const BlogPostDetailPage = () => {
   if (!post) {
     return (
       <div className="min-h-screen flex flex-col">
+        <Helmet>
+          <title>Article Non Trouvé - Blog Moto Corse</title>
+          <meta name="description" content="Cet article de blog n'existe pas ou a été supprimé." />
+          <meta name="robots" content="noindex, follow" />
+        </Helmet>
+        
         <Navbar />
         <BlogPostNotFound />
         <Footer />
       </div>
     );
   }
+
+  // Prepare meta tags for article
+  const pageTitle = `${post.title} | Blog Moto Corse`;
+  const pageDescription = post.excerpt || post.content.substring(0, 155).replace(/<[^>]*>/g, '');
 
   return (
     <motion.div 
@@ -80,6 +91,14 @@ const BlogPostDetailPage = () => {
       transition={{ duration: 0.5 }}
       className="min-h-screen flex flex-col bg-gray-50"
     >
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="author" content={post.author.name} />
+        <meta property="article:published_time" content={post.date} />
+        <meta property="article:author" content={post.author.name} />
+      </Helmet>
+      
       <SchemaOrg type="article" data={post} />
       
       <Navbar />

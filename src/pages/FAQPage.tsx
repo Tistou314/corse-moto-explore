@@ -419,8 +419,8 @@ const FAQPage = () => {
   return (
     <>
       <Helmet>
-        <title>FAQ - Découvrir la Corse à Moto</title>
-        <meta name="description" content="Réponses aux questions fréquentes sur la découverte de la Corse à moto." />
+        <title>FAQ - Questions Fréquentes Moto Corse | Conseils & Réponses</title>
+        <meta name="description" content="Toutes les réponses aux questions fréquentes sur les voyages moto en Corse : meilleure période, ferry, équipement, itinéraires et conseils pratiques." />
       </Helmet>
 
       <Navbar />

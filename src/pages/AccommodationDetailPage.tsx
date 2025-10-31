@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import { accommodations } from '@/data/accommodations';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -58,8 +59,17 @@ const AccommodationDetailPage = () => {
   // Utiliser l'image uploadée si disponible, sinon l'image par défaut
   const imageToUse = uploadedImage || accommodation.image;
 
+  // Prepare meta tags
+  const pageTitle = `${accommodation.name} - ${accommodation.type === 'hotel' ? 'Hôtel' : accommodation.type === 'gite' ? 'Gîte' : 'Camping'} Moto ${accommodation.region}`;
+  const pageDescription = `${accommodation.description.substring(0, 150)}... Hébergement motard en Corse avec ${accommodation.bikerAmenities.join(', ')}. Prix: ${accommodation.priceRange}.`;
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+      </Helmet>
+      
       <SchemaOrg type="accommodation" data={accommodation} />
       
       <Navbar />
