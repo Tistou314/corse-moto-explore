@@ -57,7 +57,7 @@ create index if not exists itineraries_region_idx on public.itineraries(region);
 -- points_of_interest
 create table if not exists public.points_of_interest (
   id uuid primary key default uuid_generate_v4(),
-  legacy_id text,
+  legacy_id text unique,
   itinerary_id uuid references public.itineraries(id) on delete cascade,
   name text not null,
   description text,

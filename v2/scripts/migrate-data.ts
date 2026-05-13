@@ -83,9 +83,12 @@ async function downloadAndUpload(
 ): Promise<string | null> {
   if (!url) return null;
   if (SKIP_IMAGES || DRY_RUN) return url;
+  // Relative paths point at static assets already copied into v2/public/.
+  // Vercel will serve them under the same path, so keep the URL as-is and
+  // don't try to re-host them in Supabase Storage.
+  if (url.startsWith('/')) return url;
   try {
-    const isLocal = url.startsWith('/');
-    const fetchUrl = isLocal ? new URL(url, 'https://corse-moto-explore.lovable.dev').toString() : url;
+    const fetchUrl = url;
     const resp = await fetch(fetchUrl);
     if (!resp.ok) {
       console.warn(`  · image fetch failed (${resp.status}) ${url}`);
@@ -238,7 +241,12 @@ async function migrateItineraries() {
         order_idx: p.order_idx,
       }))
       .filter((p) => p.itinerary_id);
-    await upsert('points_of_interest', linked);
+    // POIs use legacy_id as the conflict key (unique constraint added in
+    // the patch SQL). Wipe-and-insert is safer than upsert here because
+    // POIs can be reordered freely on the legacy side.
+    const itineraryIds = [...new Set(linked.map((p) => p.itinerary_id))];
+    await supabase!.from('points_of_interest').delete().in('itinerary_id', itineraryIds);
+    await upsert('points_of_interest', linked, 'legacy_id');
   }
   console.log(`  · ${rows.length} itineraries, ${poiRows.length} POIs`);
   return { count: rows.length, pois: poiRows.length };
