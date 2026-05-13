@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "npm run build",
+  "buildCommand": "ln -sfn \"$(pwd)/node_modules\" ../node_modules && npm run build",
   "outputDirectory": "dist",
   "framework": "astro",
   "headers": [
