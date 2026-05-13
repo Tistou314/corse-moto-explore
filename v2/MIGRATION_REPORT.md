@@ -6,14 +6,14 @@
 
 | Table | Legacy | Migré | OK |
 |---|---|---|---|
-| authors | 6 | _à remplir après run du workflow_ | ⏳ |
-| itineraries | 10 | _à remplir_ | ⏳ |
-| points_of_interest | 76 | _à remplir_ | ⏳ |
-| accommodations | 26 | _à remplir_ | ⏳ |
-| blog_posts | 14 | _à remplir_ | ⏳ |
-| gas_stations | 130 | _à remplir_ | ⏳ |
+| authors | 6 | 6 | ✅ |
+| itineraries | 10 | 10 | ✅ |
+| points_of_interest | 76 | 76 | ✅ |
+| accommodations | 26 | 26 | ✅ |
+| blog_posts | 14 | 14 | ✅ |
+| gas_stations | 130 | 130 | ✅ |
 
-Référence dry-run local : `[DRY RUN] authors:6, itineraries:10 (+POIs 76), accommodations:26, blog:14, gas:130` (commit d8c48d1).
+**Total : 262 lignes, 0 perte.** Workflow GitHub Actions `migrate-data.yml` run #3 vert (1m 0s).
 
 ## 2. URLs publiques générées (échantillon)
 

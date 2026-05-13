@@ -249,3 +249,38 @@ Seul échec restant : `errors-in-console` pour des images Unsplash avec `ERR_CER
 ## Phase 1 — étape de migration via GitHub Actions
 - `.github/workflows/migrate-data.yml` : workflow `workflow_dispatch` qui clone v2/, install, et lance le script. 2 secrets attendus : `PUBLIC_SUPABASE_URL` et `SUPABASE_SERVICE_ROLE_KEY`.
 - Mon sandbox bloque les sorties vers Supabase (`x-deny-reason: host_not_allowed` au niveau du proxy de l'agent), donc impossible d'exécuter depuis ici. GitHub Actions résout la contrainte.
+
+## 2026-05-13 — Migration Supabase exécutée (workflow #3 vert)
+
+### Données réellement présentes dans Supabase
+- authors : 6
+- itineraries : 10
+- points_of_interest : 76
+- accommodations : 26
+- blog_posts : 14
+- gas_stations : 130
+- **Total : 262 lignes** (diff vs legacy : 0 perte)
+
+### Patches script
+- Fix `/lovable-uploads/*` : on garde les URLs relatives, Vercel sert depuis `v2/public/lovable-uploads/`
+- Fix POI upsert : `delete by itinerary_id` puis `insert` simple, plus besoin de UNIQUE constraint
+
+### Data layer
+- `lib/data-supabase.ts` : nouveau loader qui lit toutes les tables au build (top-level await)
+- `lib/data-legacy.ts` : ancien loader (renommé)
+- `lib/data.ts` : wrapper qui essaie Supabase, fallback automatique vers legacy si erreur
+- Sandbox local → fallback legacy (Supabase bloqué par proxy)
+- Vercel CI → Supabase direct ✅
+
+## 2026-05-13 — Phase 7 préparation déploiement Vercel
+
+### Configuration prête
+- `vercel.json` : framework=astro, outputDirectory=dist, buildCommand symlinke `node_modules` au parent pour résolution `uuid`/`lucide-react` depuis les fichiers legacy, headers cache immutable sur `/_astro/` et `/lovable-uploads/`, no-store + X-Robots-Tag noindex sur `/admin/`.
+- Variables d'env requises côté Vercel (voir README.md et MIGRATION_REPORT.md).
+- PR #4 mergée : v2/, .github/workflows/, supabase/, scripts/, public/og/, public/manifest, public/lovable-uploads/, src/lib/, src/components/, src/layouts/, src/pages/, src/styles/, tailwind.config.ts, vercel.json — tous dans `main`.
+- PR #5 mergée : fix symlink build.
+
+### État final du repo
+- `main` HEAD = ec4dd50 (squash merge des fixes)
+- Branche `claude/session-goals-5y5gu` conservée comme historique de travail
+- `src/` legacy intact (zéro modification)
