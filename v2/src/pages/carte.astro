@@ -1,0 +1,28 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Navbar from '@/components/Navbar.astro';
+import Footer from '@/components/Footer.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { breadcrumbJsonLd } from '@/lib/seo';
+---
+
+<Layout
+  title="Carte interactive — Itinéraires, hébergements et stations en Corse"
+  description="Carte interactive de la Corse à moto, regroupant les itinéraires, les hébergements adaptés aux motards et les stations-service utiles."
+  path="/carte"
+  jsonLd={breadcrumbJsonLd([{ name: 'Accueil', path: '/' }, { name: 'Carte', path: '/carte' }])}
+>
+  <Navbar slot="header" />
+  <Footer slot="footer" />
+
+  <section class="container pt-12 md:pt-16">
+    <Breadcrumbs items={[{ name: 'Accueil', path: '/' }, { name: 'Carte' }]} />
+    <div class="mt-8 max-w-prose">
+      <h1 class="font-serif text-[clamp(2rem,3vw+1rem,3.75rem)] font-medium leading-tight tracking-tight">Carte interactive</h1>
+      <p class="mt-6 text-lg text-text-secondary">
+        Bientôt disponible. La carte rassemblera itinéraires, hébergements et stations sur un fond MapLibre + MapTiler, avec filtres par catégorie et clustering.
+      </p>
+    </div>
+  </section>
+  <div class="pb-32"></div>
+</Layout>

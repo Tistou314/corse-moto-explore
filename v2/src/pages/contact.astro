@@ -1,0 +1,50 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Navbar from '@/components/Navbar.astro';
+import Footer from '@/components/Footer.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { breadcrumbJsonLd } from '@/lib/seo';
+
+const jsonLd: Record<string, unknown>[] = [
+  breadcrumbJsonLd([{ name: 'Accueil', path: '/' }, { name: 'Contact', path: '/contact' }]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Corse à moto',
+    url: 'https://corseamoto.com',
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        contactType: 'editorial',
+        email: 'contact@corseamoto.com',
+        availableLanguage: 'French',
+      },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Contact — Corse à moto"
+  description="Une question, une suggestion d'itinéraire, un hébergement à recommander. Écris-nous."
+  path="/contact"
+  jsonLd={jsonLd}
+>
+  <Navbar slot="header" />
+  <Footer slot="footer" />
+
+  <section class="container pt-12 md:pt-16">
+    <Breadcrumbs items={[{ name: 'Accueil', path: '/' }, { name: 'Contact' }]} />
+    <div class="mt-8 max-w-prose">
+      <h1 class="font-serif text-[clamp(2rem,3vw+1rem,3.75rem)] font-medium leading-tight tracking-tight">Contact</h1>
+      <p class="mt-6 text-lg text-text-secondary">
+        Une question, une suggestion d'itinéraire, un hébergement à recommander.
+        Le plus simple, par email.
+      </p>
+      <p class="mt-10 text-text-primary">
+        <a class="border-b border-text-primary pb-1 text-lg hover:text-accent hover:border-accent" href="mailto:contact@corseamoto.com">contact@corseamoto.com</a>
+      </p>
+    </div>
+  </section>
+  <div class="pb-32"></div>
+</Layout>

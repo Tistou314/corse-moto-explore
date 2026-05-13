@@ -1,0 +1,56 @@
+---
+const links = [
+  { href: '/itineraires', label: 'Itinéraires' },
+  { href: '/hebergements', label: 'Hébergements' },
+  { href: '/blog', label: 'Carnet' },
+  { href: '/stations-service', label: 'Stations' },
+  { href: '/carte', label: 'Carte' },
+  { href: '/guide-pratique', label: 'Guide' },
+];
+const here = Astro.url.pathname;
+const isActive = (href: string) => here === href || here.startsWith(href + '/');
+---
+
+<header class="border-b border-border bg-bg">
+  <div class="container flex items-center justify-between gap-6 py-5">
+    <a href="/" class="font-serif text-xl tracking-tight text-text-primary">
+      Corse à moto
+    </a>
+    <nav aria-label="Navigation principale" class="hidden md:block">
+      <ul class="flex items-center gap-7 text-sm">
+        {links.map((l) => (
+          <li>
+            <a
+              href={l.href}
+              class={`hover:text-accent transition ${isActive(l.href) ? 'text-accent' : 'text-text-secondary'}`}
+            >
+              {l.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <details class="md:hidden">
+      <summary aria-label="Ouvrir le menu" class="cursor-pointer list-none min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-text-primary">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <line x1="3" y1="7" x2="21" y2="7"/>
+          <line x1="3" y1="17" x2="21" y2="17"/>
+        </svg>
+      </summary>
+      <div class="absolute left-0 right-0 z-40 border-b border-border bg-bg shadow-sm">
+        <ul class="container divide-y divide-border">
+          {links.map((l) => (
+            <li>
+              <a
+                href={l.href}
+                class={`block py-4 text-base ${isActive(l.href) ? 'text-accent' : 'text-text-primary'}`}
+              >
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </details>
+  </div>
+</header>

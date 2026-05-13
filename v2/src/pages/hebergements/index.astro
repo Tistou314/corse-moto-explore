@@ -1,0 +1,63 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Navbar from '@/components/Navbar.astro';
+import Footer from '@/components/Footer.astro';
+import EditorialCard from '@/components/EditorialCard.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { allAccommodations } from '@/lib/data';
+import { breadcrumbJsonLd } from '@/lib/seo';
+
+const typeLabel = { hotel: 'Hôtel', gite: 'Gîte', camping: 'Camping' } as const;
+
+const groups = (['hotel', 'gite', 'camping'] as const).map((type) => ({
+  type,
+  label: typeLabel[type],
+  items: allAccommodations.filter((a) => a.type === type),
+}));
+---
+
+<Layout
+  title="Hébergements moto en Corse, hôtels, gîtes et campings"
+  description="Hôtels, gîtes et campings sélectionnés pour les motards en Corse : parking sécurisé, séchage des équipements et accès aux belles routes."
+  path="/hebergements"
+  jsonLd={breadcrumbJsonLd([
+    { name: 'Accueil', path: '/' },
+    { name: 'Hébergements', path: '/hebergements' },
+  ])}
+>
+  <Navbar slot="header" />
+  <Footer slot="footer" />
+
+  <section class="container pt-12 md:pt-16">
+    <Breadcrumbs items={[{ name: 'Accueil', path: '/' }, { name: 'Hébergements' }]} />
+    <div class="mt-8 max-w-prose">
+      <h1 class="font-serif text-[clamp(2rem,3vw+1rem,3.75rem)] font-medium leading-tight tracking-tight">Hébergements pensés pour rouler</h1>
+      <p class="mt-6 text-lg text-text-secondary">
+        Sélection retenue pour ses équipements motards, sa situation près des grandes routes et ses tarifs lisibles.
+      </p>
+    </div>
+  </section>
+
+  {groups.map((g) => (
+    <section class="container mt-20" id={g.type}>
+      <header class="flex items-end justify-between gap-6 mb-10">
+        <h2 class="font-serif text-3xl md:text-4xl leading-tight">{g.label}s</h2>
+        <p class="text-sm text-text-muted">{g.items.length} adresses</p>
+      </header>
+      <div class="grid gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
+        {g.items.map((a) => (
+          <EditorialCard
+            href={`/hebergements/${a.slug}`}
+            title={a.name}
+            image={a.heroImage}
+            imageAlt={a.name}
+            kicker={`${a.location} · ${typeLabel[a.type]}`}
+            excerpt={a.description}
+            aspect="4/3"
+          />
+        ))}
+      </div>
+    </section>
+  ))}
+  <div class="pb-32"></div>
+</Layout>

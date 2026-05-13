@@ -85,3 +85,42 @@ gas stations: 130
 - **Supabase project URL** manquante (format `https://<ref>.supabase.co`)
 - **Supabase service_role key** manquante (format `sb_secret_...` ou `eyJ...`)
 Sans ces 2 valeurs, impossible d'exécuter le SQL et de pousser les données.
+
+## 2026-05-13 — Phase 2 livrée (build OK, 59 pages)
+
+### Composants design system (sobres, éditoriaux)
+- `Button.astro` (primary fond accent / secondary underline)
+- `Hero.astro` (image plein cadre 21:9 ou 16:9, titre serif clamp)
+- `StatLine.astro` (4 colonnes avec séparateurs fins)
+- `MetaList.astro` (clé-valeur sobre)
+- `EditorialCard.astro` (photo + titre serif + excerpt, sans badges)
+- `Breadcrumbs.astro` (slash separator, dernier élément aria-current)
+- `ArticleProse.astro` (rendu marked + classes prose typo serif/sans)
+- `Navbar.astro` (logo serif, liens horizontaux desktop, drawer details/summary mobile)
+- `Footer.astro` (3 colonnes liens, copyright année dynamique)
+
+### Pages SSG
+- `/` Home (kicker + H1 serif + 3 sections itinéraires/hébergements/blog)
+- `/itineraires` liste (grid 3 colonnes, cards éditoriales)
+- `/itineraires/[slug]` détail (hero plein cadre + breadcrumb + stats + sidebar méta + prose + étapes numérotées + "Continuer à explorer")
+- `/hebergements` liste groupée hôtel/gîte/camping
+- `/hebergements/[slug]` détail (hero + bikerAmenities + amenities + sidebar + CTA réserver avec rel sponsored nofollow si affiliateLink)
+- `/blog` liste regroupée par catégorie
+- `/blog/[slug]` longform magazine (hero h1 serif xxl + image plein cadre + ArticleProse max-w-prose 680px)
+- `/guide-pratique` (6 sections statiques)
+- `/faq` (6 questions, FAQPage JSON-LD)
+- `/contact` (Organization contactPoint JSON-LD)
+- `/stations-service` (130 stations, stratégiques + groupement par région)
+- `/carte` (placeholder pour Phase 5)
+
+### Plugin Vite custom
+- `aliasByImporter()` dans `astro.config.mjs` : résout `@/...` vers `v2/src` ou `../src` selon le fichier importer. Permet de lire les fichiers legacy non modifiés.
+
+### Vérification build
+- 59 pages générées, sitemap-index.xml OK
+- `dist/itineraires/cap-corse/index.html` : title custom, description, canonical absolu, og:image, JSON-LD complet (WebSite + Organization + BreadcrumbList + TouristTrip + ItemList Place)
+
+### Reste pour Phase 1 finalisation
+Service_role reçue. Mais pour exécuter le SQL DDL il faut soit le mot de passe DB (psql), soit passer par le SQL Editor du dashboard. Demande à Baptiste de :
+1. Coller `v2/supabase/schema.sql` puis `v2/supabase/storage.sql` dans le SQL Editor Supabase et cliquer "Run"
+2. Une fois fait, je lance `npx tsx scripts/migrate-data.ts` pour pousser les données et les images
