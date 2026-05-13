@@ -1,0 +1,43 @@
+name: Migrate legacy data to Supabase
+
+on:
+  workflow_dispatch:
+    inputs:
+      skip_images:
+        description: 'Skip image downloads (faster, keeps Unsplash URLs)'
+        required: false
+        default: 'false'
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/session-goals-5y5gu
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: v2/package-lock.json
+
+      - name: Symlink node_modules into legacy repo
+        run: ln -sfn "${{ github.workspace }}/v2/node_modules" "${{ github.workspace }}/node_modules"
+
+      - name: Install deps
+        working-directory: v2
+        run: npm ci
+
+      - name: Run migration
+        working-directory: v2
+        env:
+          PUBLIC_SUPABASE_URL: ${{ secrets.PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          ARGS=""
+          if [[ "${{ inputs.skip_images }}" == "true" ]]; then
+            ARGS="--skip-images"
+          fi
+          npx tsx --tsconfig scripts/tsconfig.json scripts/migrate-data.ts $ARGS
