@@ -220,3 +220,32 @@ Quand le BO permettra de renseigner `affiliate_link`, le bouton "Réserver" l'ut
 
 ### Phase 1 — encore bloquée
 Les deux clés (sb_secret_* et legacy JWT eyJ...) reçoivent la même erreur `Host not in allowlist` au niveau de l'API gateway Supabase. Ce n'est donc pas une restriction de clé mais une **Network Restriction** au niveau du projet (ou un toggle équivalent dans Project Settings → Database).
+
+## 2026-05-13 — Phase 4 : A11y 100 atteint
+
+### Corrections appliquées
+- `--text-muted` HSL 220 8% **50%** → 220 12% **38%** : contraste 4.19 → ~6.0 (cible 4.5 dépassée)
+- `public/manifest.webmanifest` ajouté (manifest fetch 404 corrigé)
+- `public/og/default.svg` ajouté pour les OG images (placeholder éditorial sobre)
+- `<link rel="apple-touch-icon">` retiré (le fichier n'existe pas, évite un 404)
+- `public/lovable-uploads/*` (24 PNG) recopiés depuis le legacy pour les avatars auteurs
+
+### Nouveaux scores Lighthouse (mobile, 4G)
+| Page | Perf | A11y | BP | SEO | LCP |
+|---|---|---|---|---|---|
+| `/` | 99 | **100** | 96 | **100** | **1804 ms** |
+| `/itineraires/cap-corse` | 94 | **100** | 96 | **100** | 2705 ms |
+| `/hebergements/.../alcyon` (run précédent : Ajaccio) | 95 | **100** | 96 | **100** | 2554 ms |
+| `/blog/budget-voyage-moto-corse` | 94 | **100** | 96 | **100** | 2704 ms |
+
+### BP 96 — pourquoi pas 100
+Seul échec restant : `errors-in-console` pour des images Unsplash avec `ERR_CERT_AUTHORITY_INVALID` dans le Chromium bundlé puppeteer (store de certificats vide). Aucun impact production — sera 100 dès que (a) les images passent par Supabase Storage (Phase 1) ou (b) on audit sur Vercel avec un Chrome ayant un store CA standard.
+
+### Reste pour Phase 4 complète
+- Refaire l'audit après migration des images dans Supabase Storage (LCP 2554-2705 → cible < 2500 ms)
+- Audit responsive : screenshots iPhone SE / 14 / iPad / 1920 (à faire après déploiement)
+- Google Rich Results Test sur les 4 URLs (manuel après déploiement)
+
+## Phase 1 — étape de migration via GitHub Actions
+- `.github/workflows/migrate-data.yml` : workflow `workflow_dispatch` qui clone v2/, install, et lance le script. 2 secrets attendus : `PUBLIC_SUPABASE_URL` et `SUPABASE_SERVICE_ROLE_KEY`.
+- Mon sandbox bloque les sorties vers Supabase (`x-deny-reason: host_not_allowed` au niveau du proxy de l'agent), donc impossible d'exécuter depuis ici. GitHub Actions résout la contrainte.

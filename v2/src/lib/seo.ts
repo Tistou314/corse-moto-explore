@@ -3,7 +3,7 @@ import { absoluteUrl, SITE_URL } from './utils';
 export const SITE_NAME = 'Corse à moto';
 export const SITE_DESCRIPTION =
   "Itinéraires moto, hébergements, conseils et stations-service pour explorer la Corse à deux roues.";
-export const DEFAULT_OG_IMAGE = '/og/default.jpg';
+export const DEFAULT_OG_IMAGE = '/og/default.svg';
 
 export interface SeoProps {
   title: string;
