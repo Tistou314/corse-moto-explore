@@ -1,0 +1,29 @@
+---
+import AdminLayout from '@/layouts/AdminLayout.astro';
+import EntityForm from '@/components/admin/EntityForm.tsx';
+export const prerender = false;
+
+const { id } = Astro.params;
+const isNew = id === 'new';
+const fields = [
+  { name: 'name', label: 'Nom', type: 'text', required: true },
+  { name: 'description', label: 'Description', type: 'textarea' },
+  { name: 'image', label: 'Image', type: 'image', bucket: 'itineraries-images' },
+  { name: 'itinerary_id', label: 'ID itinéraire (uuid)', type: 'text', hint: 'À récupérer dans la fiche itinéraire' },
+  { name: 'order_idx', label: 'Ordre', type: 'number' },
+  { name: 'latitude', label: 'Latitude', type: 'number' },
+  { name: 'longitude', label: 'Longitude', type: 'number' },
+];
+---
+
+<AdminLayout title={isNew ? 'Nouveau POI' : 'Éditer POI'}>
+  <EntityForm
+    client:only="react"
+    table="points_of_interest"
+    fields={fields}
+    id={isNew ? undefined : id}
+    redirectTo="/admin/poi"
+    title={isNew ? 'Nouveau POI' : 'Éditer POI'}
+    defaults={{ order_idx: 0 }}
+  />
+</AdminLayout>

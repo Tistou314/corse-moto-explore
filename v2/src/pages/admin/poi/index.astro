@@ -1,0 +1,23 @@
+---
+import AdminLayout from '@/layouts/AdminLayout.astro';
+import EntityList from '@/components/admin/EntityList.tsx';
+export const prerender = false;
+---
+
+<AdminLayout title="Points d'intérêt">
+  <EntityList
+    client:only="react"
+    table="points_of_interest"
+    title="Points d'intérêt"
+    newHref="/admin/poi/new"
+    editHref={(id: string) => `/admin/poi/${id}`}
+    searchKey="name"
+    orderBy={{ column: 'order_idx', ascending: true }}
+    columns={[
+      { key: 'name', label: 'Nom' },
+      { key: 'order_idx', label: 'Ordre' },
+      { key: 'latitude', label: 'Lat' },
+      { key: 'longitude', label: 'Lng' },
+    ]}
+  />
+</AdminLayout>
