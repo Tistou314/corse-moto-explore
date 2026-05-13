@@ -116,7 +116,6 @@ async function downloadAndUpload(
 
 async function upsert(table: string, rows: Record<string, unknown>[], onConflict = 'legacy_id') {
   if (DRY_RUN || !rows.length) return rows.length;
-  // batches of 100
   let inserted = 0;
   for (let i = 0; i < rows.length; i += 100) {
     const batch = rows.slice(i, i + 100);
@@ -126,6 +125,21 @@ async function upsert(table: string, rows: Record<string, unknown>[], onConflict
       .select('id');
     if (error) {
       console.error(`  ✗ upsert ${table} batch ${i}: ${error.message}`);
+      throw error;
+    }
+    inserted += data?.length ?? batch.length;
+  }
+  return inserted;
+}
+
+async function insertOnly(table: string, rows: Record<string, unknown>[]) {
+  if (DRY_RUN || !rows.length) return rows.length;
+  let inserted = 0;
+  for (let i = 0; i < rows.length; i += 100) {
+    const batch = rows.slice(i, i + 100);
+    const { error, data } = await supabase!.from(table).insert(batch).select('id');
+    if (error) {
+      console.error(`  ✗ insert ${table} batch ${i}: ${error.message}`);
       throw error;
     }
     inserted += data?.length ?? batch.length;
@@ -241,12 +255,20 @@ async function migrateItineraries() {
         order_idx: p.order_idx,
       }))
       .filter((p) => p.itinerary_id);
-    // POIs use legacy_id as the conflict key (unique constraint added in
-    // the patch SQL). Wipe-and-insert is safer than upsert here because
-    // POIs can be reordered freely on the legacy side.
-    const itineraryIds = [...new Set(linked.map((p) => p.itinerary_id))];
-    await supabase!.from('points_of_interest').delete().in('itinerary_id', itineraryIds);
-    await upsert('points_of_interest', linked, 'legacy_id');
+    // POIs do not need a UNIQUE constraint: clear them per itinerary
+    // and re-insert. Plain insert works whether the legacy_id is
+    // unique or not.
+    const itineraryIds = [...new Set(linked.map((p) => p.itinerary_id))] as string[];
+    if (itineraryIds.length > 0) {
+      const { error: delErr } = await supabase!
+        .from('points_of_interest')
+        .delete()
+        .in('itinerary_id', itineraryIds);
+      if (delErr) {
+        console.warn(`  · POI cleanup skipped: ${delErr.message}`);
+      }
+    }
+    await insertOnly('points_of_interest', linked);
   }
   console.log(`  · ${rows.length} itineraries, ${poiRows.length} POIs`);
   return { count: rows.length, pois: poiRows.length };
