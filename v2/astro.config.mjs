@@ -25,8 +25,8 @@ function aliasByImporter() {
     resolveId(source, importer) {
       if (!source.startsWith('@/')) return null;
       const rel = source.slice(2);
-      const fromLegacy = importer && importer.includes(`${sep}corse-moto-explore${sep}src${sep}`);
-      const base = fromLegacy ? legacySrc : v2Src;
+      const fromV2 = importer ? importer.includes(`${sep}v2${sep}src${sep}`) : true;
+      const base = fromV2 ? v2Src : legacySrc;
       return this.resolve(pathResolve(base, rel), importer, { skipSelf: true });
     },
   };
