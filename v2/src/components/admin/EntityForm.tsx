@@ -117,8 +117,14 @@ export default function EntityForm({ table, fields, id, redirectTo, title, defau
       setError(res.error.message);
       return;
     }
-    const triggerHook = (import.meta as ImportMeta).env.PUBLIC_VERCEL_DEPLOY_HOOK_URL;
-    if (triggerHook) fetch(triggerHook, { method: 'POST' }).catch(() => {});
+    const { data: sess } = await supabase.auth.getSession();
+    const accessToken = sess?.session?.access_token;
+    if (accessToken) {
+      fetch('/api/admin/deploy', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${accessToken}` },
+      }).catch(() => {});
+    }
     window.location.href = redirectTo;
   }
 
