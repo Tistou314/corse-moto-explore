@@ -74,6 +74,10 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "chrome-launcher": "^1.2.1",
+    "http-server": "^14.1.1",
+    "lighthouse": "^13.3.0",
+    "puppeteer": "^24.43.1",
     "tsx": "^4.21.0"
   }
 }

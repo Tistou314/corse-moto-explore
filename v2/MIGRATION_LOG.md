@@ -191,3 +191,32 @@ Quand le BO permettra de renseigner `affiliate_link`, le bouton "Réserver" l'ut
 - 16 pages SSR sous `/admin/*` bundled dans `dist/server/entry.mjs`
 - 59 pages SSG publiques inchangées
 - Aucun warning Astro
+
+## 2026-05-13 — Phase 4 audit Lighthouse (build local)
+
+### Scores Lighthouse mobile (4G throttling, screen 412x823 DSR 1.75)
+
+| Page | Perf | A11y | BP | SEO | LCP | CLS |
+|---|---|---|---|---|---|---|
+| `/` | 97 | 95 | 96 | **100** | 2180 ms | 0.013 |
+| `/itineraires/cap-corse` | 94 | 96 | 96 | **100** | 2705 ms | 0.000 |
+| `/hebergements/best-western-plus-ajaccio-amiraute` | 95 | 96 | 96 | **100** | 2556 ms | 0.000 |
+| `/blog/budget-voyage-moto-corse` | 94 | 95 | 96 | **100** | 2704 ms | 0.000 |
+
+### Analyse
+- **SEO 100/100 partout** ✅ — cible atteinte
+- **Performance ≥ 94** ✅ — cible Perf ≥ 90 dépassée
+- **CLS < 0.02** ✅ — cible < 0.1 largement dépassée
+- **A11y 95-96** vs cible 100 → à améliorer (probablement contraste, ARIA, ou heading order sur quelques composants)
+- **BP 96** vs cible 100 → à investiguer
+- **LCP** : 2180 ms home OK, 2556-2705 ms autres pages → marginalement au-dessus de la cible 2.5 s, dû aux images Unsplash externes non optimisées. Sera résolu après Phase 1 (images dans Supabase Storage + Astro `<Image>` AVIF) et CDN Vercel.
+
+### Restant pour Phase 4
+- Faire un sous-build où les images legacy passent par `<Image>` Astro pour AVIF/WebP
+- Corriger A11y + BP (cibler les audits avec score < 1.0 dans les rapports JSON sous `reports/lighthouse/`)
+- Refaire l'audit sur Vercel (CDN) après déploiement
+- Captures responsive 4 viewports × 4 URLs
+- Google Rich Results Test sur les 4 URLs (manuel après déploiement)
+
+### Phase 1 — encore bloquée
+Les deux clés (sb_secret_* et legacy JWT eyJ...) reçoivent la même erreur `Host not in allowlist` au niveau de l'API gateway Supabase. Ce n'est donc pas une restriction de clé mais une **Network Restriction** au niveau du projet (ou un toggle équivalent dans Project Settings → Database).
