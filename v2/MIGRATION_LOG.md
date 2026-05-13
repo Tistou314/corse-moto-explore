@@ -45,3 +45,43 @@ Credentials à fournir par Baptiste :
 - SerpAPI key (récupérer depuis ancien projet)
 - Email pour compte admin BO
 
+
+## 2026-05-13 — Phase 1 prête (en attente Supabase URL + service_role)
+
+### Schéma SQL
+- `v2/supabase/schema.sql` : tables `authors`, `itineraries`, `points_of_interest`, `accommodations`, `blog_posts`, `gas_stations`. Enums `difficulty_level` et `accommodation_type`. Triggers `updated_at`. RLS public read sur published=true et écriture authenticated.
+- `v2/supabase/storage.sql` : 4 buckets publics (`accommodations-images`, `itineraries-images`, `blog-images`, `authors-avatars`) + policies.
+
+### Ajustement schéma vs brief
+- `gas_stations` étendue : ajout `region`, `fuel_types[]`, `services[]`, `seasonal_hours` pour satisfaire "zéro perte" (le type legacy contient ces champs).
+
+### Script de migration `scripts/migrate-data.ts`
+- Lit directement les fichiers TS du legacy repo (`../src/data/...`)
+- Auto-slugification avec déduplication (kebab-case sans accents)
+- Téléchargement + upload Storage des images
+- Flags `--dry-run` / `--skip-images` / `--only=...`
+- Vérif diff vs legacy à la fin
+
+### Dry-run réussi
+```
+authors: 6
+itineraries: 10  (brief annonçait 8, réalité 10 — bonus)
+POIs: 76
+accommodations: 26
+blog posts: 14
+gas stations: 130
+```
+
+### Setup runtime
+- Symlink `/home/user/corse-moto-explore/node_modules → v2/node_modules` pour permettre au script de résoudre les peers depuis les fichiers legacy (uuid@11, lucide-react@0.462 réinstallés en v2/).
+- Tsconfig dédié `v2/scripts/tsconfig.json` pour mapper `@/*` → `../src/*`.
+
+### Credentials reçus de Baptiste
+- MapTiler : ZU8ncRmleUKuI9qoEduK
+- SerpAPI : 9634e7731af88e3351a93a97eef61190bc4c7177
+- Supabase publishable key : sb_publishable_WZoCD5XcLHb-IgNaU08z9g_dxRXlWib
+
+### Bloqueurs encore actifs
+- **Supabase project URL** manquante (format `https://<ref>.supabase.co`)
+- **Supabase service_role key** manquante (format `sb_secret_...` ou `eyJ...`)
+Sans ces 2 valeurs, impossible d'exécuter le SQL et de pousser les données.
