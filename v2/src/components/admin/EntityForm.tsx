@@ -1,5 +1,7 @@
 import { useEffect, useState, type FormEvent } from 'react';
 import { supabase } from '@/lib/supabase';
+import ImageGalleryField from './ImageGalleryField';
+import MarkdownEditor from './MarkdownEditor';
 
 export interface Field {
   name: string;
@@ -92,6 +94,8 @@ export default function EntityForm({ table, fields, id, redirectTo, title, defau
           : Array.isArray(v)
             ? v
             : [];
+      } else if (f.type === 'gallery') {
+        payload[f.name] = Array.isArray(v) ? v : [];
       } else if (f.type === 'number') {
         payload[f.name] = v === '' || v == null ? null : Number(v);
       } else if (f.type === 'boolean') {
@@ -137,14 +141,29 @@ export default function EntityForm({ table, fields, id, redirectTo, title, defau
           </label>
           {f.hint && <p className="mt-1 text-xs text-text-muted">{f.hint}</p>}
 
-          {f.type === 'textarea' || f.type === 'markdown' ? (
+          {f.type === 'markdown' ? (
+            <div className="mt-2">
+              <MarkdownEditor
+                value={String(values[f.name] ?? '')}
+                onChange={(v) => setField(f.name, v)}
+              />
+            </div>
+          ) : f.type === 'gallery' ? (
+            <div className="mt-2">
+              <ImageGalleryField
+                value={Array.isArray(values[f.name]) ? values[f.name] : []}
+                onChange={(urls) => setField(f.name, urls)}
+                bucket={f.bucket ?? 'accommodations-images'}
+              />
+            </div>
+          ) : f.type === 'textarea' ? (
             <textarea
               id={f.name}
               required={f.required}
               value={String(values[f.name] ?? '')}
               onChange={(e) => setField(f.name, e.target.value)}
-              rows={f.type === 'markdown' ? 18 : 6}
-              className="mt-2 block w-full rounded-sm border border-border bg-bg px-3 py-2 font-mono text-sm focus-visible:border-accent focus-visible:outline-none"
+              rows={6}
+              className="mt-2 block w-full rounded-sm border border-border bg-bg px-3 py-2 text-sm focus-visible:border-accent focus-visible:outline-none"
             />
           ) : f.type === 'select' ? (
             <select
