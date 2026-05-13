@@ -2,6 +2,7 @@ import { useEffect, useState, type FormEvent } from 'react';
 import { supabase } from '@/lib/supabase';
 import ImageGalleryField from './ImageGalleryField';
 import MarkdownEditor from './MarkdownEditor';
+import SerpImagePicker from './SerpImagePicker';
 
 export interface Field {
   name: string;
@@ -239,6 +240,12 @@ export default function EntityForm({ table, fields, id, redirectTo, title, defau
                 onChange={(e) => setField(f.name, e.target.value)}
                 className="block w-full min-h-[40px] rounded-sm border border-border bg-bg px-3 text-sm focus-visible:border-accent focus-visible:outline-none"
               />
+              {f.name === 'hero_image' && (
+                <SerpImagePicker
+                  defaultQuery={String(values.name ?? values.title ?? '')}
+                  onPick={(url) => setField(f.name, url)}
+                />
+              )}
             </div>
           ) : (
             <input
