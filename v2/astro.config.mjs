@@ -50,6 +50,8 @@ export default defineConfig({
   ],
   prefetch: { prefetchAll: true, defaultStrategy: 'viewport' },
   vite: {
+    configFile: false,
+    cacheDir: pathResolve(__dirname, 'node_modules/.vite'),
     plugins: [aliasByImporter()],
   },
 });

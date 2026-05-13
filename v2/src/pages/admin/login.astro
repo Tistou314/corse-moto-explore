@@ -1,0 +1,66 @@
+---
+import AdminLayout from '@/layouts/AdminLayout.astro';
+export const prerender = false;
+---
+
+<AdminLayout title="Connexion">
+  <h1 class="font-serif text-3xl">Connexion admin</h1>
+  <form id="login-form" class="mt-8 max-w-sm space-y-5">
+    <div>
+      <label for="email" class="block text-sm text-text-secondary">Email</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        autocomplete="email"
+        required
+        class="mt-2 block w-full min-h-[44px] rounded-sm border border-border bg-bg px-3 text-base focus-visible:border-accent focus-visible:outline-none"
+      />
+    </div>
+    <div>
+      <label for="password" class="block text-sm text-text-secondary">Mot de passe</label>
+      <input
+        id="password"
+        name="password"
+        type="password"
+        autocomplete="current-password"
+        required
+        class="mt-2 block w-full min-h-[44px] rounded-sm border border-border bg-bg px-3 text-base focus-visible:border-accent focus-visible:outline-none"
+      />
+    </div>
+    <button
+      type="submit"
+      class="inline-flex min-h-[44px] items-center justify-center bg-accent px-6 text-accent-foreground transition hover:bg-accent/90"
+    >
+      Se connecter
+    </button>
+    <p id="error" class="hidden text-sm text-red-700"></p>
+  </form>
+
+  <script>
+    import { supabase } from '@/lib/supabase';
+    const form = document.getElementById('login-form') as HTMLFormElement | null;
+    const errorEl = document.getElementById('error') as HTMLParagraphElement | null;
+    if (form && supabase) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (errorEl) {
+          errorEl.classList.add('hidden');
+          errorEl.textContent = '';
+        }
+        const fd = new FormData(form);
+        const email = String(fd.get('email') ?? '');
+        const password = String(fd.get('password') ?? '');
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) {
+          if (errorEl) {
+            errorEl.classList.remove('hidden');
+            errorEl.textContent = error.message;
+          }
+          return;
+        }
+        window.location.href = '/admin';
+      });
+    }
+  </script>
+</AdminLayout>

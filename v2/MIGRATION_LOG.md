@@ -124,3 +124,45 @@ Sans ces 2 valeurs, impossible d'exécuter le SQL et de pousser les données.
 Service_role reçue. Mais pour exécuter le SQL DDL il faut soit le mot de passe DB (psql), soit passer par le SQL Editor du dashboard. Demande à Baptiste de :
 1. Coller `v2/supabase/schema.sql` puis `v2/supabase/storage.sql` dans le SQL Editor Supabase et cliquer "Run"
 2. Une fois fait, je lance `npx tsx scripts/migrate-data.ts` pour pousser les données et les images
+
+## 2026-05-13 — Phases 5, 6 et amorce 3 livrées
+
+### Phase 5 — Cartes (MapLibre + MapTiler)
+- `src/components/Map.tsx` : island React MapLibre GL avec clustering, tiles MapTiler style "landscape", fallback OSM si pas de clé, cooperativeGestures activé (mobile), popups avec lien vers la fiche.
+- `src/pages/carte.astro` : carte interactive avec itinéraires + hébergements + stations. Légende couleurs sobre (3 puces, pas de badges colorés).
+- Build OK, bundle Map.ZmhiZbTK.js + Map.DNVN2dqC.css émis.
+- `vite.configFile: false` ajouté dans astro.config.mjs pour empêcher Vite de remonter vers `vite.config.ts` legacy.
+
+### Phase 6 — Affiliation (préparation)
+Déjà câblé en Phase 2 dans `src/pages/hebergements/[slug].astro` :
+```
+const bookHref = a.affiliateLink ?? a.bookingLink ?? a.contact?.website;
+const bookRel  = a.affiliateLink ? 'sponsored nofollow noopener' : 'noopener';
+```
+Quand le BO permettra de renseigner `affiliate_link`, le bouton "Réserver" l'utilisera automatiquement avec le bon `rel`. Aucune action front complémentaire requise.
+
+### Phase 3 — Amorce backoffice
+- `astro.config.mjs` : adapter Vercel détecté en mode hybrid grâce à `prerender = false` sur les routes admin.
+- `src/lib/supabase.ts` : client navigateur + helper service_role.
+- `src/layouts/AdminLayout.astro` : meta noindex/nofollow, nav admin minimale.
+- `src/pages/admin/index.astro` : tableau de bord (6 entités).
+- `src/pages/admin/login.astro` : form email/password + appel `signInWithPassword`.
+- `src/pages/admin/logout.astro` : `signOut` + redirection.
+- Build OK : pages admin rendues côté serveur via `dist/server/entry.mjs` (Vercel fonctionnel).
+- **CRUD complet, upload Storage, SerpAPI, markdown editor, deploy webhook** : restent à faire dès que les tables Supabase existent.
+
+### SEO vérifié (Phase 4 partielle)
+- `lang="fr"` sur home / itinéraire / blog (vérifié curl-style sur dist/)
+- `<title>`, `<meta name="description">`, `<link rel="canonical">` absolu, OG complet, JSON-LD WebSite + Organization présents sur tous les types
+- JSON-LD spécifiques constatés :
+  - `/faq` : FAQPage + Question + Answer + BreadcrumbList
+  - `/hebergements/<slug>` : Hotel + BreadcrumbList
+  - `/blog/<slug>` : BlogPosting + Person + ImageObject + BreadcrumbList + Organization
+  - `/itineraires/<slug>` : TouristTrip + ItemList + Place + BreadcrumbList
+- `robots.txt` : Allow / + Disallow /admin + Sitemap https://corseamoto.com/sitemap-index.xml
+- `sitemap-index.xml` généré, exclut /admin via filter
+
+### Bloqueurs restants
+- **Phase 1** : SQL non encore exécuté (Baptiste a collé une URL GitHub par erreur, instructions correctives envoyées)
+- **Phase 3** : CRUD complet bloqué tant que les tables n'existent pas
+- **Phase 7** : pas d'accès Vercel pour l'instant
