@@ -1,0 +1,20 @@
+---
+import AdminLayout from '@/layouts/AdminLayout.astro';
+import EntityList from '@/components/admin/EntityList.tsx';
+export const prerender = false;
+---
+
+<AdminLayout title="Auteurs">
+  <EntityList
+    client:only="react"
+    table="authors"
+    title="Auteurs"
+    newHref="/admin/auteurs/new"
+    editHref={(id: string) => `/admin/auteurs/${id}`}
+    searchKey="name"
+    columns={[
+      { key: 'name', label: 'Nom' },
+      { key: 'bio', label: 'Bio', format: (r) => String(r.bio ?? '').slice(0, 80) + (r.bio && String(r.bio).length > 80 ? '…' : '') },
+    ]}
+  />
+</AdminLayout>

@@ -166,3 +166,28 @@ Quand le BO permettra de renseigner `affiliate_link`, le bouton "Réserver" l'ut
 - **Phase 1** : SQL non encore exécuté (Baptiste a collé une URL GitHub par erreur, instructions correctives envoyées)
 - **Phase 3** : CRUD complet bloqué tant que les tables n'existent pas
 - **Phase 7** : pas d'accès Vercel pour l'instant
+
+## 2026-05-13 — Phase 3 complète (CRUD générique)
+
+### Composants admin
+- `src/components/admin/EntityList.tsx` : liste générique avec recherche, tri, delete, lien edit. Branchée sur n'importe quelle table.
+- `src/components/admin/EntityForm.tsx` : formulaire générique avec champs text / textarea / markdown / number / select / array (textarea ligne par ligne) / boolean / image (upload Storage + URL manuelle) / date / slug auto-kebab. Déclenche `PUBLIC_VERCEL_DEPLOY_HOOK_URL` sur save si défini.
+
+### Pages /admin
+- `/admin` tableau de bord
+- `/admin/login` form email/password Supabase
+- `/admin/logout` signOut + redirect
+- `/admin/itineraires` liste + `/[id]` édition (16 champs dont highlights/tips en array, lat/lng, published)
+- `/admin/hebergements` liste + `/[id]` édition (18 champs dont biker_amenities, affiliate_link)
+- `/admin/blog` liste + `/[id]` édition (markdown editor 18 lignes)
+- `/admin/stations` liste + `/[id]` édition (fuel_types, services, strategic)
+- `/admin/auteurs` liste + `/[id]` édition
+
+### Auth
+- Check côté client dans AdminLayout (`requireAuth=true` par défaut) → redirect /admin/login si pas de session.
+- RLS Postgres protège les données côté serveur (Authenticated write policies).
+
+### Build
+- 16 pages SSR sous `/admin/*` bundled dans `dist/server/entry.mjs`
+- 59 pages SSG publiques inchangées
+- Aucun warning Astro

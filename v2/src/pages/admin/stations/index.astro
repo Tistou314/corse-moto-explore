@@ -1,0 +1,22 @@
+---
+import AdminLayout from '@/layouts/AdminLayout.astro';
+import EntityList from '@/components/admin/EntityList.tsx';
+export const prerender = false;
+---
+
+<AdminLayout title="Stations-service">
+  <EntityList
+    client:only="react"
+    table="gas_stations"
+    title="Stations-service"
+    newHref="/admin/stations/new"
+    editHref={(id: string) => `/admin/stations/${id}`}
+    searchKey="name"
+    columns={[
+      { key: 'name', label: 'Nom' },
+      { key: 'brand', label: 'Enseigne' },
+      { key: 'region', label: 'Région' },
+      { key: 'strategic', label: 'Stratégique', format: (r) => (r.strategic ? 'oui' : '—') },
+    ]}
+  />
+</AdminLayout>

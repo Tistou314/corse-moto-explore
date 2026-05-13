@@ -3,7 +3,7 @@ import AdminLayout from '@/layouts/AdminLayout.astro';
 export const prerender = false;
 ---
 
-<AdminLayout title="Connexion">
+<AdminLayout title="Connexion" requireAuth={false}>
   <h1 class="font-serif text-3xl">Connexion admin</h1>
   <form id="login-form" class="mt-8 max-w-sm space-y-5">
     <div>
@@ -13,6 +13,7 @@ export const prerender = false;
         name="email"
         type="email"
         autocomplete="email"
+        inputmode="email"
         required
         class="mt-2 block w-full min-h-[44px] rounded-sm border border-border bg-bg px-3 text-base focus-visible:border-accent focus-visible:outline-none"
       />
@@ -41,7 +42,10 @@ export const prerender = false;
     import { supabase } from '@/lib/supabase';
     const form = document.getElementById('login-form') as HTMLFormElement | null;
     const errorEl = document.getElementById('error') as HTMLParagraphElement | null;
-    if (form && supabase) {
+    if (supabase && form) {
+      supabase.auth.getSession().then(({ data }) => {
+        if (data.session) window.location.href = '/admin';
+      });
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
         if (errorEl) {
@@ -49,7 +53,7 @@ export const prerender = false;
           errorEl.textContent = '';
         }
         const fd = new FormData(form);
-        const email = String(fd.get('email') ?? '');
+        const email = String(fd.get('email') ?? '').trim();
         const password = String(fd.get('password') ?? '');
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) {
@@ -61,6 +65,9 @@ export const prerender = false;
         }
         window.location.href = '/admin';
       });
+    } else if (errorEl) {
+      errorEl.classList.remove('hidden');
+      errorEl.textContent = 'Variables Supabase non configurées dans Vercel.';
     }
   </script>
 </AdminLayout>
