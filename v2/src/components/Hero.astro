@@ -1,0 +1,43 @@
+---
+interface Props {
+  title: string;
+  kicker?: string;
+  image?: string;
+  alt?: string;
+  align?: 'left' | 'center';
+  aspect?: '21/9' | '16/9' | '4/3';
+}
+const { title, kicker, image, alt, align = 'left', aspect = '21/9' } = Astro.props;
+const aspectClass = {
+  '21/9': 'aspect-[21/9]',
+  '16/9': 'aspect-video',
+  '4/3': 'aspect-[4/3]',
+}[aspect];
+---
+
+<section class="relative w-full bg-bg-subtle">
+  {image && (
+    <div class={`relative w-full ${aspectClass} overflow-hidden`}>
+      <img
+        src={image}
+        alt={alt ?? ''}
+        width="2400"
+        height={aspect === '21/9' ? '1029' : aspect === '16/9' ? '1350' : '1800'}
+        class="absolute inset-0 h-full w-full object-cover"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/30"></div>
+    </div>
+  )}
+  <div class={`container py-12 md:py-20 ${align === 'center' ? 'text-center' : ''}`}>
+    {kicker && (
+      <p class="mb-4 text-sm uppercase tracking-[0.18em] text-text-muted">{kicker}</p>
+    )}
+    <h1 class="font-serif font-medium tracking-tight text-text-primary text-[clamp(2.25rem,4.5vw+1rem,4.5rem)] leading-[1.05] max-w-[18ch]">
+      {title}
+    </h1>
+    <slot />
+  </div>
+</section>

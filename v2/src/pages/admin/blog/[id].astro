@@ -1,0 +1,39 @@
+---
+import AdminLayout from '@/layouts/AdminLayout.astro';
+import EntityForm from '@/components/admin/EntityForm.tsx';
+export const prerender = false;
+
+const { id } = Astro.params;
+const isNew = id === 'new';
+const fields = [
+  { name: 'title', label: 'Titre', type: 'text', required: true },
+  { name: 'slug', label: 'Slug', type: 'slug', required: true },
+  { name: 'excerpt', label: 'Chapô', type: 'textarea' },
+  { name: 'content', label: 'Contenu (markdown)', type: 'markdown' },
+  { name: 'hero_image', label: 'Image principale', type: 'image', bucket: 'blog-images' },
+  { name: 'category', label: 'Catégorie', type: 'select', options: [
+    { value: 'aspects-pratiques', label: 'Aspects pratiques' },
+    { value: 'aspects-techniques', label: 'Aspects techniques' },
+    { value: 'culture', label: 'Culture' },
+    { value: 'equipement', label: 'Équipement' },
+    { value: 'experiences', label: 'Expériences' },
+    { value: 'saisons', label: 'Saisons' },
+  ] },
+  { name: 'reading_time', label: 'Durée de lecture (minutes)', type: 'number' },
+  { name: 'tags', label: 'Tags', type: 'array' },
+  { name: 'published_at', label: 'Date de publication', type: 'date' },
+  { name: 'published', label: 'Publié', type: 'boolean' },
+];
+---
+
+<AdminLayout title={isNew ? 'Nouvel article' : 'Éditer article'}>
+  <EntityForm
+    client:only="react"
+    table="blog_posts"
+    fields={fields}
+    id={isNew ? undefined : id}
+    redirectTo="/admin/blog"
+    title={isNew ? 'Nouvel article' : 'Éditer article'}
+    defaults={{ published: true, tags: [] }}
+  />
+</AdminLayout>

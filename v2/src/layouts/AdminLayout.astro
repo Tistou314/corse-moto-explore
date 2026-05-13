@@ -1,0 +1,50 @@
+---
+import '@/styles/global.css';
+export const prerender = false;
+
+interface Props {
+  title: string;
+  requireAuth?: boolean;
+}
+const { title, requireAuth = true } = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{title} — Admin Corse à moto</title>
+  </head>
+  <body class="min-h-screen bg-bg-subtle text-text-primary antialiased">
+    <header class="border-b border-border bg-bg">
+      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
+        <a href="/admin" class="font-serif text-lg">Corse à moto · Admin</a>
+        <nav aria-label="Admin" class="hidden md:flex items-center gap-6 text-sm text-text-secondary">
+          <a href="/admin" class="hover:text-accent">Tableau de bord</a>
+          <a href="/admin/itineraires" class="hover:text-accent">Itinéraires</a>
+          <a href="/admin/hebergements" class="hover:text-accent">Hébergements</a>
+          <a href="/admin/blog" class="hover:text-accent">Articles</a>
+          <a href="/admin/stations" class="hover:text-accent">Stations</a>
+          <a href="/admin/auteurs" class="hover:text-accent">Auteurs</a>
+          <a href="/admin/logout" class="hover:text-accent">Déconnexion</a>
+        </nav>
+      </div>
+    </header>
+    <main class="mx-auto max-w-6xl px-6 py-12">
+      <slot />
+    </main>
+
+    {requireAuth && (
+      <script>
+        import { supabase } from '@/lib/supabase';
+        (async () => {
+          if (!supabase) return;
+          const { data } = await supabase.auth.getSession();
+          if (!data.session) window.location.href = '/admin/login';
+        })();
+      </script>
+    )}
+  </body>
+</html>

@@ -1,0 +1,33 @@
+---
+import AdminLayout from '@/layouts/AdminLayout.astro';
+import EntityForm from '@/components/admin/EntityForm.tsx';
+export const prerender = false;
+
+const { id } = Astro.params;
+const isNew = id === 'new';
+const fields = [
+  { name: 'name', label: 'Nom', type: 'text', required: true },
+  { name: 'brand', label: 'Enseigne', type: 'text' },
+  { name: 'address', label: 'Adresse', type: 'text' },
+  { name: 'region', label: 'Région', type: 'text' },
+  { name: 'opening_hours', label: 'Horaires', type: 'text' },
+  { name: 'fuel_types', label: 'Carburants', type: 'array' },
+  { name: 'services', label: 'Services', type: 'array' },
+  { name: 'strategic', label: 'Station stratégique', type: 'boolean' },
+  { name: 'seasonal_hours', label: 'Horaires saisonniers', type: 'boolean' },
+  { name: 'latitude', label: 'Latitude', type: 'number' },
+  { name: 'longitude', label: 'Longitude', type: 'number' },
+];
+---
+
+<AdminLayout title={isNew ? 'Nouvelle station' : 'Éditer station'}>
+  <EntityForm
+    client:only="react"
+    table="gas_stations"
+    fields={fields}
+    id={isNew ? undefined : id}
+    redirectTo="/admin/stations"
+    title={isNew ? 'Nouvelle station' : 'Éditer station'}
+    defaults={{ strategic: false, fuel_types: [], services: [] }}
+  />
+</AdminLayout>

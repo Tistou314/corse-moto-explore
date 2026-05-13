@@ -1,0 +1,118 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Navbar from '@/components/Navbar.astro';
+import Footer from '@/components/Footer.astro';
+import ArticleProse from '@/components/ArticleProse.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import EditorialCard from '@/components/EditorialCard.astro';
+import { allBlogPosts } from '@/lib/data';
+import { breadcrumbJsonLd } from '@/lib/seo';
+import { absoluteUrl } from '@/lib/utils';
+
+export async function getStaticPaths() {
+  return allBlogPosts.map((p) => ({ params: { slug: p.slug }, props: { p } }));
+}
+
+const { p } = Astro.props as { p: (typeof allBlogPosts)[number] };
+
+const others = allBlogPosts
+  .filter((x) => x.slug !== p.slug && x.category === p.category)
+  .slice(0, 3);
+
+const jsonLd: Record<string, unknown>[] = [
+  breadcrumbJsonLd([
+    { name: 'Accueil', path: '/' },
+    { name: 'Carnet', path: '/blog' },
+    { name: p.title, path: `/blog/${p.slug}` },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: p.title,
+    description: p.excerpt,
+    image: p.heroImage,
+    datePublished: p.isoDate || undefined,
+    dateModified: p.isoDate || undefined,
+    mainEntityOfPage: absoluteUrl(`/blog/${p.slug}`),
+    author: { '@type': 'Person', name: p.authorName },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Corse à moto',
+      logo: { '@type': 'ImageObject', url: absoluteUrl('/logo.png') },
+    },
+  },
+];
+---
+
+<Layout
+  title={p.title}
+  description={p.excerpt}
+  path={`/blog/${p.slug}`}
+  image={p.heroImage}
+  type="article"
+  publishedTime={p.isoDate}
+  authorName={p.authorName}
+  jsonLd={jsonLd}
+>
+  <Navbar slot="header" />
+  <Footer slot="footer" />
+
+  <article>
+    <header class="container pt-12 md:pt-20">
+      <Breadcrumbs
+        items={[
+          { name: 'Accueil', path: '/' },
+          { name: 'Carnet', path: '/blog' },
+          { name: p.title },
+        ]}
+      />
+      <p class="mt-10 text-sm uppercase tracking-[0.18em] text-text-muted">{p.category.replace(/-/g, ' ')}</p>
+      <h1 class="mt-4 max-w-[22ch] font-serif font-medium tracking-tight text-[clamp(2rem,3.6vw+1rem,4rem)] leading-[1.05]">{p.title}</h1>
+      <p class="mt-6 max-w-prose text-lg text-text-secondary">{p.excerpt}</p>
+      <p class="mt-8 text-sm text-text-muted">
+        {p.authorName}
+        {p.publishedAt && <span> · {p.publishedAt}</span>}
+        <span> · {p.readingTime}</span>
+      </p>
+    </header>
+
+    {p.heroImage && (
+      <div class="mt-12 w-full">
+        <img
+          src={p.heroImage}
+          alt={p.title}
+          width="2400"
+          height="1350"
+          class="aspect-video w-full object-cover"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </div>
+    )}
+
+    <section class="container mt-16 mb-24">
+      <ArticleProse markdown={p.content} />
+    </section>
+  </article>
+
+  {others.length > 0 && (
+    <section class="container border-t border-border pt-16">
+      <h2 class="font-serif text-3xl md:text-4xl">À lire aussi</h2>
+      <div class="mt-12 grid gap-10 md:grid-cols-3 md:gap-x-8">
+        {others.map((o) => (
+          <EditorialCard
+            href={`/blog/${o.slug}`}
+            title={o.title}
+            image={o.heroImage}
+            imageAlt={o.title}
+            kicker={o.readingTime}
+            excerpt={o.excerpt}
+            aspect="3/2"
+          />
+        ))}
+      </div>
+    </section>
+  )}
+  <div class="pb-32"></div>
+</Layout>

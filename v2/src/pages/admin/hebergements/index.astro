@@ -1,0 +1,25 @@
+---
+import AdminLayout from '@/layouts/AdminLayout.astro';
+import EntityList from '@/components/admin/EntityList.tsx';
+export const prerender = false;
+---
+
+<AdminLayout title="Hébergements">
+  <EntityList
+    client:only="react"
+    table="accommodations"
+    title="Hébergements"
+    newHref="/admin/hebergements/new"
+    editHref={(id: string) => `/admin/hebergements/${id}`}
+    searchKey="name"
+    columns={[
+      { key: 'name', label: 'Nom' },
+      { key: 'type', label: 'Type' },
+      { key: 'location', label: 'Lieu' },
+      { key: 'region', label: 'Région' },
+      { key: 'price_range', label: 'Tarifs' },
+      { key: 'affiliate_link', label: 'Affilié', format: (r) => (r.affiliate_link ? 'oui' : '—') },
+      { key: 'published', label: 'Publié', format: (r) => (r.published ? 'oui' : 'non') },
+    ]}
+  />
+</AdminLayout>

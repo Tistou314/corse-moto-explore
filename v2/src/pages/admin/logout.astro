@@ -1,0 +1,19 @@
+---
+import AdminLayout from '@/layouts/AdminLayout.astro';
+export const prerender = false;
+---
+
+<AdminLayout title="Déconnexion">
+  <h1 class="font-serif text-3xl">Déconnexion</h1>
+  <p class="mt-4 text-text-secondary">Veuillez patienter.</p>
+  <script>
+    import { supabase } from '@/lib/supabase';
+    if (supabase) {
+      supabase.auth.signOut().finally(() => {
+        window.location.href = '/admin/login';
+      });
+    } else {
+      window.location.href = '/admin/login';
+    }
+  </script>
+</AdminLayout>

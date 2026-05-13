@@ -1,0 +1,42 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  image?: string;
+  imageAlt?: string;
+  kicker?: string;
+  excerpt?: string;
+  aspect?: '4/3' | '3/2' | '16/9';
+}
+const { href, title, image, imageAlt, kicker, excerpt, aspect = '4/3' } = Astro.props;
+const aspectClass = {
+  '4/3': 'aspect-[4/3]',
+  '3/2': 'aspect-[3/2]',
+  '16/9': 'aspect-video',
+}[aspect];
+---
+
+<a href={href} class="group block focus-visible:outline-none">
+  {image && (
+    <div class={`relative w-full overflow-hidden bg-bg-subtle ${aspectClass}`}>
+      <img
+        src={image}
+        alt={imageAlt ?? ''}
+        loading="lazy"
+        decoding="async"
+        class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+      />
+    </div>
+  )}
+  <div class="mt-5">
+    {kicker && (
+      <p class="text-xs uppercase tracking-[0.16em] text-text-muted">{kicker}</p>
+    )}
+    <h3 class="mt-2 font-serif text-2xl leading-tight text-text-primary group-hover:text-accent transition">
+      {title}
+    </h3>
+    {excerpt && (
+      <p class="mt-2 max-w-[40ch] text-base text-text-secondary line-clamp-3">{excerpt}</p>
+    )}
+  </div>
+</a>

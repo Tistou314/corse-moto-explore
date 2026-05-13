@@ -1,0 +1,167 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Navbar from '@/components/Navbar.astro';
+import Footer from '@/components/Footer.astro';
+import Hero from '@/components/Hero.astro';
+import StatLine from '@/components/StatLine.astro';
+import MetaList from '@/components/MetaList.astro';
+import ArticleProse from '@/components/ArticleProse.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import EditorialCard from '@/components/EditorialCard.astro';
+import { allItineraries } from '@/lib/data';
+import { breadcrumbJsonLd } from '@/lib/seo';
+import { absoluteUrl } from '@/lib/utils';
+
+export async function getStaticPaths() {
+  return allItineraries.map((it) => ({ params: { slug: it.slug }, props: { it } }));
+}
+
+const { it } = Astro.props as { it: (typeof allItineraries)[number] };
+
+const others = allItineraries.filter((x) => x.slug !== it.slug).slice(0, 3);
+
+const startEnd = it.endPoint && it.startPoint === it.endPoint
+  ? `${it.startPoint} (boucle)`
+  : `${it.startPoint || '—'} → ${it.endPoint || '—'}`;
+
+const stats = [
+  { label: 'Distance', value: it.distance || '—' },
+  { label: 'Durée', value: it.duration || '—' },
+  { label: 'Dénivelé', value: it.elevation || '—' },
+  { label: 'Difficulté', value: it.difficulty.charAt(0).toUpperCase() + it.difficulty.slice(1) },
+];
+
+const meta = [
+  { label: 'Région', value: it.region },
+  { label: 'Trajet', value: startEnd },
+  { label: 'Type de route', value: it.roadType },
+  { label: 'Meilleure saison', value: it.bestSeason },
+  { label: 'État de la route', value: it.roadCondition },
+];
+
+const jsonLd: Record<string, unknown>[] = [
+  breadcrumbJsonLd([
+    { name: 'Accueil', path: '/' },
+    { name: 'Itinéraires', path: '/itineraires' },
+    { name: it.title, path: `/itineraires/${it.slug}` },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'TouristTrip',
+    name: it.title,
+    description: it.description,
+    url: absoluteUrl(`/itineraires/${it.slug}`),
+    image: it.heroImage,
+    touristType: 'Motorcyclist',
+    itinerary: {
+      '@type': 'ItemList',
+      itemListElement: it.pointsOfInterest.map((p, idx) => ({
+        '@type': 'ListItem',
+        position: idx + 1,
+        item: { '@type': 'Place', name: p.name, description: p.description },
+      })),
+    },
+  },
+];
+---
+
+<Layout
+  title={`${it.title} — Itinéraire moto en Corse`}
+  description={it.description}
+  path={`/itineraires/${it.slug}`}
+  image={it.heroImage}
+  jsonLd={jsonLd}
+>
+  <Navbar slot="header" />
+  <Footer slot="footer" />
+
+  <Hero
+    title={it.title}
+    kicker={it.region}
+    image={it.heroImage}
+    alt={it.title}
+    aspect="21/9"
+  >
+    <p class="mt-8 max-w-prose text-lg leading-relaxed text-text-secondary">
+      {it.description}
+    </p>
+  </Hero>
+
+  <section class="container mt-10">
+    <Breadcrumbs
+      items={[
+        { name: 'Accueil', path: '/' },
+        { name: 'Itinéraires', path: '/itineraires' },
+        { name: it.title },
+      ]}
+    />
+  </section>
+
+  <section class="container mt-12">
+    <StatLine items={stats} />
+  </section>
+
+  <section class="container mt-16 grid gap-12 md:grid-cols-[2fr,1fr] md:gap-20">
+    <div>
+      <ArticleProse markdown={it.fullDescription || it.description} />
+    </div>
+    <aside class="md:sticky md:top-20 md:h-fit">
+      <p class="text-xs uppercase tracking-[0.14em] text-text-muted">L'itinéraire en bref</p>
+      <div class="mt-6">
+        <MetaList items={meta} />
+      </div>
+      {it.highlights.length > 0 && (
+        <div class="mt-12">
+          <p class="text-xs uppercase tracking-[0.14em] text-text-muted">Points forts</p>
+          <ul class="mt-4 space-y-3 text-text-secondary">
+            {it.highlights.map((h) => <li>{h}</li>)}
+          </ul>
+        </div>
+      )}
+      {it.tips.length > 0 && (
+        <div class="mt-12">
+          <p class="text-xs uppercase tracking-[0.14em] text-text-muted">Conseils</p>
+          <ul class="mt-4 space-y-3 text-text-secondary">
+            {it.tips.map((t) => <li>{t}</li>)}
+          </ul>
+        </div>
+      )}
+    </aside>
+  </section>
+
+  {it.pointsOfInterest.length > 0 && (
+    <section class="container mt-28">
+      <h2 class="font-serif text-3xl md:text-4xl">Étapes notables</h2>
+      <ol class="mt-12 space-y-12">
+        {it.pointsOfInterest.map((p, i) => (
+          <li class="grid gap-6 md:grid-cols-[6rem,1fr] md:gap-10 border-t border-border pt-8">
+            <span class="font-serif text-3xl text-text-muted">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <h3 class="font-serif text-2xl">{p.name}</h3>
+              {p.description && <p class="mt-3 text-text-secondary leading-relaxed">{p.description}</p>}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+  )}
+
+  {others.length > 0 && (
+    <section class="container mt-32 border-t border-border pt-16">
+      <h2 class="font-serif text-3xl md:text-4xl">Continuer à explorer</h2>
+      <div class="mt-12 grid gap-10 md:grid-cols-3 md:gap-x-8">
+        {others.map((o) => (
+          <EditorialCard
+            href={`/itineraires/${o.slug}`}
+            title={o.title}
+            image={o.heroImage}
+            imageAlt={o.title}
+            kicker={o.region}
+            excerpt={o.description}
+            aspect="4/3"
+          />
+        ))}
+      </div>
+    </section>
+  )}
+</Layout>

@@ -1,0 +1,64 @@
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/fraunces';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: 0 0% 100%;
+    --bg-subtle: 30 12% 97%;
+    --text-primary: 220 15% 12%;
+    --text-secondary: 220 10% 32%;
+    --text-muted: 220 12% 38%;
+    --border: 220 12% 90%;
+    --accent: 210 56% 23%;
+    --accent-foreground: 0 0% 100%;
+    --radius: 0.25rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-bg text-text-primary font-sans antialiased;
+    font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif text-text-primary;
+    font-feature-settings: 'kern', 'liga', 'dlig', 'ss01';
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    @apply bg-accent text-accent-foreground;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-bg;
+  }
+
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-accent focus:px-4 focus:py-2 focus:text-accent-foreground;
+  }
+}
+
+@layer components {
+  .container-prose {
+    @apply mx-auto w-full max-w-prose px-6;
+  }
+}

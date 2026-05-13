@@ -1,0 +1,24 @@
+---
+import AdminLayout from '@/layouts/AdminLayout.astro';
+import EntityForm from '@/components/admin/EntityForm.tsx';
+export const prerender = false;
+
+const { id } = Astro.params;
+const isNew = id === 'new';
+const fields = [
+  { name: 'name', label: 'Nom', type: 'text', required: true },
+  { name: 'avatar_url', label: 'Photo', type: 'image', bucket: 'authors-avatars' },
+  { name: 'bio', label: 'Bio', type: 'textarea' },
+];
+---
+
+<AdminLayout title={isNew ? 'Nouvel auteur' : 'Éditer auteur'}>
+  <EntityForm
+    client:only="react"
+    table="authors"
+    fields={fields}
+    id={isNew ? undefined : id}
+    redirectTo="/admin/auteurs"
+    title={isNew ? 'Nouvel auteur' : 'Éditer auteur'}
+  />
+</AdminLayout>

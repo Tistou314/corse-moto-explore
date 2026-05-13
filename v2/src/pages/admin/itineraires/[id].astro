@@ -1,0 +1,46 @@
+---
+import AdminLayout from '@/layouts/AdminLayout.astro';
+import EntityForm from '@/components/admin/EntityForm.tsx';
+export const prerender = false;
+
+const { id } = Astro.params;
+const isNew = id === 'new';
+const fields = [
+  { name: 'title', label: 'Titre', type: 'text', required: true },
+  { name: 'slug', label: 'Slug', type: 'slug', required: true, hint: 'kebab-case, sans accents' },
+  { name: 'description', label: 'Description courte', type: 'textarea' },
+  { name: 'full_description', label: 'Description longue (markdown)', type: 'markdown' },
+  { name: 'hero_image', label: 'Image principale', type: 'image', bucket: 'itineraries-images' },
+  { name: 'region', label: 'Région', type: 'text' },
+  { name: 'difficulty', label: 'Difficulté', type: 'select', options: [
+    { value: 'facile', label: 'Facile' },
+    { value: 'moyen', label: 'Moyen' },
+    { value: 'difficile', label: 'Difficile' },
+  ] },
+  { name: 'duration', label: 'Durée', type: 'text' },
+  { name: 'distance', label: 'Distance', type: 'text' },
+  { name: 'elevation', label: 'Dénivelé', type: 'text' },
+  { name: 'start_point', label: 'Départ', type: 'text' },
+  { name: 'end_point', label: 'Arrivée', type: 'text' },
+  { name: 'road_type', label: 'Type de route', type: 'text' },
+  { name: 'best_season', label: 'Meilleure saison', type: 'text' },
+  { name: 'road_condition', label: 'État de la route', type: 'text' },
+  { name: 'highlights', label: 'Points forts', type: 'array' },
+  { name: 'tips', label: 'Conseils', type: 'array' },
+  { name: 'latitude', label: 'Latitude', type: 'number' },
+  { name: 'longitude', label: 'Longitude', type: 'number' },
+  { name: 'published', label: 'Publié', type: 'boolean' },
+];
+---
+
+<AdminLayout title={isNew ? 'Nouvel itinéraire' : 'Éditer itinéraire'}>
+  <EntityForm
+    client:only="react"
+    table="itineraries"
+    fields={fields}
+    id={isNew ? undefined : id}
+    redirectTo="/admin/itineraires"
+    title={isNew ? 'Nouvel itinéraire' : 'Éditer itinéraire'}
+    defaults={{ published: true, highlights: [], tips: [] }}
+  />
+</AdminLayout>

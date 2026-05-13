@@ -1,0 +1,47 @@
+---
+import AdminLayout from '@/layouts/AdminLayout.astro';
+import EntityForm from '@/components/admin/EntityForm.tsx';
+export const prerender = false;
+
+const { id } = Astro.params;
+const isNew = id === 'new';
+const fields = [
+  { name: 'name', label: 'Nom', type: 'text', required: true },
+  { name: 'slug', label: 'Slug', type: 'slug', required: true },
+  { name: 'type', label: 'Type', type: 'select', required: true, options: [
+    { value: 'hotel', label: 'Hôtel' },
+    { value: 'gite', label: 'Gîte' },
+    { value: 'camping', label: 'Camping' },
+  ] },
+  { name: 'description', label: 'Description', type: 'textarea' },
+  { name: 'hero_image', label: 'Image principale', type: 'image', bucket: 'accommodations-images' },
+  { name: 'images', label: 'Galerie photos', type: 'gallery', bucket: 'accommodations-images' },
+  { name: 'location', label: 'Lieu', type: 'text' },
+  { name: 'region', label: 'Région', type: 'text' },
+  { name: 'price_range', label: 'Fourchette de prix', type: 'text' },
+  { name: 'rating', label: 'Note (0 à 5)', type: 'number' },
+  { name: 'amenities', label: 'Équipements', type: 'array' },
+  { name: 'biker_amenities', label: 'Équipements motards', type: 'array' },
+  { name: 'contact_phone', label: 'Téléphone', type: 'text' },
+  { name: 'contact_email', label: 'Email', type: 'text' },
+  { name: 'contact_website', label: 'Site web', type: 'text' },
+  { name: 'booking_link', label: 'Lien de réservation', type: 'text' },
+  { name: 'affiliate_link', label: 'Lien affilié (Booking, etc.)', type: 'text', hint: 'Si rempli, sera utilisé en priorité avec rel="sponsored nofollow"' },
+  { name: 'address', label: 'Adresse', type: 'text' },
+  { name: 'latitude', label: 'Latitude', type: 'number' },
+  { name: 'longitude', label: 'Longitude', type: 'number' },
+  { name: 'published', label: 'Publié', type: 'boolean' },
+];
+---
+
+<AdminLayout title={isNew ? 'Nouvel hébergement' : 'Éditer hébergement'}>
+  <EntityForm
+    client:only="react"
+    table="accommodations"
+    fields={fields}
+    id={isNew ? undefined : id}
+    redirectTo="/admin/hebergements"
+    title={isNew ? 'Nouvel hébergement' : 'Éditer hébergement'}
+    defaults={{ published: true, amenities: [], biker_amenities: [] }}
+  />
+</AdminLayout>

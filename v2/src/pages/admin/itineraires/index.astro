@@ -1,0 +1,23 @@
+---
+import AdminLayout from '@/layouts/AdminLayout.astro';
+import EntityList from '@/components/admin/EntityList.tsx';
+export const prerender = false;
+---
+
+<AdminLayout title="Itinéraires">
+  <EntityList
+    client:only="react"
+    table="itineraries"
+    title="Itinéraires"
+    newHref="/admin/itineraires/new"
+    editHref={(id: string) => `/admin/itineraires/${id}`}
+    searchKey="title"
+    columns={[
+      { key: 'title', label: 'Titre' },
+      { key: 'region', label: 'Région' },
+      { key: 'difficulty', label: 'Difficulté' },
+      { key: 'distance', label: 'Distance' },
+      { key: 'published', label: 'Publié', format: (r) => (r.published ? 'oui' : 'non') },
+    ]}
+  />
+</AdminLayout>

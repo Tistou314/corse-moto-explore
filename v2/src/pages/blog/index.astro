@@ -1,0 +1,64 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Navbar from '@/components/Navbar.astro';
+import Footer from '@/components/Footer.astro';
+import EditorialCard from '@/components/EditorialCard.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { allBlogPosts } from '@/lib/data';
+import { breadcrumbJsonLd } from '@/lib/seo';
+
+const posts = allBlogPosts
+  .slice()
+  .sort((a, b) => (b.isoDate ?? '').localeCompare(a.isoDate ?? ''));
+
+const byCategory = new Map<string, typeof posts>();
+for (const p of posts) {
+  byCategory.set(p.category, [...(byCategory.get(p.category) ?? []), p]);
+}
+---
+
+<Layout
+  title="Carnet de route, articles sur la Corse à moto"
+  description="Conseils, expériences et savoir-faire pour préparer un voyage moto en Corse : équipement, saisons, itinéraires, culture locale."
+  path="/blog"
+  jsonLd={breadcrumbJsonLd([
+    { name: 'Accueil', path: '/' },
+    { name: 'Carnet', path: '/blog' },
+  ])}
+>
+  <Navbar slot="header" />
+  <Footer slot="footer" />
+
+  <section class="container pt-12 md:pt-16">
+    <Breadcrumbs items={[{ name: 'Accueil', path: '/' }, { name: 'Carnet' }]} />
+    <div class="mt-8 max-w-prose">
+      <h1 class="font-serif text-[clamp(2rem,3vw+1rem,3.75rem)] font-medium leading-tight tracking-tight">Carnet de route</h1>
+      <p class="mt-6 text-lg text-text-secondary">
+        Articles de fond pour préparer le voyage, anticiper les saisons, choisir son équipement et comprendre l'île au-delà de la carte routière.
+      </p>
+    </div>
+  </section>
+
+  {[...byCategory].map(([cat, list]) => (
+    <section class="container mt-20">
+      <header class="flex items-end justify-between gap-6 mb-10">
+        <h2 class="font-serif text-3xl md:text-4xl leading-tight capitalize">{cat.replace(/-/g, ' ')}</h2>
+        <p class="text-sm text-text-muted">{list.length} article{list.length > 1 ? 's' : ''}</p>
+      </header>
+      <div class="grid gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
+        {list.map((p) => (
+          <EditorialCard
+            href={`/blog/${p.slug}`}
+            title={p.title}
+            image={p.heroImage}
+            imageAlt={p.title}
+            kicker={p.readingTime}
+            excerpt={p.excerpt}
+            aspect="3/2"
+          />
+        ))}
+      </div>
+    </section>
+  ))}
+  <div class="pb-32"></div>
+</Layout>

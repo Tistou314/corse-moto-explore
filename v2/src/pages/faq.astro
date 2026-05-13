@@ -1,0 +1,77 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Navbar from '@/components/Navbar.astro';
+import Footer from '@/components/Footer.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { breadcrumbJsonLd } from '@/lib/seo';
+
+const faqs = [
+  {
+    q: "Quelle est la meilleure période pour rouler en Corse à moto ?",
+    a: "De mi-mai à fin juin, et de début septembre à mi-octobre. Températures clémentes (20 à 28°C), routes peu chargées, hébergements à des tarifs raisonnables. Juillet-août reste possible mais la chaleur (35°C+) et la fréquentation rendent l'expérience moins agréable.",
+  },
+  {
+    q: "Combien de jours faut-il prévoir pour faire le tour de la Corse ?",
+    a: "Sept jours pour un tour complet sans courir, dix à douze jours pour vraiment profiter, faire des détours et s'arrêter. Trois jours suffisent pour un thème (Cap Corse, Grand Sud, ou les calanques de Piana) mais ne permettent pas de faire le tour.",
+  },
+  {
+    q: "Quels documents et équipements sont obligatoires ?",
+    a: "Permis A ou A2, carte grise, attestation d'assurance, casque homologué, gants homologués. Recommandés : gilet jaune (sortie d'autoroute), trousse de secours, ampoules de rechange. Pour la traversée : pièce d'identité, billet de ferry.",
+  },
+  {
+    q: "Y a-t-il assez de stations-service pour rouler sereinement ?",
+    a: "Globalement oui sur l'axe Bastia-Ajaccio-Bonifacio, mais le Cap Corse, le centre montagneux et certaines portions du sud comptent peu de stations. Notre carte des stations stratégiques liste les points clés.",
+  },
+  {
+    q: "Quel type de moto privilégier ?",
+    a: "Trail, roadster ou GT polyvalent. Les routes sont étroites et sinueuses : une supersport est punitive, une grosse routière manque d'agilité. Idéalement : 600 à 1000 cc, position confortable, suspensions souples.",
+  },
+  {
+    q: "Combien coûte un voyage moto d'une semaine en Corse ?",
+    a: "Entre 700 et 1500 € par personne hors essence et selon la saison : traversée (200-300 € aller-retour moto + 1 personne), hébergement (50-150 €/nuit selon catégorie), repas (30-50 €/jour), entrées et activités.",
+  },
+];
+
+const jsonLd: Record<string, unknown>[] = [
+  breadcrumbJsonLd([{ name: 'Accueil', path: '/' }, { name: 'FAQ', path: '/faq' }]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+
+<Layout
+  title="Questions fréquentes — voyage moto en Corse"
+  description="Toutes les questions pratiques avant de partir : saison, durée, documents, stations, type de moto, budget."
+  path="/faq"
+  jsonLd={jsonLd}
+>
+  <Navbar slot="header" />
+  <Footer slot="footer" />
+
+  <section class="container pt-12 md:pt-16">
+    <Breadcrumbs items={[{ name: 'Accueil', path: '/' }, { name: 'Questions fréquentes' }]} />
+    <div class="mt-8 max-w-prose">
+      <h1 class="font-serif text-[clamp(2rem,3vw+1rem,3.75rem)] font-medium leading-tight tracking-tight">Questions fréquentes</h1>
+      <p class="mt-6 text-lg text-text-secondary">Réponses aux questions qu'on nous pose le plus souvent.</p>
+    </div>
+  </section>
+
+  <section class="container mt-16 mb-32 max-w-prose">
+    {faqs.map((f) => (
+      <details class="group border-t border-border py-6">
+        <summary class="cursor-pointer list-none font-serif text-xl md:text-2xl text-text-primary flex items-start justify-between gap-6">
+          <span>{f.q}</span>
+          <span aria-hidden="true" class="mt-2 text-text-muted transition group-open:rotate-45">+</span>
+        </summary>
+        <p class="mt-4 leading-relaxed text-text-secondary">{f.a}</p>
+      </details>
+    ))}
+  </section>
+</Layout>

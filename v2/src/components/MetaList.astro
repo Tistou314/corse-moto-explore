@@ -1,0 +1,20 @@
+---
+interface Entry {
+  label: string;
+  value: string | null | undefined;
+}
+interface Props {
+  items: Entry[];
+}
+const { items } = Astro.props;
+const filtered = items.filter((e) => e.value);
+---
+
+<dl class="grid grid-cols-1 gap-x-12 gap-y-4 text-base sm:grid-cols-2">
+  {filtered.map((e) => (
+    <div class="flex items-baseline justify-between gap-6 border-b border-border pb-3">
+      <dt class="text-text-muted">{e.label}</dt>
+      <dd class="text-right text-text-primary">{e.value}</dd>
+    </div>
+  ))}
+</dl>

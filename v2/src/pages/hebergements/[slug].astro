@@ -1,0 +1,132 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Navbar from '@/components/Navbar.astro';
+import Footer from '@/components/Footer.astro';
+import Hero from '@/components/Hero.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import MetaList from '@/components/MetaList.astro';
+import Button from '@/components/Button.astro';
+import { allAccommodations } from '@/lib/data';
+import { breadcrumbJsonLd } from '@/lib/seo';
+import { absoluteUrl } from '@/lib/utils';
+
+export async function getStaticPaths() {
+  return allAccommodations.map((a) => ({ params: { slug: a.slug }, props: { a } }));
+}
+
+const { a } = Astro.props as { a: (typeof allAccommodations)[number] };
+
+const typeLabel = { hotel: 'Hôtel', gite: 'Gîte', camping: 'Camping' }[a.type];
+
+const meta = [
+  { label: 'Type', value: typeLabel },
+  { label: 'Localisation', value: a.location },
+  { label: 'Tarifs', value: a.priceRange },
+  { label: 'Téléphone', value: a.contact?.phone },
+  { label: 'Email', value: a.contact?.email },
+  { label: 'Adresse', value: a.address },
+];
+
+const schemaType = a.type === 'hotel' ? 'Hotel' : a.type === 'camping' ? 'Campground' : 'LodgingBusiness';
+const jsonLd: Record<string, unknown>[] = [
+  breadcrumbJsonLd([
+    { name: 'Accueil', path: '/' },
+    { name: 'Hébergements', path: '/hebergements' },
+    { name: a.name, path: `/hebergements/${a.slug}` },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': schemaType,
+    name: a.name,
+    description: a.description,
+    url: absoluteUrl(`/hebergements/${a.slug}`),
+    image: a.heroImage,
+    address: { '@type': 'PostalAddress', streetAddress: a.address, addressLocality: a.location, addressCountry: 'FR' },
+    telephone: a.contact?.phone,
+    priceRange: a.priceRange,
+    ...(a.rating
+      ? {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: a.rating,
+            bestRating: 5,
+            ratingCount: 1,
+          },
+        }
+      : {}),
+  },
+];
+
+const bookHref = a.affiliateLink ?? a.bookingLink ?? a.contact?.website;
+const bookRel = a.affiliateLink ? 'sponsored nofollow noopener' : 'noopener';
+---
+
+<Layout
+  title={`${a.name} — ${typeLabel} motard-friendly en Corse`}
+  description={a.description}
+  path={`/hebergements/${a.slug}`}
+  image={a.heroImage}
+  jsonLd={jsonLd}
+>
+  <Navbar slot="header" />
+  <Footer slot="footer" />
+
+  <Hero title={a.name} kicker={`${a.location} · ${typeLabel}`} image={a.heroImage} alt={a.name} aspect="16/9">
+    <p class="mt-8 max-w-prose text-lg leading-relaxed text-text-secondary">{a.description}</p>
+  </Hero>
+
+  <section class="container mt-10">
+    <Breadcrumbs
+      items={[
+        { name: 'Accueil', path: '/' },
+        { name: 'Hébergements', path: '/hebergements' },
+        { name: a.name },
+      ]}
+    />
+  </section>
+
+  <section class="container mt-16 grid gap-12 md:grid-cols-[2fr,1fr] md:gap-20">
+    <div class="space-y-12">
+      {a.bikerAmenities.length > 0 && (
+        <div>
+          <h2 class="font-serif text-2xl md:text-3xl">Pour les motards</h2>
+          <ul class="mt-6 grid gap-3 sm:grid-cols-2">
+            {a.bikerAmenities.map((b) => (
+              <li class="border-b border-border pb-3 text-text-secondary">{b}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {a.amenities.length > 0 && (
+        <div>
+          <h2 class="font-serif text-2xl md:text-3xl">Services et équipements</h2>
+          <ul class="mt-6 grid gap-3 sm:grid-cols-2">
+            {a.amenities.map((b) => (
+              <li class="border-b border-border pb-3 text-text-secondary">{b}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+
+    <aside class="md:sticky md:top-20 md:h-fit">
+      <p class="text-xs uppercase tracking-[0.14em] text-text-muted">Informations pratiques</p>
+      <div class="mt-6">
+        <MetaList items={meta} />
+      </div>
+      {bookHref && (
+        <div class="mt-10">
+          <Button href={bookHref} rel={bookRel} target="_blank">Réserver</Button>
+          {a.contact?.website && a.contact.website !== bookHref && (
+            <p class="mt-4">
+              <a class="text-sm text-text-secondary border-b border-border hover:text-accent hover:border-accent" href={a.contact.website} target="_blank" rel="noopener">
+                Site officiel
+              </a>
+            </p>
+          )}
+        </div>
+      )}
+    </aside>
+  </section>
+  <div class="pb-32"></div>
+</Layout>
