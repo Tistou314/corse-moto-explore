@@ -6,7 +6,8 @@ import lighthouse from 'lighthouse';
 import puppeteer from 'puppeteer';
 
 const PORT = 4321;
-const SITE = `http://localhost:${PORT}`;
+const EXTERNAL_SITE = process.env.LIGHTHOUSE_SITE?.replace(/\/$/, '');
+const SITE = EXTERNAL_SITE ?? `http://localhost:${PORT}`;
 
 const TARGETS = [
   { path: '/', label: 'home' },
@@ -19,21 +20,25 @@ async function main() {
   const reportsDir = resolve('reports/lighthouse');
   await mkdir(reportsDir, { recursive: true });
 
-  console.log('▸ start static server on dist/client');
-  const preview = spawn(
-    'npx',
-    ['--yes', 'http-server', 'dist/client', '-p', String(PORT), '-a', '127.0.0.1', '--silent'],
-    { stdio: ['ignore', 'pipe', 'pipe'], env: process.env },
-  );
-  preview.stdout.on('data', () => {});
-  preview.stderr.on('data', (d) => process.stderr.write(d));
-  // wait for server to be ready
-  for (let i = 0; i < 30; i++) {
-    try {
-      const res = await fetch(SITE + '/');
-      if (res.ok) break;
-    } catch (_) {}
-    await wait(500);
+  let preview = null;
+  if (!EXTERNAL_SITE) {
+    console.log('▸ start static server on dist/client');
+    preview = spawn(
+      'npx',
+      ['--yes', 'http-server', 'dist/client', '-p', String(PORT), '-a', '127.0.0.1', '--silent'],
+      { stdio: ['ignore', 'pipe', 'pipe'], env: process.env },
+    );
+    preview.stdout.on('data', () => {});
+    preview.stderr.on('data', (d) => process.stderr.write(d));
+    for (let i = 0; i < 30; i++) {
+      try {
+        const res = await fetch(SITE + '/');
+        if (res.ok) break;
+      } catch (_) {}
+      await wait(500);
+    }
+  } else {
+    console.log(`▸ auditing external site: ${SITE}`);
   }
 
   console.log('▸ launch chrome');
@@ -101,7 +106,7 @@ async function main() {
   await writeFile(`${reportsDir}/_summary.json`, JSON.stringify(results, null, 2));
 
   await browser.close();
-  preview.kill('SIGTERM');
+  if (preview) preview.kill('SIGTERM');
 }
 
 main().catch((err) => {

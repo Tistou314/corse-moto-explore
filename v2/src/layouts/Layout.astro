@@ -1,13 +1,16 @@
 ---
 import '@/styles/global.css';
 import { buildSeo, organizationJsonLd, websiteJsonLd, SITE_NAME, type SeoProps } from '@/lib/seo';
+import Navbar from '../components/Navbar.tsx';
+import Footer from '../components/Footer.tsx';
 
 interface Props extends SeoProps {
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   bodyClass?: string;
+  hideChrome?: boolean;
 }
 
-const { jsonLd, bodyClass, ...seoProps } = Astro.props;
+const { jsonLd, bodyClass, hideChrome = false, ...seoProps } = Astro.props;
 const seo = buildSeo({
   ...seoProps,
   path: seoProps.path ?? Astro.url.pathname,
@@ -23,7 +26,7 @@ else if (jsonLd) jsonLdArr.push(jsonLd);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#1a3a5c" />
+    <meta name="theme-color" content="#0EA5E9" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate icon" href="/favicon.ico" />
     <link rel="manifest" href="/manifest.webmanifest" />
@@ -68,10 +71,12 @@ else if (jsonLd) jsonLdArr.push(jsonLd);
   </head>
   <body class={bodyClass}>
     <a href="#main" class="skip-link">Aller au contenu</a>
+    {!hideChrome && <Navbar client:load />}
     <slot name="header" />
     <main id="main">
       <slot />
     </main>
+    {!hideChrome && <Footer client:visible />}
     <slot name="footer" />
   </body>
 </html>

@@ -1,113 +1,29 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import Navbar from '@/components/Navbar.astro';
-import Footer from '@/components/Footer.astro';
-import EditorialCard from '@/components/EditorialCard.astro';
-import Button from '@/components/Button.astro';
+import HomePage from '@/components/pages/HomePage';
 import { allItineraries, allAccommodations, allBlogPosts } from '@/lib/data';
 
-const heroItineraries = allItineraries.slice(0, 3);
-const heroAccommodations = allAccommodations.slice(0, 3);
-const heroPosts = allBlogPosts
+const featuredItineraries = allItineraries.slice(0, 3);
+const recentPosts = allBlogPosts
   .slice()
   .sort((a, b) => (b.isoDate ?? '').localeCompare(a.isoDate ?? ''))
   .slice(0, 3);
+const featuredHotels = allAccommodations.filter((a) => a.type === 'hotel').slice(0, 3);
+const featuredCampings = allAccommodations.filter((a) => a.type === 'camping').slice(0, 3);
+const featuredGites = allAccommodations.filter((a) => a.type === 'gite').slice(0, 3);
 ---
 
 <Layout
-  title="Corse à moto, itinéraires et hébergements pour rouler l'île"
-  description="Itinéraires moto sélectionnés, hébergements adaptés aux motards, stations-service stratégiques et guide pratique pour explorer la Corse à deux roues."
+  title="La Corse à Moto - Itinéraires, Hébergements & Guide Complet"
+  description="Découvrez les meilleurs itinéraires moto en Corse, des hébergements adaptés aux motards et un guide pratique complet pour explorer l'Île de Beauté en deux-roues."
   path="/"
 >
-  <Navbar slot="header" />
-  <Footer slot="footer" />
-
-  <section class="container pt-16 md:pt-28 pb-20 md:pb-32">
-    <p class="text-sm uppercase tracking-[0.18em] text-text-muted">Guide éditorial</p>
-    <h1 class="mt-4 max-w-[18ch] font-serif font-medium tracking-tight text-[clamp(2.25rem,5vw+1rem,5rem)] leading-[1.02]">
-      La Corse, route après route.
-    </h1>
-    <p class="mt-8 max-w-prose text-lg leading-relaxed text-text-secondary">
-      {allItineraries.length} itinéraires testés au guidon, {allAccommodations.length} hébergements pensés pour les motards, {allBlogPosts.length} articles de fond et plus de cent stations-service pour préparer chaque étape sans s'inquiéter de la jauge.
-    </p>
-    <div class="mt-12 flex flex-wrap gap-x-10 gap-y-4">
-      <Button href="/itineraires">Voir les itinéraires</Button>
-      <Button href="/guide-pratique" variant="secondary">Lire le guide</Button>
-    </div>
-  </section>
-
-  <section class="container py-24 border-t border-border">
-    <header class="flex items-end justify-between gap-6 mb-12">
-      <div>
-        <p class="text-sm uppercase tracking-[0.18em] text-text-muted">Routes</p>
-        <h2 class="mt-3 font-serif text-3xl md:text-4xl leading-tight">Itinéraires sélectionnés</h2>
-      </div>
-      <a href="/itineraires" class="hidden md:inline border-b border-text-primary pb-1 text-sm text-text-primary hover:text-accent hover:border-accent">
-        Voir les {allItineraries.length}
-      </a>
-    </header>
-    <div class="grid gap-10 md:grid-cols-3 md:gap-x-8">
-      {heroItineraries.map((it) => (
-        <EditorialCard
-          href={`/itineraires/${it.slug}`}
-          title={it.title}
-          image={it.heroImage}
-          imageAlt={it.title}
-          kicker={it.region}
-          excerpt={it.description}
-          aspect="4/3"
-        />
-      ))}
-    </div>
-  </section>
-
-  <section class="container py-24 border-t border-border">
-    <header class="flex items-end justify-between gap-6 mb-12">
-      <div>
-        <p class="text-sm uppercase tracking-[0.18em] text-text-muted">Étapes</p>
-        <h2 class="mt-3 font-serif text-3xl md:text-4xl leading-tight">Dormir entre deux routes</h2>
-      </div>
-      <a href="/hebergements" class="hidden md:inline border-b border-text-primary pb-1 text-sm text-text-primary hover:text-accent hover:border-accent">
-        Tous les hébergements
-      </a>
-    </header>
-    <div class="grid gap-10 md:grid-cols-3 md:gap-x-8">
-      {heroAccommodations.map((a) => (
-        <EditorialCard
-          href={`/hebergements/${a.slug}`}
-          title={a.name}
-          image={a.heroImage}
-          imageAlt={a.name}
-          kicker={a.location}
-          excerpt={a.description}
-          aspect="4/3"
-        />
-      ))}
-    </div>
-  </section>
-
-  <section class="container py-24 border-t border-border">
-    <header class="flex items-end justify-between gap-6 mb-12">
-      <div>
-        <p class="text-sm uppercase tracking-[0.18em] text-text-muted">Carnet</p>
-        <h2 class="mt-3 font-serif text-3xl md:text-4xl leading-tight">À lire avant de partir</h2>
-      </div>
-      <a href="/blog" class="hidden md:inline border-b border-text-primary pb-1 text-sm text-text-primary hover:text-accent hover:border-accent">
-        Tous les articles
-      </a>
-    </header>
-    <div class="grid gap-10 md:grid-cols-3 md:gap-x-8">
-      {heroPosts.map((p) => (
-        <EditorialCard
-          href={`/blog/${p.slug}`}
-          title={p.title}
-          image={p.heroImage}
-          imageAlt={p.title}
-          kicker={p.category}
-          excerpt={p.excerpt}
-          aspect="4/3"
-        />
-      ))}
-    </div>
-  </section>
+  <HomePage
+    client:load
+    featuredItineraries={featuredItineraries}
+    recentPosts={recentPosts}
+    featuredHotels={featuredHotels}
+    featuredCampings={featuredCampings}
+    featuredGites={featuredGites}
+  />
 </Layout>

@@ -1,13 +1,9 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import Navbar from '@/components/Navbar.astro';
-import Footer from '@/components/Footer.astro';
-import EditorialCard from '@/components/EditorialCard.astro';
-import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import ItinerairesPage from '@/components/pages/ItinerairesPage';
 import { allItineraries } from '@/lib/data';
 import { breadcrumbJsonLd } from '@/lib/seo';
 
-const items = allItineraries;
 const jsonLd = breadcrumbJsonLd([
   { name: 'Accueil', path: '/' },
   { name: 'Itinéraires', path: '/itineraires' },
@@ -15,40 +11,10 @@ const jsonLd = breadcrumbJsonLd([
 ---
 
 <Layout
-  title="Itinéraires moto en Corse, sélection testée par des motards"
-  description="Huit itinéraires moto incontournables en Corse, du Cap Corse aux calanques de Piana et au Grand Sud, avec dénivelés, durées et conseils route."
+  title="Itinéraires Moto en Corse - Les Plus Belles Routes de l'Île de Beauté"
+  description="Découvrez les plus beaux itinéraires moto de Corse : routes panoramiques, cols mythiques et parcours adaptés à tous les niveaux. Traces GPS incluses."
   path="/itineraires"
   jsonLd={jsonLd}
 >
-  <Navbar slot="header" />
-  <Footer slot="footer" />
-
-  <section class="container pt-12 md:pt-16">
-    <Breadcrumbs
-      items={[
-        { name: 'Accueil', path: '/' },
-        { name: 'Itinéraires' },
-      ]}
-    />
-    <div class="mt-8 max-w-prose">
-      <h1 class="font-serif text-[clamp(2rem,3vw+1rem,3.75rem)] font-medium leading-tight tracking-tight">Itinéraires moto en Corse</h1>
-      <p class="mt-6 text-lg text-text-secondary">
-        Une sélection courte, faite au guidon. Chaque itinéraire indique le tracé, le profil, les passages techniques et les arrêts qui valent un détour.
-      </p>
-    </div>
-  </section>
-
-  <section class="container mt-20 mb-32 grid gap-x-8 gap-y-16 md:grid-cols-2 lg:grid-cols-3">
-    {items.map((it) => (
-      <EditorialCard
-        href={`/itineraires/${it.slug}`}
-        title={it.title}
-        image={it.heroImage}
-        imageAlt={it.title}
-        kicker={it.region}
-        excerpt={it.description}
-        aspect="4/3"
-      />
-    ))}
-  </section>
+  <ItinerairesPage client:load itineraries={allItineraries} />
 </Layout>

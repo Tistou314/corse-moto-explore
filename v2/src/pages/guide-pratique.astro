@@ -1,63 +1,19 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import Navbar from '@/components/Navbar.astro';
-import Footer from '@/components/Footer.astro';
-import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import GuidePratiquePage from '@/components/pages/GuidePratiquePage';
 import { breadcrumbJsonLd } from '@/lib/seo';
 
-const sections = [
-  {
-    title: 'Traversée maritime',
-    body: 'Trois compagnies desservent l\'île depuis le continent : Corsica Ferries, Corsica Linea, La Méridionale. Réserver tôt en haute saison (jusqu\'à 50% d\'économie). Pour la moto, prévoir des sangles à embase plate et un cadenas U.',
-  },
-  {
-    title: 'Réseau routier',
-    body: 'Beaucoup de routes étroites, sinueuses, parfois sans glissière. Compter en moyenne 50 km/h sur les belles routes panoramiques. Les D80, D81 et T20 sont les axes les plus connus. Penser à l\'eau et aux pauses, le soleil tape vite.',
-  },
-  {
-    title: 'Carburant',
-    body: 'Beaucoup moins de stations qu\'en métropole. Faire le plein dès qu\'on passe à un tiers de réservoir, surtout dans le Cap Corse, le centre montagneux et le sud. Voir la page "Stations stratégiques".',
-  },
-  {
-    title: 'Hébergement',
-    body: 'Privilégier les adresses avec parking sécurisé ou garage fermé, surtout en zone urbaine. Les Best Western Corsica Hotels ont une charte motard. Voir la sélection complète sur "Hébergements".',
-  },
-  {
-    title: 'Saisons',
-    body: 'Mai, juin, septembre et début octobre offrent le meilleur compromis : températures clémentes, routes peu chargées, hébergements à moitié prix. Juillet-août : très chaud, surfréquenté.',
-  },
-  {
-    title: 'Équipement',
-    body: 'Veste textile été ventilée, gants courts été, sous-vêtements techniques. Ajouter une polaire légère et un coupe-vent pour les cols (jusqu\'à 1500 m). Casque modulable pratique pour les arrêts photo.',
-  },
-];
+const jsonLd = breadcrumbJsonLd([
+  { name: 'Accueil', path: '/' },
+  { name: 'Guide pratique', path: '/guide-pratique' },
+]);
 ---
 
 <Layout
-  title="Guide pratique pour rouler en Corse à moto"
-  description="Préparer un voyage moto en Corse : traversée, réseau routier, carburant, hébergement, saisons, équipement. Les bases pour partir bien préparé."
+  title="Guide Pratique Moto Corse - Conseils & Astuces Essentiels"
+  description="Conseils, astuces et informations essentielles pour préparer et profiter pleinement de votre voyage à moto en Corse. Équipement, sécurité, traversée et saisons."
   path="/guide-pratique"
-  jsonLd={breadcrumbJsonLd([{ name: 'Accueil', path: '/' }, { name: 'Guide pratique', path: '/guide-pratique' }])}
+  jsonLd={jsonLd}
 >
-  <Navbar slot="header" />
-  <Footer slot="footer" />
-
-  <section class="container pt-12 md:pt-16">
-    <Breadcrumbs items={[{ name: 'Accueil', path: '/' }, { name: 'Guide pratique' }]} />
-    <div class="mt-8 max-w-prose">
-      <h1 class="font-serif text-[clamp(2rem,3vw+1rem,3.75rem)] font-medium leading-tight tracking-tight">Guide pratique</h1>
-      <p class="mt-6 text-lg text-text-secondary">
-        L'essentiel pour préparer un voyage moto en Corse : ce qu'il faut savoir avant d'embarquer.
-      </p>
-    </div>
-  </section>
-
-  <section class="container mt-20 mb-32 max-w-prose space-y-16">
-    {sections.map((s) => (
-      <div>
-        <h2 class="font-serif text-2xl md:text-3xl">{s.title}</h2>
-        <p class="mt-4 leading-relaxed text-text-secondary">{s.body}</p>
-      </div>
-    ))}
-  </section>
+  <GuidePratiquePage client:load />
 </Layout>

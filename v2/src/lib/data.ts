@@ -65,9 +65,67 @@ if (FORCE_LEGACY || !SUPABASE_URL) {
   }
 }
 
-export const allItineraries = loaded.allItineraries;
-export const allAccommodations = loaded.allAccommodations;
-export const allBlogPosts = loaded.allBlogPosts;
+function withLegacyImageAlias<T extends { heroImage?: string; image?: string }>(item: T): T {
+  if (!item.image && item.heroImage) (item as Record<string, unknown>).image = item.heroImage;
+  if (!item.heroImage && item.image) (item as Record<string, unknown>).heroImage = item.image;
+  return item;
+}
+
+function withSlugAsId<T extends { id?: string; slug?: string }>(item: T): T {
+  if (item.slug) {
+    (item as Record<string, unknown>)._uuid = item.id;
+    (item as Record<string, unknown>).id = item.slug;
+  }
+  return item;
+}
+
+function withLegacyAuthor<T extends { authorName?: string; authorAvatar?: string; authorBio?: string; author?: unknown }>(
+  post: T,
+): T {
+  if (!post.author) {
+    (post as Record<string, unknown>).author = {
+      name: post.authorName ?? 'Corse à moto',
+      avatar: post.authorAvatar ?? '',
+      bio: post.authorBio ?? '',
+    };
+  }
+  return post;
+}
+
+export const allItineraries = loaded.allItineraries.map(withLegacyImageAlias).map(withSlugAsId);
+export const allAccommodations = loaded.allAccommodations.map(withLegacyImageAlias).map(withSlugAsId);
+
+// Build the set of valid blog slugs first, then rewrite content links so
+// markdown bodies don't carry [text](/blog/<missing-slug>) anchors.
+const blogPostsBase = loaded.allBlogPosts
+  .map(withLegacyImageAlias)
+  .map(withLegacyAuthor)
+  .map(withSlugAsId);
+const validBlogSlugs = new Set(blogPostsBase.map((p) => p.slug).filter(Boolean) as string[]);
+
+function rewriteBlogContent(content: string | undefined): string | undefined {
+  if (!content) return content;
+  // [text](/blog/<slug>) — drop the link if slug is missing, keep the text.
+  let out = content.replace(
+    /\[([^\]]+)\]\(\/blog\/([a-z0-9-]+)\)/gi,
+    (m, text: string, slug: string) => (validBlogSlugs.has(slug) ? m : text),
+  );
+  // [CTA:text](/blog/<slug>) — same logic.
+  out = out.replace(
+    /\[CTA:([^\]]+)\]\(\/blog\/([a-z0-9-]+)\)/gi,
+    (m, text: string, slug: string) => (validBlogSlugs.has(slug) ? m : text),
+  );
+  // Legacy /blog/stations-service-corse pointed to the deprecated SPA
+  // article; route it to the dedicated /stations-service page in v2.
+  out = out.replace(/\/blog\/stations-service-corse\b/g, '/stations-service');
+  return out;
+}
+
+export const allBlogPosts = blogPostsBase.map((p) => {
+  const post = p as typeof p & { content?: string };
+  if (post.content) post.content = rewriteBlogContent(post.content);
+  return p;
+});
 export const allGasStations = loaded.allGasStations;
 
 export function getItineraryBySlug(slug: string) {

@@ -1,0 +1,52 @@
+import AccommodationHeader from '../../../../src/components/accommodations/AccommodationHeader';
+import RatingStars from '../../../../src/components/accommodations/RatingStars';
+import ContactInfo from '../../../../src/components/accommodations/ContactInfo';
+import BikerAmenities from '../../../../src/components/accommodations/BikerAmenities';
+import AccommodationServices from '../../../../src/components/accommodations/AccommodationServices';
+import PriceDisplay from '../../../../src/components/accommodations/PriceDisplay';
+import DetailedDescription from '../../../../src/components/accommodations/DetailedDescription';
+import ActionButtons from '../../../../src/components/accommodations/ActionButtons';
+import OptimizedImage from '../../../../src/components/ui/optimized-image';
+import type { Accommodation } from '@/lib/data';
+
+interface Props {
+  accommodation: Accommodation;
+}
+
+export default function AccommodationDetailPage({ accommodation }: Props) {
+  const a = accommodation as Accommodation & { image?: string };
+  const imageToUse = a.image ?? a.heroImage;
+  const websiteUrl = a.contact?.website;
+
+  return (
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid md:grid-cols-2 gap-8">
+          <div>
+            <div className="aspect-[4/3] bg-muted rounded-lg overflow-hidden">
+              <OptimizedImage
+                src={imageToUse}
+                alt={`${a.name} - Vue`}
+                fallbackSrc="https://images.unsplash.com/photo-1558882224-dda166733046?auto=format&fit=crop&w=800&q=60"
+                className="rounded-lg shadow-lg object-cover w-full h-full"
+                aspectRatio="4/3"
+                priority={true}
+              />
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg p-6 shadow-lg">
+            <AccommodationHeader accommodation={a as never} />
+            <RatingStars rating={a.rating} />
+            <PriceDisplay priceRange={a.priceRange} rating={a.rating} />
+            <DetailedDescription description={a.description} location={a.location} />
+            <ContactInfo accommodation={a as never} />
+            <AccommodationServices amenities={a.amenities} />
+            <BikerAmenities amenities={a.bikerAmenities} />
+            <ActionButtons websiteUrl={websiteUrl} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
