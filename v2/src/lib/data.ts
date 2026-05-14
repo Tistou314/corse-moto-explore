@@ -71,6 +71,14 @@ function withLegacyImageAlias<T extends { heroImage?: string; image?: string }>(
   return item;
 }
 
+function withSlugAsId<T extends { id?: string; slug?: string }>(item: T): T {
+  if (item.slug) {
+    (item as Record<string, unknown>)._uuid = item.id;
+    (item as Record<string, unknown>).id = item.slug;
+  }
+  return item;
+}
+
 function withLegacyAuthor<T extends { authorName?: string; authorAvatar?: string; authorBio?: string; author?: unknown }>(
   post: T,
 ): T {
@@ -84,9 +92,12 @@ function withLegacyAuthor<T extends { authorName?: string; authorAvatar?: string
   return post;
 }
 
-export const allItineraries = loaded.allItineraries.map(withLegacyImageAlias);
-export const allAccommodations = loaded.allAccommodations.map(withLegacyImageAlias);
-export const allBlogPosts = loaded.allBlogPosts.map(withLegacyImageAlias).map(withLegacyAuthor);
+export const allItineraries = loaded.allItineraries.map(withLegacyImageAlias).map(withSlugAsId);
+export const allAccommodations = loaded.allAccommodations.map(withLegacyImageAlias).map(withSlugAsId);
+export const allBlogPosts = loaded.allBlogPosts
+  .map(withLegacyImageAlias)
+  .map(withLegacyAuthor)
+  .map(withSlugAsId);
 export const allGasStations = loaded.allGasStations;
 
 export function getItineraryBySlug(slug: string) {
