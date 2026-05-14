@@ -1,8 +1,8 @@
 ---
 import '@/styles/global.css';
 import { buildSeo, organizationJsonLd, websiteJsonLd, SITE_NAME, type SeoProps } from '@/lib/seo';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import Navbar from '../components/Navbar.tsx';
+import Footer from '../components/Footer.tsx';
 
 interface Props extends SeoProps {
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
