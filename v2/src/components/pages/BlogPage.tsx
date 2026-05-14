@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Hero from '../../../../src/components/Hero';
 import BlogPostsList from '../../../../src/components/blog/BlogPostsList';
 import SearchAndFilter from '../../../../src/components/blog/SearchAndFilter';
-import FeaturedResources from '../../../../src/components/blog/FeaturedResources';
+import FeaturedResources from '../legacy-overrides/FeaturedResources';
 import NewsletterSignup from '../../../../src/components/blog/NewsletterSignup';
 import type { BlogPost } from '@/lib/data';
 

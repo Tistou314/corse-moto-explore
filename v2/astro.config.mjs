@@ -18,11 +18,25 @@ const SITE_URL = process.env.PUBLIC_SITE_URL ?? 'https://corseamoto.com';
  * importer is a v2 file (→ v2/src) or a legacy file (→ ../src). Lets us
  * read the legacy data modules untouched at build time.
  */
+const v2InternalLinking = pathResolve(__dirname, 'src/lib/internal-linking-v2.ts');
+
 function aliasByImporter() {
   return {
     name: 'corseamoto:alias-by-importer',
     enforce: 'pre',
     resolveId(source, importer) {
+      // Force the v2 internal-linking implementation everywhere so the
+      // legacy markdown renderer cannot inject /blog/<slug> links to
+      // posts that don't exist in the v2 dataset. Catches both the
+      // alias form (@/utils/markdown/internalLinking) and the relative
+      // form (./internalLinking) used by legacy markdownFormatter.
+      if (
+        source === '@/utils/markdown/internalLinking' ||
+        (source === './internalLinking' &&
+          importer?.includes(`${sep}src${sep}utils${sep}markdown${sep}`))
+      ) {
+        return this.resolve(v2InternalLinking, importer, { skipSelf: true });
+      }
       if (!source.startsWith('@/')) return null;
       const rel = source.slice(2);
       const fromV2 = importer ? importer.includes(`${sep}v2${sep}src${sep}`) : true;
