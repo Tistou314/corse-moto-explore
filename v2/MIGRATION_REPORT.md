@@ -145,6 +145,14 @@ Tout le contenu de `corse-moto-explore/src/data/**/*.ts` est lu **sans modificat
 
 ## 14. Bloqueurs résolus pour la livraison
 
-- ⏳ Workflow GitHub Actions `migrate-data.yml` à exécuter (secrets `PUBLIC_SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` à ajouter au repo)
-- ⏳ Repo `Tistou314/corseamoto-v2` à créer + connexion Vercel + DNS InternetBS sur `corseamoto.com`
-- ⏳ Audit Lighthouse + Rich Results + Mobile-Friendly + screenshots responsive post-deploy
+- ✅ Workflow GitHub Actions `migrate-data.yml` exécuté (run #3 vert, 262 lignes en base)
+- ✅ Repo `Tistou314/corse-moto-explore` connecté à Vercel, build et déploiement OK sur `corse-moto-explore.vercel.app` (DNS InternetBS sur `corseamoto.com` : à confirmer côté Baptiste)
+- ⏳ Audit Lighthouse + Rich Results + Mobile-Friendly + screenshots responsive post-deploy (workflow `.github/workflows/lighthouse-prod.yml` prêt, à lancer en CI une fois `main` redéployé après PR #9)
+
+## 15. Mise à jour design — 2026-05-14
+
+Le design éditorial sobre initial (Phase 2) a été remplacé par une **restauration du design legacy** (palette `corsica-*`, typo Poppins/Playfair, gradients, shadows, animations). Seuls les 4 cartouches colorés des pages itinéraire ont été redesignés (cards blanches, bordure colorée 4px à gauche, ombre douce) — c'était la demande d'origine de Baptiste, mal interprétée par le brief initial. Voir `MIGRATION_LOG.md` section "2026-05-14" pour le détail.
+
+Stack et infrastructure inchangées : Astro 5.18, Tailwind 3, shadcn/ui, Supabase, MapLibre, Vercel, sitemap auto, SEO SSG complet, 0 lien interne cassé. Le legacy à la racine reste strictement intact.
+
+PR #9 mergée → `main` HEAD `01e0924`.
