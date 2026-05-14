@@ -284,3 +284,47 @@ Seul échec restant : `errors-in-console` pour des images Unsplash avec `ERR_CER
 - `main` HEAD = ec4dd50 (squash merge des fixes)
 - Branche `claude/session-goals-5y5gu` conservée comme historique de travail
 - `src/` legacy intact (zéro modification)
+
+## 2026-05-14 — Session restauration design legacy
+
+### Contexte
+Le brief initial `/goal` qui a déclenché v2 imposait une "refonte éditoriale sobre" (non négociable selon le brief). Une fois la prod en ligne, Baptiste a constaté que ce design ne correspondait pas à ce qu'il avait travaillé sur le legacy : il voulait juste redesigner les 4 cartouches colorés des fiches itinéraire, pas refondre tout le visuel. Décision : restaurer le design legacy à 100% tout en gardant Astro SSG + Supabase + BO + SEO, puis redesigner uniquement les 4 cartouches.
+
+### Bloqueur prod résolu
+Avant la session, le dernier déploiement Vercel échouait : il tournait sur le commit `267665a` (avant le fix PR #8 `e6492c9`) parce que les "Redeploy of" rejouent le commit d'origine au lieu de prendre le HEAD courant. Solution : Promote du Preview vert `BbCnb3yec` (sur `009caea` = équivalent `e6492c9`) en Production. Production OK sur le fix.
+
+### Restauration design legacy
+- **Tokens** : `tailwind.config.ts` v2 réécrit avec la palette `corsica-*` complète (azure/emerald/coral/blue/charcoal/slate/pearl/ruby 50-900), shadows `soft|medium|strong|glow`, animations `fade-in|slide-up|scale-in|shimmer`, polices Inter + Poppins + Playfair Display (via `@fontsource/*`). `global.css` réécrit avec les variables HSL legacy (`--primary 199 89% 55%`, `--accent 199 89% 55%`, `--radius 0.75rem`), styles `.blog-content`, `.btn-primary`, `.btn-secondary`.
+- **Shims** : `src/lib/router-shim.tsx` (`react-router-dom` → balises `<a>`), `src/lib/helmet-shim.tsx` (noop), aliasés dans `astro.config.mjs`. Tailwind `content` étendu à `../src/components` et `../src/pages` pour que les classes legacy soient générées.
+- **Chrome** : `Navbar.tsx` et `Footer.tsx` v2 (copies legacy avec URLs v2 — `/stations-service` au lieu de `/gas-stations`, `/serp-key` retiré) injectés en islands React par défaut dans `Layout.astro`.
+- **11 pages publiques** réécrites en Astro SSG + island React qui wrappe les composants legacy (`ModernHero`, `ItineraryCard`, `ItineraryHero`, `ItineraryDescription`, `ItinerarySidebar`, `AccommodationCard`, `AccommodationFilters`, `BlogPostsList`, `BlogPostHeader`, `BlogPostContent`, `GuideTabs`, gas-stations tabs, `ContactForm`). `/admin/*` inchangé.
+- **Composants éditoriaux supprimés** : `Navbar.astro`, `Footer.astro`, `Hero.astro`, `Breadcrumbs.astro`, `Button.astro`, `EditorialCard.astro`, `StatLine.astro`, `MetaList.astro`, `ArticleProse.astro`.
+
+### Fixes liés à la restauration
+- **`id` ← `slug`** dans `data.ts` : les composants legacy construisent leurs URLs depuis `.id` (qui était la kebab-slug dans le legacy). En v2 `.id` est un UUID Supabase et la kebab est dans `.slug`. Sans normalisation toutes les URLs internes pointaient vers `/itineraires/<uuid>` → 404. L'UUID original est conservé sous `_uuid`.
+- **`heroImage` ↔ `image`** : alias bidirectionnel dans `data.ts` pour que les composants legacy accèdent à `.image` et les pages v2 à `.heroImage`.
+- **`author` nested** : `authorName`/`authorAvatar`/`authorBio` plat de Supabase normalisé en `author.{name,avatar,bio}` attendu par `BlogPostHeader`/`AuthorCard` legacy.
+- **Navbar/Footer mal résolus** : `aliasByImporter` plugin ne reconnaît pas Layout.astro comme un fichier v2 (Astro passe au plugin un importer virtuel, pas le path .astro), donc Rollup bundlait le legacy Navbar/Footer (avec `/gas-stations`). Fix : import relatif explicite `../components/Navbar.tsx` dans Layout.astro.
+
+### Redesign des 4 blocs itinéraire
+- Override `v2/src/components/legacy-overrides/ItineraryDescription.tsx` qui reprend strictement le rendu markdown + la grille d'infos legacy mais remplace les 2 sections colorées.
+- **Layout** : Départ → Arrivée fusionnés en bandeau timeline horizontal (s'empile en vertical mobile) en haut ; Points forts / Conseils utiles en grille 2 colonnes en dessous.
+- **Style** : cards blanches, bordure colorée 4px à gauche, ombre douce, icône en pastille assortie.
+- **Palette** : Départ `corsica-emerald` (Flag), Arrivée `corsica-coral` (MapPin), Points forts `corsica-azure` (Award), Conseils `corsica-blue` #1a3a5c (Lightbulb — plus chaleureux que l'AlertTriangle d'origine).
+
+### Audit liens internes (1 build clean)
+6 destinations 404 trouvées et toutes éliminées :
+- `/blog/stations-service-corse` (hardcodé `FeaturedResources`) → override v2 pointant vers `/stations-service`
+- 4 articles legacy non migrés vers Supabase (`tour-cap-corse-moto`, `route-des-vins-corses`, `route-grand-sud-2024`, `communautes-motards-corses`) — référencés par auto-injection de `addInternalLinks` ET dans le corps markdown de certains articles. Solution : (a) override `v2/src/lib/internal-linking-v2.ts` qui ne considère que les articles présents dans le dataset v2, plugin Vite étendu pour intercepter aussi l'import relatif `./internalLinking` ; (b) `rewriteBlogContent` dans `data.ts` qui supprime les `[texte](/blog/<slug-manquant>)` et `[CTA:texte](/blog/<slug-manquant>)`, et redirige `/blog/stations-service-corse` → `/stations-service`
+- Lien malformé `[route](/blog/route-grand-sud-2024` issu d'une réécriture markdown bancale — éliminé par le rewriter ci-dessus
+
+Audit final sur `dist/client/**/*.html` : **0 lien interne cassé**.
+
+### Workflow Lighthouse prod
+`.github/workflows/lighthouse-prod.yml` (`workflow_dispatch`) : audit les 4 URLs canoniques sur l'URL prod passée en input (défaut `corse-moto-explore.vercel.app`), exporte les rapports JSON en artefact GitHub. Le script `scripts/lighthouse-audit.mjs` accepte désormais une variable d'env `LIGHTHOUSE_SITE` pour skipper le serveur local et auditer une URL externe.
+
+### État final
+- PR #9 mergée → main HEAD `01e0924`
+- Branche `claude/continue-migration-P5nSV` conservée comme historique
+- Legacy à la racine (`src/`) toujours strictement intact (zéro modification — tous les changements sont des wrappers ou overrides dans `v2/`)
+
