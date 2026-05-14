@@ -1,0 +1,40 @@
+name: Lighthouse audit (prod)
+
+on:
+  workflow_dispatch:
+    inputs:
+      site:
+        description: 'Public URL to audit (no trailing slash)'
+        required: true
+        default: 'https://corse-moto-explore.vercel.app'
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: v2/package-lock.json
+
+      - name: Install deps
+        working-directory: v2
+        run: npm ci
+
+      - name: Run Lighthouse on prod URL
+        working-directory: v2
+        env:
+          LIGHTHOUSE_SITE: ${{ inputs.site }}
+        run: node scripts/lighthouse-audit.mjs
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-prod-reports
+          path: v2/reports/lighthouse/
+          if-no-files-found: error
