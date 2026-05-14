@@ -1,8 +1,5 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import Navbar from '@/components/Navbar.astro';
-import Footer from '@/components/Footer.astro';
-import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import { breadcrumbJsonLd } from '@/lib/seo';
 
 const faqs = [
@@ -47,31 +44,37 @@ const jsonLd: Record<string, unknown>[] = [
 ---
 
 <Layout
-  title="Questions fréquentes — voyage moto en Corse"
-  description="Toutes les questions pratiques avant de partir : saison, durée, documents, stations, type de moto, budget."
+  title="FAQ - Questions Fréquentes Moto Corse | Conseils & Réponses"
+  description="Toutes les réponses aux questions fréquentes sur les voyages moto en Corse : meilleure période, ferry, équipement, itinéraires et conseils pratiques."
   path="/faq"
   jsonLd={jsonLd}
 >
-  <Navbar slot="header" />
-  <Footer slot="footer" />
+  <div class="bg-gray-50 py-16 min-h-screen">
+    <div class="container mx-auto px-4">
+      <div class="mb-12 text-center pt-20">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-corsica-charcoal font-heading">
+          Foire Aux Questions
+        </h1>
+        <p class="text-lg text-corsica-slate max-w-3xl mx-auto">
+          Retrouvez les réponses aux questions les plus fréquentes sur la découverte de la Corse à moto.
+        </p>
+      </div>
 
-  <section class="container pt-12 md:pt-16">
-    <Breadcrumbs items={[{ name: 'Accueil', path: '/' }, { name: 'Questions fréquentes' }]} />
-    <div class="mt-8 max-w-prose">
-      <h1 class="font-serif text-[clamp(2rem,3vw+1rem,3.75rem)] font-medium leading-tight tracking-tight">Questions fréquentes</h1>
-      <p class="mt-6 text-lg text-text-secondary">Réponses aux questions qu'on nous pose le plus souvent.</p>
+      <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md p-6 md:p-8">
+        <ul class="space-y-4">
+          {faqs.map((f, i) => (
+            <li>
+              <details class="group border-b border-gray-200 pb-4">
+                <summary class="cursor-pointer list-none text-lg font-medium text-corsica-charcoal py-4 hover:text-corsica-azure transition-colors flex items-start justify-between gap-6">
+                  <span>{f.q}</span>
+                  <span aria-hidden="true" class="mt-1 text-corsica-azure transition group-open:rotate-45 text-xl">+</span>
+                </summary>
+                <p class="text-corsica-slate pb-2 pt-2 leading-relaxed">{f.a}</p>
+              </details>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
-  </section>
-
-  <section class="container mt-16 mb-32 max-w-prose">
-    {faqs.map((f) => (
-      <details class="group border-t border-border py-6">
-        <summary class="cursor-pointer list-none font-serif text-xl md:text-2xl text-text-primary flex items-start justify-between gap-6">
-          <span>{f.q}</span>
-          <span aria-hidden="true" class="mt-2 text-text-muted transition group-open:rotate-45">+</span>
-        </summary>
-        <p class="mt-4 leading-relaxed text-text-secondary">{f.a}</p>
-      </details>
-    ))}
-  </section>
+  </div>
 </Layout>

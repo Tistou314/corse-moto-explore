@@ -65,9 +65,28 @@ if (FORCE_LEGACY || !SUPABASE_URL) {
   }
 }
 
-export const allItineraries = loaded.allItineraries;
-export const allAccommodations = loaded.allAccommodations;
-export const allBlogPosts = loaded.allBlogPosts;
+function withLegacyImageAlias<T extends { heroImage?: string; image?: string }>(item: T): T {
+  if (!item.image && item.heroImage) (item as Record<string, unknown>).image = item.heroImage;
+  if (!item.heroImage && item.image) (item as Record<string, unknown>).heroImage = item.image;
+  return item;
+}
+
+function withLegacyAuthor<T extends { authorName?: string; authorAvatar?: string; authorBio?: string; author?: unknown }>(
+  post: T,
+): T {
+  if (!post.author) {
+    (post as Record<string, unknown>).author = {
+      name: post.authorName ?? 'Corse à moto',
+      avatar: post.authorAvatar ?? '',
+      bio: post.authorBio ?? '',
+    };
+  }
+  return post;
+}
+
+export const allItineraries = loaded.allItineraries.map(withLegacyImageAlias);
+export const allAccommodations = loaded.allAccommodations.map(withLegacyImageAlias);
+export const allBlogPosts = loaded.allBlogPosts.map(withLegacyImageAlias).map(withLegacyAuthor);
 export const allGasStations = loaded.allGasStations;
 
 export function getItineraryBySlug(slug: string) {

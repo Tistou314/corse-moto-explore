@@ -53,5 +53,17 @@ export default defineConfig({
     configFile: false,
     cacheDir: pathResolve(__dirname, 'node_modules/.vite'),
     plugins: [aliasByImporter()],
+    resolve: {
+      alias: [
+        {
+          find: /^react-router-dom$/,
+          replacement: pathResolve(__dirname, 'src/lib/router-shim.tsx'),
+        },
+        {
+          find: /^react-helmet$/,
+          replacement: pathResolve(__dirname, 'src/lib/helmet-shim.tsx'),
+        },
+      ],
+    },
   },
 });
