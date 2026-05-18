@@ -194,7 +194,9 @@ export const allAccommodations: Accommodation[] = accomRows.map((a: any) => ({
   description: a.description ?? '',
   location: a.location ?? '',
   region: a.region ?? undefined,
-  heroImage: a.hero_image ?? '',
+  // Real GMB/SerpAPI photos live in serp_image_url when curated manually.
+  // hero_image carries the legacy Unsplash placeholder from the initial migration.
+  heroImage: a.serp_image_url || a.hero_image || (Array.isArray(a.images) && a.images[0]) || '',
   priceRange: a.price_range ?? '',
   rating: typeof a.rating === 'number' ? a.rating : 0,
   amenities: a.amenities ?? [],
