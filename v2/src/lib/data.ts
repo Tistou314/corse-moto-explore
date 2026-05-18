@@ -12,8 +12,23 @@ import type {
   GasStation as SbGasStation,
 } from './data-supabase';
 import { getAllBlogOverrides } from './blog-content-overrides';
+import { getAccommodationOverride } from './accommodation-overrides';
+import { getItineraryOverride } from './itinerary-overrides';
 
 const blogOverrides = new Map(getAllBlogOverrides().map((o) => [o.slug, o]));
+
+function applyEntityOverride<T extends { slug?: string; heroImage?: string; image?: string; imageUrl?: string }>(
+  item: T,
+  override: { heroImage?: string } | undefined,
+): T {
+  if (override?.heroImage) {
+    const obj = item as Record<string, unknown>;
+    obj.heroImage = override.heroImage;
+    obj.image = override.heroImage;
+    obj.imageUrl = override.heroImage;
+  }
+  return item;
+}
 
 export type Itinerary = SbItinerary;
 export type Accommodation = SbAccommodation;
@@ -99,8 +114,14 @@ function withLegacyAuthor<T extends { authorName?: string; authorAvatar?: string
   return post;
 }
 
-export const allItineraries = loaded.allItineraries.map(withLegacyImageAlias).map(withSlugAsId);
-export const allAccommodations = loaded.allAccommodations.map(withLegacyImageAlias).map(withSlugAsId);
+export const allItineraries = loaded.allItineraries
+  .map(withLegacyImageAlias)
+  .map(withSlugAsId)
+  .map((it) => applyEntityOverride(it, it.slug ? getItineraryOverride(it.slug) : undefined));
+export const allAccommodations = loaded.allAccommodations
+  .map(withLegacyImageAlias)
+  .map(withSlugAsId)
+  .map((a) => applyEntityOverride(a, a.slug ? getAccommodationOverride(a.slug) : undefined));
 
 // Build the set of valid blog slugs first, then rewrite content links so
 // markdown bodies don't carry [text](/blog/<missing-slug>) anchors.
