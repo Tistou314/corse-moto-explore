@@ -1,0 +1,42 @@
+name: Responsive screenshots (prod)
+
+on:
+  workflow_dispatch:
+    inputs:
+      site:
+        description: 'Public URL to screenshot (no trailing slash)'
+        required: true
+        default: 'https://www.corseamoto.com'
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: v2/package-lock.json
+
+      - name: Install deps
+        working-directory: v2
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Capture screenshots
+        working-directory: v2
+        env:
+          SCREENSHOT_SITE: ${{ inputs.site }}
+        run: node scripts/responsive-screenshots.mjs
+
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: responsive-screenshots
+          path: v2/reports/screenshots/
+          if-no-files-found: error

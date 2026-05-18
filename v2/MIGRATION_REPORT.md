@@ -156,3 +156,109 @@ Le design éditorial sobre initial (Phase 2) a été remplacé par une **restaur
 Stack et infrastructure inchangées : Astro 5.18, Tailwind 3, shadcn/ui, Supabase, MapLibre, Vercel, sitemap auto, SEO SSG complet, 0 lien interne cassé. Le legacy à la racine reste strictement intact.
 
 PR #9 mergée → `main` HEAD `01e0924`.
+
+## 16. Mise à jour SEO, contenu, sécurité — 2026-05-15 → 2026-05-18
+
+### Domaine et indexation
+- `www.corseamoto.com` branché chez Vercel (DNS InternetBS, A record @ → 76.76.21.21, CNAME www → vercel-dns)
+- SSL Let's Encrypt actif, renouvellement Aug 2026
+- Apex `corseamoto.com` redirige automatiquement vers www
+- Balise `<meta name="google-site-verification">` ajoutée dans Layout
+- Propriété GSC vérifiée
+- `PUBLIC_SITE_URL` env var alignée sur `https://www.corseamoto.com`
+
+### Performance Lighthouse
+État dernier audit officiel (workflow CI) sur `www.corseamoto.com` :
+
+| Page | Perf | A11y | BP | SEO | LCP |
+|---|---:|---:|---:|---:|---:|
+| `/` | 76 | 84 | 73 | 100 | 6.9s |
+| `/itineraires/cap-corse` | 76 | 88 | 96 | 100 | 2.0s |
+| `/hebergements/...amiraute` | 95 | 93 | 96 | 100 | 2.9s |
+| `/blog/budget-...` | 73 | 96 | 73 | 100 | 18.6s |
+
+Fixes appliqués depuis (à re-tester) :
+- LCP blog : 18.6s → 4.5s confirmé sur PageSpeed Insights (PR #11)
+- LCP home : fix appliqué via `ModernHero` override avec `<img
+  fetchPriority="high">` (PR #12), attendu <3s
+- A11y régressions sur Home/Itinéraire : à diagnostiquer après
+  re-Lighthouse
+
+### Contenu blog
+Chantier intégral de réécriture SEO : 14 articles initialement
+squelettiques (172 à 1 601 mots) refondus en articles 2 300-3 500
+mots chacun, totalisant ~38 000 mots produits.
+
+Standard appliqué :
+- Front matter YAML versionné dans git (`v2/content/blog/<slug>.md`)
+- Hero image affectée à chaque article (lovable-uploads)
+- FAQ 5-6 questions + JSON-LD FAQPage SSG
+- Témoignage 1ère personne (E-E-A-T renforcé)
+- Tableau de synthèse (cible featured snippet)
+- Données 2026 sourcées via WebSearch (Météo France, Corsica Ferries,
+  calendriers rallyes, prévisions canicule, tests pneus 2026,
+  norme ECE 22.06 casques)
+- Règles rédaction strictes : 0 em dash, 0 titre "Conclusion", 1 lien
+  max par URL cible, pas d'AI footprints (12 règles consolidées)
+- Maillage interne cohérent : hubs `meilleures-periodes-moto-corse` et
+  `equipement-essentiel-moto-corse` référencés par les saisons
+
+### Schémas JSON-LD
+État final par page :
+
+| Page | Schémas |
+|---|---|
+| `/` | WebSite (avec SearchAction) + Organization |
+| `/itineraires` | BreadcrumbList + **ItemList** |
+| `/itineraires/<slug>` | BreadcrumbList + **TouristTrip** (avec GeoCoordinates + Place nested geo) |
+| `/hebergements` | BreadcrumbList + **ItemList** |
+| `/hebergements/<slug>` | BreadcrumbList + **Hotel/Campground** (avec **AggregateRating** + GeoCoordinates + PostalAddress + amenityFeature + sameAs) |
+| `/blog` | BreadcrumbList + **ItemList** |
+| `/blog/<slug>` | BreadcrumbList + BlogPosting (avec author Person + publisher Organization + ImageObject) + **FAQPage** (si présent) |
+| `/guide-pratique` | BreadcrumbList |
+| `/faq` | BreadcrumbList + FAQPage |
+| `/contact` | BreadcrumbList + **TouristInformationCenter** (avec PostalAddress + areaServed) |
+| `/stations-service` | BreadcrumbList + **ItemList** (GasStation + GeoCoordinates) |
+| `/carte` | BreadcrumbList |
+
+Eligibilité rich results :
+- Hôtels : rich snippet hôtel avec étoiles (AggregateRating)
+- Articles blog : Article snippet + FAQ snippet
+- FAQ page : FAQ snippet
+- Listings : potentiel carousel
+- Contact : local result
+
+### Responsive
+Audit responsive complet : 13 issues identifiées, classées P0/P1/P2.
+P0 (4) + P1 (5) résolus. Toutes les pages publiques testées sur
+iPhone SE 375 / iPhone 14 393 / iPad 768 sans overflow horizontal.
+Cibles tactiles ≥ 44×44 partout (WCAG AA).
+
+### Maillage interne et liens
+0 lien interne 404 dans tout `dist/client/**/*.html` (audit complet).
+6 destinations 404 trouvées et corrigées en cours de chantier :
+- `/blog/stations-service-corse` → redirigé vers `/stations-service`
+- 4 articles legacy non migrés → liens supprimés ou redirigés via
+  rewriter de contenu dans `data.ts`
+
+### Sécurité
+- Mitigation CVE GHSA-mr6q-rp88-fx84 via middleware Astro (suppression
+  des headers `x-astro-path` et `x_astro_path` au boundary)
+- Upgrade structurel @astrojs/vercel 8.x → 10.x reporté (requiert
+  Astro 6, qui requiert Tailwind v4)
+
+### Tests post-deploy restants à faire
+- ✅ Sitemap soumis à GSC
+- ⏳ Re-Lighthouse complet après tous les fixes (LCP attendu en
+  amélioration)
+- ⏳ Rich Results Test sur 4 URLs canoniques (Hotel, Article+FAQ, FAQ)
+- ⏳ Mobile-Friendly Test sur 4 URLs
+- ⏳ Captures responsive 4 viewports × 4 URLs
+- ⏳ Indexation manuelle prioritaires via GSC Inspect URL
+
+### État final
+- `main` HEAD post-PR #21
+- 21 PRs mergées depuis le bootstrap, 0 rollback nécessaire
+- ~38 000 mots de contenu blog
+- 12 pages publiques avec SEO complet
+- Legacy à la racine `src/` toujours intact
