@@ -1,6 +1,6 @@
 ---
 slug: budget-voyage-moto-corse
-title: "Budget voyage moto en Corse 2026 : combien ça coûte vraiment, poste par poste"
+title: "Budget moto en Corse 2026 : combien ça coûte, poste par poste"
 excerpt: "Ferry, hébergement, essence, repas, locations, frais imprévus : le calcul détaillé d'un voyage moto en Corse en 2026, avec exemples chiffrés par profil (solo économique, duo confort, groupe de 4). Tous les chiffres vérifiés sur le terrain."
 heroImage: "/lovable-uploads/62b4ce49-f171-4ad5-b5a9-8394b08772ac.png"
 faq:

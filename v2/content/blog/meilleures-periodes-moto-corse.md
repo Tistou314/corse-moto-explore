@@ -1,6 +1,6 @@
 ---
 slug: meilleures-periodes-moto-corse
-title: "Quand partir en Corse à moto : le guide des meilleures périodes par profil"
+title: "Quand partir en Corse à moto : les meilleures périodes par profil"
 excerpt: "Janvier à décembre, mois par mois : météo, fréquentation, tarifs, événements et conditions des cols. Quelle saison choisir selon que vous êtes débutant, expérimenté, en duo ou en groupe. La synthèse complète avec recommandation finale."
 heroImage: "/lovable-uploads/d60eaef4-6e63-4386-860b-c02648902533.png"
 faq:

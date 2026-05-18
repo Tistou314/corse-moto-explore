@@ -59,11 +59,31 @@ const jsonLd: Record<string, unknown>[] = [
   ]),
   touristTripSchema,
 ];
+
+// Normalize distance: data sometimes carries "km" already (e.g. "110 km"),
+// sometimes just the number. Strip and re-append cleanly so we don't end
+// up with "kmkm" in the title.
+const distanceNum = String(it.distance ?? '').replace(/\s*km\s*$/i, '').trim();
+const distanceStr = distanceNum ? `${distanceNum} km` : '';
+
+// Short, human description: drop the legacy data quirks (trailing "..."),
+// trim to ~115 chars to leave room for the meta-stats appended below.
+const baseDesc = (it.description || '')
+  .replace(/\.{3,}\s*$/, '')
+  .replace(/\s+/g, ' ')
+  .trim();
+const shortDesc = baseDesc.length > 115 ? baseDesc.slice(0, 112).trimEnd() + '…' : baseDesc;
+const metaStats = [distanceStr, it.duration, it.difficulty].filter(Boolean).join(' · ');
+const metaDescription = `${shortDesc} ${metaStats ? `(${metaStats})` : ''}`.trim();
+
+const metaTitle = [it.title, distanceStr ? `${distanceStr} à moto en Corse` : 'Itinéraire moto en Corse']
+  .filter(Boolean)
+  .join(' — ');
 ---
 
 <Layout
-  title={`${it.title} - Itinéraire Moto ${it.region} | ${it.distance}km`}
-  description={`${it.description.substring(0, 150)}... Difficulté: ${it.difficulty}. Durée: ${it.duration}.`}
+  title={metaTitle}
+  description={metaDescription}
   path={`/itineraires/${it.slug}`}
   image={it.heroImage}
   jsonLd={jsonLd}

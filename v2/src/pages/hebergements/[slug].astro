@@ -72,11 +72,35 @@ const jsonLd: Record<string, unknown>[] = [
   ]),
   accommodationSchema,
 ];
+
+// Capitalize location name (Supabase data can be lowercase like "ajaccio")
+function capitalize(str: string | undefined): string {
+  if (!str) return '';
+  return str
+    .split(/(\s|-)/)
+    .map((part) => (part.match(/^[a-zA-ZÀ-ÿ]/) ? part[0].toUpperCase() + part.slice(1) : part))
+    .join('');
+}
+
+const locationLabel = capitalize(a.location || a.region || 'Corse');
+const metaTitle = `${a.name} : ${typeLabel} adapté motards à ${locationLabel}`;
+
+// Short, clean description: drop trailing ellipses, trim to ~115 chars to
+// leave room for the appended structured info.
+const baseDesc = (a.description || '')
+  .replace(/\.{3,}\s*$/, '')
+  .replace(/\s+/g, ' ')
+  .trim();
+const shortDesc = baseDesc.length > 100 ? baseDesc.slice(0, 97).trimEnd() + '…' : baseDesc;
+const topAmenities = (a.bikerAmenities || []).slice(0, 2).join(', ').toLowerCase();
+const priceTag = a.priceRange ? `Dès ${a.priceRange.split('-')[0].trim()}` : '';
+const tail = [topAmenities, priceTag].filter(Boolean).join(' · ');
+const metaDescription = tail ? `${shortDesc} ${tail}.` : shortDesc;
 ---
 
 <Layout
-  title={`${a.name} - ${typeLabel} Moto ${a.region ?? ''}`}
-  description={`${a.description.substring(0, 150)}... Hébergement motard en Corse avec ${a.bikerAmenities.join(', ')}. Prix: ${a.priceRange}.`}
+  title={metaTitle}
+  description={metaDescription}
   path={`/hebergements/${a.slug}`}
   image={a.heroImage}
   jsonLd={jsonLd}
