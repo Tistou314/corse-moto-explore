@@ -328,3 +328,173 @@ Audit final sur `dist/client/**/*.html` : **0 lien interne cassé**.
 - Branche `claude/continue-migration-P5nSV` conservée comme historique
 - Legacy à la racine (`src/`) toujours strictement intact (zéro modification — tous les changements sont des wrappers ou overrides dans `v2/`)
 
+
+## 2026-05-15 → 2026-05-18 — Phase post-restauration : SEO, perf, contenu, sécurité
+
+Cycle de PR #10 à #21 sur la branche `claude/continue-migration-P5nSV`.
+Toutes mergées sur `main`.
+
+### PR #10 — Docs
+
+Mise à jour `MIGRATION_LOG.md` + `MIGRATION_REPORT.md` reflétant la
+session restauration legacy.
+
+### PR #11 — Perf : LCP blog détail 18.6s → 4.5s
+
+Trace : `BlogPostHeader` legacy lit `post.imageUrl` qui n'existait pas
+dans le shape Supabase. Fallback hardcodé sur image Pixabay générique,
+appliquée en `background-image: url(...)` après `useEffect`. Worst-case
+chain pour LCP : SSR sans image → hydratation → useEffect → fetch image
+→ setState → display.
+
+Fix double :
+1. Alias `imageUrl` dans `data.ts` (toutes les images Supabase passent
+   désormais sur `imageUrl`/`image`/`heroImage` indistinctement)
+2. Override v2 `BlogPostHeader.tsx` rendant l'image en `<img
+   fetchPriority="high" loading="eager" decoding="async">` dans le HTML
+   SSR, donc découvert par le preload scanner navigateur avant download
+   du bundle JS
+
+### PR #12 — Perf home + GSC verification
+
+- LCP home : même fix sur `ModernHero` (slides en `<img>` empilées
+  cross-fade opacity, slide #1 priority high). LCP home 6.9s → attendu
+  <3s.
+- `<meta name="google-site-verification">` ajouté dans Layout.astro
+  pour propriété GSC `www.corseamoto.com`
+
+### PR #13 — Audit responsive + POC blog content + override system
+
+13 issues responsives identifiées :
+- ModernFeaturesSection : classes Tailwind dynamiques jamais générées
+  au build (bug critique non visible). Override v2 avec gradients en
+  string literals.
+- ModernHero h-screen + text-8xl : déborde mobile. Clamps.
+- BlogPostHeader h-[60vh] : déborde mobile. Clamps.
+- AccommodationFilters w-[180px] + PopoverContent w-80 : déborde
+  mobile. Responsive selects + popover max-width calc(100vw - 2rem).
+- ItineraryHero : même anti-pattern background-image post-useEffect +
+  text-5xl sans clamp. Override.
+- Navbar logo 40×40 < WCAG 44×44 : w-11 h-11.
+- ModernHero dots pagination 12×12 < WCAG : wrap dans button 44×44.
+- GasStationsPage tabs longs tronqués 375px : overflow-x-auto.
+- GuideTabs serré mobile : CSS shim global `[role=tablist].grid →
+  flex overflow-x-auto`.
+- carte.astro Map 72vh pousse contenu off-screen : `min(70vh,650px)`.
+
+Système d'override blog content versionné dans git :
+- `v2/content/blog/<slug>.md` : front matter YAML (slug, title,
+  excerpt, heroImage, faq) + body markdown
+- `src/lib/blog-content-overrides.ts` : parse via `import.meta.glob`
+  (Vite-natif, mini-parser YAML 30 lignes)
+- `src/lib/data.ts` post-process : si override existe, écrase
+  title/excerpt/content du Supabase, ajoute faq
+- `src/pages/blog/[slug].astro` : émet FAQPage JSON-LD + rend section
+  `<details>/<summary>` Questions fréquentes
+
+POC sur `printemps-corse-moto` : 508 mots → 2 441 mots.
+
+### PR #15 — Batch saisons (3 articles)
+
+`moto-corse-hiver` 172 → 2 335 mots, `automne-corse-moto` 990 → 2 493,
+`gerer-chaleur-ete-moto` 1 084 → 2 773. Plus cleanup IA-footprints sur
+printemps (em dash, "Conclusion" en H2, adjectifs creux) suite audit
+Baptiste. Règles de rédaction consolidées (12 règles dont 0 em dash,
+0 titre Conclusion, 1 lien max par URL cible).
+
+### PR #16 — Batch récits (2 articles) + heroImage override
+
+`premiere-fois-moto-corse` 824 → 2 976, `roadtrip-amis-corse-moto`
+920 → 3 086. Système heroImage YAML front matter pour gérer photos à
+la une (les 4 saisons + 2 récits avaient toutes des hero Pixabay
+génériques ou aucune).
+
+### PR #17 — Fix UI critiques
+
+1. Navbar toujours visible : pattern legacy "bg-transparent + texte
+   blanc" cassait sur pages liste fond blanc. Bg blanc + texte sombre
+   permanent, différence scrollé/non par intensité d'ombre seulement.
+2. Cards images invisibles : `OptimizedImage` legacy applique
+   `opacity-0 → opacity-100 onLoad` en SPA. En SSG l'event onLoad ne
+   se déclenche pas toujours après hydratation sur images cachées.
+   Toutes les cards (blog, hébergement, itinéraire) potentiellement
+   invisibles. Override v2 `optimized-image.tsx` SSR-safe.
+
+### PR #18 — Batch techniques (3 articles)
+
+`equipement-essentiel-moto-corse` 1 541 → 3 296 (tenue pilote, casques
+ECE 22.06, blousons 3-couches, gants, bottes, intercoms 2026).
+`preparation-moto-voyage-corse` 1 564 → 3 278 (révision, pneus
+Michelin Road 6 / Bridgestone T33 / Pirelli Angel GT II, freins,
+transmission, suspensions). `preparer-moto-routes-corses` 909 → 3 058
+(adaptations routes corses, réglages, ergonomie, accessoires, choix
+de moto, location).
+
+### PR #19 — Batch culture + hub (5 articles) + fix grid info-badges
+
+3 culture : `decouvrir-traditions-corses-moto` 1 169 → 2 847,
+`musiques-corses-playlist-motard` 1 203 → 2 328 (I Muvrini NULU 33,
+A Filetta 2026, paghjella UNESCO, intercoms), `architecture-villages-
+corses-moto` 1 364 → 2 687 (citadelles génoises, art roman pisan,
+baroque corse).
+
+2 hub : `meilleures-periodes-moto-corse` 1 601 → 2 741 (tableau
+comparatif mois × 12, recommandation par profil voyageur, tableau cols
+par altitude), `budget-voyage-moto-corse` 1 539 → 3 070 (chiffres 2026
+actualisés, 3 budgets type, évolution prix 2020-2026).
+
+Fix responsive : `ItineraryDescription` info-badges grid était figée
+`grid-cols-2` mobile. Valeurs longues débordaient + 5e item seul mal
+aligné. Fix `grid-cols-1 sm:grid-cols-2 md:grid-cols-3` + min-w-0 +
+break-words.
+
+**Bilan chantier blog 14/14 articles** : ~14 700 mots → ~38 000 mots.
+Standard appliqué : témoignage 1ère personne, tableau de synthèse,
+données 2026 sourcées (Météo France, Corsica Ferries, calendriers
+rallyes 2026, prévisions canicule, tests pneus), FAQ + JSON-LD
+FAQPage SSG, 0 em dash, 1 lien max par URL cible, hero image
+lovable-uploads.
+
+### PR #20 — Fix favicon
+
+Le favicon servi en prod était le **default Astro** ("A" stylisé)
+jamais remplacé depuis Phase 0. Diagnostic via grep sur le SVG.
+Remplacement par legacy ICO brandé (1150 bytes MS Windows icon
+16×16 32-bit) + nouveau SVG simple "C" serif blanc sur fond
+corsica-azure. Manifest theme_color aligné sur #0EA5E9.
+
+### PR #21 — Schémas SEO complets + mitigation CVE
+
+Schémas JSON-LD étendus :
+- `ItemList` sur /itineraires, /hebergements, /blog (Google comprend
+  la collection, déclenche potentiellement carousel rich result)
+- `AggregateRating` + `GeoCoordinates` + `amenityFeature`
+  (LocationFeatureSpecification) + `PostalAddress` enrichi sur
+  /hebergements/<slug> (Hotel/Campground/LodgingBusiness)
+- `GeoCoordinates` sur /itineraires/<slug> (TouristTrip + Place nested
+  geo pour POI)
+- `ItemList` GasStation + Geo sur /stations-service
+- `TouristInformationCenter` sur /contact (upgrade depuis Organization)
+
+Mitigation CVE GHSA-mr6q-rp88-fx84 (path override @astrojs/vercel
+<10.0.2) : impossible d'upgrader directement, @astrojs/vercel@10.0.7
+requiert Astro 6, Astro 6 incompatible avec @astrojs/tailwind dernière
+version (6.0.2 supporte Astro 3-5). Migration Tailwind v3 → v4 =
+chantier majeur reporté. Mitigation immédiate : middleware Astro
+`src/middleware.ts` qui supprime les headers `x-astro-path` et
+`x_astro_path` avant résolution de route. Vecteur d'attaque éliminé.
+
+### État final post-PR #21
+
+- `main` HEAD = c7701db (Merge PR #20) + 4933c4f, 2a7f19d, f41a8b4
+  (PR #21)
+- Branche `claude/continue-migration-P5nSV` à jour
+- Domaine `www.corseamoto.com` branché + SSL Let's Encrypt + redir
+  apex
+- BO admin `/admin/*` fonctionnel
+- 14 articles blog refondus (~38 000 mots)
+- Schémas SEO complets sur 12 pages publiques
+- Responsive audit propre (P0 + P1)
+- 0 lien interne 404
+- Sécurité : mitigation CVE en place
+- Legacy à la racine `src/` toujours strictement intact
