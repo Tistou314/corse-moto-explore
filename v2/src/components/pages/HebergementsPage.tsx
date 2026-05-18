@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Hero from '../../../../src/components/Hero';
 import AccommodationCard from '../../../../src/components/AccommodationCard';
 import AccommodationTypeCards from '../../../../src/components/accommodations/AccommodationTypeCards';
-import AccommodationFilters from '../../../../src/components/accommodations/AccommodationFilters';
+import AccommodationFilters from '../legacy-overrides/AccommodationFilters';
 import BookingTips from '../../../../src/components/accommodations/BookingTips';
 import NoResults from '../../../../src/components/accommodations/NoResults';
 import type { Accommodation } from '@/lib/data';

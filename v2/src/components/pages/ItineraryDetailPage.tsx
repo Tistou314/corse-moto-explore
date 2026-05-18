@@ -1,4 +1,4 @@
-import ItineraryHero from '../../../../src/components/itineraries/ItineraryHero';
+import ItineraryHero from '../legacy-overrides/ItineraryHero';
 import ItineraryDescription from '../legacy-overrides/ItineraryDescription';
 import ItineraryPointsOfInterest from '../../../../src/components/itineraries/ItineraryPointsOfInterest';
 import ItineraryRating from '../../../../src/components/itineraries/ItineraryRating';

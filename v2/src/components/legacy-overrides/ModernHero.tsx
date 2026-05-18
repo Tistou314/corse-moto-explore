@@ -74,7 +74,7 @@ const ModernHero = () => {
   const slide = heroSlides[currentSlide];
 
   return (
-    <div className="relative h-screen overflow-hidden">
+    <div className="relative h-[min(100svh,720px)] sm:h-[100svh] overflow-hidden">
       {/* Stacked images, cross-fade via opacity */}
       <div className="absolute inset-0">
         {heroSlides.map((s, index) => (
@@ -105,12 +105,12 @@ const ModernHero = () => {
               <span className="text-corsica-azure font-medium text-sm">Guide Expert Corse 2024</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-6 leading-tight animate-slide-up">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold text-white mb-6 leading-[1.05] animate-slide-up">
               {slide.title}
             </h1>
 
             <p
-              className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl leading-relaxed animate-fade-in"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 mb-8 max-w-3xl leading-relaxed animate-fade-in"
               style={{ animationDelay: '0.2s' }}
             >
               {slide.subtitle}
@@ -174,16 +174,23 @@ const ModernHero = () => {
           <ChevronLeft className="w-5 h-5" />
         </button>
 
-        <div className="flex gap-2">
+        <div className="flex gap-1">
           {heroSlides.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
               aria-label={`Aller à la slide ${index + 1}`}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentSlide ? 'bg-corsica-azure scale-125' : 'bg-white/40 hover:bg-white/60'
-              }`}
-            />
+              className="w-11 h-11 flex items-center justify-center group"
+            >
+              <span
+                aria-hidden="true"
+                className={`block rounded-full transition-all duration-300 ${
+                  index === currentSlide
+                    ? 'w-3 h-3 bg-corsica-azure scale-125'
+                    : 'w-2.5 h-2.5 bg-white/40 group-hover:bg-white/60'
+                }`}
+              />
+            </button>
           ))}
         </div>
 
