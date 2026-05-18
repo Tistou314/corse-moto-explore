@@ -3,12 +3,53 @@ import Layout from '@/layouts/Layout.astro';
 import GasStationsPage from '@/components/pages/GasStationsPage';
 import { allGasStations } from '@/lib/data';
 import { breadcrumbJsonLd } from '@/lib/seo';
+import { absoluteUrl } from '@/lib/utils';
 
 const strategicCount = allGasStations.filter((s) => (s as { strategic?: boolean }).strategic).length;
-const jsonLd = breadcrumbJsonLd([
-  { name: 'Accueil', path: '/' },
-  { name: 'Stations-service', path: '/stations-service' },
-]);
+
+// Top stations-service stratégiques pour le ItemList (limité à 20 pour rester
+// dans les guidelines Google ItemList sans surcharge inutile).
+const topStations = allGasStations
+  .filter((s) => (s as { strategic?: boolean }).strategic)
+  .slice(0, 20);
+
+const jsonLd: Record<string, unknown>[] = [
+  breadcrumbJsonLd([
+    { name: 'Accueil', path: '/' },
+    { name: 'Stations-service', path: '/stations-service' },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Stations-service stratégiques en Corse pour motards',
+    description: `${strategicCount} stations identifiées comme stratégiques sur les axes moto principaux et l'intérieur corse.`,
+    numberOfItems: topStations.length,
+    itemListElement: topStations.map((s, idx) => {
+      const station = s as typeof s & {
+        latitude?: number;
+        longitude?: number;
+        brand?: string;
+      };
+      const item: Record<string, unknown> = {
+        '@type': 'GasStation',
+        name: station.name + (station.brand ? ` (${station.brand})` : ''),
+        url: absoluteUrl('/stations-service'),
+      };
+      if (typeof station.latitude === 'number' && typeof station.longitude === 'number') {
+        item.geo = {
+          '@type': 'GeoCoordinates',
+          latitude: station.latitude,
+          longitude: station.longitude,
+        };
+      }
+      return {
+        '@type': 'ListItem',
+        position: idx + 1,
+        item,
+      };
+    }),
+  },
+];
 ---
 
 <Layout

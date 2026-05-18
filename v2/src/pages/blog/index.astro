@@ -2,21 +2,34 @@
 import Layout from '@/layouts/Layout.astro';
 import BlogPage from '@/components/pages/BlogPage';
 import { allBlogPosts } from '@/lib/data';
-import { breadcrumbJsonLd } from '@/lib/seo';
+import { breadcrumbJsonLd, itemListJsonLd } from '@/lib/seo';
 
 const posts = allBlogPosts
   .slice()
   .sort((a, b) => (b.isoDate ?? '').localeCompare(a.isoDate ?? ''));
+
+const jsonLd: Record<string, unknown>[] = [
+  breadcrumbJsonLd([
+    { name: 'Accueil', path: '/' },
+    { name: 'Blog', path: '/blog' },
+  ]),
+  itemListJsonLd(
+    'Blog moto Corse',
+    posts.map((p) => ({
+      url: `/blog/${p.slug}`,
+      name: p.title,
+      image: p.heroImage,
+      description: p.excerpt,
+    })),
+  ),
+];
 ---
 
 <Layout
   title="Blog Moto Corse - Conseils, Récits & Expériences de Voyages"
   description="Conseils pratiques, récits d'expériences et astuces pour enrichir votre aventure moto en Corse. Découvrez les témoignages de passionnés."
   path="/blog"
-  jsonLd={breadcrumbJsonLd([
-    { name: 'Accueil', path: '/' },
-    { name: 'Blog', path: '/blog' },
-  ])}
+  jsonLd={jsonLd}
 >
   <BlogPage client:load posts={posts} />
 </Layout>

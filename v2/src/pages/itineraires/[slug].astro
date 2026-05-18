@@ -13,29 +13,51 @@ const { it } = Astro.props as { it: (typeof allItineraries)[number] };
 
 const nearby = allItineraries.filter((x) => x.slug !== it.slug && x.region === it.region);
 
+const touristTripSchema: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'TouristTrip',
+  name: it.title,
+  description: it.description,
+  url: absoluteUrl(`/itineraires/${it.slug}`),
+  image: it.heroImage,
+  touristType: 'Motorcyclist',
+  itinerary: {
+    '@type': 'ItemList',
+    itemListElement: it.pointsOfInterest.map((p, idx) => ({
+      '@type': 'ListItem',
+      position: idx + 1,
+      item: {
+        '@type': 'Place',
+        name: p.name,
+        ...(p.description && { description: p.description }),
+        ...(typeof p.latitude === 'number' &&
+          typeof p.longitude === 'number' && {
+            geo: {
+              '@type': 'GeoCoordinates',
+              latitude: p.latitude,
+              longitude: p.longitude,
+            },
+          }),
+      },
+    })),
+  },
+};
+
+if (typeof it.latitude === 'number' && typeof it.longitude === 'number') {
+  touristTripSchema.geo = {
+    '@type': 'GeoCoordinates',
+    latitude: it.latitude,
+    longitude: it.longitude,
+  };
+}
+
 const jsonLd: Record<string, unknown>[] = [
   breadcrumbJsonLd([
     { name: 'Accueil', path: '/' },
     { name: 'Itinéraires', path: '/itineraires' },
     { name: it.title, path: `/itineraires/${it.slug}` },
   ]),
-  {
-    '@context': 'https://schema.org',
-    '@type': 'TouristTrip',
-    name: it.title,
-    description: it.description,
-    url: absoluteUrl(`/itineraires/${it.slug}`),
-    image: it.heroImage,
-    touristType: 'Motorcyclist',
-    itinerary: {
-      '@type': 'ItemList',
-      itemListElement: it.pointsOfInterest.map((p, idx) => ({
-        '@type': 'ListItem',
-        position: idx + 1,
-        item: { '@type': 'Place', name: p.name, description: p.description },
-      })),
-    },
-  },
+  touristTripSchema,
 ];
 ---
 

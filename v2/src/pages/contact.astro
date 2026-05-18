@@ -1,15 +1,29 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import ContactPage from '@/components/pages/ContactPage';
-import { breadcrumbJsonLd } from '@/lib/seo';
+import { breadcrumbJsonLd, SITE_NAME } from '@/lib/seo';
+import { SITE_URL, absoluteUrl } from '@/lib/utils';
 
 const jsonLd: Record<string, unknown>[] = [
   breadcrumbJsonLd([{ name: 'Accueil', path: '/' }, { name: 'Contact', path: '/contact' }]),
   {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'La Corse à Moto',
-    url: 'https://corseamoto.com',
+    '@type': 'TouristInformationCenter',
+    name: SITE_NAME,
+    description:
+      "Guide indépendant des voyages moto en Corse : itinéraires, hébergements adaptés aux motards, conseils saisonniers, stations-service stratégiques.",
+    url: SITE_URL,
+    image: absoluteUrl('/og/default.svg'),
+    email: 'contact@lacorseamoto.fr',
+    areaServed: {
+      '@type': 'AdministrativeArea',
+      name: 'Corse',
+    },
+    address: {
+      '@type': 'PostalAddress',
+      addressRegion: 'Corse',
+      addressCountry: 'FR',
+    },
     contactPoint: [
       {
         '@type': 'ContactPoint',
@@ -18,6 +32,7 @@ const jsonLd: Record<string, unknown>[] = [
         availableLanguage: 'French',
       },
     ],
+    inLanguage: 'fr-FR',
   },
 ];
 ---
