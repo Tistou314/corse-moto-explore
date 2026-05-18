@@ -11,6 +11,9 @@ import type {
   BlogPost as SbBlogPost,
   GasStation as SbGasStation,
 } from './data-supabase';
+import { getAllBlogOverrides } from './blog-content-overrides';
+
+const blogOverrides = new Map(getAllBlogOverrides().map((o) => [o.slug, o]));
 
 export type Itinerary = SbItinerary;
 export type Accommodation = SbAccommodation;
@@ -126,8 +129,17 @@ function rewriteBlogContent(content: string | undefined): string | undefined {
 }
 
 export const allBlogPosts = blogPostsBase.map((p) => {
-  const post = p as typeof p & { content?: string };
+  const post = p as typeof p & { content?: string; faq?: { q: string; a: string }[] };
   if (post.content) post.content = rewriteBlogContent(post.content);
+  // Markdown override from v2/content/blog/<slug>.md takes priority over
+  // the Supabase/legacy content — see src/lib/blog-content-overrides.ts.
+  const override = post.slug ? blogOverrides.get(post.slug) : undefined;
+  if (override) {
+    if (override.title) (post as Record<string, unknown>).title = override.title;
+    if (override.excerpt) (post as Record<string, unknown>).excerpt = override.excerpt;
+    post.content = override.content;
+    if (override.faq) post.faq = override.faq;
+  }
   return p;
 });
 export const allGasStations = loaded.allGasStations;
