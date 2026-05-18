@@ -10,7 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "populate-photos": "tsx scripts/populate-accommodation-photos.ts"
+    "populate-photos": "tsx scripts/populate-accommodation-photos.ts",
+    "audit-gps": "tsx scripts/audit-gps-coordinates.ts"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.4",
