@@ -49,7 +49,7 @@ const Navbar = () => {
           <Link to="/" className="flex items-center space-x-3 group">
             <div
               className={cn(
-                'w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110',
+                'w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110',
                 isScrolled
                   ? 'bg-corsica-azure text-white'
                   : 'bg-white/20 backdrop-blur-sm text-white border border-white/30',

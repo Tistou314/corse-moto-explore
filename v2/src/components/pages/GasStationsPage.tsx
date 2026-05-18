@@ -39,28 +39,28 @@ export default function GasStationsPage({ allStations, strategicCount }: Props) 
       <main className="flex-grow container mx-auto px-4 py-8 pt-24">
         <GasStationsHeader />
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="mb-6 bg-white border-2 border-corsica-azure/30 shadow-md">
+          <TabsList className="mb-6 bg-white border-2 border-corsica-azure/30 shadow-md w-full overflow-x-auto flex-nowrap justify-start sm:justify-center">
             <TabsTrigger
               value="info"
-              className="data-[state=active]:bg-corsica-azure data-[state=active]:text-white data-[state=active]:shadow-md text-corsica-charcoal font-semibold hover:bg-corsica-azure/10 transition-all"
+              className="data-[state=active]:bg-corsica-azure data-[state=active]:text-white data-[state=active]:shadow-md text-corsica-charcoal font-semibold hover:bg-corsica-azure/10 transition-all whitespace-nowrap text-sm sm:text-base px-2 sm:px-3"
             >
               Informations
             </TabsTrigger>
             <TabsTrigger
               value="tips"
-              className="data-[state=active]:bg-corsica-azure data-[state=active]:text-white data-[state=active]:shadow-md text-corsica-charcoal font-semibold hover:bg-corsica-azure/10 transition-all"
+              className="data-[state=active]:bg-corsica-azure data-[state=active]:text-white data-[state=active]:shadow-md text-corsica-charcoal font-semibold hover:bg-corsica-azure/10 transition-all whitespace-nowrap text-sm sm:text-base px-2 sm:px-3"
             >
               Conseils pratiques
             </TabsTrigger>
             <TabsTrigger
               value="list"
-              className="data-[state=active]:bg-corsica-azure data-[state=active]:text-white data-[state=active]:shadow-md text-corsica-charcoal font-semibold hover:bg-corsica-azure/10 transition-all"
+              className="data-[state=active]:bg-corsica-azure data-[state=active]:text-white data-[state=active]:shadow-md text-corsica-charcoal font-semibold hover:bg-corsica-azure/10 transition-all whitespace-nowrap text-sm sm:text-base px-2 sm:px-3"
             >
               Liste des stations
             </TabsTrigger>
             <TabsTrigger
               value="regions"
-              className="data-[state=active]:bg-corsica-azure data-[state=active]:text-white data-[state=active]:shadow-md text-corsica-charcoal font-semibold hover:bg-corsica-azure/10 transition-all"
+              className="data-[state=active]:bg-corsica-azure data-[state=active]:text-white data-[state=active]:shadow-md text-corsica-charcoal font-semibold hover:bg-corsica-azure/10 transition-all whitespace-nowrap text-sm sm:text-base px-2 sm:px-3"
             >
               Régions
             </TabsTrigger>

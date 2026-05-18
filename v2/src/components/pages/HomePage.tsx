@@ -1,5 +1,5 @@
 import ModernHero from '../legacy-overrides/ModernHero';
-import ModernFeaturesSection from '../../../../src/components/modern/ModernFeaturesSection';
+import ModernFeaturesSection from '../legacy-overrides/ModernFeaturesSection';
 import ItinerariesSection from '../../../../src/components/home/ItinerariesSection';
 import BlogSection from '../../../../src/components/home/BlogSection';
 import AccommodationsSection from '../../../../src/components/home/AccommodationsSection';

@@ -211,3 +211,28 @@
     animation: shimmer 1.5s infinite;
   }
 }
+
+/* Mobile responsive shims for legacy components we don't override wholesale. */
+@media (max-width: 640px) {
+  /* GuideTabs (src/components/guide/GuideTabs.tsx) : the 4-tab grid is
+     tight on iPhone SE. Switch the tablist to a horizontal scroller
+     instead of a 2x2 grid so each tab keeps its full label. */
+  [role='tablist'] {
+    -webkit-overflow-scrolling: touch;
+  }
+  [role='tablist'].grid {
+    display: flex !important;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    scrollbar-width: thin;
+  }
+  [role='tablist'].grid > [role='tab'] {
+    flex: 0 0 auto;
+    min-width: max-content;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+}

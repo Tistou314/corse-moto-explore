@@ -28,7 +28,7 @@ export default function BlogPostHeader({ post }: Props) {
       initial={{ opacity: 0.85 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}
-      className="h-[45vh] md:h-[60vh] relative overflow-hidden rounded-b-3xl"
+      className="h-[40vh] sm:h-[45vh] md:h-[60vh] min-h-[280px] relative overflow-hidden rounded-b-3xl"
     >
       {heroSrc && (
         <img
@@ -64,7 +64,7 @@ export default function BlogPostHeader({ post }: Props) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight drop-shadow-lg font-heading"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight drop-shadow-lg font-heading break-words"
           >
             {post.title}
           </motion.h1>
