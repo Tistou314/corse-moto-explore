@@ -55,19 +55,19 @@ export default function ItineraryDescription({ itinerary }: Props) {
         dangerouslySetInnerHTML={{ __html: processed }}
       />
 
-      {/* Info badges grid — unchanged */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12">
+      {/* Info badges grid — single column on mobile to let long values breathe */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-12">
         {infoBadges.map(({ icon: Icon, label, value }, index) => (
           <div
             key={index}
-            className="bg-corsica-blue/10 rounded-lg p-4 flex items-center space-x-4 hover:bg-corsica-blue/20 transition-colors"
+            className="bg-corsica-blue/10 rounded-lg p-4 flex items-center gap-4 hover:bg-corsica-blue/20 transition-colors min-w-0"
           >
-            <div className="bg-corsica-blue/20 p-3 rounded-full">
+            <div className="bg-corsica-blue/20 p-3 rounded-full flex-shrink-0">
               <Icon className="w-5 h-5 text-corsica-blue" />
             </div>
-            <div>
+            <div className="min-w-0">
               <p className="text-xs text-gray-500 uppercase tracking-wider">{label}</p>
-              <p className="font-semibold text-corsica-blue">{value}</p>
+              <p className="font-semibold text-corsica-blue break-words">{value}</p>
             </div>
           </div>
         ))}
