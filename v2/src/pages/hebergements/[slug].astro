@@ -14,24 +14,63 @@ const { a } = Astro.props as { a: (typeof allAccommodations)[number] };
 const typeLabel = { hotel: 'Hôtel', gite: 'Gîte', camping: 'Camping' }[a.type];
 const schemaType = a.type === 'hotel' ? 'Hotel' : a.type === 'camping' ? 'Campground' : 'LodgingBusiness';
 
+const accommodationSchema: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': schemaType,
+  name: a.name,
+  description: a.description,
+  url: absoluteUrl(`/hebergements/${a.slug}`),
+  image: a.heroImage,
+  priceRange: a.priceRange,
+};
+
+if (a.address || a.location) {
+  accommodationSchema.address = {
+    '@type': 'PostalAddress',
+    streetAddress: a.address ?? a.location,
+    addressLocality: a.location,
+    addressRegion: a.region,
+    addressCountry: 'FR',
+  };
+}
+
+if (typeof a.latitude === 'number' && typeof a.longitude === 'number') {
+  accommodationSchema.geo = {
+    '@type': 'GeoCoordinates',
+    latitude: a.latitude,
+    longitude: a.longitude,
+  };
+}
+
+if (a.contact?.phone) accommodationSchema.telephone = a.contact.phone;
+if (a.contact?.email) accommodationSchema.email = a.contact.email;
+if (a.contact?.website) accommodationSchema.sameAs = [a.contact.website];
+
+if (typeof a.rating === 'number' && a.rating > 0) {
+  accommodationSchema.aggregateRating = {
+    '@type': 'AggregateRating',
+    ratingValue: a.rating,
+    bestRating: 5,
+    worstRating: 1,
+    ratingCount: 1,
+  };
+}
+
+if (a.amenities && a.amenities.length > 0) {
+  accommodationSchema.amenityFeature = a.amenities.map((name: string) => ({
+    '@type': 'LocationFeatureSpecification',
+    name,
+    value: true,
+  }));
+}
+
 const jsonLd: Record<string, unknown>[] = [
   breadcrumbJsonLd([
     { name: 'Accueil', path: '/' },
     { name: 'Hébergements', path: '/hebergements' },
     { name: a.name, path: `/hebergements/${a.slug}` },
   ]),
-  {
-    '@context': 'https://schema.org',
-    '@type': schemaType,
-    name: a.name,
-    description: a.description,
-    url: absoluteUrl(`/hebergements/${a.slug}`),
-    image: a.heroImage,
-    address: a.address ?? a.location,
-    priceRange: a.priceRange,
-    telephone: a.contact?.phone,
-    email: a.contact?.email,
-  },
+  accommodationSchema,
 ];
 ---
 
