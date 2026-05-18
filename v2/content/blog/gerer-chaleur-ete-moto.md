@@ -2,6 +2,7 @@
 slug: gerer-chaleur-ete-moto
 title: "Gérer la chaleur estivale à moto en Corse : le guide pour ne pas griller"
 excerpt: "Été 2026 annoncé plus chaud que la normale, canicules récurrentes, risque incendie en augmentation. Comment structurer ses journées, équiper sa moto et son corps, et choisir les bons itinéraires pour rouler entre juin et septembre sans souffrir."
+heroImage: "/lovable-uploads/55f44f7d-705e-4056-bef4-668d9934786b.png"
 faq:
   - q: "À partir de quelle température faut-il vraiment s'inquiéter sur la moto ?"
     a: "À partir de 32-33°C ressenti dans l'équipement, votre corps consomme plus d'eau et la concentration baisse. Au-delà de 35°C, vous rentrez en zone à risque de coup de chaleur après 2-3 heures de selle continue. Au-delà de 38°C, ne roulez pas du tout entre 12h et 16h. L'été 2026 est annoncé avec 60 % de probabilité de températures supérieures à la moyenne par les météorologues."
