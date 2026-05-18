@@ -37,32 +37,18 @@ const Navbar = () => {
   return (
     <nav
       className={cn(
-        'fixed top-0 w-full z-50 transition-all duration-300',
-        isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-medium border-b border-gray-200/50'
-          : 'bg-transparent',
+        'fixed top-0 w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md border-b border-gray-200/50',
+        isScrolled ? 'shadow-medium' : 'shadow-soft',
       )}
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <div
-              className={cn(
-                'w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110',
-                isScrolled
-                  ? 'bg-corsica-azure text-white'
-                  : 'bg-white/20 backdrop-blur-sm text-white border border-white/30',
-              )}
-            >
+            <div className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 bg-corsica-azure text-white">
               <Bike className="w-6 h-6" />
             </div>
-            <span
-              className={cn(
-                'text-xl font-heading font-bold transition-colors duration-300',
-                isScrolled ? 'text-corsica-charcoal' : 'text-white',
-              )}
-            >
+            <span className="text-xl font-heading font-bold transition-colors duration-300 text-corsica-charcoal">
               La Corse à Moto
             </span>
           </Link>
@@ -76,12 +62,8 @@ const Navbar = () => {
                 className={cn(
                   'px-4 py-2 rounded-lg font-medium transition-all duration-300 flex items-center relative group',
                   isActive(item.path)
-                    ? isScrolled
-                      ? 'text-corsica-azure bg-corsica-azure/10'
-                      : 'text-white bg-white/20 backdrop-blur-sm'
-                    : isScrolled
-                      ? 'text-corsica-charcoal hover:text-corsica-azure hover:bg-corsica-azure/10'
-                      : 'text-white/90 hover:text-white hover:bg-white/20 backdrop-blur-sm',
+                    ? 'text-corsica-azure bg-corsica-azure/10'
+                    : 'text-corsica-charcoal hover:text-corsica-azure hover:bg-corsica-azure/10',
                 )}
               >
                 {item.icon && <item.icon className="w-4 h-4 mr-2" />}
@@ -96,12 +78,7 @@ const Navbar = () => {
 
           {/* Mobile menu button */}
           <button
-            className={cn(
-              'lg:hidden flex items-center justify-center w-10 h-10 rounded-lg transition-all duration-300',
-              isScrolled
-                ? 'text-corsica-charcoal hover:bg-corsica-azure/10'
-                : 'text-white hover:bg-white/20 backdrop-blur-sm',
-            )}
+            className="lg:hidden flex items-center justify-center w-11 h-11 rounded-lg transition-all duration-300 text-corsica-charcoal hover:bg-corsica-azure/10"
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
