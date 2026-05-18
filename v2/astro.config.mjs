@@ -19,6 +19,7 @@ const SITE_URL = process.env.PUBLIC_SITE_URL ?? 'https://corseamoto.com';
  * read the legacy data modules untouched at build time.
  */
 const v2InternalLinking = pathResolve(__dirname, 'src/lib/internal-linking-v2.ts');
+const v2OptimizedImage = pathResolve(__dirname, 'src/components/legacy-overrides/optimized-image.tsx');
 
 function aliasByImporter() {
   return {
@@ -36,6 +37,14 @@ function aliasByImporter() {
           importer?.includes(`${sep}src${sep}utils${sep}markdown${sep}`))
       ) {
         return this.resolve(v2InternalLinking, importer, { skipSelf: true });
+      }
+      // Force the v2 OptimizedImage override. The legacy version starts
+      // with opacity-0 and waits for onLoad to fade in — pattern broken
+      // by SSG/SSR because the onLoad event sometimes fails to fire
+      // after hydration on already-cached images. Result: invisible
+      // images in blog cards, accommodation cards, etc.
+      if (source === '@/components/ui/optimized-image') {
+        return this.resolve(v2OptimizedImage, importer, { skipSelf: true });
       }
       if (!source.startsWith('@/')) return null;
       const rel = source.slice(2);
