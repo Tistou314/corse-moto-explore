@@ -1,4 +1,4 @@
-import ModernHero from '../../../../src/components/modern/ModernHero';
+import ModernHero from '../legacy-overrides/ModernHero';
 import ModernFeaturesSection from '../../../../src/components/modern/ModernFeaturesSection';
 import ItinerariesSection from '../../../../src/components/home/ItinerariesSection';
 import BlogSection from '../../../../src/components/home/BlogSection';
