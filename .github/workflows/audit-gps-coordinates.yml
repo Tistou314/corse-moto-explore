@@ -1,0 +1,84 @@
+name: Audit GPS coordinates
+
+on:
+  workflow_dispatch:
+    inputs:
+      type:
+        description: 'Which entity to audit'
+        type: choice
+        required: true
+        default: 'all'
+        options:
+          - all
+          - accommodations
+          - gas_stations
+      apply:
+        description: 'Apply gas station fixes for suspects (otherwise report only)'
+        type: boolean
+        required: false
+        default: false
+      force:
+        description: 'Re-geocode accommodations that already have GPS'
+        type: boolean
+        required: false
+        default: false
+      dry_run:
+        description: 'No DB writes at all'
+        type: boolean
+        required: false
+        default: true
+      threshold_m:
+        description: 'Suspect threshold in meters for gas stations'
+        required: false
+        default: '200'
+      limit:
+        description: 'Max SerpAPI calls (0 = no limit)'
+        required: false
+        default: '0'
+      trigger_vercel_rebuild:
+        description: 'Ping Vercel deploy hook after successful run'
+        type: boolean
+        required: false
+        default: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: v2/package-lock.json
+
+      - name: Install deps
+        working-directory: v2
+        run: npm ci
+
+      - name: Run audit
+        working-directory: v2
+        env:
+          PUBLIC_SUPABASE_URL: ${{ secrets.PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+        run: |
+          ARGS="--type=${{ inputs.type }} --threshold-m=${{ inputs.threshold_m }}"
+          if [[ "${{ inputs.apply }}" == "true" ]]; then ARGS="$ARGS --apply"; fi
+          if [[ "${{ inputs.force }}" == "true" ]]; then ARGS="$ARGS --force"; fi
+          if [[ "${{ inputs.dry_run }}" == "true" ]]; then ARGS="$ARGS --dry"; fi
+          if [[ "${{ inputs.limit }}" != "0" ]]; then ARGS="$ARGS --limit=${{ inputs.limit }}"; fi
+          npx tsx scripts/audit-gps-coordinates.ts $ARGS
+
+      - name: Trigger Vercel rebuild
+        if: ${{ inputs.trigger_vercel_rebuild == true && inputs.dry_run == false }}
+        env:
+          VERCEL_DEPLOY_HOOK_URL: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+        run: |
+          if [[ -z "$VERCEL_DEPLOY_HOOK_URL" ]]; then
+            echo "VERCEL_DEPLOY_HOOK_URL secret not set, skipping rebuild"
+            exit 0
+          fi
+          curl -fsS -X POST "$VERCEL_DEPLOY_HOOK_URL" && echo "Vercel rebuild triggered"
