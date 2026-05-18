@@ -2,12 +2,23 @@
 import Layout from '@/layouts/Layout.astro';
 import ItinerairesPage from '@/components/pages/ItinerairesPage';
 import { allItineraries } from '@/lib/data';
-import { breadcrumbJsonLd } from '@/lib/seo';
+import { breadcrumbJsonLd, itemListJsonLd } from '@/lib/seo';
 
-const jsonLd = breadcrumbJsonLd([
-  { name: 'Accueil', path: '/' },
-  { name: 'Itinéraires', path: '/itineraires' },
-]);
+const jsonLd: Record<string, unknown>[] = [
+  breadcrumbJsonLd([
+    { name: 'Accueil', path: '/' },
+    { name: 'Itinéraires', path: '/itineraires' },
+  ]),
+  itemListJsonLd(
+    'Itinéraires moto en Corse',
+    allItineraries.map((it) => ({
+      url: `/itineraires/${it.slug}`,
+      name: it.title,
+      image: it.heroImage,
+      description: it.description,
+    })),
+  ),
+];
 ---
 
 <Layout

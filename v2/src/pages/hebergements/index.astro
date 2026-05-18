@@ -2,12 +2,23 @@
 import Layout from '@/layouts/Layout.astro';
 import HebergementsPage from '@/components/pages/HebergementsPage';
 import { allAccommodations } from '@/lib/data';
-import { breadcrumbJsonLd } from '@/lib/seo';
+import { breadcrumbJsonLd, itemListJsonLd } from '@/lib/seo';
 
-const jsonLd = breadcrumbJsonLd([
-  { name: 'Accueil', path: '/' },
-  { name: 'Hébergements', path: '/hebergements' },
-]);
+const jsonLd: Record<string, unknown>[] = [
+  breadcrumbJsonLd([
+    { name: 'Accueil', path: '/' },
+    { name: 'Hébergements', path: '/hebergements' },
+  ]),
+  itemListJsonLd(
+    'Hébergements moto en Corse',
+    allAccommodations.map((a) => ({
+      url: `/hebergements/${a.slug}`,
+      name: a.name,
+      image: a.heroImage,
+      description: a.description,
+    })),
+  ),
+];
 ---
 
 <Layout
