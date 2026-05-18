@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, Calendar, User } from 'lucide-react';
 import type { BlogPost } from '@/lib/data';
@@ -8,28 +7,35 @@ interface Props {
 }
 
 /**
- * v2 override of BlogPostHeader. The legacy version reads `post.imageUrl`
- * (which v2 didn't provide), falls back to a Pixabay JPG, applies it via
- * CSS background after useEffect, and waits for image load. That chain
- * pushed LCP to ~18s on production.
+ * v2 override of BlogPostHeader.
  *
- * Here the hero is a real <img fetchpriority="high" loading="eager"> so the
- * browser learns about it during the SSR phase and starts the fetch
- * immediately, before hydration. The visual layout (45vh / 60vh, rounded
- * bottom corners, dark gradient overlay, framer-motion text animation)
- * stays identical to the legacy design.
+ * The legacy version reads `post.imageUrl` (which v2 didn't provide),
+ * falls back to a Pixabay JPG, applies it via CSS background after
+ * useEffect, and waits for image load. That chain pushed LCP to ~18s
+ * on production.
+ *
+ * Two compounding fixes in this override:
+ *
+ * 1. Hero rendered as a real <img fetchpriority="high" loading="eager">
+ *    so the preload scanner picks it up during HTML parsing, before the
+ *    JS bundle even downloads.
+ * 2. Framer-motion replaced by Tailwind CSS animation classes
+ *    (animate-fade-in, animate-slide-up — defined in tailwind.config.ts).
+ *    Saves ~115 KB of JS on the critical path of every blog detail page,
+ *    since framer-motion was the only consumer left on these routes.
  */
 export default function BlogPostHeader({ post }: Props) {
-  const p = post as BlogPost & { image?: string; imageUrl?: string; date?: string; category?: string; author?: { name: string } };
+  const p = post as BlogPost & {
+    image?: string;
+    imageUrl?: string;
+    date?: string;
+    category?: string;
+    author?: { name: string };
+  };
   const heroSrc = p.imageUrl ?? p.heroImage ?? p.image ?? '';
 
   return (
-    <motion.div
-      initial={{ opacity: 0.85 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.4 }}
-      className="h-[40vh] sm:h-[45vh] md:h-[60vh] min-h-[280px] relative overflow-hidden rounded-b-3xl"
-    >
+    <div className="h-[40vh] sm:h-[45vh] md:h-[60vh] min-h-[280px] relative overflow-hidden rounded-b-3xl">
       {heroSrc && (
         <img
           src={heroSrc}
@@ -47,32 +53,26 @@ export default function BlogPostHeader({ post }: Props) {
         <div className="container mx-auto">
           <Link
             to="/blog"
-            className="inline-flex items-center text-white/90 mb-4 hover:text-white transition-colors group"
+            className="inline-flex items-center text-white/90 mb-4 hover:text-white transition-colors group animate-fade-in"
           >
             <ChevronLeft className="w-4 h-4 mr-1 group-hover:-translate-x-1 transition-transform" />
             Retour au blog
           </Link>
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="inline-block bg-corsica-azure/90 text-white text-sm px-4 py-1 rounded-full mb-4 shadow-md backdrop-blur-sm"
+          <span
+            className="inline-block bg-corsica-azure/90 text-white text-sm px-4 py-1 rounded-full mb-4 shadow-md backdrop-blur-sm animate-slide-up"
+            style={{ animationDelay: '0.1s' }}
           >
             {p.category}
-          </motion.span>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight drop-shadow-lg font-heading break-words"
+          </span>
+          <h1
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight drop-shadow-lg font-heading break-words animate-slide-up"
+            style={{ animationDelay: '0.2s' }}
           >
             {post.title}
-          </motion.h1>
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="flex flex-wrap items-center gap-5 text-white/90"
+          </h1>
+          <div
+            className="flex flex-wrap items-center gap-5 text-white/90 animate-slide-up"
+            style={{ animationDelay: '0.3s' }}
           >
             <span className="inline-flex items-center bg-white/10 px-3 py-1 rounded-full backdrop-blur-sm">
               <Calendar className="w-4 h-4 mr-2" />
@@ -82,9 +82,9 @@ export default function BlogPostHeader({ post }: Props) {
               <User className="w-4 h-4 mr-2" />
               {p.author?.name}
             </span>
-          </motion.div>
+          </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

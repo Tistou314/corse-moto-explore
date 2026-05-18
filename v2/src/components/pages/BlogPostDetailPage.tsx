@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import BlogPostHeader from '../legacy-overrides/BlogPostHeader';
 import BlogPostContent from '../../../../src/components/blog/BlogPostContent';
-import AuthorCard from '../../../../src/components/blog/AuthorCard';
+import AuthorCard from '../legacy-overrides/AuthorCard';
 import CommentsSection from '../../../../src/components/blog/CommentsSection';
 import RelatedPosts from '../../../../src/components/blog/RelatedPosts';
 import type { BlogPost } from '@/lib/data';

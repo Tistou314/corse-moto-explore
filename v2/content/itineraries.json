@@ -1,0 +1,8 @@
+[
+  {
+    "_doc": "Per-itinerary overrides. Same principle as accommodations.json. Useful when Supabase has a generic Unsplash placeholder (cf cap-corse, route-cols at the moment) that needs replacing by a local /lovable-uploads/ asset or a properly-licensed external URL.",
+    "slug": "_example",
+    "heroImage": "/lovable-uploads/example.png",
+    "source": "Source de l'image (site officiel, photo personnelle, etc.)"
+  }
+]
