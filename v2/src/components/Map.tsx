@@ -20,10 +20,31 @@ interface Props {
 }
 
 const COLORS: Record<MapMarker['type'], string> = {
-  itinerary: '#1a3a5c',
-  accommodation: '#7a5230',
-  'gas-station': '#5a5a5a',
+  itinerary: '#0EA5E9',
+  accommodation: '#10B981',
+  'gas-station': '#F97316',
 };
+
+const TYPE_LABEL: Record<MapMarker['type'], string> = {
+  itinerary: 'Itinéraire',
+  accommodation: 'Hébergement',
+  'gas-station': 'Station-service',
+};
+
+const LINK_LABEL: Record<MapMarker['type'], string> = {
+  itinerary: "Voir l'itinéraire",
+  accommodation: "Voir l'hébergement",
+  'gas-station': '',
+};
+
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
 
 export default function Map({
   markers,
@@ -83,7 +104,7 @@ export default function Map({
         source: 'markers',
         filter: ['has', 'point_count'],
         paint: {
-          'circle-color': '#1a3a5c',
+          'circle-color': '#0EA5E9',
           'circle-opacity': 0.85,
           'circle-radius': ['step', ['get', 'point_count'], 16, 5, 22, 20, 28],
         },
@@ -137,13 +158,29 @@ export default function Map({
         const f = e.features?.[0];
         if (!f) return;
         const coords = (f.geometry as GeoJSON.Point).coordinates.slice() as [number, number];
-        const { name, href } = f.properties as { name: string; href: string };
-        const html = href
-          ? `<a href="${href}" class="text-[#1a3a5c] underline">${name}</a>`
-          : `<span class="text-[#1a3a5c]">${name}</span>`;
+        const props = f.properties as { name: string; href: string; type: MapMarker['type'] };
+        const color = COLORS[props.type];
+        const typeLabel = TYPE_LABEL[props.type];
+        const linkLabel = LINK_LABEL[props.type];
+        const safeName = escapeHtml(props.name);
+        const safeHref = escapeHtml(props.href);
+        const linkHtml =
+          props.href && linkLabel
+            ? `<a href="${safeHref}" style="color:${color};font-size:12px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-top:6px">${linkLabel} <span aria-hidden="true">→</span></a>`
+            : '';
+        const html = `
+          <div style="min-width:160px;font-family:inherit">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+              <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${color}"></span>
+              <span style="font-size:11px;letter-spacing:0.04em;text-transform:uppercase;color:#6b7280;font-weight:600">${typeLabel}</span>
+            </div>
+            <div style="font-size:13px;font-weight:600;color:#111827;line-height:1.3">${safeName}</div>
+            ${linkHtml}
+          </div>
+        `;
         new maplibregl.Popup({ closeButton: true, offset: 14 })
           .setLngLat(coords)
-          .setHTML(`<div class="font-medium text-sm">${html}</div>`)
+          .setHTML(html)
           .addTo(map);
       });
 
