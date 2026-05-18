@@ -23,6 +23,7 @@ export interface BlogContentOverride {
   slug: string;
   title?: string;
   excerpt?: string;
+  heroImage?: string;
   content: string;
   faq?: BlogFaqItem[];
 }
@@ -109,6 +110,7 @@ for (const [path, raw] of Object.entries(rawFiles)) {
     slug,
     title: data.title as string | undefined,
     excerpt: data.excerpt as string | undefined,
+    heroImage: data.heroImage as string | undefined,
     content: content.trim(),
     faq: Array.isArray(data.faq) ? (data.faq as BlogFaqItem[]) : undefined,
   });

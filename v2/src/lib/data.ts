@@ -137,6 +137,12 @@ export const allBlogPosts = blogPostsBase.map((p) => {
   if (override) {
     if (override.title) (post as Record<string, unknown>).title = override.title;
     if (override.excerpt) (post as Record<string, unknown>).excerpt = override.excerpt;
+    if (override.heroImage) {
+      const obj = post as Record<string, unknown>;
+      obj.heroImage = override.heroImage;
+      obj.image = override.heroImage;
+      obj.imageUrl = override.heroImage;
+    }
     post.content = override.content;
     if (override.faq) post.faq = override.faq;
   }
