@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import BlogPostHeader from '../../../../src/components/blog/BlogPostHeader';
+import BlogPostHeader from '../legacy-overrides/BlogPostHeader';
 import BlogPostContent from '../../../../src/components/blog/BlogPostContent';
 import AuthorCard from '../../../../src/components/blog/AuthorCard';
 import CommentsSection from '../../../../src/components/blog/CommentsSection';

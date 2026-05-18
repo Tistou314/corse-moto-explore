@@ -65,9 +65,13 @@ if (FORCE_LEGACY || !SUPABASE_URL) {
   }
 }
 
-function withLegacyImageAlias<T extends { heroImage?: string; image?: string }>(item: T): T {
-  if (!item.image && item.heroImage) (item as Record<string, unknown>).image = item.heroImage;
-  if (!item.heroImage && item.image) (item as Record<string, unknown>).heroImage = item.image;
+function withLegacyImageAlias<T extends { heroImage?: string; image?: string; imageUrl?: string }>(item: T): T {
+  const src = item.heroImage ?? item.image ?? item.imageUrl;
+  if (!src) return item;
+  const obj = item as Record<string, unknown>;
+  if (!item.image) obj.image = src;
+  if (!item.heroImage) obj.heroImage = src;
+  if (!item.imageUrl) obj.imageUrl = src;
   return item;
 }
 
