@@ -1,0 +1,71 @@
+name: Populate accommodation photos
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (no DB writes, just preview what would happen)'
+        type: boolean
+        required: false
+        default: true
+      force:
+        description: 'Force refresh rows that already have a serp_image_url'
+        type: boolean
+        required: false
+        default: false
+      only_slugs:
+        description: 'Comma-separated slugs to limit the run (leave empty for all)'
+        required: false
+        default: ''
+      trigger_vercel_rebuild:
+        description: 'Ping Vercel deploy hook after successful run'
+        type: boolean
+        required: false
+        default: false
+
+jobs:
+  populate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: v2/package-lock.json
+
+      - name: Install deps
+        working-directory: v2
+        run: npm ci
+
+      - name: Run populate script
+        working-directory: v2
+        env:
+          PUBLIC_SUPABASE_URL: ${{ secrets.PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+        run: |
+          ARGS=""
+          if [[ "${{ inputs.dry_run }}" == "true" ]]; then
+            ARGS="$ARGS --dry"
+          fi
+          if [[ "${{ inputs.force }}" == "true" ]]; then
+            ARGS="$ARGS --force"
+          fi
+          if [[ -n "${{ inputs.only_slugs }}" ]]; then
+            ARGS="$ARGS --only=${{ inputs.only_slugs }}"
+          fi
+          npx tsx scripts/populate-accommodation-photos.ts $ARGS
+
+      - name: Trigger Vercel rebuild
+        if: ${{ inputs.trigger_vercel_rebuild == true && inputs.dry_run == false }}
+        env:
+          VERCEL_DEPLOY_HOOK_URL: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+        run: |
+          if [[ -z "$VERCEL_DEPLOY_HOOK_URL" ]]; then
+            echo "VERCEL_DEPLOY_HOOK_URL secret not set, skipping rebuild"
+            exit 0
+          fi
+          curl -fsS -X POST "$VERCEL_DEPLOY_HOOK_URL" && echo "Vercel rebuild triggered"

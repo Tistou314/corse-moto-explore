@@ -1,6 +1,6 @@
 ---
 slug: decouvrir-traditions-corses-moto
-title: "Découvrir les traditions corses à moto : villages, gastronomie, fêtes et chants"
+title: "Traditions corses à moto : villages, gastronomie, fêtes et chants"
 excerpt: "La Corse à moto, ce n'est pas qu'un enchaînement de virages : c'est une rencontre avec une culture millénaire restée vivante. Villages perchés, charcuteries de châtaigne, polyphonies UNESCO, fêtes patronales et artisanat local. Le guide complet du motard curieux."
 heroImage: "/lovable-uploads/2653c886-6632-476f-b90a-f498f2b8ca2e.png"
 faq:

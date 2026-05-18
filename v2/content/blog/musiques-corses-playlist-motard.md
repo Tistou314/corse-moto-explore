@@ -1,6 +1,6 @@
 ---
 slug: musiques-corses-playlist-motard
-title: "Musique corse à moto : la playlist parfaite et comment l'écouter en roulant"
+title: "Musique corse à moto : la playlist parfaite et comment l'écouter"
 excerpt: "Polyphonies UNESCO, fusion contemporaine, chants de bergers, nouveaux albums 2025-2026 d'I Muvrini et A Filetta. Quoi écouter, sur quels passages de votre voyage, et comment installer la bande-son sur un intercom moto sans dégrader la concentration."
 heroImage: "/lovable-uploads/c15d82fe-c722-44c8-979a-5305e6b1f0bd.png"
 faq:

@@ -1,6 +1,6 @@
 ---
 slug: preparer-moto-routes-corses
-title: "Adapter sa moto aux routes corses : les réglages et accessoires qui changent tout"
+title: "Adapter sa moto aux routes corses : réglages et accessoires clés"
 excerpt: "Les routes corses ne sont pas comme les autres : 1 200 virages aux 100 km, dénivelés à 1 500 m, revêtements variables, animaux en liberté. Voici les ajustements de réglages, accessoires et ergonomie qui transforment une moto continentale en moto bien adaptée à l'île."
 heroImage: "/lovable-uploads/4f782a78-47e0-4676-a139-1ff26b164087.png"
 faq:

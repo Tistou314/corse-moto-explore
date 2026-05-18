@@ -53,11 +53,24 @@ if (p.faq && p.faq.length > 0) {
     })),
   });
 }
+
+// Title : the post titles are already SEO-crafted (2 300-3 500 word
+// articles with hand-tuned titles), the legacy suffix " | Blog Moto Corse"
+// pushed past 95 chars on most posts and got truncated by Google. Drop it,
+// keep the raw title (Layout adds the global site_name in og:site_name
+// anyway, so brand presence is preserved).
+const metaTitle = p.title;
+
+// Description : use the excerpt, but cap at 158 chars to stay under Google's
+// snippet limit. Excerpts from blog overrides are already concise (140-180
+// chars typical), so trimming is rare and never mid-sentence sensitive.
+const rawExcerpt = (p.excerpt || '').replace(/\s+/g, ' ').trim();
+const metaDescription = rawExcerpt.length > 158 ? rawExcerpt.slice(0, 155).trimEnd() + '…' : rawExcerpt;
 ---
 
 <Layout
-  title={`${p.title} | Blog Moto Corse`}
-  description={p.excerpt}
+  title={metaTitle}
+  description={metaDescription}
   path={`/blog/${p.slug}`}
   image={p.heroImage}
   type="article"

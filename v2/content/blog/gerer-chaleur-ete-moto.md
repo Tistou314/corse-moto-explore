@@ -1,6 +1,6 @@
 ---
 slug: gerer-chaleur-ete-moto
-title: "Gérer la chaleur estivale à moto en Corse : le guide pour ne pas griller"
+title: "Chaleur estivale à moto en Corse : le guide pour ne pas griller"
 excerpt: "Été 2026 annoncé plus chaud que la normale, canicules récurrentes, risque incendie en augmentation. Comment structurer ses journées, équiper sa moto et son corps, et choisir les bons itinéraires pour rouler entre juin et septembre sans souffrir."
 heroImage: "/lovable-uploads/55f44f7d-705e-4056-bef4-668d9934786b.png"
 faq:
