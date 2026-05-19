@@ -36,21 +36,41 @@ const linkTargets = allBlogPosts.map((p) => {
 
 export function addInternalLinks(content: string, currentPostId: string): string {
   if (!content) return content;
-  const targets = linkTargets.filter((t) => t.id !== currentPostId);
+
+  // Rule: 1 internal link max per URL target across the whole article.
+  // Skip targets that already have at least one explicit link in the markdown
+  // (or any other URL, internal or external). The author's hand-written links
+  // win; the auto-linker only fills the gaps.
+  const explicitlyLinked = new Set<string>();
+  for (const m of content.matchAll(/\]\(([^)]+)\)/g)) {
+    explicitlyLinked.add(m[1].trim());
+  }
+
+  const targets = linkTargets.filter((t) => {
+    if (t.id === currentPostId) return false;
+    if (explicitlyLinked.has(`/blog/${t.slug}`)) return false;
+    return true;
+  });
 
   // Preserve fenced code, inline code, and existing markdown links untouched.
   const sections = content.split(/(```[\s\S]*?```|`[\s\S]*?`|\[[\s\S]*?\]\([\s\S]*?\))/g);
+
+  // Targets that have already received an auto-injected link in an earlier
+  // section — never add a second one.
+  const usedTargets = new Set<string>();
 
   return sections
     .map((section, idx) => {
       if (idx % 2 !== 0) return section;
       return targets.reduce((processed, target) => {
+        if (usedTargets.has(target.slug)) return processed;
         for (const keyword of target.keywords) {
           if (!keyword || keyword.length < 4) continue;
           const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
           const regex = new RegExp(`\\b(${escaped})\\b(?![^<]*>|[^\\[]*\\])`, 'i');
           if (regex.test(processed)) {
             processed = processed.replace(regex, `[${keyword}](/blog/${target.slug})`);
+            usedTargets.add(target.slug);
             return processed;
           }
         }
