@@ -149,26 +149,68 @@ function rewriteBlogContent(content: string | undefined): string | undefined {
   return out;
 }
 
-export const allBlogPosts = blogPostsBase.map((p) => {
-  const post = p as typeof p & { content?: string; faq?: { q: string; a: string }[] };
-  if (post.content) post.content = rewriteBlogContent(post.content);
-  // Markdown override from v2/content/blog/<slug>.md takes priority over
-  // the Supabase/legacy content — see src/lib/blog-content-overrides.ts.
-  const override = post.slug ? blogOverrides.get(post.slug) : undefined;
-  if (override) {
-    if (override.title) (post as Record<string, unknown>).title = override.title;
-    if (override.excerpt) (post as Record<string, unknown>).excerpt = override.excerpt;
-    if (override.heroImage) {
-      const obj = post as Record<string, unknown>;
-      obj.heroImage = override.heroImage;
-      obj.image = override.heroImage;
-      obj.imageUrl = override.heroImage;
+function readingTimeFromContent(content: string): { label: string; minutes: number } {
+  const words = content.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+  const minutes = Math.max(1, Math.round(words / 220));
+  return { label: `${minutes} min de lecture`, minutes };
+}
+
+function synthesizePostFromOverride(o: ReturnType<typeof getAllBlogOverrides>[number]): BlogPost {
+  const today = new Date().toISOString().slice(0, 10);
+  const publishedAt = o.publishedAt || today;
+  const { label, minutes } = readingTimeFromContent(o.content);
+  return {
+    id: o.slug,
+    slug: o.slug,
+    title: o.title ?? o.slug,
+    excerpt: o.excerpt ?? '',
+    content: o.content,
+    category: o.category ?? 'Voyage',
+    authorName: o.authorName ?? 'Corse à moto',
+    publishedAt,
+    isoDate: publishedAt,
+    heroImage: o.heroImage ?? '',
+    readingTime: label,
+    readingMinutes: minutes,
+    tags: o.tags ?? [],
+  };
+}
+
+const existingSlugs = new Set(blogPostsBase.map((p) => p.slug).filter(Boolean) as string[]);
+const synthesizedPosts = getAllBlogOverrides()
+  .filter((o) => !existingSlugs.has(o.slug))
+  .map(synthesizePostFromOverride);
+
+export const allBlogPosts = [
+  ...blogPostsBase.map((p) => {
+    const post = p as typeof p & { content?: string; faq?: { q: string; a: string }[] };
+    if (post.content) post.content = rewriteBlogContent(post.content);
+    // Markdown override from v2/content/blog/<slug>.md takes priority over
+    // the Supabase/legacy content — see src/lib/blog-content-overrides.ts.
+    const override = post.slug ? blogOverrides.get(post.slug) : undefined;
+    if (override) {
+      if (override.title) (post as Record<string, unknown>).title = override.title;
+      if (override.excerpt) (post as Record<string, unknown>).excerpt = override.excerpt;
+      if (override.heroImage) {
+        const obj = post as Record<string, unknown>;
+        obj.heroImage = override.heroImage;
+        obj.image = override.heroImage;
+        obj.imageUrl = override.heroImage;
+      }
+      post.content = override.content;
+      if (override.faq) post.faq = override.faq;
     }
-    post.content = override.content;
-    if (override.faq) post.faq = override.faq;
-  }
-  return p;
-});
+    return p;
+  }),
+  ...(synthesizedPosts.map((p) => {
+    const override = blogOverrides.get(p.slug);
+    const post = withLegacyImageAlias(withSlugAsId(withLegacyAuthor(p as BlogPost))) as typeof p & {
+      faq?: { q: string; a: string }[];
+    };
+    if (override?.faq) post.faq = override.faq;
+    return post;
+  })),
+];
 export const allGasStations = loaded.allGasStations;
 
 export function getItineraryBySlug(slug: string) {
