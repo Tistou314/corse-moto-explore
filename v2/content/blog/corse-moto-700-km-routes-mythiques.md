@@ -2,7 +2,12 @@
 slug: corse-moto-700-km-routes-mythiques
 title: "La Corse à moto : 700 km de routes mythiques"
 excerpt: "Découvrez les plus beaux itinéraires à moto en Corse. 700 km de routes spectaculaires, cols vertigineux et littoral méditerranéen."
-heroImage: "/lovable-uploads/corse-moto-700-km-routes-mythiques.png"
+heroImage: "/lovable-uploads/c93c4443-2257-46a3-95c1-02596eac1f80.jpg"
+tags:
+  - "tour de Corse"
+  - "road-trip"
+  - "itinéraire"
+  - "découvrir la Corse"
 faq:
   - q: "Où aller en moto en Corse pour les débutants ?"
     a: "Les tracés côtiers du sud, entre Porto Vecchio et Bonifacio, sont les plus accessibles pour les pilotes moins expérimentés. Les distances sont courtes, le trafic est gérable hors juillet-août, et les paysages sont immédiatement gratifiants. Évite les cols de haute altitude (Bavella, Vergio) pour un premier séjour."

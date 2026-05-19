@@ -67,30 +67,36 @@ function parseFrontMatter(raw: string): { data: Record<string, unknown>; content
       continue;
     }
 
-    // Block start: `faq:` followed by indented `- q:` / `a:` items
+    // Block start: `faq:` followed by indented `- q:` / `a:` items,
+    // OR a simple `tags:` followed by indented `- "value"` strings.
     const blockKey = line.match(/^([a-zA-Z_][\w-]*):\s*$/);
     if (blockKey) {
       const key = blockKey[1];
-      const items: Record<string, string>[] = [];
+      const objectItems: Record<string, string>[] = [];
+      const stringItems: string[] = [];
       i++;
       let current: Record<string, string> | null = null;
       while (i < lines.length) {
         const sub = lines[i];
         const itemStart = sub.match(/^\s*-\s+([a-zA-Z_][\w-]*):\s*(.*)$/);
         const itemCont = sub.match(/^\s+([a-zA-Z_][\w-]*):\s*(.*)$/);
+        const stringItem = sub.match(/^\s*-\s+(.+)$/);
         if (itemStart) {
-          if (current) items.push(current);
+          if (current) objectItems.push(current);
           current = { [itemStart[1]]: unquote(itemStart[2]) };
           i++;
         } else if (itemCont && current) {
           current[itemCont[1]] = unquote(itemCont[2]);
           i++;
+        } else if (stringItem && !current && objectItems.length === 0) {
+          stringItems.push(unquote(stringItem[1]));
+          i++;
         } else {
           break;
         }
       }
-      if (current) items.push(current);
-      data[key] = items;
+      if (current) objectItems.push(current);
+      data[key] = objectItems.length > 0 ? objectItems : stringItems;
       continue;
     }
 
