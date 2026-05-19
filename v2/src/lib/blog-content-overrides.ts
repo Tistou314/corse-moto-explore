@@ -24,6 +24,10 @@ export interface BlogContentOverride {
   title?: string;
   excerpt?: string;
   heroImage?: string;
+  publishedAt?: string;
+  category?: string;
+  authorName?: string;
+  tags?: string[];
   content: string;
   faq?: BlogFaqItem[];
 }
@@ -111,6 +115,10 @@ for (const [path, raw] of Object.entries(rawFiles)) {
     title: data.title as string | undefined,
     excerpt: data.excerpt as string | undefined,
     heroImage: data.heroImage as string | undefined,
+    publishedAt: data.publishedAt as string | undefined,
+    category: data.category as string | undefined,
+    authorName: data.authorName as string | undefined,
+    tags: Array.isArray(data.tags) ? (data.tags as string[]) : undefined,
     content: content.trim(),
     faq: Array.isArray(data.faq) ? (data.faq as BlogFaqItem[]) : undefined,
   });
