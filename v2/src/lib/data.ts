@@ -183,7 +183,11 @@ const synthesizedPosts = getAllBlogOverrides()
 
 export const allBlogPosts = [
   ...blogPostsBase.map((p) => {
-    const post = p as typeof p & { content?: string; faq?: { q: string; a: string }[] };
+    const post = p as typeof p & {
+      content?: string;
+      faq?: { q: string; a: string }[];
+      author?: { name?: string; avatar?: string; bio?: string };
+    };
     if (post.content) post.content = rewriteBlogContent(post.content);
     // Markdown override from v2/content/blog/<slug>.md takes priority over
     // the Supabase/legacy content — see src/lib/blog-content-overrides.ts.
@@ -199,6 +203,19 @@ export const allBlogPosts = [
       }
       post.content = override.content;
       if (override.faq) post.faq = override.faq;
+      // withLegacyAuthor already built post.author from the flat fields,
+      // so update both the flat fields and the nested author object.
+      if (override.authorName || override.authorBio) {
+        const author = (post.author ??= {});
+        if (override.authorName) {
+          (post as Record<string, unknown>).authorName = override.authorName;
+          author.name = override.authorName;
+        }
+        if (override.authorBio) {
+          (post as Record<string, unknown>).authorBio = override.authorBio;
+          author.bio = override.authorBio;
+        }
+      }
     }
     return p;
   }),
