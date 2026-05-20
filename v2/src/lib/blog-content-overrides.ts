@@ -27,6 +27,7 @@ export interface BlogContentOverride {
   publishedAt?: string;
   category?: string;
   authorName?: string;
+  authorBio?: string;
   tags?: string[];
   content: string;
   faq?: BlogFaqItem[];
@@ -124,6 +125,7 @@ for (const [path, raw] of Object.entries(rawFiles)) {
     publishedAt: data.publishedAt as string | undefined,
     category: data.category as string | undefined,
     authorName: data.authorName as string | undefined,
+    authorBio: data.authorBio as string | undefined,
     tags: Array.isArray(data.tags) ? (data.tags as string[]) : undefined,
     content: content.trim(),
     faq: Array.isArray(data.faq) ? (data.faq as BlogFaqItem[]) : undefined,

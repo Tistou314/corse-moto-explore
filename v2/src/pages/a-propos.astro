@@ -3,7 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import { breadcrumbJsonLd, SITE_NAME } from '@/lib/seo';
 import { SITE_URL } from '@/lib/utils';
 
-const heroImage = '/lovable-uploads/381bb3e5-8c88-48aa-8685-829520b4e247.png';
+const heroImage = '/lovable-uploads/1786ff52-abb7-4c35-9599-de33995c0358.png';
 
 const team = [
   {
@@ -14,45 +14,38 @@ const team = [
     bio: "Originaire de Haute-Savoie, il a découvert la Corse par hasard lors d'un voyage improvisé et n'a plus jamais cessé d'y revenir. Huit ans à sillonner l'île, un carnet de routes qui ne cesse de grossir, et un appareil photo toujours dans la sacoche. C'est lui qui a lancé le guide, et qui en tient encore la plume principale.",
   },
   {
-    name: 'Sophie Luciani',
-    role: 'Guide locale & référente saisons',
-    initials: 'SL',
+    name: 'Sophie Mercier',
+    role: 'Référente saisons & météo',
+    initials: 'SM',
     color: 'bg-corsica-emerald',
-    bio: "Guide moto locale, elle connaît la Corse au fil des mois : quand un col rouvre, quand le maquis embaume, quand une route bascule de l'idéal au piège. Elle veille à ce que chaque conseil saisonnier du guide colle à la réalité du terrain.",
+    bio: "Elle a fait des intersaisons corses sa spécialité : avril, mai, septembre, octobre. À force d'y retourner aux mêmes périodes année après année, elle sait quand un col rouvre, quand le maquis embaume, et quand une route bascule de l'idéal au piège.",
   },
   {
-    name: 'Michel Ferrandi',
+    name: 'Michel Vasseur',
     role: 'Référent mécanique & préparation',
-    initials: 'MF',
+    initials: 'MV',
     color: 'bg-corsica-coral',
     bio: "Mécanicien moto spécialisé dans la préparation des machines pour les terrains exigeants. Revêtements capricieux, dénivelés, chaleur : il traduit l'expérience de l'atelier en check-lists concrètes pour que personne ne se retrouve en rade sur une route isolée.",
   },
   {
-    name: 'Antoine Marcelli',
-    role: 'Photographe & repérage des panoramas',
-    initials: 'AM',
-    color: 'bg-corsica-azure',
-    bio: "Photographe et motard corse depuis quinze ans, il repère les points de vue qui méritent qu'on coupe le moteur. Les images du guide et la sélection des plus beaux arrêts panoramiques lui doivent beaucoup.",
-  },
-  {
-    name: 'Marc Santini',
+    name: 'Marc Dubreuil',
     role: 'Organisation & logistique des voyages',
-    initials: 'MS',
-    color: 'bg-corsica-emerald',
-    bio: "Organisateur de voyages moto en Corse depuis 2010. Ferry, étapes, hébergements, ravitaillement : il sait où ça coince et comment l'éviter. C'est lui qui transforme une envie de road trip en itinéraire qui tient debout.",
+    initials: 'MD',
+    color: 'bg-corsica-azure',
+    bio: "Organisateur de voyages moto à destination de la Corse depuis 2010. Ferry, étapes, hébergements, ravitaillement : il sait où ça coince et comment l'éviter. C'est lui qui transforme une envie de road trip en itinéraire qui tient debout.",
   },
   {
-    name: 'Antoine Simeoni',
+    name: 'Julien Faure',
     role: "Spécialiste de l'été corse",
-    initials: 'AS',
-    color: 'bg-corsica-coral',
+    initials: 'JF',
+    color: 'bg-corsica-emerald',
     bio: "Motard expérimenté, il a parcouru l'île pendant plus de quinze étés consécutifs. Gestion de la chaleur, créneaux horaires, hydratation, choix d'équipement : il sait rendre la haute saison supportable, voire belle.",
   },
   {
-    name: 'Pierre-Antoine Giustiniani',
+    name: 'Pierre-Antoine Granger',
     role: 'Spécialiste hors-saison & conduite difficile',
     initials: 'PG',
-    color: 'bg-corsica-azure',
+    color: 'bg-corsica-coral',
     bio: "Motard tout-terrain et moniteur de conduite hivernale. Quand les cols se couvrent et que l'île se vide, c'est son domaine. Il documente la Corse des saisons creuses, celle que peu de gens osent rouler.",
   },
 ];
@@ -112,7 +105,7 @@ const jsonLd: Record<string, unknown>[] = [
   <section class="relative">
     <img
       src={heroImage}
-      alt="Route sinueuse taillée dans les gorges de granit rouge en Corse"
+      alt="Vue depuis la selle d'une moto sur une route côtière des calanques de Corse"
       width="1200"
       height="675"
       fetchpriority="high"
@@ -156,10 +149,10 @@ const jsonLd: Record<string, unknown>[] = [
         </p>
         <p>
           Au fil des voyages, les rencontres font le reste. Un mécanicien qui explique
-          pourquoi une moto continentale souffre sur les revêtements corses. Une guide locale
-          qui sait lire les saisons mieux que n'importe quelle appli météo. Un photographe qui
-          connaît l'heure exacte où la lumière frappe le cap. Chacun avait sa pièce du puzzle.
-          Corse à moto est né de l'envie de les rassembler.
+          pourquoi une moto continentale souffre sur les revêtements corses. Une motarde qui
+          lit les intersaisons de l'île mieux que n'importe quelle appli météo. Un organisateur
+          qui connaît chaque écueil logistique d'un road trip insulaire. Chacun avait sa pièce
+          du puzzle. Corse à moto est né de l'envie de les rassembler.
         </p>
         <p>
           Aujourd'hui, ce guide n'est ni un catalogue ni une brochure. C'est un travail de
@@ -178,7 +171,7 @@ const jsonLd: Record<string, unknown>[] = [
           L'équipe
         </h2>
         <p class="text-lg text-corsica-slate leading-relaxed">
-          Sept regards sur la même île. Chacun écrit sur ce qu'il connaît le mieux, et c'est
+          Six regards sur la même île. Chacun écrit sur ce qu'il connaît le mieux, et c'est
           ce qui fait la richesse du guide.
         </p>
       </div>
