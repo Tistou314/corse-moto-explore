@@ -1,0 +1,129 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { breadcrumbJsonLd } from '@/lib/seo';
+
+const jsonLd = breadcrumbJsonLd([
+  { name: 'Accueil', path: '/' },
+  { name: 'Politique de confidentialité', path: '/politique-confidentialite' },
+]);
+---
+
+<Layout
+  title="Politique de confidentialité — Corse à moto"
+  description="Comment Corse à moto traite vos données : mesure d'audience via Google Analytics, cookies, durées de conservation et vos droits RGPD."
+  path="/politique-confidentialite"
+  jsonLd={jsonLd}
+>
+  <div class="bg-gray-50 py-16 min-h-screen">
+    <div class="container mx-auto px-4">
+      <div class="mb-12 text-center pt-20">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-corsica-charcoal font-heading">
+          Politique de confidentialité
+        </h1>
+        <p class="text-lg text-corsica-slate max-w-3xl mx-auto">
+          Quelles données nous collectons, pourquoi, et comment exercer vos droits.
+        </p>
+      </div>
+
+      <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-md p-6 md:p-10 space-y-8 text-corsica-slate leading-relaxed">
+        <p class="text-sm text-corsica-slate/70">Dernière mise à jour : mai 2026.</p>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-3 text-corsica-charcoal font-heading">Responsable du traitement</h2>
+          <p>
+            Le responsable du traitement des données est la société <strong>PITAMETERNAM</strong> (SARL),
+            éditrice du site Corse à moto. Pour toute question relative à vos données, vous pouvez
+            écrire à <a href="mailto:pitameternam@gmail.com" class="text-corsica-azure hover:underline">pitameternam@gmail.com</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-3 text-corsica-charcoal font-heading">Données collectées</h2>
+          <p>
+            Ce site est un guide éditorial. Il ne propose pas de compte utilisateur et ne collecte
+            aucune donnée personnelle directement, à deux exceptions près :
+          </p>
+          <ul class="mt-3 space-y-2 list-disc pl-5">
+            <li>
+              <strong>Mesure d'audience</strong> : nous utilisons Google Analytics pour comprendre
+              la fréquentation du site (pages vues, durée de visite, type d'appareil, pays, source
+              de trafic). Ces données sont collectées via un cookie et une adresse IP traitée de
+              façon abrégée.
+            </li>
+            <li>
+              <strong>Formulaire de contact</strong> : si vous nous écrivez via le formulaire de
+              contact, les informations que vous fournissez (nom, e-mail, message) sont utilisées
+              uniquement pour vous répondre. Elles ne sont ni revendues ni utilisées à des fins
+              commerciales.
+            </li>
+          </ul>
+          <p class="mt-3">
+            Nous ne pratiquons aucun profilage publicitaire et ne vendons aucune donnée à des tiers.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-3 text-corsica-charcoal font-heading">Finalité et base légale</h2>
+          <p>
+            La mesure d'audience a pour seule finalité d'améliorer le contenu et l'ergonomie du site.
+            Elle repose sur votre consentement. Les données du formulaire de contact sont traitées
+            sur la base de votre demande (mesure précontractuelle ou intérêt légitime à vous répondre).
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-3 text-corsica-charcoal font-heading">Cookies</h2>
+          <p>
+            Les seuls cookies déposés sont ceux de Google Analytics, à des fins de mesure d'audience.
+            Aucun cookie publicitaire ou de réseau social n'est utilisé. Vous pouvez à tout moment
+            refuser ces cookies via les réglages de votre navigateur, ou installer le module
+            complémentaire de désactivation de Google Analytics proposé par Google.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-3 text-corsica-charcoal font-heading">Destinataires et hébergement</h2>
+          <p>
+            Les données de mesure d'audience sont traitées par <strong>Google</strong> (Google Ireland
+            Limited) en qualité de sous-traitant. Le site est hébergé par <strong>Vercel Inc.</strong>
+            (États-Unis). Ces prestataires peuvent traiter des données en dehors de l'Union européenne ;
+            ces transferts sont encadrés par les clauses contractuelles types de la Commission européenne.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-3 text-corsica-charcoal font-heading">Durée de conservation</h2>
+          <p>
+            Les données de mesure d'audience sont conservées 14 mois maximum. Les messages reçus via
+            le formulaire de contact sont conservés le temps nécessaire au traitement de votre
+            demande, puis archivés ou supprimés.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-3 text-corsica-charcoal font-heading">Vos droits</h2>
+          <p>
+            Conformément au Règlement général sur la protection des données (RGPD) et à la loi
+            Informatique et Libertés, vous disposez d'un droit d'accès, de rectification,
+            d'effacement, d'opposition, de limitation et de portabilité de vos données. Pour
+            exercer ces droits, écrivez à
+            <a href="mailto:pitameternam@gmail.com" class="text-corsica-azure hover:underline">pitameternam@gmail.com</a>.
+          </p>
+          <p class="mt-3">
+            Si vous estimez que vos droits ne sont pas respectés, vous pouvez introduire une
+            réclamation auprès de la CNIL (Commission nationale de l'informatique et des libertés,
+            <a href="https://www.cnil.fr" rel="noopener" class="text-corsica-azure hover:underline">cnil.fr</a>).
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-3 text-corsica-charcoal font-heading">Modifications</h2>
+          <p>
+            Cette politique de confidentialité peut être mise à jour à tout moment. La date de
+            dernière mise à jour figure en haut de cette page.
+          </p>
+        </section>
+      </div>
+    </div>
+  </div>
+</Layout>

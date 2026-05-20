@@ -1,0 +1,102 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { breadcrumbJsonLd } from '@/lib/seo';
+
+const jsonLd = breadcrumbJsonLd([
+  { name: 'Accueil', path: '/' },
+  { name: 'Mentions légales', path: '/mentions-legales' },
+]);
+---
+
+<Layout
+  title="Mentions légales — Corse à moto"
+  description="Mentions légales du site Corse à moto : éditeur, hébergeur, directeur de la publication et propriété intellectuelle."
+  path="/mentions-legales"
+  jsonLd={jsonLd}
+>
+  <div class="bg-gray-50 py-16 min-h-screen">
+    <div class="container mx-auto px-4">
+      <div class="mb-12 text-center pt-20">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-corsica-charcoal font-heading">
+          Mentions légales
+        </h1>
+        <p class="text-lg text-corsica-slate max-w-3xl mx-auto">
+          Informations légales relatives à l'édition et à l'hébergement du site.
+        </p>
+      </div>
+
+      <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-md p-6 md:p-10 space-y-8 text-corsica-slate leading-relaxed">
+        <section>
+          <h2 class="text-2xl font-bold mb-3 text-corsica-charcoal font-heading">Éditeur du site</h2>
+          <p>
+            Le site <strong>Corse à moto</strong> est édité par la société <strong>PITAMETERNAM</strong>,
+            société à responsabilité limitée (SARL) au capital de <strong>[À COMPLÉTER : montant] €</strong>.
+          </p>
+          <ul class="mt-3 space-y-1">
+            <li>Siège social : 56 rue du Théron, 81570 Sémalens</li>
+            <li>SIREN : 909 523 664</li>
+            <li>SIRET : 909 523 664 00011</li>
+            <li>RCS : Castres 909 523 664</li>
+            <li>Adresse e-mail : <a href="mailto:pitameternam@gmail.com" class="text-corsica-azure hover:underline">pitameternam@gmail.com</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-3 text-corsica-charcoal font-heading">Directeur de la publication</h2>
+          <p>Le directeur de la publication est <strong>Baptiste Guiraud</strong>.</p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-3 text-corsica-charcoal font-heading">Hébergeur</h2>
+          <p>
+            Le site est hébergé par <strong>Vercel Inc.</strong>
+          </p>
+          <ul class="mt-3 space-y-1">
+            <li>340 S Lemon Avenue #4133, Walnut, CA 91789, États-Unis</li>
+            <li>Site web : <a href="https://vercel.com" rel="noopener" class="text-corsica-azure hover:underline">vercel.com</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-3 text-corsica-charcoal font-heading">Propriété intellectuelle</h2>
+          <p>
+            L'ensemble des contenus présents sur ce site (textes, articles, itinéraires, photographies,
+            illustrations, logo, structure) est protégé par le droit d'auteur. Toute reproduction,
+            représentation, modification ou exploitation, totale ou partielle, sans autorisation
+            écrite préalable de l'éditeur est interdite et constitue une contrefaçon sanctionnée par
+            le Code de la propriété intellectuelle.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-3 text-corsica-charcoal font-heading">Responsabilité</h2>
+          <p>
+            Les informations diffusées sur le site (itinéraires, conditions de circulation, tarifs,
+            coordonnées d'hébergements et de stations-service) sont fournies à titre indicatif et
+            peuvent évoluer. L'éditeur s'efforce de les tenir à jour mais ne peut garantir leur
+            exactitude ou leur exhaustivité. Il appartient à chaque motard de vérifier les conditions
+            réelles avant son voyage. La responsabilité de l'éditeur ne saurait être engagée en cas
+            d'erreur, d'omission ou d'indisponibilité du site.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-3 text-corsica-charcoal font-heading">Liens hypertextes</h2>
+          <p>
+            Le site peut contenir des liens vers des sites tiers. L'éditeur n'exerce aucun contrôle
+            sur ces sites et décline toute responsabilité quant à leur contenu ou à leur politique de
+            confidentialité.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-3 text-corsica-charcoal font-heading">Données personnelles</h2>
+          <p>
+            Le traitement des données personnelles est détaillé dans notre
+            <a href="/politique-confidentialite" class="text-corsica-azure hover:underline">politique de confidentialité</a>.
+          </p>
+        </section>
+      </div>
+    </div>
+  </div>
+</Layout>
