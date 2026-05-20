@@ -95,6 +95,12 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/a-propos" className="text-white/80 hover:text-white transition-colors flex items-center">
+                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-coral mr-2 opacity-75"></span>
+                  À propos
+                </Link>
+              </li>
+              <li>
                 <Link to="/contact" className="text-white/80 hover:text-white transition-colors flex items-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-corsica-coral mr-2 opacity-75"></span>
                   Contact
