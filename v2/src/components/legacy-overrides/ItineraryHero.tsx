@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ChevronLeft, Clock, Route, Mountain } from 'lucide-react';
 import type { Itinerary } from '@/lib/data';
+import { webpVariant } from '@/lib/utils';
 
 interface Props {
   itinerary: Itinerary;
@@ -23,20 +24,24 @@ interface Props {
 export default function ItineraryHero({ itinerary }: Props) {
   const it = itinerary as Itinerary & { image?: string };
   const heroSrc = it.image ?? it.heroImage ?? '';
+  const heroWebp = webpVariant(heroSrc);
 
   return (
     <div className="h-[40vh] sm:h-[45vh] md:h-[50vh] min-h-[320px] relative overflow-hidden">
       {heroSrc && (
-        <img
-          src={heroSrc}
-          alt={itinerary.title}
-          fetchPriority="high"
-          loading="eager"
-          decoding="async"
-          width={1600}
-          height={900}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+        <picture>
+          {heroWebp && <source srcSet={heroWebp} type="image/webp" />}
+          <img
+            src={heroSrc}
+            alt={itinerary.title}
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
+            width={1600}
+            height={900}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </picture>
       )}
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
       <div className="absolute bottom-0 left-0 w-full p-4 sm:p-6 md:p-12">

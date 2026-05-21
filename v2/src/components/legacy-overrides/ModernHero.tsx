@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../../../../src/components/ui/button';
 import { ChevronLeft, ChevronRight, MapPin, Calendar, Users } from 'lucide-react';
+import { webpVariant } from '@/lib/utils';
 
 interface HeroSlide {
   image: string;
@@ -77,21 +78,26 @@ const ModernHero = () => {
     <div className="relative h-[min(100svh,720px)] sm:h-[100svh] overflow-hidden">
       {/* Stacked images, cross-fade via opacity */}
       <div className="absolute inset-0">
-        {heroSlides.map((s, index) => (
-          <img
-            key={s.image}
-            src={s.image}
-            alt={s.title}
-            fetchPriority={index === 0 ? 'high' : 'low'}
-            loading={index === 0 ? 'eager' : 'lazy'}
-            decoding="async"
-            width={1920}
-            height={1080}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
-          />
-        ))}
+        {heroSlides.map((s, index) => {
+          const webp = webpVariant(s.image);
+          return (
+            <picture key={s.image}>
+              {webp && <source srcSet={webp} type="image/webp" />}
+              <img
+                src={s.image}
+                alt={s.title}
+                fetchPriority={index === 0 ? 'high' : 'low'}
+                loading={index === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+                width={1920}
+                height={1080}
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
+                  index === currentSlide ? 'opacity-100' : 'opacity-0'
+                }`}
+              />
+            </picture>
+          );
+        })}
         <div className="absolute inset-0 bg-gradient-to-r from-corsica-charcoal/80 via-corsica-charcoal/40 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-corsica-charcoal/60 via-transparent to-transparent" />
       </div>

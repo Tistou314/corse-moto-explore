@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ChevronLeft, Calendar, User } from 'lucide-react';
 import type { BlogPost } from '@/lib/data';
+import { webpVariant } from '@/lib/utils';
 
 interface Props {
   post: BlogPost;
@@ -33,20 +34,24 @@ export default function BlogPostHeader({ post }: Props) {
     author?: { name: string };
   };
   const heroSrc = p.imageUrl ?? p.heroImage ?? p.image ?? '';
+  const heroWebp = webpVariant(heroSrc);
 
   return (
     <div className="h-[40vh] sm:h-[45vh] md:h-[60vh] min-h-[280px] relative overflow-hidden rounded-b-3xl">
       {heroSrc && (
-        <img
-          src={heroSrc}
-          alt={post.title}
-          fetchPriority="high"
-          loading="eager"
-          decoding="async"
-          width={1600}
-          height={900}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+        <picture>
+          {heroWebp && <source srcSet={heroWebp} type="image/webp" />}
+          <img
+            src={heroSrc}
+            alt={post.title}
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
+            width={1600}
+            height={900}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </picture>
       )}
       <div className="absolute inset-0 bg-gradient-to-t from-corsica-charcoal/90 via-corsica-charcoal/40 to-transparent" />
       <div className="absolute bottom-0 left-0 w-full p-8 md:p-12">
