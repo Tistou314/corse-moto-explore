@@ -11,7 +11,20 @@ export async function getStaticPaths() {
 
 const { it } = Astro.props as { it: (typeof allItineraries)[number] };
 
-const nearby = allItineraries.filter((x) => x.slug !== it.slug && x.region === it.region);
+// The sidebar only renders id/title/description/image for up to 3 nearby
+// itineraries. Trim to those fields so each one's full markdown body
+// isn't serialized into the island props (~15 KB of dead HTML each).
+const nearby = allItineraries
+  .filter((x) => x.slug !== it.slug && x.region === it.region)
+  .slice(0, 3)
+  .map((x) => ({
+    id: x.id,
+    slug: x.slug,
+    title: x.title,
+    description: x.description,
+    image: x.image,
+    heroImage: x.heroImage,
+  })) as unknown as typeof allItineraries;
 
 const touristTripSchema: Record<string, unknown> = {
   '@context': 'https://schema.org',
@@ -86,6 +99,7 @@ const metaTitle = [it.title, distanceStr ? `${distanceStr} à moto en Corse` : '
   description={metaDescription}
   path={`/itineraires/${it.slug}`}
   image={it.heroImage}
+  preloadImage={it.heroImage}
   jsonLd={jsonLd}
 >
   <ItineraryDetailPage client:load itinerary={it} nearbyItineraries={nearby} />

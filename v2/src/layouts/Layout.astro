@@ -1,6 +1,7 @@
 ---
 import '@/styles/global.css';
 import { buildSeo, organizationJsonLd, websiteJsonLd, SITE_NAME, type SeoProps } from '@/lib/seo';
+import { webpVariant } from '@/lib/utils';
 import Navbar from '../components/Navbar.tsx';
 import Footer from '../components/Footer.tsx';
 
@@ -8,13 +9,17 @@ interface Props extends SeoProps {
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   bodyClass?: string;
   hideChrome?: boolean;
+  /** Local hero image path to preload — the LCP element on detail pages. */
+  preloadImage?: string;
 }
 
-const { jsonLd, bodyClass, hideChrome = false, ...seoProps } = Astro.props;
+const { jsonLd, bodyClass, hideChrome = false, preloadImage, ...seoProps } = Astro.props;
 const seo = buildSeo({
   ...seoProps,
   path: seoProps.path ?? Astro.url.pathname,
 });
+
+const preloadWebp = preloadImage ? webpVariant(preloadImage) : null;
 
 const jsonLdArr: Record<string, unknown>[] = [websiteJsonLd(), organizationJsonLd()];
 if (Array.isArray(jsonLd)) jsonLdArr.push(...jsonLd);
@@ -31,6 +36,16 @@ else if (jsonLd) jsonLdArr.push(jsonLd);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate icon" href="/favicon.ico" />
     <link rel="manifest" href="/manifest.webmanifest" />
+
+    {preloadImage && (
+      <link
+        rel="preload"
+        as="image"
+        href={preloadWebp ?? preloadImage}
+        type={preloadWebp ? 'image/webp' : undefined}
+        fetchpriority="high"
+      />
+    )}
 
     <title>{seo.title}</title>
     <meta name="description" content={seo.description} />
