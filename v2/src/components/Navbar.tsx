@@ -3,17 +3,20 @@ import { Link } from 'react-router-dom';
 import { Menu, X, Bike, Fuel } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-const Navbar = () => {
+interface NavbarProps {
+  // Current path, passed from the Astro layout (Astro.url.pathname) so the
+  // active state is known at build time. Reading window.location during
+  // render would diverge from the SSR output and break hydration.
+  currentPath?: string;
+}
+
+const stripTrailingSlash = (p: string) => (p.length > 1 ? p.replace(/\/$/, '') : p);
+
+const Navbar = ({ currentPath = '/' }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  // Resolve the current path only after mount. Reading window.location during
-  // render would diverge from the SSR output (the router shim returns '/' on
-  // the server), producing a hydration mismatch on every non-home page.
-  const [pathname, setPathname] = useState('');
 
   useEffect(() => {
-    setPathname(window.location.pathname);
-
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
@@ -27,7 +30,7 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
-  const isActive = (path: string) => pathname === path;
+  const isActive = (path: string) => stripTrailingSlash(currentPath) === stripTrailingSlash(path);
 
   const navItems = [
     { path: '/', label: 'Accueil' },
