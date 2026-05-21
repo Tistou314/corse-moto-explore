@@ -67,13 +67,13 @@ export default function ItineraryHero({ itinerary }: Props) {
               {itinerary.elevation}
             </span>
             <span
-              className={`px-3 py-1 rounded-full text-xs sm:text-sm font-medium
+              className={`px-3 py-1 rounded-full text-xs sm:text-sm font-medium text-white
               ${
                 itinerary.difficulty === 'facile'
-                  ? 'bg-corsica-emerald'
+                  ? 'bg-emerald-700'
                   : itinerary.difficulty === 'moyen'
-                    ? 'bg-corsica-coral'
-                    : 'bg-corsica-ruby'
+                    ? 'bg-orange-700'
+                    : 'bg-red-700'
               }`}
             >
               {itinerary.difficulty.charAt(0).toUpperCase() + itinerary.difficulty.slice(1)}

@@ -1,8 +1,7 @@
-@import '@fontsource/inter/300.css';
-@import '@fontsource/inter/400.css';
-@import '@fontsource/inter/500.css';
-@import '@fontsource/inter/600.css';
-@import '@fontsource/inter/700.css';
+/* One variable file (weights 100-900) instead of 5 static Inter weight
+   files (~96 KB). tailwind.config's sans stack already leads with
+   "Inter Variable", which this @font-face registers. */
+@import '@fontsource-variable/inter/wght.css';
 @import '@fontsource/poppins/400.css';
 @import '@fontsource/poppins/500.css';
 @import '@fontsource/poppins/600.css';
