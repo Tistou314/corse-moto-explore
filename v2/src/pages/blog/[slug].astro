@@ -73,6 +73,7 @@ const metaDescription = rawExcerpt.length > 158 ? rawExcerpt.slice(0, 155).trimE
   description={metaDescription}
   path={`/blog/${p.slug}`}
   image={p.heroImage}
+  preloadImage={p.heroImage}
   type="article"
   publishedTime={p.isoDate}
   authorName={p.authorName}

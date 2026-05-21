@@ -103,6 +103,7 @@ const metaDescription = tail ? `${shortDesc} ${tail}.` : shortDesc;
   description={metaDescription}
   path={`/hebergements/${a.slug}`}
   image={a.heroImage}
+  preloadImage={a.heroImage}
   jsonLd={jsonLd}
 >
   <AccommodationDetailPage client:load accommodation={a} />
