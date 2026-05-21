@@ -36,6 +36,15 @@ async function run() {
     writeFileSync(webpPath, webp);
     webpTotal += webp.length;
 
+    // Small WebP thumbnail (320px wide) for sidebar / card thumbnails —
+    // serving the full hero for a 64px <img> wastes hundreds of KB.
+    const thumbPath = path.replace(/\.(png|jpe?g)$/i, '-thumb.webp');
+    const thumb = await sharp(path)
+      .resize({ width: 320, withoutEnlargement: true })
+      .webp({ quality: 72, effort: 6 })
+      .toBuffer();
+    writeFileSync(thumbPath, thumb);
+
     before += origSize;
     after += finalSize;
     console.log(
