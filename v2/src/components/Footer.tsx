@@ -131,7 +131,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-12 pt-8 text-center text-white/60">
+        <div className="border-t border-white/10 mt-12 pt-8 text-center text-white/80">
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-4">
             <Link to="/mentions-legales" className="hover:text-white transition-colors">
               Mentions légales
