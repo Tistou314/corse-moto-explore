@@ -36,3 +36,16 @@ export function webpVariant(src: string | undefined): string | null {
   if (!/\.(png|jpe?g)$/i.test(src)) return null;
   return src.replace(/\.(png|jpe?g)$/i, '.webp');
 }
+
+/**
+ * 320px-wide WebP thumbnail path for a local raster image — for small
+ * sidebar/card thumbnails. Falls back to the original src when the
+ * image is not a known local upload. Thumbnails are produced by
+ * scripts/optimize-images.ts.
+ */
+export function thumbVariant(src: string | undefined): string | undefined {
+  if (!src) return src;
+  if (!src.startsWith('/lovable-uploads/')) return src;
+  if (!/\.(png|jpe?g)$/i.test(src)) return src;
+  return src.replace(/\.(png|jpe?g)$/i, '-thumb.webp');
+}
