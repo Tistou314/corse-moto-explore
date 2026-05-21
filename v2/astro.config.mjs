@@ -62,6 +62,9 @@ export default defineConfig({
     webAnalytics: { enabled: false },
     imageService: true,
   }),
+  // Inline the (small) stylesheet into each page so it stops blocking
+  // the first render with a separate round-trip — PSI flagged ~600ms.
+  build: { inlineStylesheets: 'always' },
   integrations: [
     react(),
     tailwind({ applyBaseStyles: false }),
@@ -87,6 +90,19 @@ export default defineConfig({
           replacement: pathResolve(__dirname, 'src/lib/helmet-shim.tsx'),
         },
       ],
+    },
+    build: {
+      rollupOptions: {
+        output: {
+          // The legacy components pull one lucide icon per file, which
+          // Vite otherwise emits as ~20 tiny separate chunks. Bundle them
+          // into a single cached request.
+          manualChunks(id) {
+            if (id.includes('node_modules/lucide-react')) return 'lucide';
+            return undefined;
+          },
+        },
+      },
     },
   },
 });
