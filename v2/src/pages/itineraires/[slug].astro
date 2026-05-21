@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import ItineraryDetailPage from '@/components/pages/ItineraryDetailPage';
+import ItineraryHero from '@/components/legacy-overrides/ItineraryHero';
 import { allItineraries } from '@/lib/data';
 import { breadcrumbJsonLd } from '@/lib/seo';
 import { absoluteUrl } from '@/lib/utils';
@@ -102,5 +103,6 @@ const metaTitle = [it.title, distanceStr ? `${distanceStr} à moto en Corse` : '
   preloadImage={it.heroImage}
   jsonLd={jsonLd}
 >
+  <ItineraryHero itinerary={it} />
   <ItineraryDetailPage client:load itinerary={it} nearbyItineraries={nearby} />
 </Layout>
