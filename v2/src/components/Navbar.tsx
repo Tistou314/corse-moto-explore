@@ -1,14 +1,19 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Menu, X, Bike, Fuel } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const location = useLocation();
+  // Resolve the current path only after mount. Reading window.location during
+  // render would diverge from the SSR output (the router shim returns '/' on
+  // the server), producing a hydration mismatch on every non-home page.
+  const [pathname, setPathname] = useState('');
 
   useEffect(() => {
+    setPathname(window.location.pathname);
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
@@ -22,7 +27,7 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => pathname === path;
 
   const navItems = [
     { path: '/', label: 'Accueil' },
