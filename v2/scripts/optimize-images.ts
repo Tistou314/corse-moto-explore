@@ -1,15 +1,15 @@
 /**
- * Losslessly recompress images in public/lovable-uploads.
+ * Optimize images in public/lovable-uploads.
  *
- * The original PNGs were exported with weak compression (1-2.5 MB for
- * ~1300px photos). Re-encoding at max zlib effort cuts ~65-70% with no
- * quality loss and, crucially, keeps the exact same filename + .png
- * extension so no data/Supabase reference needs to change.
+ * 1. Losslessly recompress every PNG/JPEG in place (max zlib effort /
+ *    mozjpeg) — same filename, so no data/Supabase reference moves.
+ * 2. Emit a sibling .webp for each image. Hero components reference it
+ *    through a <picture> element, with the original as fallback.
  *
  * Usage: npx tsx scripts/optimize-images.ts
  */
 import sharp from 'sharp';
-import { readdirSync, statSync, writeFileSync } from 'node:fs';
+import { readdirSync, statSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 const DIR = new URL('../public/lovable-uploads/', import.meta.url).pathname;
@@ -18,32 +18,35 @@ async function run() {
   const files = readdirSync(DIR).filter((f) => /\.(png|jpe?g)$/i.test(f));
   let before = 0;
   let after = 0;
+  let webpTotal = 0;
 
   for (const file of files) {
     const path = join(DIR, file);
     const origSize = statSync(path).size;
-    const pipeline = sharp(path);
 
-    const out = /\.png$/i.test(file)
-      ? await pipeline.png({ compressionLevel: 9, effort: 10 }).toBuffer()
-      : await pipeline.jpeg({ quality: 82, mozjpeg: true }).toBuffer();
+    const recompressed = /\.png$/i.test(file)
+      ? await sharp(path).png({ compressionLevel: 9, effort: 10 }).toBuffer()
+      : await sharp(path).jpeg({ quality: 82, mozjpeg: true }).toBuffer();
+    if (recompressed.length < origSize) writeFileSync(path, recompressed);
+    const finalSize = Math.min(recompressed.length, origSize);
 
-    // Only overwrite if we actually saved bytes.
-    if (out.length < origSize) {
-      writeFileSync(path, out);
-    }
-    const finalSize = Math.min(out.length, origSize);
+    // Sibling WebP — the modern format hero <picture> elements prefer.
+    const webpPath = path.replace(/\.(png|jpe?g)$/i, '.webp');
+    const webp = await sharp(path).webp({ quality: 80, effort: 6 }).toBuffer();
+    writeFileSync(webpPath, webp);
+    webpTotal += webp.length;
+
     before += origSize;
     after += finalSize;
-    const pct = (((origSize - finalSize) / origSize) * 100).toFixed(0);
     console.log(
-      `${file}  ${(origSize / 1024).toFixed(0)}KB -> ${(finalSize / 1024).toFixed(0)}KB  (-${pct}%)`,
+      `${file}  ${(origSize / 1024).toFixed(0)}KB -> ${(finalSize / 1024).toFixed(0)}KB ` +
+        `| webp ${(webp.length / 1024).toFixed(0)}KB`,
     );
   }
 
   console.log(
-    `\nTotal: ${(before / 1048576).toFixed(1)}MB -> ${(after / 1048576).toFixed(1)}MB ` +
-      `(-${(((before - after) / before) * 100).toFixed(0)}%)`,
+    `\nRecompress: ${(before / 1048576).toFixed(1)}MB -> ${(after / 1048576).toFixed(1)}MB` +
+      `  |  WebP set: ${(webpTotal / 1048576).toFixed(1)}MB`,
   );
 }
 

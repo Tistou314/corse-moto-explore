@@ -1,7 +1,7 @@
 import ItineraryHero from '../legacy-overrides/ItineraryHero';
 import ItineraryDescription from '../legacy-overrides/ItineraryDescription';
 import ItineraryPointsOfInterest from '../../../../src/components/itineraries/ItineraryPointsOfInterest';
-import ItineraryRating from '../../../../src/components/itineraries/ItineraryRating';
+import ItineraryRating from '../legacy-overrides/ItineraryRating';
 import ItinerarySidebar from '../../../../src/components/itineraries/ItinerarySidebar';
 import type { Itinerary } from '@/lib/data';
 

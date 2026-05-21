@@ -66,7 +66,7 @@ export default function ItineraryDescription({ itinerary }: Props) {
               <Icon className="w-5 h-5 text-corsica-blue" />
             </div>
             <div className="min-w-0">
-              <p className="text-xs text-gray-500 uppercase tracking-wider">{label}</p>
+              <p className="text-xs text-gray-700 uppercase tracking-wider">{label}</p>
               <p className="font-semibold text-corsica-blue break-words">{value}</p>
             </div>
           </div>
@@ -85,7 +85,7 @@ export default function ItineraryDescription({ itinerary }: Props) {
                 <Flag className="w-5 h-5 text-corsica-emerald" strokeWidth={2.5} />
               </div>
               <div className="min-w-0">
-                <p className="text-xs uppercase tracking-wider text-gray-500 mb-1">Point de départ</p>
+                <p className="text-xs uppercase tracking-wider text-gray-600 mb-1">Point de départ</p>
                 <p className="text-lg font-semibold text-corsica-charcoal break-words">{itinerary.startPoint}</p>
               </div>
             </div>
@@ -106,7 +106,7 @@ export default function ItineraryDescription({ itinerary }: Props) {
                 <MapPin className="w-5 h-5 text-corsica-coral" strokeWidth={2.5} />
               </div>
               <div className="min-w-0">
-                <p className="text-xs uppercase tracking-wider text-gray-500 mb-1">Point d'arrivée</p>
+                <p className="text-xs uppercase tracking-wider text-gray-600 mb-1">Point d'arrivée</p>
                 <p className="text-lg font-semibold text-corsica-charcoal break-words">{itinerary.endPoint}</p>
               </div>
             </div>

@@ -23,3 +23,16 @@ export function absoluteUrl(path: string): string {
   const p = path.startsWith('/') ? path : `/${path}`;
   return `${base}${p}`;
 }
+
+/**
+ * Sibling .webp path for a local raster image. Returns null when the
+ * source is not a local png/jpg (e.g. an external/Supabase URL), so
+ * callers can skip the <source> and just render the original.
+ * The .webp files are produced by scripts/optimize-images.ts.
+ */
+export function webpVariant(src: string | undefined): string | null {
+  if (!src) return null;
+  if (!src.startsWith('/lovable-uploads/')) return null;
+  if (!/\.(png|jpe?g)$/i.test(src)) return null;
+  return src.replace(/\.(png|jpe?g)$/i, '.webp');
+}
