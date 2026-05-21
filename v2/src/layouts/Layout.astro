@@ -80,7 +80,7 @@ else if (jsonLd) jsonLdArr.push(jsonLd);
   </head>
   <body class={bodyClass}>
     <a href="#main" class="skip-link">Aller au contenu</a>
-    {!hideChrome && <Navbar client:load />}
+    {!hideChrome && <Navbar client:load currentPath={Astro.url.pathname} />}
     <slot name="header" />
     <main id="main">
       <slot />
