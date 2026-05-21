@@ -70,12 +70,35 @@ else if (jsonLd) jsonLdArr.push(jsonLd);
       <script type="application/ld+json" set:html={JSON.stringify(item)} />
     ))}
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FVGM3QSCLC"></script>
     <script is:inline>
+      // Google Analytics. The 150 KB gtag.js is kept off the critical
+      // path: dataLayer is queued immediately, but the script itself is
+      // only injected on first interaction or once the browser is idle
+      // (5s timeout fallback) — whichever comes first. Every visitor is
+      // still counted; the request just no longer competes with FCP/LCP.
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-FVGM3QSCLC');
+      (function () {
+        var loaded = false;
+        function loadGtag() {
+          if (loaded) return;
+          loaded = true;
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-FVGM3QSCLC';
+          document.head.appendChild(s);
+        }
+        ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(function (evt) {
+          window.addEventListener(evt, loadGtag, { once: true, passive: true });
+        });
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(loadGtag, { timeout: 5000 });
+        } else {
+          window.addEventListener('load', function () { setTimeout(loadGtag, 3000); });
+        }
+      })();
     </script>
   </head>
   <body class={bodyClass}>
