@@ -117,6 +117,10 @@ for (const [path, raw] of Object.entries(rawFiles)) {
   const slugFromFile = path.split('/').pop()!.replace(/\.md$/, '');
   const { data, content } = parseFrontMatter(raw);
   const slug = (data.slug as string) || slugFromFile;
+  // The page header already renders the post title as the single <h1>.
+  // Drop a leading `# Title` line from the body so it doesn't emit a
+  // second <h1>.
+  const body = content.trim().replace(/^#\s+.*(?:\r?\n)+/, '');
   overrides.set(slug, {
     slug,
     title: data.title as string | undefined,
@@ -127,7 +131,7 @@ for (const [path, raw] of Object.entries(rawFiles)) {
     authorName: data.authorName as string | undefined,
     authorBio: data.authorBio as string | undefined,
     tags: Array.isArray(data.tags) ? (data.tags as string[]) : undefined,
-    content: content.trim(),
+    content: body,
     faq: Array.isArray(data.faq) ? (data.faq as BlogFaqItem[]) : undefined,
   });
 }

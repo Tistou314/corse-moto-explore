@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/strip-html-control-chars.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "populate-photos": "tsx scripts/populate-accommodation-photos.ts",
