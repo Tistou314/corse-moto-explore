@@ -15,7 +15,14 @@ interface Props {
  */
 export default function ItineraryDescription({ itinerary }: Props) {
   const it = itinerary as Itinerary & { fullDescription?: string };
-  const formatted = formatContent(it.fullDescription ?? itinerary.description);
+  // The hero already renders the itinerary title as the page's single
+  // <h1>. The fullDescription markdown starts with its own `# Title`,
+  // which would emit a duplicate <h1> — strip that leading line.
+  const rawBody = (it.fullDescription ?? itinerary.description ?? '').replace(
+    /^#\s+.*(?:\r?\n)+/,
+    '',
+  );
+  const formatted = formatContent(rawBody);
   const processed = formatted
     .replace(/<p>/g, '<p class="mb-6 leading-relaxed text-gray-700 text-base">')
     .replace(/<ul>/g, '<ul class="list-disc pl-6 mb-6 space-y-3 text-gray-600">')
