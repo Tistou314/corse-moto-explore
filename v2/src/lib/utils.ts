@@ -16,7 +16,7 @@ export function slugify(input: string): string {
 }
 
 export const SITE_URL =
-  (import.meta as ImportMeta).env?.PUBLIC_SITE_URL ?? 'https://corseamoto.com';
+  (import.meta as ImportMeta).env?.PUBLIC_SITE_URL ?? 'https://www.corseamoto.com';
 
 export function absoluteUrl(path: string): string {
   const base = SITE_URL.replace(/\/$/, '');
