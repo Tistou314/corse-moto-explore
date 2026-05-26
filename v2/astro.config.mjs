@@ -11,7 +11,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const v2Src = pathResolve(__dirname, 'src');
 const legacySrc = pathResolve(__dirname, '..', 'src');
 
-const SITE_URL = process.env.PUBLIC_SITE_URL ?? 'https://corseamoto.com';
+const SITE_URL = process.env.PUBLIC_SITE_URL ?? 'https://www.corseamoto.com';
 
 /**
  * Vite plugin that resolves `@/...` differently depending on whether the
@@ -58,6 +58,12 @@ function aliasByImporter() {
 export default defineConfig({
   site: SITE_URL,
   output: 'static',
+  // Production canonicals and the live URLs are already slash-less
+  // (e.g. /itineraires/foo). Tell Astro and the sitemap integration to
+  // match, so canonical / og:url / sitemap entries never disagree on
+  // the trailing slash — Google treats that disagreement as a quality
+  // signal worth de-prioritising.
+  trailingSlash: 'never',
   adapter: vercel({
     webAnalytics: { enabled: false },
     imageService: true,
@@ -72,6 +78,9 @@ export default defineConfig({
       filter: (page) => !page.includes('/admin'),
       changefreq: 'weekly',
       priority: 0.7,
+      // Tells Google "this URL was refreshed on the build date" — helps
+      // it prioritise re-crawling after our rounds of fixes.
+      lastmod: new Date(),
     }),
   ],
   prefetch: { prefetchAll: true, defaultStrategy: 'viewport' },
