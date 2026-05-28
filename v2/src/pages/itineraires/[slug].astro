@@ -75,11 +75,15 @@ const jsonLd: Record<string, unknown>[] = [
   touristTripSchema,
 ];
 
-// Normalize distance: data sometimes carries "km" already (e.g. "110 km"),
-// sometimes just the number. Strip and re-append cleanly so we don't end
-// up with "kmkm" in the title.
-const distanceNum = String(it.distance ?? '').replace(/\s*km\s*$/i, '').trim();
-const distanceStr = distanceNum ? `${distanceNum} km` : '';
+// Normalize distance: data sometimes carries "km" already (e.g. "110 km"
+// or "150 km (Ajaccio-Corte-Bastia)"), sometimes just the number. If "km"
+// is anywhere in the string, leave it as-is; otherwise append " km".
+const distanceRaw = String(it.distance ?? '').trim();
+const distanceStr = distanceRaw
+  ? /\bkm\b/i.test(distanceRaw)
+    ? distanceRaw
+    : `${distanceRaw} km`
+  : '';
 
 // Short, human description: drop the legacy data quirks (trailing "..."),
 // trim to ~115 chars to leave room for the meta-stats appended below.
