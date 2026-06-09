@@ -35,6 +35,7 @@ const jsonLd: Record<string, unknown>[] = [
     mainEntityOfPage: absoluteUrl(`/blog/${p.slug}`),
     author: {
       '@type': 'Person',
+      '@id': absoluteUrl('/a-propos') + '#matthieu',
       name: p.authorName,
       url: absoluteUrl('/a-propos'),
     },

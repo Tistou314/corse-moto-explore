@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /admin
+Disallow: /*?tag=
 Sitemap: https://www.corseamoto.com/sitemap-index.xml
