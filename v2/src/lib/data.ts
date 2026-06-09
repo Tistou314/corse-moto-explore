@@ -216,6 +216,13 @@ export const allBlogPosts = [
           author.bio = override.authorBio;
         }
       }
+      // Spread the publication date too so the editorial timeline reads as
+      // organic activity over months, not a mass push on one day.
+      if (override.publishedAt) {
+        (post as Record<string, unknown>).publishedAt = override.publishedAt;
+        (post as Record<string, unknown>).isoDate = override.publishedAt;
+        (post as Record<string, unknown>).date = override.publishedAt;
+      }
     }
     return p;
   }),

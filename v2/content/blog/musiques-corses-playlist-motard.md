@@ -3,6 +3,9 @@ slug: musiques-corses-playlist-motard
 title: "Musique corse à moto : la playlist parfaite et comment l'écouter"
 excerpt: "Polyphonies UNESCO, fusion contemporaine, chants de bergers, nouveaux albums 2025-2026 d'I Muvrini et A Filetta. Quoi écouter, sur quels passages de votre voyage, et comment installer la bande-son sur un intercom moto sans dégrader la concentration."
 heroImage: "/lovable-uploads/c15d82fe-c722-44c8-979a-5305e6b1f0bd.png"
+authorName: "Matthieu"
+authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto depuis 8 ans. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
+publishedAt: "2026-05-06"
 faq:
   - q: "Peut-on écouter de la musique à moto en Corse en toute légalité ?"
     a: "Oui, via un intercom moto Bluetooth intégré au casque, à condition de pouvoir entendre l'environnement extérieur. La loi française interdit les écouteurs intra-auriculaires (kit oreillette filaire), mais les casques moto à enceintes intégrées sont autorisés. Cardo, Sena, Schuberth SC2 produisent des kits homologués. Volume modéré obligatoire pour percevoir les klaxons et sirènes."

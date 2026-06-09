@@ -33,7 +33,12 @@ const jsonLd: Record<string, unknown>[] = [
     datePublished: p.isoDate || undefined,
     dateModified: p.isoDate || undefined,
     mainEntityOfPage: absoluteUrl(`/blog/${p.slug}`),
-    author: { '@type': 'Person', name: p.authorName },
+    author: {
+      '@type': 'Person',
+      '@id': absoluteUrl('/a-propos') + '#matthieu',
+      name: p.authorName,
+      url: absoluteUrl('/a-propos'),
+    },
     publisher: {
       '@type': 'Organization',
       name: 'Corse à moto',

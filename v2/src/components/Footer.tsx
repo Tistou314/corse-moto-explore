@@ -125,7 +125,7 @@ const Footer = () => {
                 <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
                   <Mail className="w-4 h-4 text-white" />
                 </div>
-                <span className="text-white/80">contact@lacorseamoto.fr</span>
+                <span className="text-white/80">pitameternam@gmail.com</span>
               </li>
             </ul>
           </div>

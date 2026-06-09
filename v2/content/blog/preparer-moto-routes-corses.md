@@ -3,8 +3,9 @@ slug: preparer-moto-routes-corses
 title: "Adapter sa moto aux routes corses : réglages et accessoires clés"
 excerpt: "Les routes corses ne sont pas comme les autres : 1 200 virages aux 100 km, dénivelés à 1 500 m, revêtements variables, animaux en liberté. Voici les ajustements de réglages, accessoires et ergonomie qui transforment une moto continentale en moto bien adaptée à l'île."
 heroImage: "/lovable-uploads/4f782a78-47e0-4676-a139-1ff26b164087.png"
-authorName: "Michel Vasseur"
-authorBio: "Mécanicien moto spécialisé dans la préparation des machines pour les terrains exigeants."
+authorName: "Matthieu"
+authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto depuis 8 ans. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
+publishedAt: "2026-02-18"
 faq:
   - q: "Quelles sont les particularités des routes corses qui demandent d'adapter sa moto ?"
     a: "Quatre spécificités : densité de virages exceptionnelle (jusqu'à 1 200 virages pour 100 km sur la D81 ou la D80), dénivelés importants (Vergio à 1 477 m, Bavella à 1 218 m), revêtements souvent dégradés en sortie de virage (gravillons, fissures), trafic touristique encombrant en été (camping-cars lents dans les zones sans dépassement). Tout cela demande des suspensions souples, un freinage progressif, une ergonomie qui tient sur 6-7 heures de selle."

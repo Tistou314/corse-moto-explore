@@ -36,10 +36,16 @@ export default function AuthorCard({ author }: Props) {
         </div>
         <div>
           <h3 className="font-bold text-lg mb-2 text-corsica-charcoal font-heading">{author.name}</h3>
-          <p className="text-gray-600 leading-relaxed">
+          <p className="text-gray-600 leading-relaxed mb-3">
             {author.bio ||
-              `Passionné de moto et de la Corse, ${author.name} partage son expertise et ses expériences à travers des articles détaillés et informatifs. Explorateur des routes sinueuses et des paysages spectaculaires de l'île de beauté.`}
+              `Passionné de moto et de la Corse, ${author.name} partage son expertise et ses expériences à travers des articles détaillés et informatifs.`}
           </p>
+          <a
+            href="/a-propos"
+            className="inline-flex items-center text-corsica-azure hover:underline font-medium text-sm"
+          >
+            En savoir plus sur {author.name} →
+          </a>
         </div>
       </div>
     </div>
