@@ -5,6 +5,7 @@ excerpt: "Décembre à mars : la Corse hors saison. Cols fermés, équipement ne
 heroImage: "/lovable-uploads/a96b2fab-3ff7-4f98-8400-0dc93f7457d4.png"
 authorName: "Matthieu"
 authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto depuis 8 ans. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
+publishedAt: "2026-05-20"
 faq:
   - q: "Peut-on vraiment rouler en Corse à moto en hiver ?"
     a: "Oui sur les bandes côtières (Bastia, Calvi, Ajaccio, Bonifacio) entre 0 et 400 m d'altitude, où les températures restent autour de 8-15°C. Non sur l'intérieur montagneux et les grands cols (Vergio, Bavella, Vizzavona, Verde), fermés ou impraticables de novembre à avril selon l'enneigement. L'hiver 2025-2026 a été particulièrement neigeux selon Météo France, équipement obligatoire dès 600 m."

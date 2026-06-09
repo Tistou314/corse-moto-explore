@@ -5,6 +5,7 @@ excerpt: "Découvrez les plus beaux itinéraires à moto en Corse. 700 km de rou
 heroImage: "/lovable-uploads/c93c4443-2257-46a3-95c1-02596eac1f80.jpg"
 authorName: "Matthieu"
 authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto depuis 8 ans. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
+publishedAt: "2026-03-04"
 tags:
   - "tour de Corse"
   - "road-trip"

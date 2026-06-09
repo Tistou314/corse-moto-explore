@@ -5,6 +5,7 @@ excerpt: "Janvier à décembre, mois par mois : météo, fréquentation, tarifs,
 heroImage: "/lovable-uploads/d60eaef4-6e63-4386-860b-c02648902533.png"
 authorName: "Matthieu"
 authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto depuis 8 ans. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
+publishedAt: "2026-01-21"
 faq:
   - q: "Quelle est globalement la meilleure période pour la Corse à moto ?"
     a: "Mai-juin et septembre-octobre arrivent en tête sans débat. Températures clémentes (18-25°C), tous les cols ouverts, fréquentation modérée, tarifs en moyenne saison (-25 à -45 % vs juillet-août), nature à son meilleur (maquis en fleur au printemps, vendanges et châtaignes en automne). Avril et juin offrent un compromis intéressant aussi. Évitez juillet-août pour un premier voyage à cause de la chaleur, du trafic et des tarifs."

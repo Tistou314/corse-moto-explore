@@ -5,6 +5,7 @@ excerpt: "Casque, blouson, pantalon, gants, bottes : l'équipement précis pour 
 heroImage: "/lovable-uploads/8ad6059c-3be0-4ac9-bcce-f48495f63260.png"
 authorName: "Matthieu"
 authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto depuis 8 ans. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
+publishedAt: "2025-11-26"
 faq:
   - q: "Quel est le budget équipement moto pour débuter en Corse ?"
     a: "Pour un équipement neuf complet et de qualité (homologué ECE 22.06 pour le casque, CE niveau 2 sur les protections), comptez 1 100 à 1 800 € : casque 280-450 €, blouson 250-450 €, pantalon 180-300 €, gants 80-130 €, bottes 180-280 €. Vous pouvez descendre à 700-900 € en occasion bien sélectionnée ou en marques entrée de gamme homologuées."

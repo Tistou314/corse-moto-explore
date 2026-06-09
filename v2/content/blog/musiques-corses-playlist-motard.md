@@ -5,6 +5,7 @@ excerpt: "Polyphonies UNESCO, fusion contemporaine, chants de bergers, nouveaux 
 heroImage: "/lovable-uploads/c15d82fe-c722-44c8-979a-5305e6b1f0bd.png"
 authorName: "Matthieu"
 authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto depuis 8 ans. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
+publishedAt: "2026-05-06"
 faq:
   - q: "Peut-on écouter de la musique à moto en Corse en toute légalité ?"
     a: "Oui, via un intercom moto Bluetooth intégré au casque, à condition de pouvoir entendre l'environnement extérieur. La loi française interdit les écouteurs intra-auriculaires (kit oreillette filaire), mais les casques moto à enceintes intégrées sont autorisés. Cardo, Sena, Schuberth SC2 produisent des kits homologués. Volume modéré obligatoire pour percevoir les klaxons et sirènes."

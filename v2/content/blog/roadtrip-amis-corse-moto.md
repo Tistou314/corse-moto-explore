@@ -5,6 +5,7 @@ excerpt: "Six motards, six niveaux, sept jours sur l'île. Le récit complet d'u
 heroImage: "/lovable-uploads/c3d552bd-6818-4848-97dc-17a222a5b25a.png"
 authorName: "Matthieu"
 authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto depuis 8 ans. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
+publishedAt: "2026-03-18"
 faq:
   - q: "Combien de motards maximum pour un road trip en Corse ?"
     a: "Quatre à six est le sweet spot. En-dessous, vous perdez l'effet groupe (rencontres en route, partage des charges). Au-dessus de six, la logistique se complique vraiment : hébergements en grand nombre rares, restos qui ne peuvent pas vous prendre tous le soir, gestion des dépassements en train, négociation des arrêts. À huit ou neuf, mieux vaut scinder en deux sous-groupes coordonnés."

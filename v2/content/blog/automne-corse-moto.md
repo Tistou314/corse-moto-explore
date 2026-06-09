@@ -5,6 +5,7 @@ excerpt: "Septembre, octobre, novembre : la fenêtre où la mer reste tiède, le
 heroImage: "/lovable-uploads/2653c886-6632-476f-b90a-f498f2b8ca2e.png"
 authorName: "Matthieu"
 authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto depuis 8 ans. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
+publishedAt: "2026-05-13"
 faq:
   - q: "Quel est le meilleur mois pour la Corse à moto en automne ?"
     a: "Septembre arrive sans débat en tête. Températures 22-28°C, mer encore à 23-25°C pour la baignade, tous les cols ouverts, fréquentation qui tombe de 40 à 60 % par rapport à août, hébergements disponibles à des tarifs déjà réduits. Octobre reste très bon avec un autre charme (vendanges, châtaignes, lumière dorée). Novembre devient plus risqué côté pluie et fermetures."
