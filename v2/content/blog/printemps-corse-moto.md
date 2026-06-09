@@ -3,8 +3,8 @@ slug: printemps-corse-moto
 title: "Printemps en Corse à moto : pourquoi avril-juin est la fenêtre rêvée"
 excerpt: "Avril, mai, juin : la meilleure saison pour rouler en Corse. Météo douce, maquis en fleur, cols ouverts, ferries à moitié prix. Mon retour d'expérience et le guide complet, mois par mois."
 heroImage: "/lovable-uploads/381bb3e5-8c88-48aa-8685-829520b4e247.png"
-authorName: "Sophie Mercier"
-authorBio: "Motarde passionnée, elle a fait des intersaisons corses sa spécialité."
+authorName: "Matthieu"
+authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto depuis 8 ans. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
 faq:
   - q: "Quel est le meilleur mois pour la Corse à moto au printemps ?"
     a: "Mai est mon premier choix. Températures 18-25°C, tous les cols rouverts (y compris Vergio à 1 477 m), maquis en pleine floraison, ferries encore en moyenne saison à -30 % du tarif d'été. Juin est presque aussi bon mais le trafic commence à monter sur la dernière quinzaine."

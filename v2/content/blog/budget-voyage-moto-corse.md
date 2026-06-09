@@ -3,6 +3,8 @@ slug: budget-voyage-moto-corse
 title: "Budget moto en Corse 2026 : combien ça coûte, poste par poste"
 excerpt: "Ferry, hébergement, essence, repas, locations, frais imprévus : le calcul détaillé d'un voyage moto en Corse en 2026, avec exemples chiffrés par profil (solo économique, duo confort, groupe de 4). Tous les chiffres vérifiés sur le terrain."
 heroImage: "/lovable-uploads/62b4ce49-f171-4ad5-b5a9-8394b08772ac.png"
+authorName: "Matthieu"
+authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto depuis 8 ans. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
 faq:
   - q: "Quel budget total pour un voyage moto de 10 jours en Corse en 2026 ?"
     a: "Pour un solo en mai-juin ou septembre : 1 100-1 500 € au total. Pour un duo confort : 1 800-2 500 € à deux. Pour un groupe de 4 motos : environ 950 € par personne en moyenne saison. En haute saison (juillet-août), majorez de 30-40 %. En basse saison (novembre-mars), minorez de 35-45 %. Hors essence pour rejoindre le port de continental (50-200 € selon distance domicile)."

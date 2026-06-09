@@ -3,6 +3,8 @@ slug: premiere-fois-moto-corse
 title: "Première fois en Corse à moto : mon récit et ce que j'aurais aimé savoir"
 excerpt: "Trois ans de permis, une Tracer 700 d'occasion, dix jours en juin sur l'île. Le récit honnête d'un premier vrai voyage moto, jour par jour, avec ce qui a marché, ce qui a foiré, ce que j'ai dépensé et les leçons que j'aurais aimé connaître avant de partir."
 heroImage: "/lovable-uploads/6f930ced-66d6-4bfe-adb7-246828fa75a7.png"
+authorName: "Matthieu"
+authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto depuis 8 ans. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
 faq:
   - q: "Faut-il être un motard expérimenté pour voyager en Corse à moto ?"
     a: "Non. La Corse est tout à fait abordable avec 2-3 ans de permis et 5 000-10 000 km de pratique. Les routes sinueuses sont plutôt techniques mais à des vitesses raisonnables (50-70 km/h en virage, rarement plus). Le vrai prérequis n'est pas le niveau de pilotage mais la gestion de la fatigue sur des journées longues. Évitez juste la haute saison juillet-août pour votre premier voyage."

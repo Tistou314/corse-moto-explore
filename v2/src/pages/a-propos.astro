@@ -1,73 +1,44 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import { breadcrumbJsonLd, SITE_NAME } from '@/lib/seo';
-import { SITE_URL } from '@/lib/utils';
+import { SITE_URL, absoluteUrl } from '@/lib/utils';
 
 const heroImage = '/lovable-uploads/1786ff52-abb7-4c35-9599-de33995c0358.png';
 
-const team = [
-  {
-    name: 'Matthieu',
-    role: 'Fondateur & rédacteur en chef',
-    initials: 'M',
-    color: 'bg-corsica-azure',
-    bio: "Originaire de Haute-Savoie, il a découvert la Corse par hasard lors d'un voyage improvisé et n'a plus jamais cessé d'y revenir. Huit ans à sillonner l'île, un carnet de routes qui ne cesse de grossir, et un appareil photo toujours dans la sacoche. C'est lui qui a lancé le guide, et qui en tient encore la plume principale.",
-  },
-  {
-    name: 'Sophie Mercier',
-    role: 'Référente saisons & météo',
-    initials: 'SM',
-    color: 'bg-corsica-emerald',
-    bio: "Elle a fait des intersaisons corses sa spécialité : avril, mai, septembre, octobre. À force d'y retourner aux mêmes périodes année après année, elle sait quand un col rouvre, quand le maquis embaume, et quand une route bascule de l'idéal au piège.",
-  },
-  {
-    name: 'Michel Vasseur',
-    role: 'Référent mécanique & préparation',
-    initials: 'MV',
-    color: 'bg-corsica-coral',
-    bio: "Mécanicien moto spécialisé dans la préparation des machines pour les terrains exigeants. Revêtements capricieux, dénivelés, chaleur : il traduit l'expérience de l'atelier en check-lists concrètes pour que personne ne se retrouve en rade sur une route isolée.",
-  },
-  {
-    name: 'Marc Dubreuil',
-    role: 'Organisation & logistique des voyages',
-    initials: 'MD',
-    color: 'bg-corsica-azure',
-    bio: "Organisateur de voyages moto à destination de la Corse depuis 2010. Ferry, étapes, hébergements, ravitaillement : il sait où ça coince et comment l'éviter. C'est lui qui transforme une envie de road trip en itinéraire qui tient debout.",
-  },
-  {
-    name: 'Julien Faure',
-    role: "Spécialiste de l'été corse",
-    initials: 'JF',
-    color: 'bg-corsica-emerald',
-    bio: "Motard expérimenté, il a parcouru l'île pendant plus de quinze étés consécutifs. Gestion de la chaleur, créneaux horaires, hydratation, choix d'équipement : il sait rendre la haute saison supportable, voire belle.",
-  },
-  {
-    name: 'Pierre-Antoine Granger',
-    role: 'Spécialiste hors-saison & conduite difficile',
-    initials: 'PG',
-    color: 'bg-corsica-coral',
-    bio: "Motard tout-terrain et moniteur de conduite hivernale. Quand les cols se couvrent et que l'île se vide, c'est son domaine. Il documente la Corse des saisons creuses, celle que peu de gens osent rouler.",
-  },
-];
-
 const values = [
   {
-    title: 'Tout est roulé avant d’être écrit',
-    text: "Chaque itinéraire, chaque col, chaque conseil a été parcouru guidon en main. Rien n'est recopié d'un dépliant touristique.",
+    title: "Tout est roulé avant d'être écrit",
+    text: "Chaque itinéraire, chaque col, chaque conseil a été parcouru guidon en main. Aucune ligne n'est recopiée d'un dépliant touristique ou d'un autre blog.",
   },
   {
-    title: 'On dit aussi ce qui coince',
-    text: "Routes dégradées, animaux sur la chaussée, hébergements complets dès mai, stations rares dans l'intérieur : on préfère prévenir que faire rêver à vide.",
+    title: 'Je dis aussi ce qui coince',
+    text: "Routes dégradées, animaux sur la chaussée, hébergements complets dès mai, stations rares dans l'intérieur : je préfère prévenir que faire rêver à vide.",
   },
   {
-    title: 'Des voix différentes, un même terrain',
-    text: "Mécanique, saisons, photo, logistique : chacun écrit sur ce qu'il connaît vraiment. Le guide est la somme de ces regards, pas d'une plume unique.",
+    title: 'Indépendance totale',
+    text: "Aucun partenariat rémunéré, aucun lien d'affiliation maquillé, aucun hébergement listé en échange d'une nuit gratuite. Le projet est financé sur fonds propres.",
   },
   {
     title: 'Un guide vivant',
-    text: "La Corse change au fil des saisons et des années. On met à jour, on corrige, on complète. Vos retours par le formulaire de contact nourrissent directement le travail.",
+    text: "La Corse change au fil des saisons et des années. Je mets à jour, je corrige, je complète. Tes retours par le formulaire de contact nourrissent directement le travail.",
   },
 ];
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Matthieu',
+  jobTitle: 'Fondateur et rédacteur de Corse à moto',
+  description:
+    "Motard originaire de Haute-Savoie, je documente mes voyages à moto en Corse depuis 2018 sur ce site indépendant.",
+  url: absoluteUrl('/a-propos'),
+  knowsAbout: ['Voyage à moto', 'Corse', "Itinéraires moto", 'Cols corses', 'Hébergements motards'],
+  worksFor: {
+    '@type': 'Organization',
+    name: SITE_NAME,
+    url: SITE_URL,
+  },
+};
 
 const jsonLd: Record<string, unknown>[] = [
   breadcrumbJsonLd([
@@ -78,25 +49,24 @@ const jsonLd: Record<string, unknown>[] = [
     '@context': 'https://schema.org',
     '@type': 'AboutPage',
     name: `À propos — ${SITE_NAME}`,
-    url: `${SITE_URL.replace(/\/$/, '')}/a-propos`,
+    url: absoluteUrl('/a-propos'),
+    author: personJsonLd,
     about: {
       '@type': 'Organization',
       name: SITE_NAME,
       description:
-        "Guide indépendant des voyages moto en Corse, écrit par une équipe de motards, mécaniciens, guides et photographes qui connaissent l'île de l'intérieur.",
-      member: team.map((m) => ({
-        '@type': 'Person',
-        name: m.name,
-        jobTitle: m.role,
-      })),
+        "Guide indépendant des voyages moto en Corse, écrit en solo par Matthieu, motard depuis plus de huit ans.",
+      founder: personJsonLd,
+      url: SITE_URL,
     },
   },
+  personJsonLd,
 ];
 ---
 
 <Layout
-  title="À propos — l'équipe derrière Corse à moto"
-  description="Comment ce guide moto de la Corse est né de plusieurs voyages sur l'île, et qui sont les motards, guides et mécaniciens qui l'écrivent."
+  title="À propos — qui écrit Corse à moto"
+  description="Corse à moto est tenu par un seul motard, Matthieu, qui documente ses voyages sur l'île depuis 2018. Pas d'équipe, pas de partenariats : juste un carnet de route détaillé, partagé."
   path="/a-propos"
   image={heroImage}
   preloadImage={heroImage}
@@ -116,13 +86,13 @@ const jsonLd: Record<string, unknown>[] = [
     />
     <div class="absolute inset-0 bg-gradient-to-b from-corsica-charcoal/70 via-corsica-charcoal/55 to-corsica-charcoal/80"></div>
     <div class="relative container mx-auto px-4 py-32 md:py-44 text-center">
-      <p class="text-corsica-coral font-semibold tracking-wide uppercase text-sm mb-4">Notre histoire</p>
+      <p class="text-corsica-coral font-semibold tracking-wide uppercase text-sm mb-4">Qui écrit ici</p>
       <h1 class="text-4xl md:text-6xl font-bold text-white font-heading mb-6 max-w-3xl mx-auto">
-        Un guide né sur la route, pas derrière un bureau
+        Un guide tenu par un seul motard, pas par une rédaction
       </h1>
       <p class="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-        Corse à moto, c'est l'addition de plusieurs voyages, de milliers de virages et
-        d'une bande de passionnés qui ont fini par mettre tout ça noir sur blanc.
+        Corse à moto, c'est mon carnet de route depuis 2018. Tout ce que tu lis ici, c'est ce
+        que j'ai roulé moi-même, vérifié sur place, et choisi de te transmettre.
       </p>
     </div>
   </section>
@@ -135,62 +105,100 @@ const jsonLd: Record<string, unknown>[] = [
       </h2>
       <div class="space-y-5 text-lg text-corsica-slate leading-relaxed">
         <p>
-          Tout est parti d'un voyage improvisé. Une traversée en ferry décidée presque à la
-          dernière minute, une moto chargée à la va-vite, et dix jours devant soi. Ce premier
-          contact avec la Corse a suffi : les routes qui se tordent au-dessus de la mer, le
-          granit rouge de Piana, le silence des villages perchés, la fraîcheur d'un col après
-          la fournaise de la côte. On repart en se promettant de revenir.
+          Je m'appelle Matthieu, j'ai 38 ans, je vis en Haute-Savoie et je roule à moto depuis
+          mes 22 ans. Ma première Corse, c'était en 2018 : une traversée Nice-Bastia décidée
+          presque sur un coup de tête, dix jours devant moi, une Yamaha Tracer chargée à la
+          va-vite. Je suis reparti convaincu que je reviendrais. Je ne pensais pas que ce
+          serait sept fois de suite, jusqu'en 2025.
         </p>
         <p>
-          Et on revient. Une fois, puis chaque année. À force de rouler l'île, un carnet se
-          remplit : les virages qui méritent qu'on ralentisse, la station-service qu'il ne
-          faut pas rater avant l'intérieur, l'hôtel qui accepte les motos dans la cour, la
-          terrasse où l'on mange vraiment bien. Ce carnet, d'abord griffonné pour soi, est
-          devenu trop précieux pour rester dans une sacoche.
+          À chaque voyage, je note. Les virages qui méritent qu'on coupe le moteur, la
+          station-service qu'il ne faut pas rater avant l'intérieur, l'hôtel qui accepte les
+          motos dans la cour fermée, la terrasse où l'on mange vraiment bien pour 18 €. Au
+          bout de cinq ou six séjours, ce carnet est devenu trop précieux pour rester dans
+          une sacoche. J'ai monté ce site début 2026 pour le partager.
         </p>
         <p>
-          Au fil des voyages, les rencontres font le reste. Un mécanicien qui explique
-          pourquoi une moto continentale souffre sur les revêtements corses. Une motarde qui
-          lit les intersaisons de l'île mieux que n'importe quelle appli météo. Un organisateur
-          qui connaît chaque écueil logistique d'un road trip insulaire. Chacun avait sa pièce
-          du puzzle. Corse à moto est né de l'envie de les rassembler.
+          Ce n'est pas un site d'agence. Ce n'est pas une rédaction de cinq personnes. C'est
+          un projet personnel, financé sur mes propres deniers, écrit par moi seul, qui
+          assume sa subjectivité et qui essaie d'être utile à qui prépare un premier voyage
+          comme à qui revient pour la cinquième fois. Je le mets à jour quand je rentre d'un
+          séjour, et je corrige quand un lecteur me signale qu'un hébergement a fermé ou
+          qu'une route a été refaite.
         </p>
         <p>
-          Aujourd'hui, ce guide n'est ni un catalogue ni une brochure. C'est un travail de
-          terrain, tenu par des gens qui roulent vraiment ici, et qui écrivent pour que votre
-          voyage ressemble au leur : libre, préparé, et fidèle à ce qu'est l'île.
+          Si tu prépares ton voyage moto en Corse, j'espère que ce que tu liras ici te fera
+          gagner du temps, te fera éviter les pièges classiques, et surtout te fera rouler les
+          bonnes routes plutôt que celles que tout le monde te recommande sans y être allé.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Équipe -->
+  <!-- Profil auteur -->
   <section class="py-16 md:py-24 bg-gray-50">
     <div class="container mx-auto px-4">
-      <div class="max-w-3xl mx-auto text-center mb-14">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-corsica-charcoal font-heading">
-          L'équipe
-        </h2>
-        <p class="text-lg text-corsica-slate leading-relaxed">
-          Six regards sur la même île. Chacun écrit sur ce qu'il connaît le mieux, et c'est
-          ce qui fait la richesse du guide.
-        </p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-        {team.map((m) => (
-          <article class="bg-white rounded-xl shadow-soft p-6 flex flex-col">
-            <div class="flex items-center gap-4 mb-4">
-              <div class={`${m.color} text-white w-14 h-14 rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0`}>
-                {m.initials}
-              </div>
-              <div>
-                <h3 class="font-bold text-lg text-corsica-charcoal font-heading leading-tight">{m.name}</h3>
-                <p class="text-sm text-corsica-coral font-medium">{m.role}</p>
-              </div>
-            </div>
-            <p class="text-corsica-slate leading-relaxed text-[15px]">{m.bio}</p>
-          </article>
-        ))}
+      <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-soft p-8 md:p-10">
+        <div class="flex flex-col sm:flex-row items-start gap-6 mb-8">
+          <div class="bg-corsica-azure text-white w-20 h-20 rounded-full flex items-center justify-center font-bold text-3xl flex-shrink-0">
+            M
+          </div>
+          <div class="flex-1">
+            <h2 class="text-2xl md:text-3xl font-bold text-corsica-charcoal font-heading mb-2">
+              Matthieu
+            </h2>
+            <p class="text-corsica-coral font-semibold mb-3">Fondateur, rédacteur, photographe</p>
+            <p class="text-corsica-slate leading-relaxed">
+              Originaire de Haute-Savoie, motard depuis 16 ans, je roule en Corse en moyenne
+              une à deux fois par an depuis 2018. Trail polyvalent (Tracer 700 puis 890
+              Adventure), un appareil photo toujours dans la sacoche, et une vraie obsession
+              pour les routes secondaires que personne ne prend.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 py-6 border-y border-gray-200 mb-8">
+          <div>
+            <p class="text-2xl font-bold text-corsica-azure font-heading">2018</p>
+            <p class="text-sm text-corsica-slate">Premier voyage</p>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-corsica-azure font-heading">7</p>
+            <p class="text-sm text-corsica-slate">Séjours sur l'île</p>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-corsica-azure font-heading">12 000+</p>
+            <p class="text-sm text-corsica-slate">Km parcourus en Corse</p>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-corsica-azure font-heading">100 %</p>
+            <p class="text-sm text-corsica-slate">Contenu vérifié sur place</p>
+          </div>
+        </div>
+
+        <div class="space-y-4 text-corsica-slate leading-relaxed">
+          <p>
+            <strong class="text-corsica-charcoal">Ce que je connais bien :</strong> les
+            intersaisons (mai-juin et septembre-octobre, mes périodes préférées), les routes
+            de l'intérieur (cap Corse, Castagniccia, Niolu, Bavella), la logistique d'un road
+            trip solo ou en petit groupe, la préparation mécanique d'un trail pour les routes
+            corses, et le repérage des hébergements vraiment adaptés aux motards.
+          </p>
+          <p>
+            <strong class="text-corsica-charcoal">Ce que je connais moins :</strong> la haute
+            saison (juillet-août, je l'évite, donc mon recul est limité), le Sud extrême
+            (Bonifacio et Sartène, j'y suis allé 3 fois seulement), et la conduite hivernale
+            sérieuse (je n'ai jamais roulé en Corse en janvier ou février — si tu l'as fait,
+            écris-moi, j'aimerais beaucoup en parler).
+          </p>
+          <p>
+            <strong class="text-corsica-charcoal">Pour me contacter :</strong> le
+            <a href="/contact" class="text-corsica-azure hover:underline font-medium">formulaire de contact</a>
+            est le moyen le plus simple. Je réponds en général sous une semaine. N'hésite
+            pas à me corriger si une info est obsolète, à me proposer une adresse, ou à me
+            poser une question précise sur ton itinéraire.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -200,7 +208,7 @@ const jsonLd: Record<string, unknown>[] = [
     <div class="container mx-auto px-4">
       <div class="max-w-3xl mx-auto text-center mb-14">
         <h2 class="text-3xl md:text-4xl font-bold mb-4 text-corsica-charcoal font-heading">
-          Ce qui nous tient à cœur
+          Ma méthode
         </h2>
         <p class="text-lg text-corsica-slate leading-relaxed">
           Quatre principes qui guident chaque ligne publiée sur ce site.
@@ -226,11 +234,11 @@ const jsonLd: Record<string, unknown>[] = [
   <section class="py-16 md:py-20 bg-corsica-charcoal">
     <div class="container mx-auto px-4 text-center max-w-2xl">
       <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white font-heading">
-        Prêt à tracer votre route ?
+        Prêt à tracer ta route ?
       </h2>
       <p class="text-lg text-white/80 mb-8 leading-relaxed">
-        Parcourez nos itinéraires testés sur le terrain, ou écrivez-nous pour partager une
-        adresse, corriger une info ou poser une question.
+        Parcours les itinéraires que j'ai testés sur le terrain, ou écris-moi pour partager
+        une adresse, corriger une info ou poser une question précise.
       </p>
       <div class="flex flex-wrap justify-center gap-4">
         <a
@@ -243,7 +251,7 @@ const jsonLd: Record<string, unknown>[] = [
           href="/contact"
           class="bg-white/10 text-white font-semibold px-6 py-3 rounded-full border border-white/20 hover:bg-white/20 transition-colors"
         >
-          Nous contacter
+          M'écrire
         </a>
       </div>
     </div>

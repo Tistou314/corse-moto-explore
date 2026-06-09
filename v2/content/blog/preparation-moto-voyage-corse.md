@@ -3,6 +3,8 @@ slug: preparation-moto-voyage-corse
 title: "Préparer sa moto pour la Corse : le guide mécanique avant de partir"
 excerpt: "Révision, pneus, freins, fluides, transmission, suspensions : la check-list mécanique complète à passer 2 à 3 semaines avant le ferry. Avec les modèles de pneus 2026, les fourchettes de prix garage, et les pièges qui peuvent pourrir un voyage de 10 jours."
 heroImage: "/lovable-uploads/c9c69fc8-07ec-474b-9707-bb25b3ee2ec1.png"
+authorName: "Matthieu"
+authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto depuis 8 ans. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
 faq:
   - q: "Combien de temps avant le départ faut-il préparer sa moto pour un voyage en Corse ?"
     a: "Idéalement 2 à 3 semaines avant le départ. Ce délai permet de faire la révision sans stress chez votre concessionnaire ou mécanicien, de tester la moto sur 150-300 km après les opérations pour valider qu'il n'y a pas de problème résiduel, et de commander d'éventuelles pièces si une usure imprévue est détectée. Une préparation faite la veille du ferry est l'erreur classique qui finit en panne sur la D80."

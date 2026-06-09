@@ -3,6 +3,8 @@ slug: decouvrir-traditions-corses-moto
 title: "Traditions corses à moto : villages, gastronomie, fêtes et chants"
 excerpt: "La Corse à moto, ce n'est pas qu'un enchaînement de virages : c'est une rencontre avec une culture millénaire restée vivante. Villages perchés, charcuteries de châtaigne, polyphonies UNESCO, fêtes patronales et artisanat local. Le guide complet du motard curieux."
 heroImage: "/lovable-uploads/2653c886-6632-476f-b90a-f498f2b8ca2e.png"
+authorName: "Matthieu"
+authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto depuis 8 ans. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
 faq:
   - q: "Comment intégrer la découverte culturelle dans un voyage moto en Corse ?"
     a: "Trois principes : étapes courtes (150-180 km/jour) pour avoir le temps de s'arrêter, nuits dans des villages plutôt que dans les grandes villes (l'âme corse est à l'intérieur), et choix d'au moins 2 jours sans moto sur 10 (visites pédestres, marchés, dégustations). Programmer les pauses dans des villages classés ou réputés (Sant'Antonino, Sartène, Cervione, Pigna) plutôt que dans des stations balnéaires touristiques."

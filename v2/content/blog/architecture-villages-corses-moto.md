@@ -3,6 +3,8 @@ slug: architecture-villages-corses-moto
 title: "Architecture et villages corses : le guide du motard curieux"
 excerpt: "Citadelles génoises, églises romanes pisanes du XIIe siècle, villages perchés médiévaux, tours de guet côtières : 1 000 ans d'histoire bâtie sur 8 700 km². Comment intégrer le patrimoine architectural dans un itinéraire moto, étape par étape."
 heroImage: "/lovable-uploads/0a9d0690-525a-4b87-a78f-c7ec868066a9.png"
+authorName: "Matthieu"
+authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto depuis 8 ans. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
 faq:
   - q: "Quels sont les villages corses incontournables pour leur architecture ?"
     a: "Six villages forment le socle : Bonifacio (cité génoise sur falaises calcaires de 70 m), Sartène (médiéval, ruelles pavées, cité aristocratique), Calvi (citadelle génoise XIIIe-XVe), Sant'Antonino (parmi les plus beaux villages de France, perché à 500 m), Pigna (artisanat et architecture restaurée), Cervione (Castagniccia baroque). Trois autres mériteraient la même attention : Piana, Erbalunga, Levie."
