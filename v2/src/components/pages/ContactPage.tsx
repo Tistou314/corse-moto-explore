@@ -28,7 +28,7 @@ export default function ContactPage() {
                     <Mail className="w-5 h-5 text-corsica-azure mt-1 mr-3" />
                     <div>
                       <h3 className="font-medium text-gray-900">Email</h3>
-                      <p className="text-gray-600">contact@lacorseamoto.fr</p>
+                      <p className="text-gray-600">pitameternam@gmail.com</p>
                     </div>
                   </div>
                   <div className="flex items-start">
