@@ -4,7 +4,7 @@ title: "Équipement moto pour la Corse : le guide complet du casque aux bottes"
 excerpt: "Casque, blouson, pantalon, gants, bottes : l'équipement précis pour la Corse à moto, avec modèles 2026, fourchettes de prix réelles, et la liste de ce que je transporte selon la saison. Sécurité d'abord, confort ensuite, esthétique en dernier."
 heroImage: "/lovable-uploads/8ad6059c-3be0-4ac9-bcce-f48495f63260.png"
 authorName: "Matthieu"
-authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto depuis 8 ans. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
+authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto chaque année depuis 2022. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
 publishedAt: "2025-11-26"
 faq:
   - q: "Quel est le budget équipement moto pour débuter en Corse ?"
@@ -23,7 +23,7 @@ faq:
 
 # Équipement moto pour la Corse : le guide complet du casque aux bottes
 
-J'ai croisé en sept ans de Corse à moto au moins une dizaine de motards mal équipés. Le pire : un type en short et tee-shirt sur un Ducati Monster sur la D81 entre Calvi et Porto, au mois d'août, qui s'était fait dépasser en virage par un camping-car serrant trop à droite. Il a fini dans le maquis, abrasions du genou à l'épaule. La Corse n'est pas plus dangereuse qu'ailleurs, mais ses routes sinueuses, son trafic touristique en été et ses revêtements parfois capricieux récompensent l'équipement et punissent l'improvisation.
+J'ai croisé, au fil de mes séjours en Corse à moto, au moins une dizaine de motards mal équipés. Le pire : un type en short et tee-shirt sur un Ducati Monster sur la D81 entre Calvi et Porto, au mois d'août, qui s'était fait dépasser en virage par un camping-car serrant trop à droite. Il a fini dans le maquis, abrasions du genou à l'épaule. La Corse n'est pas plus dangereuse qu'ailleurs, mais ses routes sinueuses, son trafic touristique en été et ses revêtements parfois capricieux récompensent l'équipement et punissent l'improvisation.
 
 Voici la liste complète et raisonnée de ce qu'il faut pour rouler tranquille sur l'île, avec les modèles 2026 que je conseille et les fourchettes de prix réelles. C'est l'équipement du pilote uniquement. Les guides complémentaires sur la préparation mécanique de la moto et les adaptations spécifiques aux routes corses sont liés en fin d'article.
 

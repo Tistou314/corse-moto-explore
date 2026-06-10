@@ -4,7 +4,7 @@ title: "Printemps en Corse à moto : pourquoi avril-juin est la fenêtre rêvée
 excerpt: "Avril, mai, juin : la meilleure saison pour rouler en Corse. Météo douce, maquis en fleur, cols ouverts, ferries à moitié prix. Mon retour d'expérience et le guide complet, mois par mois."
 heroImage: "/lovable-uploads/381bb3e5-8c88-48aa-8685-829520b4e247.png"
 authorName: "Matthieu"
-authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto depuis 8 ans. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
+authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto chaque année depuis 2022. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
 publishedAt: "2026-02-04"
 faq:
   - q: "Quel est le meilleur mois pour la Corse à moto au printemps ?"
@@ -23,7 +23,7 @@ faq:
 
 # Le printemps en Corse à moto : pourquoi avril-juin est la fenêtre parfaite
 
-J'ai roulé pour la première fois en Corse à moto en mai 2023, sur une boucle Bastia, Cap Corse, Saint-Florent, Calvi, Porto. Trois choses m'ont frappé. La lumière douce qui transformait chaque virage en carte postale. Le parfum du maquis en pleine floraison qui rentrait par les aérations du casque. L'absence quasi totale de camping-cars sur les routes côtières. Depuis, à chaque fois qu'un motard me demande quand partir, je réponds sans hésiter : **avril-juin, et si possible mai**. Voici pourquoi, et comment en tirer le maximum.
+J'ai roulé pour la première fois en Corse à moto en mai 2022, sur une boucle Bastia, Cap Corse, Saint-Florent, Calvi, Porto. Trois choses m'ont frappé. La lumière douce qui transformait chaque virage en carte postale. Le parfum du maquis en pleine floraison qui rentrait par les aérations du casque. L'absence quasi totale de camping-cars sur les routes côtières. Depuis, à chaque fois qu'un motard me demande quand partir, je réponds sans hésiter : **avril-juin, et si possible mai**. Voici pourquoi, et comment en tirer le maximum.
 
 ## Le printemps corse en un coup d'œil
 

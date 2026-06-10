@@ -19,7 +19,7 @@ const heroSlides: HeroSlide[] = [
     subtitle:
       "Explorez les plus belles routes, parcours et paysages de l'Île de Beauté. Guides complets, itinéraires détaillés et conseils d'experts.",
     cta: { text: 'Explorer les itinéraires', link: '/itineraires' },
-    stats: { routes: 15, places: 50, travelers: 1000 },
+    stats: { routes: 10, places: 26, travelers: 130 },
   },
   {
     image: '/lovable-uploads/a96b2fab-3ff7-4f98-8400-0dc93f7457d4.png',
@@ -108,7 +108,7 @@ const ModernHero = () => {
           <div className="max-w-4xl">
             <div className="inline-flex items-center bg-corsica-azure/20 backdrop-blur-sm border border-corsica-azure/30 rounded-full px-4 py-2 mb-6 animate-fade-in">
               <div className="w-2 h-2 bg-corsica-azure rounded-full mr-2 animate-pulse" />
-              <span className="text-corsica-azure font-medium text-sm">Guide Expert Corse 2024</span>
+              <span className="text-corsica-azure font-medium text-sm">Guide indépendant · mis à jour 2026</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold text-white mb-6 leading-[1.05] animate-slide-up">
@@ -135,12 +135,12 @@ const ModernHero = () => {
                 <div className="flex items-center text-white">
                   <Calendar className="w-5 h-5 mr-2 text-corsica-emerald" />
                   <span className="text-2xl font-bold mr-1">{slide.stats.places}</span>
-                  <span className="text-gray-300">lieux</span>
+                  <span className="text-gray-300">hébergements</span>
                 </div>
                 <div className="flex items-center text-white">
                   <Users className="w-5 h-5 mr-2 text-corsica-coral" />
                   <span className="text-2xl font-bold mr-1">{slide.stats.travelers}</span>
-                  <span className="text-gray-300">voyageurs</span>
+                  <span className="text-gray-300">stations-service</span>
                 </div>
               </div>
             )}

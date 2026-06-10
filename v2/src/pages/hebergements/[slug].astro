@@ -46,15 +46,10 @@ if (a.contact?.phone) accommodationSchema.telephone = a.contact.phone;
 if (a.contact?.email) accommodationSchema.email = a.contact.email;
 if (a.contact?.website) accommodationSchema.sameAs = [a.contact.website];
 
-if (typeof a.rating === 'number' && a.rating > 0) {
-  accommodationSchema.aggregateRating = {
-    '@type': 'AggregateRating',
-    ratingValue: a.rating,
-    bestRating: 5,
-    worstRating: 1,
-    ratingCount: 1,
-  };
-}
+// Note: no aggregateRating markup. We only hold a single editorial score
+// per establishment, and Google's structured-data guidelines require
+// genuine aggregated user reviews — a ratingCount of 1 from the site
+// owner risks a "misleading structured data" manual action.
 
 if (a.amenities && a.amenities.length > 0) {
   accommodationSchema.amenityFeature = a.amenities.map((name: string) => ({

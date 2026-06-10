@@ -4,7 +4,7 @@ title: "Road trip moto entre amis en Corse : la méthode pour un voyage à 4-6"
 excerpt: "Six motards, six niveaux, sept jours sur l'île. Le récit complet d'un road trip à plusieurs : comment on s'est organisés, les règles qu'on a fixées avant de partir, les engueulades qu'on a évitées, ce que ça nous a coûté, et ce qu'on referait différemment."
 heroImage: "/lovable-uploads/c3d552bd-6818-4848-97dc-17a222a5b25a.png"
 authorName: "Matthieu"
-authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto depuis 8 ans. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
+authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto chaque année depuis 2022. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
 publishedAt: "2026-03-18"
 faq:
   - q: "Combien de motards maximum pour un road trip en Corse ?"
