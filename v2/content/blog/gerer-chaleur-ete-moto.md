@@ -4,7 +4,7 @@ title: "Chaleur estivale à moto en Corse : le guide pour ne pas griller"
 excerpt: "Été 2026 annoncé plus chaud que la normale, canicules récurrentes, risque incendie en augmentation. Comment structurer ses journées, équiper sa moto et son corps, et choisir les bons itinéraires pour rouler entre juin et septembre sans souffrir."
 heroImage: "/lovable-uploads/55f44f7d-705e-4056-bef4-668d9934786b.png"
 authorName: "Matthieu"
-authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto depuis 8 ans. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
+authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto chaque année depuis 2022. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
 publishedAt: "2026-04-01"
 faq:
   - q: "À partir de quelle température faut-il vraiment s'inquiéter sur la moto ?"

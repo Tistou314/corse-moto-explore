@@ -4,7 +4,7 @@ title: "Architecture et villages corses : le guide du motard curieux"
 excerpt: "Citadelles génoises, églises romanes pisanes du XIIe siècle, villages perchés médiévaux, tours de guet côtières : 1 000 ans d'histoire bâtie sur 8 700 km². Comment intégrer le patrimoine architectural dans un itinéraire moto, étape par étape."
 heroImage: "/lovable-uploads/0a9d0690-525a-4b87-a78f-c7ec868066a9.png"
 authorName: "Matthieu"
-authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto depuis 8 ans. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
+authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto chaque année depuis 2022. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
 publishedAt: "2026-04-29"
 faq:
   - q: "Quels sont les villages corses incontournables pour leur architecture ?"

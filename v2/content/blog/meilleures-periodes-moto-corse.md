@@ -4,7 +4,7 @@ title: "Quand partir en Corse à moto : les meilleures périodes par profil"
 excerpt: "Janvier à décembre, mois par mois : météo, fréquentation, tarifs, événements et conditions des cols. Quelle saison choisir selon que vous êtes débutant, expérimenté, en duo ou en groupe. La synthèse complète avec recommandation finale."
 heroImage: "/lovable-uploads/d60eaef4-6e63-4386-860b-c02648902533.png"
 authorName: "Matthieu"
-authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto depuis 8 ans. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
+authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto chaque année depuis 2022. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
 publishedAt: "2026-01-21"
 faq:
   - q: "Quelle est globalement la meilleure période pour la Corse à moto ?"

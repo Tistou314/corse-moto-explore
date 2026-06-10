@@ -4,7 +4,7 @@ title: "L'automne en Corse à moto : la meilleure saison que personne ne choisit
 excerpt: "Septembre, octobre, novembre : la fenêtre où la mer reste tiède, les routes se vident, les châtaignes mûrissent et les ferries redeviennent abordables. Le calendrier complet du motard qui veut éviter à la fois la foule de juillet et le froid de décembre."
 heroImage: "/lovable-uploads/2653c886-6632-476f-b90a-f498f2b8ca2e.png"
 authorName: "Matthieu"
-authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto depuis 8 ans. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
+authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto chaque année depuis 2022. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
 publishedAt: "2026-05-13"
 faq:
   - q: "Quel est le meilleur mois pour la Corse à moto en automne ?"

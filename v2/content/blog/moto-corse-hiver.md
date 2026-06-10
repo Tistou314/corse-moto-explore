@@ -4,7 +4,7 @@ title: "La Corse à moto en hiver : possible, mais pas pour tout le monde"
 excerpt: "Décembre à mars : la Corse hors saison. Cols fermés, équipement neige obligatoire à 600m, hébergements rares, tarifs cassés. Le retour d'expérience d'un motard qui a osé, et ce qu'il faut savoir avant de tenter."
 heroImage: "/lovable-uploads/a96b2fab-3ff7-4f98-8400-0dc93f7457d4.png"
 authorName: "Matthieu"
-authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto depuis 8 ans. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
+authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto chaque année depuis 2022. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
 publishedAt: "2026-05-20"
 faq:
   - q: "Peut-on vraiment rouler en Corse à moto en hiver ?"
@@ -23,7 +23,7 @@ faq:
 
 # La Corse à moto en hiver : possible, mais pas pour tout le monde
 
-L'hiver 2024, j'ai pris le ferry Nice-Bastia un 15 janvier, juste pour voir. Quatre jours en Corse avec ma BMW R 1250 GS, 12°C sur la côte, 4°C au mieux à Vizzavona, du brouillard sur la plaine orientale et de la neige sur Vergio. J'ai roulé 600 km en boucle Bastia, Saint-Florent, Calvi, Porto, retour par l'intérieur (côte ouest seulement). C'est cette expérience qui m'autorise à te dire honnêtement : oui, la Corse à moto en hiver, c'est possible, mais ce n'est ni l'aventure romantique qu'on imagine, ni le plan calme et économique facile. Voici la réalité.
+L'hiver 2024, j'ai pris le ferry Nice-Bastia un 15 janvier, juste pour voir. Quatre jours en Corse avec ma KTM 890 Adventure, 12°C sur la côte, 4°C au mieux à Vizzavona, du brouillard sur la plaine orientale et de la neige sur Vergio. J'ai roulé 600 km en boucle Bastia, Saint-Florent, Calvi, Porto, retour par l'intérieur (côte ouest seulement). C'est cette expérience qui m'autorise à te dire honnêtement : oui, la Corse à moto en hiver, c'est possible, mais ce n'est ni l'aventure romantique qu'on imagine, ni le plan calme et économique facile. Voici la réalité.
 
 ## L'hiver corse en un coup d'œil
 

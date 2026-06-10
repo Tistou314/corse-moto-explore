@@ -4,7 +4,7 @@ title: "Première fois en Corse à moto : mon récit et ce que j'aurais aimé sa
 excerpt: "Trois ans de permis, une Tracer 700 d'occasion, dix jours en juin sur l'île. Le récit honnête d'un premier vrai voyage moto, jour par jour, avec ce qui a marché, ce qui a foiré, ce que j'ai dépensé et les leçons que j'aurais aimé connaître avant de partir."
 heroImage: "/lovable-uploads/6f930ced-66d6-4bfe-adb7-246828fa75a7.png"
 authorName: "Matthieu"
-authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto depuis 8 ans. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
+authorBio: "Originaire de Haute-Savoie, je roule en Corse à moto chaque année depuis 2022. Je partage ici les itinéraires que j'ai testés au guidon et mes recherches de terrain."
 publishedAt: "2025-11-12"
 faq:
   - q: "Faut-il être un motard expérimenté pour voyager en Corse à moto ?"
