@@ -3,7 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import ItineraryDetailPage from '@/components/pages/ItineraryDetailPage';
 import ItineraryHero from '@/components/legacy-overrides/ItineraryHero';
 import { allItineraries } from '@/lib/data';
-import { breadcrumbJsonLd } from '@/lib/seo';
+import { breadcrumbJsonLd, seoImageUrl } from '@/lib/seo';
 import { absoluteUrl, thumbVariant } from '@/lib/utils';
 
 export async function getStaticPaths() {
@@ -34,7 +34,7 @@ const touristTripSchema: Record<string, unknown> = {
   name: it.title,
   description: it.description,
   url: absoluteUrl(`/itineraires/${it.slug}`),
-  image: it.heroImage,
+  image: seoImageUrl(it.heroImage),
   touristType: 'Motorcyclist',
   itinerary: {
     '@type': 'ItemList',
@@ -91,13 +91,26 @@ const baseDesc = (it.description || '')
   .replace(/\.{3,}\s*$/, '')
   .replace(/\s+/g, ' ')
   .trim();
-const shortDesc = baseDesc.length > 115 ? baseDesc.slice(0, 112).trimEnd() + '…' : baseDesc;
 const metaStats = [distanceStr, it.duration, it.difficulty].filter(Boolean).join(' · ');
+// Budget the base text so base + appended stats stays ≤ 158 chars.
+const maxBase = Math.min(115, 157 - (metaStats ? metaStats.length + 3 : 0));
+const shortDesc =
+  baseDesc.length > maxBase ? baseDesc.slice(0, maxBase - 1).trimEnd() + '…' : baseDesc;
 const metaDescription = `${shortDesc} ${metaStats ? `(${metaStats})` : ''}`.trim();
 
-const metaTitle = [it.title, distanceStr ? `${distanceStr} à moto en Corse` : 'Itinéraire moto en Corse']
+// Title: distances like "150 km (Ajaccio-Corte-Bastia)" carry route detail
+// that blows past Google's ~62-char display limit — keep only the number
+// in the <title>; the full detail stays on the page and in the description.
+const stripParens = (s: string) => s.replace(/\s*\([^)]*\)\s*/g, ' ').replace(/\s+/g, ' ').trim();
+const distanceForTitle = stripParens(distanceStr);
+let metaTitle = [it.title, distanceForTitle ? `${distanceForTitle} à moto en Corse` : 'Itinéraire moto en Corse']
   .filter(Boolean)
   .join(' — ');
+if (metaTitle.length > 62) {
+  metaTitle = [stripParens(it.title), distanceForTitle ? `${distanceForTitle} à moto en Corse` : 'Itinéraire moto en Corse']
+    .filter(Boolean)
+    .join(' — ');
+}
 ---
 
 <Layout

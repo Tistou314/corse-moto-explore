@@ -22,6 +22,8 @@ export interface BlogFaqItem {
 export interface BlogContentOverride {
   slug: string;
   title?: string;
+  /** Shorter <title> for search results when the editorial H1 exceeds ~62 chars. */
+  metaTitle?: string;
   excerpt?: string;
   heroImage?: string;
   publishedAt?: string;
@@ -124,6 +126,7 @@ for (const [path, raw] of Object.entries(rawFiles)) {
   overrides.set(slug, {
     slug,
     title: data.title as string | undefined,
+    metaTitle: data.metaTitle as string | undefined,
     excerpt: data.excerpt as string | undefined,
     heroImage: data.heroImage as string | undefined,
     publishedAt: data.publishedAt as string | undefined,

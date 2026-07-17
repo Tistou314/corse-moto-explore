@@ -3,7 +3,7 @@ import { absoluteUrl, SITE_URL } from './utils';
 export const SITE_NAME = 'Corse à moto';
 export const SITE_DESCRIPTION =
   "Itinéraires moto, hébergements, conseils et stations-service pour explorer la Corse à deux roues.";
-export const DEFAULT_OG_IMAGE = '/og/default.svg';
+export const DEFAULT_OG_IMAGE = '/og/default.jpg';
 
 export interface SeoProps {
   title: string;
@@ -17,12 +17,53 @@ export interface SeoProps {
   noindex?: boolean;
 }
 
+/**
+ * Normalize a remote hero image for social/JSON-LD use. Unsplash URLs in
+ * the dataset are requested at w=800 (below the 1200px og:image
+ * recommendation) — rewrite them to a 1200×630 crop.
+ */
+export function seoImageUrl(image: string): string {
+  if (!image.includes('images.unsplash.com')) return image;
+  try {
+    const u = new URL(image);
+    u.searchParams.set('w', '1200');
+    u.searchParams.set('h', '630');
+    u.searchParams.set('fit', 'crop');
+    u.searchParams.set('q', '80');
+    u.searchParams.set('auto', 'format');
+    return u.toString();
+  } catch {
+    return image;
+  }
+}
+
+/**
+ * Keep meta descriptions within Google's ~160-char snippet budget, cutting
+ * on a word boundary. Safety net — pages should still author concise
+ * descriptions themselves.
+ */
+export function clampDescription(text: string, max = 160): string {
+  const clean = text.replace(/\s+/g, ' ').trim();
+  if (clean.length <= max) return clean;
+  const cut = clean.slice(0, max - 1);
+  const lastSpace = cut.lastIndexOf(' ');
+  return cut.slice(0, lastSpace > 100 ? lastSpace : max - 1).trimEnd() + '…';
+}
+
 export function buildSeo(props: SeoProps) {
-  const image = props.image ?? DEFAULT_OG_IMAGE;
+  const rawImage = props.image ?? DEFAULT_OG_IMAGE;
+  const image = seoImageUrl(rawImage);
+  // Only claim og:image dimensions we actually know: the default og JPEG
+  // is authored at 1200×630 and normalized Unsplash URLs are cropped to
+  // 1200×630. Local hero uploads have arbitrary sizes — no false claims.
+  const knownSize = rawImage === DEFAULT_OG_IMAGE || image !== rawImage;
   return {
     ...props,
+    description: clampDescription(props.description),
     canonical: absoluteUrl(props.path),
     image: image.startsWith('http') ? image : absoluteUrl(image),
+    imageWidth: knownSize ? 1200 : undefined,
+    imageHeight: knownSize ? 630 : undefined,
     type: props.type ?? 'website',
     siteName: SITE_NAME,
     siteUrl: SITE_URL,
@@ -36,7 +77,6 @@ export function organizationJsonLd() {
     name: SITE_NAME,
     url: SITE_URL,
     logo: absoluteUrl('/logo.png'),
-    sameAs: [],
   };
 }
 
@@ -47,11 +87,9 @@ export function websiteJsonLd() {
     name: SITE_NAME,
     url: SITE_URL,
     inLanguage: 'fr-FR',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${SITE_URL}/recherche?q={search_term_string}`,
-      'query-input': 'required name=search_term_string',
-    },
+    // No SearchAction: the site has no /recherche page. Declaring one that
+    // 404s invites Google to crawl non-existent URLs and invalidates the
+    // WebSite markup.
   };
 }
 

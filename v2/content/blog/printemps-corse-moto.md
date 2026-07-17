@@ -1,6 +1,7 @@
 ---
 slug: printemps-corse-moto
 title: "Printemps en Corse à moto : pourquoi avril-juin est la fenêtre rêvée"
+metaTitle: "Printemps en Corse à moto : la fenêtre rêvée avril-juin"
 excerpt: "Avril, mai, juin : la meilleure saison pour rouler en Corse. Météo douce, maquis en fleur, cols ouverts, ferries à moitié prix. Mon retour d'expérience et le guide complet, mois par mois."
 heroImage: "/lovable-uploads/381bb3e5-8c88-48aa-8685-829520b4e247.png"
 authorName: "Matthieu"

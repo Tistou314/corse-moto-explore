@@ -1,6 +1,7 @@
 ---
 slug: equipement-essentiel-moto-corse
 title: "Équipement moto pour la Corse : le guide complet du casque aux bottes"
+metaTitle: "Équipement moto pour la Corse : le guide complet"
 excerpt: "Casque, blouson, pantalon, gants, bottes : l'équipement précis pour la Corse à moto, avec modèles 2026, fourchettes de prix réelles, et la liste de ce que je transporte selon la saison. Sécurité d'abord, confort ensuite, esthétique en dernier."
 heroImage: "/lovable-uploads/8ad6059c-3be0-4ac9-bcce-f48495f63260.png"
 authorName: "Matthieu"

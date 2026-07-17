@@ -1,6 +1,7 @@
 ---
 slug: preparation-moto-voyage-corse
 title: "Préparer sa moto pour la Corse : le guide mécanique avant de partir"
+metaTitle: "Préparer sa moto pour la Corse : guide mécanique"
 excerpt: "Révision, pneus, freins, fluides, transmission, suspensions : la check-list mécanique complète à passer 2 à 3 semaines avant le ferry. Avec les modèles de pneus 2026, les fourchettes de prix garage, et les pièges qui peuvent pourrir un voyage de 10 jours."
 heroImage: "/lovable-uploads/c9c69fc8-07ec-474b-9707-bb25b3ee2ec1.png"
 authorName: "Matthieu"

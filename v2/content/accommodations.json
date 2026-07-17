@@ -1,6 +1,6 @@
 [
   {
-    "_doc": "Per-accommodation overrides. Replace the heroImage on a per-slug basis when Supabase data has a generic placeholder. The slug must match the Supabase slug exactly. heroImage can be /lovable-uploads/*.png (local), https://lh3.googleusercontent.com/* (GMB), or any other absolute URL with usage rights. Add a source field to document provenance.",
+    "_doc": "Per-accommodation overrides. Replace the heroImage on a per-slug basis when Supabase data has a generic placeholder. The slug must match the Supabase slug exactly. heroImage can be /lovable-uploads/*.png (local), https://lh3.googleusercontent.com/* (photo GBP), or any other absolute URL with usage rights. The optional source field documents provenance AND is displayed as a visible caption under the photo on the detail page (rendered as 'Photo : <source>'). Without it, the caption is inferred from the image host: googleusercontent -> fiche Google Business Profile, domaine du site officiel -> site officiel, unsplash -> photo d'illustration, /lovable-uploads/ -> pas de legende.",
     "slug": "_example",
     "heroImage": "/lovable-uploads/example.png",
     "source": "Site officiel / GMB / SerpAPI / etc."

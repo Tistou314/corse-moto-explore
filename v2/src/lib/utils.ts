@@ -25,6 +25,53 @@ export function absoluteUrl(path: string): string {
 }
 
 /**
+ * Human-readable provenance caption for an establishment photo.
+ *
+ * Priority: an explicit `source` label (from content/accommodations.json
+ * overrides) wins; otherwise the origin is inferred from the image host:
+ *  - Google-hosted photos (lh3.googleusercontent.com, *.ggpht.com,
+ *    streetview…) come from the establishment's Google Business Profile —
+ *    that's what scripts/populate-accommodation-photos.ts writes;
+ *  - an image served from the establishment's own domain is its official
+ *    site (og:image path of the same script);
+ *  - Unsplash images are generic illustrations and are labelled as such;
+ *  - local /lovable-uploads/ images are the site's own — no caption.
+ * Returns null when no caption should be shown.
+ */
+export function imageCredit(
+  imageUrl: string | undefined,
+  websiteUrl?: string,
+  overrideSource?: string,
+): string | null {
+  if (overrideSource) return `Photo : ${overrideSource}`;
+  if (!imageUrl || !imageUrl.startsWith('http')) return null;
+  let host: string;
+  try {
+    host = new URL(imageUrl).hostname;
+  } catch {
+    return null;
+  }
+  if (/(^|\.)googleusercontent\.com$|(^|\.)ggpht\.com$|(^|\.)gstatic\.com$/.test(host)) {
+    return "Photo : fiche Google Business Profile de l'établissement";
+  }
+  if (host === 'images.unsplash.com') {
+    return "Photo d'illustration : Unsplash";
+  }
+  if (websiteUrl) {
+    try {
+      const siteHost = new URL(websiteUrl.startsWith('http') ? websiteUrl : `https://${websiteUrl}`)
+        .hostname.replace(/^www\./, '');
+      if (host.replace(/^www\./, '').endsWith(siteHost)) {
+        return "Photo : site officiel de l'établissement";
+      }
+    } catch {
+      /* invalid website URL — fall through */
+    }
+  }
+  return `Photo : ${host.replace(/^www\./, '')}`;
+}
+
+/**
  * Sibling .webp path for a local raster image. Returns null when the
  * source is not a local png/jpg (e.g. an external/Supabase URL), so
  * callers can skip the <source> and just render the original.

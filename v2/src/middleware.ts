@@ -19,9 +19,13 @@ import { defineMiddleware } from 'astro:middleware';
 const DANGEROUS_HEADERS = ['x-astro-path', 'x_astro_path'];
 
 export const onRequest = defineMiddleware(async (context, next) => {
-  for (const header of DANGEROUS_HEADERS) {
-    if (context.request.headers.has(header)) {
-      context.request.headers.delete(header);
+  // Prerendered pages have no real request at build time — touching
+  // context.request.headers there only triggers Astro build warnings.
+  if (!context.isPrerendered) {
+    for (const header of DANGEROUS_HEADERS) {
+      if (context.request.headers.has(header)) {
+        context.request.headers.delete(header);
+      }
     }
   }
   return next();
