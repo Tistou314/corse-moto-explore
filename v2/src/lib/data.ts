@@ -19,13 +19,15 @@ const blogOverrides = new Map(getAllBlogOverrides().map((o) => [o.slug, o]));
 
 function applyEntityOverride<T extends { slug?: string; heroImage?: string; image?: string; imageUrl?: string }>(
   item: T,
-  override: { heroImage?: string } | undefined,
+  override: { heroImage?: string; source?: string } | undefined,
 ): T {
   if (override?.heroImage) {
     const obj = item as Record<string, unknown>;
     obj.heroImage = override.heroImage;
     obj.image = override.heroImage;
     obj.imageUrl = override.heroImage;
+    // Provenance label, surfaced as a visible caption on detail pages.
+    if (override.source) obj.heroImageSource = override.source;
   }
   return item;
 }

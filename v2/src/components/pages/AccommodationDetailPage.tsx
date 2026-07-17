@@ -8,21 +8,23 @@ import DetailedDescription from '../../../../src/components/accommodations/Detai
 import ActionButtons from '../../../../src/components/accommodations/ActionButtons';
 import OptimizedImage from '../../../../src/components/ui/optimized-image';
 import type { Accommodation } from '@/lib/data';
+import { imageCredit } from '@/lib/utils';
 
 interface Props {
   accommodation: Accommodation;
 }
 
 export default function AccommodationDetailPage({ accommodation }: Props) {
-  const a = accommodation as Accommodation & { image?: string };
+  const a = accommodation as Accommodation & { image?: string; heroImageSource?: string };
   const imageToUse = a.image ?? a.heroImage;
   const websiteUrl = a.contact?.website;
+  const credit = imageCredit(imageToUse, websiteUrl, a.heroImageSource);
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-2 gap-8">
-          <div>
+          <figure>
             <div className="aspect-[4/3] bg-muted rounded-lg overflow-hidden">
               <OptimizedImage
                 src={imageToUse}
@@ -33,7 +35,12 @@ export default function AccommodationDetailPage({ accommodation }: Props) {
                 priority={true}
               />
             </div>
-          </div>
+            {credit && (
+              <figcaption className="mt-2 text-xs text-muted-foreground text-right">
+                {credit}
+              </figcaption>
+            )}
+          </figure>
 
           <div className="bg-white rounded-lg p-6 shadow-lg">
             <AccommodationHeader accommodation={a as never} />
