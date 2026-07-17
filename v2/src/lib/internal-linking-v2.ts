@@ -52,32 +52,37 @@ export function addInternalLinks(content: string, currentPostId: string): string
     return true;
   });
 
-  // Preserve fenced code, inline code, and existing markdown links untouched.
-  const sections = content.split(/(```[\s\S]*?```|`[\s\S]*?`|\[[\s\S]*?\]\([\s\S]*?\))/g);
+  // Segments that must never receive an injected link: fenced code, inline
+  // code, and markdown links — including links injected by an earlier
+  // iteration of the loop below. The content is re-split after every
+  // injection precisely so that a freshly inserted `[text](/blog/slug)`
+  // becomes a protected segment; otherwise the next target's keywords can
+  // match inside its URL and mangle it (e.g. `voyage` matching inside
+  // `/blog/budget-voyage-moto-corse`).
+  const PROTECTED = /(```[\s\S]*?```|`[\s\S]*?`|\[[\s\S]*?\]\([\s\S]*?\))/g;
 
-  // Targets that have already received an auto-injected link in an earlier
-  // section — never add a second one.
-  const usedTargets = new Set<string>();
-
-  return sections
-    .map((section, idx) => {
-      if (idx % 2 !== 0) return section;
-      return targets.reduce((processed, target) => {
-        if (usedTargets.has(target.slug)) return processed;
-        for (const keyword of target.keywords) {
-          if (!keyword || keyword.length < 4) continue;
-          const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-          const regex = new RegExp(`\\b(${escaped})\\b(?![^<]*>|[^\\[]*\\])`, 'i');
-          if (regex.test(processed)) {
-            processed = processed.replace(regex, `[${keyword}](/blog/${target.slug})`);
-            usedTargets.add(target.slug);
-            return processed;
-          }
+  let result = content;
+  for (const target of targets) {
+    let injected = false;
+    for (const keyword of target.keywords) {
+      if (!keyword || keyword.length < 4) continue;
+      const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const regex = new RegExp(`\\b(${escaped})\\b(?![^<]*>)`, 'i');
+      const sections = result.split(PROTECTED);
+      for (let i = 0; i < sections.length; i += 2) {
+        if (regex.test(sections[i])) {
+          sections[i] = sections[i].replace(regex, `[$1](/blog/${target.slug})`);
+          injected = true;
+          break;
         }
-        return processed;
-      }, section);
-    })
-    .join('');
+      }
+      if (injected) {
+        result = sections.join('');
+        break;
+      }
+    }
+  }
+  return result;
 }
 
 export function getRelatedPosts(post: { id?: string; category?: string; tags?: string[] }, limit = 3) {

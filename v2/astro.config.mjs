@@ -64,6 +64,11 @@ export default defineConfig({
   // the trailing slash — Google treats that disagreement as a quality
   // signal worth de-prioritising.
   trailingSlash: 'never',
+  // Legacy SPA route that never existed in v2 — send old bookmarks and any
+  // residual index entries to the equivalent page instead of a 404.
+  redirects: {
+    '/gas-stations': '/stations-service',
+  },
   adapter: vercel({
     webAnalytics: { enabled: false },
     imageService: true,
@@ -78,9 +83,10 @@ export default defineConfig({
       filter: (page) => !page.includes('/admin'),
       changefreq: 'weekly',
       priority: 0.7,
-      // Tells Google "this URL was refreshed on the build date" — helps
-      // it prioritise re-crawling after our rounds of fixes.
-      lastmod: new Date(),
+      // No `lastmod`: stamping every URL with the build date claims the
+      // whole site changed on every deploy. Google detects unreliable
+      // lastmod values and then ignores them entirely — worse than
+      // omitting the field.
     }),
   ],
   prefetch: { prefetchAll: true, defaultStrategy: 'viewport' },

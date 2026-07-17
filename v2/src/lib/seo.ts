@@ -3,7 +3,7 @@ import { absoluteUrl, SITE_URL } from './utils';
 export const SITE_NAME = 'Corse à moto';
 export const SITE_DESCRIPTION =
   "Itinéraires moto, hébergements, conseils et stations-service pour explorer la Corse à deux roues.";
-export const DEFAULT_OG_IMAGE = '/og/default.svg';
+export const DEFAULT_OG_IMAGE = '/og/default.jpg';
 
 export interface SeoProps {
   title: string;
@@ -47,11 +47,9 @@ export function websiteJsonLd() {
     name: SITE_NAME,
     url: SITE_URL,
     inLanguage: 'fr-FR',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${SITE_URL}/recherche?q={search_term_string}`,
-      'query-input': 'required name=search_term_string',
-    },
+    // No SearchAction: the site has no /recherche page. Declaring one that
+    // 404s invites Google to crawl non-existent URLs and invalidates the
+    // WebSite markup.
   };
 }
 

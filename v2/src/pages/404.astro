@@ -1,0 +1,43 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+const suggestions = [
+  { href: '/itineraires', label: 'Les itinéraires moto', desc: '10 boucles testées au guidon, du Cap Corse au Grand Sud.' },
+  { href: '/hebergements', label: 'Les hébergements motards', desc: 'Hôtels, gîtes et campings qui accueillent bien les motos.' },
+  { href: '/blog', label: 'Le blog', desc: 'Récits, conseils saisonniers et guides pratiques.' },
+  { href: '/guide-pratique', label: 'Le guide pratique', desc: 'Ferry, météo, équipement : tout préparer en amont.' },
+];
+---
+
+<Layout
+  title="Page introuvable — Corse à moto"
+  description="Cette page n'existe pas ou n'existe plus. Retrouvez les itinéraires moto, hébergements et guides pratiques pour explorer la Corse à deux roues."
+  path="/404"
+  noindex
+>
+  <section class="container mx-auto px-4 py-20 text-center">
+    <p class="text-sm font-semibold uppercase tracking-wide text-corsica-azure">Erreur 404</p>
+    <h1 class="mt-3 font-serif text-4xl font-bold md:text-5xl">Cette route ne mène nulle part</h1>
+    <p class="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
+      La page que vous cherchez n'existe pas ou a été déplacée. Voici les meilleurs points de départ
+      pour reprendre la route.
+    </p>
+    <div class="mx-auto mt-10 grid max-w-3xl gap-4 text-left sm:grid-cols-2">
+      {suggestions.map((s) => (
+        <a
+          href={s.href}
+          class="rounded-lg border bg-card p-5 shadow-sm transition-shadow hover:shadow-md"
+        >
+          <span class="font-semibold text-corsica-blue">{s.label}</span>
+          <p class="mt-1 text-sm text-muted-foreground">{s.desc}</p>
+        </a>
+      ))}
+    </div>
+    <a
+      href="/"
+      class="mt-10 inline-block rounded-md bg-corsica-azure px-6 py-3 font-medium text-white transition-opacity hover:opacity-90"
+    >
+      Retour à l'accueil
+    </a>
+  </section>
+</Layout>
