@@ -8,7 +8,7 @@
  *
  * Skips rows that already have a serp_image_url unless --force is passed.
  *
- * Usage: npx tsx scripts/populate-accommodation-photos.ts [--force] [--dry] [--only=slug1,slug2]
+ * Usage: npx tsx scripts/populate-accommodation-photos.ts [--force] [--dry] [--only=slug1,slug2] [--skip-og]
  *
  * Env required: PUBLIC_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, SERPAPI_KEY
  */
@@ -28,6 +28,10 @@ if (!SUPABASE_URL || !SERVICE_KEY || !SERPAPI_KEY) {
 const argv = process.argv.slice(2);
 const FORCE = argv.includes('--force');
 const DRY = argv.includes('--dry');
+// Skip the official-website og:image step and go straight to Google Maps
+// (GBP) photos — for establishments whose og:image is a favicon/logo/
+// low-res crop rather than an actual photo.
+const SKIP_OG = argv.includes('--skip-og');
 const ONLY = argv.find((a) => a.startsWith('--only='))?.slice(7).split(',').filter(Boolean) ?? null;
 
 const sb = createClient(SUPABASE_URL, SERVICE_KEY);
@@ -161,7 +165,7 @@ async function main() {
     let img: string | null = null;
     let source: string = '';
 
-    if (row.contact_website) {
+    if (row.contact_website && !SKIP_OG) {
       console.log(`    trying og:image from ${row.contact_website}…`);
       img = await fetchOgImage(row.contact_website);
       if (img) source = 'og';
