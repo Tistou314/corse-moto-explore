@@ -1,6 +1,7 @@
 ---
 slug: automne-corse-moto
 title: "L'automne en Corse à moto : la meilleure saison que personne ne choisit"
+metaTitle: "L'automne en Corse à moto : la meilleure saison cachée"
 excerpt: "Septembre, octobre, novembre : la fenêtre où la mer reste tiède, les routes se vident, les châtaignes mûrissent et les ferries redeviennent abordables. Le calendrier complet du motard qui veut éviter à la fois la foule de juillet et le froid de décembre."
 heroImage: "/lovable-uploads/2653c886-6632-476f-b90a-f498f2b8ca2e.png"
 authorName: "Matthieu"

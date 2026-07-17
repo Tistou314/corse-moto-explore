@@ -2,7 +2,7 @@
 import Layout from '@/layouts/Layout.astro';
 import AccommodationDetailPage from '@/components/pages/AccommodationDetailPage';
 import { allAccommodations } from '@/lib/data';
-import { breadcrumbJsonLd } from '@/lib/seo';
+import { breadcrumbJsonLd, seoImageUrl } from '@/lib/seo';
 import { absoluteUrl } from '@/lib/utils';
 
 export async function getStaticPaths() {
@@ -20,7 +20,7 @@ const accommodationSchema: Record<string, unknown> = {
   name: a.name,
   description: a.description,
   url: absoluteUrl(`/hebergements/${a.slug}`),
-  image: a.heroImage,
+  image: seoImageUrl(a.heroImage),
   priceRange: a.priceRange,
 };
 
@@ -29,7 +29,7 @@ if (a.address || a.location) {
     '@type': 'PostalAddress',
     streetAddress: a.address ?? a.location,
     addressLocality: a.location,
-    addressRegion: a.region,
+    addressRegion: capitalize(a.region),
     addressCountry: 'FR',
   };
 }
@@ -78,18 +78,29 @@ function capitalize(str: string | undefined): string {
 }
 
 const locationLabel = capitalize(a.location || a.region || 'Corse');
-const metaTitle = `${a.name} : ${typeLabel} adapté motards à ${locationLabel}`;
 
-// Short, clean description: drop trailing ellipses, trim to ~115 chars to
-// leave room for the appended structured info.
+// Title: aim for ≤ 62 chars so Google doesn't truncate. Parentheticals in
+// establishment/location names ("(gîte d'étape)", "(Niolu)") are the first
+// thing to go, then the wording is tightened, then the locality.
+const stripParens = (s: string) => s.replace(/\s*\([^)]*\)\s*/g, ' ').replace(/\s+/g, ' ').trim();
+const nameShort = stripParens(a.name);
+const locationShort = stripParens(locationLabel);
+let metaTitle = `${nameShort} : ${typeLabel} adapté motards à ${locationShort}`;
+if (metaTitle.length > 62) metaTitle = `${nameShort} : ${typeLabel} motard à ${locationShort}`;
+if (metaTitle.length > 62) metaTitle = `${nameShort} : ${typeLabel} motard en Corse`;
+
+// Short, clean description: drop trailing ellipses, then budget the base
+// text so that base + appended structured info stays ≤ 158 chars.
 const baseDesc = (a.description || '')
   .replace(/\.{3,}\s*$/, '')
   .replace(/\s+/g, ' ')
   .trim();
-const shortDesc = baseDesc.length > 100 ? baseDesc.slice(0, 97).trimEnd() + '…' : baseDesc;
 const topAmenities = (a.bikerAmenities || []).slice(0, 2).join(', ').toLowerCase();
 const priceTag = a.priceRange ? `Dès ${a.priceRange.split('-')[0].trim()}` : '';
 const tail = [topAmenities, priceTag].filter(Boolean).join(' · ');
+const maxBase = Math.min(100, 157 - (tail ? tail.length + 2 : 0));
+const shortDesc =
+  baseDesc.length > maxBase ? baseDesc.slice(0, maxBase - 1).trimEnd() + '…' : baseDesc;
 const metaDescription = tail ? `${shortDesc} ${tail}.` : shortDesc;
 ---
 

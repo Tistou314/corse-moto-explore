@@ -1,6 +1,7 @@
 ---
 slug: roadtrip-amis-corse-moto
 title: "Road trip moto entre amis en Corse : la méthode pour un voyage à 4-6"
+metaTitle: "Road trip moto en Corse entre amis : la bonne méthode"
 excerpt: "Six motards, six niveaux, sept jours sur l'île. Le récit complet d'un road trip à plusieurs : comment on s'est organisés, les règles qu'on a fixées avant de partir, les engueulades qu'on a évitées, ce que ça nous a coûté, et ce qu'on referait différemment."
 heroImage: "/lovable-uploads/c3d552bd-6818-4848-97dc-17a222a5b25a.png"
 authorName: "Matthieu"

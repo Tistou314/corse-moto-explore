@@ -2,6 +2,7 @@
 import Layout from '@/layouts/Layout.astro';
 import BlogPostDetailPage from '@/components/pages/BlogPostDetailPage';
 import { allBlogPosts } from '@/lib/data';
+import { getBlogOverride } from '@/lib/blog-content-overrides';
 import { breadcrumbJsonLd } from '@/lib/seo';
 import { absoluteUrl } from '@/lib/utils';
 
@@ -63,8 +64,9 @@ if (p.faq && p.faq.length > 0) {
 // articles with hand-tuned titles), the legacy suffix " | Blog Moto Corse"
 // pushed past 95 chars on most posts and got truncated by Google. Drop it,
 // keep the raw title (Layout adds the global site_name in og:site_name
-// anyway, so brand presence is preserved).
-const metaTitle = p.title;
+// anyway, so brand presence is preserved). Posts whose editorial H1 still
+// exceeds ~62 chars carry a shorter `metaTitle` in their front matter.
+const metaTitle = getBlogOverride(p.slug)?.metaTitle ?? p.title;
 
 // Description : use the excerpt, but cap at 158 chars to stay under Google's
 // snippet limit. Excerpts from blog overrides are already concise (140-180
