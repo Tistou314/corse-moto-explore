@@ -91,7 +91,7 @@ else if (jsonLd) jsonLdArr.push(jsonLd);
       // Google Analytics. The 150 KB gtag.js is kept off the critical
       // path: dataLayer is queued immediately, but the script itself is
       // only injected on first interaction or once the browser is idle
-      // (5s timeout fallback) — whichever comes first. Every visitor is
+      // (5s timeout fallback), whichever comes first. Every visitor is
       // still counted; the request just no longer competes with FCP/LCP.
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
