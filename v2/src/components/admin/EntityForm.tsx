@@ -180,7 +180,7 @@ export default function EntityForm({ table, fields, id, redirectTo, title, defau
               onChange={(e) => setField(f.name, e.target.value)}
               className="mt-2 block w-full min-h-[44px] rounded-sm border border-border bg-bg px-3 text-base focus-visible:border-accent focus-visible:outline-none"
             >
-              <option value="">—</option>
+              <option value="">(aucun)</option>
               {f.options?.map((o) => (
                 <option key={o.value} value={o.value}>
                   {o.label}

@@ -105,11 +105,11 @@ const stripParens = (s: string) => s.replace(/\s*\([^)]*\)\s*/g, ' ').replace(/\
 const distanceForTitle = stripParens(distanceStr);
 let metaTitle = [it.title, distanceForTitle ? `${distanceForTitle} à moto en Corse` : 'Itinéraire moto en Corse']
   .filter(Boolean)
-  .join(' — ');
+  .join(' : ');
 if (metaTitle.length > 62) {
   metaTitle = [stripParens(it.title), distanceForTitle ? `${distanceForTitle} à moto en Corse` : 'Itinéraire moto en Corse']
     .filter(Boolean)
-    .join(' — ');
+    .join(' : ');
 }
 ---
 

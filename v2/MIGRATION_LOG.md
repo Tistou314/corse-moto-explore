@@ -285,6 +285,29 @@ Seul échec restant : `errors-in-console` pour des images Unsplash avec `ERR_CER
 - Branche `claude/session-goals-5y5gu` conservée comme historique de travail
 - `src/` legacy intact (zéro modification)
 
+## 2026-07-24 — Post-déploiement Vercel : purge des em-dashes
+
+Vercel prod est en ligne (`corse-moto-explore.vercel.app`, deploy `main`@267665a, status Ready).
+
+### Carton rouge de Baptiste : em-dashes visibles en ligne
+Corrigés (charte : "pas d'em-dash dans le contenu éditorial") :
+- Titres SEO : `Contact — Corse à moto` → `Contact : écrire à l'équipe de Corse à moto` ; mentions légales et politique de confidentialité passés en `... du/de Corse à moto` ; à-propos `—` → `:` (title + JSON-LD name)
+- `/itineraires/[slug]` : metaTitle joint avec `' : '` au lieu de `' — '`
+- Prose à-propos : em-dash remplacé par une ponctuation classique
+- AdminLayout `<title>` : `—` → `·` ; placeholders admin `—` → `non`/`brouillon`/`(aucun)`
+- Commentaire inline du script GA dans Layout.astro (seul em-dash restant dans le HTML servi)
+
+**Vérif build : 0 em-dash dans les 126 pages HTML de `dist/client`.**
+
+### Constat env Vercel (screenshots Baptiste)
+- Environment Variables du projet : **vides** → la prod actuelle a buildé en fallback legacy (`[data] using legacy TS files`) et la carte tourne sur tiles OSM.
+- Instructions données à Baptiste pour ajouter : `PUBLIC_SUPABASE_URL`, `PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_SERVICE_ROLE_KEY` (sensitive), `PUBLIC_MAPTILER_KEY`, `SERPAPI_KEY` (sensitive), `PUBLIC_SITE_URL=https://corseamoto.com`. Les 2 valeurs Supabase sont à récupérer dans le dashboard Supabase (Settings → API).
+- README corrigé : le code lit `VERCEL_DEPLOY_HOOK_URL` (server-side), pas `PUBLIC_VERCEL_DEPLOY_HOOK_URL`.
+
+### Prochaine étape en cours
+- Domaine `corseamoto.com` : ajout dans Vercel → Domains, puis DNS InternetBS (A `@` → 76.76.21.21, CNAME `www` → cname.vercel-dns.com). Procédure détaillée transmise à Baptiste.
+- Après merge dans `main` + env vars posées : redeploy sans build cache, vérifier la ligne `[data] using Supabase: 10 itineraries...` dans les build logs.
+
 ## 2026-05-14 — Session restauration design legacy
 
 ### Contexte

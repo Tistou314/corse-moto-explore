@@ -16,7 +16,7 @@ export const prerender = false;
     columns={[
       { key: 'title', label: 'Titre' },
       { key: 'category', label: 'Catégorie' },
-      { key: 'published_at', label: 'Publié le', format: (r) => r.published_at ? String(r.published_at).slice(0, 10) : '—' },
+      { key: 'published_at', label: 'Publié le', format: (r) => r.published_at ? String(r.published_at).slice(0, 10) : 'brouillon' },
       { key: 'reading_time', label: 'Lecture' },
       { key: 'published', label: 'En ligne', format: (r) => (r.published ? 'oui' : 'non') },
     ]}

@@ -101,7 +101,7 @@ vercel env add PUBLIC_SUPABASE_PUBLISHABLE_KEY
 vercel env add SUPABASE_SERVICE_ROLE_KEY
 vercel env add PUBLIC_MAPTILER_KEY
 vercel env add SERPAPI_KEY
-vercel env add PUBLIC_VERCEL_DEPLOY_HOOK_URL   # optionnel, déclenche rebuild sur save BO
+vercel env add VERCEL_DEPLOY_HOOK_URL          # optionnel, déclenche rebuild sur save BO
 vercel --prod
 ```
 
