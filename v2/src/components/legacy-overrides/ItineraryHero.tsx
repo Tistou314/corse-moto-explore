@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ChevronLeft, Clock, Route, Mountain } from 'lucide-react';
 import type { Itinerary } from '@/lib/data';
-import { webpVariant } from '@/lib/utils';
+import { heroImageSrc, webpVariant } from '@/lib/utils';
 
 interface Props {
   itinerary: Itinerary;
@@ -23,11 +23,12 @@ interface Props {
  */
 export default function ItineraryHero({ itinerary }: Props) {
   const it = itinerary as Itinerary & { image?: string };
-  const heroSrc = it.image ?? it.heroImage ?? '';
+  const heroSrc = heroImageSrc(it.image ?? it.heroImage ?? '') ?? '';
   const heroWebp = webpVariant(heroSrc);
 
   return (
-    <div className="h-[40vh] sm:h-[45vh] md:h-[50vh] min-h-[320px] relative overflow-hidden">
+    // svh so the hero keeps its height when the mobile URL bar retracts.
+    <div className="h-[40svh] sm:h-[45svh] md:h-[50svh] min-h-[320px] relative overflow-hidden">
       {heroSrc && (
         <picture>
           {heroWebp && <source srcSet={heroWebp} type="image/webp" />}

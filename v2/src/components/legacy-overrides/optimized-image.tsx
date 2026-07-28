@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Skeleton } from '../../../../src/components/ui/skeleton';
+import { webpVariant } from '@/lib/utils';
 
 interface OptimizedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string;
@@ -26,6 +27,11 @@ interface OptimizedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> 
  * skeleton/transition only if we actually catch an onError to fallback.
  * The result: the image is visible immediately from the SSR HTML, and
  * we keep the fallback behavior for broken sources.
+ *
+ * This component renders every card image on the site, so it is also where
+ * the WebP variants get served. Without the <picture> below, the original
+ * PNGs went out untouched (up to 824 KB each) even though the .webp files
+ * were already sitting in the build next to them.
  */
 const OptimizedImage = ({
   src,
@@ -50,27 +56,41 @@ const OptimizedImage = ({
           : '';
 
   const finalSrc = error && fallbackSrc ? fallbackSrc : src;
+  // Only for the original source: once we have fallen back to the remote
+  // placeholder there is no local WebP twin to offer.
+  const webp = error ? null : webpVariant(finalSrc);
+
+  const img = (
+    <img
+      src={finalSrc}
+      alt={alt}
+      loading="lazy"
+      decoding="async"
+      className={className}
+      onError={() => {
+        if (!error && fallbackSrc) {
+          setError(true);
+          setErrorLoaded(false);
+        }
+      }}
+      onLoad={() => {
+        if (error) setErrorLoaded(true);
+      }}
+      {...props}
+    />
+  );
 
   return (
     <div className={`relative overflow-hidden ${aspectRatioClass} ${containerClassName}`}>
       {error && !errorLoaded && <Skeleton className={`absolute inset-0 bg-gray-200 ${className}`} />}
-      <img
-        src={finalSrc}
-        alt={alt}
-        loading="lazy"
-        decoding="async"
-        className={className}
-        onError={() => {
-          if (!error && fallbackSrc) {
-            setError(true);
-            setErrorLoaded(false);
-          }
-        }}
-        onLoad={() => {
-          if (error) setErrorLoaded(true);
-        }}
-        {...props}
-      />
+      {webp ? (
+        <picture>
+          <source srcSet={webp} type="image/webp" />
+          {img}
+        </picture>
+      ) : (
+        img
+      )}
     </div>
   );
 };

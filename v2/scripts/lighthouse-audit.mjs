@@ -45,6 +45,11 @@ async function main() {
   const browser = await puppeteer.launch({
     args: ['--no-sandbox', '--disable-setuid-sandbox', '--headless=new', '--disable-dev-shm-usage'],
     headless: 'new',
+    // Sandboxes ship Chromium at a fixed path rather than in puppeteer's
+    // download cache; honour it when present so the audit still runs.
+    ...(process.env.PUPPETEER_EXECUTABLE_PATH && {
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
+    }),
   });
   const wsEndpoint = browser.wsEndpoint();
   const port = Number(new URL(wsEndpoint).port);

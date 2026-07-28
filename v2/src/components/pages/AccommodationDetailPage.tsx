@@ -1,12 +1,14 @@
 import AccommodationHeader from '../../../../src/components/accommodations/AccommodationHeader';
 import RatingStars from '../../../../src/components/accommodations/RatingStars';
-import ContactInfo from '../../../../src/components/accommodations/ContactInfo';
-import BikerAmenities from '../../../../src/components/accommodations/BikerAmenities';
-import AccommodationServices from '../../../../src/components/accommodations/AccommodationServices';
+import ContactInfo from '../legacy-overrides/ContactInfo';
+import BikerAmenities from '../legacy-overrides/BikerAmenities';
+import AccommodationServices from '../legacy-overrides/AccommodationServices';
 import PriceDisplay from '../../../../src/components/accommodations/PriceDisplay';
-import DetailedDescription from '../../../../src/components/accommodations/DetailedDescription';
+import DetailedDescription from '../legacy-overrides/DetailedDescription';
 import ActionButtons from '../../../../src/components/accommodations/ActionButtons';
-import OptimizedImage from '../../../../src/components/ui/optimized-image';
+// v2 override, not the legacy one: this relative path bypasses the `@/`
+// alias, so the legacy component was serving the raw PNG here.
+import OptimizedImage from '../legacy-overrides/optimized-image';
 import type { Accommodation } from '@/lib/data';
 import { imageCredit } from '@/lib/utils';
 

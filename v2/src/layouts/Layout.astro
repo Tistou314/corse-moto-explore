@@ -21,6 +21,13 @@ const seo = buildSeo({
 
 const preloadWebp = preloadImage ? webpVariant(preloadImage) : null;
 
+// A cross-origin hero costs a DNS lookup + TLS handshake before the fetch
+// can even start, on the critical path. Warm the connection in parallel
+// with HTML parsing.
+const preloadHref = preloadWebp ?? preloadImage;
+const preloadOrigin =
+  preloadHref && /^https?:\/\//.test(preloadHref) ? new URL(preloadHref).origin : null;
+
 const jsonLdArr: Record<string, unknown>[] = [websiteJsonLd(), organizationJsonLd()];
 if (Array.isArray(jsonLd)) jsonLdArr.push(...jsonLd);
 else if (jsonLd) jsonLdArr.push(jsonLd);
@@ -39,11 +46,12 @@ else if (jsonLd) jsonLdArr.push(jsonLd);
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
 
+    {preloadOrigin && <link rel="preconnect" href={preloadOrigin} crossorigin />}
     {preloadImage && (
       <link
         rel="preload"
         as="image"
-        href={preloadWebp ?? preloadImage}
+        href={preloadHref}
         type={preloadWebp ? 'image/webp' : undefined}
         fetchpriority="high"
       />

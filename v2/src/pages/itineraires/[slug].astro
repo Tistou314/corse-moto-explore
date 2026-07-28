@@ -4,7 +4,7 @@ import ItineraryDetailPage from '@/components/pages/ItineraryDetailPage';
 import ItineraryHero from '@/components/legacy-overrides/ItineraryHero';
 import { allItineraries } from '@/lib/data';
 import { breadcrumbJsonLd, seoImageUrl } from '@/lib/seo';
-import { absoluteUrl, thumbVariant } from '@/lib/utils';
+import { absoluteUrl, heroImageSrc, thumbVariant } from '@/lib/utils';
 
 export async function getStaticPaths() {
   return allItineraries.map((it) => ({ params: { slug: it.slug }, props: { it } }));
@@ -118,7 +118,9 @@ if (metaTitle.length > 62) {
   description={metaDescription}
   path={`/itineraires/${it.slug}`}
   image={it.heroImage}
-  preloadImage={it.heroImage}
+  {/* Must resolve exactly like ItineraryHero, or the preload misses and the
+      browser fetches the hero twice. */}
+  preloadImage={heroImageSrc((it as typeof it & { image?: string }).image ?? it.heroImage)}
   jsonLd={jsonLd}
 >
   <ItineraryHero itinerary={it} />

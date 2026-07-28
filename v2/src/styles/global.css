@@ -33,7 +33,9 @@
     --secondary-foreground: 0 0% 100%;
 
     --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    /* 47% cleared AA on pure white but landed at 4.49 on the gray-50
+       section backgrounds it is actually used over. 45% clears both. */
+    --muted-foreground: 215 16% 45%;
 
     --accent: 199 89% 55%;
     --accent-foreground: 0 0% 100%;
@@ -60,12 +62,16 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading text-black;
+    @apply font-heading;
   }
 
-  p, td, th, li, div, span {
-    @apply text-black;
-  }
+  /* Deliberately no `p, td, th, li, div, span { color: black }` rule here.
+     An element selector beats inheritance, so such a rule repaints every
+     unstyled nested div black — including those inside a dark section. The
+     footer sat at a 1.43 contrast ratio because its inner flex wrapper was
+     reset to black on charcoal, and the `text-white/80` on the parent could
+     never reach the links. `body` below sets the default colour, and it
+     inherits properly. */
 
   ::-webkit-scrollbar {
     width: 8px;
