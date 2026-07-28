@@ -20,6 +20,10 @@ const SITE_URL = process.env.PUBLIC_SITE_URL ?? 'https://www.corseamoto.com';
  */
 const v2InternalLinking = pathResolve(__dirname, 'src/lib/internal-linking-v2.ts');
 const v2OptimizedImage = pathResolve(__dirname, 'src/components/legacy-overrides/optimized-image.tsx');
+const v2AccommodationCard = pathResolve(
+  __dirname,
+  'src/components/legacy-overrides/AccommodationCard.tsx',
+);
 
 function aliasByImporter() {
   return {
@@ -45,6 +49,12 @@ function aliasByImporter() {
       // images in blog cards, accommodation cards, etc.
       if (source === '@/components/ui/optimized-image') {
         return this.resolve(v2OptimizedImage, importer, { skipSelf: true });
+      }
+      // Force the v2 accommodation card. The legacy one navigates from an
+      // onClick handler instead of an anchor, which leaves all 26
+      // accommodation pages without a single crawlable inbound link.
+      if (source === '@/components/AccommodationCard') {
+        return this.resolve(v2AccommodationCard, importer, { skipSelf: true });
       }
       if (!source.startsWith('@/')) return null;
       const rel = source.slice(2);
@@ -73,8 +83,11 @@ export default defineConfig({
     webAnalytics: { enabled: false },
     imageService: true,
   }),
-  // Inline the (small) stylesheet into each page so it stops blocking
-  // the first render with a separate round-trip — PSI flagged ~600ms.
+  // Keep inlining. Measured both ways: as an external file the stylesheet
+  // becomes a render-blocking round trip and costs ~2s of LCP on 4G
+  // (home 94 -> 78), which outweighs losing cross-page caching. The right
+  // lever is the stylesheet's size, not its location — see the content
+  // globs in tailwind.config.ts.
   build: { inlineStylesheets: 'always' },
   integrations: [
     react(),

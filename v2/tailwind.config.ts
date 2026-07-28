@@ -6,6 +6,11 @@ export default {
     './src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
     '../src/components/**/*.{ts,tsx,js,jsx}',
     '../src/pages/**/*.{ts,tsx,js,jsx}',
+    // The legacy admin tree is dead code in v2: /admin/* is built from
+    // v2/src/components/admin/{EntityList,EntityForm}. Scanning it only
+    // inflated the stylesheet, which is inlined into every public page.
+    '!../src/components/admin/**',
+    '!../src/pages/admin/**',
   ],
   prefix: '',
   theme: {
@@ -52,9 +57,20 @@ export default {
           foreground: 'hsl(var(--card-foreground))',
         },
         corsica: {
-          azure: '#0EA5E9',
-          emerald: '#10B981',
-          coral: '#F97316',
+          // These three carry text and button fills, so they must clear
+          // 4.5:1 against white in both directions. The original vivid
+          // values sat at 2.5-2.8, i.e. white-on-azure CTAs and
+          // `text-corsica-emerald` labels both failed AA. Same hues,
+          // darkened to the lightest shade that passes. The vivid originals
+          // are still available as `azure500`/`emerald500`/`coral500` for
+          // decorative fills (gradients, icon backdrops) where no text sits
+          // on top.
+          // Verified against every background these actually sit on, not
+          // just white: the tinted panels (#e7f2f7, #f3f8fb) and the gray
+          // section fills (#f9fafb, #f8fafc) are the tight cases.
+          azure: '#0973A2',
+          emerald: '#0A7A56',
+          coral: '#B34C05',
           ruby: '#DC2626',
           slate: '#475569',
           pearl: '#F8FAFC',

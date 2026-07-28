@@ -85,6 +85,30 @@ export function webpVariant(src: string | undefined): string | null {
 }
 
 /**
+ * Hero `src` for a possibly-remote image.
+ *
+ * Unsplash URLs in the dataset carry no width, so the CDN serves its
+ * largest rendition for what is at most a 1600px-wide hero. Pinning the
+ * width and asking for `auto=format` lets Unsplash return WebP/AVIF.
+ *
+ * Callers that preload the hero MUST build the preload href with this same
+ * helper: a preload whose URL differs from the rendered `src` by even one
+ * query parameter downloads the image twice instead of once.
+ */
+export function heroImageSrc(src: string | undefined, width = 1600): string | undefined {
+  if (!src || !src.includes('images.unsplash.com')) return src;
+  try {
+    const u = new URL(src);
+    u.searchParams.set('w', String(width));
+    u.searchParams.set('q', '75');
+    u.searchParams.set('auto', 'format');
+    return u.toString();
+  } catch {
+    return src;
+  }
+}
+
+/**
  * 320px-wide WebP thumbnail path for a local raster image — for small
  * sidebar/card thumbnails. Falls back to the original src when the
  * image is not a known local upload. Thumbnails are produced by

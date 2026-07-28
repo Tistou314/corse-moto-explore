@@ -2,20 +2,22 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import BlogPostHeader from '../legacy-overrides/BlogPostHeader';
-import BlogPostContent from '../../../../src/components/blog/BlogPostContent';
+import BlogPostContent from '../legacy-overrides/BlogPostContent';
 import AuthorCard from '../legacy-overrides/AuthorCard';
 import CommentsSection from '../../../../src/components/blog/CommentsSection';
-import RelatedPosts from '../../../../src/components/blog/RelatedPosts';
+import RelatedPosts from '../legacy-overrides/RelatedPosts';
 import type { BlogPost } from '@/lib/data';
 
 interface Props {
   post: BlogPost;
+  /** Article body already rendered to HTML at build time. */
+  contentHtml: string;
   prevPost: BlogPost | null;
   nextPost: BlogPost | null;
   allPosts: BlogPost[];
 }
 
-export default function BlogPostDetailPage({ post, prevPost, nextPost, allPosts }: Props) {
+export default function BlogPostDetailPage({ post, contentHtml, prevPost, nextPost, allPosts }: Props) {
   const [liked, setLiked] = useState(false);
   const handleLike = () => setLiked((v) => !v);
   const handleShare = () => {
@@ -39,7 +41,7 @@ export default function BlogPostDetailPage({ post, prevPost, nextPost, allPosts 
       <div className="bg-white py-12 rounded-t-3xl shadow-xl -mt-10 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto space-y-10">
-            <BlogPostContent post={p} liked={liked} onLike={handleLike} onShare={handleShare} />
+            <BlogPostContent post={p} contentHtml={contentHtml} liked={liked} onLike={handleLike} onShare={handleShare} />
             <AuthorCard author={(post as BlogPost & { author?: unknown }).author as never} />
 
             <div className="flex flex-col sm:flex-row justify-between gap-4 py-6 border-t border-b">

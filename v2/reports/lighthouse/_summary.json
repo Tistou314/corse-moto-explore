@@ -2,49 +2,49 @@
   {
     "path": "/",
     "label": "home",
-    "performance": 89,
-    "accessibility": 96,
+    "performance": 88,
+    "accessibility": 100,
     "bestPractices": 96,
     "seo": 100,
-    "lcp": 2935.8023000000003,
-    "cls": 0.0006541883311586242,
-    "tbt": 147.09884999999986,
-    "fcp": 2799.3023000000003
+    "lcp": 3451.7082473293167,
+    "cls": 0,
+    "tbt": 0,
+    "fcp": 2401.708247329317
   },
   {
     "path": "/itineraires/cap-corse",
     "label": "itineraire",
     "performance": 92,
-    "accessibility": 96,
+    "accessibility": 100,
     "bestPractices": 96,
     "seo": 100,
-    "lcp": 2703.6963,
+    "lcp": 2702.0707500000003,
     "cls": 0,
     "tbt": 0,
-    "fcp": 2553.6963
+    "fcp": 2552.0707500000003
   },
   {
     "path": "/hebergements/best-western-plus-ajaccio-amiraute",
     "label": "hebergement",
-    "performance": 95,
-    "accessibility": 93,
+    "performance": 94,
+    "accessibility": 100,
     "bestPractices": 96,
     "seo": 100,
-    "lcp": 2406.0786,
-    "cls": 0.016462478287967413,
+    "lcp": 2557.3406999999997,
+    "cls": 0.0149125877606596,
     "tbt": 0,
-    "fcp": 2331.0786
+    "fcp": 2482.3406999999997
   },
   {
     "path": "/blog/budget-voyage-moto-corse",
     "label": "blog",
-    "performance": 75,
-    "accessibility": 94,
+    "performance": 84,
+    "accessibility": 100,
     "bestPractices": 96,
     "seo": 100,
-    "lcp": 4053.67245,
-    "cls": 0.1059791009193493,
-    "tbt": 106.5,
-    "fcp": 3805.67245
+    "lcp": 3304.32735,
+    "cls": 0.10622506992665236,
+    "tbt": 0,
+    "fcp": 3004.32735
   }
 ]

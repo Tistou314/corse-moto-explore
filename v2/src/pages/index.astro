@@ -1,22 +1,78 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import HomePage from '@/components/pages/HomePage';
+import { HERO_LCP_IMAGE } from '@/components/legacy-overrides/ModernHero';
 import { allItineraries, allAccommodations, allBlogPosts } from '@/lib/data';
 
-const featuredItineraries = allItineraries.slice(0, 3);
+// Every object handed to the HomePage island is serialized into the HTML.
+// Passing whole records dragged each itinerary's `fullDescription` and each
+// post's markdown body along with it — ~99 KB of island props for what the
+// cards actually display. Trim to the rendered fields.
+type Loose<T> = T & Record<string, unknown>;
+
+const featuredItineraries = allItineraries.slice(0, 3).map((x) => {
+  const o = x as Loose<typeof x>;
+  return {
+    id: o.id,
+    slug: o.slug,
+    title: o.title,
+    description: o.description,
+    image: o.image ?? o.heroImage,
+    duration: o.duration,
+    distance: o.distance,
+    difficulty: o.difficulty,
+  };
+}) as unknown as typeof allItineraries;
+
 const recentPosts = allBlogPosts
   .slice()
   .sort((a, b) => (b.isoDate ?? '').localeCompare(a.isoDate ?? ''))
-  .slice(0, 3);
-const featuredHotels = allAccommodations.filter((a) => a.type === 'hotel').slice(0, 3);
-const featuredCampings = allAccommodations.filter((a) => a.type === 'camping').slice(0, 3);
-const featuredGites = allAccommodations.filter((a) => a.type === 'gite').slice(0, 3);
+  .slice(0, 3)
+  .map((x) => {
+    const o = x as Loose<typeof x>;
+    return {
+      id: o.id,
+      slug: o.slug,
+      title: o.title,
+      excerpt: o.excerpt,
+      imageUrl: o.imageUrl ?? o.heroImage,
+      category: o.category,
+      date: o.date,
+      author: o.author,
+      readingTime: o.readingTime,
+    };
+  }) as unknown as typeof allBlogPosts;
+
+const trimAccommodation = (x: (typeof allAccommodations)[number]) => {
+  const o = x as Loose<typeof x>;
+  return {
+    id: o.id,
+    slug: o.slug,
+    name: o.name,
+    type: o.type,
+    location: o.location,
+    priceRange: o.priceRange,
+    description: o.description,
+    image: o.image ?? o.heroImage,
+    rating: o.rating,
+    region: o.region,
+    bikerAmenities: o.bikerAmenities,
+  };
+};
+const pick = (type: string) =>
+  allAccommodations.filter((a) => a.type === type).slice(0, 3).map(trimAccommodation) as unknown as
+    typeof allAccommodations;
+
+const featuredHotels = pick('hotel');
+const featuredCampings = pick('camping');
+const featuredGites = pick('gite');
 ---
 
 <Layout
   title="Corse à moto : itinéraires, hébergements et guide pratique"
   description="Le guide indépendant pour préparer son voyage moto en Corse. Itinéraires testés au guidon, hébergements adaptés aux motards et conseils saisonniers."
   path="/"
+  preloadImage={HERO_LCP_IMAGE}
 >
   <HomePage
     client:load

@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import Hero from '../../../../src/components/Hero';
-import AccommodationCard from '../../../../src/components/AccommodationCard';
+// Deliberately the v2 override, not the legacy card: this relative path
+// bypasses the `@/` alias that redirects the rest of the codebase, and the
+// legacy card renders no anchor at all.
+import AccommodationCard from '../legacy-overrides/AccommodationCard';
 import AccommodationTypeCards from '../../../../src/components/accommodations/AccommodationTypeCards';
 import AccommodationFilters from '../legacy-overrides/AccommodationFilters';
 import BookingTips from '../../../../src/components/accommodations/BookingTips';

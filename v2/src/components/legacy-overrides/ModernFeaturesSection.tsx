@@ -23,8 +23,10 @@ const features = [
   {
     icon: Map,
     title: 'Itinéraires Détaillés',
+    // No parcours count here on purpose: a hard-coded figure drifts away
+    // from the dataset (it claimed "plus de 15" for 10 itineraries).
     description:
-      "Plus de 15 parcours soigneusement sélectionnés avec cartes interactives, profils d'élévation et points d'intérêt.",
+      "Des parcours roulés au guidon, avec cartes interactives, profils d'élévation et points d'intérêt.",
     iconGradient: 'from-corsica-azure500 to-corsica-azure600',
     cardGradient: 'from-corsica-azure50 to-corsica-azure100',
   },
@@ -100,7 +102,8 @@ export default function ModernFeaturesSection() {
             Votre compagnon de voyage idéal
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Découvrez pourquoi des milliers de motards nous font confiance pour explorer la Corse en toute sérénité
+            Des routes parcourues au guidon, des hébergements vérifiés un par un, et les
+            informations pratiques qui manquent ailleurs.
           </p>
         </div>
 

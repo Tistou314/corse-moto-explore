@@ -3,6 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import BlogPostDetailPage from '@/components/pages/BlogPostDetailPage';
 import { allBlogPosts } from '@/lib/data';
 import { getBlogOverride } from '@/lib/blog-content-overrides';
+import { formatContent } from '../../../../src/utils/markdown/markdownFormatter';
 import { breadcrumbJsonLd } from '@/lib/seo';
 import { absoluteUrl } from '@/lib/utils';
 
@@ -16,8 +17,33 @@ const { p } = Astro.props as {
 
 const sorted = allBlogPosts.slice().sort((a, b) => (b.isoDate ?? '').localeCompare(a.isoDate ?? ''));
 const idx = sorted.findIndex((x) => x.slug === p.slug);
-const prevPost = idx > 0 ? sorted[idx - 1] : null;
-const nextPost = idx >= 0 && idx < sorted.length - 1 ? sorted[idx + 1] : null;
+// The prev/next links render a slug and a title, nothing more.
+const trimNav = (x: (typeof allBlogPosts)[number] | undefined) =>
+  x ? ({ id: x.id, slug: x.slug, title: x.title } as unknown as typeof x) : null;
+const prevPost = idx > 0 ? trimNav(sorted[idx - 1]) : null;
+const nextPost = idx >= 0 && idx < sorted.length - 1 ? trimNav(sorted[idx + 1]) : null;
+
+// RelatedPosts renders a card (image, category, title, excerpt) and picks
+// its three entries from tags/category. Passing the full post objects
+// serialized every article's entire markdown body into the island props:
+// ~350 KB of HTML per article page, parsed before the hero could paint.
+const relatedPool = allBlogPosts.map((x) => ({
+  id: x.id,
+  slug: x.slug,
+  title: x.title,
+  excerpt: x.excerpt,
+  imageUrl: (x as typeof x & { imageUrl?: string }).imageUrl ?? x.heroImage,
+  category: (x as typeof x & { category?: string }).category,
+  tags: (x as typeof x & { tags?: string[] }).tags,
+})) as unknown as typeof allBlogPosts;
+
+// Render the markdown here rather than inside the client island, so neither
+// `marked` nor the blog dataset (which the auto-linker imports) ends up in
+// the browser bundle.
+const contentHtml = formatContent(
+  (p as typeof p & { content?: string }).content ?? '',
+  p.id,
+);
 
 const jsonLd: Record<string, unknown>[] = [
   breadcrumbJsonLd([
@@ -86,7 +112,7 @@ const metaDescription = rawExcerpt.length > 158 ? rawExcerpt.slice(0, 155).trimE
   authorName={p.authorName}
   jsonLd={jsonLd}
 >
-  <BlogPostDetailPage client:load post={p} prevPost={prevPost} nextPost={nextPost} allPosts={allBlogPosts} />
+  <BlogPostDetailPage client:load post={p} contentHtml={contentHtml} prevPost={prevPost} nextPost={nextPost} allPosts={relatedPool} />
 
   {p.faq && p.faq.length > 0 && (
     <section class="bg-gray-50 py-12 md:py-16">

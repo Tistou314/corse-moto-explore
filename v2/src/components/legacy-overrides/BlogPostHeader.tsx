@@ -37,7 +37,10 @@ export default function BlogPostHeader({ post }: Props) {
   const heroWebp = webpVariant(heroSrc);
 
   return (
-    <div className="h-[40vh] sm:h-[45vh] md:h-[60vh] min-h-[280px] relative overflow-hidden rounded-b-3xl">
+    // svh, not vh: on mobile `vh` is resolved against the *large* viewport,
+    // so the hero resizes the moment the URL bar retracts and everything
+    // below it shifts. That was the entire CLS budget on article pages.
+    <div className="h-[40svh] sm:h-[45svh] md:h-[60svh] min-h-[280px] relative overflow-hidden rounded-b-3xl">
       {heroSrc && (
         <picture>
           {heroWebp && <source srcSet={heroWebp} type="image/webp" />}

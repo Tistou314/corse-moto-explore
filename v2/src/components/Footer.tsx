@@ -66,6 +66,18 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/carte" className="text-white/80 hover:text-white transition-colors flex items-center">
+                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-coral mr-2 opacity-75"></span>
+                  Carte interactive
+                </Link>
+              </li>
+              <li>
+                <Link to="/faq" className="text-white/80 hover:text-white transition-colors flex items-center">
+                  <span className="w-1.5 h-1.5 rounded-full bg-corsica-coral mr-2 opacity-75"></span>
+                  Questions fréquentes
+                </Link>
+              </li>
+              <li>
                 <Link to="/stations-service" className="text-white/80 hover:text-white transition-colors flex items-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-corsica-coral mr-2 opacity-75"></span>
                   Stations

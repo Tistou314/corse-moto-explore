@@ -12,9 +12,16 @@ interface HeroSlide {
   stats?: { routes: number; places: number; travelers: number };
 }
 
+/**
+ * First slide image, i.e. the home page LCP element. Exported so the Astro
+ * page can preload it in <head>: the hero only renders after the HomePage
+ * island is parsed, which is far too late to start the fetch.
+ */
+export const HERO_LCP_IMAGE = '/lovable-uploads/6f930ced-66d6-4bfe-adb7-246828fa75a7.png';
+
 const heroSlides: HeroSlide[] = [
   {
-    image: '/lovable-uploads/6f930ced-66d6-4bfe-adb7-246828fa75a7.png',
+    image: HERO_LCP_IMAGE,
     title: 'Découvrez la Corse à Moto',
     subtitle:
       "Explorez les plus belles routes, parcours et paysages de l'Île de Beauté. Guides complets, itinéraires détaillés et conseils d'experts.",

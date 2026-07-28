@@ -53,13 +53,17 @@ export function addInternalLinks(content: string, currentPostId: string): string
   });
 
   // Segments that must never receive an injected link: fenced code, inline
-  // code, and markdown links — including links injected by an earlier
-  // iteration of the loop below. The content is re-split after every
-  // injection precisely so that a freshly inserted `[text](/blog/slug)`
+  // code, markdown headings, and markdown links — including links injected
+  // by an earlier iteration of the loop below. The content is re-split after
+  // every injection precisely so that a freshly inserted `[text](/blog/slug)`
   // becomes a protected segment; otherwise the next target's keywords can
   // match inside its URL and mangle it (e.g. `voyage` matching inside
   // `/blog/budget-voyage-moto-corse`).
-  const PROTECTED = /(```[\s\S]*?```|`[\s\S]*?`|\[[\s\S]*?\]\([\s\S]*?\))/g;
+  //
+  // Headings are protected because a link inside an <h2>/<h3> splits the
+  // heading's ranking signal across two elements and reads as keyword
+  // stuffing; the heading should describe the section, not navigate away.
+  const PROTECTED = /(```[\s\S]*?```|`[\s\S]*?`|^#{1,6}[^\n]*$|\[[\s\S]*?\]\([\s\S]*?\))/gm;
 
   let result = content;
   for (const target of targets) {
@@ -67,7 +71,12 @@ export function addInternalLinks(content: string, currentPostId: string): string
     for (const keyword of target.keywords) {
       if (!keyword || keyword.length < 4) continue;
       const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      const regex = new RegExp(`\\b(${escaped})\\b(?![^<]*>)`, 'i');
+      // `\b` treats `-` and `'` as boundaries, so a bare word boundary lets
+      // "préparation" match the tail of "Auto-préparation" and "île" the tail
+      // of "l'île", cutting a compound word in half around the link. Require
+      // a non-word, non-hyphen, non-apostrophe neighbour on both sides.
+      const EDGE = "[^\\p{L}\\p{N}'’\\-]";
+      const regex = new RegExp(`(?<=^|${EDGE})(${escaped})(?=$|${EDGE})(?![^<]*>)`, 'iu');
       const sections = result.split(PROTECTED);
       for (let i = 0; i < sections.length; i += 2) {
         if (regex.test(sections[i])) {
