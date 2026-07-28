@@ -1,0 +1,631 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { breadcrumbJsonLd } from '@/lib/seo';
+import { absoluteUrl } from '@/lib/utils';
+
+/**
+ * Pillar page for the head query of the whole site ("tour de corse moto
+ * 7 jours"). Deliberately plain Astro, no React island: it is static
+ * editorial content and has no business shipping a hydration payload.
+ *
+ * Sourcing rule for everything below: distances, durations and difficulty
+ * ratings marked as exact come from the itinerary records; accommodation
+ * names, towns and price ranges come from the accommodation records; the
+ * refuelling notes come from the strategic gas-station records. Liaison
+ * distances between two named itineraries are estimates and are labelled
+ * as such in the page itself rather than passed off as measured.
+ */
+
+const HERO = '/lovable-uploads/6f930ced-66d6-4bfe-adb7-246828fa75a7.png';
+
+interface Stage {
+  day: number;
+  from: string;
+  to: string;
+  route: string;
+  km: string;
+  exact: boolean;
+  time: string;
+  itinerary?: { slug: string; label: string; km: string; time: string; level: string };
+  highlights: string[];
+  sleep: { slug: string; name: string; town: string; price: string }[];
+  fuel?: string;
+  note?: string;
+}
+
+const stages: Stage[] = [
+  {
+    day: 1,
+    from: 'Bastia',
+    to: 'Bastia ou Macinaggio',
+    route: "Bastia, Erbalunga, Macinaggio, Barcaggio, Centuri, Pino, Nonza, Patrimonio",
+    km: '110 km',
+    exact: true,
+    time: '3 à 4 h de roulage, une journée complète avec les arrêts',
+    itinerary: {
+      slug: 'cap-corse',
+      label: 'Le Tour du Cap Corse (D80)',
+      km: '110 km',
+      time: '3-4 h sans les arrêts',
+      level: 'moyen',
+    },
+    highlights: [
+      "La D80 enroule la péninsule sur plus de 100 virages, mer à droite dans le sens antihoraire",
+      "Erbalunga et sa tour génoise, à vingt minutes de Bastia",
+      "Barcaggio et la pointe nord, la partie la plus sauvage de la boucle",
+      "Nonza et sa plage d'ardoise noire, en surplomb",
+    ],
+    sleep: [
+      { slug: 'best-western-montecristo-bastia', name: 'Best Western Montecristo', town: 'Bastia', price: '95 à 200 €' },
+      { slug: 'couvent-saint-hyacinthe', name: 'Couvent Saint Hyacinthe', town: 'Santa Maria di Lota', price: '30 à 80 €' },
+      { slug: 'hotel-u-ricordu', name: 'Hôtel U Ricordu', town: 'Macinaggio', price: '100 à 240 €' },
+    ],
+    note: "C'est le jour d'arrivée du ferry. Si tu débarques en début de matinée, la boucle tient largement dans la journée. Si tu arrives à midi, coupe à Macinaggio et finis le Cap le lendemain matin.",
+  },
+  {
+    day: 2,
+    from: 'Patrimonio',
+    to: 'Calvi ou L’Île-Rousse',
+    route: "Patrimonio, Saint-Florent, Agriates, L’Île-Rousse, Algajola, Calvi, villages de Balagne",
+    km: '100 km environ',
+    exact: false,
+    time: '2 h 30 de roulage sur la partie Balagne, plus la liaison depuis Saint-Florent',
+    itinerary: {
+      slug: 'tour-balagne',
+      label: 'Le Tour de la Balagne (D151, D71)',
+      km: '85 km',
+      time: '2 h 30 sans les arrêts',
+      level: 'moyen',
+    },
+    highlights: [
+      'Saint-Florent et le golfe, sortie naturelle du Cap Corse',
+      'Les villages perchés : Pigna, Sant’Antonino, Aregno, Corbara',
+      'La citadelle de Calvi en fin de journée',
+    ],
+    sleep: [
+      { slug: 'hotel-le-grillon', name: 'Hôtel Le Grillon', town: 'L’Île-Rousse', price: '60 à 110 €' },
+      { slug: 'hotel-maria-stella', name: 'Hôtel Maria Stella', town: 'L’Île-Rousse', price: '85 à 180 €' },
+      { slug: 'hotel-corsica-spa-serena', name: 'Hôtel Corsica & Spa Serena', town: 'Calvi', price: '120 à 260 €' },
+    ],
+    note: "Étape courte en kilomètres, longue en arrêts : les villages de Balagne s'enchaînent sur des routes étroites où l'on roule lentement. Dormir à Calvi plutôt qu'à L’Île-Rousse raccourcit le jour 3.",
+  },
+  {
+    day: 3,
+    from: 'Calvi',
+    to: 'Porto',
+    route: 'Calvi, col de Palmarella, Galeria, réserve de Scandola, Girolata, Osani, Porto',
+    km: '70 km',
+    exact: true,
+    time: '2 h 30 de roulage, mais compte la journée : c’est la plus technique du parcours',
+    itinerary: {
+      slug: 'route-cretes',
+      label: 'La Route des Crêtes (D81)',
+      km: '70 km',
+      time: '2 h 30 sans les arrêts',
+      level: 'difficile',
+    },
+    highlights: [
+      'Le col de Palmarella et la descente sur le golfe de Galeria',
+      'La réserve naturelle de Scandola, classée à l’UNESCO',
+      'Girolata, hameau accessible seulement à pied ou en bateau',
+    ],
+    sleep: [
+      { slug: 'hotel-capo-d-orto', name: 'Hôtel Capo d’Orto', town: 'Porto (Ota)', price: '100 à 180 €' },
+      { slug: 'hotel-le-filosorma', name: 'Hôtel restaurant Le Filosorma', town: 'Galéria', price: '70 à 140 €' },
+      { slug: 'camping-casa-di-luna', name: 'Camping Casa Di Luna', town: 'Galéria', price: '18 à 35 €' },
+    ],
+    fuel: "Fais le plein à Porto en arrivant. C'est la dernière station avant plusieurs heures de route côtière, et le tronçon Galeria-Porto n'en compte aucune.",
+    note: "70 km seulement, et pourtant la journée la plus exigeante de la semaine : chaussée étroite, ravins sans glissière, croisements difficiles avec les camping-cars. Ne la programme pas en fin de journée.",
+  },
+  {
+    day: 4,
+    from: 'Porto',
+    to: 'Ajaccio',
+    route: 'Porto, Piana, Capo Rosso, Cargèse, Sagone, Ajaccio',
+    km: '90 km environ',
+    exact: false,
+    time: '1 h de roulage sur les Calanques, plus environ 2 h de liaison jusqu’à Ajaccio',
+    itinerary: {
+      slug: 'calanques-piana',
+      label: 'Les Calanques de Piana (D81)',
+      km: '20 km',
+      time: '1 h sans les arrêts',
+      level: 'moyen',
+    },
+    highlights: [
+      'Les Calanques de Piana au petit matin, avant les cars',
+      'Le belvédère principal et le tunnel naturel',
+      'Capo Rosso et sa tour, en balcon sur le golfe',
+    ],
+    sleep: [
+      { slug: 'hotel-punta-e-mare', name: 'Hôtel Punta e Mare', town: 'Cargèse', price: '70 à 120 €' },
+      { slug: 'hotel-kalliste-ajaccio', name: 'Hôtel Kallisté', town: 'Ajaccio', price: '80 à 180 €' },
+      { slug: 'best-western-plus-ajaccio-amiraute', name: 'Best Western Plus Amirauté', town: 'Ajaccio', price: '100 à 220 €' },
+    ],
+    note: "Pars tôt. Les 20 km de Calanques se transforment en bouchon dès 10 h en été, et c'est le seul passage du tour où l'on ne peut pas doubler.",
+  },
+  {
+    day: 5,
+    from: 'Ajaccio',
+    to: 'Bonifacio',
+    route: 'Ajaccio, plage de Cupabia, Propriano, Sartène, Lion de Roccapina, Bonifacio',
+    km: '130 km environ',
+    exact: false,
+    time: '3 h 30 de roulage environ',
+    itinerary: {
+      slug: 'corniche-sud',
+      label: 'La Corniche du Sud (N196, D121)',
+      km: '130 km',
+      time: '3 h 30 sans les arrêts',
+      level: 'facile',
+    },
+    highlights: [
+      'Sartène, que Mérimée appelait la plus corse des villes corses',
+      'Le Lion de Roccapina, formation rocheuse en bord de route',
+      'L’arrivée sur les falaises calcaires de Bonifacio',
+    ],
+    sleep: [
+      { slug: 'hotel-prea-gianca', name: 'Hôtel Prea Gianca', town: 'Bonifacio', price: '90 à 200 €' },
+      { slug: 'camping-l-araguina', name: 'Camping L’Araguina', town: 'Bonifacio', price: '22 à 38 €' },
+    ],
+    note: "La seule étape classée facile du parcours, et la plus roulante. Bon jour pour rattraper du retard ou pour souffler après trois journées techniques.",
+  },
+  {
+    day: 6,
+    from: 'Bonifacio',
+    to: 'Porto-Vecchio ou Zonza',
+    route: 'Bonifacio, Rondinara, Santa Giulia, Palombaggia, Porto-Vecchio, col de Bavella, Zonza',
+    km: '145 km environ',
+    exact: false,
+    time: '4 h de roulage environ, la journée la plus chargée',
+    itinerary: {
+      slug: 'route-cols',
+      label: 'Route des Cols (D69, D10)',
+      km: '100 km',
+      time: '3 à 4 h sans les arrêts',
+      level: 'difficile',
+    },
+    highlights: [
+      'Les plages du sud : Rondinara, Santa Giulia, Palombaggia',
+      'La montée sur le col de Bavella et ses aiguilles',
+      'Zonza, Quenza et le plateau de l’Alta Rocca',
+    ],
+    sleep: [
+      { slug: 'best-western-hotel-alcyon', name: 'Best Western Hotel Alcyon', town: 'Porto-Vecchio', price: '90 à 200 €' },
+      { slug: 'camping-l-oso', name: 'Camping L’Oso', town: 'Porto-Vecchio', price: '26 à 32 €' },
+      { slug: 'hotel-residence-olmuccio', name: 'Hôtel Résidence Olmuccio', town: 'Sainte-Lucie-de-Porto-Vecchio', price: '90 à 200 €' },
+    ],
+    fuel: "La station du col de Bavella est essentielle avant de s'aventurer dans l'Alta Rocca. Au-delà, le ravitaillement devient aléatoire.",
+    note: "Départ matinal obligatoire. Monter Bavella en fin de journée signifie redescendre face au soleil couchant, dans des épingles où l'on ne voit plus rien.",
+  },
+  {
+    day: 7,
+    from: 'Zonza ou Porto-Vecchio',
+    to: 'Bastia',
+    route: 'Solenzara, côte est, Folelli, Cervione, col de Prato, Piedicroce, La Porta, Morosaglia, Bastia',
+    km: '170 km environ par la Castagniccia, 110 km par la côte',
+    exact: false,
+    time: '3 h de roulage sur la Castagniccia, plus la liaison',
+    itinerary: {
+      slug: 'castagniccia',
+      label: 'La Castagniccia (D71, D15)',
+      km: '90 km',
+      time: '3 h sans les arrêts',
+      level: 'difficile',
+    },
+    highlights: [
+      'Les forêts de châtaigniers, à mille lieues du littoral',
+      'Piedicroce, La Porta et leurs églises baroques',
+      'Morosaglia, village natal de Pascal Paoli',
+    ],
+    sleep: [
+      { slug: 'maison-de-la-vigne', name: 'Maison de la Vigne', town: 'Venzolasca', price: '70 à 140 €' },
+      { slug: 'camping-europa-beach', name: 'Camping Europa Beach', town: 'Sorbo Ocagnano', price: '24 à 35 €' },
+    ],
+    note: "Étape à double détente selon ton ferry. Bateau de nuit au départ de Bastia : tu as le temps pour la Castagniccia. Départ en fin d'après-midi : rentre par la côte est et garde la Castagniccia pour un prochain séjour.",
+  },
+];
+
+const faq = [
+  {
+    q: 'Le tour de Corse à moto fait-il 700 ou 1 000 km ?',
+    a: "Les deux, selon ce que tu inclus. Environ 700 km si tu restes sur la boucle côtière sans jamais couper vers l'intérieur. Environ 800 km pour le parcours décrit ici, qui ajoute le Cap Corse et la Castagniccia. Autour de 1 000 km si tu ajoutes une traversée du centre par Vizzavona ou le col de Vergio. Jusqu'à 1 300 km si tu pousses jusqu'au Niolu, à la Restonica et aux détours de l'Alta Rocca. C'est la même île et le même nombre de jours : seule change la quantité d'intérieur que tu t'accordes.",
+  },
+  {
+    q: 'Sept jours, ferry compris ou sept jours sur place ?',
+    a: "Ici, sept jours de roulage sur l'île. Le ferry s'ajoute : compte une nuit de traversée à l'aller et une au retour si tu prends les bateaux de nuit, ce qui porte le voyage à neuf jours porte-à-porte. En partant et en revenant par Bastia, tu peux débarquer au petit matin le jour 1 et embarquer le soir du jour 7, ce qui limite la casse à huit jours.",
+  },
+  {
+    q: 'Pourquoi partir de Bastia plutôt que d’Ajaccio ?',
+    a: "Parce que Bastia concentre le plus grand nombre de liaisons depuis le continent, et surtout parce que le Cap Corse commence à sa sortie nord. Tu attaques donc par une des plus belles routes de l'île le jour de ton arrivée, sans liaison de transfert. En partant d'Ajaccio, il faut deux jours avant d'atteindre quoi que ce soit de comparable.",
+  },
+  {
+    q: 'Pourquoi tourner dans le sens antihoraire ?',
+    a: "Pour garder la mer à droite sur les portions en corniche : Cap Corse, Route des Crêtes, Calanques de Piana. C'est le côté du garde-corps, donc la vue dégagée, et surtout la file extérieure dans les épingles, plus large et plus lisible. Le sens horaire te colle contre la paroi sur ces mêmes tronçons.",
+  },
+  {
+    q: 'Combien de kilomètres par jour peut-on vraiment faire ?',
+    a: "Entre 100 et 130 km. Cela paraît ridicule sur le papier, jusqu'à ce que tu comptes le temps réel : la Route des Crêtes fait 70 km et prend 2 h 30 sans un seul arrêt. Les distances corses ne se lisent pas comme ailleurs. Vise 4 h de roulage par jour et laisse le reste aux arrêts, qui s'imposeront d'eux-mêmes.",
+  },
+  {
+    q: 'Ce parcours est-il accessible à un motard peu expérimenté ?',
+    a: "Les jours 3, 6 et 7 sont classés difficiles : chaussée étroite, ravins souvent sans glissière, épingles serrées. Un pilote peu à l'aise en montagne devrait plutôt viser la basse saison, quand le trafic est faible, et envisager la variante allégée décrite plus bas, qui remplace la Castagniccia et une partie de l'Alta Rocca par des tronçons côtiers roulants.",
+  },
+  {
+    q: 'Les cols sont-ils ouverts toute l’année ?',
+    a: "Non. La neige tombe dès 550 m d'altitude au centre de l'île et les grands cols peuvent fermer, Vizzavona compris, qui se ferme parfois à tous les véhicules. Le col de Vergio culmine à 1 477 m, ce qui en fait le point routier le plus haut de Corse. De la neige a déjà été constatée jusqu'en mai à Vizzavona. Hors de la période avril-octobre, vérifie l'état du réseau auprès du PC Routes de Corte avant de programmer une traversée par l'intérieur.",
+  },
+  {
+    q: 'Quelle est la meilleure période pour ce tour ?',
+    a: "Avril à juin et septembre à octobre. Températures tenables en équipement, routes dégagées, hébergements disponibles. Juillet et août cumulent la chaleur, l'affluence sur les Calanques de Piana et des hébergements complets réservés des mois à l'avance. Si tu n'as que l'été, décale les étapes techniques au petit matin.",
+  },
+];
+
+const totalKm = '795 km environ';
+
+const jsonLd: Record<string, unknown>[] = [
+  breadcrumbJsonLd([
+    { name: 'Accueil', path: '/' },
+    { name: 'Itinéraires', path: '/itineraires' },
+    { name: 'Tour de Corse en 7 jours', path: '/itineraires/tour-de-corse-7-jours' },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'TouristTrip',
+    name: 'Tour de Corse à moto en 7 jours',
+    description:
+      "Boucle de 795 km au départ de Bastia, dans le sens antihoraire, Cap Corse compris. Sept étapes détaillées avec distances, temps de roulage réels, hébergements motards et points de ravitaillement.",
+    url: absoluteUrl('/itineraires/tour-de-corse-7-jours'),
+    image: absoluteUrl(HERO),
+    touristType: 'Motorcyclist',
+    itinerary: {
+      '@type': 'ItemList',
+      numberOfItems: stages.length,
+      itemListElement: stages.map((s) => ({
+        '@type': 'ListItem',
+        position: s.day,
+        item: {
+          '@type': 'Place',
+          name: `Jour ${s.day} : ${s.from} vers ${s.to}`,
+          description: `${s.route}. ${s.km}.`,
+        },
+      })),
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+
+<Layout
+  title="Tour de Corse à moto en 7 jours : itinéraire étape par étape"
+  description="Boucle de 795 km au départ de Bastia, Cap Corse inclus. Les 7 étapes avec kilométrages, temps de roulage réels, où dormir et où faire le plein."
+  path="/itineraires/tour-de-corse-7-jours"
+  image={HERO}
+  preloadImage={HERO}
+  jsonLd={jsonLd}
+>
+  <article>
+    <!-- Hero -->
+    <div class="relative h-[40svh] sm:h-[45svh] md:h-[55svh] min-h-[320px] overflow-hidden">
+      <picture>
+        <source srcset={HERO.replace(/\.png$/, '.webp')} type="image/webp" />
+        <img
+          src={HERO}
+          alt="Route côtière sinueuse en Corse, vue depuis un col au-dessus de la mer"
+          width="1920"
+          height="1080"
+          fetchpriority="high"
+          loading="eager"
+          decoding="async"
+          class="absolute inset-0 h-full w-full object-cover"
+        />
+      </picture>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 w-full p-4 sm:p-6 md:p-12">
+        <div class="container mx-auto">
+          <nav aria-label="Fil d'Ariane" class="mb-3 text-sm text-white/80">
+            <a href="/" class="hover:underline">Accueil</a>
+            <span aria-hidden="true" class="mx-2">/</span>
+            <a href="/itineraires" class="hover:underline">Itinéraires</a>
+            <span aria-hidden="true" class="mx-2">/</span>
+            <span aria-current="page">Tour de Corse en 7 jours</span>
+          </nav>
+          <h1 class="max-w-4xl break-words text-2xl font-bold text-white sm:text-3xl md:text-4xl lg:text-5xl">
+            Le tour de Corse à moto en 7 jours
+          </h1>
+          <p class="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-white/90 sm:text-base">
+            <span>{totalKm}</span>
+            <span>7 étapes</span>
+            <span>Départ et retour Bastia</span>
+            <span>Sens antihoraire</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-10 md:py-16">
+      <div class="mx-auto max-w-3xl">
+        <!-- L'essentiel -->
+        <section aria-labelledby="essentiel" class="mb-12 rounded-xl border border-gray-200 bg-gray-50 p-5 md:p-7">
+          <h2 id="essentiel" class="mb-4 text-xl font-bold md:text-2xl">L'essentiel</h2>
+          <ul class="space-y-2 text-gray-800">
+            <li><strong>795 km sur 7 jours</strong>, soit 113 km par jour en moyenne. Peu sur le papier, une vraie journée de moto sur place.</li>
+            <li><strong>Départ et retour à Bastia</strong>, le port le mieux desservi depuis le continent, et la porte d'entrée du Cap Corse.</li>
+            <li><strong>Sens antihoraire</strong>, pour garder la mer à droite dans les corniches du Cap, des Crêtes et de Piana.</li>
+            <li><strong>Trois journées classées difficiles</strong> : les jours 3, 6 et 7. À décaler au matin, jamais en fin de journée.</li>
+            <li><strong>Meilleures périodes</strong> : avril à juin, septembre à octobre. Les cols de l'intérieur peuvent fermer en dehors.</li>
+          </ul>
+        </section>
+
+        <p class="mb-5 text-lg leading-relaxed text-gray-800">
+          Sept jours, c'est la durée qui revient le plus souvent quand on prépare un voyage moto en Corse.
+          C'est aussi celle où l'île se boucle sans courir, à condition de comprendre une chose : ici, les
+          kilomètres ne veulent rien dire. Un tronçon de 70 km te prendra deux heures et demie sans un
+          seul arrêt, parce qu'il enchaîne les épingles au-dessus du vide.
+        </p>
+        <p class="mb-5 leading-relaxed text-gray-800">
+          Le parcours ci-dessous assemble sept des dix itinéraires détaillés du site en une boucle
+          cohérente. Chaque journée renvoie vers sa fiche complète, avec les points d'intérêt, le
+          dénivelé et les conseils propres au tronçon. Les hébergements cités sont ceux de notre
+          sélection motarde, avec leur fourchette de prix.
+        </p>
+        <p class="mb-10 leading-relaxed text-gray-800">
+          Une précision d'honnêteté : les distances des sept tronçons principaux sont celles relevées sur
+          chaque itinéraire. Les kilométrages de liaison entre deux tronçons, signalés par la mention
+          « environ », sont des estimations d'ordre de grandeur, pas des mesures.
+        </p>
+
+        <!-- Vue d'ensemble -->
+        <section aria-labelledby="apercu" class="mb-14">
+          <h2 id="apercu" class="mb-5 text-2xl font-bold md:text-3xl">Le tour en un coup d'œil</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[34rem] border-collapse text-left text-sm">
+              <thead>
+                <tr class="border-b border-gray-300">
+                  <th scope="col" class="py-3 pr-3 font-semibold">Jour</th>
+                  <th scope="col" class="py-3 pr-3 font-semibold">Étape</th>
+                  <th scope="col" class="py-3 pr-3 font-semibold">Distance</th>
+                  <th scope="col" class="py-3 font-semibold">Nuit</th>
+                </tr>
+              </thead>
+              <tbody>
+                {stages.map((s) => (
+                  <tr class="border-b border-gray-200 align-top">
+                    <td class="py-3 pr-3 font-semibold whitespace-nowrap">J{s.day}</td>
+                    <td class="py-3 pr-3">
+                      <a href={`#jour-${s.day}`} class="font-medium text-corsica-blue underline underline-offset-2">
+                        {s.from} &rarr; {s.to}
+                      </a>
+                    </td>
+                    <td class="py-3 pr-3 whitespace-nowrap">{s.km}</td>
+                    <td class="py-3">{s.sleep[0].town}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Sens de rotation -->
+        <section aria-labelledby="sens" class="mb-14">
+          <h2 id="sens" class="mb-4 text-2xl font-bold md:text-3xl">Pourquoi ce sens, et pourquoi Bastia</h2>
+          <p class="mb-4 leading-relaxed text-gray-800">
+            La plupart des parcours publiés partent d'Ajaccio. C'est défendable si tu arrives par avion,
+            beaucoup moins si tu viens avec ta moto. Bastia concentre le plus grand nombre de traversées
+            depuis Nice, Toulon, Marseille et l'Italie, et surtout le Cap Corse démarre à sa sortie nord.
+            Tu roules donc sur une des plus belles routes de l'île le jour même de ton débarquement,
+            sans transfert.
+          </p>
+          <p class="mb-4 leading-relaxed text-gray-800">
+            Le sens antihoraire, ensuite, n'est pas un détail. Sur les portions en corniche, il te place
+            systématiquement du côté mer : Cap Corse, Route des Crêtes, Calanques de Piana. Tu as la vue
+            dégagée, et surtout la file extérieure dans les épingles, plus large et plus lisible.
+            Dans l'autre sens, tu longes la paroi sur ces mêmes tronçons.
+          </p>
+          <p class="leading-relaxed text-gray-800">
+            Il finit aussi la semaine par la montée sur Bavella et la Castagniccia plutôt que par la
+            plaine orientale. Terminer un voyage par sa plus belle route vaut mieux que l'inverse.
+          </p>
+        </section>
+
+        <!-- Étapes -->
+        <section aria-labelledby="etapes" class="mb-14">
+          <h2 id="etapes" class="mb-6 text-2xl font-bold md:text-3xl">Les 7 étapes en détail</h2>
+
+          {stages.map((s) => (
+            <div id={`jour-${s.day}`} class="mb-12 scroll-mt-24 border-t border-gray-200 pt-8">
+              <p class="mb-1 text-sm font-semibold uppercase tracking-wide text-corsica-azure">
+                Jour {s.day}
+              </p>
+              <h3 class="mb-3 text-xl font-bold md:text-2xl">
+                {s.from} &rarr; {s.to}
+              </h3>
+
+              <dl class="mb-5 grid grid-cols-2 gap-x-6 gap-y-3 rounded-lg bg-gray-50 p-4 text-sm sm:grid-cols-3">
+                <div>
+                  <dt class="text-gray-600">Distance</dt>
+                  <dd class="font-semibold">{s.km}</dd>
+                </div>
+                <div>
+                  <dt class="text-gray-600">Temps de roulage</dt>
+                  <dd class="font-semibold">{s.time}</dd>
+                </div>
+                {s.itinerary && (
+                  <div>
+                    <dt class="text-gray-600">Difficulté</dt>
+                    <dd class="font-semibold capitalize">{s.itinerary.level}</dd>
+                  </div>
+                )}
+              </dl>
+
+              <p class="mb-4 leading-relaxed text-gray-800">
+                <span class="font-medium">Le tracé :</span> {s.route}.
+              </p>
+
+              <h4 class="mb-2 font-semibold">À ne pas manquer</h4>
+              <ul class="mb-5 list-disc space-y-1 pl-5 text-gray-800">
+                {s.highlights.map((hl) => <li>{hl}</li>)}
+              </ul>
+
+              {s.note && (
+                <p class="mb-5 border-l-2 border-corsica-azure bg-gray-50 py-3 pl-4 pr-3 leading-relaxed text-gray-800">
+                  {s.note}
+                </p>
+              )}
+
+              {s.fuel && (
+                <p class="mb-5 border-l-2 border-corsica-coral bg-gray-50 py-3 pl-4 pr-3 leading-relaxed text-gray-800">
+                  <span class="font-semibold">Plein conseillé.</span> {s.fuel}
+                </p>
+              )}
+
+              <h4 class="mb-2 font-semibold">Où dormir</h4>
+              <ul class="mb-5 space-y-2">
+                {s.sleep.map((h) => (
+                  <li>
+                    <a href={`/hebergements/${h.slug}`} class="font-medium text-corsica-blue underline underline-offset-2">
+                      {h.name}
+                    </a>
+                    <span class="text-gray-700"> à {h.town}, {h.price} la nuit</span>
+                  </li>
+                ))}
+              </ul>
+
+              {s.itinerary && (
+                <p class="text-gray-800">
+                  <a
+                    href={`/itineraires/${s.itinerary.slug}`}
+                    class="font-medium text-corsica-blue underline underline-offset-2"
+                  >
+                    Lire la fiche complète : {s.itinerary.label}
+                  </a>
+                  <span class="text-gray-700">
+                    {' '}({s.itinerary.km}, {s.itinerary.time}, niveau {s.itinerary.level})
+                  </span>
+                </p>
+              )}
+            </div>
+          ))}
+        </section>
+
+        <!-- Variantes -->
+        <section aria-labelledby="variantes" class="mb-14">
+          <h2 id="variantes" class="mb-5 text-2xl font-bold md:text-3xl">Adapter le parcours</h2>
+
+          <h3 class="mb-2 mt-6 text-lg font-bold">Version montagne, pour voir l'intérieur</h3>
+          <p class="mb-4 leading-relaxed text-gray-800">
+            La boucle décrite ci-dessus est essentiellement côtière. Si tu veux l'intérieur, remplace le
+            jour 4 par une remontée sur le
+            <a href="/itineraires/route-niolu" class="text-corsica-blue underline underline-offset-2"> Niolu</a> et le
+            col de Vergio, avec une nuit à Calacuccia, puis redescends sur Ajaccio par la
+            <a href="/itineraires/traversee-centre" class="text-corsica-blue underline underline-offset-2"> Traversée du Centre</a>
+            et Corte. Compte environ 200 km de plus sur la semaine, et une journée de roulage nettement
+            plus engagée. La station de Calacuccia est la seule option de ravitaillement du Niolu : ne la
+            manque pas.
+          </p>
+
+          <h3 class="mb-2 mt-6 text-lg font-bold">Version allégée, si tu débutes en montagne</h3>
+          <p class="mb-4 leading-relaxed text-gray-800">
+            Supprime la Castagniccia au jour 7 et rentre par la côte est, soit environ 110 km de route
+            roulante au lieu de 170 km techniques. Au jour 6, tu peux aussi rester sur la côte jusqu'à
+            Porto-Vecchio et ne monter à Bavella qu'en aller-retour depuis Solenzara, sans enchaîner
+            l'Alta Rocca. Le tour tombe alors autour de 650 km.
+          </p>
+
+          <h3 class="mb-2 mt-6 text-lg font-bold">Version 5 jours</h3>
+          <p class="leading-relaxed text-gray-800">
+            Avec cinq jours de roulage, ne cherche pas à boucler l'île. Prends une moitié. Le nord, avec
+            le <a href="/itineraires/cap-corse" class="text-corsica-blue underline underline-offset-2">Cap Corse</a>,
+            la <a href="/itineraires/tour-balagne" class="text-corsica-blue underline underline-offset-2">Balagne</a>,
+            la <a href="/itineraires/route-cretes" class="text-corsica-blue underline underline-offset-2">Route des Crêtes</a>
+            et Porto, tient parfaitement en cinq jours au départ de Bastia. Le sud, d'Ajaccio à Bonifacio
+            par Bavella, aussi. Les deux valent mieux qu'un tour complet expédié.
+          </p>
+        </section>
+
+        <!-- Cols -->
+        <section aria-labelledby="cols" class="mb-14">
+          <h2 id="cols" class="mb-4 text-2xl font-bold md:text-3xl">Les cols, et quand ils ferment</h2>
+          <p class="mb-4 leading-relaxed text-gray-800">
+            C'est le point que presque aucun guide moto ne traite, et il change tout si tu pars en avril,
+            en mai ou en octobre. La neige tombe dès 550 m d'altitude au centre de l'île. Les grands cols
+            de l'intérieur, Vizzavona, Verde, Bavella, Vergio et Vaccia, peuvent être soumis à
+            équipements spéciaux ou fermés purement et simplement. Vizzavona, sur la route territoriale
+            20, se ferme parfois à tous les véhicules.
+          </p>
+          <p class="mb-4 leading-relaxed text-gray-800">
+            Le col de Vergio culmine à 1 477 m, ce qui en fait le point routier le plus élevé de Corse.
+            De la neige y a déjà été constatée jusqu'en mai. Le réseau est surveillé en permanence par le
+            PC Routes de Corte : c'est la source à consulter avant de programmer une traversée par
+            l'intérieur hors de la belle saison.
+          </p>
+          <p class="leading-relaxed text-gray-800">
+            La boucle côtière décrite ici reste praticable presque toute l'année. Ce sont les variantes
+            intérieures qui demandent cette vérification.
+          </p>
+        </section>
+
+        <!-- Ravitaillement -->
+        <section aria-labelledby="essence" class="mb-14">
+          <h2 id="essence" class="mb-4 text-2xl font-bold md:text-3xl">Où faire le plein</h2>
+          <p class="mb-4 leading-relaxed text-gray-800">
+            Sur le littoral, les stations sont nombreuses et le sujet ne se pose pas. Dès que tu coupes
+            vers l'intérieur ou que tu enchaînes une corniche isolée, il devient sérieux. Trois points
+            comptent sur ce parcours :
+          </p>
+          <ul class="mb-4 list-disc space-y-2 pl-5 text-gray-800">
+            <li><strong>Porto</strong>, au jour 3 : dernière station avant plusieurs heures de route côtière.</li>
+            <li><strong>Col de Bavella</strong>, au jour 6 : essentielle avant de s'engager dans l'Alta Rocca.</li>
+            <li><strong>Calacuccia</strong>, en variante montagne : la seule option de toute la région du Niolu.</li>
+          </ul>
+          <p class="leading-relaxed text-gray-800">
+            La règle simple, sur cette île : tu ne passes pas devant une station avec moins de la moitié
+            du réservoir sans t'arrêter.
+            <a href="/stations-service" class="text-corsica-blue underline underline-offset-2">
+              Voir les 130 stations recensées, dont 52 stratégiques
+            </a>.
+          </p>
+        </section>
+
+        <!-- FAQ -->
+        <section aria-labelledby="faq" class="mb-6">
+          <h2 id="faq" class="mb-5 text-2xl font-bold md:text-3xl">Questions fréquentes</h2>
+          <ul class="space-y-3">
+            {faq.map((f) => (
+              <li>
+                <details class="group rounded-xl border border-gray-200 bg-white p-5 transition-shadow hover:shadow-sm">
+                  <summary class="flex cursor-pointer list-none items-start justify-between gap-4 text-lg font-semibold text-corsica-charcoal">
+                    <span>{f.q}</span>
+                    <span aria-hidden="true" class="mt-1 text-2xl leading-none text-corsica-azure transition group-open:rotate-45">+</span>
+                  </summary>
+                  <p class="mt-4 leading-relaxed text-gray-800">{f.a}</p>
+                </details>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <!-- Suite -->
+        <section aria-labelledby="suite" class="border-t border-gray-200 pt-8">
+          <h2 id="suite" class="mb-4 text-2xl font-bold md:text-3xl">Continuer à préparer</h2>
+          <ul class="list-disc space-y-2 pl-5 text-gray-800">
+            <li><a href="/itineraires" class="text-corsica-blue underline underline-offset-2">Les 10 itinéraires en détail</a></li>
+            <li><a href="/hebergements" class="text-corsica-blue underline underline-offset-2">Les hébergements adaptés aux motards</a></li>
+            <li><a href="/guide-pratique" class="text-corsica-blue underline underline-offset-2">Le guide pratique : ferry, météo, équipement</a></li>
+            <li><a href="/blog/budget-voyage-moto-corse" class="text-corsica-blue underline underline-offset-2">Combien coûte un voyage moto en Corse</a></li>
+            <li><a href="/blog/meilleures-periodes-moto-corse" class="text-corsica-blue underline underline-offset-2">Quand partir : les meilleures périodes par profil</a></li>
+            <li><a href="/carte" class="text-corsica-blue underline underline-offset-2">La carte interactive</a></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </article>
+</Layout>

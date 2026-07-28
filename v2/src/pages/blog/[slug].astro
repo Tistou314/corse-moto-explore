@@ -45,6 +45,27 @@ const contentHtml = formatContent(
   p.id,
 );
 
+// The island renders `contentHtml`, so shipping the record it was compiled
+// from would serialize the same article twice: 15 KB of raw markdown in
+// `post.content` on top of the 35 KB of rendered HTML. Keep only what
+// BlogPostHeader, BlogPostContent, AuthorCard and the page itself read.
+const postForIsland = (() => {
+  const o = p as typeof p & Record<string, unknown>;
+  return {
+    id: o.id,
+    slug: o.slug,
+    title: o.title,
+    excerpt: o.excerpt,
+    imageUrl: o.imageUrl ?? o.heroImage ?? o.image,
+    heroImage: o.heroImage,
+    date: o.date,
+    category: o.category,
+    readingTime: o.readingTime,
+    tags: o.tags,
+    author: o.author,
+  } as unknown as typeof p;
+})();
+
 const jsonLd: Record<string, unknown>[] = [
   breadcrumbJsonLd([
     { name: 'Accueil', path: '/' },
@@ -112,7 +133,7 @@ const metaDescription = rawExcerpt.length > 158 ? rawExcerpt.slice(0, 155).trimE
   authorName={p.authorName}
   jsonLd={jsonLd}
 >
-  <BlogPostDetailPage client:load post={p} contentHtml={contentHtml} prevPost={prevPost} nextPost={nextPost} allPosts={relatedPool} />
+  <BlogPostDetailPage client:load post={postForIsland} contentHtml={contentHtml} prevPost={prevPost} nextPost={nextPost} allPosts={relatedPool} />
 
   {p.faq && p.faq.length > 0 && (
     <section class="bg-gray-50 py-12 md:py-16">
