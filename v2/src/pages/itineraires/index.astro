@@ -33,11 +33,14 @@ const jsonLd: Record<string, unknown>[] = [
         <p class="mb-2 text-sm font-semibold uppercase tracking-wide text-corsica-azure">
           Par où commencer
         </p>
-        <h2 class="mb-3 text-2xl font-bold md:text-3xl">
-          <a href="/itineraires/tour-de-corse-7-jours" class="hover:underline">
+        {/* Deliberately not a heading: this callout renders above the page's
+            own <h1>, so an <h2> here would put a level-2 heading before the
+            level-1 and break the document outline. */}
+        <p class="mb-3 text-2xl font-bold md:text-3xl">
+          <a href="/itineraires/tour-de-corse-7-jours" class="underline underline-offset-2">
             Le tour de Corse à moto en 7 jours
           </a>
-        </h2>
+        </p>
         <p class="mb-4 leading-relaxed text-gray-800">
           La boucle complète, 795 km au départ de Bastia, Cap Corse compris. Sept étapes assemblées
           à partir des itinéraires ci-dessous, avec les temps de roulage réels, où dormir à chaque
