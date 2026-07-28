@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Hero from '../../../../src/components/Hero';
+import Hero from '../legacy-overrides/Hero';
 import ItineraryCard from '../../../../src/components/ItineraryCard';
 import { Button } from '../../../../src/components/ui/button';
 import { Input } from '../../../../src/components/ui/input';
@@ -9,6 +9,9 @@ import type { Itinerary } from '@/lib/data';
 interface Props {
   itineraries: Itinerary[];
 }
+
+/** Same image as the pillar page's hero, so the click has visual continuity. */
+const FEATURED_IMAGE = '/lovable-uploads/6f930ced-66d6-4bfe-adb7-246828fa75a7.png';
 
 export default function ItinerairesPage({ itineraries }: Props) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -50,6 +53,7 @@ export default function ItinerairesPage({ itineraries }: Props) {
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-corsica-azure" />
                 <Input
                   type="text"
+                  aria-label="Rechercher un itinéraire par nom ou description"
                   placeholder="Rechercher par nom ou description..."
                   className="pl-10 border-corsica-azure/30 focus:border-corsica-azure bg-corsica-azure/5"
                   value={searchTerm}
@@ -59,6 +63,7 @@ export default function ItinerairesPage({ itineraries }: Props) {
 
               <div className="w-full md:w-48">
                 <select
+                  aria-label="Filtrer par difficulté"
                   className="w-full px-3 py-2 border border-corsica-azure/30 rounded-md focus:outline-none focus:ring-2 focus:ring-corsica-azure focus:border-corsica-azure"
                   value={selectedDifficulty}
                   onChange={(e) => setSelectedDifficulty(e.target.value)}
@@ -72,6 +77,7 @@ export default function ItinerairesPage({ itineraries }: Props) {
 
               <div className="w-full md:w-48">
                 <select
+                  aria-label="Filtrer par région"
                   className="w-full px-3 py-2 border border-corsica-azure/30 rounded-md focus:outline-none focus:ring-2 focus:ring-corsica-azure focus:border-corsica-azure"
                   value={selectedRegion}
                   onChange={(e) => setSelectedRegion(e.target.value)}
@@ -94,6 +100,52 @@ export default function ItinerairesPage({ itineraries }: Props) {
               </Button>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Featured loop, at the head of the list. It is not one of the ten
+          records: it is the itinerary that strings seven of them together,
+          so it gets a banner rather than a card in the grid. */}
+      <section className="bg-gray-50 pt-12">
+        <div className="container mx-auto px-4">
+          <a
+            href="/itineraires/tour-de-corse-7-jours"
+            className="group relative block overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-corsica-azure focus-visible:ring-offset-2"
+          >
+            <div className="relative aspect-[16/9] sm:aspect-[21/9]">
+              <picture>
+                <source srcSet={FEATURED_IMAGE.replace(/\.png$/, '.webp')} type="image/webp" />
+                <img
+                  src={FEATURED_IMAGE}
+                  alt="Route de corniche au-dessus de la mer en Corse, tracé du tour de l'île à moto"
+                  width={1920}
+                  height={1080}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </picture>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/20"></div>
+              <div className="absolute inset-0 flex flex-col justify-end p-5 sm:p-8 md:p-10">
+                <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-white/90 sm:text-sm">
+                  Par où commencer
+                </p>
+                <p className="mb-2 text-xl font-bold text-white group-hover:underline sm:text-2xl md:text-3xl">
+                  Le tour de Corse à moto en 7 jours
+                </p>
+                <p className="mb-4 max-w-2xl text-sm leading-relaxed text-white/90 sm:text-base">
+                  La boucle complète, 835 km au départ de Bastia, Cap Corse compris. Sept étapes
+                  avec les temps de roulage réels, où dormir à chaque halte et où faire le plein
+                  avant les portions isolées.
+                </p>
+                <span className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-white/80 sm:text-sm">
+                  <span>835 km</span>
+                  <span>7 étapes</span>
+                  <span>Départ et retour Bastia</span>
+                </span>
+              </div>
+            </div>
+          </a>
         </div>
       </section>
 

@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import Hero from '../../../../src/components/Hero';
+import Hero from '../legacy-overrides/Hero';
 import BlogPostsList from '../../../../src/components/blog/BlogPostsList';
-import SearchAndFilter from '../../../../src/components/blog/SearchAndFilter';
+import SearchAndFilter from '../legacy-overrides/SearchAndFilter';
 import FeaturedResources from '../legacy-overrides/FeaturedResources';
-import NewsletterSignup from '../../../../src/components/blog/NewsletterSignup';
+import NewsletterSignup from '../legacy-overrides/NewsletterSignup';
 import type { BlogPost } from '@/lib/data';
 
 interface Props {

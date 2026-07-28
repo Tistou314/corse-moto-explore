@@ -24,6 +24,7 @@ const v2AccommodationCard = pathResolve(
   __dirname,
   'src/components/legacy-overrides/AccommodationCard.tsx',
 );
+const v2BlogPostCard = pathResolve(__dirname, 'src/components/legacy-overrides/BlogPostCard.tsx');
 
 function aliasByImporter() {
   return {
@@ -55,6 +56,12 @@ function aliasByImporter() {
       // accommodation pages without a single crawlable inbound link.
       if (source === '@/components/AccommodationCard') {
         return this.resolve(v2AccommodationCard, importer, { skipSelf: true });
+      }
+      // Force the v2 blog card. The legacy category badge uses colours that
+      // fail AA against its white text, one of which (`bg-corsica-sage`) is
+      // not even in the token set, so it rendered white on white.
+      if (source === '@/components/BlogPostCard') {
+        return this.resolve(v2BlogPostCard, importer, { skipSelf: true });
       }
       if (!source.startsWith('@/')) return null;
       const rel = source.slice(2);

@@ -87,6 +87,7 @@ export default function AccommodationFilters({
           <div className="relative flex-grow">
             <SearchIcon className="absolute left-3 top-3 h-4 w-4 text-corsica-slate" />
             <Input
+              aria-label="Rechercher un hébergement par nom, lieu ou mot-clé"
               placeholder="Rechercher par nom, lieu ou mot-clé..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -97,6 +98,7 @@ export default function AccommodationFilters({
           <div className="flex flex-col sm:flex-row gap-2 sm:flex-wrap md:flex-nowrap">
             <Select value={selectedType} onValueChange={setSelectedType}>
               <SelectTrigger
+                aria-label="Filtrer par type d'hébergement"
                 className={`w-full sm:w-[180px] ${
                   selectedType !== 'all' ? 'border-corsica-azure' : 'border-corsica-azure/30'
                 } bg-white`}
@@ -114,6 +116,7 @@ export default function AccommodationFilters({
 
             <Select value={selectedRegion} onValueChange={setSelectedRegion}>
               <SelectTrigger
+                aria-label="Filtrer par région"
                 className={`w-full sm:w-[180px] ${
                   selectedRegion !== 'all' ? 'border-corsica-azure' : 'border-corsica-azure/30'
                 } bg-white`}
