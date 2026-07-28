@@ -62,17 +62,9 @@ Le territoire est plus grand qu'il n'y paraît sur une carte. Les distances en k
 
 ### Un tour complet en 7 jours
 
-Le tour classique se boucle en **7 jours pour 700 km**, soit une moyenne de 100 km par jour. C'est peu en apparence, mais les tracés corses ne se parcourent pas comme une autoroute. Voici la répartition type des étapes :
+Sept jours, c'est la durée qui permet de boucler l'île sans courir. Compte entre 700 et 800 km selon la quantité d'intérieur que tu t'accordes, soit une moyenne de 100 à 115 km par jour. C'est peu en apparence, mais les tracés corses ne se parcourent pas comme une autoroute : une étape de 70 km peut occuper la matinée entière.
 
-- **Jour 1** : Ajaccio, Piana, Porto (70 km)
-- **Jour 2** : Porto, Calvi, L'Île-Rousse (115 km)
-- **Jour 3** : L'Île-Rousse, Saint-Florent, Bastia (70 km)
-- **Jour 4** : Bastia, Aleria, Solenzara (105 km)
-- **Jour 5** : Solenzara, Porto Vecchio, Bonifacio (75 km)
-- **Jour 6** : Bonifacio, Zonza, Alta Rocca (145 km)
-- **Jour 7** : Zonza, Ajaccio (90 km)
-
-Le jour 6 est le plus exigeant, avec 145 km et le passage par le col de Bavella. Prévoir un départ matinal.
+Le parcours complet, étape par étape, avec les kilométrages, les temps de roulage réels, les hébergements à chaque halte et les points de ravitaillement, est détaillé ici : [le tour de Corse à moto en 7 jours](/itineraires/tour-de-corse-7-jours).
 
 ### Un séjour court en 3-5 jours
 

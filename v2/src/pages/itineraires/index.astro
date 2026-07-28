@@ -27,5 +27,31 @@ const jsonLd: Record<string, unknown>[] = [
   path="/itineraires"
   jsonLd={jsonLd}
 >
+  <section class="border-b border-gray-200 bg-gray-50">
+    <div class="container mx-auto px-4 py-10 md:py-14">
+      <div class="mx-auto max-w-3xl">
+        <p class="mb-2 text-sm font-semibold uppercase tracking-wide text-corsica-azure">
+          Par où commencer
+        </p>
+        <h2 class="mb-3 text-2xl font-bold md:text-3xl">
+          <a href="/itineraires/tour-de-corse-7-jours" class="hover:underline">
+            Le tour de Corse à moto en 7 jours
+          </a>
+        </h2>
+        <p class="mb-4 leading-relaxed text-gray-800">
+          La boucle complète, 795 km au départ de Bastia, Cap Corse compris. Sept étapes assemblées
+          à partir des itinéraires ci-dessous, avec les temps de roulage réels, où dormir à chaque
+          halte et où faire le plein avant les portions isolées.
+        </p>
+        <a
+          href="/itineraires/tour-de-corse-7-jours"
+          class="inline-block rounded-md bg-corsica-azure px-5 py-2.5 font-medium text-white transition-opacity hover:opacity-90"
+        >
+          Voir l'itinéraire jour par jour
+        </a>
+      </div>
+    </div>
+  </section>
+
   <ItinerairesPage client:load itineraries={allItineraries} />
 </Layout>
