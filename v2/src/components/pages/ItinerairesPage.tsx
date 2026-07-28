@@ -134,12 +134,12 @@ export default function ItinerairesPage({ itineraries }: Props) {
                   Le tour de Corse à moto en 7 jours
                 </p>
                 <p className="mb-4 max-w-2xl text-sm leading-relaxed text-white/90 sm:text-base">
-                  La boucle complète, 795 km au départ de Bastia, Cap Corse compris. Sept étapes
+                  La boucle complète, 835 km au départ de Bastia, Cap Corse compris. Sept étapes
                   avec les temps de roulage réels, où dormir à chaque halte et où faire le plein
                   avant les portions isolées.
                 </p>
                 <span className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-white/80 sm:text-sm">
-                  <span>795 km</span>
+                  <span>835 km</span>
                   <span>7 étapes</span>
                   <span>Départ et retour Bastia</span>
                 </span>

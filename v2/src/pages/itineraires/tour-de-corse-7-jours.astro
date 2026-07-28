@@ -24,6 +24,11 @@ interface Stage {
   to: string;
   route: string;
   km: string;
+  /** Main-route distance in km. The advertised total is summed from these,
+      so the headline figure cannot drift away from the stages again. */
+  kmNum: number;
+  /** Distance of the documented alternative, where a stage offers one. */
+  kmNumAlt?: number;
   exact: boolean;
   time: string;
   itinerary?: { slug: string; label: string; km: string; time: string; level: string };
@@ -37,9 +42,11 @@ const stages: Stage[] = [
   {
     day: 1,
     from: 'Bastia',
-    to: 'Bastia ou Macinaggio',
-    route: "Bastia, Erbalunga, Macinaggio, Barcaggio, Centuri, Pino, Nonza, Patrimonio",
+    to: 'Bastia',
+    route:
+      'Bastia, Erbalunga, Macinaggio, Barcaggio, Centuri, Pino, Nonza, Patrimonio, retour Bastia',
     km: '110 km',
+    kmNum: 110,
     exact: true,
     time: '3 à 4 h de roulage, une journée complète avec les arrêts',
     itinerary: {
@@ -60,16 +67,18 @@ const stages: Stage[] = [
       { slug: 'couvent-saint-hyacinthe', name: 'Couvent Saint Hyacinthe', town: 'Santa Maria di Lota', price: '30 à 80 €' },
       { slug: 'hotel-u-ricordu', name: 'Hôtel U Ricordu', town: 'Macinaggio', price: '100 à 240 €' },
     ],
-    note: "C'est le jour d'arrivée du ferry. Si tu débarques en début de matinée, la boucle tient largement dans la journée. Si tu arrives à midi, coupe à Macinaggio et finis le Cap le lendemain matin.",
+    note: "C'est le jour d'arrivée du ferry, et la boucle du Cap se referme sur Bastia. Si tu débarques en début de matinée, elle tient largement dans la journée. Si tu arrives à midi, coupe à Macinaggio à mi-parcours et garde la moitié ouest du Cap, de Barcaggio à Patrimonio, pour le lendemain matin : compte alors une quarantaine de kilomètres de plus sur le jour 2.",
   },
   {
     day: 2,
-    from: 'Patrimonio',
+    from: 'Bastia',
     to: 'Calvi ou L’Île-Rousse',
-    route: "Patrimonio, Saint-Florent, Agriates, L’Île-Rousse, Algajola, Calvi, villages de Balagne",
-    km: '100 km environ',
+    route:
+      'Bastia, Patrimonio, Saint-Florent, Agriates, L’Île-Rousse, Algajola, Calvi, villages de Balagne',
+    km: '120 km environ',
+    kmNum: 120,
     exact: false,
-    time: '2 h 30 de roulage sur la partie Balagne, plus la liaison depuis Saint-Florent',
+    time: '2 h 30 de roulage sur la partie Balagne, plus la liaison depuis Bastia',
     itinerary: {
       slug: 'tour-balagne',
       label: 'Le Tour de la Balagne (D151, D71)',
@@ -95,6 +104,7 @@ const stages: Stage[] = [
     to: 'Porto',
     route: 'Calvi, col de Palmarella, Galeria, réserve de Scandola, Girolata, Osani, Porto',
     km: '70 km',
+    kmNum: 70,
     exact: true,
     time: '2 h 30 de roulage, mais compte la journée : c’est la plus technique du parcours',
     itinerary: {
@@ -123,6 +133,7 @@ const stages: Stage[] = [
     to: 'Ajaccio',
     route: 'Porto, Piana, Capo Rosso, Cargèse, Sagone, Ajaccio',
     km: '90 km environ',
+    kmNum: 90,
     exact: false,
     time: '1 h de roulage sur les Calanques, plus environ 2 h de liaison jusqu’à Ajaccio',
     itinerary: {
@@ -150,6 +161,7 @@ const stages: Stage[] = [
     to: 'Bonifacio',
     route: 'Ajaccio, plage de Cupabia, Propriano, Sartène, Lion de Roccapina, Bonifacio',
     km: '130 km environ',
+    kmNum: 130,
     exact: false,
     time: '3 h 30 de roulage environ',
     itinerary: {
@@ -176,6 +188,7 @@ const stages: Stage[] = [
     to: 'Porto-Vecchio ou Zonza',
     route: 'Bonifacio, Rondinara, Santa Giulia, Palombaggia, Porto-Vecchio, col de Bavella, Zonza',
     km: '145 km environ',
+    kmNum: 145,
     exact: false,
     time: '4 h de roulage environ, la journée la plus chargée',
     itinerary: {
@@ -204,6 +217,8 @@ const stages: Stage[] = [
     to: 'Bastia',
     route: 'Solenzara, côte est, Folelli, Cervione, col de Prato, Piedicroce, La Porta, Morosaglia, Bastia',
     km: '170 km environ par la Castagniccia, 110 km par la côte',
+    kmNum: 170,
+    kmNumAlt: 110,
     exact: false,
     time: '3 h de roulage sur la Castagniccia, plus la liaison',
     itinerary: {
@@ -226,10 +241,15 @@ const stages: Stage[] = [
   },
 ];
 
+const totalMain = stages.reduce((sum, st) => sum + st.kmNum, 0);
+const totalAlt = stages.reduce((sum, st) => sum + (st.kmNumAlt ?? st.kmNum), 0);
+const perDay = Math.round(totalMain / stages.length);
+const totalKm = `${totalMain} km environ`;
+
 const faq = [
   {
     q: 'Le tour de Corse à moto fait-il 700 ou 1 000 km ?',
-    a: "Les deux, selon ce que tu inclus. Environ 700 km si tu restes sur la boucle côtière sans jamais couper vers l'intérieur. Environ 800 km pour le parcours décrit ici, qui ajoute le Cap Corse et la Castagniccia. Autour de 1 000 km si tu ajoutes une traversée du centre par Vizzavona ou le col de Vergio. Jusqu'à 1 300 km si tu pousses jusqu'au Niolu, à la Restonica et aux détours de l'Alta Rocca. C'est la même île et le même nombre de jours : seule change la quantité d'intérieur que tu t'accordes.",
+    a: `Les deux, selon ce que tu inclus. Environ 700 km si tu restes sur la boucle côtière sans jamais couper vers l'intérieur. Environ ${totalMain} km pour le parcours décrit ici, qui ajoute le Cap Corse et la Castagniccia, et ${totalAlt} km si tu rentres par la côte au jour 7. Autour de 1 000 km si tu ajoutes une traversée du centre par Vizzavona ou le col de Vergio. Jusqu'à 1 300 km si tu pousses jusqu'au Niolu, à la Restonica et aux détours de l'Alta Rocca. C'est la même île et le même nombre de jours : seule change la quantité d'intérieur que tu t'accordes.`,
   },
   {
     q: 'Sept jours, ferry compris ou sept jours sur place ?',
@@ -261,7 +281,6 @@ const faq = [
   },
 ];
 
-const totalKm = '795 km environ';
 
 const jsonLd: Record<string, unknown>[] = [
   breadcrumbJsonLd([
@@ -274,7 +293,7 @@ const jsonLd: Record<string, unknown>[] = [
     '@type': 'TouristTrip',
     name: 'Tour de Corse à moto en 7 jours',
     description:
-      "Boucle de 795 km au départ de Bastia, dans le sens antihoraire, Cap Corse compris. Sept étapes détaillées avec distances, temps de roulage réels, hébergements motards et points de ravitaillement.",
+      `Boucle de ${totalMain} km au départ de Bastia, dans le sens antihoraire, Cap Corse compris. Sept étapes détaillées avec distances, temps de roulage réels, hébergements motards et points de ravitaillement.`,
     url: absoluteUrl('/itineraires/tour-de-corse-7-jours'),
     image: absoluteUrl(HERO),
     touristType: 'Motorcyclist',
@@ -306,7 +325,7 @@ const jsonLd: Record<string, unknown>[] = [
 
 <Layout
   title="Tour de Corse à moto en 7 jours : itinéraire étape par étape"
-  description="Boucle de 795 km au départ de Bastia, Cap Corse inclus. Les 7 étapes avec kilométrages, temps de roulage réels, où dormir et où faire le plein."
+  description={`Boucle de ${totalMain} km au départ de Bastia, Cap Corse inclus. Les 7 étapes avec kilométrages, temps de roulage réels, où dormir et où faire le plein.`}
   path="/itineraires/tour-de-corse-7-jours"
   image={HERO}
   preloadImage={HERO}
@@ -325,7 +344,7 @@ const jsonLd: Record<string, unknown>[] = [
           fetchpriority="high"
           loading="eager"
           decoding="async"
-          class="absolute inset-0 h-full w-full object-cover"
+          class="absolute inset-0 h-full w-full object-cover [object-position:62%_68%]"
         />
       </picture>
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent"></div>
@@ -357,7 +376,11 @@ const jsonLd: Record<string, unknown>[] = [
         <section aria-labelledby="essentiel" class="mb-12 rounded-xl border border-gray-200 bg-gray-50 p-5 md:p-7">
           <h2 id="essentiel" class="mb-4 text-xl font-bold md:text-2xl">L'essentiel</h2>
           <ul class="space-y-2 text-gray-800">
-            <li><strong>795 km sur 7 jours</strong>, soit 113 km par jour en moyenne. Peu sur le papier, une vraie journée de moto sur place.</li>
+            <li>
+              <strong>{totalMain} km sur 7 jours</strong>, soit {perDay} km par jour en moyenne.
+              Peu sur le papier, une vraie journée de moto sur place. En rentrant par la côte
+              au jour 7 plutôt que par la Castagniccia, le tour tombe à {totalAlt} km.
+            </li>
             <li><strong>Départ et retour à Bastia</strong>, le port le mieux desservi depuis le continent, et la porte d'entrée du Cap Corse.</li>
             <li><strong>Sens antihoraire</strong>, pour garder la mer à droite dans les corniches du Cap, des Crêtes et de Piana.</li>
             <li><strong>Trois journées classées difficiles</strong> : les jours 3, 6 et 7. À décaler au matin, jamais en fin de journée.</li>

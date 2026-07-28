@@ -62,7 +62,7 @@ Le territoire est plus grand qu'il n'y paraît sur une carte. Les distances en k
 
 ### Un tour complet en 7 jours
 
-Sept jours, c'est la durée qui permet de boucler l'île sans courir. Compte entre 700 et 800 km selon la quantité d'intérieur que tu t'accordes, soit une moyenne de 100 à 115 km par jour. C'est peu en apparence, mais les tracés corses ne se parcourent pas comme une autoroute : une étape de 70 km peut occuper la matinée entière.
+Sept jours, c'est la durée qui permet de boucler l'île sans courir. Compte entre 700 et 850 km selon la quantité d'intérieur que tu t'accordes, soit une moyenne de 100 à 120 km par jour. C'est peu en apparence, mais les tracés corses ne se parcourent pas comme une autoroute : une étape de 70 km peut occuper la matinée entière.
 
 Le parcours complet, étape par étape, avec les kilométrages, les temps de roulage réels, les hébergements à chaque halte et les points de ravitaillement, est détaillé ici : [le tour de Corse à moto en 7 jours](/itineraires/tour-de-corse-7-jours).
 
