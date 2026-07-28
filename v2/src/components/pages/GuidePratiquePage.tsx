@@ -1,4 +1,4 @@
-import Hero from '../../../../src/components/Hero';
+import Hero from '../legacy-overrides/Hero';
 import GuideTabs from '../../../../src/components/guide/GuideTabs';
 
 export default function GuidePratiquePage() {

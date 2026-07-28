@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Hero from '../../../../src/components/Hero';
+import Hero from '../legacy-overrides/Hero';
 // Deliberately the v2 override, not the legacy card: this relative path
 // bypasses the `@/` alias that redirects the rest of the codebase, and the
 // legacy card renders no anchor at all.

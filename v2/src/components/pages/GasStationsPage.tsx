@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../../../src/components/ui/tabs';
 import GasStationsHeader from '../../../../src/components/gas-stations/GasStationsHeader';
-import InfoTab from '../../../../src/components/gas-stations/tabs/InfoTab';
-import TipsTab from '../../../../src/components/gas-stations/tabs/TipsTab';
-import StationsListTab from '../../../../src/components/gas-stations/tabs/StationsListTab';
-import RegionsTab from '../../../../src/components/gas-stations/tabs/RegionsTab';
+import InfoTab from '../legacy-overrides/gas-tabs/InfoTab';
+import TipsTab from '../legacy-overrides/gas-tabs/TipsTab';
+import StationsListTab from '../legacy-overrides/gas-tabs/StationsListTab';
+import RegionsTab from '../legacy-overrides/gas-tabs/RegionsTab';
 import type { GasStation } from '@/lib/data';
 
 interface Props {

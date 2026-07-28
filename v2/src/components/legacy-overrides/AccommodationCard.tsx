@@ -57,8 +57,11 @@ const AccommodationCard = ({ accommodation }: { accommodation: AccommodationLike
     <a
       href={href}
       className="group block h-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-corsica-azure focus-visible:ring-offset-2"
-      aria-label={`${accommodation.name}, ${typeLabels[accommodation.type] ?? accommodation.type} à ${accommodation.location}`}
     >
+      {/* No aria-label here on purpose: an accessible name that does not
+          contain the link's own visible text breaks voice control, since
+          the user says what they see. The card content already names the
+          place, the type and the town. */}
       <Card className="flex h-full flex-col overflow-hidden bg-white transition-all duration-300 hover:shadow-lg">
         <div className="aspect-video w-full overflow-hidden">
           <OptimizedImage
